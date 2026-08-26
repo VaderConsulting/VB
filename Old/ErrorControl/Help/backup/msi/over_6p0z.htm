@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Code Page Handling of Parameter Strings</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_code_page_handling_of_parameter_strings"></A>Code Page Handling of Parameter Strings</H3>
+
+<P>Authors may add localization information to an installation database by using a database table editor such as Orca, provided with the Windows Installer SDK, or by calling the <A HREF="qref_778z.htm">Database Functions</A> from a program. Authors must be careful to only pass string parameters that use the code page of the database that is being localized. If a string parameter contains characters that cannot be represented by the code page of the database, the installer returns an error when calling <B>MsiDatabaseImport</B>. See <A HREF="over_2j6t.htm">Determining an installation database's code page</A> and a list of numeric code pages see <A HREF="over_9h6b.htm">Localizing the Error and ActionText Tables</A>.</P>
+
+<P><B>Windows 98 and Windows 95</B></P>
+
+<P>When adding localization information to a database using Windows&nbsp;95 or Windows&nbsp;98, the code page of the database must be neutral or it must match the current code page of the system. In this case, the strings passed to the <A HREF="qref_778z.htm">Database Functions</A> must be code-page neutral or require the same code page as the database. </P>
+
+<P><B>Windows&nbsp;NT and Windows&nbsp;2000</B></P>
+
+<P>When adding localization information to a database using Windows&nbsp;NT or Windows&nbsp;2000, the code page of the database must be supported by the system. It does not have to be the current code page of the system. <B>IsValidCodePage</B> must return TRUE for the database's code page. Note that because Windows&nbsp;NT and Windows&nbsp;2000 convert ANSI strings to Unicode, there is an error if the current user's code page is not the same as the database's code page.</P>
+
+<P>Calling the ANSI version of the Windows Installer API on Windows&nbsp;NT or Windows&nbsp;2000 converts the localized string to Unicode using the current system code page. When the database is committed, the Unicode string is converted to ANSI using the code page of the database. This can result in a loss of data and incorrect string conversion if the current system's code page differs from the code page of the localized string. The following procedure will ensure that the localization data is properly stored.
+
+<OL>
+	<LI>Set the code page of the database to the code page of the localized string.</LI>
+
+	<LI>Convert the ANSI string to Unicode using the Win32 function <B>MultiByteToWideChar</B> and specify the code page of the localized data.</LI>
+
+	<LI>Call the Unicode version of the Windows Installer API with the Unicode string to add the localized data.</LI>
+
+	<LI>Commit the localization changes to the database with <A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A>.</LI>
+</OL>
+
+<P>Authors may also add localization information to an installation database by importing and exporting ASCII text archive files. For more information, see <A HREF="over_1u0j.htm">Code Page Handling of Imported and Exported Tables</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

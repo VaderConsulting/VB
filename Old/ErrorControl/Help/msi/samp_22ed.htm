@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Validating an Installation Database</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_validating_an_installation_database"></A>Validating an Installation Database</H2>
+
+<P>Authors of installation packages should always run validation on their packages before attempting to install the package for the first time and rerun validation whenever making any changes to the package. Validation scans the database for errors that may appear valid individually but that cause incorrect behavior in the context of the whole database. Attempting to install a package that fails validation can damage the user's system. See the sections <A HREF="ices_16su.htm">Package Validation</A> and <A HREF="ices_55f7.htm">Internal Consistency Evaluators - ICEs</A>.</P>
+
+<P>You can validate the sample package using Orca or Msival2.exe (both are provided with the Windows installer SDK). To view the help for Msival2.exe change directories and enter on the command line.</P>
+
+<P>Msival2 -?</P>
+
+<P>The .cub file darice.cub is also provided with the SDK. This file contains the ICE custom actions needed by Msival2.exe to perform validation. To validate the MNP2000.msi enter</P>
+
+<P>msival2 MNP2000.msi Darice.cub  </P>
+
+<P>For a description of the error and warning messages returned by validation see the <A HREF="ices_40th.htm">ICE Reference</A>. Correct all the errors in the package and rerun validation as necessary until the package passes validation without errors.</P>
+
+<P>Once the package passes validation, you can install the sample package by clicking on the MNP2000.msi icon or from the command line using the <A HREF="app_73eb.htm">Command Line Options</A>.</P>
+
+<P>This completes the sample installation.</P>
+
+<H4>Next example</H4>
+
+<P><A HREF="samp_3js5.htm">An Upgrade Example</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Validating%20an%20Installation%20Database;%20RELEASE:%20August%202001;%20URL:%20samp_22ed.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Validating%20an%20Installation%20Database;%20RELEASE:%20August%202001;%20URL:%20samp_22ed.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

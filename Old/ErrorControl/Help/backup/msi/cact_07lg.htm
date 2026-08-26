@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action Type 34</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_custom_action_type_34"></A>Custom Action Type 34</H2>
+
+<P>This custom action calls an executable launched with a command line. For more information, see <A HREF="cact_0b77.htm">Executable Files</A>.</P>
+
+<H4>Source</H4>
+
+<P>The executable is generated from an existing file. The Source field of the <A HREF="tref_71b9.htm">CustomAction table</A> contains a foreign key to the <A HREF="tref_6an9.htm">Directory table</A> referencing a separate working directory for the executable. This is used to resolve the full path to the directory, which is then appended to the command line in the Target field.</P>
+
+<H4>Type Value</H4>
+
+<P>Include the following value in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify the basic numeric type. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Constants</TH>
+<TH align=left width=25%>Hexadecimal</TH>
+<TH align=left width=25%>Decimal</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%><B>msidbCustomActionTypeExe + msidbCustomActionTypeDirectory</B></TD>
+<TD width=25%>0x022</TD>
+<TD width=25%>34</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Target</H4>
+
+<P>The Target column of the <A HREF="tref_71b9.htm">CustomAction table</A> contains the command line string for the executable and the complete path to the executable, using quotation marks and property parameters as necessary. The command line in this field must begin with the executable's file name.</P>
+
+<H4>Return Processing Options</H4>
+
+<P>Include optional flag bits in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify return processing options. For a description of the options and the values, see <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A>.</P>
+
+<H4>Execution Scheduling Options</H4>
+
+<P>Include optional flag bits in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify execution scheduling options. These options control the multiple execution of custom actions. For a description of the options, see <A HREF="cact_0dpv.htm">Custom Action Execution Scheduling Options</A>.</P>
+
+<H4>In-Script Execution Options</H4>
+
+<P>Include optional flag bits in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify an in-script execution option. These options copy the action code into the execution, rollback, or commit script. For a description of the options, see <A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A>. </P>
+
+<H4>Return Values</H4>
+
+<P>See <A HREF="cact_8h0z.htm">Custom Action Return Values</A>.</P>
+
+<H4>Remarks</H4>
+
+<P>A custom action that launches an executable takes a command line, which commonly contains properties that are designated dynamically. If this is also a <A HREF="cact_10fn.htm">deferred execution custom action</A>, the installer uses CreateProcessAsUser or CreateProcess to create the process when the custom action is invoked from the installation script.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_6a05.htm">Custom Action Reference</A>, <A HREF="cact_1zhv.htm">About Custom Actions</A>, <A HREF="cact_93lf.htm">Using Custom Actions</A>, <A HREF="cact_8h0z.htm">Custom Action Return Values</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

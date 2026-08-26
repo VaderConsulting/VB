@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DeleteServices Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="DeleteServices Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_deleteservices_action"></A>DeleteServices Action</H1>
+
+<P>The DeleteServices action stops a service and removes its registration from the system. This action queries the <A HREF="tref_1691.htm">ServiceControl table</A>. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The services actions must be used in the following sequence:
+
+<OL>
+	<LI><A HREF="aref_83zi.htm">StopServices</A> </LI>
+
+	<LI>DeleteServices</LI>
+
+	<LI>Any of the following actions: <A HREF="aref_3hym.htm">InstallFiles</A>, <A HREF="aref_9xny.htm">RemoveFiles</A>, <A HREF="aref_7yr2.htm">DuplicateFiles</A>, <A HREF="aref_15pq.htm">MoveFiles</A>, <A HREF="aref_9cby.htm">PatchFiles</A>, and <A HREF="aref_3tpq.htm">RemoveDuplicateFiles</A> actions.</LI>
+
+	<LI><A HREF="aref_3vhq.htm">InstallServices action</A> </LI>
+
+	<LI><A HREF="aref_4x4e.htm">StartServices</A> </LI>
+</OL>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Field</TH>
+<TH align=left width=83%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>[1]</TD>
+<TD width=83%>Service display name.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>[2]</TD>
+<TD width=83%>Service name</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This action requires the user be an administrator or have elevated privileges with permission to delete services or that the application be part of a managed installation.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

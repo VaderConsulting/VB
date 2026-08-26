@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Specifying Features</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_specifying_features"></A>Specifying Features</H2>
+
+<P>The installer enables users to install and remove blocks of an application's functionality referred to as <A HREF="over_8wtv.htm">Windows Installer Features</A>. See the <A HREF="novr_29f4.htm">Core Tables Group</A> and <A HREF="over_8p83.htm">Components and Features</A> in the Windows Installer overview. In this section you add information to the installation database about the features that are available for the Notepad sample. </P>
+
+<P>The Notepad sample installs the following feature in a hierarchy of parent and child features. In the following list, child features are indented relative to their parent feature. The features should display in this order in the <A HREF="href_3w30.htm">SelectionTree Control</A> of the user interface. </P>
+
+<P>Notepad</P>
+
+<P class=indent1>Readme</P>
+
+<P class=indent1>Help</P>
+
+<P>Gate</P>
+
+<P class=indent1>January</P>
+
+<P class=indent2>NewYears</P>
+
+<P>Sport</P>
+
+<P class=indent1>Baseball</P>
+
+<P class=indent1>Football</P>
+
+<P>Arts</P>
+
+<P class=indent1>Concert</P>
+
+<P class=indent1>Dance</P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the empty Feature Table.</P>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>Feature</TH>
+<TH align=left width=12%>Feature_Parent</TH>
+<TH align=left width=11%>Title</TH>
+<TH align=left width=19%>Description</TH>
+<TH align=left width=8%>Display</TH>
+<TH align=left width=6%>Level</TH>
+<TH align=left width=12%>Directory_</TH>
+<TH align=left width=23%>Attributes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Arts</TD>
+<TD width=12%> </TD>
+<TD width=11%>Arts</TD>
+<TD width=19%>Arts events at Red Park.</TD>
+<TD width=8%>20</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Baseball</TD>
+<TD width=12%>Sport</TD>
+<TD width=11%>Baseball </TD>
+<TD width=19%>Baseball Games</TD>
+<TD width=8%>17</TD>
+<TD width=6%>3</TD>
+<TD width=12%>SPORTDIR</TD>
+<TD width=23%>32</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Concert</TD>
+<TD width=12%>Arts</TD>
+<TD width=11%>Concert</TD>
+<TD width=19%>Concert events at Red Park</TD>
+<TD width=8%>21</TD>
+<TD width=6%>3</TD>
+<TD width=12%>ARTSDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Dance</TD>
+<TD width=12%>Arts</TD>
+<TD width=11%>Dance</TD>
+<TD width=19%>Dance events at Red Park</TD>
+<TD width=8%>23</TD>
+<TD width=6%>3</TD>
+<TD width=12%>ARTSDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Football</TD>
+<TD width=12%>Sport</TD>
+<TD width=11%>Football</TD>
+<TD width=19%>Football Games</TD>
+<TD width=8%>19</TD>
+<TD width=6%>3</TD>
+<TD width=12%>SPORTDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Gate</TD>
+<TD width=12%> </TD>
+<TD width=11%>Gate</TD>
+<TD width=19%>Red Park's Admissions</TD>
+<TD width=8%>6</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Help</TD>
+<TD width=12%>Notepad</TD>
+<TD width=11%>Help</TD>
+<TD width=19%>Help file.</TD>
+<TD width=8%>5</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>January</TD>
+<TD width=12%>Gate</TD>
+<TD width=11%>January</TD>
+<TD width=19%>January Admissions</TD>
+<TD width=8%>10</TD>
+<TD width=6%>3</TD>
+<TD width=12%>MONDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>NewYears</TD>
+<TD width=12%>January</TD>
+<TD width=11%>New Years Day</TD>
+<TD width=19%>New Years Day Admissions</TD>
+<TD width=8%>11</TD>
+<TD width=6%>3</TD>
+<TD width=12%>HOLDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Notepad</TD>
+<TD width=12%> </TD>
+<TD width=11%>Notepad</TD>
+<TD width=19%>Notepad Editor</TD>
+<TD width=8%>1</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Readme</TD>
+<TD width=12%>Notepad</TD>
+<TD width=11%>Readme</TD>
+<TD width=19%>Readme File</TD>
+<TD width=8%>3</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Sport</TD>
+<TD width=12%> </TD>
+<TD width=11%>Sport Events</TD>
+<TD width=19%>Sport Events at Red Park</TD>
+<TD width=8%>14</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_765v.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Specifying%20Features;%20RELEASE:%20August%202001;%20URL:%20samp_9703.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Specifying%20Features;%20RELEASE:%20August%202001;%20URL:%20samp_9703.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

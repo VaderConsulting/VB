@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE82</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE82">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice82"></A>ICE82</H1>
+
+<P>ICE82 validates that the <A HREF="aref_529a.htm">RegisterProduct Action</A>, <A HREF="aref_0g4u.htm">RegisterUser Action</A>, <A HREF="aref_10dq.htm">PublishProduct Action</A>, and <A HREF="aref_8bou.htm">PublishFeatures Action</A> are all present in the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>. </P>
+
+<P>The package is validated if all the actions are present.</P>
+
+<H4>Result</H4>
+
+<P>ICE82 posts the following warnings.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>ICE82 warning</TH>
+<TH align=left width=49%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>The InstallExecuteSequence table does not contain the set of actions mentioned below:
+<P>Actions Missing:</P>
+
+<P>Publish Features</P>
+
+<P>Publish Product</P>
+
+<P>Register Product</P>
+
+<P>Register User</P>
+</TD>
+<TD width=49%>ICE82 custom action posts a warning if all four actions are absent.</TD>
+</TR>
+</TABLE><BR>
+
+<P>ICE82 posts the following errors.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>ICE82 error</TH>
+<TH align=left width=49%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>The InstallExecuteSequence should either contain all of the actions mentioned below or none of them
+<P>Actions Present</P>
+
+<P><I>&lt;List of actions present&gt;</I></P>
+
+<P>Actions Missing:</P>
+
+<P><I>&lt;List of actions missing&gt;</I></P>
+</TD>
+<TD width=49%>ICE82 posts an error if some of the four actions are present and others are absent.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE82;%20RELEASE:%20August%202001;%20URL:%20ices_1y5u.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE82;%20RELEASE:%20August%202001;%20URL:%20ices_1y5u.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Resolving Advertised Shortcuts with IShellLink::Resolve</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_resolving_advertised_shortcuts_with_ishelllink_resolve"></A>Resolving Advertised Shortcuts with IShellLink::Resolve</H1>
+
+<P>In certain cases with Microsoft® Windows® 98 and in the Internet Explorer 4.01 shell, it may be necessary to launch an installation-on-demand of an application by calling the system method <B>IShellLink::Resolve</B> on an advertised shortcut of an application. By default, a call to <B>IShellLink::Resolve</B> on an advertised shortcut does not install the application. To override the default, and allow this type of installation-on-demand, add the name of the executable file as the name portion of a value pair under one or both of the following registry keys.</P>
+
+<P><B>HKLM\Software\Microsoft\Windows\CurrentVersion\Installer\ResolveIOD</B></P>
+
+<P><B>HKCU\Software\Microsoft\Windows\CurrentVersion\Installer\ResolveIOD</B></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

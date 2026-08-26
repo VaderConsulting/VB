@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Importing the AdvtExecuteSequence</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_importing_the_advtexecutesequence"></A>Importing the AdvtExecuteSequence</H2>
+
+<P>The <A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A> lists actions the installer calls when it executes the top-level <A HREF="aref_2o8e.htm">ADVERTISE action</A>. See <A HREF="novr_6zao.htm">Installation Procedure Tables Group</A>, <A HREF="novr_3mqt.htm">Using a Sequence Table</A>, and the <A HREF="novr_9nqd.htm">Sequence Table Detailed Example</A>. </P>
+
+<P>If in the section <A HREF="samp_4885.htm">Importing a Blank Database</A> you used uisample.msi from the Windows Installer SDK, the sequence tables in your copy of MNP2000.msi already contains the suggested action sequences described in <A HREF="novr_3mqt.htm">Using a Sequence table</A>. No changes to these sequences should be necessary to author the Notepad sample installation package.</P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the AdminExecuteSequence table.</P>
+
+<P><A HREF="tref_5mn9.htm"><B>AdvtExecuteSequence Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Action</TH>
+<TH align=left width=27%>Condition</TH>
+<TH align=left width=28%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>CostFinalize</TD>
+<TD width=27%> </TD>
+<TD width=28%>1000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>CostInitialize</TD>
+<TD width=27%> </TD>
+<TD width=28%>800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>CreateShortcuts</TD>
+<TD width=27%> </TD>
+<TD width=28%>4500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>InstallFinalize</TD>
+<TD width=27%> </TD>
+<TD width=28%>6600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>InstallInitialize</TD>
+<TD width=27%> </TD>
+<TD width=28%>1500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>InstallValidate</TD>
+<TD width=27%> </TD>
+<TD width=28%>1400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>PublishComponents</TD>
+<TD width=27%> </TD>
+<TD width=28%>6200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>PublishFeatures</TD>
+<TD width=27%> </TD>
+<TD width=28%>6300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>PublishProduct</TD>
+<TD width=27%> </TD>
+<TD width=28%>6400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>RegisterClassInfo</TD>
+<TD width=27%> </TD>
+<TD width=28%>4600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>RegisterExtensionInfo</TD>
+<TD width=27%> </TD>
+<TD width=28%>4700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>RegisterMIMEInfo</TD>
+<TD width=27%> </TD>
+<TD width=28%>4900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>RegisterProgIdInfo</TD>
+<TD width=27%> </TD>
+<TD width=28%>4800</TD>
+</TR>
+</TABLE><BR>
+
+<P>The <A HREF="tref_3rvp.htm">AdvtUISequence table</A> is not used by the installer. This table should not exist or be left empty in the installation database.</P>
+
+<P><A HREF="samp_2s32.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Importing%20the%20AdvtExecuteSequence;%20RELEASE:%20August%202001;%20URL:%20samp_265h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Importing%20the%20AdvtExecuteSequence;%20RELEASE:%20August%202001;%20URL:%20samp_265h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

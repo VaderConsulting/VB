@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Session Object</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Session Object">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_session_object"></A>Session Object</H1>
+
+<P>The <B>Session</B> object controls the installation process. It opens the install database, which contains the installation tables and data. This object is associated with a standard set of action functions, each performing particular operations on data from one or more tables. Additional custom actions may be added for particular product installations. The basic engine function is a sequencer that fetches sequential records from a designated sequence table, evaluates any specified condition expression, and executes the designated action. Actions not recognized by the engine are deferred to the UI handler object for processing, usually dialog box sequences.</P>
+
+<P>Note that only one Session object can be opened by a single process. </P>
+
+<H4>Properties</H4>
+
+<P><A HREF="vref_0b5l.htm"><B>ComponentCurrentState</B></A> <BR>
+<A HREF="vref_8kc9.htm"><B>ComponentRequestState</B></A> <BR>
+<A HREF="vref_22d5.htm"><B>Database</B></A> <BR>
+<A HREF="vref_9s3d.htm"><B>FeatureCost</B></A> <BR>
+<A HREF="vref_9vqx.htm"><B>FeatureCurrentState</B></A> <BR>
+<A HREF="vref_84xl.htm"><B>FeatureRequestState</B></A> <BR>
+<A HREF="vref_7b7d.htm"><B>FeatureValidStates</B></A> <BR>
+<A HREF="vref_6tx5.htm"><B>Installer</B></A> <BR>
+<A HREF="vref_4w67.htm"><B>Language</B> (<B>Session</B> Object)</A> <BR>
+<A HREF="vref_53i1.htm"><B>Mode</B></A> <BR>
+<A HREF="vref_2oah.htm"><B>ProductProperty</B></A> <BR>
+<A HREF="vref_3hlr.htm"><B>Property</B> (<B>Session</B> Object)</A> <BR>
+<A HREF="vref_95oa.htm"><B>SourcePath</B></A> <BR>
+<A HREF="vref_42yh.htm"><B>TargetPath</B></A> <BR>
+<A HREF="vref_8ozd.htm"><B>VerifyDiskSpace</B></A> </P>
+
+<H4>Methods</H4>
+
+<P><A HREF="vref_0sdg.htm"><B>DoAction</B></A> <BR>
+<A HREF="vref_44v8.htm"><B>EvaluateCondition</B></A> <BR>
+<A HREF="vref_02as.htm"><B>FeatureInfo</B></A> <BR>
+<A HREF="vref_3tlw.htm"><B>FormatRecord</B></A> <BR>
+<A HREF="vref_3mlg.htm"><B>Message</B></A> <BR>
+<A HREF="vref_9wro.htm"><B>Sequence</B></A> <BR>
+<A HREF="vref_7esk.htm"><B>SetInstallLevel</B></A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Session%20Object;%20RELEASE:%20August%202001;%20URL:%20vref_8xis.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Session%20Object;%20RELEASE:%20August%202001;%20URL:%20vref_8xis.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

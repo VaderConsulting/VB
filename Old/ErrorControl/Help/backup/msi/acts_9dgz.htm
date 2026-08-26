@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using Standard Actions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_using_standard_actions"></A>Using Standard Actions</H1>
+
+<P>An action is executed in the Microsoft® Windows® Installer either by calling the <A HREF="qref_9woe.htm"><B>MsiDoAction</B></A> function or including the action in a sequence table. Because most actions encapsulate a single purpose, the most common way to use actions is to order a series of actions into a sequence to accomplish a larger task. The installer has three standard top-level actions that call an associated set of sequence tables. These associated sequence tables may contain standard actions, custom actions, and user-interface elements. Each action in a sequence table has an associated sequence number and may also have an associated conditional expression. All actions in a sequence table are visited in order and are only executed if the conditional expression evaluates to True.</P>
+
+<P>While a standard action can have any sequence number associated with it, many have sequence restrictions which must be followed for the action to function properly. For example the <A HREF="aref_2f8u.htm">FileCost action</A>, must be called after the <A HREF="aref_4bam.htm">CostInitialize action</A>. For more information on standard action sequencing restrictions, see <A HREF="acts_1d9v.htm">Actions with Sequencing Restrictions</A>, <A HREF="acts_5ypf.htm">Actions without Sequencing Restrictions</A>, or <A HREF="aref_1wo5.htm">Standard Actions Reference</A>.</P>
+
+<P>The following topics provide more information about using standard actions.
+
+<UL>
+	<LI><A HREF="acts_9x83.htm">Publishing Products, Features, and Components</A> </LI>
+
+	<LI><A HREF="acts_1y07.htm">File Searching</A> </LI>
+
+	<LI><A HREF="acts_07s7.htm">File Costing</A> </LI>
+
+	<LI><A HREF="acts_3cq6.htm">File Installation</A> </LI>
+
+	<LI><A HREF="acts_0et5.htm">Modifying the Registry</A> </LI>
+
+	<LI><A HREF="acts_6ws3.htm">Running Actions</A> </LI>
+</UL>
+
+<P>See also <A HREF="acts_10xf.htm">About Standard Actions</A> or <A HREF="aref_1wo5.htm">Standard Actions Reference</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+   Const CdoPR_EMS_AB_HOME_MTA = &H8007001E
+ 
+   Sub GetMailboxList (objSession As MAPI.Session, _
+                      aMailbox() As String, _
+                      aServer() As String)
+ 
+      Dim oGAL             As AddressList
+     Dim oAdrEntries      As AddressEntries
+     Dim oAdrEntry        As AddressEntry
+     Dim iCnt             As Integer
+ 
+      Dim strRawServerInfo As String
+     Dim iStartServerName As Integer
+     Dim iEndServerName   As Integer
+     Dim strHomeServer    As String
+     Dim strMailboxName   As String
+ 
+      Dim strFindServer    As String
+     strFindServer = "/cn=Configuration/cn=Servers/cn="
+ 
+      Set oGAL = objSession.AddressLists("Global Address List")
+     Set oAdrEntries = oGAL.AddressEntries
+ 
+      iCnt = 0
+     For Each oAdrEntry In oAdrEntries
+ 
+         'Ensure that only mailboxes are included, not custom recipients,
+        'distribution lists, or public folder entries in the GAL
+        If oAdrEntry.DisplayType = CdoUser Then
+ 
+            'Get the Home Server information from the AddressEntry 
+           'Fields collection
+           strRawServerInfo = oAdrEntry.Fields(CdoPR_EMS_AB_HOME_MTA)
+           iStartServerName = InStr(1, strRawServerInfo, _
+                              strFindServer) + Len(strFindServer)
+           iEndServerName = InStr(iStartServerName, strRawServerInfo, "/")
+           strHomeServer = Mid(StrRawServerInfo, iStartServerName, _
+                           iEndServerName - iStartServerName)
+ 
+            'Get the mailbox name of AddressEntry
+           strMailboxName = oAdrEntry.Fields(CdoPR_ACCOUNT).Value
+ 
+            Debug.Print "Server: " & strHomeServer
+           Debug.Print "Mailbox: " & strMailboxName
+ 
+            iCnt = iCnt + 1
+           ReDim Preserve aMailbox(iCnt)
+           ReDim Preserve aServer(iCnt)
+           aServer(iCnt) = strHomeServer
+           aMailbox(iCnt) = strMailboxName
+ 
+         End If
+     Next
+ 
+      Set oAdrEntry = Nothing
+     Set oAdrEntries = Nothing
+     Set oGAL = Nothing
+ 
+   End Sub
+ 
+   Private Sub Main()
+ 
+      Dim oSession As MAPI.Session
+     ReDim aMailboxList(1) As String
+     ReDim aserverlist(1) As String
+     Dim iBigLoop As Integer
+ 
+      Dim sServerName As String
+     Dim sProfileInfo As String
+ 
+      'TO DO: Change "ServerName" to the name of your Exchange Server
+     sServerName = "ServerName"
+ 
+      'TO DO: Change "MailboxName" to the name of a mailbox on the
+     '  server specified above
+     sProfileInfo = sServerName & vbLf & "MailboxName"
+ 
+      Set oSession = CreateObject("MAPI.Session")
+     oSession.Logon profileinfo:=sProfileInfo
+ 
+      GetMailboxList oSession, aMailboxList, aserverlist
+ 
+      oSession.Logoff
+ 
+      For iBigLoop = 1 To UBound(aMailboxList)
+        sProfileInfo = aserverlist(iBigLoop) & vbLf & aMailboxList(iBigLoop)
+ 
+         oSession.Logon profileinfo:=sProfileInfo
+        Debug.Print oSession.CurrentUser.Name
+ 
+         ' Do any processing here for each mailbox
+ 
+         oSession.Logoff
+     Next iBigLoop
+ 
+      Set oSession = Nothing
+ 
+   End Sub

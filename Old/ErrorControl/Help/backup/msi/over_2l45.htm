@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Make a COM Component in an Existing Package Private</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_make_a_com_component_in_an_existing_package_private"></A>Make a COM Component in an Existing Package Private</H2>
+
+<P>An administrator can force a COM-client application to always use the same copy of a COM-server in an existing package, without affecting other applications, by specifying an <A HREF="over_2inn.htm">isolated components</A> relationship between the COM server and client. This installs a private copy of the COM-server component to a location used exclusively by the client application. The administrator needs to use transforms or an a package authoring tool to do the following:
+
+<UL>
+	<LI>Put the COM server DLL and the .exe client in separate components.</LI>
+
+	<LI>Enter a record in the <A HREF="tref_6jc5.htm">IsolatedComponent table</A> with the COM-client component in the Component_Shared column and the client application in the Component_Application column. Include the <A HREF="aref_71gu.htm">IsolateComponents action</A> in the sequence tables. </LI>
+
+	<LI>Set the msidbComponentAttributesSharedDllRefCount bit in the <A HREF="tref_09np.htm">Component table</A> record for Component_Shared. The installer requires this global refcount on the shared location to protect the shared files and registration in cases where there is sharing with other installation technologies.</LI>
+
+	<LI>Windows Installer version 1.1 is required. </LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

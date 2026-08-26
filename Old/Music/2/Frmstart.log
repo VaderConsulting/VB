@@ -1,0 +1,42 @@
+Line 218: Class Threed.SSCheck of control chkSex was not a loaded control class.
+Line 302: Class Threed.SSCheck of control chkEra was not a loaded control class.
+Line 428: Class Threed.SSCheck of control chkNationality was not a loaded control class.
+Line 485: Class Threed.SSCheck of control chkType was not a loaded control class.
+Line 618: Class Threed.SSCheck of control ssClearMatch was not a loaded control class.
+Line 639: Class Threed.SSCheck of control chkText was not a loaded control class.
+Line 660: Class Threed.SSCheck of control ssFormat was not a loaded control class.
+Line 224: The property name _Version in chkSex is invalid.
+Line 225: The property name _ExtentX in chkSex is invalid.
+Line 226: The property name _ExtentY in chkSex is invalid.
+Line 227: The property name _StockProps in chkSex is invalid.
+Line 238: The property name Value in chkSex is invalid.
+Line 308: The property name _Version in chkEra is invalid.
+Line 309: The property name _ExtentX in chkEra is invalid.
+Line 310: The property name _ExtentY in chkEra is invalid.
+Line 311: The property name _StockProps in chkEra is invalid.
+Line 322: The property name Value in chkEra is invalid.
+Line 434: The property name _Version in chkNationality is invalid.
+Line 435: The property name _ExtentX in chkNationality is invalid.
+Line 436: The property name _ExtentY in chkNationality is invalid.
+Line 437: The property name _StockProps in chkNationality is invalid.
+Line 448: The property name Value in chkNationality is invalid.
+Line 491: The property name _Version in chkType is invalid.
+Line 492: The property name _ExtentX in chkType is invalid.
+Line 493: The property name _ExtentY in chkType is invalid.
+Line 494: The property name _StockProps in chkType is invalid.
+Line 505: The property name Value in chkType is invalid.
+Line 624: The property name _Version in ssClearMatch is invalid.
+Line 625: The property name _ExtentX in ssClearMatch is invalid.
+Line 626: The property name _ExtentY in ssClearMatch is invalid.
+Line 627: The property name _StockProps in ssClearMatch is invalid.
+Line 637: The property name Value in ssClearMatch is invalid.
+Line 645: The property name _Version in chkText is invalid.
+Line 646: The property name _ExtentX in chkText is invalid.
+Line 647: The property name _ExtentY in chkText is invalid.
+Line 648: The property name _StockProps in chkText is invalid.
+Line 658: The property name Value in chkText is invalid.
+Line 666: The property name _Version in ssFormat is invalid.
+Line 667: The property name _ExtentX in ssFormat is invalid.
+Line 668: The property name _ExtentY in ssFormat is invalid.
+Line 669: The property name _StockProps in ssFormat is invalid.
+Line 680: The property name Value in ssFormat is invalid.

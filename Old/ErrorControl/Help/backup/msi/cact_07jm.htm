@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action Type 22</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_custom_action_type_22"></A>Custom Action Type 22</H2>
+
+<P>This custom action is written in VBScript. </P>
+
+<P>See also <A HREF="cact_7asz.htm">Scripts</A>.</P>
+
+<H4>Source</H4>
+
+<P>The script is installed with the application during the current session. The Source field of the <A HREF="tref_71b9.htm">CustomAction table</A> contains a key to the <A HREF="tref_4n6t.htm">File table</A>. The location of the custom action code is determined by the resolution of the target path for this file; therefore this custom action must be called after the file has been installed and before it is removed.</P>
+
+<H4>Type Value</H4>
+
+<P>Include the following value in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify the basic numeric type. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Constants</TH>
+<TH align=left width=25%>Hexadecimal</TH>
+<TH align=left width=25%>Decimal</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%><B>msidbCustomActionTypeVBScript + msidbCustomActionTypeSourceFile</B></TD>
+<TD width=25%>0x016</TD>
+<TD width=25%>22</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Target</H4>
+
+<P>The Target field of the <A HREF="tref_71b9.htm">CustomAction table</A> contains an optional script function. Processing first sends the script for parsing and then calls the optional script function. </P>
+
+<H4>Return Processing Options</H4>
+
+<P>Include optional flag bits in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify return processing options. For a description of the options and the values, see <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A>.</P>
+
+<H4>Execution Scheduling Options</H4>
+
+<P>Include optional flag bits in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify execution scheduling options. These options control the multiple execution of custom actions. For a description of the options, see <A HREF="cact_0dpv.htm">Custom Action Execution Scheduling Options</A>.</P>
+
+<H4>In-Script Execution Options</H4>
+
+<P>Include optional flag bits in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify an in-script execution option. These options copy the action code into the execution, rollback, or commit script. For a description of the options, see <A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A>. </P>
+
+<H4>Return Values</H4>
+
+<P>Optional functions written in script must return one of the values described in <A HREF="cact_90c3.htm">Return Values of JScript and VBScript Custom Actions</A>.</P>
+
+<H4>Remarks</H4>
+
+<P>A custom action that is written in VBScript requires the install session object. Because the session object may not exist during an installation rollback, a deferred custom action written in script uses one of the methods described in <A HREF="cact_5fg3.htm">Obtaining Context Information for Deferred Execution Custom Actions</A>.  </P>
+
+<P>The installer session is a <A HREF="vref_8xis.htm">Session Object</A>. This is attached to the script with the name "Session". The parent object is obtained by using Session.Application, and can be used for non-session functions, such as registry access and configuration management. The object model is exposed through the type library in Msi.dll.</P>
+
+<P>Custom Actions of Type 22 must be sequenced after the <A HREF="aref_22we.htm">CostFinalize action</A>. This is so that the custom action can locate the VBScript. The installer resolves the directory during the CostFinalize action.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_6a05.htm">Custom Action Reference</A>, <A HREF="cact_1zhv.htm">About Custom Actions</A>, <A HREF="cact_93lf.htm">Using Custom Actions</A>, <A HREF="cact_8h0z.htm">Custom Action Return Values</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

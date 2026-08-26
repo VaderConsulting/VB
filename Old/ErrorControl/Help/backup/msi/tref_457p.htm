@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ODBCDriver Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ODBCDriver Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_odbcdriver_table"></A>ODBCDriver Table</H1>
+
+<P>The ODBCDriver table lists the ODBC drivers belonging to the installation.</P>
+
+<P>The ODBCDriver table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Column</TH>
+<TH align=left width=38%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Driver</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Component_</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Description</TD>
+<TD width=38%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>File_</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>File_Setup</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Driver</DT>
+
+<DD>Internal token name for driver. A primary key for the table</DD>
+
+<DT>Component_</DT>
+
+<DD>External key into the Component table.</DD>
+
+<DT>Description</DT>
+
+<DD>The description registered for this ODBC driver. This value cannot be localized.</DD>
+
+<DT>File_</DT>
+
+<DD>The DLL file for driver listed in the Driver column. This column is a key into the File table.</DD>
+
+<DT>File_Setup</DT>
+
+<DD>The setup DLL file for the driver if it is different than from Driver. This is a key into the File table.
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Updating Features for an Upgrade</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_updating_features_for_an_upgrade"></A>Updating Features for an Upgrade</H2>
+
+<P>The sample upgrade package adds three new features to the original product:
+
+<UL>
+	<LI>Basketball, a new child feature of the Sport feature.</LI>
+
+	<LI>Opera, a new child feature of the Arts feature.</LI>
+
+	<LI>Memorial, a new child feature of the Gate feature.</LI>
+</UL>
+
+<P>Use your database editor to open MNP2001.msi and enter the following data into the <A HREF="tref_0a91.htm">Feature Table</A>.</P>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>Feature</TH>
+<TH align=left width=12%>Feature_Parent</TH>
+<TH align=left width=11%>Title</TH>
+<TH align=left width=19%>Description</TH>
+<TH align=left width=8%>Display</TH>
+<TH align=left width=6%>Level</TH>
+<TH align=left width=12%>Directory_</TH>
+<TH align=left width=23%>Attributes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Arts</TD>
+<TD width=12%> </TD>
+<TD width=11%>Arts</TD>
+<TD width=19%>Arts events at Red Park.</TD>
+<TD width=8%>18</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Baseball</TD>
+<TD width=12%>Sport</TD>
+<TD width=11%>Baseball </TD>
+<TD width=19%>Baseball Games</TD>
+<TD width=8%>17</TD>
+<TD width=6%>3</TD>
+<TD width=12%>SPORTDIR</TD>
+<TD width=23%>32</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Concert</TD>
+<TD width=12%>Arts</TD>
+<TD width=11%>Concert</TD>
+<TD width=19%>Concert events at Red Park</TD>
+<TD width=8%>19</TD>
+<TD width=6%>3</TD>
+<TD width=12%>ARTSDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Dance</TD>
+<TD width=12%>Arts</TD>
+<TD width=11%>Dance</TD>
+<TD width=19%>Dance events at Red Park</TD>
+<TD width=8%>21</TD>
+<TD width=6%>3</TD>
+<TD width=12%>ARTSDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Football</TD>
+<TD width=12%>Sport</TD>
+<TD width=11%>Football</TD>
+<TD width=19%>Football Games</TD>
+<TD width=8%>13</TD>
+<TD width=6%>3</TD>
+<TD width=12%>SPORTDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Gate</TD>
+<TD width=12%> </TD>
+<TD width=11%>Gate</TD>
+<TD width=19%>Red Park's Admissions</TD>
+<TD width=8%>6</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Help</TD>
+<TD width=12%>Notepad</TD>
+<TD width=11%>Help</TD>
+<TD width=19%>Help file.</TD>
+<TD width=8%>5</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>January</TD>
+<TD width=12%>Gate</TD>
+<TD width=11%>January</TD>
+<TD width=19%>January Admissions</TD>
+<TD width=8%>7</TD>
+<TD width=6%>3</TD>
+<TD width=12%>MONDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>NewYears</TD>
+<TD width=12%>January</TD>
+<TD width=11%>New Years Day</TD>
+<TD width=19%>New Years Day Admissions</TD>
+<TD width=8%>9</TD>
+<TD width=6%>3</TD>
+<TD width=12%>HOLDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Notepad</TD>
+<TD width=12%> </TD>
+<TD width=11%>Notepad</TD>
+<TD width=19%>Notepad Editor</TD>
+<TD width=8%>1</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Readme</TD>
+<TD width=12%>Notepad</TD>
+<TD width=11%>Readme</TD>
+<TD width=19%>Readme File</TD>
+<TD width=8%>3</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Sport</TD>
+<TD width=12%> </TD>
+<TD width=11%>Sport Events</TD>
+<TD width=19%>Sport Events at Red Park</TD>
+<TD width=8%>12</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Basketball</TD>
+<TD width=12%>Sport</TD>
+<TD width=11%>Basketball</TD>
+<TD width=19%>Basketball Games</TD>
+<TD width=8%>15</TD>
+<TD width=6%>3</TD>
+<TD width=12%>SPORTDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Opera</TD>
+<TD width=12%>Arts</TD>
+<TD width=11%>Opera</TD>
+<TD width=19%>Opera Performances</TD>
+<TD width=8%>23</TD>
+<TD width=6%>3</TD>
+<TD width=12%>ARTSDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Memorial</TD>
+<TD width=12%>Gate</TD>
+<TD width=11%>Memorial Day</TD>
+<TD width=19%>Memorial Day Admissions</TD>
+<TD width=8%>11</TD>
+<TD width=6%>3</TD>
+<TD width=12%>HOLDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+</TABLE><BR>
+
+<P>Use your database editor to open MNP2001.msi and enter the following data into the empty <A HREF="tref_52hx.htm">FeatureComponents Table</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=57%>Feature_</TH>
+<TH align=left width=43%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Baseball</TD>
+<TD width=43%>Baseball</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Concert</TD>
+<TD width=43%>Concert</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Dance</TD>
+<TD width=43%>Dance</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Football</TD>
+<TD width=43%>Football</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Help</TD>
+<TD width=43%>Help</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>January</TD>
+<TD width=43%>January</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>NewYears</TD>
+<TD width=43%>NewYears</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Notepad</TD>
+<TD width=43%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Readme</TD>
+<TD width=43%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Basketball</TD>
+<TD width=43%>Basketball</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Opera</TD>
+<TD width=43%>Opera</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Memorial</TD>
+<TD width=43%>Memorial</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_32sl.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DirectoryList Control</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="DirectoryList Control">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_directorylist_control"></A>DirectoryList Control</H1>
+
+<P>A DirectoryList control displays a part of the path that is currently displayed in the <A HREF="href_4pik.htm">PathEdit control</A>. The DirectoryList control displays the folders below the directory currently displayed by the <A HREF="href_5xkc.htm">DirectoryCombo control</A>. If any of these folders that do not exist, they are displayed with a different icon. </P>
+
+<P>The PathEdit, DirectoryCombo, and DirectoryList controls are associated with the same string valued property. That property is the path selected by the user. Enter the property's name into the Property column of the <A HREF="tref_6nad.htm">Control table</A>. This property must have an initial value containing at least a one volume and one sublevel. Specify the initial value for the property in the Value column of the <A HREF="tref_21d1.htm">Property table</A>.</P>
+
+<P>This control is intended to be used on a <A HREF="href_246f.htm">Browse Dialog</A> together with the <A HREF="href_4pik.htm">PathEdit</A> and <A HREF="#_msi_directorylist_control">DirectoryList</A> controls.</P>
+
+<P>The DirectoryList control publishes the following ControlEvents.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Control event</TH>
+<TH align=left width=67%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><A HREF="href_7e2c.htm">DirectoryListNew</A></TD>
+<TD width=67%>Create a new folder and select the name field for editing. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><A HREF="href_18ms.htm">IgnoreChange</A></TD>
+<TD width=67%>Highlight, but do not open, a folder in the current directory.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><A HREF="href_7fqs.htm">DirectoryListUp</A></TD>
+<TD width=67%>Select the parent of the present directory.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><A HREF="href_7ab8.htm">DirectoryListOpen</A></TD>
+<TD width=67%>Select and highlight a directory.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The contents of the Text field of the <A HREF="tref_6nad.htm">Control table</A> is never displayed by the DirectoryList control. Instead this field specifies the style of text to be displayed by the control and contains a description of the control used by screen review utilities. To set the font and font style of the text displayed by the control, begin the Text column of the Control table with {\style}, where style is an identifier listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. Use {&amp;style} to apply the base font and font style. The information following this is read by screen review utilities as the description of the control. See <A HREF="hand_1tvd.htm">Accessibility</A>.</P>
+
+<H4>Control Attributes</H4>
+
+<P>You can use the following attributes with this control. To change the value of an attribute using an event, subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A> and list the attribute's identifier in the Attribute column. Enter the Identifier of the ControlEvent in the Event column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Attribute identifier</TH>
+<TH align=left width=17%>Hexadecimal bit</TH>
+<TH align=left width=64%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_1i79.htm">IndirectPropertyName</A> </TD>
+<TD width=17%> </TD>
+<TD width=64%>This is the name of an indirect property associated with the control. If the Indirect attribute bit is set, the control displays or changes the value of the property having this name. If the Indirect attribute bit is set, this name is also the value of the property listed in the Property column of the <A HREF="tref_6nad.htm">Control table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2w6d.htm">Position</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Position of control in the dialog box.
+<P>Enter the control's width, height, and coordinates of the control's left corner into the Width, Height, X, and Y columns of the <A HREF="tref_6nad.htm">Control table</A>. Use <A HREF="href_9pir.htm">installer units</A> for length and distance.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_1nc5.htm">PropertyName</A> </TD>
+<TD width=17%> </TD>
+<TD width=64%>This is the name of the property associated with this control. If the Indirect attribute bit is not set, the control displays or changes the value of the property having this name. This attribute is specified in the Property column of the <A HREF="tref_6nad.htm">Control table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_4twl.htm">PropertyValue</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Current value of the property displayed or changed by this control. If the Indirect attribute bit is not set, this is the value of PropertyName. If the Indirect attribute bit is set, this is the value of IndirectPropertyName. If the attribute changes, the control reflects the new value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2kmd.htm">Text</A></TD>
+<TD width=17%>&nbsp;</TD>
+<TD width=64%>To display text in screen readers, enter the text into the Text column of the <A HREF="tref_6nad.htm">Control table</A>. See <A HREF="hand_1tvd.htm">Accessibility</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8bqd.htm">Visible</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000001</P>
+</TD>
+<TD width=64%>Hidden control.
+<P>Visible control.</P>
+
+<P>Include this bit in the bit word of the Attributes column in the <A HREF="tref_6nad.htm">Control table</A>.to make the control visible or hidden upon its creation. </P>
+
+<P>You can also hide or show a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2ig5.htm">Enabled</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000002</P>
+</TD>
+<TD width=64%>Control in a disabled state.
+<P>Control in an enabled state. </P>
+
+<P>Include this bit in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> to enable the control on creation.</P>
+
+<P>You can also enable or disable a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0vad.htm">Sunken</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000004</P>
+</TD>
+<TD width=64%>Display the default visual style.
+<P>Display the control with a sunken, 3D, look.</P>
+
+<P>Include these bits in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8m05.htm">Indirect</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000008</P>
+</TD>
+<TD width=64%>The control displays or changes the value of the property in the Property column of the <A HREF="tref_6nad.htm">Control table</A>. 
+<P>The control displays or changes the value of the property that has the Identifier listed in the Property column of the Control table.</P>
+
+<P>Determines if the property associated with this control is referenced indirectly.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_761x.htm">RTLRO</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000020</P>
+</TD>
+<TD width=64%>Text in the control is displayed in a Left-To-Right-Reading-Order.
+<P>Text in the control is displayed in a Right-To-Left-Reading-Order.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_6kbp.htm">RightAligned</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000040</P>
+</TD>
+<TD width=64%>Text in the control is aligned on the left.
+<P>Text in the control is aligned on the right.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8icl.htm">LeftScroll</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000080</P>
+</TD>
+<TD width=64%>The scroll bar is located on the right side of the control. 
+<P>The scroll bar is located on the left side of the control. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_9t2d.htm">BiDi Control</A></TD>
+<TD width=17%>0x000000E0</TD>
+<TD width=64%>Set this value for a combination of the <A HREF="href_761x.htm">RTLRO</A>, <A HREF="href_6kbp.htm">RightAligned</A>, and <A HREF="href_8icl.htm">LeftScroll</A> attributes.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The control is created with the WC_LISTVIEW class with the LVS_LIST, LVS_EDITLABELS, WS_VSCROLL, LVS_SHAREIMAGELISTS, LVS_AUTOARRANGE, LVS_SINGLESEL, WS_BORDER, LVS_SORTASCENDING, WS_CHILD, WS_GROUP, WS_TABSTOP styles.</P>
+
+<P>This control enables the user to select a subfolder of the current selection. With additional buttons it also lets the user select a new folder in current selection or step up one step in the path. If the user chooses the <B>Create new folder </B>button in a folder where a new folder already exists, a second new folder is not created and the existing new folder's name is selected for editing.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20DirectoryList%20Control;%20RELEASE:%20August%202001;%20URL:%20href_09f0.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20DirectoryList%20Control;%20RELEASE:%20August%202001;%20URL:%20href_09f0.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

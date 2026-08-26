@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring Merge Modules</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="merge modules [Windows Installer],authoring merge modules">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_authoring_merge_modules"></A>Authoring Merge Modules</H2>
+
+<P>The following procedure describes the general steps to authoring merge modules. </P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To create a new merge module</B>
+
+<OL>
+	<LI>Obtain a software tool you can use to edit the merge module database. </LI>
+
+	<LI>Obtain a blank merge module database. </LI>
+
+	<LI>Generate a <A HREF="tref_7kf8.htm">GUID</A> for the merge module. You need to use this GUID when authoring the primary keys of database tables in the merge module. </LI>
+
+	<LI>Add a record to the <A HREF="tref_09np.htm">Component table</A> for each component delivered by the merge. A Component table is required in every merge module. Note that merge modules operate with components and not with features. In certain cases, however, a database table entry may need to reference a feature. For details, see <A HREF="merg_70z7.htm">Referencing Features in Merge Modules</A>. </LI>
+
+	<LI>Add a <A HREF="tref_6an9.htm">Directory table</A> to the merge module that specifies the layout of directories the merge module adds to the target database. A Directory table is required in every merge module. </LI>
+
+	<LI>Import a blank <A HREF="tref_52hx.htm">FeatureComponents table</A> into the merge module database. This empty table provides a guideline for the merge tool in cases where the .msi file does not contain its own FeatureComponents table.</LI>
+
+	<LI>Collect all the files delivered by this merge module and create the <A HREF="merg_1838.htm">MergeModule.CABinet</A> cabinet file. Add the cabinet to the merge module as a stream inside the .msm file. </LI>
+
+	<LI>Add a record to the File table for every file stored in MergeModule.CABinet. </LI>
+
+	<LI>Add the information necessary to identify the merge module in the <A HREF="merg_4nad.htm">ModuleSignature table</A>. Every merge module requires a ModuleSignature table. </LI>
+
+	<LI>List the components in the merge module in the <A HREF="merg_21gl.htm">ModuleComponents table</A>. Every merge module requires a ModuleComponents table. </LI>
+
+	<LI>Add merge module sequence tables to the .msm file only if the merge module needs to modify the <A HREF="dglo_5nuh.htm#_msi_sequence_tables_gly">sequence tables</A> of the target installation database. </LI>
+
+	<LI>Add a _Validation table to the merge module. A merge module requires a _Validation table to pass validation.  </LI>
+
+	<LI>Merge modules require a user interface in only rare cases. Including a UI with a merge module is not recommended. In cases where a user interface is required, the UI tables can be merged into the .msi file the same as other tables.</LI>
+
+	<LI>Add registry information to the appropriate registry tables in the merge module database. Add registry information for type libraries, classes, extensions, and verbs into the <A HREF="tref_3085.htm">TypeLib</A>, <A HREF="tref_5n8l.htm">Class</A>, <A HREF="tref_6p2d.htm">AppId</A>, <A HREF="tref_4x5x.htm">ProgId</A>, <A HREF="tref_219h.htm">Extension</A>, <A HREF="tref_3kdh.htm">Verb</A>, or <A HREF="tref_3sh1.htm">MIME</A> tables. All other registry information can go into the <A HREF="tref_3obp.htm">Registry table</A>. The use of the SelfReg table is not recommended. </LI>
+
+	<LI>Add the summary information to the <A HREF="merg_57zh.htm">Merge Module Summary Information Stream</A>. </LI>
+
+	<LI>Run validation on all merge modules before attempting to install. </LI>
+</OL>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_262b.htm">Obtaining Blank Merge Module Databases</A>, <A HREF="merg_1183.htm">Obtaining Merge Module Authoring Tools</A>, <A HREF="merg_0ucz.htm">Naming Primary Keys in Merge Module Databases</A>, <A HREF="merg_1x6b.htm">Authoring Merge Module Component Tables</A>, <A HREF="merg_7odv.htm">Authoring Merge Module Directory Tables</A>, <A HREF="merg_7c8j.htm">Authoring Merge Module FeatureComponents Tables</A>, <A HREF="merg_0tyr.htm">Generating MergeModule.CABinet Cabinet Files</A>, <A HREF="merg_01tf.htm">Authoring Merge Module File Tables</A>, <A HREF="merg_3t83.htm">Authoring ModuleSignature Tables</A>, <A HREF="merg_0reb.htm">Authoring ModuleComponents Tables</A>, <A HREF="merg_929f.htm">Authoring Merge Module Sequence Tables</A>, <A HREF="merg_941f.htm">Validating Merge Modules</A>, <A HREF="merg_55bn.htm">Authoring User Interfaces in Merge Modules</A>, <A HREF="merg_5h6b.htm">Authoring Merge Module Registry Tables</A>, <A HREF="merg_65v7.htm">Authoring Merge Module Summary Information Streams</A>, <A HREF="merg_0c2t.htm">Merge Module Summary Information Stream Reference</A>, <A HREF="merg_941f.htm">Validating Merge Modules</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Dialog Box Overview</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_dialogbox">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_dialog_box_overview"></A>Dialog Box Overview</H2>
+
+<P>The process of creating a dialog box in Windows Installer is similar to the process of creating a dialog box programmatically using a Microsoft Windows API dialog box template. While a Windows dialog box template is stored in a null terminated character string, Windows Installer stores the dialog box parameters in the Dialog table. The Dialog table contains an attributes column that is analogous to Window styles in the Microsoft Windows user interface API. However, the number of Dialog Style Bits in Windows Installer is a reduced and specialized set.</P>
+
+<P>To physically create the dialog box using the Windows user interface API, <A HREF="JavaScript:hhobj_1.Click()"><B>DialogBox</B></A> is called and passes a pointer to the template. In Windows Installer, the dialog box is created during execution of one of the three user interface sequence tables.</P>
+
+<P>Windows Installer does not contain a default user interface which package authors can utilize for their packages. Windows Installer does contain a limited set of default Dialog boxes that display error and information messages, but these are displayed only if Windows Installer queries the dialog and user interface sequence tables and finds there are no custom dialogs available.</P>
+
+<P>The Windows Installer Software Developer Kit contains a minimal database named Uisample.msi that contains populated user interface and execution sequence tables and a complete user interface. This database is easily customized and merged on to any package.</P>
+
+<P>Some standard actions and internal Windows Installer error conditions return a specific set of user interface data and therefore require a dialog box with a specific set of controls to accommodate that data. Windows Installer checks two separate locations for the identifiers for these dialog boxes.
+
+<OL>
+	<LI>Windows Installer contains a set of embedded dialog box names. The custom action queries the Dialog table for these reserved names.</LI>
+
+	<LI>In each of the three user interface sequence tables, dialog names with a sequence number of -1,-2, or -3 are displayed in response to exit, user requested exit, and fatal error messages from Windows Installer.</LI>
+</OL>
+
+<P>A complete list of reserved primary key dialog box names is available in <A HREF="href_2y0j.htm">dialog boxes</A>. Note that the primary key dialog box name is only reserved by the installer and there is no specific implementation of the dialog box within Windows Installer. Package authors must still populate all the fields in the database that specify the attributes and controls of these reserved dialog boxes.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Dialog%20Box%20Overview;%20RELEASE:%20August%202001;%20URL:%20hand_2nnb.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Dialog%20Box%20Overview;%20RELEASE:%20August%202001;%20URL:%20hand_2nnb.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

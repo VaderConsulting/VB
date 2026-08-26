@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring the InstallExecuteSequence Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_the_installexecutesequence_table"></A>Authoring the InstallExecuteSequence Table</H3>
+
+<P>The custom actions ProcessAccounts and UninstallAccounts generate the deferred custom actions that create, remove, or rollback user accounts. The custom actions ProcessAccounts and UninstallAccounts must be entered into the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> to be executed. Add the following entries to the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>. Because these custom actions must be a part of the script generation, both custom actions must be sequenced after the <A HREF="aref_0gby.htm">InstallInitialize action</A>. </P>
+
+<P>The condition on ProcessAccounts ensures the following. See <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.
+
+<UL>
+	<LI>ProcessAccounts runs only on Windows&nbsp;NT or Windows&nbsp;2000.</LI>
+
+	<LI>ProcessAccounts runs only if the component TestAccount is being installed locally on the computer.</LI>
+
+	<LI>The component Test Account is currently not installed or is installed to run from source. </LI>
+</UL>
+
+<P>The condition on UninstallAccount ensures the following.
+
+<UL>
+	<LI>UninstallAccounts runs only on Windows&nbsp;NT or Windows&nbsp;2000.</LI>
+
+	<LI>UninstallAccounts runs only if the component TestAccount is installed locally on the computer.</LI>
+
+	<LI>The component Test Account is being removed or being installed to run from source. </LI>
+</UL>
+
+<P><A HREF="tref_5pid.htm"><B>InstallExecuteSequence Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Action</TH>
+<TH align=left width=47%>Condition</TH>
+<TH align=left width=28%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>ProcessAccounts</TD>
+<TD width=47%>VersionNT AND (?TestAccount=2 OR ?TestAccount=4) AND $TestAccount=3</TD>
+<TD width=28%>1550</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>UninstallAccounts</TD>
+<TD width=47%>VersionNT AND ?TestAccount=3 AND ($TestAccount=4 OR $TestAccount=2)</TD>
+<TD width=28%>1560</TD>
+</TR>
+</TABLE><BR>
+
+<P>This completes the sample.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,256 @@
+;
+; CInfo.kix
+; Version 1.2
+; Retrieves Computer Info, specifically application info
+; for use prior to computer replacement during SOE rollout
+;
+; 
+; Requirements: 
+; Kixtart 3.63 in current directory (kix32.exe)
+; 
+;
+; Copyright
+; Dave Robinson
+; October - November 2001
+;
+; Written using KiXscripts Editor Alpha 1
+; 
+; Formatting of this document's 'writeline' methods are 
+; written to allow easy reading of the HTML output log file. 
+;
+; *************************************************************************
+; Change history
+; 1.0 21 Oct 2001 Initial version
+; 1.1 06 Nov 2001 Modified to look for certain file types only
+; 1.2 06 Nov 2001 Modified for C: Drive specifically
+;
+; *************************************************************************
+;
+;
+; Define constants
+  $CRLF      = Chr(13) + Chr(10)
+  $backslash = Chr(92)
+  $quote     = Chr(34)
+  $nbsp      = "&nbsp" + Chr(59)
+  $KIXDir    = 16
+  $Version   = "1.2"
+  $Outfile   = "d:\applications.htm"
+  $Date      = @DAY + ", " + @MDAYNO + " " + @MONTH + " " + @YEAR
+;
+; Enable user to CTRL C
+  Break on
+;
+; Set pattern to search for
+If $pattern = ""
+    $pattern = ".exe"  
+EndIf
+; 
+; Because this code is designed to be re-entrant, look For variable declaration.
+; If $dirname isn't blank, then we have re-entered this code.
+If $dirname = "" 
+	
+    ; No dirname specified, so delete existing output file
+    Del ($outfile)
+    ; Open file for writing
+    $temp = Open (1,$outfile,5)
+    ;
+    ; This must be the original script, so set variable to remember it
+    $original = "yes"
+    $dirname = "d:"
+    ;
+    ; If the directory name ends with a backslash, remove the slash.
+    If SubStr($dirname,Len($dirname)-1,1) = $backslash
+        $dirname = SubStr($dirname,1,Len($dirname)-1)
+    EndIf
+    $temp = WriteLine (1,"<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.0 Transitional//EN'>" + $CRLF)
+    $temp = WriteLine (1,"<html>" + $CRLF)
+    $temp = WriteLine (1,"<head>" + $CRLF)
+    $temp = WriteLine (1,"    <title>Application log from Info_D.kix " + $Version + "</title>" + $CRLF)
+    $temp = WriteLine (1,"</head>" + $CRLF)
+    $temp = WriteLine (1,"<body>" + $CRLF)
+    $temp = WriteLine (1,"<div align='left'>" + $CRLF)
+    $temp = WriteLine (1,"<h1>Workstation info</h1>" + $CRLF)
+    $temp = WriteLine (1,$Date + " " + @TIME + "<br>" + $CRLF)  
+    $temp = WriteLine (1,"Username         : " + @USERID + "<br>" + $CRLF) 
+    $temp = WriteLine (1,"Windows Username : " + @WUSERID + "<br>" + $CRLF)
+    $temp = WriteLine (1,$CRLF)   
+    $temp = WriteLine (1,"Local workstation info follows" + "<br>" + $CRLF)
+    $temp = WriteLine (1,"Computername     : " + @WKSTA + "<br>" + $CRLF)  
+    $temp = WriteLine (1,"MAC Address      : " + @ADDRESS + "<br>" + $CRLF) 
+    $temp = WriteLine (1,"IP Address       : " + @IPADDRESS0 + "<br>" + $CRLF) 
+    $temp = WriteLine (1,"OS Version       : " + @DOS + "<br>" + $CRLF) 
+    ; These next two macros are only available in Kix2001
+    ;$temp = WriteLine (1,"   Service Pack  : " + @CSD 	+ "<br>" + $CRLF)
+    ;$temp = WriteLine (1,"   Build         : " + @BUILD + "<br>" + $CRLF)
+    $temp = WriteLine (1,"   Comment       : " + @COMMENT + "<br>" + $CRLF)
+    $temp = WriteLine (1,"<br>" + $CRLF)
+    $temp = WriteLine (1,"Start dir        : " + $dirname + "<br>" + $CRLF)
+    $temp = WriteLine (1,"Search pattern   : " + $pattern + "<br>" + $CRLF)
+    $temp = WriteLine (1,"<br>" + $CRLF)
+    $temp = WriteLine (1,"<h1>Application info</h1>" + $CRLF)
+    $temp = WriteLine (1,"<br>" + $CRLF)
+    $temp = WriteLine (1,"<br>" + $CRLF)
+    $temp = WriteLine (1,"<h2>Installed Applications</h2>" + $CRLF)
+    $temp = WriteLine (1,"    <table align='left' >" + $CRLF)
+    $temp = WriteLine (1,"        <tr>" + $CRLF)
+    $temp = WriteLine (1,"            <td>" + $CRLF)
+    $temp = WriteLine (1,"                <table align='left'>" + $CRLF)
+    ;
+    ; List all applications in Control Panel|Add Remove Programs
+    ;
+    ? "Listing all applications in Control Panel|Add Remove Programs"
+    ?
+    $Index = 0
+	:Loop1
+	$KeyName = EnumKey("HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall" + $backslash, $Index)
+	If @ERROR = 0
+ 	    $Appname = ReadValue("HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\$KeyName","DisplayName")
+ 	    If $Appname <> ""
+ 	        $temp = WriteLine (1,"                    <tr>" + $CRLF)
+ 	        $temp = WriteLine (1,"                        <td nowrap>" + $Appname + "</td>" + $CRLF)
+ 		$temp = WriteLine (1,"                    </tr>" + $CRLF)
+ 	    EndIf
+	    $Index = $Index + 1
+  	    Goto Loop1
+	EndIf
+	$temp = WriteLine (1,"                </table>" + $CRLF)
+	$temp = WriteLine (1,"            </td>" + $CRLF)
+	$temp = WriteLine (1,"        </tr>" + $CRLF)
+	
+    ;
+    ; List all applications found in the search path
+    ;
+    ? "Listing all applications found in the search path"
+    ?
+    $temp = WriteLine (1,"        <tr>" + $CRLF)
+    $temp = WriteLine (1,"            <td>" + $nbsp + "</td>" + $CRLF)
+    $temp = WriteLine (1,"        </tr>" + $CRLF)
+    $temp = WriteLine (1,"        <tr>" + $CRLF)
+    $temp = WriteLine (1,"            <td><h2>Applications found in the search path</h2></td>" + $CRLF)
+    $temp = WriteLine (1,"        </tr>" + $CRLF)
+    $temp = WriteLine (1,"        <tr>" + $CRLF)
+    $temp = WriteLine (1,"            <td>" + $nbsp + "</td>" + $CRLF)
+    $temp = WriteLine (1,"        </tr>" + $CRLF)
+    $temp = WriteLine (1,"        <tr>" + $CRLF)
+    $temp = WriteLine (1,"            <td>" + $CRLF)
+    $temp = WriteLine (1,"                <table align='center'>" + $CRLF)
+    $temp = WriteLine (1,"                    <tr>" + $CRLF)
+    $temp = WriteLine (1,"                        <td nowrap><b>Filename</b></td>")
+    $temp = WriteLine (1,                        "<td nowrap><b>File Description</b></td>")
+    $temp = WriteLine (1,                        "<td nowrap><b>File Version</b></td>")
+    $temp = WriteLine (1,                        "<td nowrap><b>Product Name</b></td>")
+    $temp = WriteLine (1,                        "<td nowrap><b>Product Version</b></td>")
+    $temp = WriteLine (1,                        "<td nowrap><b>Company Name</b></td>")
+    $temp = WriteLine (1,"                    </tr>" + $CRLF)
+Else
+    ; Open file for writing
+    $temp = Open (1,$outfile,5)
+    $original = "no"
+EndIf
+;
+; User feedback.. not required, but nice to have
+If Len($dirname) > 70
+    ? "Searching " + SubStr($dirname,1,10) + "..." + SubStr($dirname,Len($dirname)-56,Len($dirname))
+Else
+    ? "Searching " + $dirname 
+EndIf
+;
+; Build path to search
+$dirname = $dirname + $backslash
+;
+$filename = Dir($dirname + "*.*")
+;
+; *******************************************************
+; Real work starts here
+; *******************************************************
+While $filename <> ""                                      
+	; Is it a directory ?
+	$attr = GetFileAttr ($dirname + $filename) & $KIXDir
+	If ($attr) > 0 ; Binary AND
+		; YES, this is a directory
+		$d = $dirname + $filename
+		If $filename <> "." AND $filename <> ".." 
+			$cmdline = "kix32.exe " + "Info_D.kix $$dirname=" + $quote + $d + $quote
+			;
+			; Close outfile prior to shelling out
+			$temp = Close (1)
+			; re-entrant code instigated here
+			Shell $cmdline
+			; Reopen outfile
+			$temp = Open (1,$Outfile,5)
+		EndIf
+	Else
+		; NO, must be a file
+		; does it match one of the search patterns ?
+		$case1 = InStr(Ucase($filename),".EXE")
+		$case2 = InStr(Ucase($filename),".MDB")
+		$case3 = InStr(Ucase($filename),".FMX")
+		$case4 = InStr(Ucase($filename),".IDC")
+		$case5 = InStr(Ucase($filename),".MDE")
+		$case6 = InStr(Ucase($filename),"PAOP")
+		If $case1 <> 0 OR $case2 <> 0 OR $case3 <> 0 OR $case4 <> 0 OR $case5 <> 0 OR $case6 <> 0
+			? " " + $filename
+			; Yes, extract file version information
+			$FileVersion     = GetFileVersion($dirname + $filename,"FileVersion")
+			$FileDescription = GetFileVersion($dirname + $filename,"FileDescription")
+			$ProductName     = GetFileVersion($dirname + $filename,"ProductName")
+			$ProductVersion  = GetFileVersion($dirname + $filename,"ProductVersion")
+			$CompanyName     = GetFileVersion($dirname + $filename,"CompanyName")
+			$temp = WriteLine (1,"                    <tr>" + $CRLF)
+			$temp = WriteLine (1,"                        <td nowrap>")
+			$temp = WriteLine (1,                             $dirname + $filename)
+			$temp = WriteLine (1,                        "</td>" + $CRLF)
+			$temp = WriteLine (1,"                        <td nowrap>")
+			If $filedescription <> ""
+			    $temp = WriteLine (1,                         $FileDescription)
+			Else
+				$temp = WriteLine (1,                         $nbsp)
+			EndIf
+			$temp = WriteLine (1,                        "</td>" + $CRLF)
+			$temp = WriteLine (1,"                        <td nowrap>")
+			If $FileVersion <> ""
+				$temp = WriteLine (1,                         $FileVersion)
+			Else
+				$temp = WriteLine (1,                         $nbsp)
+			EndIf
+			$temp = WriteLine (1,                        "</td>" + $CRLF)
+			$temp = WriteLine (1,"                        <td nowrap>")
+			If $ProductName <> ""
+				$temp = WriteLine (1,                         $ProductName)
+			Else
+				$temp = WriteLine (1,                         $nbsp)
+			EndIf
+			$temp = WriteLine (1,                        "</td>" + $CRLF)
+			$temp = WriteLine (1,"                        <td nowrap>")
+			If $ProductVersion <> ""
+				$temp = WriteLine (1,                         $ProductVersion)
+			Else
+				$temp = WriteLine (1,                         $nbsp)
+			EndIf
+			$temp = WriteLine (1,                        "</td>" + $CRLF)
+			$temp = WriteLine (1,"                        <td nowrap>")
+			If $CompanyName <> ""
+				$temp = WriteLine (1,                         $CompanyName)
+			Else
+				$temp = WriteLine (1,                         $nbsp)
+			EndIf
+			$temp = WriteLine (1,                        "</td>" + $CRLF)
+			$temp = WriteLine (1,"                    </tr>" + $CRLF)
+		; Else
+			; Pattern does not match
+		EndIf
+	EndIf
+	$filename = Dir()
+Loop
+; If this is the starting script, then close the tables and html document
+If $original = "yes"
+    $temp = WriteLine (1,"                </table>" + $CRLF)
+    $temp = WriteLine (1,"            </td>" + $CRLF)
+	$temp = WriteLine (1,"       </tr>" + $CRLF)
+	$temp = WriteLine (1,"    </table>" + $CRLF)
+    $temp = WriteLine (1,"</div>" + $CRLF)
+    $temp = WriteLine (1,"</body>" + $CRLF)
+    $temp = WriteLine (1,"</html>" + $CRLF)
+EndIf 
+$temp = Close (1)
+Quit 0

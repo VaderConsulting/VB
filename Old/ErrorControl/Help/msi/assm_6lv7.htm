@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Installation of Win32 Assemblies</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_isolated_applications_and_side_by_side_assemblies_start_page">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_installation_of_win32_assemblies"></A>Installation of Win32 Assemblies</H1>
+
+<P>Install Win32 assemblies by making them a component of Microsoft® Windows®  Installer package that installs or updates your application. With Windows Installer version 2.0 or later, when you author the <A HREF="tref_4u05.htm">MsiAssembly table</A> and <A HREF="tref_8vhh.htm">MsiAssemblyName table</A>, this identifies the component in the Component_ column as an assembly. The installer will set the <A HREF="pref_4hkp.htm">MsiWin32AssemblySupport property</A> to the file version of Sxs.dll on operating systems that can support Win32 assemblies and not set this property otherwise. </P>
+
+<P>On Microsoft® Windows® XP and later systems, you can develop side-by-side assemblies or use one of the side-by-side assemblies provided by Microsoft. Side-by-side assemblies are not available on systems earlier than Windows XP. For more information, see <A HREF="JavaScript:hhobj_1.Click()">Isolated Applications and Side-by-side Assemblies</A>.</P>
+
+<P>This table summarizes the ways Win32 assemblies can be installed on different Windows operating systems. For information, see <A HREF="assm_767n.htm">Shared Assemblies</A>, <A HREF="assm_0yib.htm">Private Assemblies</A>, and <A HREF="assm_5i5v.htm">Side-by-Side Assemblies</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Operating System</TH>
+<TH align=left width=23%>Windows Installer writes assembly information into the registry.</TH>
+<TH align=left width=17%><A HREF="assm_767n.htm">Shared assemblies</A> can be used.</TH>
+<TH align=left width=18%><A HREF="assm_0yib.htm">Private assemblies</A> can be used.</TH>
+<TH align=left width=19%><A HREF="assm_5i5v.htm">Side-by-side assemblies</A> can be used.</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Windows XP</TD>
+<TD width=23%>No</TD>
+<TD width=17%>Yes</TD>
+<TD width=18%>Yes</TD>
+<TD width=19%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Windows 2000</TD>
+<TD width=23%>Yes</TD>
+<TD width=17%>Yes</TD>
+<TD width=18%>Yes</TD>
+<TD width=19%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Windows 98 SE</TD>
+<TD width=23%>Yes</TD>
+<TD width=17%>Yes</TD>
+<TD width=18%>Yes</TD>
+<TD width=19%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Windows Me</TD>
+<TD width=23%>Yes</TD>
+<TD width=17%>Yes</TD>
+<TD width=18%>Yes</TD>
+<TD width=19%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Windows 98</TD>
+<TD width=23%>Yes</TD>
+<TD width=17%>Yes</TD>
+<TD width=18%>No</TD>
+<TD width=19%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Windows 95</TD>
+<TD width=23%>Yes</TD>
+<TD width=17%>Yes</TD>
+<TD width=18%>No</TD>
+<TD width=19%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Windows NT4</TD>
+<TD width=23%>Yes</TD>
+<TD width=17%>Yes</TD>
+<TD width=18%>No</TD>
+<TD width=19%>No</TD>
+</TR>
+</TABLE><BR>
+
+<P>The following sections describe how to author a Windows Installer package to install Win32 assemblies as shared, private, or side-by-side on different Windows operating systems.
+
+<UL>
+	<LI><A HREF="assm_0ank.htm">How do I Install Win32 assemblies for Side-by-side sharing on Windows XP</A>?</LI>
+
+	<LI><A HREF="assm_7bao.htm">How do I Install Win32 assemblies for the private use of an application on Windows XP</A>?</LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Installation%20of%20Win32%20Assemblies;%20RELEASE:%20August%202001;%20URL:%20assm_6lv7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Installation%20of%20Win32%20Assemblies;%20RELEASE:%20August%202001;%20URL:%20assm_6lv7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

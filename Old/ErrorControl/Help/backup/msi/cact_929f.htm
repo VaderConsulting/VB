@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Adding Launch to the CustomAction and Binary Tables</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_adding_launch_to_the_customaction_and_binary_tables"></A>Adding Launch to the CustomAction and Binary Tables</H3>
+
+<P>Add a record to the <A HREF="tref_71b9.htm">CustomAction table</A> for the Launch custom action. Enter the custom action's name in the Action column of the CustomAction table. Enter the total numeric type for Launch, 65, into the Type column of the Custom action table. The Source column of the CustomAction table specifies a key into the record of the <A HREF="tref_04px.htm">Binary Table</A> that contains the binary data for the DLL. Enter Launch.dll into the Source column of the CustomAction table. The entry point specified in the Target field of the CustomAction table must match that exported from the DLL. Enter LaunchTutorial into the Target column of the CustomAction table.</P>
+
+<P><A HREF="tref_71b9.htm"><B>CustomAction Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Action</TH>
+<TH align=left width=26%>Type</TH>
+<TH align=left width=26%>Source</TH>
+<TH align=left width=26%>Target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Launch</TD>
+<TD width=26%>65</TD>
+<TD width=26%>Launch.dll</TD>
+<TD width=26%>LaunchTutorial</TD>
+</TR>
+</TABLE><BR>
+
+<P>Add Launch.dll you created from tutorial.cpp as a binary stream to the Binary table. </P>
+
+<P><A HREF="tref_04px.htm"><B>Binary Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Name</TH>
+<TH align=left width=70%>Data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Launch.dll</TD>
+<TD width=70%>{<I>binary data added for DLL</I>}</TD>
+</TR>
+</TABLE><BR>
+
+<P>Continue to <A HREF="cact_55wo.htm">Adding a Control Event at the End of the Installation to Run Launch</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

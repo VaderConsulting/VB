@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ConfigureProduct Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ConfigureProduct Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_configureproduct_method"></A>ConfigureProduct Method</H1>
+
+<P>The <B>ConfigureProduct</B> method installs or uninstalls a product.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.ConfigureProduct(<I>Product, InstallLevel, InstallState</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer </B>object</A> </DD>
+
+<DT><I>Product</I></DT>
+
+<DD>Specifies the product code of the product.</DD>
+
+<DT><I>InstallLevel</I></DT>
+
+<DD>Specifies the default installation configuration of the product. The InstallLevel parameter is ignored and all features are installed if the InstallState parameter is set to any other value than msiInstallStateDefault.
+
+<P>This parameter must be either 0 (install using authored feature levels), 65535 (install all features), or a value between 0 and 65535 to install a subset of available features.
+</DD>
+
+<DT><I>InstallState</I></DT>
+
+<DD>Specifies the installation state for the feature. This parameter must be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=39%>Value</TH>
+<TH align=left width=61%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateAdvertised</TD>
+<TD width=61%>The feature is advertised</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateLocal</TD>
+<TD width=61%>The feature is installed locally. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateAbsent</TD>
+<TD width=61%>The feature is uninstalled. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateSource</TD>
+<TD width=61%>The feature is installed to run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateDefault</TD>
+<TD width=61%>The feature is installed to its default location.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>ConfigureProduct</B> method displays the user interface using current settings. User interface settings can be changed by modifying the <A HREF="vref_6ean.htm">UILevel property (<B>Installer</B> object)</A> before calling the <B>ConfigureProduct</B> method.</P>
+
+<P>If the <I>InstallState</I> parameter is set to any other value than msiInstallStateDefault, the <I>InstallLevel </I>parameter is ignored and all features of the product are installed. Use the <A HREF="vref_9604.htm"><B>ConfigureFeature </B>method</A> to control the installation of individual features when the <I>InstallState</I> parameter is not set to msiInstallStateDefault.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_3p9w.htm"><B>MsiConfigureProduct</B></A>, <A HREF="msi_8vqd.htm#_msi_installation_and_configuration_functions">Installation and Configuration Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

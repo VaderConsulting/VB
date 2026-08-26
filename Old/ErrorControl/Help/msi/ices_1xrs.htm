@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE08</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE08">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice08"></A>ICE08</H1>
+
+<P>ICE08 validates that the <A HREF="tref_09np.htm">Component table</A> contains no duplicate <A HREF="tref_7kf8.htm">GUIDs</A>. Every component must have a unique GUID. No validation is done if the Component table does not exist.</P>
+
+<H4>Result</H4>
+
+<P>ICE08 posts an error message if two or more entries in the ComponentId column of the Component table contain the same GUID.</P>
+
+<H4>Example</H4>
+
+<P>For the following example, ICE08 would post a message stating that components Red and Green have duplicate GUIDs.</P>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Component</TH>
+<TH align=left width=76%>ComponentId</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Red</TD>
+<TD width=76%>{0000000A-0003-0000-0000-624474736554}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Blue</TD>
+<TD width=76%>{0000000A-0003-0000-0000-624474736354}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Green</TD>
+<TD width=76%>{0000000A-0003-0000-0000-624474736554}</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix this error, change either of the duplicate GUIDs. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE08;%20RELEASE:%20August%202001;%20URL:%20ices_1xrs.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE08;%20RELEASE:%20August%202001;%20URL:%20ices_1xrs.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

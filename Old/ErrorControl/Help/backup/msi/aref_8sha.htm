@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AllocateRegistrySpace Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="AllocateRegistrySpace Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_allocateregistryspace_action"></A>AllocateRegistrySpace Action</H1>
+
+<P>The AllocateRegistrySpace action ensures that the amount of free registry space specified by the <A HREF="pref_8upl.htm">AVAILABLEFREEREG property</A> exists in the registry.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The AllocateRegistrySpace action must be called after <A HREF="aref_0gby.htm">InstallInitialize</A>. It is advisable to schedule the AllocateRegistrySpace before all other actions to ensure there is enough registry space available to continue.</P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Field</TH>
+<TH align=left width=83%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>[1]</TD>
+<TD width=83%>Registry space required in KB</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This action is not enabled on Windows 95 or Windows 98. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

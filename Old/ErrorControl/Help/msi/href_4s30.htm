@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Text Control</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Text Control">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_text_control"></A>Text Control</H1>
+
+<P>This control displays static text. The text may use a predefined style.</P>
+
+<H4>Control Attributes</H4>
+
+<P>You can use the following attributes with this control. To change the value of an attribute using an event, subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A> and list the attribute's identifier in the Attribute column. Enter the Identifier of the ControlEvent in the Event column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Attribute identifier</TH>
+<TH align=left width=17%>Hexadecimal bit</TH>
+<TH align=left width=64%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2w6d.htm">Position</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Position of control in the dialog box.
+<P>Enter the control's width, height, and coordinates of the control's left corner into the Width, Height, X, and Y columns of the <A HREF="tref_6nad.htm">Control table</A> or <A HREF="tref_78it.htm">BBControl table</A>. Use <A HREF="href_9pir.htm">installer units</A> for length and distance.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2kmd.htm">Text</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Text displayed by the control.
+<P>To set the font and font style of a text string, prefix the string of characters to be displayed with {\<I>style</I>}. Where <I>style</I> is an identifier listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. Use {&amp;<I>style</I>} to apply the base font and font style.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_9z39.htm">TimeRemaining </A></TD>
+<TD width=17%> </TD>
+<TD width=64%>This attribute enables a Text control to display the approximate number of minutes and seconds remaining for an installation. 
+<P>Subscribe the Text control to the <A HREF="href_1egk.htm">TimeRemaining ControlEvent</A> in the <A HREF="tref_6m3p.htm">Eventmapping table</A> and enter TimeRemaining into the Attribute column.</P>
+
+<P>The installer publishes a record containing one integer representing the number of seconds remaining in the installation. Include a row in the <A HREF="tref_0vz9.htm">UIText table</A> with TimeRemaining in the Key column. Enter a formatted text string into the Text column authored to display minutes and seconds. Format this string as described for <A HREF="qref_3t2c.htm">MsiFormatRecord</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8bqd.htm">Visible</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000001</P>
+</TD>
+<TD width=64%>Hidden control.
+<P>Visible control.</P>
+
+<P>Include this bit in the bit word of the Attributes column in the <A HREF="tref_6nad.htm">Control table</A> or <A HREF="tref_78it.htm">BBControl table</A>.to make the control visible or hidden upon its creation. </P>
+
+<P>You can also hide or show a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2ig5.htm">Enabled</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000002</P>
+</TD>
+<TD width=64%>Control in a disabled state.
+<P>Control in an enabled state. </P>
+
+<P>Include this bit in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> or <A HREF="tref_78it.htm">BBControl tables</A> to enable the control on creation.</P>
+
+<P>You can also enable or disable a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0vad.htm">Sunken</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000004</P>
+</TD>
+<TD width=64%>Display the default visual style.
+<P>Display the control with a sunken, 3D, look.</P>
+
+<P>Include these bits in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_761x.htm">RTLRO</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000020</P>
+</TD>
+<TD width=64%>Text in the control is displayed in a Left-To-Right-Reading-Order.
+<P>Text in the control is displayed in a Right-To-Left-Reading-Order.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_6kbp.htm">RightAligned</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000040</P>
+</TD>
+<TD width=64%>Text in the control is aligned on the left.
+<P>Text in the control is aligned on the right.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_6yxx.htm">Transparent</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00010000</P>
+</TD>
+<TD width=64%>Opaque control.
+<P>Background shows through control. The control has the WS_EX_TRANSPARENT style.</P>
+
+<P>Include this bit the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> or <A HREF="tref_78it.htm">BBControl tables</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0b8l.htm">NoPrefix</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00020000</P>
+</TD>
+<TD width=64%>Use &amp; in a text string to display the next character as underscored.
+<P>The character &amp; in a string is displayed as itself.</P>
+
+<P>Include this bit in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> or <A HREF="tref_78it.htm">BBControl tables</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_7srp.htm">NoWrap</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00040000</P>
+</TD>
+<TD width=64%>Text wraps.
+<P>Text is displayed on a single line. If the text extends beyond the control's margins, it is clipped and an ellipsis ("...") is inserted.</P>
+
+<P>Include this bit in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> or <A HREF="tref_78it.htm">BBControl tables</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2eed.htm">UsersLanguage</A></TD>
+<TD width=17%>0x00000000
+<P>0x00100000</P>
+</TD>
+<TD width=64%>Fonts created in the database codepage.
+<P>Fonts created in the user's default UI codepage.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_06ed.htm">FormatSize Control Attribute</A></TD>
+<TD width=17%>0x00000000
+<P>0x00080000</P>
+</TD>
+<TD width=64%>Formatted as text.
+<P>If this bit is set the control attempts to format the displayed text as a number representing a count of bytes. For proper formatting, the control's text must be set to a string representing a number expressed in units of 512 bytes. The displayed value will then be formatted in terms of kilobytes (KB), megabytes (MB), or gigabytes (GB), and displayed with the appropriate string representing the units.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The control is created with the "STATIC" class and with the SS_LEFT, WS_CHILD, WS_GROUP styles.</P>
+
+<P>Do not place transparent <A HREF="#_msi_text_control">Text controls</A> on top of colored bitmaps. The text may not be visible if the user changes the display color scheme. For example, text may become invisible if the user sets the High Contrast Parameter  for accessibility.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Text%20Control;%20RELEASE:%20August%202001;%20URL:%20href_4s30.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Text%20Control;%20RELEASE:%20August%202001;%20URL:%20href_4s30.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

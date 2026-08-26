@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE13</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE13 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice13"></A>ICE13</H1>
+
+<P>ICE13 validates that dialogs in sequence tables appear in the <A HREF="tref_3rvp.htm">AdvtUISequence</A>, <A HREF="tref_5lnp.htm">AdminUISequence</A>, or <A HREF="tref_1git.htm">InstallUISequence</A> tables. Dialogs must not be listed in the <A HREF="tref_5pid.htm">InstallExecuteSequence</A>, <A HREF="tref_70f9.htm">AdminExecuteSequence</A>, or <A HREF="tref_5mn9.htm">AdvtExecuteSequence</A> tables. </P>
+
+<H4>Result</H4>
+
+<P>ICE13 posts an error message if a dialog appears in an execute sequence table.</P>
+
+<H4>Example</H4>
+
+<P>For the following example, ICE13 posts an error message stating that the 'WelcomeDialog' cannot be listed in the 'InstallExecuteSequence' table. </P>
+
+<P><A HREF="tref_5pid.htm"><B>InstallExecuteSequence Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Action</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>InstallFinalize</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>CostFinalize</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>WelcomeDialog</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_1git.htm"><B>InstallUISequence Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Action</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>CostFinalize</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>CostInitialize</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>BrowseDialog</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_51wl.htm"><B>Dialog Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Dialog</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>BrowseDialog</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>WelcomeDialog</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

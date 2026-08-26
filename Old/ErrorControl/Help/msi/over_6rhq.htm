@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CRC Checking During an Installation</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_crc_checking_during_an_installation"></A>CRC Checking During an Installation</H1>
+
+<P>A Cyclic Redundancy Check (CRC) of files is available with Windows Installer version 2.0 or later. CRC checking is an error-checking mechanism, similar to a checksum, that enables an application to determine whether the information in a file has been modified. After the Windows Installer finishes copying a file, it gets a CRC value from both the source and destination files. The installer checks the original CRC stamped into the file and compares this to the CRC calculated from the copy. The CRC check fails if the original CRC value is non-null and is different from the CRC calculated on the copy. If the original CRC is null, no check occurs.</P>
+
+<P>The Windows Installer does a CRC check on a file in the following cases:
+
+<UL>
+	<LI>If the <A HREF="pref_15o9.htm">MSICHECKCRCS property</A> is set and <B>msidbFileAttributesChecksum</B> is included in the Attributes field of the file's record in the <A HREF="tref_4n6t.htm">File table</A>. The installer does the CRC check once after installing, duplicating, or moving the file. </LI>
+
+	<LI>If the <A HREF="pref_15o9.htm">MSICHECKCRCS property</A> is set and <B>msidbFileAttributesChecksum</B> is included in the Attributes field of the file's record in the <A HREF="tref_4n6t.htm">File table</A>, the installer does a CRC check after patching the file.</LI>
+
+	<LI>If the <B>msidbFileAttributesChecksum</B> is included in the Attributes field of the file's record in the <A HREF="tref_4n6t.htm">File table</A>, the installer does a CRC check before binding images.</LI>
+</UL>
+
+<P>If the check fails before binding an image, the installer reports the following two errors in the log file and continues the installation without binding the file.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Code</TH>
+<TH align=left width=83%>Message</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>2941</TD>
+<TD width=83%>Unable to compute the CRC for file [2].</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>2942</TD>
+<TD width=83%>BindImage action has not been executed on [2] file.</TD>
+</TR>
+</TABLE><BR>
+
+<P>If the check fails after an uncompressed file had been copied, duplicated, or patched, the installer reports the following error. This error is also reported if the check fails after a compressed file is copied. If the file has the <B>msidbFileAttributesVital</B> attribute, the file is considered vital to the installation and the user gets the option to retry or cancel the installation. If the file is marked as non-vital in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>, the user may ignore the error and continue, retry, or cancel the installation. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Code</TH>
+<TH align=left width=83%>Message</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>1331</TD>
+<TD width=83%>Failed to correctly copy [2] file: CRC error. </TD>
+</TR>
+</TABLE><BR>
+
+<P>Note that only uncompressed files are moved. If the check fails after an uncompressed file is moved, the installer displays the following error. If the file has the <B>msidbFileAttributesVital</B> attribute, the file is considered vital to the installation and the installation fails. If the file is marked as non-vital in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>, the user gets the option to cancel or to ignore the error and continue the installation. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Code</TH>
+<TH align=left width=83%>Message</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>1332</TD>
+<TD width=83%>Failed to correctly move [2] file: CRC error. </TD>
+</TR>
+</TABLE><BR>
+
+<P>If the check fails after an uncompressed file is patched, the installer displays the following error. If the file has the <B>msidbFileAttributesVital</B> attribute, the file is considered vital to the installation and the installation fails. If the file is marked as non-vital in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>, the user gets the option to cancel or to ignore the error and continue the installation. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Code</TH>
+<TH align=left width=83%>Message</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>1333</TD>
+<TD width=83%>Failed to correctly patch [2] file: CRC error.</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20CRC%20Checking%20During%20an%20Installation;%20RELEASE:%20August%202001;%20URL:%20over_6rhq.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20CRC%20Checking%20During%20an%20Installation;%20RELEASE:%20August%202001;%20URL:%20over_6rhq.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

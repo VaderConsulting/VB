@@ -1,0 +1,12 @@
+MNTNetwork = 0, 0, 0, 0, C
+CNetErr = 0, 0, 0, 0, C
+CNetwork = 0, 0, 0, 0, C
+CApplication = 0, 0, 0, 0, C
+CDomain = 0, 0, 0, 0, C
+CServer = 0, 0, 0, 0, C
+CShare = 10, 46, 845, 677, 
+CUser = 0, 0, 0, 0, C
+CGroup = 0, 0, 0, 0, C
+CService = 66, 66, 868, 588, C
+MServices = 0, 0, 0, 0, C
+COpenFile = 0, 0, 0, 0, C

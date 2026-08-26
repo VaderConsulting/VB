@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiApplyPatch</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiApplyPatch">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiapplypatch"></A>MsiApplyPatch</H1>
+
+<P>For each product listed by the patch package as eligible to receive the patch, the <B>MsiApplyPatch</B> function invokes an installation and sets the <A HREF="pref_3wc9.htm">PATCH property</A> to the path of the patch package.</P>
+
+<PRE class=syntax><B>UINT MsiApplyPatch(
+</B>  <B>LPCTSTR</B> <I>szPatchPackage</I><B>,</B>    // location of the patch package
+  <B>LPCTSTR</B> <I>szInstallPackage</I><B>,</B>  // location of product to be patched 
+                             // &lt;optional&gt;
+  <B>INSTALLTYPE</B> <I>eInstallType</I><B>,</B>  // type of install to patch
+  <B>LPCTSTR</B> <I>szCommandLine </I>     // command line &lt;property settings&gt;
+<B>);</B> </PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szPatchPackage</I></DT>
+
+<DD>Specifies the full path to the patch package.</DD>
+
+<DT><I>szInstallPackage</I></DT>
+
+<DD>Specifies a path to the product that is to be patched if <I>eInstallType</I> is set to INSTALLTYPE_NETWORK_IMAGE. The installer applies the patch to every eligible product listed in the patch package if <I>szInstallPackage</I> is set to 0 and <I>eInstallType</I> is set to INSTALLTYPE_DEFAULT. </DD>
+
+<DT><I>eInstallType</I></DT>
+
+<DD>This parameter specifies the type of installation to patch. A value of 1 for INSTALLTYPE_NETWORK_IMAGE sets this for a administrative installation. The <I>eInstallType</I> parameter is ignored if <I>szInstallPackage</I> is omitted.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=52%>Type of installation</TH>
+<TH align=left width=48%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLTYPE_NETWORK_IMAGE</TD>
+<TD width=48%>Indicates a administrative installation. In this case, <I>szInstallPackage</I> must be set to a package path.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLTYPE_DEFAULT</TD>
+<TD width=48%>Searches system for products to patch. In this case, <I>szInstallPackage</I> must be 0.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>szCommandLine</I></DT>
+
+<DD>Specifies command line property settings. See <A HREF="prop_0ylv.htm">About Properties</A>.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value </TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_PATCH_PACKAGE*</TD>
+<TD width=52%>These errors may indicate an error with the patch package.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>An error relating to an action</TD>
+<TD width=52%>See <A HREF="code_13ub.htm">Error Codes</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Any <A HREF="msi_5svn.htm">Initialization Error</A></TD>
+<TD width=52%>An error relating to initialization occurred.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>Because the list delimiter for transforms, sources and patches is a semicolon, this character should not be used for filenames or paths.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="code_13ub.htm">Error Codes</A>, <A HREF="msi_5svn.htm">Initialization Error</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

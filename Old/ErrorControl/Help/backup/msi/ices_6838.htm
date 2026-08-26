@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Sample ICE in VBScript</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="sample ICE in VBScript [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_sample_ice_in_vbscript"></A>Sample ICE in VBScript</H3>
+
+<P>This sample code is from an ICE custom action (<A HREF="ices_1xrs.htm">ICE08</A>). The ICE validates that every component in the <A HREF="tref_09np.htm">Component table</A> has a unique <A HREF="tref_7kf8.htm">GUID</A>. No validation is done if the Component table does not exist.</P>
+
+<PRE>Function ICE08()
+
+'Give creation data
+Set recInfo=Installer.CreateRecord(1)
+recInfo.StringData(0)="ICE08" &amp; Chr(9) &amp; "3" 
+    &amp; Chr(9) &amp; "Created 05/21/98 by &lt;insert 
+    author's name here&gt;"
+Message &amp;h03000000, recInfo
+
+'Give last modification date
+recInfo.StringData(0)="ICE08" &amp; Chr(9) &amp; "3" 
+    &amp; Chr(9) &amp; "Modified 05/21/98 by &lt;insert 
+    author's name here&gt;"
+Message &amp;h03000000, recInfo
+
+'Give description of test
+recInfo.StringData(0)="ICE08" &amp; Chr(9) &amp; "3" 
+    &amp; Chr(9) &amp; "Checks for duplicate GUIDs 
+    in Component table"
+Message &amp;h03000000, recInfo
+
+'Is there a Component table in the database?
+iStat = Database.TablePersistent("Component")
+If 1 &lt;&gt; iStat Then
+recInfo.StringData(0)="ICE08" &amp; Chr(9) &amp; "2" 
+    &amp; Chr(9) &amp; "Table: 'Component' missing. 
+    ICE08 cannot continue its validation." 
+    &amp; Chr(9) &amp; "http://mypage2"
+Message &amp;h03000000, recInfo
+ICE08 = 1
+Exit Function
+End If
+
+'process component table
+Set view=Database.OpenView("SELECT 
+    `Component`,`ComponentId` FROM 
+    `Component` ORDER BY `ComponentId`")
+view.Execute
+Do
+Set rec=view.Fetch
+If rec Is Nothing Then Exit Do
+
+'compare for duplicate 
+If lastGuid=rec.StringData(2) Then
+rec.StringData(0)="ICE08" &amp; Chr(9) 
+    &amp; "1" &amp; Chr(9) &amp; "Component: [1] 
+    has a duplicate GUID: [2]" &amp; Chr(9) 
+    &amp; "http://mypage2" &amp; Chr(9) &amp; 
+    "Component" &amp; Chr(9) &amp; "ComponentId" &amp; Chr(9) &amp; "[1]"
+Message &amp;h03000000,rec
+End If
+
+'set for next compare
+lastGuid=rec.StringData(2)
+Loop
+
+'Return iesSuccess 
+ICE08 = 1
+
+End Function</PRE>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

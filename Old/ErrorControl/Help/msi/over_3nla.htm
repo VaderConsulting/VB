@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Including a Cabinet File in an Installation</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_including_a_cabinet_file_in_an_installation"></A>Including a Cabinet File in an Installation</H2>
+
+<P>This section describes including cabinet files in installations. </P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To include a cabinet file in a installation package</B>
+
+<OL>
+	<LI>Use a cabinet creation tool to compress the source files into a cabinet file. See <A HREF="over_8kkz.htm">Cabinet Files</A>.</LI>
+
+	<LI>The cabinet file must either be located in a data stream inside the .msi file or in a separate cabinet file located at the root of the source tree specified by the <A HREF="tref_6an9.htm">Directory Table</A>. </LI>
+
+	<LI>Determine whether the source is to be a compressed type or a mixed type that has both uncompressed and compressed files. See <A HREF="over_44z7.htm">Compressed and Uncompressed Sources</A>. Depending on the type of source image, set the compressed or uncompressed flag bits of the <A HREF="sref_8ge1.htm"><B>Word Count Summary</B> Property</A>. </LI>
+
+	<LI>Add a record to the <A HREF="tref_4n6t.htm">File table</A> for each of the files in the cabinet. Enter a file key in the File column that exactly matches the file key of the file in the cabinet. The file keys are case-sensitive. The file installation sequence in the File table and the cabinet must also be the same. The file sequence is specified by the sequence number in the Sequence column. To arrive at the sequence number for the first file in the cabinet, do the following. Find the existing record in the <A HREF="tref_4mlh.htm">Media table</A> having the greatest value in the DiskID column. The LastSequence field of this record gives the last file sequence number used on the media. In the File table, assign the first file of the new cabinet a sequence number that is greater than this. Assign sequence numbers to all the remaining files in the same order as in the cabinet file. For a description of the remaining record fields, see <A HREF="tref_4n6t.htm">File table</A>. </LI>
+
+	<LI>Add a record to the <A HREF="tref_4mlh.htm">Media table</A> for the cabinet. Specify a value in the DiskId field of this new record that is greater than the largest DiskId value already existing in the table. Put the name of the cabinet into the Cabinet field. This name must be in the form of a <A HREF="tref_5iyc.htm">Cabinet</A> data type. Prefix the name with a number sign "#" if the cabinet is a data stream stored in the .msi file. Note that if the cabinet is a data stream, the name of the cabinet is case-sensitive. If the cabinet is a separate file, the name of the file is not case-sensitive.</LI>
+
+	<LI>Determine the greatest file sequence number in the new cabinet by checking the Sequence column of the updated File table. Enter a value that is greater than this into the LastSequence field of the new record of the Media table. For a description of the remaining record fields, see <A HREF="tref_4mlh.htm">Media table</A>. </LI>
+
+	<LI>You can store the cabinet file in the installation package either by using a tool such as Msidb.exe or by using the installer's <A HREF="qref_778z.htm">Database Functions</A>. The following four steps explain how to add the cabinet from a program by using the database functions.</LI>
+
+	<LI>To add the cabinet to the installation package from a program open a view on the <A HREF="tref_9gbp.htm">_Streams table</A> of the database using <A HREF="qref_5h9z.htm"><B>MsiDatabaseOpenView</B></A>. </LI>
+
+	<LI>Use <A HREF="qref_5a07.htm"><B>MsiRecordSetString</B></A> to set the Name column of the _Streams table to the name appearing in the Cabinet column of the <A HREF="tref_4mlh.htm">Media table</A>. Omit the number sign #.</LI>
+
+	<LI>Use <A HREF="qref_4wq5.htm"><B>MsiRecordSetStream</B></A> to set the Data column of the of the _Streams table to the cabinet's data. </LI>
+
+	<LI>Use <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A> to update the record in the _Streams table.</LI>
+
+	<LI>To use Msidb.exe to add the cabinet file Mycab.cab to the installation package named Mydatabase.msi, use the following command line: Msidb.exe -d mydatabase.msi -a mycab.cab. In this case, the Cabinet column of the Media table should contain the string: #mycab.cab. </LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Including%20a%20Cabinet%20File%20in%20an%20Installation;%20RELEASE:%20August%202001;%20URL:%20over_3nla.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Including%20a%20Cabinet%20File%20in%20an%20Installation;%20RELEASE:%20August%202001;%20URL:%20over_3nla.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

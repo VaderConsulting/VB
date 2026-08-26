@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Property Property (SummaryInfo Object)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Property Property (SummaryInfo Object)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_property_property_summaryinfo_object_"></A>Property Property (SummaryInfo Object)</H1>
+
+<P>The Property property of the <A HREF="vref_7sxg.htm"><B>SummaryInfo</B> object</A> sets or gets the value for the specified property in the summary information stream. The properties are read when the <A HREF="vref_7sxg.htm"><B>SummaryInfo</B> object</A> is created, but they are not written until the <A HREF="vref_31r8.htm"><B>Persist</B> method</A> is called. Setting a property to Empty causes its removal; likewise, requesting a non-existent property returns an Empty value. Otherwise values may be transferred as strings, integers, or date (date time) types.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.Property(<I>pid</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_7sxg.htm"><B>SummaryInfo</B> object</A></DD>
+
+<DT><I>pid</I></DT>
+
+<DD>Required property ID of one of the summary properties.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P><B>Standard Summary Property IDs</B> </P>
+
+<P>(not an enumeration)</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Parameter name</TH>
+<TH align=left width=14%>Value</TH>
+<TH align=left width=55%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_DICTIONARY</TD>
+<TD width=14%>0</TD>
+<TD width=55%>Special format, not support by SummaryInfo object</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_CODEPAGE</TD>
+<TD width=14%>1</TD>
+<TD width=55%>VT_I2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_TITLE</TD>
+<TD width=14%>2</TD>
+<TD width=55%>VT_LPSTR</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_SUBJECT</TD>
+<TD width=14%>3</TD>
+<TD width=55%>VT_LPSTR</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_AUTHOR</TD>
+<TD width=14%>4</TD>
+<TD width=55%>VT_LPSTR</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_KEYWORDS</TD>
+<TD width=14%>5</TD>
+<TD width=55%>VT_LPSTR</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_COMMENTS</TD>
+<TD width=14%>6</TD>
+<TD width=55%>VT_LPSTR</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_TEMPLATE</TD>
+<TD width=14%>7</TD>
+<TD width=55%>VT_LPSTR</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_LASTAUTHOR</TD>
+<TD width=14%>8</TD>
+<TD width=55%>VT_LPSTR</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_REVNUMBER</TD>
+<TD width=14%>9</TD>
+<TD width=55%>VT_LPSTR</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_EDITTIME</TD>
+<TD width=14%>10</TD>
+<TD width=55%>VT_FILETIME</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_LASTPRINTED</TD>
+<TD width=14%>11</TD>
+<TD width=55%>VT_FILETIME</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_CREATE_DTM</TD>
+<TD width=14%>12</TD>
+<TD width=55%>VT_FILETIME</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_LASTSAVE_DTM</TD>
+<TD width=14%>13</TD>
+<TD width=55%>VT_FILETIME</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_PAGECOUNT</TD>
+<TD width=14%>14</TD>
+<TD width=55%>VT_I4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_WORDCOUNT</TD>
+<TD width=14%>15</TD>
+<TD width=55%>VT_I4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_CHARCOUNT</TD>
+<TD width=14%>16</TD>
+<TD width=55%>VT_I4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_THUMBNAIL</TD>
+<TD width=14%>17</TD>
+<TD width=55%>VT_CF (not supported)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_APPNAME</TD>
+<TD width=14%>18</TD>
+<TD width=55%>VT_LPSTR</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PID_SECURITY</TD>
+<TD width=14%>19</TD>
+<TD width=55%>VT_I4</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>Property Data Types</B> </P>
+
+<P>(not an enumeration)</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Parameter name</TH>
+<TH align=left width=12%>Value</TH>
+<TH align=left colspan=2 width=58%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>VT_I2</TD>
+<TD colspan=2 width=13%>2</TD>
+<TD width=57%>16-bit integer</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>VT_I4</TD>
+<TD colspan=2 width=13%>3</TD>
+<TD width=57%>32-bit integer</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>VT_LPSTR</TD>
+<TD colspan=2 width=13%>30</TD>
+<TD width=57%>String</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>VT_FILETIME</TD>
+<TD colspan=2 width=13%>64</TD>
+<TD width=57%>Date time (FILETIME, converted to Variant time)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>VT_CF</TD>
+<TD colspan=2 width=13%>71</TD>
+<TD width=57%>Clipboard format + data, not handled by <A HREF="vref_7sxg.htm"><B>SummaryInfo</B> object</A></TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

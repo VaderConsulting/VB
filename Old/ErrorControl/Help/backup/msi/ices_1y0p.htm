@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE59</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE59 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice59"></A>ICE59</H1>
+
+<P>ICE59 checks that advertised shortcuts belong to components that are installed by the target feature of the shortcut.</P>
+
+<P>Errors reported by ICE59 generally lead to the following behavior:
+
+<OL>
+	<LI>The advertised shortcut will launch the Windows Installer to install the feature listed in the Target column. </LI>
+
+	<LI>But because the <A HREF="tref_52hx.htm">FeatureComponents table</A> does not map the target feature to the component containing the shortcut, the keyfile of the component (which is activated by the shortcut) is not installed. </LI>
+
+	<LI>Therefore the shortcut is broken and will not do anything.</LI>
+</OL>
+
+<H4>Result</H4>
+
+<P>ICE59 posts an error if an advertised shortcut does not belong to the components that are installed by the target feature of the shortcut.</P>
+
+<H4>Example</H4>
+
+<P>ICE59 reports the following error for the example shown:</P>
+
+<PRE>The shortcut ShortcutB activates component ComponentB and advertises feature FeatureA, but there is no mapping between FeatureA and ComponentB in the FeatureComponents table. </PRE>
+
+<P>In this case, ShortcutB advertises FeatureA, and when activated, starts the key file of ComponentB. Yet ComponentB is never installed by FeatureA, so even after the installation-on-demand phase completes, the target of the shortcut does not exist.</P>
+
+<P>To fix this error, add a row to the <A HREF="tref_52hx.htm">FeatureComponents table</A> that associates FeatureA and ComponentB.</P>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Shortcut</TH>
+<TH align=left width=35%>Target</TH>
+<TH align=left width=35%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>ShortcutB</TD>
+<TD width=35%>FeatureA</TD>
+<TD width=35%>ComponentB</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_52hx.htm"><B>FeatureComponents Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Feature_</TH>
+<TH align=left width=70%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>FeatureA</TD>
+<TD width=70%>ComponentA</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Feature</TH>
+<TH align=left width=70%>Level</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>FeatureA</TD>
+<TD width=70%>10</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Component</TH>
+<TH align=left width=70%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>ComponentA</TD>
+<TD width=70%>FileA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>ComponentB</TD>
+<TD width=70%>FileB</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>File</TH>
+<TH align=left width=35%>Component_</TH>
+<TH align=left width=35%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>FileA</TD>
+<TD width=35%>ComponentA</TD>
+<TD width=35%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>FileB</TD>
+<TD width=35%>ComponentB</TD>
+<TD width=35%>2</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Unsecured Transforms</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_unsecured_transforms"></A>Unsecured Transforms</H2>
+
+<P>Transforms that have not been secured as described in <A HREF="updat_4oj7.htm">Secured Transforms</A> are unsecured transforms by default.</P>
+
+<P>To apply an unsecured transform when installing a package, pass the transform filenames in the <A HREF="pref_8q2h.htm"><B>TRANSFORMS</B> property</A> or command line string. Do not begin the string with the @ or | characters or set the <A HREF="over_9u91.htm">TransformsSecure</A> policy or the <A HREF="pref_0uwp.htm"><B>TRANSFORMSSECURE</B> property</A>. Note that you cannot combine unsecured transforms and <A HREF="updat_4oj7.htm">secured transforms</A> in the same TRANSFORMS list. </P>
+
+<P>If the package is installed or advertised as a <A HREF="over_2tf7.htm">per-user installation</A>, and has unsecured transforms, the installer saves the transform source in the Application Data folder in the user' profile. This enables a user to maintain their customization of a product while moving between computers.</P>
+
+<P>If the package is installed or advertised as a <A HREF="over_1tdf.htm">per-machine installation</A>, and uses unsecured transforms, the installer saves the transform source in the %windir%\Installer folder. This enables a user to maintain their customizations of a product while moving between computers.</P>
+
+<P>During a first-time installation of the package, the installer first searches for the transform at the source supplied by the <B>TRANSFORMS</B> property or command line string. If this source is unavailable, the installer then searches for the transform at the source of the package next to the .msi file. </P>
+
+<P>During a <A HREF="over_7mzy.htm">maintenance installation</A>, the installer searches for the transform at the cache location. If the cached copy of the transform becomes unavailable, the installer searches for the transform at the source of the package next to the .msi file. </P>
+
+<P>For more information, see <A HREF="updat_22ib.htm">Applying Transforms</A> and <A HREF="over_1lq1.htm">Source Resiliency</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Unsecured%20Transforms;%20RELEASE:%20August%202001;%20URL:%20updat_9qur.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Unsecured%20Transforms;%20RELEASE:%20August%202001;%20URL:%20updat_9qur.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

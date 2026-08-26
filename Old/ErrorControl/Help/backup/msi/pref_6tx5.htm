@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ALLUSERS Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ALLUSERS Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_allusers_property"></A>ALLUSERS Property</H1>
+
+<P>The ALLUSERS property determines where the configuration information of the installed application is stored. This property is used with the <A HREF="pref_4g6x.htm">DesktopFolder property</A>, <A HREF="pref_5bw9.htm">ProgramMenuFolder property</A>, <A HREF="pref_0mt5.htm">StartMenuFolder property</A>, and <A HREF="pref_3vnd.htm">StartupFolder property</A>.</P>
+
+<P>The following tables illustrate how the property affects the application installation when combined with the access privileges of the user and the type of operating system.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Windows&nbsp;NT/Windows&nbsp;2000</TH>
+<TH align=left width=25%>ALLUSERS = NULL</TH>
+<TH align=left width=25%>ALLUSERS = 1</TH>
+<TH align=left width=25%>ALLUSERS =2</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>User access privileges.</TD>
+<TD width=25%>Per-user installation using folders in user's personal profile.</TD>
+<TD width=25%>Not valid; returns an error stating the user does not have enough access privileges to install application.</TD>
+<TD width=25%>Per-user installation using folders in user's personal profile.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Administrator access privileges.</TD>
+<TD width=25%>Per-user installation using folders in user's personal profile.</TD>
+<TD width=25%>Per-machine installation using folders in "All Users" profile.</TD>
+<TD width=25%>Per-machine installation using folders in "All Users" profile.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Default Value</H4>
+
+<P>If ALLUSERS is not set, the installer does a per-user installation.</P>
+
+<H4>Remarks</H4>
+
+<P>It is strongly recommended that developers do not author packages that set the ALLUSERS property using a dialog or custom action on Windows95 or Windows98. An upgrade may fail on Windows95 or Windows98 if the ALLUSERS property is set using a dialog or a custom action. On Windows95 or Windows98, the installer ignores any attempt to set ALLUSERS by either the command line or by the <A HREF="tref_21d1.htm">Property table</A>. The ALLUSERS property can however still be set using a dialog or a custom action, and this will cause upgrades of that install to fail.</P>
+
+<P>See also <A HREF="over_2vn2.htm">How do I specify a per-user or per-machine installation?</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

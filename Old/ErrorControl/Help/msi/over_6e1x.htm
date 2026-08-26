@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Localizing a Windows Installer Package</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_national_language_support">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_localizing_a_windows_installer_package"></A>Localizing a Windows Installer Package</H1>
+
+<P>For general information about localization, see <A HREF="JavaScript:hhobj_1.Click()">National Language Support</A> in the Platform SDK documentation. Localizing a Microsoft® Windows® Installer package requires modifying the strings displayed by the user interface and may also require adding or modifying product resources. For example, localization may include the addition of international DLLs and localized files to the product.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To localize a Windows Installer package</B>
+
+<OL>
+	<LI>Prepare for localization when authoring the original installation package. Design the layout of localized files such that different language versions can safely coexist when installed on the user's computer. Organize files requiring localization into separate components and install these files into separate directories. Author a base installation database that has a neutral control page. See <A HREF="over_8tv2.htm">Preparing a Windows Installer package for localization</A>. </LI>
+
+	<LI>Always set the code page of the database being localized prior to adding any localized data. If the code page of the database being localized is neutral, see <A HREF="over_5tb9.htm">Setting the code page of a database</A>. To determine the code page see <A HREF="over_2j6t.htm">Determining an installation database's code page</A>.</LI>
+
+	<LI>Import a localized <A HREF="tref_5dk5.htm">Error table</A> and <A HREF="tref_7het.htm">ActionText table</A> into the database. For more information, see <A HREF="over_9h6b.htm">Localizing the Error and ActionText Tables</A> for a list of languages supported by the Platform SDK. You may import these tables using Msidb.exe or <A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A>. </LI>
+
+	<LI>Modify any of the other localizable columns in the database using a table editor or SQL queries. For the SQL access functions, see <A HREF="novr_9cxf.htm">Working With Queries</A>. The topics for the database tables identify which database columns can be localized. For more information, see the list of tables in <A HREF="tref_29ir.htm">Database Tables</A>. </LI>
+
+	<LI>Set the <A HREF="pref_7aex.htm"><B>ProductLanguage</B> property</A> in the <A HREF="tref_21d1.htm">Property table</A> to the LANGID of the database. When authoring a package as language-neutral, set the ProductLanguage property to 0 and use the MS Shell Dlg font as the text style for all authored dialogs. Because some fonts do not support all the character sets, you can ensure that the text is correctly displayed on all localized versions of the operating system by using this font.</LI>
+
+	<LI>Set the language field of the <A HREF="sref_80hl.htm"><B>Template Summary</B> Property</A> to reflect the LANGID of the database. </LI>
+
+	<LI>If the text strings in the <A HREF="sovr_99yl.htm">summary information stream</A> are localized, set the <A HREF="sref_4r5l.htm"><B>Codepage Summary</B> Property</A> to the code page.</LI>
+
+	<LI>Set the <A HREF="pref_4tfd.htm"><B>ProductCode</B> property</A> in the <A HREF="tref_21d1.htm">Property table</A> and set the package code in the <A HREF="sref_1am1.htm"><B>Revision Number Summary</B> Property</A> to a new package code. A localized product is considered a different product. For example, the German and English versions of an application are considered two different products and must have different product codes.</LI>
+
+	<LI>Localization may require modifying resources that already exist or the addition of new resources such as files or registry keys. Check to be sure that the component code is changed for every existing component that has had a new resource added. Other modifications may also require changes to a component's code. For more information see <A HREF="over_9crp.htm">Changing the Component Code</A>.</LI>
+
+	<LI>Be sure to save localization and other changes to the database by saving the package with the editing tool or by calling <A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A>.</LI>
+</OL>
+
+<P>For more information, see <A HREF="samp_2nhh.htm">A Localization Example</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Localizing%20a%20Windows%20Installer%20Package;%20RELEASE:%20August%202001;%20URL:%20over_6e1x.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Localizing%20a%20Windows%20Installer%20Package;%20RELEASE:%20August%202001;%20URL:%20over_6e1x.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

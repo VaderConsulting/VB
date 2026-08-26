@@ -1,0 +1,1 @@
+Reads a list of hosts from a database, pings them in turn, and updates the database with the ping details.

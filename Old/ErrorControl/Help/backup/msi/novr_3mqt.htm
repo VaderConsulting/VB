@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using a Sequence Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_using_a_sequence_table"></A>Using a Sequence Table</H2>
+
+<P>The authoring of the sequence tables is an essential part of developing an installer package because these tables specify the order of execution for the <A HREF="acts_4lmb.htm">standard actions</A> that control the installation process and display the user interface dialog boxes.</P>
+
+<P>There are three modes of installation and two types of sequence tables for each mode. The three separate installation modes currently supported by the installer are:
+
+<UL>
+	<LI>Simple Installation</LI>
+
+	<LI>Administrative Installation</LI>
+
+	<LI>Advertisement Installation</LI>
+</UL>
+
+<P>The sequence tables each have three fields: Action, Condition, and Sequence. The Action field names either a standard or custom action or a user defined dialog box or sequence the installer executes. The Condition field allows the author to specify a logical expression that controls whether an action or user-defined dialog is executed or displayed. If the Condition field is blank or contains an expression that evaluates to True, the action or dialog is executed or displayed. The action or dialog is skipped if the expression evaluates to False. The Sequence field specifies the order of execution of each action or user-defined dialog in the table.</P>
+
+<P>Each of these installation modes processes the user interface sequence tables and the execute sequence tables. The user interface sequence tables are only processed if the installer was initialized with the user interface display level set to Reduced or Full. See the <A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> reference for more information about user interface display levels.</P>
+
+<P>The user interface sequence tables typically contains standard actions related to collecting system information that are displayed to the user through the user interface. The user interface is displayed by recording the foreign keys to the names of dialog boxes in the <A HREF="tref_51wl.htm">dialog table</A> in the Action field of the user interface sequence table. The user then has the opportunity to modify or accept the system information and begin the installation, which occurs when the execute sequence table is processed.</P>
+
+<P>During a simple installation, the <A HREF="aref_986m.htm">INSTALL</A> top-level action is executed which in turn processes the <A HREF="tref_1git.htm">InstallUISequence table</A> and the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>.</P>
+
+<P>An Administrative Installation is typically initiated by a network administrator to assign and install applications for individual users and groups of users. During this type of installation, the <A HREF="aref_4hbi.htm">ADMIN</A> top-level action is executed which processes the <A HREF="tref_5lnp.htm">AdminUISequence table</A> and the <A HREF="tref_70f9.htm">AdminExecuteSequence table</A>.</P>
+
+<P>To <A HREF="over_1v1w.htm">advertise</A> an application or feature, the installer must be initiated with the <A HREF="aref_2o8e.htm">ADVERTISE</A>. During this type of installation, the <A HREF="tref_3rvp.htm">AdvtUISequence table</A> and <A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A> are processed.</P>
+
+<P>When authoring any sequence table, it is good practice to use the sequence number for standard actions from the suggested sequences in the topics below. For standard actions which have no standard position in the sequence table such as <A HREF="aref_69bi.htm">ForceReboot</A>, <A HREF="aref_0cdq.htm">ValidateProductID</A>, and <A HREF="aref_2sku.htm">InstallExecute</A>, use a sequence number that is a multiple of ten to identify the action as a standard action. For custom actions, use a sequence number that is not a multiple of ten to differentiate it from standard actions in the sequence table.</P>
+
+<P>For suggested action sequences for each sequence table, see the following topics:
+
+<UL>
+	<LI><A HREF="novr_9qcl.htm">Suggested InstallUISequence</A> </LI>
+
+	<LI><A HREF="novr_0o85.htm">Suggested InstallExecuteSequence</A> </LI>
+
+	<LI><A HREF="novr_7p9h.htm">Suggested AdminUISequence</A> </LI>
+
+	<LI><A HREF="novr_1cx1.htm">Suggested AdminExecuteSequence</A> </LI>
+
+	<LI><A HREF="novr_7r1h.htm">Suggested AdvtUISequence</A> </LI>
+
+	<LI><A HREF="novr_8yp1.htm">Suggested AdvtExecuteSequence</A> </LI>
+</UL>
+
+<P>For a detailed description of sequence tables and how standard actions are executed, see the <A HREF="novr_9nqd.htm">sequence table detailed example</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

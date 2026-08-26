@@ -1,0 +1,63 @@
+library GetDesktopBitmap;
+
+uses
+  SysUtils,
+  Classes,
+  Windows,
+  Graphics,
+  Jpeg;
+
+function getDesktop(nWidth : Integer; nHeight : Integer; blnJpeg : Boolean; JPGCompressQuality:Integer; strFileName : String): Integer; stdcall;
+
+var
+    bmp: TBitmap;
+    hDesktop : Longint;
+    hdcCompatible : Longint;
+    hbmScreen : HBITMAP;
+    jpg: TJPEGImage;
+    strFileNameTemp : String;
+begin
+  hDesktop := GetDC(GetDesktopWindow);
+  hdcCompatible := CreateCompatibleDC(hDesktop);
+  if nWidth <> 0 then
+    begin
+      hbmScreen := CreateCompatibleBitmap(hDesktop,nWidth,nHeight);
+      SelectObject(hdcCompatible, hbmScreen);
+      StretchBlt (hdcCompatible,0,0,nWidth,nHeight,hDesktop,0,0,GetDeviceCaps(hDesktop, HORZRES),GetDeviceCaps(hDesktop, VERTRES),SRCCOPY);
+    end
+  else
+    begin
+      hbmScreen := CreateCompatibleBitmap(hDesktop,GetDeviceCaps(hDesktop, HORZRES),GetDeviceCaps(hDesktop, VERTRES));
+      SelectObject(hdcCompatible, hbmScreen);
+      BitBlt(hdcCompatible,0,0,GetDeviceCaps(hDesktop, HORZRES),GetDeviceCaps(hDesktop, VERTRES),hDesktop,0,0,SRCCOPY);
+    end;
+  bmp := TBitmap.Create;
+  bmp.Handle := hbmScreen;
+
+  if blnJpeg then
+    begin
+      strFileNameTemp:=strFileName + '.bmp';
+      jpg:= TJpegImage.Create();
+      bmp.SaveToFile(strFileNameTemp);
+      bmp.LoadFromFile(strFileNameTemp);
+      jpg.Assign(bmp);
+      if (JPGCompressQuality <10) or (JPGCompressQuality> 100) then
+        jpg.CompressionQuality :=90
+      else
+        jpg.CompressionQuality :=JPGCompressQuality;
+      jpg.Compress;
+      jpg.SaveToFile (strFileName);
+      jpg.Free;
+      SysUtils.DeleteFile(strFileNameTemp);
+    end
+  else
+    bmp.SaveToFile(strFileName);
+  bmp.Free;
+  result := 1;
+end;
+
+exports
+  getDesktop;
+begin
+
+end.

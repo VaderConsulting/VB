@@ -1,0 +1,26 @@
+<Role Name="Secondary">
+	<Config>
+		<Central>SERVER</Central>
+		<Parent>SERVER</Parent>
+		<LastUpdate>24/02/2003 11:14:25 AM</LastUpdate>
+		<NextUpdate>24/02/2003 12:14:25 PM</NextUpdate>
+		<LastSync>24/02/2003 11:14:55 AM</LastSync>
+		<NextSync>25/02/2003 02:00:00 AM</NextSync>
+		<LastStatus>24/02/2003 11:23:41 AM</LastStatus>
+		<NextStatus>24/02/2003 11:28:41 AM</NextStatus>
+		<StatusInterval>5</StatusInterval>
+		<UpdateInterval>60</UpdateInterval>
+		<SyncTime>02:00</SyncTime>
+		<MessageRetentionPeriod>24</MessageRetentionPeriod>
+		<ProcessInstructions>Enabled</ProcessInstructions>
+		<ReportErrors>Enabled</ReportErrors>
+		<ReportWarnings>Enabled</ReportWarnings>
+		<ReportInformation>Enabled</ReportInformation>
+		<Push>Disabled</Push>
+		<Sync>Enabled</Sync>
+		<Update>Enabled</Update>
+		<PushTime>00:25</PushTime>
+		<DeleteMessageUponReachingDestination>Enabled</DeleteMessageUponReachingDestination>
+	</Config>
+</Role>
+

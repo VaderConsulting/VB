@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Qualified Components</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="qualified components [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_qualified_components"></A>Qualified Components</H1>
+
+<P>A qualified component is a method of single-level indirection, similar to a pointer. Qualified components are primarily used to group components with parallel functionality into categories. For example, if you have 30 components listed in the <A HREF="tref_09np.htm">Component table</A> that are the same Microsoft® Word fax template localized into 30 languages, you can group these together into a category of qualified components by using the <A HREF="tref_7xt1.htm">PublishComponent table</A>.</P>
+
+<P>Qualified components are entered in the Component table in the same way as ordinary components. Every component must have a unique component ID GUID and component identifier specified in the Component table. In addition, qualified components are associated with a category GUID and a text-string qualifier in the PublishComponent table. Qualified components are referenced by the category GUID and the qualifier, which just points to the ordinary component in the Component table.</P>
+
+<P>For example, a qualified component ID GUID can point to different language versions of a resource DLL. In this case, the group of localized resource DLLs comprises the category and the numeric locale identifiers (LCID) strings are commonly used as the qualifiers. A developer could author an installation package that uses these qualified components to do the following.
+
+<UL>
+	<LI>Find the path to a particular language version of the resource DLL using <A HREF="msi_3vn8.htm"><B>MsiProvideQualifiedComponent</B></A> or <A HREF="msi_8n94.htm"><B>MsiProvideQualifiedComponentEx</B></A> and install the resource.</LI>
+
+	<LI>Determine all the language versions of the resource DLL that are present by calling <A HREF="msi_2veb.htm"><B>MsiEnumComponentQualifiers</B></A>.</LI>
+
+	<LI>Prepare the application to support additional languages. A future language pack for the application can use the qualified component to add more language versions of the resource DLL.</LI>
+</UL>
+
+<P>For more information, see <A HREF="over_8837.htm">Using Qualified Components</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

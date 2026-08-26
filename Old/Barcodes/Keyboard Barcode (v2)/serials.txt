@@ -1,0 +1,5 @@
+## ID,Part No ID,Format,Example
+## Square brackets indicate the portion of the scanned code that comprises the serial number.
+## 
+1,1,1S6266E5A[???????],1S6266E5ABN161L1
+2,2,[???????],S2378297

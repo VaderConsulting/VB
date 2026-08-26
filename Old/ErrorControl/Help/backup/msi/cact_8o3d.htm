@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action Security</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_custom_action_security"></A>Custom Action Security</H2>
+
+<P>The installer runs custom actions with user privileges by default in order to limit the access of custom actions to the system. The installer may run custom actions with elevated privileges if a managed application is being installed or if the system policy has been specified for elevated privileges. </P>
+
+<H4>Windows 2000</H4>
+
+<P>For Microsoft® Windows® 2000, if the <B>msidbCustomActionTypeNoImpersonate</B> bit is not set for a custom action, the installer runs the custom action with user-level privileges. For more information, see <A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A>. </P>
+
+<P>If the <B>msidbCustomActionTypeNoImpersonate </B>bit is set and a managed application is being installed with administrator permission, the installer may run the custom action with elevated privileges. However, if a user attempts to install the managed application without administrator permission, the installer runs the application with user level privileges regardless of whether <B>msidbCustomActionTypeNoImpersonate </B>is set.</P>
+
+<H4>Windows NT</H4>
+
+<P>For Microsoft Windows NT® 4.0, if the <B>msidbCustomActionTypeNoImpersonate</B> bit is not set for a custom action, the installer runs the custom action with user level privileges. For more information, see <A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A>. </P>
+
+<P>If the <B>msidbCustomActionTypeNoImpersonate </B>bit is set, and the <A HREF="over_77xb.htm">AlwaysInstallElevated (Per-User)</A> or <A HREF="over_3xnj.htm">AlwaysInstallElevated (Per-Machine)</A> policies are set, the installer may run the custom action with elevated privileges. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Passing Null as the argument of Windows Installer Functions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_passing_null_as_the_argument_of_windows_installer_functions"></A>Passing Null as the argument of Windows Installer Functions</H1>
+
+<P>Windows Installer functions that return data in a user provided memory location should not be called with NULL as the value for the pointer. These functions return a string or return data as integer pointers, but return inconsistent values when passing NULL as the value for the output argument.</P>
+
+<P>Do not pass Null as the value of the output argument for any of the following functions. </P>
+
+<P><A HREF="qref_7u2h.htm"><B>MsiGetProperty</B></A> </P>
+
+<P><A HREF="qref_202v.htm"><B>MsiRecordGetString</B></A> </P>
+
+<P><A HREF="qref_3t2c.htm"><B>MsiFormatRecord</B></A> </P>
+
+<P><A HREF="qref_7g14.htm"><B>MsiGetSourcePath</B></A> </P>
+
+<P><A HREF="qref_05bc.htm"><B>MsiGetTargetPath</B></A> </P>
+
+<P><A HREF="qref_3wmd.htm"><B>MsiGetFeatureState</B></A> </P>
+
+<P><A HREF="qref_541e.htm"><B>MsiViewGetError</B></A> </P>
+
+<P><A HREF="qref_1ypl.htm"><B>MsiSummaryInfoGetProperty</B></A> </P>
+
+<P><A HREF="qref_6je6.htm"><B>MsiEvaluateCondition</B></A> </P>
+
+<P><A HREF="qref_5ub8.htm"><B>MsiGetFeatureCost</B></A> </P>
+
+<P><A HREF="qref_3wmd.htm"><B>MsiGetFeatureState</B></A> </P>
+
+<P><A HREF="qref_47l1.htm"><B>MsiGetComponentState</B></A> </P>
+
+<P><A HREF="qref_5ub8.htm"><B>MsiGetFeatureCost</B></A> </P>
+
+<P><A HREF="qref_3k4z.htm"><B>MsiGetFeatureValidStates</B></A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

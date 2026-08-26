@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Configuring Add/Remove Programs with Windows Installer</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_configuring_add_remove_programs_with_windows_installer"></A>Configuring Add/Remove Programs with Windows Installer</H1>
+
+<P>You can supply all the information needed to configure Add/Remove Programs in the Control Panel by setting the values of certain installer properties in your application's Windows Installer package. Setting these properties automatically writes the corresponding values into the registry. If the installer detects that the product is marked for complete removal, operations are automatically added to the script to remove the Add/Remove Control Panel information for the product.</P>
+
+<P>If an application is not registered, it is not listed in the Add/Remove Programs control panel. For more information, see <A HREF="over_0l15.htm">How do I add and remove an application and leave no trace in the registry?</A> .</P>
+
+<P>Applications appear only on the Add/Remove Control Panel of users that have installed the applications as per-user. For more information see <A HREF="over_2tf7.htm">Per-User Installations</A>.</P>
+
+<P>Note that installation packages that use the <A HREF="pref_1ypl.htm"><B>LIMITUI</B> property</A> must also contain the <A HREF="pref_1g8p.htm"><B>ARPNOMODIFY</B></A>. This is required for a user to obtain the correct behavior from the Add/Remove Programs control panel utility when attempting to configure a product.</P>
+
+<P>The installer uses the following <A HREF="prop_0gfn.htm">public properties</A> to manage the Add/Remove Programs Control Panel.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Property name</TH>
+<TH align=left width=75%>Brief description of property</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_08e1.htm"><B>ARPAUTHORIZEDCDFPREFIX</B></A></TD>
+<TD width=75%>URL of the update channel for the application.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_7wqh.htm"><B>ARPCOMMENTS</B></A></TD>
+<TD width=75%>Provides Comments for the Add/Remove Control Panel. Provides the value the installer writes under the <A HREF="app_4hix.htm">Uninstall Registry Key</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_60hl.htm"><B>ARPCONTACT</B></A></TD>
+<TD width=75%>Provides the Contact for the Add/Remove Control Panel. Provides the value the installer writes under the <A HREF="app_4hix.htm">Uninstall Registry Key</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_8d4p.htm"><B>ARPINSTALLLOCATION</B></A></TD>
+<TD width=75%>Fully qualified path to the application's primary folder.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_067t.htm"><B>ARPHELPLINK</B></A></TD>
+<TD width=75%>Internet address, or URL, for technical support.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_8vp5.htm"><B>ARPHELPTELEPHONE</B></A></TD>
+<TD width=75%>Technical support phone numbers.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_1g8p.htm"><B>ARPNOMODIFY</B></A></TD>
+<TD width=75%>Disables functionality that would modify the product. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_46bd.htm"><B>ARPNOREMOVE</B></A></TD>
+<TD width=75%>Disables functionality that would remove the product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_9wft.htm"><B>ARPNOREPAIR</B></A></TD>
+<TD width=75%>Disables the Repair button in the Programs Wizard.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_8x6h.htm"><B>ARPPRODUCTICON</B></A></TD>
+<TD width=75%>Specifies the primary icon for the installation package. Provides the value the installer writes under the <A HREF="app_4hix.htm">Uninstall Registry Key</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_91tl.htm"><B>ARPREADME</B></A></TD>
+<TD width=75%>Provides the ReadMe for the Add/Remove Control Panel. Provides the value to be written under the <A HREF="app_4hix.htm">Uninstall Registry Key</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_9s3d.htm"><B>ARPSIZE</B></A></TD>
+<TD width=75%>Estimated size of the application in kilobytes.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_0nzt.htm"><B>ARPSYSTEMCOMPONENT</B></A></TD>
+<TD width=75%>Prevents display of application in Add/Remove programs list.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_2upl.htm"><B>ARPURLINFOABOUT</B></A></TD>
+<TD width=75%>URL for application's home page.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%><A HREF="pref_7hmh.htm"><B>ARPURLUPDATEINFO</B></A></TD>
+<TD width=75%>URL for application update information.</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Configuring%20Add%2FRemove%20Programs%20with%20Windows%20Installer;%20RELEASE:%20August%202001;%20URL:%20over_1e0i.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Configuring%20Add%2FRemove%20Programs%20with%20Windows%20Installer;%20RELEASE:%20August%202001;%20URL:%20over_1e0i.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

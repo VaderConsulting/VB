@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Rollback Installation</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="rollback installation [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_rollback_installation"></A>Rollback Installation</H1>
+
+<P>When the Microsoft® Windows® Installer processes the installation script for the installation of a product or application, it simultaneously generates a rollback script and saves a copy of every file deleted during the installation. These files are kept in a hidden system directory and are automatically deleted once the installation is successfully completed. If however the installation is unsuccessful, the installer automatically performs a rollback installation that returns the system to its original state.</P>
+
+<P>Automatic rollback of an unsuccessful installation is the default behavior of the installer. To disable rollback during an installation use one of the following: 
+
+<UL>
+	<LI><A HREF="pref_26pl.htm">DISABLEROLLBACK Property</A> </LI>
+
+	<LI><A HREF="pref_8wop.htm">PROMPTROLLBACKCOST Property</A> </LI>
+
+	<LI><A HREF="aref_6bla.htm">DisableRollback Action</A> </LI>
+
+	<LI><A HREF="over_53a7.htm">DisableRollback Policy (Per-User)</A></LI>
+
+	<LI><A HREF="over_43of.htm">DisableRollback Policy (Per-Machine)</A></LI>
+
+	<LI><A HREF="href_7awk.htm">EnableRollback ControlEvent</A> </LI>
+</UL>
+
+<P>Whenever rollback is disabled, the installer sets the <A HREF="pref_9ojd.htm">RollbackDisabled property</A>.</P>
+
+<P>If an installation uses <A HREF="cact_5t2r.htm">custom actions</A>, additional authoring of the installation package is required to use rollback functionality. For more information, see <A HREF="cact_0k8j.htm">Rollback Custom Actions</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,246 @@
+VERSION 5.00
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
+Begin VB.UserDocument ChatDoc 
+   ClientHeight    =   5640
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   8640
+   HScrollSmallChange=   225
+   ScaleHeight     =   5640
+   ScaleWidth      =   8640
+   VScrollSmallChange=   225
+   Begin MSWinsockLib.Winsock ConnSocket 
+      Left            =   8160
+      Top             =   5160
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
+   Begin VB.TextBox txtMain 
+      Height          =   4095
+      Left            =   360
+      Locked          =   -1  'True
+      MultiLine       =   -1  'True
+      ScrollBars      =   2  'Vertical
+      TabIndex        =   8
+      Top             =   360
+      Width           =   5055
+   End
+   Begin VB.ListBox lstUsers 
+      Height          =   3375
+      Left            =   5640
+      TabIndex        =   6
+      Top             =   1080
+      Width           =   2655
+   End
+   Begin VB.ComboBox cmbChatRooms 
+      Height          =   315
+      Left            =   5640
+      Sorted          =   -1  'True
+      Style           =   2  'Dropdown List
+      TabIndex        =   2
+      Top             =   360
+      Width           =   2655
+   End
+   Begin VB.CommandButton cmdSend 
+      Caption         =   "Send"
+      Default         =   -1  'True
+      Height          =   375
+      Left            =   5640
+      TabIndex        =   1
+      Top             =   4920
+      Width           =   1575
+   End
+   Begin VB.TextBox txtSend 
+      Height          =   375
+      Left            =   360
+      TabIndex        =   0
+      Top             =   4920
+      Width           =   5055
+   End
+   Begin VB.Label lblUserList 
+      Caption         =   "People in this Room"
+      Height          =   375
+      Left            =   5640
+      TabIndex        =   7
+      Top             =   840
+      Width           =   2415
+   End
+   Begin VB.Label lblData 
+      Caption         =   "Type Your Message and Click ""Send,"" or Hit Enter"
+      Height          =   375
+      Left            =   360
+      TabIndex        =   5
+      Top             =   4680
+      Width           =   3975
+   End
+   Begin VB.Label lblChatRooms 
+      Caption         =   "Chat Rooms"
+      Height          =   375
+      Left            =   5640
+      TabIndex        =   4
+      Top             =   120
+      Width           =   2535
+   End
+   Begin VB.Label lblMessages 
+      Caption         =   "Messages"
+      Height          =   375
+      Left            =   360
+      TabIndex        =   3
+      Top             =   120
+      Width           =   3135
+   End
+End
+Attribute VB_Name = "ChatDoc"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Dim UserName As String
+Dim CurrentChatRoom As String
+Dim ServerName As String
+
+Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
+
+Option Explicit
+
+Private Sub cmbChatRooms_Change()
+    Dim strSend As String
+    strSend = "#" & CHATROOM_CHANGE & VALUE_SEPARATOR & cmbChatRooms.Text
+    ConnSocket.SendData strSend
+    
+    CurrentChatRoom = cmbChatRooms.Text
+End Sub
+
+Private Sub cmdSend_Click()
+    Dim strSend As String
+    strSend = "#" & INCOMING_MESSAGE & VALUE_SEPARATOR & txtSend.Text
+    ConnSocket.SendData strSend
+    
+    txtSend.Text = ""
+End Sub
+
+Private Function FindRequestType(Data As String) As Integer
+    Dim comp As Integer
+    
+    comp = InStr(0, tempString, UPDATE_USERLIST, vbTextCompare)
+    
+    If comp = 1 Then
+        FindRequestType = iUPDATE_USERLIST
+        Exit Function
+    End If
+    
+    comp = InStr(0, tempString, UPDATE_CHATROOM_LIST, vbTextCompare)
+    
+    If comp = 1 Then
+        FindRequestType = iUPDATE_CHATROOM_LIST
+        Exit Function
+    End If
+
+    comp = InStr(0, tempString, INCOMING_MESSAGE, vbTextCompare)
+    
+    If comp = 1 Then
+        FindRequestType = iINCOMING_MESSAGE
+        Exit Function
+    End If
+
+End Function
+
+Private Sub ConnSocket_DataArrival(ByVal bytesTotal As Long)
+    Dim tempString As String
+    Dim strValue() As String
+    Dim RequestType As Integer
+    
+    ' Receive the data.
+    ConnSocket.GetData tempString
+    
+    ' Split the string into all of it glorious values,
+    ' using, of course, the value separator as a
+    ' value separator
+    strValue = Split(tempString, COMMAND_SEPARATOR)
+    
+    ' Check to see if we have a data change, such as
+    ' chat room change or user name change, or if we
+    ' have data to display.
+    RequestType = FindRequestType(strValue(0))
+    
+    If RequestType = iUPDATE_USERLIST Then
+        Dim strUserList() As String
+        Dim strCount() As String
+        Dim Count As Double
+        Dim Counter As Double
+        
+        lstUsers.Clear
+        
+        strCount = Split(strValue(1), COUNT_SEPARATOR)
+        Count = Val(strCount(0))
+        
+        strUserList = Split(strCount(1), VALUE_SEPARATOR)
+        
+        For Counter = 0 To Count
+            lstUsers.AddItem strUserList(Counter)
+        Next
+    Else
+    If RequestType = iUPDATE_CHATROOM_LIST Then
+        Dim strChatList() As String
+        Dim strCount() As String
+        Dim Count As Double
+        Dim Counter As Double
+        
+        cmbChatRooms.Clear
+        
+        strCount = Split(strValue(1), COUNT_SEPARATOR)
+        Count = Val(strCount(0))
+        
+        strChatList = Split(strCount(1), VALUE_SEPARATOR)
+        
+        For Counter = 0 To Count
+            cmbChatRooms.AddItem strChatList(Counter)
+        Next
+    Else
+    If RequestType = iINCOMING_MESSAGE Then
+        Dim strUserName As String
+        Dim strNameAndMessage() As String
+        Dim strMessage As String
+        Dim strOutput As String
+        
+        strNameAndMessage = Split(strValue(1), VALUE_SEPARATOR)
+        strUserName = strNameAndMessage(0)
+        strMessage = strNameAndMessage(1)
+        
+        strOutput = "[" & strUserName & "] " & strMessage
+        
+        txtMain.Text = txtMain.Text & vbCrLf & strOutput
+        
+    End If
+        
+End Sub
+
+Private Sub txtMain_Change()
+    txtMain.SelStart = Len(txtMain.Text)
+End Sub
+
+Private Sub UserDocument_Initialize()
+    'Dim retVal As Long
+    Dim strSend As String
+    UserName = InputBox("Please Enter the User Name you want to use:", "Enter User Name")
+    'Do While Not retVal = 0
+        ServerName = InputBox("Please Enter the server you wish to connect to:", "Enter Server")
+        'retVal = ConnSocket.Connect(ServerName, 6123)
+        ConnSocket.Connect ServerName, 6123
+    'Loop
+    
+    Do Until ConnSocket.State = sckConnected
+    Loop
+    
+    strSend = "#" & USER_CHANGE & VALUE_SEPARATOR & UserName
+    
+    ConnSocket.SendData strSend
+    
+    CurrentChatRoom = DEFAULT_CHATROOM
+    
+    cmbChatRooms.AddItem DEFAULT_CHATROOM
+    cmbChatRooms.Text = DEFAULT_CHATROOM
+        
+End Sub
+

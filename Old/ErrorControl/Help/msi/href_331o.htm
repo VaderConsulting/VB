@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>PushButton Control</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="PushButton Control">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_pushbutton_control"></A>PushButton Control</H1>
+
+<P>This control displays a basic push button, also known as a command button.</P>
+
+<H4>Control Attributes</H4>
+
+<P>You can use the following attributes with this control. To change the value of an attribute using an event, subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A> and list the attribute's identifier in the Attribute column. Enter the Identifier of the ControlEvent in the Event column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Attribute identifier</TH>
+<TH align=left width=17%>Hexadecimal bit</TH>
+<TH align=left width=64%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2w6d.htm">Position</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Position of control in the dialog box.
+<P>Enter the control's width, height, and coordinates of the control's left corner into the Width, Height, X, and Y columns of the <A HREF="tref_6nad.htm">Control table</A>. Use <A HREF="href_9pir.htm">installer units</A> for length and distance.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2kmd.htm">Text</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>This control attribute can specify the text displayed by the control, an image stored in the Binary table, or an image set at run-time.
+<P>To specify text, enter the text string into the Text column of the Control table. To set the font and font style of this text, prefix the string of displayed characters with {\<I>style</I>}. Where <I>style</I> is an identifier listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. Use {&amp;<I>style</I>} to apply the base font and font style.</P>
+
+<P>To specify an icon or bitmap image stored in the <A HREF="tref_04px.htm">Binary table</A>, do not set the <A HREF="href_3tut.htm">ImageHandle control attribute</A> and enter the primary key of the image's record from the Name column of the Binary table into the Text column of the <A HREF="tref_6nad.htm">Control table</A> record for the control.</P>
+
+<P>To specify an icon or bitmap image loaded into memory at run-time, set the ImageHandle control attribute in the Attributes column of the Control table. The control must subscribe to a control event listed in the <A HREF="tref_6m3p.htm">EventMapping table</A> with the Text control attribute specified in the Attribute column. At run-time, the Text control attribute is the handle to an icon or bitmap loaded into memory.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8bqd.htm">Visible</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000001</P>
+</TD>
+<TD width=64%>Hidden control.
+<P>Visible control.</P>
+
+<P>Include this bit in the bit word of the Attributes column in the <A HREF="tref_6nad.htm">Control table</A> to make the control visible or hidden upon its creation. </P>
+
+<P>You can also hide or show a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2ig5.htm">Enabled</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000002</P>
+</TD>
+<TD width=64%>Control in a disabled state.
+<P>Control in an enabled state. </P>
+
+<P>Include this bit the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> to enable the control on creation.</P>
+
+<P>You can also enable or disable a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0vad.htm">Sunken</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000004</P>
+</TD>
+<TD width=64%>Display the default visual style.
+<P>Display the control with a sunken, 3D, look.</P>
+
+<P>Include these bits in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_761x.htm">RTLRO</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000020</P>
+</TD>
+<TD width=64%>Text in the control is displayed in a Left-To-Right-Reading-Order.
+<P>Text in the control is displayed in a Right-To-Left-Reading-Order.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_3tut.htm">ImageHandle</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00010000</P>
+</TD>
+<TD width=64%>The installer uses the ImageHandle control attribute to determine whether the <A HREF="href_2kmd.htm">Text control attribute</A> is an image specified in the <A HREF="tref_04px.htm">Binary table</A> or the handle to an image loaded in memory at run-time.
+<P>To specify an icon or bitmap image stored in the <A HREF="tref_04px.htm">Binary table</A>, do not set the <A HREF="href_3tut.htm">ImageHandle control attribute</A> and enter the primary key of the image's record from the Name column of the Binary table into the Text column of the <A HREF="tref_6nad.htm">Control table</A> record for the control.</P>
+
+<P>To specify an icon or bitmap image loaded into memory at run-time, set the ImageHandle control attribute in the Attributes column of the Control table. The control must subscribe to a control event listed in the <A HREF="tref_6m3p.htm">EventMapping table</A> with the Text control attribute specified in the Attribute column. At run-time, the Text control attribute is the handle to an icon or bitmap loaded into memory.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0bxh.htm">Bitmap</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00040000</P>
+</TD>
+<TD width=64%>Text in the control is specified in the Text column of the <A HREF="tref_6nad.htm">Control table</A>.
+<P>The button has the BS_BITMAP style, text in the control is replaced by a bitmap image. The Text column in the Control table is used as a foreign key to the <A HREF="tref_04px.htm">Binary table</A>.</P>
+
+<P>Include this bit in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A>.</P>
+
+<P>Do not set the Icon and Bitmap style bits simultaneously. The button cannot contain both a bitmap image and text.</P>
+
+<P>To set the font and font style of a text string, prefix the string of characters to be displayed with {\<I>style</I>}. Where <I>style</I> is an identifier listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. Use {&amp;<I>style</I>} to apply the base font and font style.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_9v8l.htm">Icon Control</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00080000</P>
+</TD>
+<TD width=64%>Text in the control is specified in the Text column of the <A HREF="tref_6nad.htm">Control table</A>.
+<P>The button has the BS_ICON style, text in the control is replaced by an icon image. The Text column in the Control table is used as a foreign key to the <A HREF="tref_04px.htm">Binary table</A>. </P>
+
+<P>Include this bit in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A>.</P>
+
+<P>Do not set the Icon and Bitmap bits simultaneously. The button cannot contain both an icon image and text.</P>
+
+<P>To set the font and font style of a text string, prefix the string of characters to be displayed with {\<I>style</I>}. Where <I>style</I> is an identifier listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. Use {&amp;<I>style</I>} to apply the base font and font style.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_6qn9.htm">FixedSize</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00100000</P>
+</TD>
+<TD width=64%>Stretch the icon image to fit the control.
+<P>Crop or center the icon image in the control. </P>
+
+<P>Include this bit in the bit word of the Attributes column of the <A HREF="tref_78it.htm">BBControl table</A> or the <A HREF="tref_6nad.htm">Control table</A>. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0oo5.htm">IconSize</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00200000</P>
+
+<P>0x00400000</P>
+
+<P>0x00600000</P>
+</TD>
+<TD width=64%>Load the first image.
+<P>Load the first 16x16 image.</P>
+
+<P>Load the first 32x32 image.</P>
+
+<P>Load the first 48x48 image.</P>
+
+<P>An icon file can contain different size images of the same icon. Include the value of the appropriate bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A> </P>
+
+<P>If these bits are not set, the installer ignores the FixedSize attribute and the image is stretched to fit the control rectangle. If both the IconSize bits and the FixedSize bits are set, an image smaller than the control is centered and an image is larger than the control it is shrunk to fit.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The control is created with the "BUTTON" class and uses the BS_MULTILINE, WS_CHILD, WS_TABSTOP, WS_GROUP styles.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20PushButton%20Control;%20RELEASE:%20August%202001;%20URL:%20href_331o.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20PushButton%20Control;%20RELEASE:%20August%202001;%20URL:%20href_331o.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

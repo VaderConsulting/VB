@@ -1,0 +1,11 @@
+20010622 11:24:49 Application started
+20010622 11:24:49 Transfer started
+20010622 11:24:49 Opening ADO Connection
+20010622 11:24:49 Retrieving members of pb_Helpdesk in Domain A000677
+20010622 11:25:05 Deleting Admin Users from HRMF_Admin_User
+20010622 11:25:05 Updating HRMF_Admin_User with Admin users
+20010622 11:25:08 Retrieving modified users from HRMF_D
+20010622 11:25:08 Getting time from SQL Server
+20010622 11:25:08 Retrieving modified records from Recordset
+20010622 11:25:08 Modifying mailboxes on SVNTDEV-54
+20010622 11:25:10 Application ended cleanly.

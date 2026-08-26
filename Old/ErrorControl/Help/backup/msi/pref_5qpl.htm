@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ProductState Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ProductState Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_productstate_property"></A>ProductState Property</H1>
+
+<P>The installer sets the ProductState property to the installation state for the product at initialization. This property is set to one of the following INSTALLSTATE data types returned by <A HREF="msi_93l1.htm"><B>MsiQueryProductState</B></A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>INSTALLSTATE</TH>
+<TH align=left width=16%>Numeric value</TH>
+<TH align=left width=58%>Installation state of product</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>INSTALLSTATE_UNKNOWN</TD>
+<TD width=16%>-1</TD>
+<TD width=58%>The product is neither advertised or installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>INSTALLSTATE_ADVERTISED </TD>
+<TD width=16%>1</TD>
+<TD width=58%>The product is advertised but not installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>INSTALLSTATE_ABSENT</TD>
+<TD width=16%>2</TD>
+<TD width=58%>The product is installed for a different user.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>INSTALLSTATE_DEFAULT </TD>
+<TD width=16%>5</TD>
+<TD width=58%>The product is installed for the current user.</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>INSTALL Action</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="INSTALL Action">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_install_action"></A>INSTALL Action</H1>
+
+<P>The INSTALL action is a top-level action called to install or remove components. This action queries the <A HREF="tref_1git.htm">InstallUISequence Table</A> and <A HREF="tref_5pid.htm">InstallExecuteSequence Table</A> for the action to execute, the condition for action execution, and the place of the action in the sequence: </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>None.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Remarks</H4>
+
+<P>The INSTALL action is not called from within the action table sequence, it is passed to Windows Installer when <A HREF="msi_75x0.htm">MsiInstallProduct</A> is called, or the command line executable Msiexec.exe is called with the '/i' command line switch, or when any Windows Installer function is called that may perform an installation task, such as <A HREF="msi_8cit.htm"><B>MsiConfigureFeature</B></A>, <A HREF="msi_9otw.htm"><B>MsiProvideComponent</B></A>, or <A HREF="msi_6vad.htm"><B>MsiInstallMissingFile</B></A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20INSTALL%20Action;%20RELEASE:%20August%202001;%20URL:%20aref_986m.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20INSTALL%20Action;%20RELEASE:%20August%202001;%20URL:%20aref_986m.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

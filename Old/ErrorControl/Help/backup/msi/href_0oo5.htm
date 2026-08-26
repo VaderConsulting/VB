@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>IconSize Control Attribute</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="IconSize Control Attribute">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_iconsize_control_attribute"></A>IconSize Control Attribute</H1>
+
+<P>An icon file can hold several different sizes of the same icon image. These bits specify which size of the icon image to load. If none of the bits are set, the first image is loaded. If only <B>msidbControlAttributesIconSize16</B> is set, the first 16x16 image is loaded. If only the <B>msidbControlAttributesIconSize32 </B>is set, the first 32x32 image is loaded. If <B>msidbControlAttributesIconSize48</B> is set, the first 48x48 image is loaded.</P>
+
+<H4>Valid Controls</H4>
+
+<P><A HREF="href_7dt8.htm">CheckBox</A><BR>
+<A HREF="href_1tt8.htm">Icon</A><BR>
+<A HREF="href_331o.htm">PushButton</A><BR>
+<A HREF="href_6iwc.htm">RadioButtonGroup</A></P>
+
+<H4>Value</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=27%>Hexadecimal </TH>
+<TH align=left width=57%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>2097152</TD>
+<TD width=27%>0x00200000</TD>
+<TD width=57%><B>msidbControlAttributesIconSize16</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>4194304</TD>
+<TD width=27%>0x00400000</TD>
+<TD width=57%><B>msidbControlAttributesIconSize32</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>6291456</TD>
+<TD width=27%>0x00600000</TD>
+<TD width=57%><B>msidbControlAttributesIconSize48</B></TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>To set this attribute on a control, include the IconSize bits in the Attributes column of the control's record in the <A HREF="tref_6nad.htm">Control table</A>.</P>
+
+<P>If the <A HREF="href_6qn9.htm">FixedSize</A> bit is not set, the loaded image is shrunk or stretched to fit the icon control. If the <A HREF="href_6qn9.htm">FixedSize</A> bit is set, and the loaded image is smaller than the icon control, the picture is displayed centered inside the control. If the <A HREF="href_6qn9.htm">FixedSize</A> bit is set, and the loaded image is larger than the icon control, the picture is shrunk to fit the control.</P>
+
+<P>See <A HREF="href_8uk3.htm">Control Attributes</A> and the control you need to create under <A HREF="href_710z.htm">Controls</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

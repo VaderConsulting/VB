@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE40</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE40 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice40"></A>ICE40</H1>
+
+<P>ICE40 does miscellaneous validation.</P>
+
+<H4>Result</H4>
+
+<P>ICE40 posts warnings on the following: 
+
+<UL>
+	<LI>The .msi file is missing the <A HREF="tref_5dk5.htm">Error table</A>. </LI>
+
+	<LI>The <A HREF="pref_7bll.htm">REINSTALLMODE property</A> has been overridden. </LI>
+
+	<LI>The <A HREF="tref_9k6d.htm">RemoveIniFile table</A> has a Delete Tag entry with no value.</LI>
+</UL>
+
+<H4>Example</H4>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Property</TH>
+<TH align=left width=72%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>REINSTALLMODE</TD>
+<TD width=72%>A</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_9k6d.htm"><B>RemoveIniFile Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>RemoveIniFile</TH>
+<TH align=left width=22%>Action</TH>
+<TH align=left width=50%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>REINSTALLMODE</TD>
+<TD width=22%>4 </TD>
+<TD width=50%>&nbsp;</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Results</H4>
+
+<P>ICE40 would report the following errors:</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE40 error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>REINSTALLMODE is defined in the Property table. This may cause difficulties. </TD>
+<TD width=63%>Defining the REINSTALLMODE property in .msi file can lead to unexpected behavior.
+<P>To fix this error, don't define this property.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>RemoveIniFile entry Remove1 must have a value, because the Action is "Delete Tag" (4). </TD>
+<TD width=63%>There is a Delete Tag action in the in the RemoveIniFile column of the <A HREF="tref_9k6d.htm">RemoveIniFile table</A> without specifying a tag to delete in the Value column.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Error Table is missing. Only numerical error messages will be generated. </TD>
+<TD width=63%>The Error table is missing from the .msi file. This means that the installer is only capable of displaying numeric error codes to the user at run time.
+<P>To fix this error, add an Error table to the installation package and author formatting templates in the Message column for error messages.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

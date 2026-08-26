@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring Merge Module Sequence Tables</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_merge_module_sequence_tables"></A>Authoring Merge Module Sequence Tables</H3>
+
+<P>Include the MergeModuleSequence tables in the .msm file if the merge module must modify the action <A HREF="dglo_5nuh.htm#_msi_sequence_tables_gly">sequence tables</A> of the target .msi file. Merging does not add these tables to the .msi file. These tables only occur in merge modules.</P>
+
+<P>If any of the ModuleSequence tables are present in an .msm file, an empty copy of the corresponding installer sequence table must also be authored into the merge module. For example, if a merge module contains a ModuleAdminExecuteSequence table, the merge module must also include an empty AdminExecuteSequence table. During a merge, these empty tables provide the merge tool with necessary schema guidelines.</P>
+
+<P>When using <A HREF="acts_4lmb.htm">standard actions</A> in merge module sequence tables, the value in the Sequence column should be the recommended action sequence number for the standard action. See the suggested action sequences given below for the recommended sequence numbers in each sequence table. If the sequence number in the merge module sequence table differs from the sequence number for the same action in the .msi file, the merge tool uses the sequence number in the .msi file during the merge. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=43%>MergeModuleSequence table</TH>
+<TH align=left width=57%>Recommended action sequences</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%><A HREF="merg_5fc5.htm">ModuleAdminUISequence</A></TD>
+<TD width=57%><A HREF="novr_7p9h.htm">Suggested AdminUISequence</A> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%><A HREF="merg_6mzp.htm">ModuleAdminExecuteSequence</A></TD>
+<TD width=57%><A HREF="novr_1cx1.htm">Suggested AdminExecuteSequence</A> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%><A HREF="merg_3rs5.htm">ModuleAdvtUISequence</A></TD>
+<TD width=57%><A HREF="novr_7r1h.htm">Suggested AdvtUISequence</A> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%><A HREF="merg_1vfp.htm">ModuleAdvtExecuteSequence</A></TD>
+<TD width=57%><A HREF="novr_8yp1.htm">Suggested AdvtExecuteSequence</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%><A HREF="merg_29r9.htm">ModuleInstallUISequence</A></TD>
+<TD width=57%><A HREF="novr_9qcl.htm">Suggested InstallUISequence</A> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%><A HREF="merg_7fmt.htm">ModuleInstallExecuteSequence table</A></TD>
+<TD width=57%><A HREF="novr_0o85.htm">Suggested InstallExecuteSequence</A> </TD>
+</TR>
+</TABLE><BR>
+
+<P>If a <A HREF="acts_4lmb.htm">standard action</A> is used in the Action column of a merge module sequence table, the BaseAction and After columns of that record must be Null. If a custom action or dialog is entered into the Action column, the Sequence column must be Null.</P>
+
+<P>The BaseAction column can contain a standard action, a custom action specified in the merge module's custom action table, or a dialog specified in the module's dialog table. The BaseAction column is a key into the Action column of this table. It cannot be a foreign key into another merge table or table in the .msi file. This means that every standard action, custom action, or dialog listed in the BaseAction column must also be listed in the Action column of another record in this table.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

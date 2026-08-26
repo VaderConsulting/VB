@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Summary List of All Custom Action Types</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_summary_list_of_all_custom_action_types"></A>Summary List of All Custom Action Types</H2>
+
+<P>The following table lists the basic types of custom actions and shows the values that are in of the Type, Source, and Target fields of the <A HREF="tref_71b9.htm">CustomAction table</A> for each type. The basic custom actions can be modified by including optional flag bits in the Type column. For descriptions of the options and the values see:
+
+<UL>
+	<LI><A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A> </LI>
+
+	<LI><A HREF="cact_0dpv.htm">Custom Action Execution Scheduling Options</A> </LI>
+
+	<LI><A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A> </LI>
+</UL>
+
+<P>Use the links to the Basic Custom Action Type for a description and for the options available with the type.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Basic custom action type</TH>
+<TH align=left width=12%>Type</TH>
+<TH align=left width=30%>Source</TH>
+<TH align=left width=21%>Target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_7nqp.htm">Custom Action Type 1</A>
+<P>DLL file stored in a Binary table stream. </P>
+</TD>
+<TD width=12%>1</TD>
+<TD width=30%>Key to <A HREF="tref_04px.htm">Binary table</A></TD>
+<TD width=21%>DLL entry point.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07hz.htm">Custom Action Type 17</A>
+<P>DLL file that is installed with a product. </P>
+</TD>
+<TD width=12%>17</TD>
+<TD width=30%>Key to <A HREF="tref_4n6t.htm">File table</A></TD>
+<TD width=21%>DLL entry point.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_7nqq.htm">Custom Action Type 2</A>
+<P>EXE file stored in a Binary table stream. </P>
+</TD>
+<TD width=12%>2</TD>
+<TD width=30%>Key to <A HREF="tref_04px.htm">Binary table</A></TD>
+<TD width=21%>Command line string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07i0.htm">Custom Action Type 18</A> 
+<P>EXE file that is installed with a product. </P>
+</TD>
+<TD width=12%>18</TD>
+<TD width=30%>Key to <A HREF="tref_4n6t.htm">File table</A></TD>
+<TD width=21%>Command line string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07i1.htm">Custom Action Type 19</A>
+<P>Displays a specified error message and returns failure, terminating the installation. </P>
+</TD>
+<TD width=12%>19</TD>
+<TD width=30%>blank</TD>
+<TD width=21%><A HREF="tref_0qp0.htm">Formatted</A> text string. The literal message or an index into the <A HREF="tref_5dk5.htm">Error table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07ow.htm">Custom Action Type 50</A>
+<P>EXE file having a path specified by a property value. </P>
+</TD>
+<TD width=12%>50</TD>
+<TD width=30%>Property name or key to <A HREF="tref_21d1.htm">Property table</A></TD>
+<TD width=21%>Command line string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07lg.htm">Custom Action Type 34</A>
+<P>EXE file having a path referencing a directory.</P>
+</TD>
+<TD width=12%>34</TD>
+<TD width=30%>Key to <A HREF="tref_6an9.htm">Directory table</A>. This is the working directory for execution.</TD>
+<TD width=21%>The name of the executable file, an optional command line string, and an option a path to the EXE file. Quotes must be used around long file names.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_7nqt.htm">Custom Action Type 5</A>
+<P>JScript file stored in a Binary table stream.</P>
+</TD>
+<TD width=12%>5</TD>
+<TD width=30%>Key to <A HREF="tref_04px.htm">Binary table</A></TD>
+<TD width=21%>An optional JScript function that can be called.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07jl.htm">Custom Action Type 21</A>
+<P>JScript file that is installed with a product.</P>
+</TD>
+<TD width=12%>21</TD>
+<TD width=30%>Key to <A HREF="tref_4n6t.htm">File table</A></TD>
+<TD width=21%>An optional JScript function that can be called.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07oz.htm">Custom Action Type 53</A>
+<P>JScript text specified by a property value.</P>
+</TD>
+<TD width=12%>53</TD>
+<TD width=30%>Property name or key to <A HREF="tref_21d1.htm">Property table</A></TD>
+<TD width=21%>An optional JScript function that can be called.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07lj.htm">Custom Action Type 37</A>
+<P>JScript text stored in this sequence table.</P>
+</TD>
+<TD width=12%>37</TD>
+<TD width=30%>NULL</TD>
+<TD width=21%>A string of JScript code.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_7nqu.htm">Custom Action Type 6</A>
+<P>VBScript file stored in a Binary table stream.</P>
+</TD>
+<TD width=12%>6</TD>
+<TD width=30%>Key to <A HREF="tref_04px.htm">Binary table</A></TD>
+<TD width=21%>An optional VBScript function that can be called.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07jm.htm">Custom Action Type 22</A>
+<P>VBScript file that is installed with a product. </P>
+</TD>
+<TD width=12%>22</TD>
+<TD width=30%>Key to <A HREF="tref_4n6t.htm">File table</A></TD>
+<TD width=21%>An optional VBScript function that can be called.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07p0.htm">Custom Action Type 54</A>
+<P>VBScript text specified by a property value.</P>
+</TD>
+<TD width=12%>54</TD>
+<TD width=30%>Property name or key to <A HREF="tref_21d1.htm">Property table</A>.</TD>
+<TD width=21%>An optional VBScript function that can be called.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07lk.htm">Custom Action Type 38</A>
+<P>VBScript text stored in this sequence table. </P>
+</TD>
+<TD width=12%>38</TD>
+<TD width=30%>NULL</TD>
+<TD width=21%>A string of VBScript code.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07ox.htm">Custom Action Type 51</A>
+<P>Property set with formatted text.</P>
+</TD>
+<TD width=12%>51</TD>
+<TD width=30%>Property name or key to the <A HREF="tref_21d1.htm">Property table</A>. This property is set by the formatted string in the Target field. </TD>
+<TD width=21%>A formatted text string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07lh.htm">Custom Action Type 35</A>
+<P>Directory set with formatted text.</P>
+</TD>
+<TD width=12%>35</TD>
+<TD width=30%>A key to the <A HREF="tref_6an9.htm">Directory table</A>. The designated directory is set by the formatted string in the Target field.</TD>
+<TD width=21%>A formatted text string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_7nqv.htm">Custom Action Type 7</A>
+<P>Installation of a package nested inside of the first package. See <A HREF="cact_260j.htm">Nested Installation Actions</A>.</P>
+</TD>
+<TD width=12%>7</TD>
+<TD width=30%>Name of the sub-storage containing database of nested application.</TD>
+<TD width=21%>Properties settings string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07jn.htm">Custom Action Type 23</A>
+<P>Installation of a package that resides in the first application's source tree. See <A HREF="cact_260j.htm">Nested Installation Actions</A>.</P>
+</TD>
+<TD width=12%>23</TD>
+<TD width=30%>Path of nested package specified relative to the root of the source location.</TD>
+<TD width=21%>Properties settings string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="cact_07ll.htm">Custom Action Type 39</A>
+<P>Installation of an application that is advertised or already installed. See <A HREF="cact_260j.htm">Nested Installation Actions</A>.</P>
+</TD>
+<TD width=12%>39</TD>
+<TD width=30%>Product code for the application.</TD>
+<TD width=21%>Properties settings string.</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

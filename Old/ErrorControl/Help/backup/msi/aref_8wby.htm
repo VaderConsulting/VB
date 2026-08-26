@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>UnregisterClassInfo Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="UnregisterClassInfo Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_unregisterclassinfo_action"></A>UnregisterClassInfo Action</H1>
+
+<P>The UnregisterClassInfo action manages the removal of COM class information from the system registry. It uses the <A HREF="tref_6p2d.htm">AppId table</A>.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The UnregisterClassInfo action must come after the <A HREF="aref_3hym.htm">InstallFiles</A> action and before the <A HREF="aref_04oe.htm">RegisterClassInfo</A> action.</P>
+
+<P><A HREF="aref_5mem.htm">RemoveRegistryValues</A> must come before UnregisterClassInfo in the sequence.</P>
+
+<P>The sequencing of the actions in the following group is restricted. If any subset of these actions occur together in a sequence table, they must have the same relative sequence order as shown below.</P>
+
+<P><A HREF="#_msi_unregisterclassinfo_action">UnregisterClassInfo</A> </P>
+
+<P><A HREF="aref_738u.htm">UnregisterExtensionInfo</A> </P>
+
+<P><A HREF="aref_1epb.htm">UnregisterProgIdInfo</A> </P>
+
+<P><A HREF="aref_30oe.htm">UnregisterMIMEInfo</A> </P>
+
+<P><A HREF="aref_04oe.htm">RegisterClassInfo Action</A> </P>
+
+<P><A HREF="aref_1epa.htm">RegisterExtensionInfo</A> </P>
+
+<P><A HREF="aref_08tq.htm">RegisterProgIdInfo</A> </P>
+
+<P><A HREF="aref_9r8u.htm">RegisterMIMEInfo</A> </P>
+
+<P>For example, RegisterExtensionInfo must come before UnregisterClassInfo in the sequence table.</P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>GUID of unregistered COM class</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The installer sets the <A HREF="pref_0y9l.htm">OLEAdvtSupport property</A> to true when the current user's system has been upgraded to work with install-on-demand through COM. If the system does not support install-on-demand through COM,  UnregisterClassInfo removes all COM classes listed in the <A HREF="tref_5n8l.htm">Class table</A> associated with either uninstalled features or features installed as advertised from the system registry . Otherwise this action removes only te COM classes associated with features selected to be uninstalled from the system registry.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Registry Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Registry Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_registry_table"></A>Registry Table</H1>
+
+<P>The Registry table holds the registry information that the application needs to set in the system registry. </P>
+
+<P>The Registry table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Column</TH>
+<TH align=left width=38%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Registry</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Root</TD>
+<TD width=38%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Key</TD>
+<TD width=38%><A HREF="tref_0xgo.htm">RegPath</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Name</TD>
+<TD width=38%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Value</TD>
+<TD width=38%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Component_</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Registry</DT>
+
+<DD>Primary key used to identify a registry record.</DD>
+
+<DT>Root</DT>
+
+<DD>The predefined root key for the registry value. Enter a value of -1 in this field to make the root key dependent on the type of installation. Enter one of the other values in the following table to force the registry value to be written under a particular root key. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Constant</TH>
+<TH align=left width=15%>Hexadecimal</TH>
+<TH align=left width=11%>Decimal</TH>
+<TH align=left width=42%>Root key</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>(none)</TD>
+<TD width=15%>- 0x001</TD>
+<TD width=11%>-1</TD>
+<TD width=42%>If this is a per-user installation, the registry value is written under <B>HKEY_CURRENT_USER</B>.
+<P>If this is a per-machine installation, the registry value is written under <B>HKEY_LOCAL_MACHINE</B>. Note that a per-machine installation is specified by setting the <A HREF="pref_6tx5.htm"><B>ALLUSERS</B> property</A> to 1.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><B>msidbRegistryRootClassesRoot</B></TD>
+<TD width=15%>0x000</TD>
+<TD width=11%>0</TD>
+<TD width=42%><B>HKEY_CLASSES_ROOT</B>
+<P>When using Windows 2000 or later, the installer writes or removes the value from the <B>HKCU\Software\Classes </B>hive during <A HREF="over_2tf7.htm">per-user installations</A>.</P>
+
+<P>When using Windows 2000 or later operating systems, the installer writes or removes the value from the <B>HKLM\Software\Classes</B> hive during <A HREF="over_1tdf.htm">per-machine installations</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><B>msidbRegistryRootCurrentUser</B></TD>
+<TD width=15%>0x001</TD>
+<TD width=11%>1</TD>
+<TD width=42%><B>HKEY_CURRENT_USER</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><B>msidbRegistryRootLocalMachine</B></TD>
+<TD width=15%>0x002</TD>
+<TD width=11%>2</TD>
+<TD width=42%><B>HKEY_LOCAL_MACHINE</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><B>msidbRegistryRootUsers</B></TD>
+<TD width=15%>0x003</TD>
+<TD width=11%>3</TD>
+<TD width=42%><B>HKEY_USERS</B></TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Note that it is recommended that registry entries written to the <B>HKCU</B> hive reference a component having the RegistryKeyPath bit is set in the Attributes column of the <A HREF="tref_09np.htm">Component table</A>. This ensures that the installer writes the necessary registry entries when there are multiple users on the same computer.
+</DD>
+
+<DT>Key</DT>
+
+<DD>The localizable key for the registry value.</DD>
+
+<DT>Name</DT>
+
+<DD>This column contains the registry value name (localizable). If this is Null, then the data entered into the Value column are written to the default registry key.
+
+<P>If the Value column is Null, then the strings shown in the following table in the Name column have special significance.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=13%>String</TH>
+<TH align=left width=87%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>+</TD>
+<TD width=87%>The key is to be created, if absent, when the component is installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>-</TD>
+<TD width=87%>The key is to be deleted, if present, with all of its values and subkeys, when the component is uninstalled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>*</TD>
+<TD width=87%>The key is to be created, if absent, when the component is installed. Additionally, the key is to be deleted, if present, with all of its values and subkeys, when the component is uninstalled.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Note that the <A HREF="tref_3wmd.htm">RemoveRegistry table</A> must be use if an installed registry key is to be deleted, with its values and subkeys, when the component is installed.
+</DD>
+
+<DT>Value</DT>
+
+<DD>This column is the localizable registry value. The field is <A HREF="tref_0qp0.htm">Formatted</A>. If the value is attached to one of the following prefixes (i.e. #%<I>value</I>) then the value is interpreted as described in the table. Note that each prefix begins with a number sign (#). If the value begins with two or more consecutive number signs (#), the first # is ignored and value is interpreted and stored as a string.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Prefix </TH>
+<TH align=left width=84%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>#x</TD>
+<TD width=84%>The value is interpreted and stored as a hexadecimal value (REG_BINARY).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>#%</TD>
+<TD width=84%>The value is interpreted and stored as an expandable string (REG_EXPAND_SZ).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>#</TD>
+<TD width=84%>The value is interpreted and stored as an integer (REG_DWORD).</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<UL>
+	<LI>If the value contains the sequence tilde [~], then the value is interpreted as a Null-delimited list of strings (REG_MULTI_SZ). For example, to specify a list containing the three strings a, b and c, use "a[~]b[~]c."</LI>
+
+	<LI>The sequence [~] within the value separates the individual strings and is interpreted and stored as a Null character.</LI>
+
+	<LI>If a [~] precedes the string list, the strings are to be appended to any existing registry value strings. If an appending string already occurs in the registry value, the original occurrence of the string is removed.</LI>
+
+	<LI>If a [~] follows the end of the string list, the strings are to be prepended to any existing registry value strings. If a prepending string already occurs in the registry value, the original occurrence of the string is removed.</LI>
+
+	<LI>If a [~] is at both the beginning and the end or at neither the beginning nor the end of the string list, the strings are to replace any existing registry value strings. </LI>
+
+	<LI>Otherwise, the value is interpreted and stored as a string (REG_SZ). </LI>
+</UL>
+</DD>
+
+<DT>Component_</DT>
+
+<DD>External key into the first column of the <A HREF="tref_09np.htm">Component table</A> referencing the component that controls the installation of the registry value.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The registry information is written out to the system registry when the corresponding component has been selected to be installed locally or run from source.</P>
+
+<P>Note that the installer removes a registry key after removing the last value or subkey under the key. To prevent an empty registry key from being removed when uninstalling, write a dummy value under the key you need to keep and enter + in the Name column.</P>
+
+<P>This table is referred to when the <A HREF="aref_1cmm.htm">WriteRegistryValues action</A> is executed.</P>
+
+<P>For information on how to secure a registry key see the <A HREF="tref_00dh.htm">LockPermissions Table</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Registry%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_3obp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Registry%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_3obp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

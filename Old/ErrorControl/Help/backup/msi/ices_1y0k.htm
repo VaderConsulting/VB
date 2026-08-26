@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE54</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE54 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice54"></A>ICE54</H1>
+
+<P>ICE54 checks for components that use a companion file as their key path. </P>
+
+<P>The key path file of a component must not derive its version from a different file. This can cause some files to fail to install. See the <A HREF="tref_4n6t.htm">File table</A> for more information about companion files.</P>
+
+<H4>Result</H4>
+
+<P>ICE54 posts a warning if any component has a key path file that derives its version from another file.</P>
+
+<H4>Example</H4>
+
+<P>ICE54 returns the following warning for the example shown.</P>
+
+<PRE>Component 'Component1' uses file 'File1' as its KeyPath, but the file's version is provided by the file 'File2'.</PRE>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Component</TH>
+<TH align=left width=34%>Attribute</TH>
+<TH align=left width=37%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Component1</TD>
+<TD width=34%>0</TD>
+<TD width=37%>File1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>File</TH>
+<TH align=left width=34%>Version</TH>
+<TH align=left width=36%>Language</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>File1</TD>
+<TD width=34%>File2</TD>
+<TD width=36%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>File2</TD>
+<TD width=34%>1.0.0.0</TD>
+<TD width=36%>1033</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

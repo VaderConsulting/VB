@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Manage Policy Settings</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_manage_policy_settings"></A>Manage Policy Settings</H2>
+
+<P>The VBScript file WiPolicy.vbs is provided in the <A HREF="app_5qwj.htm">Platform SDK Components for Windows Installer Developers</A>. This sample shows how script can be used to manage <A HREF="over_37ll.htm">system policy</A>. Policy can be configured by an administrator using the Group Policy Editor (GPE) on Microsoft Windows® 2000 or by using the System Policy Editor on Windows 95, Windows 98, or Microsoft Windows NT®. </P>
+
+<P>This sample demonstrates the Windows Installer policies.</P>
+
+<P>Using this sample requires the CScript.exe or WScript.exe version of Windows Script Host. To use CScript.exe to run this sample, type a command at the command prompt using the following syntax. Help is displayed if the first argument is /? or if too few arguments are specified. To redirect the output to a file, end the command line with VBS &gt; [<I>path to file</I>]. The sample returns a value of 0 for success, 1 if help is invoked, and 2 if the script fails.</P>
+
+<PRE>cscript WiPolicy.vbs [<I>policy</I>][<I>value</I>]</PRE>
+
+<P>If no arguments are specified on the command line, the sample returns the current policy settings. Specify the policy to be set by using the following identifier codes. Specify the new value for the policy. To return the current value of a policy, specify an empty string "" for the value. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=12%>CODE</TH>
+<TH align=left width=88%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>LM</TD>
+<TD width=88%>Logging modes. For more information, see <A HREF="over_4mux.htm">Logging Policy</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>DO</TD>
+<TD width=88%>Debug modes. For more information, see <A HREF="over_51d3.htm">Debug</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>DI</TD>
+<TD width=88%>Disable Windows Installer mode. For more information, see <A HREF="over_8wix.htm">DisableMsi</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>WT</TD>
+<TD width=88%>Wait timeout in seconds in case of no activity. <B>HKLM\SoftWare\Policies\Microsoft\Windows\Installer\Timeout</B>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>DB</TD>
+<TD width=88%>Disable user browsing of source locations. For more information, see <A HREF="over_5rmt.htm">DisableBrowse</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>DP</TD>
+<TD width=88%>Disable patching.  For more information, see <A HREF="over_7fag.htm">DisablePatch</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>UC</TD>
+<TD width=88%>Public properties sent to install service. For more information, see <A HREF="over_8pws.htm">EnableUserControl</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>SS</TD>
+<TD width=88%>Installer safe for scripting from browser. For more information, see <A HREF="over_38pz.htm">SafeForScripting</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>EM</TD>
+<TD width=88%>System priviledges (HKLM). For more information, see <A HREF="over_0wpw.htm">AlwaysInstallElevated</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>EU</TD>
+<TD width=88%>System priviledges (HKCU). For more information, see <A HREF="over_0wpw.htm">AlwaysInstallElevated</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>DR</TD>
+<TD width=88%>Disable rollback policy. For more information, see <A HREF="over_34ff.htm">DisableRollback</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>TS</TD>
+<TD width=88%>Locate transforms at root of source image. For more information, see <A HREF="over_0gth.htm">TransformsAtSource</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>TP</TD>
+<TD width=88%>Pin secure tranforms in client-side-cache. For more information, see <A HREF="over_9u91.htm">TransformsSecure</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>SO</TD>
+<TD width=88%>Search order of source types. For more information, see <A HREF="over_6r76.htm">SearchOrder</A>.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For additional scripting examples, see <A HREF="samp_2dv7.htm">Windows Installer Scripting Examples</A>. For sample utilities that do not require Windows Script Host, see <A HREF="app_9303.htm">Windows Installer Development Tools</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Manage%20Policy%20Settings;%20RELEASE:%20August%202001;%20URL:%20samp_3qgj.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Manage%20Policy%20Settings;%20RELEASE:%20August%202001;%20URL:%20samp_3qgj.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

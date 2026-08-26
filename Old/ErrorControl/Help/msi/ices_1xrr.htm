@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE07</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE07">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice07"></A>ICE07</H1>
+
+<P>ICE07 validates that installation package specifies that fonts be installed into the FontsFolder. If a font is installed to a folder other than the FontsFolder the installer creates a shortcut rather than actually installing the font.</P>
+
+<P>The ICE07 custom action does the following for each font in the <A HREF="tref_9tnp.htm">Font table</A>.
+
+<OL>
+	<LI>Finds the font file to which each font title belongs using the <A HREF="tref_9tnp.htm">Font table</A>. </LI>
+
+	<LI>Queries the Component_ column of the <A HREF="tref_4n6t.htm">File table</A> for the component that controls each file.</LI>
+
+	<LI>Queries the Directory_ column of the <A HREF="tref_09np.htm">Component table</A> to obtain a key into the Directory table.</LI>
+
+	<LI>Resolves the <A HREF="tref_6an9.htm">Directory table</A> to determine the name of the folder into which the installer is to install the font file</LI>
+
+	<LI>Posts an error if the font file is being installed into a folder other than the FontsFolder.</LI>
+</OL>
+
+<H4>Result</H4>
+
+<P>ICE07 posts an error if it finds that the database specifies that a font file be installed into a folder other than the FontsFolder.</P>
+
+<H4>Example</H4>
+
+<P>IC07 would post the following error message for the example shown.</P>
+
+<PRE>'Tahoma' is a font and must be installed to the FontsFolder directory. Current Install Directory: 'Sandbar'. </PRE>
+
+<P><A HREF="tref_9tnp.htm"><B>Font Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>File_</TH>
+<TH align=left width=50%>FontTitle</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Myrtle</TD>
+<TD width=50%>Tahoma</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>File</TH>
+<TH align=left width=50%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Myrtle</TD>
+<TD width=50%>Myrtle_Beach</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Component</TH>
+<TH align=left width=50%>Directory_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Myrtle_Beach</TD>
+<TD width=50%>SandBar</TD>
+</TR>
+</TABLE><BR>
+
+<P>In this example, the font Tahoma maps to the font file Myrtle. The file Myrtle belongs to the component Myrtle_Beach. Resolution of the Directory table shows that all the files belonging to Myrtle_Beach are to be installed in the Sandbar folder. Because this is not the FontsFolder, ICE07 posts an error message. </P>
+
+<P>Note that if the component Myrtle_Beach really belongs in the Sandbar folder, and not the FontsFolder, then the font Tahoma may not belong in Myrtle_Beach. A possible fix for the error would be to include Tahoma in another component that does get installed in the FontsFolder directory.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE07;%20RELEASE:%20August%202001;%20URL:%20ices_1xrr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE07;%20RELEASE:%20August%202001;%20URL:%20ices_1xrr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

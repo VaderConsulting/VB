@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Revision Number Summary Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Revision Number Summary Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_revision_number_summary_property"></A>Revision Number Summary Property</H1>
+
+<P>The Revision Number Summary property contains the package code for the installer package. The <A HREF="dglo_6vp5.htm#_msi_package_code_gly">package code</A> is a unique identifier of the installer package.  </P>
+
+<P>The Revision Number Summary property of a patch package specifies the GUID patch code for the patch. This is followed by a list of patch code GUIDs for obsolete patches that are removed when this patch is applied. The patch codes are concatenated with no delimiters separating GUIDs in the list. </P>
+
+<P>The Revision Number Summary property of a transform package lists the product code GUIDs and version of the new and original products and the upgrade code GUID. The list is separated with semicolons as follows.</P>
+
+<P><I>Original-Product-Code Original-Product-Version</I> ; <I>New-Product Code New-Product-Version</I>; <I>Upgrade-Code</I></P>
+
+<P>This summary property is REQUIRED.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

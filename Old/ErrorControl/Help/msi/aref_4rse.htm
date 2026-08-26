@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FindRelatedProducts Action</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="FindRelatedProducts Action">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_findrelatedproducts_action"></A>FindRelatedProducts Action</H1>
+
+<P>The FindRelatedProducts action runs through each record of the <A HREF="tref_4qxx.htm">Upgrade table</A> in sequence and compares the upgrade code, product version, and language in each row to products installed on the system. When FindRelatedProducts detects a correspondence between the upgrade information and an installed product, it appends the product code to the property specified in the ActionProperty column of the UpgradeTable. </P>
+
+<H4>Database Tables Queried</H4>
+
+<P>This action queries the following table:</P>
+
+<P><A HREF="tref_4qxx.htm">Upgrade Table</A> </P>
+
+<H4>Properties Used</H4>
+
+<P>The FindRelatedProducts action uses the <A HREF="pref_7mux.htm"><B>UpgradeCode</B> property</A> and the version and language information authored into the Upgrade table to detect installed products affected by the pending upgrade. It appends the product code of detected products to the property in the ActionProperty column of the UpgradeTable. </P>
+
+<P>FindRelatedProducts only recognizes existing products that have been installed using the Windows Installer with an .msi that defines an <A HREF="pref_7mux.htm"><B>UpgradeCode</B> property</A>, a <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>, and a value for the <A HREF="pref_7aex.htm"><B>ProductLanguage</B> property</A> that is one of the languages listed in the <A HREF="sref_80hl.htm"><B>Template Summary</B> Property</A>. </P>
+
+<P>Note that FindRelatedProducts uses the language returned by <A HREF="msi_8wa7.htm">MsiGetProductInfo</A>. For FindRelatedProducts to work correctly, the package author must be sure that the <A HREF="pref_7aex.htm"><B>ProductLanguage</B> property</A> in the <A HREF="tref_21d1.htm">Property table</A> is set to a language that is also listed in the <B>Template Summary</B> Property. See <A HREF="updat_2cs3.htm">Preparing an Application for Future Major Upgrades</A>.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>FindRelatedProducts should be authored into the <A HREF="tref_1git.htm">InstallUISequence table</A> and <A HREF="tref_5pid.htm">InstallExecuteSequence</A> tables. The installer prevents FindRelated Products from running in InstallExecuteSequence if the action has already run in InstallUISequence. The FindRelatedProducts action must come before the <A HREF="aref_61wu.htm">MigrateFeatureStates action</A> and the <A HREF="aref_8r72.htm">RemoveExistingProducts action</A>. </P>
+
+<H4>ActionData Messages</H4>
+
+<P>FindRelatedProducts sends an action data message for each related product it detects installed on the system.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FindRelatedProducts%20Action;%20RELEASE:%20August%202001;%20URL:%20aref_4rse.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FindRelatedProducts%20Action;%20RELEASE:%20August%202001;%20URL:%20aref_4rse.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Importing Localized Error and ActionText Tables</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_importing_localized_error_and_actiontext_tables"></A>Importing Localized Error and ActionText Tables</H2>
+
+<P>Localized language versions of the <A HREF="tref_5dk5.htm">Error Table</A> and <A HREF="tref_7het.htm">ActionText Table</A> are provided by the Windows Installer SDK. The French language versions of these tables, Error.FRA and ActionTe.FRA, are located in the Intl folder of the Windows Installer SDK. </P>
+
+<P>You may use the table editor Orca or the utility Msidb.exe provided with the SDK to import the French versions of these tables into the database. </P>
+
+<P>An example of using <A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A> and the <A HREF="vref_795w.htm"><B>Import </B>Method</A> of the <A HREF="vref_64dw.htm">Database object</A> is provided in the Windows Installer SDK as the utility WiImport.vbs. The following snippet, Imp.vbs, also illustrates the use of the Import method and is for use with Windows Scripting Host.</P>
+
+<PRE>'Imp.vbs. Argument(0) is the original database. Argument(1) is the
+'    path of the folder containing the file to be imported. Argument(2) is the name of the file to be imported.
+'
+Option Explicit
+ 
+' Connect to Windows Installer object
+On Error Resume Next
+Dim installer : Set installer = Wscript.CreateObject("WindowsInstaller.Installer")
+Dim databasePath : databasePath = Wscript.Arguments(0)
+Dim folder : folder = Wscript.Arguments(1)
+ 
+' Open database and process file
+Dim database : Set database = installer.OpenDatabase(databasePath, 1)
+Dim table : table = Wscript.Arguments(2)
+database.Import folder, table 
+ 
+' Commit database changes
+database.Commit 'commit changes
+Wscript.Quit 0</PRE>
+
+<P>To import and replace the Error table with Error.FRA you may use a command line such as the following.</P>
+
+<PRE>Cscript Imp.vbs MNPFren.msi C:\Note_Installer\French Error.FRA</PRE>
+
+<P>To import and replace the ActionText table with ActionTe.FRA you may use a command line such as the following.</P>
+
+<PRE>Cscript Imp.vbs MNPFren.msi C:\Note_Installer\French ActionTe.FRA</PRE>
+
+<P>Rerun validation on MNPFren.msi as described in <A HREF="samp_2elh.htm">Validating an Installation Upgrade</A>. Note that you may need to modify the column widths of the <A HREF="tref_5dk5.htm">Error Table</A> to pass validation when using the Windows Installer version 1.1 SDK.</P>
+
+<P><A HREF="samp_37cj.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

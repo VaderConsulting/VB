@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Digital Signatures and External Cabinet Files</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_digital_signatures_and_external_cabinet_files"></A>Digital Signatures and External Cabinet Files</H1>
+
+<P>Windows Installer version 2.0 uses digital signatures to detect corrupted resources. When installing an external resource, the signer certificate belonging to the resource may be verified against a reference signer certificate authored in the package. Windows Installer version 2.0 can only verify the digital signatures of external cabinets. The installer cannot verify signatures for internal cabinets. It can only verify digital signatures by using the <A HREF="tref_7h7p.htm">MsiDigitalSignature table</A> and <A HREF="tref_1t2d.htm">MsiDigitalCertificate table</A>.</P>
+
+<P>Windows Installer version 2.0 or later does the following when installing a file stored in an external cabinet:
+
+<UL>
+	<LI>The installer checks to see whether the media entry for that external cabinet is listed in the <A HREF="tref_7h7p.htm">MsiDigitalSignature table</A>. A file stored in an external cabinet is identified by having an entry in the Cabinet column of the <A HREF="tref_4mlh.htm">Media table</A> that is not prefixed by a '#' character. </LI>
+
+	<LI>Before opening the external cabinet, the installer calls WinVerifyTrust to extract the current certificate and hash information. If there is a mismatch between the current signature information on the cabinet and the signature information authored in the package, the installation fails. The installation fails because the cabinet may have been compromised and cannot be trusted. </LI>
+</UL>
+
+<P>For more information regarding the use of digital signatures, digital certificates, and WinVerifyTrust, see the Security section of the Microsoft® Platform Software Development Kit (SDK). </P>
+
+<P>For more information, see <A HREF="msi_9gdq.htm">MsiGetFileSignatureInformation</A>, <A HREF="tref_1t2d.htm">MsiDigitalCertificate table</A>, and <A HREF="tref_7h7p.htm">MsiDigitalSignature table</A>. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Digital%20Signatures%20and%20External%20Cabinet%20Files;%20RELEASE:%20August%202001;%20URL:%20over_9nzn.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Digital%20Signatures%20and%20External%20Cabinet%20Files;%20RELEASE:%20August%202001;%20URL:%20over_9nzn.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

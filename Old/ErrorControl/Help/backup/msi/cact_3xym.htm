@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Determining User Interface Level from a Custom Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_determining_user_interface_level_from_a_custom_action"></A>Determining User Interface Level from a Custom Action</H2>
+
+<P>A custom action in a UI sequence table or an external executable may need the current <A HREF="hand_9vn7.htm">user interface level</A> of the installation. For example, a custom action that has a dialog box should only display the dialog when the user interface level is Full UI or Reduced UI, but not display the dialog if the user interface level is Basic UI or None. It is recommended that custom actions not use the UI level as a condition for sending error messages to the installer because this can interfere with logging and external messages.</P>
+
+<P>To determine the user interface level from within a custom action, the action can call <A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> with the following arguments.</P>
+
+<PRE>MsiSetInternalUI(INSTALLUILEVEL_NOCHANGE,0) </PRE>
+
+<P>The return value of the function is the UI level originally requested. Note that the current UI level may have changed from this value during processing of the installation, such as if the <A HREF="pref_1ypl.htm">LIMITUI property</A> was set. If running in the installation service the function's return value is INSTALLUILEVEL_DEFAULT. </P>
+
+<P>It may be possible to determine the current UI level by calling <B>MsiSetInternalUI</B> and checking the <A HREF="pref_6l15.htm">UILevel property</A> rather than the return value. The value of this property takes into account the effect of LIMITUI and running in the service.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

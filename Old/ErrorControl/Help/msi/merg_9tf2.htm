@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ExtractFilesEx Function</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ExtractFilesEx function">
+<META NAME="MS-HKWD" CONTENT="Merge object, ExtractFilesEx function">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_extractfilesex_function"></A>ExtractFilesEx Function</H1>
+
+<P>The <B>ExtractFilesEx</B> function implements the <A HREF="merg_96lg.htm"><B>ExtractFilesEx</B> method</A> of the <A HREF="merg_4th0.htm"><B>Merge</B> object</A>. This function extracts the embedded .cab file from a module and then writes those files to the destination directory.</P>
+
+<P><B>IMsmMerge2::ExtractFilesEx</B>&nbsp;&nbsp;&nbsp;&nbsp;<I>Mergemod.dll version 2.0 or later.</I></P>
+
+<PRE class=syntax><B>HRESULT ExtractFilesEx(
+</B>  <B>BSTR </B><I>Path</I>
+  <B>VARIANT_BOOL</B> <I>fLongFileNames</I>
+  <B>IMsmStrings** </B><I>pFilePaths</I>
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>Path</I> </DT>
+
+<DD>[in] The fully qualified destination directory. A <B>LPCWSTR</B> may be used in place of a <B>BSTR</B>.</DD>
+
+<DT><I>fLongFileNames</I> </DT>
+
+<DD>[in] Set to specify using long file names for path segments and final file names.</DD>
+
+<DT><I>pFilePaths</I> </DT>
+
+<DD>[out] A pointer to a memory location. This memory location receives a second pointer to a string enumerator containing a list of fully-qualified paths for the files that were extracted. The list is empty if no files can be extracted. This argument may be NULL. No list is provided if <I>pFilePaths</I> is Null.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_CANNOT_MAKE as HRESULT</TD>
+<TD width=52%>Could not create the output path.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_OPEN_FAILED as HRESULT</TD>
+<TD width=52%>Could not create the output file. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_WRITE_FAULT as HRESULT </TD>
+<TD width=52%>Could not write data to the output file. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>E_FAIL </TD>
+<TD width=52%>Unable to access embedded .cab file, or create temporary file. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>S_FALSE</TD>
+<TD width=52%>No embedded .cab file was found. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>S_OK</TD>
+<TD width=52%>The function succeeded. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>Any files in the destination directory with the same name are overwritten. The path is created if it does not already exist.</P>
+
+<P>See <A HREF="merg_29f2.htm">Merge Module Automation</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ExtractFilesEx%20Function;%20RELEASE:%20August%202001;%20URL:%20merg_9tf2.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ExtractFilesEx%20Function;%20RELEASE:%20August%202001;%20URL:%20merg_9tf2.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

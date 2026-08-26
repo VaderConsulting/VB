@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>User Policies</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="user policies [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="system policy [Windows Installer], user policies">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_user_policies"></A>User Policies</H2>
+
+<P>The following user policies can be configured under</P>
+
+<P><B>HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Installer</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Value name</TH>
+<TH align=left width=29%>Value data types</TH>
+<TH align=left width=40%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_77xb.htm">AlwaysInstallElevated (Per-User)</A></TD>
+<TD width=29%>REG_DWORD</TD>
+<TD width=40%>If this value is set to "1" and the corresponding machine value is also set, the installer always installs with elevated privileges.
+<P>Otherwise, the installer uses elevated privileges to install managed applications and uses the current user's privilege level for non-managed applications.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_9py9.htm">DisableMedia</A></TD>
+<TD width=29%>REG_DWORD</TD>
+<TD width=40%>If this policy value is set to "1", users and administrators are prevented from using media sources, such as CD-ROM, for installations regardless of whether the installation is with elevated privileges.
+<P>This policy is not available with Windows Installer version 1.0.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_53a7.htm">DisableRollback Policy (Per-User)</A></TD>
+<TD width=29%>REG_DWORD</TD>
+<TD width=40%>If this value is set to "1", the installer will not store rollback files during installation, disabling installation rollback. By default, rollback is enabled. Administrators are advised to not use this policy unless it is absolutely essential.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_6r76.htm">SearchOrder</A></TD>
+<TD width=29%>REG_SZ</TD>
+<TD width=40%>Order in which the installer searches the three different types of sources:
+<P>"n" - network</P>
+
+<P>"m" - media (CD-ROM or DVD)</P>
+
+<P>"u" - URL (Uniform Resource Locator)</P>
+
+<P>For example, a value of "nmu" instructs the installer to search network sources first, media sources second, and URL sources last. Leaving out a letter removes the corresponding volume type from the search. Default order in absence of this value is network first, then media followed by URL.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_0gth.htm">TransformsAtSource</A></TD>
+<TD width=29%>REG_DWORD</TD>
+<TD width=40%>If this value exists and is set to "1"; the installer searches for transform files in the root of any network sources in the <A HREF="pref_9d2x.htm">source list</A> for the product. By default, transforms are stored in the Application Data folder of a user's profile. 
+<P>This policy is not available with Windows Installer version 1.1.</P>
+</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

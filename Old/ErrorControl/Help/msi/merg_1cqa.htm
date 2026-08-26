@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I create a merge module that can be configured by the end user?</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_how_do_i_create_a_merge_module_that_can_be_configured_by_the_end_user"></A>How do I create a merge module that can be configured by the end user?</H3>
+
+<P>Follow the general guidelines for creating merge modules described in <A HREF="merg_2jzn.htm">Authoring Merge Modules</A>. In addition, authors must do the following to create a merge module that may be configured by the end user of the module:
+
+<UL>
+	<LI>Note that end users need to have Mergemod.dll version 2.0 to configure you module. Users having earlier versions of Mergemod.dll can apply the module as usual but always get the default settings.</LI>
+
+	<LI>Add a <A HREF="merg_96cl.htm">ModuleConfiguration Table</A> to the merge module to identify the items that may be configured by an end user. Add a record in this table for each configurable item. These items are substituted into the templates specified in the <A HREF="merg_9zvp.htm">ModuleSubstitution Table</A>. Enter a name for each configurable item into the Name field. Enter the format, type, and semantic context for each item in the Format, Type, and ContextData columns. For more information about types, see <A HREF="merg_8e9f.htm">Semantic Types</A>. Enter a default value for the item in the DefaultValue field using the <A HREF="merg_3kxg.htm">CMSM special format</A>. </LI>
+
+	<LI>Add a <A HREF="merg_9zvp.htm">ModuleSubstitution Table</A> to the merge module. Each record of this table corresponds to a substitution of one or more configurable items into one field of the merge module database. Enter the table, row, and column of the field receiving the substitution. Enter a formatting template for the substitution into the Value column using the <A HREF="merg_3kxg.htm">CMSM special format</A>. </LI>
+
+	<LI>Add records to the <A HREF="tref_8fl1.htm">_Validation table</A> for the ModuleSubstitution and ModuleConfiguration tables.</LI>
+
+	<LI>Add records to the <A HREF="merg_5f51.htm">ModuleIgnoreTable table</A> for the ModuleSubstitution and ModuleConfiguration tables. This ensures that the module is compatible for users who have versions of Mergemod.dll earlier than version 2.0. </LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20create%20a%20merge%20module%20that%20can%20be%20configured%20by%20the%20end%20user%3F;%20RELEASE:%20August%202001;%20URL:%20merg_1cqa.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20create%20a%20merge%20module%20that%20can%20be%20configured%20by%20the%20end%20user%3F;%20RELEASE:%20August%202001;%20URL:%20merg_1cqa.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

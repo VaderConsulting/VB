@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiDatabaseApplyTransform</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiDatabaseApplyTransform">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msidatabaseapplytransform"></A>MsiDatabaseApplyTransform</H1>
+
+<P>The <B>MsiDatabaseApplyTransform</B> function applies a transform to a database.</P>
+
+<PRE class=syntax><B>UINT MsiDatabaseApplyTransform(
+</B>  <B>MSIHANDLE</B> <I>hDatabase</I><B>,</B>     // database handle
+  <B>LPCTSTR</B> <I>szTransformFile</I><B>,</B> // name of transform file
+  <B>int</B> <I>iErrorConditions</I>     // error conditions to be suppressed
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hDatabase</I></DT>
+
+<DD>[in] Handle to database to transform.</DD>
+
+<DT><I>szTransformFile</I></DT>
+
+<DD>[in] Specifies the name of the transform file to apply.</DD>
+
+<DT><I>iErrorConditions</I></DT>
+
+<DD>[in] Error conditions that should be suppressed. This parameter is a bit field that can contain the following bits.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=39%>Error condition</TH>
+<TH align=left width=15%>Value</TH>
+<TH align=left width=46%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>MSITRANSFORM_ERROR_ADDEXISTINGROW</TD>
+<TD width=15%>0x0001</TD>
+<TD width=46%>Adding a row that already exists.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>MSITRANSFORM_ERROR_DELMISSINGROW</TD>
+<TD width=15%>0x0002</TD>
+<TD width=46%>Deleting a row that doesn't exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>MSITRANSFORM_ERROR_ADDEXISTINGTABLE</TD>
+<TD width=15%>0x0004</TD>
+<TD width=46%>Adding a table that already exists.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>MSITRANSFORM_ERROR_DELMISSINGTABLE</TD>
+<TD width=15%>0x0008</TD>
+<TD width=46%>Deleting a table that doesn't exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>MSITRANSFORM_ERROR_UPDATEMISSINGROW</TD>
+<TD width=15%>0x0010</TD>
+<TD width=46%>Updating a row that doesn't exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>MSITRANSFORM_ERROR_CHANGECODEPAGE</TD>
+<TD width=15%>0x0020</TD>
+<TD width=46%>Transform and database code pages do not match and neither has a neutral code page.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>MSITRANSFORM_ERROR_VIEWTRANSFORM</TD>
+<TD width=15%>0x0100</TD>
+<TD width=46%>Create the temporary <A HREF="tref_1085.htm">_TransformView table</A>.</TD>
+</TR>
+</TABLE><BR>
+
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_INSTALL_TRANSFORM_FAILURE</DT>
+
+<DD>The transform could not be applied.</DD>
+
+<DT>ERROR_OPEN_FAILED</DT>
+
+<DD>The transform storage file could not be opened.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiDatabaseApplyTransform</B> function delays transforming tables until it is necessary. Any tables to be added or dropped are processed immediately. However, changes to the existing table are delayed until the table is loaded or the database is committed.</P>
+
+<P>An error occurs if <B>MsiDatabaseApplyTransform</B> is called when tables have already been loaded and saved to storage.</P>
+
+<P>Because the list delimiter for transforms, sources and patches is a semicolon, this character should not be used for filenames or paths.</P>
+
+<P>This function cannot be called from custom actions. A call to this function from a custom action causes the function to fail. </P>
+
+<P>See <A HREF="updat_5wab.htm">Transforms</A>.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_database_management_functions">Database Management Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiDatabaseApplyTransform;%20RELEASE:%20August%202001;%20URL:%20qref_5tyl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiDatabaseApplyTransform;%20RELEASE:%20August%202001;%20URL:%20qref_5tyl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Merge Function</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Merge Function">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_merge_function"></A>Merge Function</H1>
+
+<P>The function <B>Merge</B> implements the <A HREF="merg_8gyn.htm"><B>Merge</B> method</A> of the of the <A HREF="merg_4th0.htm"><B>Merge</B> Object</A>. This function executes a merge of the current database and current module. The merge attaches the components in the module to the feature identified by <I>Feature</I>. The root of the module's directory tree is redirected to the location given by <I>RedirectDir</I></P>
+
+<P><B>IMsmMerge::Merge</B> </P>
+
+<PRE class=syntax><B>HRESULT Merge(
+  const BSTR</B> <I>Feature</I><B>,</B>      //[in] 
+<B>  const BSTR</B> <I>RedirectDir</I>   //[in] 
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>Feature</I> </DT>
+
+<DD>The name of a feature in the database. A <B>LPCWSTR</B> may be used in place of a <B>BSTR</B>. </DD>
+
+<DT><I>RedirectDir </I></DT>
+
+<DD>The key of an entry in the Directory table of the database. A <B>LPCWSTR</B> may be used in place of a <B>BSTR</B>. This parameter may be NULL or an empty string. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Value</TH>
+<TH align=left width=63%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><I>E_OUTOFMEMORY</I> </TD>
+<TD width=63%>There system ran out of memory and could not complete the operation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>E_INVALIDARG</TD>
+<TD width=63%>One of the arguments is invalid. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>E_FAIL </TD>
+<TD width=63%>The merge failed catastrophically. This indicates an operational error, and is not the normal error return for a failed merge. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>S_FALSE </TD>
+<TD width=63%>The function succeeded, but there were errors and the merge itself may not be valid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>S_OK</TD>
+<TD width=63%>The function succeeded. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This function executes a merge of the current database and current module. The root of the module's directory tree is redirected to the location given by <I>RedirectDir</I>. If any merge conflicts occur, including exclusions, they are placed in the error enumerator for later retrieval, but will not cause the merge to fail. Errors may be retrieved using <A HREF="merg_4dgu.htm"><B>get_Errors function</B></A>. Errors and informational messages will be posted to the current log file. </P>
+
+<P>Once the merge is complete, components in the module are attached to the feature identified by <I>Feature</I>. This feature must already exist and will not be created. The module may be attached to additional features using <A HREF="merg_86jy.htm">Connect function</A>.</P>
+
+<P>Changes made to the database will not be saved to disk unless <A HREF="merg_9mem.htm"><B>CloseDatabase function</B></A> is called with <I>bCommit</I> set to TRUE. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_29f2.htm">Merge Module Automation</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

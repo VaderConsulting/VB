@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Code Page Handling of Parameter Strings</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_isvalidcodepage">
+</OBJECT>
+<OBJECT ID="hhobj_2" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_multibytetowidechar">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_code_page_handling_of_parameter_strings"></A>Code Page Handling of Parameter Strings</H3>
+
+<P>Authors may add localization information to an installation database by using a database table editor such as Orca, provided with the Windows Installer SDK, or by calling the <A HREF="qref_778z.htm">Database Functions</A> from a program. Authors must be careful to only pass string parameters that use the code page of the database that is being localized. If a string parameter contains characters that cannot be represented by the code page of the database, the installer returns an error when calling <B>MsiDatabaseImport</B>. See <A HREF="over_2j6t.htm">Determining an installation database's code page</A> and a list of numeric code pages see <A HREF="over_9h6b.htm">Localizing the Error and ActionText Tables</A>.</P>
+
+<P><B>Windows 98 and Windows 95</B></P>
+
+<P>When adding localization information to a database using Windows&nbsp;95 or Windows&nbsp;98, the code page of the database must be neutral or it must match the current code page of the system. In this case, the strings passed to the <A HREF="qref_778z.htm">Database Functions</A> must be code-page neutral or require the same code page as the database. </P>
+
+<P><B>Windows&nbsp;NT and Windows&nbsp;2000</B></P>
+
+<P>When adding localization information to a database using Windows&nbsp;NT or Windows&nbsp;2000, the code page of the database must be supported by the system. It does not have to be the current code page of the system. <A HREF="JavaScript:hhobj_1.Click()"><B>IsValidCodePage</B></A> must return TRUE for the database's code page. Note that because Windows&nbsp;NT and Windows&nbsp;2000 convert ANSI strings to Unicode, there is an error if the current user's code page is not the same as the database's code page.</P>
+
+<P>Calling the ANSI version of the Windows Installer API on Windows&nbsp;NT or Windows&nbsp;2000 converts the localized string to Unicode using the current system code page. When the database is committed, the Unicode string is converted to ANSI using the code page of the database. This can result in a loss of data and incorrect string conversion if the current system's code page differs from the code page of the localized string. The following procedure will ensure that the localization data is properly stored.
+
+<OL>
+	<LI>Set the code page of the database to the code page of the localized string.</LI>
+
+	<LI>Convert the ANSI string to Unicode using the Win32 function <A HREF="JavaScript:hhobj_2.Click()"><B>MultiByteToWideChar</B></A> and specify the code page of the localized data.</LI>
+
+	<LI>Call the Unicode version of the Windows Installer API with the Unicode string to add the localized data.</LI>
+
+	<LI>Commit the localization changes to the database with <A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A>.</LI>
+</OL>
+
+<P>Authors may also add localization information to an installation database by importing and exporting ASCII text archive files. For more information, see <A HREF="over_1u0j.htm">Code Page Handling of Imported and Exported Tables</A>. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Code%20Page%20Handling%20of%20Parameter%20Strings;%20RELEASE:%20August%202001;%20URL:%20over_6p0z.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Code%20Page%20Handling%20of%20Parameter%20Strings;%20RELEASE:%20August%202001;%20URL:%20over_6p0z.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

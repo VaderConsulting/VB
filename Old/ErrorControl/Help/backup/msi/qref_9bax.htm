@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSummaryInfoSetProperty</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiSummaryInfoSetProperty">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msisummaryinfosetproperty"></A>MsiSummaryInfoSetProperty</H1>
+
+<P>The <B>MsiSummaryInfoSetProperty</B> function sets a single summary information property.</P>
+
+<PRE class=syntax><B>UINT MsiSummaryInfoSetProperty(
+</B>  <B>MSIHANDLE</B> <I>hSummaryInfo</I><B>,</B> // summary information handle
+  <B>UINT</B> <I>uiProperty</I><B>,</B>        // property ID, one of allowed values
+                          //  for summary information
+  <B>UINT</B> <I>uiDataType</I><B>,</B>        // VT_I4, VT_LPTSTR, VT_FILETIME,
+                          //  or VT_EMPTY
+  <B>INT</B> <I>iValue</I><B>,</B>             // integer value, used only if integer
+                          //  property
+  <B>FILETIME</B> <I>*pftValue</I><B>,</B>     // pointer to file-time value, used only
+                          //  if date/time property
+  <B>LPTSTR</B> <I>szValue</I>          // text value, used only if string property
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hSummaryInfo</I></DT>
+
+<DD>Handle to summary information.</DD>
+
+<DT><I>uiProperty</I></DT>
+
+<DD>Specifies the property to set.</DD>
+
+<DT><I>uiDataType</I></DT>
+
+<DD>Specifies the type of property to set.</DD>
+
+<DT><I>iValue</I></DT>
+
+<DD>Specifies the integer value.</DD>
+
+<DT><I>pftValue</I></DT>
+
+<DD>Specifies the file-time value.</DD>
+
+<DT><I>szValue</I></DT>
+
+<DD>Specifies the text value.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_DATATYPE_MISMATCH</DT>
+
+<DD>The data types were mismatched.</DD>
+
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>ERROR_UNKNOWN_PROPERTY</DT>
+
+<DD>The summary information property is unknown.</DD>
+
+<DT>ERROR_UNSUPPORTED_TYPE</DT>
+
+<DD>The type is unsupported.
+</DD>
+</DL>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_summary_information_property_functions">Summary Information Property Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

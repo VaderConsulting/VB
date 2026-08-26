@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CreateSourceImage Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="CreateSourceImage method">
+<META NAME="MS-HKWD" CONTENT="Merge object, CreateSourceImage method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_createsourceimage_method"></A>CreateSourceImage Method</H1>
+
+<P>The <B>CreateSourceImage</B> method of the <B>Merge</B> object allows the client to extract the files from a module to a source image on disk after a merge, taking into account changes to the module that might have been made during module configuration. The list of files to be extracted is taken from the file table of the module during the merge process. The list of files consists of every file successfully copied from the file table of the module to the target database. File table entries that were not copied due to primary key conflicts with existing rows in the database are not a part of this list. At image creation time, the directory for each of these files comes from the open (post-merge) database. The path specified in the <I>Path</I> parameter is the root of the source image for the install. <I>fLongFileNames</I> determines whether or not long file names are used for both path segments and final file names. The function fails if no database is open, no module is open, or no merge has been performed.</P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax><I>object</I>.CreateSourceImage(<I>Path,fLongFileNames,pFilePaths</I>)</PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="merg_4th0.htm"><B>Merge</B> object</A> </DD>
+
+<DT><I>Path</I></DT>
+
+<DD>The path of the root of the source image for the install.</DD>
+
+<DT><I>fLongFileNames</I></DT>
+
+<DD><I>fLongFileNames</I> determines whether or not long file names are used for both path segments and final file names.</DD>
+
+<DT><I>pFilePaths</I></DT>
+
+<DD>This is a list of fully-qualified paths for the files that were successfully extracted.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Any files in the destination directory with the same name are overwritten. The path is created if it does not already exist.</P>
+
+<H4>C++</H4>
+
+<P>See <A HREF="merg_6sdq.htm"><B>CreateSourceImage </B>function</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20CreateSourceImage%20Method;%20RELEASE:%20August%202001;%20URL:%20merg_5s84.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20CreateSourceImage%20Method;%20RELEASE:%20August%202001;%20URL:%20merg_5s84.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

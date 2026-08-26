@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ControlEvent Overview</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_controlevent_overview"></A>ControlEvent Overview</H2>
+
+<P>ControlEvents are analogous to Microsoft Windows messages in Win32-based applications. However, rather than creating a callback function to receive Windows messages and sending Windows messages with the <B>SendMessage</B> function, Windows Installer controls send ControlEvents specified in the ControlEvent table and receive ControlEvents specified in the EventMapping table.</P>
+
+<P>To add working controls to dialog boxes, the author of the user interface first selects which ControlEvents to use and then associates these with the controls. When a user triggers a control having a ControlEvent tied to it, that ControlEvent is then published to the installer and all controls in the dialog box. If the installer subscribes to the ControlEvent, then the publication of the ControlEvent results in the installer executing an action. If any controls in the dialog box subscribe to the ControlEvent, then the publication of the ControlEvent results in a change in the attributes of these controls.</P>
+
+<P>For example, consider a dialog box containing four push button controls labeled Red, Blue, Green, and All. The first three buttons publish different ControlEvents, and launch distinct actions, but all three buttons also subscribe to a ControlEvent that is published when the user clicks the All button. This ControlEvent specifies simply that the attributes of subscribing push buttons be changed to the "in" state. This UI therefore enables the user to activate all the actions published by the first three buttons by clicking the All button.</P>
+
+<P>Each ControlEvent is published either by the installer or one of the controls in a dialog box. This is authored into the dialog box by listing the control together with the name of the ControlEvent in the <A HREF="tref_6k11.htm">ControlEvent table</A>. </P>
+
+<P>Although a ControlEvent is published only by the installer or a single control, the installer and controls can subscribe to multiple ControlEvents. This is authored by listing the control together with the ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A>. The value in the Attribute column of this table is the <A HREF="href_8uk3.htm">control attribute</A> that is set when the subscribing control receives the ControlEvent.</P>
+
+<P>If a control subscribes to a ControlEvent that is not published by the installer or a control in the same dialog box, it can result in an error.</P>
+
+<P>A custom control also publishes ControlEvents that are subscribed to by the installer or other controls. </P>
+
+<P>For a more information about particular ControlEvents, see the list of standard <A HREF="href_3q0j.htm">control events</A> in <A HREF="href_2z6t.htm">User Interface Reference</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

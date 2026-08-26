@@ -1,0 +1,108 @@
+20010307 13:48:17 (0) ---------------------------
+20010307 13:48:17 (0) TASKSMASTER.EXE Log Opened
+20010307 13:48:17 (1) Starting Tasks Master...
+20010307 13:48:21 (1) TCP Server Online
+20010307 13:48:21 (1) TasksMaster Started
+20010307 13:48:38 (0) DISTROTASKSMASTER.EXE Log Closed
+20010307 13:51:07 (0) ---------------------------
+20010307 13:51:07 (0) TASKSMASTER.EXE Log Opened
+20010307 13:51:07 (1) Starting Tasks Master...
+20010307 13:51:07 (1) TCP Server Online
+20010307 13:51:07 (1) TasksMaster Started
+20010307 13:51:12 (0) DISTROTASKSMASTER.EXE Log Closed
+20010307 13:55:21 (0) ---------------------------
+20010307 13:55:21 (0) AlerterMaster Log Opened
+20010307 13:55:21 (1) Starting Tasks Master...
+20010307 13:55:21 (1) TCP Server Online
+20010307 13:55:21 (1) TasksMaster Started
+20010307 13:56:23 (1) TCP Connection Opened (10.1.30.79:3487)
+20010307 13:57:21 (1) TCP Connection Closed (10.1.30.79:3487)
+20010307 13:58:00 (1) TCP Connection Opened (10.1.30.79:3491)
+20010307 13:58:49 (1) TCP Connection Closed (10.1.30.79:3491)
+20010307 13:59:29 (0) AlerterMaster Log Closed
+20010307 14:00:23 (0) ---------------------------
+20010307 14:00:23 (0) AlerterMaster Log Opened
+20010307 14:00:23 (1) Starting Tasks Master...
+20010307 14:00:23 (1) TCP Server Online
+20010307 14:00:23 (1) TasksMaster Started
+20010307 14:00:46 (1) TCP Connection Opened (127.0.0.1:1124)
+20010307 14:30:03 (1) TCP Connection Closed (127.0.0.1:1124)
+20010307 14:30:09 (0) AlerterMaster Log Closed
+20010307 14:33:34 (0) ---------------------------
+20010307 14:33:34 (0) AlerterMaster Log Opened
+20010307 14:33:34 (1) Starting Tasks Master...
+20010307 14:33:34 (1) TCP Server Online
+20010307 14:33:34 (1) TasksMaster Started
+20010307 14:33:38 (0) AlerterMaster Log Closed
+20010307 14:36:23 (0) ---------------------------
+20010307 14:36:23 (0) AlerterMaster Log Opened
+20010307 14:36:23 (1) Starting Tasks Master...
+20010307 14:36:23 (1) TCP Server Online
+20010307 14:36:23 (1) TasksMaster Started
+20010307 14:36:26 (0) AlerterMaster Log Closed
+20010312 08:16:19 (0) ---------------------------
+20010312 08:16:19 (0) AlerterMaster Log Opened
+20010312 08:16:19 (1) Starting AlerterMaster...
+20010312 08:16:19 (1) TCP Server Online
+20010312 08:16:19 (1) AlerterMaster Started
+20010312 08:16:23 (1) TCP Connection Opened (127.0.0.1:3750)
+20010312 08:23:46 (1) TCP Connection Closed (127.0.0.1:3750)
+20010312 12:49:26 (1) TCP Connection Opened (127.0.0.1:3755)
+20010312 12:50:50 (1) TCP Connection Closed (127.0.0.1:3755)
+20010312 13:32:09 (0) ---------------------------
+20010312 13:32:09 (0) AlerterMaster Log Opened
+20010312 13:32:09 (1) Starting AlerterMaster...
+20010312 13:32:09 (1) TCP Server Online
+20010312 13:32:09 (1) AlerterMaster Started
+20010312 13:32:17 (1) TCP Connection Opened (127.0.0.1:3757)
+20010312 13:32:29 (1) TCP Connection Closed (127.0.0.1:3757)
+20010312 13:34:34 (0) ---------------------------
+20010312 13:34:34 (0) AlerterMaster Log Opened
+20010312 13:34:35 (1) Starting AlerterMaster...
+20010312 13:34:35 (1) TCP Server Online
+20010312 13:34:35 (1) AlerterMaster Started
+20010312 13:34:37 (1) TCP Connection Opened (127.0.0.1:3758)
+20010312 13:36:09 (0) ---------------------------
+20010312 13:36:09 (0) AlerterMaster Log Opened
+20010312 13:36:09 (1) Starting AlerterMaster...
+20010312 13:36:12 (1) TCP Server Online
+20010312 13:36:12 (1) AlerterMaster Started
+20010312 13:36:17 (1) TCP Connection Opened (127.0.0.1:3759)
+20010312 13:38:37 (0) ---------------------------
+20010312 13:38:37 (0) AlerterMaster Log Opened
+20010312 13:38:37 (1) Starting AlerterMaster...
+20010312 13:38:37 (1) TCP Server Online
+20010312 13:38:37 (1) AlerterMaster Started
+20010312 13:38:44 (1) TCP Connection Opened (127.0.0.1:3760)
+20010312 13:43:29 (1) TCP Connection Closed (127.0.0.1:3760)
+20010312 13:43:31 (0) AlerterMaster Log Closed
+20010312 13:45:43 (0) ---------------------------
+20010312 13:45:43 (0) AlerterMaster Log Opened
+20010312 13:45:43 (1) Starting AlerterMaster...
+20010312 13:45:43 (1) TCP Server Online
+20010312 13:45:43 (1) AlerterMaster Started
+20010312 13:45:45 (1) TCP Connection Opened (127.0.0.1:3761)
+20010312 13:59:50 (1) TCP Connection Closed (127.0.0.1:3761)
+20010312 13:59:57 (0) AlerterMaster Log Closed
+20010315 11:06:23 (1) TCP Connection Closed (127.0.0.1:1695)
+20010315 11:06:38 (0) AlerterMaster Log Closed
+20010315 11:24:20 (0) ---------------------------
+20010315 11:24:20 (0) AlerterMaster Log Opened
+20010315 11:25:30 (0) ---------------------------
+20010315 11:25:30 (0) AlerterMaster Log Opened
+20010315 11:25:35 (0) AlerterMaster Log Closed
+20010315 11:29:32 (0) ---------------------------
+20010315 11:29:32 (0) AlerterMaster Log Opened
+20010315 11:29:32 (1) Starting AlerterMaster...
+20010315 11:29:32 (1) TCP Server Online
+20010315 11:29:32 (1) AlerterMaster Started
+20010315 11:29:57 (1) TCP Connection Opened (10.1.30.129:1055)
+20010315 11:31:38 (0) AlerterMaster Log Closed
+20010319 18:24:33 (0) ---------------------------
+20010319 18:24:33 (0) AlerterMaster Log Opened
+20010319 18:24:33 (1) Starting AlerterMaster...
+20010319 18:24:38 (1) Unable to open Database
+20010319 18:24:52 (0) ---------------------------
+20010319 18:24:52 (0) AlerterMaster Log Opened
+20010319 18:24:52 (1) Starting AlerterMaster...
+20010319 18:24:55 (1) Unable to open Database

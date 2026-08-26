@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>REINSTALLMODE Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="REINSTALLMODE Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_reinstallmode_property"></A>REINSTALLMODE Property</H1>
+
+<P>The REINSTALLMODE property is a string containing letters specifying the type of reinstall to perform. Options are case-insensitive and order-independent. This property should normally always be used in conjunction with the <A HREF="pref_19x5.htm">REINSTALL</A> property. However, this property can also be used during install, not just reinstall.</P>
+
+<H4>Default Value</H4>
+
+<P>By default the REINSTALLMODE is "omus".</P>
+
+<P><B>Reinstall Option Codes</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Code</TH>
+<TH align=left width=79%>Option</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>p</TD>
+<TD width=79%>Reinstall only if file is missing (i.e., verify that the file is present).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>o</TD>
+<TD width=79%>Reinstall if file is missing, or an older version is present.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>e</TD>
+<TD width=79%>Reinstall if file is missing, or an equal or older version is present</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>d</TD>
+<TD width=79%>Reinstall if file is missing, or a different version is present</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>c</TD>
+<TD width=79%>Reinstall if file is missing, or corrupt. This option only repairs files that have msidbFileAttributesChecksum in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>a</TD>
+<TD width=79%>Force all files to be reinstalled, regardless of checksum or version.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>u</TD>
+<TD width=79%>Rewrite all required registry entries from the <A HREF="tref_3obp.htm">Registry table</A> that go to the<BR>
+ <B>HKEY_CURRENT_USER or HKEY_USERS <BR>
+</B>registry hive.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>m</TD>
+<TD width=79%>Rewrite all required registry entries from the <A HREF="tref_3obp.htm">Registry table</A> that go to the <BR>
+<B>HKEY_LOCAL_MACHINE or HKEY_CLASSES_ROOT <BR>
+</B>registry hive. Rewrite all information from the <A HREF="tref_5n8l.htm">Class table</A>, <A HREF="tref_3kdh.htm">Verb table</A>, <A HREF="tref_7xt1.htm">PublishComponent table</A>, <A HREF="tref_4x5x.htm">ProgID table</A>, <A HREF="tref_3sh1.htm">MIME table</A>, <A HREF="tref_7vmt.htm">Icon table</A>, <A HREF="tref_219h.htm">Extension table</A>, and <A HREF="tref_6p2d.htm">AppID table</A>  regardless of machine or user assignment. Reinstall all <A HREF="msi_3vn8.htm">qualified components.</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>s</TD>
+<TD width=79%>Reinstall all shortcuts and re-cache all icons overwriting any existing shortcuts and icons.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>v</TD>
+<TD width=79%>Use to run from the source package and re-cache the local package.</TD>
+</TR>
+</TABLE><BR>
+
+<P>If the REINSTALLMODE property is defined without the REINSTALL property defined, then the specified "detection" modes still apply; however, only those features that are selected normally for install are actually "reinstalled". Thus, in this case, REINSTALLMODE actually specifies the "overwrite" mode for a normal install.</P>
+
+<P>The option codes for this property correspond to the <A HREF="app_73eb.htm">command line option</A> '/f'. The command line option has a default value of 'pecms'.</P>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;Only those files containing checksum information are ever verified and repaired. The REINSTALLMODE_FILEVERIFY flag (c option above) only repairs files that have <B>msidbFileAttributesChecksum</B> in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

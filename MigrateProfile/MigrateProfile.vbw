@@ -1,0 +1,6 @@
+frmMain = 9, 78, 1260, 885, , 22, 29, 453, 484, C
+modMain = 5, 3, 1243, 766, C
+modRegistry = 132, 174, 1262, 786, C
+frmProfiles = 206, 9, 1269, 893, C, 438, 31, 827, 472, C
+modReboot = 198, 261, 1261, 873, C
+cFileVersion = 11, 7, 1211, 834, C

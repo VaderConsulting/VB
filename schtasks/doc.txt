@@ -1,0 +1,705 @@
+
+Contents 
+1. Requirements
+2. Distribution
+3. Properties and methods
+4. VB code samples
+5. C++/VC++ code samples
+
+-----------------
+
+Manipulate scheduled tasks with this ActiveX component
+
+Add and remove scheduled tasks on local or remote machine .
+Add task triggers for task to run once, daily, weekly, on logon or
+system start .
+Task Scheduler Service will run tasks added with this component .
+Light weight COM component does not require VB runtime .
+
+
+Requires Windows 2000 (or Windows NT 4.0 with Internet Explorer 4.0 or later).
+Requires Windows 98 (or Windows 95 with Internet Explorer 4.0 or later).
+
+/*
+	Distribution
+*/
+
+Application that uses this component should copy SchedTask.dll to destination
+directory and register it .
+
+/*
+	Properties
+*/
+
+// per TASK properties
+
+Program	(in/out)
+	name of application to be scheduled to run or 
+	any item that the Task Scheduler can execute. 
+	These items may include any of the following (as supported by the operating system 
+	on which the task will execute): Win32® applications, Win16 applications, 
+	OS/2 applications, MS-DOS® applications, batch files (*.bat), command files (*.cmd), 
+	or any properly registered file type
+ 
+StartingDir (in/out)
+	applications start in directory
+
+Parameters (in/out)
+	application startup parameters
+
+Comment (in/out)
+	comment
+
+TargetComputer
+	selects the computer that component operates on, allowing remote task management
+
+Username (in/out)
+	string that contains the name of the user account in which the item will run. 
+	The empty string may be used to specify the local system account
+
+Password
+	string that contains the name of the user password in which the item will run. 
+
+Creator (in/out)
+	string that contains the name of task creator
+
+// per TRIGGER properties
+
+StartYear, StartMonth, StartDay, StartHour, StartMinute
+	date time when task will be triggered
+
+EndYear, EndMonth, EndDay
+	date when task trigger will be deactivated
+
+MinutesInterval
+	interval in minutes task will be triggered repeatedly
+
+MinutesDuration
+	interval in minutes task can be triggered repeatedly
+
+DayOfTheWeek
+	day of the week used in weekly trigger
+
+	It is a bitmask
+
+	0000 0001	1		Sunday 
+	0000 0010	2		Monday
+	0000 0100	4		Tuesday
+	0000 1000	8		Wednesday
+	0001 0000	16		Thursday
+	0010 0000	32		Friday
+	0100 0000	64		Saturday
+
+	If you want it to run only on weekdays :
+	Monday + Tuesday + Wednesday + Thursday + Friday
+	2 + 4 + 8 + 16 + 32 = 62
+
+DayOfTheMonth
+	day of the month used in monthly trigger
+
+TaskItem
+	index of task to retrieve
+
+TaskName (readonly)
+	task name retrieved with Enum method
+
+DontStartIfOnBatteries (default is True)
+	don't start task if runs on batteries
+
+KillIfOnBatteries (default is True)
+	kill task if runs on batteries
+
+TriggerType
+	possible values are:
+	TRIGGER_ONCE           = 0,
+	TRIGGER_DAILY          = 1,
+	TRIGGER_WEEKLY         = 2,
+	TRIGGER_MONTHLYDATE    = 3,
+	TRIGGER_MONTHLYDOW     = 4, 	
+	TRIGGER_ON_IDLE        = 5,
+	TRIGGER_AT_SYSTEMSTART = 6,
+	TRIGGER_AT_LOGON       = 7
+
+TaskItem
+    index of task to retrieve
+
+TaskName (readonly)
+    task name retrieved with Enum method
+
+WhichWeek
+	specify week for a trigger 
+    possible values are :
+    first week = 1
+    second week = 2
+    third week = 3
+    fourth week = 4
+    last week = 5 
+
+properties added from version 1.4
+
+DeleteWhenDone
+	delete then task finishes execution
+
+RunOnlyIfLogged
+	run only if user logged in interactive
+
+StartOnlyIfIdle
+	start task only if idle (Windows 95 only)
+
+RunIfConnectedInternet
+	implemented but not all Windows configrations support that
+
+RestartOnIdleResume
+	resume task execution on idle
+
+DaysInterval
+	interval of days between task runs
+
+WeeksInterval
+	interval of weeks between task runs
+
+LastTimeRun
+	string formatted date of last time task run
+
+NextTimeRun 
+	string formatted date of next time task is going to run
+
+TriggerString
+	get textual representation of actual trigger
+
+Disabled 
+	get/set disabled task flag
+
+/*
+	Methods
+*/
+
+ActivateTask(taskname)
+	prepare to read (in/out) properties for task
+
+CreateTask(taskname, failifexists)
+	create task. Calls AddTrigger inside
+
+	- taskname		is a name of new task
+	- failifexists	if TRUE fails if task exists, if FALSE - overwrites existing task
+
+EditTask(taskname)
+	show dialogs to edit task
+
+RemoveTask
+	remove task from scheduled tasks
+	
+AddTrigger
+	add additional trigger. 
+	Call this method if you want to add more triggers to already created task
+	CreateTask call must be made before 
+
+Reset
+	cleans and releases all used objects
+	Component does automatic cleanup and user do not need to call this function
+	unless there is special need to reinitialize component
+
+Enum
+	enumerate/retrieve all tasks
+
+AddMonth
+	add month to monthly trigger
+
+GetTrigger(integer index)
+	retrieve trigger properties
+
+RemoveTrigger(integer index)
+	removes specific trigger from task
+
+Run
+	run scheduled task
+
+Terminate
+	terminate scheduled task
+
+GetStatus
+	get current status of the task
+	SCHED_S_TASK_READY = 0
+	SCHED_S_TASK_RUNNING = 1
+	SCHED_S_TASK_NOT_SCHEDULED = 2
+
+
+
+/*
+	VB examples
+*/
+	' Scheduled Task component usage VB samples
+	' check "SchedTask 1.0 Type Library" in Tools|References
+
+	' #1
+	' example creates new scheduled task called "myTask" 
+	' task should start notepad on May 5, 2001 10:20AM once
+
+	Dim obj
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+
+    obj.Program = "notepad.exe"
+	obj.Parameters = "myinputfile.xml"
+    obj.StartingDir = "C:\Winnt\system32"
+
+    obj.TriggerType = 0    ' once
+
+    obj.StartYear = 2001
+    obj.StartMonth = 5
+    obj.StartDay = 5
+    obj.StartHour = 10
+    obj.StartMinute = 20
+
+	obj.DontStartIfOnBatteries = False	' default is True
+	obj.KillIfOnBatteries = False		' default is True
+
+	obj.Username = "TaskRun"
+	obj.Password = "taskrun"	' password is case sensitive
+	obj.Creator = "Me"			' default user if omited
+
+    obj.CreateTask "myTask", True  ' calls AddTrigger inside
+
+	obj.EditTask "myTask"		   ' give user dialog to edit task
+
+	; #2
+	; example creates new scheduled task called "myTask2"
+	; task should start notepad.exe every 15 minutes during 2 hours (120min.)
+	; starting May 5, 2001 10:20AM daily
+	
+	Dim obj
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+
+	obj.Program = "notepad.exe"
+	obj.StartingDir = "C:\Winnt\system32"
+
+	obj.TriggerType = 1		' daily
+
+	obj.StartYear = 2001
+	obj.StartMonth = 5
+	obj.StartDay = 5
+	obj.StartHour = 10
+	obj.StartMinute = 20
+
+	obj.MinutesInterval = 15
+	obj.MinutesDuration = 120
+
+	obj.CreateTask "myTask2", TRUE	' calls AddTrigger inside
+
+
+	' #3
+	' example creates new scheduled task called "myTask3"
+	' task should start notepad.exe at logon
+
+	Dim obj
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+
+	obj.Program = "notepad.exe"
+	obj.StartingDir = "C:\Winnt\system32"
+
+	obj.TriggerType = 7		' at logon
+	
+	obj.CreateTask("myTask3", TRUE)		' calls AddTrigger inside
+
+
+	' #4
+	' example creates new scheduled task called "myTask4"
+	' task should start notepad.exe every sunday of every week 
+	' starting May 5, 2001 10:20AM
+	' If task named "myTask4" already exists it will be overwritten
+
+	Dim obj
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+
+	obj.Program = "notepad.exe"
+	obj.StartingDir = "C:\Winnt\system32"
+
+	obj.TriggerType = 2		' weekly
+	obj.DayOfTheWeek = 1	' every sunday
+
+	obj.StartYear = 2001
+	obj.StartMonth = 5
+	obj.StartDay = 5
+	obj.StartHour = 10
+	obj.StartMinute = 20
+	
+	obj.CreateTask "myTask4", FALSE		' calls AddTrigger inside
+
+
+	' #5
+	' example creates new scheduled task called "myTask5"
+	' task should start al 10:40AM on day 2 of every month, 
+	' starting 05/04/2000 and ending 05/10/2001
+
+	Dim obj
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+
+	obj.Program = "notepad.exe"
+	obj.StartingDir = "C:\Winnt\system32"
+
+	obj.TriggerType = 3		' monthly
+	obj.DayOfTheWeek = 2	' every second day of the month
+
+	obj.StartYear = 2001
+	obj.StartMonth = 5
+	obj.StartDay = 4
+	obj.StartHour = 10
+	obj.StartMinute = 20
+
+	pSTask->EndYear = 2001
+	pSTask->EndMonth = 5
+	pSTask->EndDay = 10
+	
+	obj.CreateTask "myTask5", FALSE		' calls AddTrigger inside
+
+// #6
+// example enumerates all existing tasks
+// each task has extension ".job" . If you want to compare task you have
+// created with existing task - drop/trim the extension 
+
+	Dim obj
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+
+    obj.Enum
+	
+	i = 1
+
+	while (i < obj.TaskCount)	' loop thru all tasks
+	
+		obj.TaskItem = i		' setup task index
+		Str = obj.TaskName		' get task name
+		MsgBox Str
+		i = i + 1
+
+	wend 
+
+// #7
+//	Run on specific months only
+//
+
+	Dim obj
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+
+    obj.Program = "notepad.exe"
+    obj.StartingDir = "C:\Winnt\system32"
+
+    obj.TriggerType = 3    ' monthly
+
+    obj.StartYear = 2000
+    obj.StartMonth = 7
+    obj.StartDay = 28
+    obj.StartHour = 18
+    obj.StartMinute = 53
+
+	obj.AddMonth 1		' run January and February
+	obj.AddMonth 2
+
+	obj.DayoftheMonth = 15
+
+	obj.DontStartIfOnBatteries = False	' default is True
+	obj.KillIfOnBatteries = False		' default is True
+
+	obj.CreateTask "myTask1", False  ' calls AddTrigger inside
+
+// #8
+//	run first Saturday of May and November
+//
+
+	Dim obj
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+
+    obj.Program = "notepad.exe"
+    obj.StartingDir = "C:\Winnt\system32"
+
+    obj.TriggerType = 4    ' monthly on week basis
+
+    obj.StartYear = 2000
+    obj.StartMonth = 7
+    obj.StartDay = 28
+    obj.StartHour = 18
+    obj.StartMinute = 53
+
+	obj.WhichWeek = 1
+	obj.DayoftheWeek = 7
+	obj.AddMonth 5
+	obj.AddMonth 11
+
+	obj.DontStartIfOnBatteries = False	' default is True
+	obj.KillIfOnBatteries = False		' default is True
+
+	obj.CreateTask "myTask1", False  ' calls AddTrigger inside
+
+// #9
+// display tasks application names in ListBox
+//
+
+	Dim obj
+    Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+    
+    obj.ActivateTask "myWeekTask1"
+    List1.AddItem (obj.Program)
+    
+    obj.ActivateTask "myWeekTask2"
+    List1.AddItem (obj.Program)
+
+
+// #10
+// get start day from trigger
+//
+
+	Dim obj
+	Dim bresult   
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+	obj.ActivateTask "mytask2"
+	obj.GetTrigger 0
+
+	MsgBox obj.StartDay
+
+// #11
+// get enabled/disabled flag for task
+//
+
+	Dim obj, s
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+    
+	obj.ActivateTask "Task2"
+	If (obj.Disabled = 1) Then
+		MsgBox "disabled"
+	End If
+
+// #12
+// get trigger string (textual trigger description)
+//
+	
+	Dim obj, s
+	Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+    
+	obj.ActivateTask "Task2"
+	obj.GetTrigger 0
+	
+	s = obj.TriggerString
+
+	MsgBox s
+
+// #13
+// run task
+//
+
+    Dim obj
+    Dim bresult 
+    Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+    obj.ActivateTask "mytask2"
+    obj.Run
+    ' do something
+    obj.Terminate
+
+
+/*
+	C++/VC++ examples
+*/
+
+// Scheduled Task component usage C++/VC++ samples
+// #1
+// example creates new scheduled task called "myTask" 
+// task should start notepad on May 5, 2001 10:20AM once
+
+// use something like this 
+#import "D:\\Path_to_my_SchedTask\\SchedTask.tlb"  // in all these examples below
+
+
+CoInitialize(NULL);
+
+try
+{
+	SCHEDTASKLib::IetScheduledTaskPtr pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));
+	pSTask->Program = "notepad.exe";
+	pSTask->StartingDir = "C:\\Winnt\\system32";
+
+	pSTask->TriggerType = 0;	// once
+	pSTask->StartYear = 2001;
+	pSTask->StartMonth = 5;
+	pSTask->StartDay = 5;
+	pSTask->StartHour = 10;
+	pSTask->StartMinute = 20;
+
+	pSTask->DontStartIfOnBatteries = FALSE
+	pSTask->KillIfOnBatteries = FALSE
+
+	pSTask->Username = "TaskRun"
+	pSTask->Password = "taskrun"	// password is case sensitive
+	pSTask->Creator = "ME"
+
+	pSTask->CreateTask("myTask", TRUE);		// calls AddTrigger inside
+	
+}
+catch(const _com_error &err)
+{
+	// retrieve rich error information here
+}
+
+CoUninitialize();
+
+
+// #2
+// example creates new scheduled task called "myTask2"
+// task should start notepad.exe every 15 minutes during 2 hours (120min.)
+// starting May 5, 2001 10:20AM daily
+
+CoInitialize(NULL);
+
+try
+{
+	SCHEDTASKLib::IetScheduledTaskPtr pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));
+	pSTask->Program = "notepad.exe";
+	pSTask->StartingDir = "C:\\Winnt\\system32";
+
+	pSTask->TriggerType = 1;	// daily
+	pSTask->StartYear = 2001;
+	pSTask->StartMonth = 5;
+	pSTask->StartDay = 5;
+	pSTask->StartHour = 10;
+	pSTask->StartMinute = 20;
+
+	pSTask->MinutesInterval = 15;
+	pSTask->MinutesDuration = 120;
+
+	pSTask->CreateTask("myTask2", TRUE);
+	
+
+}
+catch(const _com_error &err)
+{
+	// retrieve rich error information here
+}
+
+CoUninitialize();
+
+
+// #3
+// example creates new scheduled task called "myTask3"
+// task should start notepad.exe at logon
+
+CoInitialize(NULL);
+
+try
+{
+	SCHEDTASKLib::IetScheduledTaskPtr pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));
+	pSTask->Program = "notepad.exe";
+	pSTask->StartingDir = "C:\\Winnt\\system32";
+
+	pSTask->TriggerType = 7;	// at logon
+	
+	pSTask->CreateTask("myTask3", TRUE);		
+
+}
+catch(const _com_error &err)
+{
+	// retrieve rich error information here
+}
+
+CoUninitialize();
+
+
+// #4
+// example creates new scheduled task called "myTask4"
+// task should start notepad.exe every sunday of every week 
+// starting May 5, 2001 10:20AM
+// If task named "myTask4" already exists it will be overwritten
+
+CoInitialize(NULL);
+
+try
+{
+	SCHEDTASKLib::IetScheduledTaskPtr pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));
+	pSTask->Program = "notepad.exe";
+	pSTask->StartingDir = "C:\\Winnt\\system32";
+
+	pSTask->TriggerType = 2;	// weekly
+	pSTask->DayOfTheWeek = 1;	// every sunday
+
+	pSTask->StartYear = 2001;
+	pSTask->StartMonth = 5;
+	pSTask->StartDay = 4;
+	pSTask->StartHour = 10;
+	pSTask->StartMinute = 40;		
+	
+	pSTask->CreateTask("myTask4", FALSE);		
+
+}
+catch(const _com_error &err)
+{
+	// retrieve rich error information here	
+}
+
+CoUninitialize();
+
+
+// #5
+// example creates new scheduled task called "myTask4"
+// task should start at 10:40AM on day 2 of every month, 
+// starting 05/04/2000 and ending 05/10/2001	
+
+CoInitialize(NULL);
+
+try
+{
+	SCHEDTASKLib::IetScheduledTaskPtr pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));
+	pSTask->Program = "notepad.exe";
+	pSTask->StartingDir = "C:\\Winnt\\system32";
+
+	pSTask->TriggerType = 3;	// monthly
+	pSTask->DayOfTheMonth = 2;	// every second day of the month
+
+	pSTask->StartYear = 2001;
+	pSTask->StartMonth = 5;
+	pSTask->StartDay = 4;
+	pSTask->StartHour = 10;
+	pSTask->StartMinute = 40;
+	
+	pSTask->EndYear = 2001;
+	pSTask->EndMonth = 5;
+	pSTask->EndDay = 10;
+	
+	pSTask->CreateTask("myTask5", FALSE);		
+
+}
+catch(const _com_error &err)
+{
+	// retrieve rich error information here
+}
+
+CoUninitialize();
+
+// #6
+// example enumerates all existing tasks
+// each task has extension ".job" . If you want to compare task you have
+// created with existing task - drop/trim the extension .
+
+
+#include "atlconv.h"  // cause we use some ATL macros for conversion
+
+USES_CONVERSION;
+CoInitialize(NULL);
+
+try
+{
+	SCHEDTASKLib::IetScheduledTaskPtr pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));
+
+	char szTask[120];
+	pSTask->Enum();
+
+	for (int i=1; i < pSTask->TaskCount; i++)
+	{
+		pSTask->TaskItem = i;
+		strncpy(szTask, OLE2T(pSTask->TaskName), 120);
+	}	
+
+}
+catch(const _com_error &err)
+{
+	// retrieve rich error information here
+	_ASSERT(0);
+}
+
+CoUninitialize();
+
+

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSummaryInfoGetProperty</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiSummaryInfoGetProperty">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msisummaryinfogetproperty"></A>MsiSummaryInfoGetProperty</H1>
+
+<P>The <B>MsiSummaryInfoGetProperty</B> function gets a single property from the summary information.</P>
+
+<PRE class=syntax><B>UINT MsiSummaryInfoGetProperty(
+</B>  <B>MSIHANDLE</B> <I>hSummaryInfo</I><B>,</B>   // summary info handle
+  <B>UINT</B> <I>uiProperty</I><B>,</B>          // property
+  <B>UINT</B> <I>*puiDataType</I><B>,</B>        // property type
+  <B>INT</B> <I>*piValue</I><B>,</B>             // value
+  <B>FILETIME</B> <I>*pftValue</I><B>,</B>       // file time
+  <B>LPTSTR</B> <I>szValueBuf</I><B>,</B>       // value buffer
+  <B>DWORD</B> <I>*pcchValueBuf</I>       // buffer size
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hSummaryInfo</I></DT>
+
+<DD>Handle to summary information.</DD>
+
+<DT><I>uiProperty</I></DT>
+
+<DD>Specifies the property ID.</DD>
+
+<DT><I>puiDataType</I></DT>
+
+<DD>Specifies the returned property type. This type can be VT_I2, VT_I4, VT_LPSTR, VT_FILETIME, or VT_EMPTY. For more information on these types, see <A HREF="sovr_43w4.htm">Summary Information Stream Property Set</A>.</DD>
+
+<DT><I>piValue</I></DT>
+
+<DD>Specifies the returned integer property data.</DD>
+
+<DT><I>pftValue</I></DT>
+
+<DD>Pointer to a file value.</DD>
+
+<DT><I>szValueBuf</I></DT>
+
+<DD>Specifies the returned string property data.</DD>
+
+<DT><I>pcchValueBuf</I></DT>
+
+<DD>Specifies the size of the string buffer. The count does not include the terminating null. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_MORE_DATA</DT>
+
+<DD>A buffer was too small to hold the entire value.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>ERROR_UNKNOWN_PROPERTY </DT>
+
+<DD>The property is unknown.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If ERROR_MORE_DATA is returned, the parameter which is a pointer gives the size of the buffer required to hold the string. If ERROR_SUCCESS is returned, it gives the number of characters written to the string buffer. Therefore you can get the size of the buffer by passing in an empty string (for example "") for the parameter that specifies the buffer. Do not attempt to determine the size of the buffer by passing in a Null (value=0).</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_summary_information_property_functions">Summary Information Property Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

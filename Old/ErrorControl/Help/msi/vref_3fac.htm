@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FileHash Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="FileHash Method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_filehash_method"></A>FileHash Method</H1>
+
+<P>The <B>FileHash</B> method of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> takes the path to a file and returns a 128-bit hash of that file. The file hash information is returned as a <A HREF="vref_6kac.htm"><B>Record</B> object</A>. The entire 128-bit file hash is returned as four 32-bit <A HREF="vref_6nzt.htm"><B>IntegerData</B> property</A> fields.</P>
+
+<P>The values returned in the <B>Record</B> object correspond to the four fields of the MSIFILEHASHINFO structure returned by <A HREF="msi_1uso.htm"><B>MsiGetFileHash</B></A>. The numbering of four fields is 1-based. Field 1 corresponds to the HashPart1 column of the <A HREF="tref_8fad.htm">MsiFileHash table</A>, field 2 corresponds to the HashPart2 column, field 3 corresponds to the HashPart3 column, and field 4 corresponds to the HashPart4 column.</P>
+
+<PRE class=syntax><I>object</I>.FileHash(<I>FilePath, Options</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </DD>
+
+<DT><I>Filepath</I></DT>
+
+<DD>Path to the file that is to be hashed.</DD>
+
+<DT><I>Options</I></DT>
+
+<DD>Reserved for future use. The value of this parameter must be 0.</DD>
+</DL>
+
+<H4>See Also</H4>
+
+<P><A HREF="tref_8fad.htm">MsiFileHash Table</A>, <A HREF="msi_1uso.htm"><B>MsiGetFileHash</B></A>, <A HREF="over_5qef.htm">Default File Versioning</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FileHash%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_3fac.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FileHash%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_3fac.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

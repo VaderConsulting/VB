@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Suggested InstallUISequence</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_suggested_installuisequence"></A>Suggested InstallUISequence</H3>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Action</TH>
+<TH align=left width=34%>Condition</TH>
+<TH align=left width=35%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>FatalErrorDlg</TD>
+<TD width=34%> </TD>
+<TD width=35%>-3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>UserExitDlg</TD>
+<TD width=34%> </TD>
+<TD width=35%>-2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>ExitDlg</TD>
+<TD width=34%> </TD>
+<TD width=35%>-1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_6jhq.htm">LaunchConditions</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PrepareDlg</TD>
+<TD width=34%> </TD>
+<TD width=35%>140</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_16zy.htm">AppSearch</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_77se.htm">CCPSearch</A></TD>
+<TD width=34%>NOT <A HREF="pref_8ws9.htm">Installed</A> </TD>
+<TD width=35%>500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_5pgu.htm">RMCCPSearch</A></TD>
+<TD width=34%>NOT <A HREF="pref_8ws9.htm">Installed</A> </TD>
+<TD width=35%>600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_4bam.htm">CostInitialize</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_2f8u.htm">FileCost</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_22we.htm">CostFinalize</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>1000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>WelcomeDlg</TD>
+<TD width=34%>NOT <A HREF="pref_8ws9.htm">Installed</A></TD>
+<TD width=35%>1230</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>ResumeDlg</TD>
+<TD width=34%><A HREF="pref_8ws9.htm">Installed</A> AND (<A HREF="pref_31tl.htm">RESUME</A> OR <A HREF="pref_84u1.htm">Preselected</A>)</TD>
+<TD width=35%>1240</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>MaintenanceWelcomeDlg</TD>
+<TD width=34%><A HREF="pref_8ws9.htm">Installed</A> AND NOT <A HREF="pref_31tl.htm">RESUME</A> AND NOT <A HREF="pref_84u1.htm">Preselected</A></TD>
+<TD width=35%>1250</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>ProgressDlg</TD>
+<TD width=34%> </TD>
+<TD width=35%>1280</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_3b1q.htm">ExecuteAction</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>1300</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

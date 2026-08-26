@@ -1,0 +1,52 @@
+<SchAgent>
+   <Abstract Author="Mark Pryor" ProgID="Scheduler.SchAgent" Version="1.00" Date="1/05/02">This is an XML data model to (coming soon) drive creation scripts using the SchAgent object.</Abstract>
+   <Computer ID="CompName" OS="Win98">
+      <Job>
+         <Properties>
+            <ALLOS Name="Indexer" ApplicationName="" CommandLine="" Comment="" Creator="" FileName="" Flags="192" IdleWait="minutes" MaxRunTime="3600000" WorkingDirectory=""/>
+            <WIN2K Priority="NORMAL_PRIORITY_CLASS">
+               <credentials accountname="sa">
+                  <password dt-type="bin64">V1NIX3NjcmlwdGluZ19pc19jb29s         </password>
+               </credentials>
+            </WIN2K>
+         </Properties>
+         <Triggers>
+            <Trigger TriggerType="ttDaily" BeginDay="" StartTime="" Flags="ttTriggerDisabled (more)" DaysInterval="1" EndDay="12/31/02">
+               <Repeat enabled="false">
+                  <!--interval divides into Duration -->
+                  <Duration>15</Duration>
+                  <Interval>3</Interval>
+               </Repeat>
+            </Trigger>
+            <Trigger TriggerType="ttWeekly" BeginDay="" StartTime="" Flags="ttTriggerDisabled ttHasEndDate" DaysOfTheWeek="tdMonday tdWednesday tdFriday" WeeksInterval="1" EndDay="12/31/2002">
+               <Repeat enabled="false">
+                  <!--interval divides into Duration -->
+                  <Duration>15</Duration>
+                  <Interval>3</Interval>
+               </Repeat>
+            </Trigger>
+            <Trigger TriggerType="ttMonthlyWeekDay" BeginDay="" StartTime="" Flags="ttTriggerDisabled" Months="tmJune tmJuly (more)" Week="twFirst" DaysOfTheWeek="tdMonday " EndDay="12/31/02">
+               <Repeat enabled="false">
+                  <!--interval divides into Duration -->
+                  <Duration>15</Duration>
+                  <Interval>3</Interval>
+               </Repeat>
+            </Trigger>
+            <Trigger TriggerType="ttMonthlyDate" BeginDay="" StartTime="" Flags="ttTriggerDisabled" Months="tmJanuary tmFebruary (more)" Day="3" EndDay="">
+               <Repeat enabled="false">
+                  <!--interval divides into Duration -->
+                  <Duration>15</Duration>
+                  <Interval>3</Interval>
+               </Repeat>
+            </Trigger>
+            <Trigger TriggerType="ttOnce" BeginDay="4/1/02" StartTime="" Flags="ttTriggerDisabled (more)" EndDay="">
+               <Repeat enabled="false">
+                  <!--interval divides into Duration -->
+                  <Duration>15</Duration>
+                  <Interval>3</Interval>
+               </Repeat>
+            </Trigger>
+         </Triggers>
+      </Job>
+   </Computer>
+</SchAgent>

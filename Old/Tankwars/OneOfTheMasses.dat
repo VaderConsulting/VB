@@ -1,0 +1,99 @@
+"Totalunits" , 150
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 0
+ "Type" , 9
+ "Position.X" , 1000
+ "Position.Y" , -2000
+ "Position.Z" , 200
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 1
+ "Type" , 8
+ "Position.X" , 0
+ "Position.Y" , -50
+ "Position.Z" , -1000
+ "Health" , 15
+ "Player" , "you"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 2
+ "Type" , 4
+ "Position.X" , 1400
+ "Position.Y" , -200
+ "Position.Z" , 0
+ "Scale.X" , 4
+ "Scale.Y" , 4
+ "Scale.Z" , 4
+ "Health" , 140
+ "Alert" , 1
+ "Target" , 4
+ "Player" , "Satens tank"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 3
+ "Type" , 4
+ "Position.X" , 2000
+ "Position.Y" , -50
+ "Position.Z" , -500
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 2
+ "Player" , "one of your tanks"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 4
+ "Type" , 4
+ "Position.X" , 0
+ "Position.Y" , -50
+ "Position.Z" , -200
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 2
+ "Player" , "one of your tanks"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 5
+ "Type" , 4
+ "Position.X" , 2000
+ "Position.Y" , -50
+ "Position.Z" , 0
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 2
+ "Player" , "one of your tanks"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 6
+ "Type" , 4
+ "Position.X" , 0
+ "Position.Y" , -50
+ "Position.Z" , 1400
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 2
+ "Player" , "one of your tanks"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" ,7
+ "Type" , 4
+ "Position.X" , 2000
+ "Position.Y" , -50
+ "Position.Z" , 600
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 2
+ "Player" , "one of your tanks"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 8
+ "Type" , 4
+ "Position.X" , 0
+ "Position.Y" , -50
+ "Position.Z" , 0
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 2
+ "Player" , "one of your tanks"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 9
+ "Type" , 4
+ "Position.X" , 2000
+ "Position.Y" , -50
+ "Position.Z" , 900
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 2
+ "Player" , "one of your tanks"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

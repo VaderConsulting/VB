@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Adding a Control Event at the End of the Installation to Run Launch</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_adding_a_control_event_at_the_end_of_the_installation_to_run_launch"></A>Adding a Control Event at the End of the Installation to Run Launch</H3>
+
+<P>The installer runs the sample's installation wizard sequence only if the <A HREF="dglo_0xvd.htm#_msi_full_ui_gly">full UI</A> level is used to install the application. The last dialog of the sample dialog sequence is an <A HREF="href_8euf.htm">Exit Dialog</A> named ExitDialog. When a user interacts with the OK button on ExitDialog this first publishes an <A HREF="href_9a0k.htm">EndDialog ControlEvent</A> that returns control to the installer. The control then publishes a <A HREF="href_2zjo.htm">DoAction ControlEvent</A> that runs the Launch custom action. Each control event requires a record in the <A HREF="tref_6k11.htm">ControlEvent table</A>. See <A HREF="hand_5fhz.htm">ControlEvent Overview</A>.</P>
+
+<P><A HREF="tref_6k11.htm"><B>ControlEvent Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=13%>Dialog</TH>
+<TH align=left width=17%>Control_</TH>
+<TH align=left width=16%>Event</TH>
+<TH align=left width=21%>Argument</TH>
+<TH align=left width=16%>Condition</TH>
+<TH align=left width=17%>Ordering</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>ExitDialog</TD>
+<TD width=17%>OK</TD>
+<TD width=16%>EndDialog</TD>
+<TD width=21%>Return</TD>
+<TD width=16%>1</TD>
+<TD width=17%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>ExitDialog</TD>
+<TD width=17%>OK</TD>
+<TD width=16%>DoAction</TD>
+<TD width=21%>Launch</TD>
+<TD width=16%>NOT Installed AND $Tutorial=3</TD>
+<TD width=17%>2</TD>
+</TR>
+</TABLE><BR>
+
+<P>The condition on the DoAction control ensures the custom action only runs during the first installation of the application and that it is being installed locally. The phrase $Tutorial=3 means the action state of Tutorial is set to local. See <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.</P>
+
+<P>This completes the sample.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Adding%20a%20Control%20Event%20at%20the%20End%20of%20the%20Installation%20to%20Run%20Launch;%20RELEASE:%20August%202001;%20URL:%20cact_55wo.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Adding%20a%20Control%20Event%20at%20the%20End%20of%20the%20Installation%20to%20Run%20Launch;%20RELEASE:%20August%202001;%20URL:%20cact_55wo.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ServiceControl Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ServiceControl Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_servicecontrol_table"></A>ServiceControl Table</H1>
+
+<P>The ServiceControl table is used to control installed or uninstalled services. </P>
+
+<P>The ServiceControl table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Column</TH>
+<TH align=left width=32%>Type</TH>
+<TH align=left width=24%>Key</TH>
+<TH align=left width=20%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>ServiceControl</TD>
+<TD width=32%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=24%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Name</TD>
+<TD width=32%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=24%> </TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Event</TD>
+<TD width=32%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=24%> </TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Arguments</TD>
+<TD width=32%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=24%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Wait</TD>
+<TD width=32%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=24%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Component_</TD>
+<TD width=32%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=24%> </TD>
+<TD width=20%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>ServiceControl</DT>
+
+<DD>This is the primary key of this table.</DD>
+
+<DT>Name</DT>
+
+<DD>This column is the string naming the service. This column can be used to control a service that is not installed.</DD>
+
+<DT>Event</DT>
+
+<DD>This column contains the operations to be performed on the named service. Note that when stopping a service, all services that depend on that service are also stopped. When deleting a service that is running, the installer stops the service. 
+
+<P>The values in this field are bitfields that can be combined into a single value that represents several operations. 
+
+
+<P>The following values are only used during an installation.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=36%>Constant</TH>
+<TH align=left width=16%>Hexadecimal</TH>
+<TH align=left width=13%>Decimal</TH>
+<TH align=left width=35%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%><B>msidbServiceControlEventStart</B></TD>
+<TD width=16%>0x001</TD>
+<TD width=13%>1</TD>
+<TD width=35%>Starts the service during the <A HREF="aref_4x4e.htm">StartServices action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%><B>msidbServiceControlEventStop</B></TD>
+<TD width=16%>0x002</TD>
+<TD width=13%>2</TD>
+<TD width=35%>Stops the service during the <A HREF="aref_83zi.htm">StopServices action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>(none)</TD>
+<TD width=16%>0x004</TD>
+<TD width=13%>4</TD>
+<TD width=35%>&lt;reserved&gt;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%><B>msidbServiceControlEventDelete</B></TD>
+<TD width=16%>0x008</TD>
+<TD width=13%>8</TD>
+<TD width=35%>Deletes the service during the <A HREF="aref_8qb2.htm">DeleteServices action</A>.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>The following values are only used during an uninstall.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=36%>Constant</TH>
+<TH align=left width=16%>Hexadecimal</TH>
+<TH align=left width=13%>Decimal</TH>
+<TH align=left width=35%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%><B>msidbServiceControlEventUninstallStart</B></TD>
+<TD width=16%>0x010</TD>
+<TD width=13%>16</TD>
+<TD width=35%>Starts the service during the <A HREF="aref_4x4e.htm">StartServices action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%><B>msidbServiceControlEventUninstallStop</B></TD>
+<TD width=16%>0x020</TD>
+<TD width=13%>32</TD>
+<TD width=35%>Stops the service during the <A HREF="aref_83zi.htm">StopServices action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>(none)</TD>
+<TD width=16%>0x040</TD>
+<TD width=13%>64</TD>
+<TD width=35%>&lt;reserved&gt;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%><B>msidbServiceControlEventUninstallDelete</B></TD>
+<TD width=16%>0x080</TD>
+<TD width=13%>128</TD>
+<TD width=35%>Deletes the service during the <A HREF="aref_8qb2.htm">DeleteServices action</A>.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Arguments</DT>
+
+<DD>A list of arguments for starting services. The arguments are separated by null characters [~]. For example, the list of arguments One, Two, and Three are listed as: One[~]Two[~]Three. </DD>
+
+<DT>Wait</DT>
+
+<DD>A value of 1 in this column (or leaving the column NULL) means to wait until the service actually completes before proceeding. This implies that the event is critical to the install, and that if the event fails the resulting error cannot be ignored. A value of 0 in this column means to wait only until the service control manager (SCM) reports that this service is in a pending state.</DD>
+
+<DT>Component_</DT>
+
+<DD>External key to column one of the <A HREF="tref_09np.htm">Component Table</A>.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Use the Name column to start, stop, or delete services that are being replaced by the installation or that are dependent upon a new service that is being installed. For example, entering MyService into the ServiceControl column can tie this service to MyComponent in the Component_ column. If the bit field in the Event column is set for start while installing, then the installer will start MyService when installing MyComponent.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ServiceControl%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_1691.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ServiceControl%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_1691.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

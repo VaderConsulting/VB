@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Action Execution Order</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_action_execution_order"></A>Action Execution Order</H2>
+
+<P>The order of action execution is determined by the sequence of actions that have been authored into the <A HREF="dglo_5nuh.htm#_msi_sequence_tables_gly">sequence tables</A> and by the order in which the installer runs the sequence tables. For details, see the suggested action sequences in <A HREF="novr_3mqt.htm">Using a Sequence Table</A>.</P>
+
+<P>The installer runs sequence tables in response to a request for an installation, <A HREF="over_1v1w.htm">advertisement</A>, or an <A HREF="over_6jzi.htm">administrative installation</A>. For example, in response to using the /I, /J, or /A <A HREF="app_73eb.htm">command line options</A>, the <A HREF="aref_986m.htm">INSTALL</A>, <A HREF="aref_2o8e.htm">ADVERTISE</A>, and <A HREF="aref_4hbi.htm">ADMIN</A> actions are not called from within the action sequence. These high-level actions are instead passed to the installer when the installer is initialized. </P>
+
+<P>If the installer is passed the INSTALL action and the installation package has been authored with a user interface, the installer first runs the actions in <A HREF="tref_1git.htm">InstallUISequence table</A> and then executes the actions in the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> in order. If the package has no user interface, the installer executes the actions in the InstallExecuteSequence table in order. </P>
+
+<P>If the installer is passed the ADVERTISE action, and the installation package has been authored with a user interface, the installer first runs the <A HREF="tref_3rvp.htm">AdvtUISequence table</A> and then runs the AdvtExecute table. If the package has no user interface, the installer runs the AdvtExecute table. </P>
+
+<P>If the installer is passed the ADMIN action, and the installation package has been authored with a user interface, the installer first runs the <A HREF="tref_5lnp.htm">AdminUISequence table</A> and then runs the <A HREF="tref_70f9.htm">AdminExecuteSequence table</A>. If the package has no user interface, the installer runs the AdminExecute table. </P>
+
+<P>When the installer runs a sequence table, it executes actions in the order of the sequence numbers listed in the Sequence column. The action order is always linear with no branching or looping. Package developers can conditionally prevent a particular action from being executed by authoring a logical expression into the Condition column. The installer skips the action whenever the condition evaluates to False. See <A HREF="novr_3mqt.htm">Using a Sequence Table</A> and <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.</P>
+
+<P>All sequence tables have the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=20%>Column</TH>
+<TH align=left width=80%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Action</TD>
+<TD width=80%>The primary key for the table; the action name must be unique.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Condition</TD>
+<TD width=80%>A Boolean expression used to determine whether to perform the action. The action is executed if this field is either blank or contains an expression that evaluates to True. The action is not executed if the expression evaluates to False.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Sequence</TD>
+<TD width=80%>A relative sequence number used to determine the order in which actions are executed.</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiViewModify</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiViewModify">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiviewmodify"></A>MsiViewModify</H1>
+
+<P>The <B>MsiViewModify</B> function updates a fetched record.</P>
+
+<PRE class=syntax><B>UINT MsiViewModify(
+</B>  <B>MSIHANDLE</B> <I>hView</I><B>,</B>        // view handle
+  <B>MSIMODIFY</B> <I>eModifyMode</I><B>,</B>  // modify mode
+  <B>MSIHANDLE</B> <I>hRecord</I>       // record handle
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hView</I></DT>
+
+<DD>Handle to a view.</DD>
+
+<DT><I>eModifyMode</I></DT>
+
+<DD>Specifies the modify mode. This parameter can be one of the following values. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=38%>Value</TH>
+<TH align=left width=11%>Value</TH>
+<TH align=left width=51%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_SEEK</TD>
+<TD width=11%>-1</TD>
+<TD width=51%>Refreshes the information in the supplied record without changing the position in the result set and without affecting subsequent fetch operations. The record may then be used for subsequent Update, Delete, and Refresh. All primary key columns of the table must be in the query and the record must have at least as many fields as the query. Seek cannot be used with multi-table queries. This mode cannot be used with a view containing joins. See also the remarks.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_REFRESH</TD>
+<TD width=11%>0</TD>
+<TD width=51%>Refreshes the information in the record. Must first call <A HREF="qref_9b54.htm"><B>MsiViewFetch</B></A> with the same record. Fails for a deleted row. Works with read-write and read-only records.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_INSERT</TD>
+<TD width=11%>1</TD>
+<TD width=51%>Inserts a record. Fails if a row with the same primary keys exists. Fails with a read-only database. This mode cannot be used with a view containing joins.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_UPDATE</TD>
+<TD width=11%>2</TD>
+<TD width=51%>Updates an existing record. Non-primary keys only. Must first call <B>MsiViewFetch</B>. Fails with a deleted record. Works only with read-write records.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_ASSIGN</TD>
+<TD width=11%>3</TD>
+<TD width=51%>Writes current data in the cursor to a table row. Updates record if the primary keys match an existing row and inserts if they do not match. Fails with a read-only database. This mode cannot be used with a view containing joins.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_REPLACE</TD>
+<TD width=11%>4</TD>
+<TD width=51%>Updates or deletes and inserts a record into a table. Must first call <B>MsiViewFetch</B> with the same record. Updates record if the primary keys are unchanged. Deletes old row and inserts new if primary keys have changed. Fails with a read-only database. This mode cannot be used with a view containing joins.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_MERGE</TD>
+<TD width=11%>5</TD>
+<TD width=51%>Inserts or validates a record in a table. Inserts if primary keys do not match any row and validates if there is a match. Fails if the record does not match the data in the table. Fails if there is a record with a duplicate key that is not identical. Works only with read-write records. This mode cannot be used with a view containing joins.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_DELETE</TD>
+<TD width=11%>6</TD>
+<TD width=51%>Remove a row from the table. You must first call the <B>MsiViewFetch</B> function with the same record. Fails if the row has been deleted. Works only with read-write records. This mode cannot be used with a view containing joins.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_INSERT_TEMPORARY</TD>
+<TD width=11%>7</TD>
+<TD width=51%>Inserts a temporary record. The information is not persistent. Fails if a row with the same primary key exists. Works only with read-write records. This mode cannot be used with a view containing joins.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_VALIDATE</TD>
+<TD width=11%>8</TD>
+<TD width=51%>Validates a record. Does not validate across joins. You must first call the <B>MsiViewFetch</B> function with the same record. Obtain validation errors with <A HREF="qref_541e.htm"><B>MsiViewGetError</B></A>. Works with read-write and read-only records. This mode cannot be used with a view containing joins.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_VALIDATE_NEW</TD>
+<TD width=11%>9</TD>
+<TD width=51%>Validate a new record. Does not validate across joins. Checks for duplicate keys. Obtain validation errors by calling <B>MsiViewGetError</B>. Works with read-write and read-only records. This mode cannot be used with a view containing joins.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_VALIDATE_FIELD</TD>
+<TD width=11%>10</TD>
+<TD width=51%>Validates fields of a fetched or new record. Can validate one or more fields of an incomplete record. Obtain validation errors by calling <B>MsiViewGetError</B>. Works with read-write and read-only records. This mode cannot be used with a view containing joins.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSIMODIFY_VALIDATE_DELETE</TD>
+<TD width=11%>11</TD>
+<TD width=51%>Validates a record that will be deleted later. You must first call <B>MsiViewFetch</B>. Fails if another row refers to the primary keys of this row. Validation does not check for the existence of the primary keys of this row in properties or strings. Does not check if a column is a foreign key to multiple tables. Obtain validation errors by calling <B>MsiViewGetError</B>. Works with read-write and read-only records. This mode cannot be used with a view containing joins.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>hRecord</I></DT>
+
+<DD>Handle to the record to modify.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_ACCESS_DENIED</DT>
+
+<DD>Access was not permitted.</DD>
+
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.</DD>
+
+<DT>ERROR_INVALID_DATA</DT>
+
+<DD>A validation was requested and the data did not pass. For more information, call <A HREF="qref_541e.htm"><B>MsiViewGetError</B></A>.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_HANDLE_STATE</DT>
+
+<DD>The handle is in an invalid state.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The MSIMODIFY_VALIDATE, MSIMODIFY_VALIDATE_NEW, MSIMODIFY_VALIDATE_FIELD, and MSIMODIFY_VALIDATE_DELETE values of the <B>MsiViewModify</B> function do not perform actual updates; they ensure that the data in the record is valid. Use of these validation enumerations requires that the database contains the <A HREF="tref_8fl1.htm">_Validation table</A>.</P>
+
+<P>You can call MSIMODIFY_UPDATE or MSIMODIFY_DELETE with a record immediately after using MSIMODIFY_INSERT, MSIMODIFY_INSERT_TEMPORARY, or MSIMODIFY_SEEK provided you have NOT modified the 0th field of the inserted or sought record.</P>
+
+<P>To execute any SQL statement, a view must be created. However, a view that does not create a result set, such as CREATE TABLE, or INSERT INTO, cannot be used with <B>MsiViewModify</B> to update tables though the view.</P>
+
+<P>You cannot fetch a record containing binary data from one database and then use that record to insert the data into another database. To move binary data from one database to another, you should export the data to a file and then import it into the new database using a query and the <A HREF="qref_4wq5.htm"><B>MsiRecordSetStream</B></A>. This ensures that each database has its own copy of the binary data.</P>
+
+<P>Note that custom action can only add, modify, or remove temporary rows, columns, or tables from a database. Custom actions cannot modify persistent data in a database, such as data that is a part of the database stored on disk. For more information, see<A HREF="cact_99gu.htm"> How do I access the current installer session from inside a custom action?</A></P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_general_database_access_functions">General Database Access Functions</A> </P>
+
+<P></P>
+
+<P></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

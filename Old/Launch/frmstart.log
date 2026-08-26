@@ -1,0 +1,6 @@
+Line 132: Class SysTrayCtl.cSysTray of control trayLaunch was not a loaded control class.
+Line 135: The property name _ExtentX in trayLaunch is invalid.
+Line 136: The property name _ExtentY in trayLaunch is invalid.
+Line 137: The property name InTray in trayLaunch is invalid.
+Line 138: The property name TrayIcon in trayLaunch is invalid.
+Line 139: The property name TrayTip in trayLaunch is invalid.

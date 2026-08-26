@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Installation of Isolated Components</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_installation_of_isolated_components"></A>Installation of Isolated Components</H2>
+
+<P>Windows Installer version 1.1 does the following during installation of an application when the package contains isolated components. Commonly, Component_Shared is a DLL that is shared by Component_Application and other client executables.</P>
+
+<P><B>Installation</B>
+
+<UL>
+	<LI>Copy the files of Component_Shared into the same folder as Component_Application only if Component_Application is also being installed. </LI>
+
+	<LI>Create a zero-byte file with the short filename of the key file of Component_Application. Locate this file in the same folder as Component_Application. Append the extension .LOCAL to this filename.</LI>
+
+	<LI>Increment the SharedDLL refcount if the msidbComponentAttributesSharedDllRefCount bit is set in the Attributes column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+
+	<LI>Register Component_Application as a client of Component_Shared and register a key path pointing to the shared location of Component_Shared.</LI>
+
+	<LI>Install all the resources of Component_Application as usual.</LI>
+</UL>
+
+<P>If Component_Shared, or if its key file, is already installed on the computer:
+
+<UL>
+	<LI>Copy no files to the shared location of Component_Shared.</LI>
+</UL>
+
+<P>If Component_Shared or its key file is not yet installed on the computer:
+
+<UL>
+	<LI>Copy the files of Component_Shared to the shared location.</LI>
+
+	<LI>Process all install actions for Component_Shared.</LI>
+
+	<LI>If Component_Shared is a COM component, register the full COM path such that the syntax [$Component] and [#FileKey] point to the shared location of Component_Shared.</LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Installation%20of%20Isolated%20Components;%20RELEASE:%20August%202001;%20URL:%20over_0kfn.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Installation%20of%20Isolated%20Components;%20RELEASE:%20August%202001;%20URL:%20over_0kfn.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

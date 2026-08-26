@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Preparing a Windows Installer Package for Localization</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_preparing_a_windows_installer_package_for_localization"></A>Preparing a Windows Installer Package for Localization</H2>
+
+<P>Localization of a Windows Installer package into multiple languages can be greatly facilitated by doing the following:
+
+<UL>
+	<LI>Author a base installation database that is code page neutral. See <A HREF="over_9zxh.htm">Creating a database with a neutral code page</A>. The code page of the localized database can then be set by importing a text archive table with a non-neutral code page into the base database. See <A HREF="over_5tb9.htm">Setting the code page of a database</A>.</LI>
+
+	<LI>Organize files requiring localization into separate components and install these files into separate directories. This ensures that two localized packages never install identically named files into the same directory. </LI>
+</UL>
+
+<P>For example, a worldwide application using the following resources may have three components.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Component</TH>
+<TH align=left width=63%>Resource</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>WORLD</TD>
+<TD width=63%>worldwide.exe</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>WORLD</TD>
+<TD width=63%>worldwide registry entries</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>WORLD</TD>
+<TD width=63%>worldwide shortcut</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ENG</TD>
+<TD width=63%>engui.dll</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ENG</TD>
+<TD width=63%>readme.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>FRA</TD>
+<TD width=63%>fraui.dll</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>FRA</TD>
+<TD width=63%>readme.txt</TD>
+</TR>
+</TABLE><BR>
+
+<P>The files that need to be localized may be installed into the following directories.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Location</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>[ProgramFilesFolder]\World\worldwide.exe</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>[ProgramFilesFolder]\World\English\engui.dll</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>[ProgramFilesFolder]\World\English\readme.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>[ProgramFilesFolder]\World\French\fraui.dll</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>[ProgramFilesFolder]\World\French\readme.txt</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Preparing%20a%20Windows%20Installer%20Package%20for%20Localization;%20RELEASE:%20August%202001;%20URL:%20over_8tv2.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Preparing%20a%20Windows%20Installer%20Package%20for%20Localization;%20RELEASE:%20August%202001;%20URL:%20over_8tv2.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

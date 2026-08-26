@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ComponentRequestState Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ComponentRequestState Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_componentrequeststate_property"></A><A NAME="helpid_msiengine_componentrequeststate"></A>ComponentRequestState Property</H1>
+
+<P>The ComponentRequestState property of the <A HREF="vref_8xis.htm"><B>Session</B> object</A> obtains or requests a change in the Action state of a row in the <A HREF="tref_09np.htm">Component table</A>. </P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.ComponentRequestState(<I>component</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_8xis.htm"><B>Session</B> object</A></DD>
+
+<DT><I>component</I></DT>
+
+<DD>Required string name of the component item, primary key of the <A HREF="tref_09np.htm">Component table</A>.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Selection state</TH>
+<TH align=left width=18%>Value</TH>
+<TH align=left width=48%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Null</TD>
+<TD width=18%>Null</TD>
+<TD width=48%>Requests that no action be taken for this item.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiInstallStateAbsent</TD>
+<TD width=18%>2</TD>
+<TD width=48%>Item is to be removed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiInstallStateLocal</TD>
+<TD width=18%>3</TD>
+<TD width=48%>Item is to be installed locally.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiInstallStateSource</TD>
+<TD width=18%>4</TD>
+<TD width=48%>Item is to be installed and run from the source media.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiInstallStateDefault</TD>
+<TD width=18%>5</TD>
+<TD width=48%>If installed, the item is to be reinstalled in the same state.</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

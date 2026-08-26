@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>OpenModule Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="OpenModule method">
+<META NAME="MS-HKWD" CONTENT="Merge object, OpenModule method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_openmodule_method"></A>OpenModule Method</H1>
+
+<P>The <B>OpenModule</B> method of the <B>Merge</B> object opens a Windows Installer merge module in read-only mode. A module must be opened before it can be merged with an installation database. </P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax><I>object</I>.OpenModule(FileName, Language)</PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="merg_4th0.htm"><B>Merge</B> object</A> </DD>
+
+<DT><I>FileName</I></DT>
+
+<DD>Fully qualified file name pointing to a merge module. </DD>
+
+<DT><I>Language</I></DT>
+
+<DD>A valid language identifier (LANGID). 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This function opens the merge module in read-only mode and excludes other programs from writing to the merge module until the <A HREF="merg_0m1w.htm"><B>CloseModule</B> method</A> is called. </P>
+
+<P>The installer attempts to open the module in the language specified by <I>Language</I>, or a more general language. For example, if <I>Language</I> is specified as 1033, a module with a default language of 1033, 9, or 0 can be opened in its default language. A <I>Language</I> value of 9 opens modules with a default language of 9 or 0. If the default language of the module does not meet the specified requirements, an attempt is made to transform the module to the requested language. If that fails, the module is transformed to increasingly general languages, all the way to language neutral. If none of the transforms succeed, the module fails to open. In this case, an error is added to the error list of type msmErrorLanguageUnsupported. If there is an error transforming the module to the desired language, an error is added to the error list of type msmErrorLanguageFailed. For details, see the <A HREF="merg_844f.htm"><B>Type</B> property</A> of the <A HREF="merg_7yr8.htm"><B>Error</B> object</A>. Opening a merge module clears any errors that have not already been retrieved. </P>
+
+<H4>C++</H4>
+
+<P>See <A HREF="merg_87xq.htm"><B>OpenModule </B>function</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20OpenModule%20Method;%20RELEASE:%20August%202001;%20URL:%20merg_2rs4.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20OpenModule%20Method;%20RELEASE:%20August%202001;%20URL:%20merg_2rs4.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

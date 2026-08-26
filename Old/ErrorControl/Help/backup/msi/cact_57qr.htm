@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Debugging Custom Actions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_debugging_custom_actions"></A>Debugging Custom Actions</H2>
+
+<P>To enable the debugging of a custom action, set the environment variable MsiBreak to the name of the designated action, which is case-sensitive, the same as it appears in the CustomAction and sequence tables. For DLL custom actions, a user breakpoint is called just prior to the entry point call. If the current session is not running under a debugger, the standard exception dialog box is invoked with an option to debug. This brings up the debugger that is registered for JIT debugging (to enable MSDEV for this, under Options, select Just-in-time debugging). Single step a few times and you will be inside the custom action code.</P>
+
+<P>To enable source-level debugging, the PDB file must be available, either at the original build location for the DLL, or in the directory where the DLL is executing. Custom actions stored in the Binary table are saved to a new temporary file and executed from the system TEMP directory. The temporary file name begins with MSI. This separate file is created to prevent conflict with other temp files. The PDB should be copied to the temp directory under the same name as the new custom action file. A separate thread is created to call the custom action to support asynchronous execution, to provide cleanup after the action is called, and to provide recovery in the case of an exception during execution. The mechanism is similar with EXE custom actions, except that the debug break occurs just prior to the CreateProcess call. You cannot step into the EXE code, and you cannot attach the debugger to the process until it is running. Debugging custom actions that are executing in the service requires the debugger to be attached to the service process (MsiExec.exe) ahead of time.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Patch Information Caching (Patchwiz.dll)</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Patch Information Caching (Patchwiz.dll)">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_patch_information_caching_patchwiz.dll_"></A>Patch Information Caching (Patchwiz.dll)</H1>
+
+<P>After you have updated an update image and generated a patch using <A HREF="app_8f70.htm">Patchwiz.dll</A>, you may change the update image again and generate another patch. The time required to generate subsequent patches can be reduced by caching the information used to create the first patch. This information can be reused when generating subsequent patches. </P>
+
+<P>Patch information caching requires the use of Patchwiz.dll in Windows Installer version 2.0 or later. To activate patch caching, set the PATCH_CACHE_ENABLED and PATCH_CACHE_DIR properties in the <A HREF="app_8me7.htm">Properties Table (Patchwiz.dll)</A> of the patch creation properties file (.pcp file). Patchwiz stores all patch creation information in the folder identified by the PATCH_CACHE_DIR property and creates this folder if necessary. The next time you attempt to create a patch, Patchwiz checks this folder to see whether the files to be compared match the files in the cache. If the files match, Patchwiz uses the cached information rather than regenerating the binary patch for the file. If the files do not match, or if the information is missing from the cache, Patchwiz generates the binary patch for the file.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Patch%20Information%20Caching%20(Patchwiz.dll);%20RELEASE:%20August%202001;%20URL:%20app_0jq7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Patch%20Information%20Caching%20(Patchwiz.dll);%20RELEASE:%20August%202001;%20URL:%20app_0jq7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

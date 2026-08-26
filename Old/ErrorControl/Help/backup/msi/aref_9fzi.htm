@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>InstallValidate Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="InstallValidate Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_installvalidate_action"></A>InstallValidate Action</H1>
+
+<P>The InstallValidate action verifies that all <A HREF="dglo_4fzt.htm#_msi_volume_gly">volumes</A> to which <A HREF="dglo_25q1.htm#_msi_costing_gly">cost</A> has been attributed have sufficient space for the installation. The InstallValidate action ends the installation with a fatal error if any volume is short of disk space.</P>
+
+<P>The InstallValidate action also notifies the user if one or more files to be overwritten or removed are currently in use by an active process. For more information, see <A HREF="over_7y7n.htm">System Reboots</A>.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The <A HREF="aref_22we.htm">CostFinalize</A> action and any user-interface dialog box sequences that allow the user to modify selection states and/or directories should be sequenced before the InstallValidate action.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Remarks</H4>
+
+<P>Typically, an earlier user-interface dialog box sequence should perform the same verification as the InstallValidate action whenever the user attempts to initiate the copying of files. This user interface dialog box sequence should present an Out of Disk Space dialog box if the volumes selected do not have enough space for the installation. The user-interface dialog boxes should be authored in a way to prevent the user from proceeding with the installation if there is insufficient disk-space. In the case of a quiet installation, there is no user interface and the InstallValidate action terminates the installation if there is insufficient disk space. The cause of the premature termination is recorded in the log file if logging is enabled.</P>
+
+<P>An entry is added to an internal FilesInUse table if any file is overwritten or removed while it is open for execution or modification by any process during file <A HREF="dglo_25q1.htm#_msi_costing_gly">costing</A>. The FilesInUse table contains columns for the name and full path of the file. When the InstallValidate action executes, the installer queries the FilesInUse table for entries and determines the name of the process using the file. The InstallValidate action adds one record to the <A HREF="tref_5f1h.htm">ListBox</A> user-interface table for each unique process identified by this query. The record contains the following values in each column:</P>
+
+<P><B>Property</B>:   FileInUseProcess<BR>
+<B>Value</B>:       &lt;Name of process&gt;<BR>
+<B>Text</B>:         &lt;Text contained in the caption of main window of process&gt;</P>
+
+<P>The InstallValidate action then displays the FilesInUse dialog box. This dialog box  displays the processes that must be shut down to avoid the requirement of rebooting the system to replace files in use.</P>
+
+<P>The InstallValidate action queries the Dialog Table for an authored dialog with the reserved name <A HREF="href_73mv.htm">FilesInUse dialog</A> and displays it. This dialog box must contain a <A HREF="href_1yjw.htm">ListBox control</A> that is tied to a property named FileInUseProcess. By convention, this dialog box has an <B>Exit</B>, <B>Retry</B>, or <B>Ignore</B> button, but this is up to the user-interface author. Each button should be tied to an <A HREF="href_9a0k.htm">EndDialog</A> ControlEvent in the <A HREF="tref_6k11.htm">ControlEvent</A> table. The InstallValidate action responds as follows to the value returned by the DoAction ControlEvent, as dictated by one of these <A HREF="href_9a0k.htm">EndDialog</A> arguments associated with the button pushed by the user:</P>
+
+<P><B>Retry</B>: All values added to the <A HREF="tref_5f1h.htm">ListBox table</A> are cleared, and the entire file <A HREF="dglo_25q1.htm#_msi_costing_gly">costing</A> procedure is repeated,  rechecking for files that are still in use. If one or more processes are still identified as using files to be overwritten or deleted, the process repeats; otherwise, InstallValidate returns control to the installer with a status of msiDoActionStatusSuccess.</P>
+
+<P><B>Exit</B>: The InstallValidate action immediately returns control to the installer with a status of msiDoActionStatusUserExit. This terminates the installation.</P>
+
+<P><B>Any other return value</B>: The InstallValidate action immediately returns control to the installer with a status of msiDoActionStatusSuccess. In this case, since one or more files are still in use, the subsequent <A HREF="aref_3hym.htm">InstallFiles</A> and/or <A HREF="aref_9tpq.htm">InstallAdminPackage</A> actions must schedule the in-use file(s) to be replaced or deleted when the system is restarted.</P>
+
+<P>If no dialog box named FilesInUse is found, or if the database has no ListBox table, InstallValidate exits silently without an error.</P>
+
+<P>The semicolon is the list delimiter for transforms, sources, and patches and should not be used in these file names or paths.</P>
+
+<P>Files marked read-only in a read-only location are never considered in use by the installer.</P>
+
+<P>A default <B>Out of disk space</B> dialog box containing <B>Abort</B> and <B>Retry</B> buttons is presented to the user if the user interface level is basic.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

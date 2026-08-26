@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ALLUSERS Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ALLUSERS Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_allusers_property"></A>ALLUSERS Property</H1>
+
+<P>The <B>ALLUSERS</B> property determines where the configuration information of the installed application is stored. This property is used with the <A HREF="pref_4g6x.htm"><B>DesktopFolder</B> property</A>, <A HREF="pref_5bw9.htm"><B>ProgramMenuFolder</B> property</A>, <A HREF="pref_0mt5.htm"><B>StartMenuFolder</B> property</A>, and <A HREF="pref_3vnd.htm"><B>StartupFolder</B> property</A>.</P>
+
+<P>The following tables illustrate how the property affects the application installation when combined with the access privileges of the user and the type of operating system.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Windows&nbsp;NT/Windows&nbsp;2000</TH>
+<TH align=left width=25%>ALLUSERS = NULL</TH>
+<TH align=left width=25%>ALLUSERS = 1</TH>
+<TH align=left width=25%>ALLUSERS =2</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>User access privileges.</TD>
+<TD width=25%>Per-user installation using folders in user's personal profile.</TD>
+<TD width=25%>Not valid; returns an error stating the user does not have enough access privileges to install application.</TD>
+<TD width=25%>Per-user installation using folders in user's personal profile.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Administrator access privileges.</TD>
+<TD width=25%>Per-user installation using folders in user's personal profile.</TD>
+<TD width=25%>Per-machine installation using folders in "All Users" profile.</TD>
+<TD width=25%>Per-machine installation using folders in "All Users" profile.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Default Value</H4>
+
+<P>If <B>ALLUSERS</B> is not set, the installer does a per-user installation.</P>
+
+<H4>Remarks</H4>
+
+<P>It is strongly recommended that developers do not author packages that set the <B>ALLUSERS</B> property using a dialog or custom action on Windows 95 or Windows 98. An upgrade may fail on Windows 95/98 if the <B>ALLUSERS</B> property is set using a dialog or a custom action. On Windows 95/98, the installer ignores any attempt to set <B>ALLUSERS</B> by either the command line or by the <A HREF="tref_21d1.htm">Property table</A>. The <B>ALLUSERS</B> property can however still be set using a dialog or a custom action, and this causes upgrades of that install to fail.</P>
+
+<P>For details, see also <A HREF="over_2vn2.htm">How do I specify a per-user or per-machine installation?</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ALLUSERS%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_6tx5.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ALLUSERS%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_6tx5.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

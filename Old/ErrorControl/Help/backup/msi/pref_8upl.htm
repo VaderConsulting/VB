@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AVAILABLEFREEREG Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="AVAILABLEFREEREG Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_availablefreereg_property"></A>AVAILABLEFREEREG Property</H1>
+
+<P>The AVAILABLEFREEREG property specifies in kilobytes the total free space available in the registry after calling the <A HREF="aref_8sha.htm">AllocateRegistrySpace action</A>.</P>
+
+<P>The maximum value of the AVAILABLEFREEREG property is 2000000 kilobytes.</P>
+
+<P>This property is set only on Microsoft® Windows NT® version 4.0 and Microsoft Windows® 2000.</P>
+
+<H4>Remarks</H4>
+
+<P>The AVAILABLEFREEREG property must be set to a value large enough to ensure sufficient space in the registry for all registration information added by the installation. The minimum value required to ensure sufficient space depends on where the <A HREF="aref_8sha.htm">AllocateRegistrySpace action</A> is located in the action sequence because the installer automatically increases the space as needed when registering information in the <A HREF="tref_3obp.htm">Registry</A>, <A HREF="tref_5n8l.htm">Class</A>, <A HREF="tref_0llx.htm">SelfReg</A>, <A HREF="tref_219h.htm">Extension</A>, <A HREF="tref_3sh1.htm">MIME</A>, and <A HREF="tref_3kdh.htm">Verb</A> tables. The installer does not increase the total registry space to the amount specified by AVAILABLEFREEREG until reaching AllocateRegistrySpace in the action sequence. </P>
+
+<P>If AllocateRegistrySpace is one of the first actions in the action sequence, AVAILABLEFREEREG should be set to the total space required by the registration information in the Registry table, Class table, TypeLib table, SelfReg table, Extension table, MIME table, Verb table, <A HREF="cact_5t2r.htm">custom actions</A> registration, self registration, and any other registry information written during the installation. The value of AVAILABLEFREEREG is the total amount of information added by the installation and ensures sufficient space in all cases. This is also the most common case.</P>
+
+<P>If the AllocateRegistrySpace action can be authored into the action sequence after all <A HREF="acts_4lmb.htm">standard actions</A> that write registration data, such as <A HREF="aref_1cmm.htm">WriteRegistryValues</A> and <A HREF="aref_04oe.htm">RegisterClassInfo</A>, the value of AVAILABLEFREEREG needs only be set to the space needed to register custom actions, register type libraries, and any other information not yet registered through the tables.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

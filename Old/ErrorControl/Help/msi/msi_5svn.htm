@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Initialization Errors</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Initialization Errors">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_initialization_errors"></A>Initialization Errors</H1>
+
+<P>This table describes initialization error codes and values.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Error code</TH>
+<TH align=left width=13%>Value</TH>
+<TH align=left width=50%>Error</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_SUCCESS</TD>
+<TD width=13%>0 </TD>
+<TD width=50%>Initialization complete</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_ALREADY_INITIALIZED</TD>
+<TD width=13%>1247</TD>
+<TD width=50%>The installer is already initialized</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_SERVICE_FAILURE</TD>
+<TD width=13%>1601</TD>
+<TD width=50%>Install server could not be accessed</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_BAD_CONFIGURATION</TD>
+<TD width=13%>1610</TD>
+<TD width=50%>Configuration data is corrupt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_PACKAGE_VERSION</TD>
+<TD width=13%>1613</TD>
+<TD width=50%>Installer version does not support database format</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_ALREADY_RUNNING</TD>
+<TD width=13%>1618</TD>
+<TD width=50%>An installation is already in progress</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_PACKAGE_OPEN_FAILED</TD>
+<TD width=13%>1619</TD>
+<TD width=50%>Database could not be opened</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_PACKAGE_INVALID</TD>
+<TD width=13%>1620</TD>
+<TD width=50%>Incompatible database</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_UI_FAILURE</TD>
+<TD width=13%>1621</TD>
+<TD width=50%>Could not initialize handler interface</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_LOG_FAILURE</TD>
+<TD width=13%>1622</TD>
+<TD width=50%>Could not open log file in requested mode</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_LANGUAGE_UNSUPPORTED</TD>
+<TD width=13%>1623</TD>
+<TD width=50%>No acceptable language could be found</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_TRANSFORM_FAILURE</TD>
+<TD width=13%>1624</TD>
+<TD width=50%>Database transform failed to merge</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_PACKAGE_REJECTED</TD>
+<TD width=13%>1625</TD>
+<TD width=50%>This installation is forbidden by system policy. Contact your system administrator.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_PLATFORM_UNSUPPORTED</TD>
+<TD width=13%>1633</TD>
+<TD width=50%>The platform specified by the <A HREF="sref_80hl.htm"><B>Template Summary</B> property</A> is not supported.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_PATCH_PACKAGE_OPEN_FAILED</TD>
+<TD width=13%>1635</TD>
+<TD width=50%>Patch package could not be opened</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_PATCH_PACKAGE_INVALID</TD>
+<TD width=13%>1636</TD>
+<TD width=50%>Patch package invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_PATCH_PACKAGE_UNSUPPORTED</TD>
+<TD width=13%>1637</TD>
+<TD width=50%>Patch package unsupported</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INVALID_COMMAND_LINE</TD>
+<TD width=13%>1639</TD>
+<TD width=50%>Invalid command line syntax</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_INSTALL_REMOTE_DISALLOWED</TD>
+<TD width=13%>1640</TD>
+<TD width=50%>Installation from a Terminal Services client session not permitted for current user.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ERROR_PATCH_TARGET_NOT_FOUND</TD>
+<TD width=13%>1642</TD>
+<TD width=50%>The installer cannot install the upgrade patch because the program being upgraded may be missing or the upgrade patch updates a different version of the program. Verify that the program to be upgraded exists on your computer and that you have the correct upgrade patch. This error is not returned by Windows Installer version 1.0.</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Initialization%20Errors;%20RELEASE:%20August%202001;%20URL:%20msi_5svn.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Initialization%20Errors;%20RELEASE:%20August%202001;%20URL:%20msi_5svn.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

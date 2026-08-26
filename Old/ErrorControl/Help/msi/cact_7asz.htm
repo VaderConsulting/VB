@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Scripts</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_scripts"></A>Scripts</H2>
+
+<P>A custom action can call functions that are in written in VBScript of JScript (i.e. JavaScript or ECMA 262). The installer does not provide the script engine. Authors wishing to make use of a scripting language during installation must therefore ensure that the appropriate scripting engine is available. </P>
+
+<P>Windows Installer does not support JScript 1.0.</P>
+
+<P>A 64-bit custom action based on scripts must be explicitly marked as a 64-bit custom action by adding the <B>msidbCustomActionType64BitScript</B> bit to the custom actions numeric type in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A>. For information see <A HREF="over_7ng3.htm">64-bit Custom Actions</A>.</P>
+
+<P>The following basic custom action types call functions written in script.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Custom action type</TH>
+<TH align=left width=68%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_7nqt.htm">Custom Action Type 5</A> </TD>
+<TD width=68%>JScript file stored in a Binary table stream. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_07jl.htm">Custom Action Type 21</A> </TD>
+<TD width=68%>JScript file that is installed with a product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_07oz.htm">Custom Action Type 53</A> </TD>
+<TD width=68%>JScript text specified by a property value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_07lj.htm">Custom Action Type 37</A> </TD>
+<TD width=68%>JScript text stored in this sequence table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_7nqu.htm">Custom Action Type 6</A> </TD>
+<TD width=68%>VBScript file stored in a Binary table stream.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_07jm.htm">Custom Action Type 22</A> </TD>
+<TD width=68%>VBScript file that is installed with a product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_07p0.htm">Custom Action Type 54</A> </TD>
+<TD width=68%>VBScript text specified by a property value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_07lk.htm">Custom Action Type 38</A> </TD>
+<TD width=68%>VBScript text stored in this sequence table.</TD>
+</TR>
+</TABLE><BR>
+
+<P>See the section <A HREF="cact_09pv.htm">Summary List of All Custom Action Types</A> for a summary of all types of custom actions and how they are encoded into the <A HREF="tref_71b9.htm">CustomAction table</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Scripts;%20RELEASE:%20August%202001;%20URL:%20cact_7asz.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Scripts;%20RELEASE:%20August%202001;%20URL:%20cact_7asz.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

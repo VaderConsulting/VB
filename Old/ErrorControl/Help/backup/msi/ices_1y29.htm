@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE61</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE61 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice61"></A>ICE61</H1>
+
+<P>ICE61 checks the upgrade table to ensure that the following conditions are true: 
+
+<UL>
+	<LI>All ActionProperty properties are not pre-authored in the Property table.</LI>
+
+	<LI>All ActionProperty properties are Public Properties.</LI>
+
+	<LI>All ActionProperty properties are included in the SecureCustomProperties property.</LI>
+
+	<LI>All ActionProperty properties are unique to each record in the Upgrade table.</LI>
+
+	<LI>All VersionMax values are not less than the corresponding VersionMin values.</LI>
+
+	<LI>No attempt is made to remove a newer or equal version of the current product.</LI>
+</UL>
+
+<P>Failure to fix a warning or error reported by ICE61 generally leads to problems in upgrading your application. Depending on the exact error, this could be anything from leaving files from the older version behind, deleting files from the older version even though they are needed by the new application, or complete failure of the upgrade.</P>
+
+<H4>Result</H4>
+
+<P>ICE61 posts a warning or error if any of the above conditions are not true.</P>
+
+<H4>Example</H4>
+
+<P>ICE61 reports the following errors and warning for the examples shown.</P>
+
+<PRE>This product should remove only older versions of itself. The Maximum version is not less than the current product. (2.01.0000 2.01.0000) </PRE>
+
+<P>In this case, the first row would try to remove a product of the same version. (VersionMax column is equal to the product version in the Property table). </P>
+
+<P>To fix this error, use a version in the VersionMax column lower than the current version specified in the Property table. Remove the msidbUpgradeAttributesVersionMaxInclusive bit from the Attributes column if the VersionMax is equal to the current version. If the intent is only to detect the product and not remove it, adding the msidbUpgradeAttributesOnlyDetect bit to the Attributes column will also fix this error.</P>
+
+<PRE>Upgrade.ActionProperty EnglishAPPFOUND must be added to the SecureCustomProperties property.</PRE>
+
+<P>Unless the property is listed in the SecureCustomProperties property, the property is not passed to the server side of the install when the property is found.</P>
+
+<P>To fix this error, add the property to SecureCustomProperties</P>
+
+<PRE>Upgrade.ActionProperty EnglishAPPFOUND must not contain lowercase letters. </PRE>
+
+<P>Upgrade properties must be public properties for the result to be passed to the server side of the installation.</P>
+
+<P>To fix this error, use all uppercase letters in the property name.</P>
+
+<PRE>Upgrade.ActionProperty OLDAPPFOUND may be used in only one record of the Upgrade table. </PRE>
+
+<P>A property can only be used in one row of the Upgrade table. </P>
+
+<P>To fix this error, use a different property for the second row.</P>
+
+<PRE>Upgrade.VersionMax cannot be less than Upgrade.VersionMin. (OLDAPPFOUND) </PRE>
+
+<P>The minimum version must be less than the maximum version. </P>
+
+<P>To fix this error, check your version numbers for typos. If they are correct and you want to use the range between the two versions, switch them so that VersionMin is less than VersionMax. </P>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Property</TH>
+<TH align=left width=63%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>UpgradeCode</TD>
+<TD width=63%>{61AA4C55-E17F-11D2-93BB-0060089A76DB}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ProductVersion</TD>
+<TD width=63%>2.01.0000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>SecureCustomProperties</TD>
+<TD width=63%>OLDAPPFOUND</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4qxx.htm"><B>Upgrade Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>UpgradeCode</TH>
+<TH align=left width=12%>VersionMin</TH>
+<TH align=left width=13%>VersionMax</TH>
+<TH align=left width=11%>Language</TH>
+<TH align=left width=11%>Attributes</TH>
+<TH align=left width=18%>Remove</TH>
+<TH align=left width=19%>ActionProperty</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>{61AA4C55-E17F-11D2-93BB-0060089A76DB}</TD>
+<TD width=12%> </TD>
+<TD width=13%>2.01.0000</TD>
+<TD width=11%> </TD>
+<TD width=11%>513</TD>
+<TD width=18%> </TD>
+<TD width=19%>OLDAPPFOUND</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>{61AA4C55-E17F-11D2-93BB-0060089A76DB} </TD>
+<TD width=12%>2.01.0001</TD>
+<TD width=13%>2.01.0000</TD>
+<TD width=11%> </TD>
+<TD width=11%> </TD>
+<TD width=18%> </TD>
+<TD width=19%>OLDAPPFOUND</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>{C6CB4596-D8E8-D5A4-635F-9FE456D682EB}</TD>
+<TD width=12%>1.00.0000</TD>
+<TD width=13%>2.00.0000</TD>
+<TD width=11%>1033</TD>
+<TD width=11%> </TD>
+<TD width=18%>[AppFeatureEnglish]</TD>
+<TD width=19%>EnglishAPPFOUND</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

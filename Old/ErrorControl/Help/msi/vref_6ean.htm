@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>UILevel Property (Installer object)</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="UILevel Property (Installer object)">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_uilevel_property_installer_object_"></A>UILevel Property (Installer object)</H1>
+
+<P>The <B>UILevel</B> property of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> is a read-write property that indicates the type of user interface to be used when opening and processing subsequent packages within the current process space. </P>
+
+<PRE class=syntax><I>object</I>.UILevel</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>Installer</B> object 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=46%>User interface level</TH>
+<TH align=left width=13%>Value</TH>
+<TH align=left width=40%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelNoChange</TD>
+<TD width=13%>0</TD>
+<TD colspan=2 width=41%>Does not change UI level.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelDefault</TD>
+<TD width=13%>1</TD>
+<TD colspan=2 width=41%>Uses Default UI level.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelNone</TD>
+<TD width=13%>2</TD>
+<TD colspan=2 width=41%>Silent installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelBasic</TD>
+<TD width=13%>3</TD>
+<TD colspan=2 width=41%>Simple progress and error handling.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelReduced</TD>
+<TD width=13%>4</TD>
+<TD colspan=2 width=41%>Authored UI, wizard dialogs suppressed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelFull</TD>
+<TD width=13%>5</TD>
+<TD colspan=2 width=41%>Authored UI with wizards, progress, and errors.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelHideCancel</TD>
+<TD width=13%>32</TD>
+<TD colspan=2 width=41%>If combined with the msiUILevelBasic value, the installer shows progress dialog boxes but does not display a cancel button on the dialog. This prevents users from canceling the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelProgressOnly</TD>
+<TD width=13%>64</TD>
+<TD colspan=2 width=41%>If combined with the msiUILevelBasic value, the installer displays progress dialog boxes but does not display any modal dialog boxes or error dialog boxes.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelEndDialog</TD>
+<TD width=13%>128</TD>
+<TD colspan=2 width=41%>If combined with any above value, the installer displays a modal dialog box at the end of a successful installation or if there has been an error. No dialog box is displayed if the user cancels.</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20UILevel%20Property%20(Installer%20object);%20RELEASE:%20August%202001;%20URL:%20vref_6ean.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20UILevel%20Property%20(Installer%20object);%20RELEASE:%20August%202001;%20URL:%20vref_6ean.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

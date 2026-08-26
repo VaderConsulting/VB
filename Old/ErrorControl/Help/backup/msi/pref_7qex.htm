@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>REBOOT Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="REBOOT Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_reboot_property"></A>REBOOT Property</H1>
+
+<P>The REBOOT property suppresses certain prompts for a reboot of the system. An administrator typically uses this property with a series of installations to install several products at the same time with only one reboot at the end. For more information, see <A HREF="over_7y7n.htm">System Reboots</A>.</P>
+
+<P>The <A HREF="aref_69bi.htm">ForceReboot</A> and <A HREF="aref_96su.htm">ScheduleReboot action</A> actions inform the installer to prompt the user to reboot the system. The installer can also determine that a reboot is necessary whether there are any ForceReboot or ScheduleReboot actions in the sequence. For example, the installer automatically prompts for a reboot if it needs to replace any files in use during the installation. </P>
+
+<P>You can suppress certain prompts for reboots by setting the REBOOT property as follows.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>REBOOT value</TH>
+<TH align=left width=75%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Force</TD>
+<TD width=75%>Always prompt for a reboot at the end of the installation. The UI always prompts the user with an option to reboot at the end. If there is no user interface the system automatically reboots at the end of the installation. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Suppress</TD>
+<TD width=75%>Suppress prompts for a reboot at the end of the installation. The installer still prompts the user with an option to reboot during the installation whenever it encounters the <A HREF="aref_69bi.htm">ForceReboot action</A>. If there is no user interface, the system automatically reboots at each ForceReboot. Reboots at the end of the installation, for example caused by an attempt to install a file in use, are suppressed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>ReallySuppress</TD>
+<TD width=75%>Suppress all prompts for reboots during the installation initiated by ForceReboot and all prompts at end of the installation.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The installer only evaluates the first character of the Reboot property. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="pref_4yd5.htm">REBOOTPROMPT Property</A>, <A HREF="over_7y7n.htm">System Reboots</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

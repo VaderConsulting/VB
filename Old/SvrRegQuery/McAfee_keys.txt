@@ -1,0 +1,3 @@
+software\mcafee\virusscan\szEngineVer
+software\mcafee\virusscan\szVirDefVer
+software\mcafee\virusscan\szVirDefDate

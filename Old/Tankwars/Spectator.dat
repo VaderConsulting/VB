@@ -1,0 +1,76 @@
+"Totalunits" , 100
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 0
+ "Type" , 9
+ "Position.X" , 1000
+ "Position.Y" , -2000
+ "Position.Z" , 200
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 1
+ "Type" , 8
+ "Position.X" , 0
+ "Position.Y" , -50
+ "Position.Z" , -3000
+ "Health" , 15
+ "Player" , "you"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 2
+ "Type" , 4
+ "Position.X" , 2000
+ "Position.Y" , -50
+ "Position.Z" , 0
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 3
+ "Player" , "Evil Deric"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 3
+ "Type" , 4
+ "Position.X" , -2000
+ "Position.Y" , -50
+ "Position.Z" , 0
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 4
+ "Player" , "Evil Frank"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 4
+ "Type" , 11
+ "Position.X" , -2000
+ "Position.Y" , -350
+ "Position.Z" , 0
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 3
+ "Player" , "the sky man"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 5
+ "Type" , 11
+ "Position.X" , -2000
+ "Position.Y" , -350
+ "Position.Z" , 0
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 2
+ "Player" , "the sky man"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 6
+ "Type" , 4
+ "Position.X" , -2000
+ "Position.Y" , -50
+ "Position.Z" , -1500
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 3
+ "Player" , "Evil Lenny"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 7
+ "Type" , 4
+ "Position.X" , -1500
+ "Position.Y" , -50
+ "Position.Z" , -1200
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 4
+ "Player" , "Evil Jon"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

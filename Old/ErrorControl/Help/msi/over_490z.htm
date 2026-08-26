@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Controlling Feature Selection States</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_controlling_feature_selection_states"></A>Controlling Feature Selection States</H1>
+
+<P>You can control which feature installation options are available for users and applications to select by authoring the <A HREF="tref_0a91.htm">Feature table</A> and <A HREF="tref_09np.htm">Component table</A>.
+
+<UL>
+	<LI>To prevent selection of the advertise state for a feature, include <B>msidbFeatureAttributesDisallowAdvertise</B> in the feature's Attributes field in the <A HREF="tref_0a91.htm">Feature table</A>.</LI>
+
+	<LI>To prevent selection of the run-from-source or run-from-network states for a feature, include <B>msidbComponentAttributesLocalOnly</B> in the Attributes fields in the <A HREF="tref_09np.htm">Component table</A> for every component belonging to the feature. If a feature has no components, the feature always has the run-from-source and run-from-my-computer options available.</LI>
+
+	<LI>To prevent selection of the run-from-my-computer state for a feature, include <B>msidbComponentAttributesSourceOnly</B> in the Attributes fields in the <A HREF="tref_09np.htm">Component table</A> for every component belonging to the feature. If a feature has no components, the feature always has the run-from-source and run-from-my-computer options available.</LI>
+
+	<LI>Starting with Windows Installer version 2.0, minor upgrades are no longer required to install new child features by using the <A HREF="pref_3dvd.htm">ADDLOCAL property</A>. Instead new child features can be authored by including <B>msidbFeatureAttributesFollowParent</B> and <B>msidbFeatureAttributesUIDisallowAbsent</B> in the Attributes field of the <A HREF="tref_0a91.htm">Feature table</A>.</LI>
+
+	<LI>To install new features with minor upgrades, using a version of the Windows Installer earlier than version 2.0, you must list the new features on the command line as values of the ADDLOCAL property. You must explicitly set the REINSTALL property to the list of features to be reinstalled and not simply set REINSTALL to "ALL". </LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Controlling%20Feature%20Selection%20States;%20RELEASE:%20August%202001;%20URL:%20over_490z.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Controlling%20Feature%20Selection%20States;%20RELEASE:%20August%202001;%20URL:%20over_490z.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

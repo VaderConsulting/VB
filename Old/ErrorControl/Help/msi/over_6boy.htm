@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Digital Signatures and Windows Installer</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Digital Signatures and Windows Installer">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_digital_signatures_and_windows_installer"></A>Digital Signatures and Windows Installer</H1>
+
+<P>The Windows Installer version 2.0 uses digital signatures to detect corrupted resources. A signer certificate may be compared to the signer certificate of an external resource to be installed by the package. For more information regarding the use of digital signatures, digital certificates, and <B>WinVerifyTrust</B>, see the Security section of the Microsoft® Platform Software Development Kit (SDK). </P>
+
+<P>With Windows Installer version 2.0, digital signatures can be used with Windows Installer packages, transforms, patches, merge modules, and external cabinet files. Windows Installer version 2.0 is integrated with Software Restriction Policy on Microsoft®  Windows XP. Policies can be created to allow or prevent installations based upon different criteria, including a particular signer certificate or publisher. The Windows Installer version 2.0 can perform signature validation of external cabinet files on all platforms where CryptoAPI version 2.0 is installed. </P>
+
+<P>Note that the sample Setup.exe bootstrap provided with the Windows Installer SDK performs a signature check on a Windows Installer package prior to initiating the installation.</P>
+
+<P>Performing an <A HREF="over_6jzi.htm">administrative installation</A> removes the digital signature from the package. An administrative installation modifies the installation package in order to add the AdminProperties stream, which would invalidate the original digital signature. An administrator can resign the package.</P>
+
+<P>Applying a patch to an administrative installation also removes the digital signature from the package. The reason is because the changes persist in the patched installation package of the administrative installation. An administrator can resign the package.</P>
+
+<P>For more information, see <A HREF="over_9nzn.htm">Digital Signatures and External Cabinet Files</A>, <A HREF="over_92rd.htm">Windows Installer and Software Restriction Policy</A>, <A HREF="over_0sz2.htm">Authoring a Fully Verified Signed Installation</A>, or</P>
+
+<P><A HREF="samp_8wkl.htm">A URL based Windows Installer Installation Example</A>. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Digital%20Signatures%20and%20Windows%20Installer;%20RELEASE:%20August%202001;%20URL:%20over_6boy.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Digital%20Signatures%20and%20Windows%20Installer;%20RELEASE:%20August%202001;%20URL:%20over_6boy.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

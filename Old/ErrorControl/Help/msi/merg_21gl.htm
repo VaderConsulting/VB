@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleComponents Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ModuleComponents table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_modulecomponents_table"></A>ModuleComponents Table</H1>
+
+<P>The ModuleComponents table contains a list of the components found in the merge module. </P>
+
+<P>The ModuleComponents table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Column</TH>
+<TH align=left width=30%>Type</TH>
+<TH align=left width=21%>Key</TH>
+<TH align=left width=28%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Component</TD>
+<TD width=30%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=21%>Y</TD>
+<TD width=28%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ModuleID</TD>
+<TD width=30%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=21%>Y</TD>
+<TD width=28%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Language</TD>
+<TD width=30%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=21%>Y</TD>
+<TD width=28%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Component</DT>
+
+<DD>An identifier referring to a component in the merge module. The Component column is a foreign key to the <A HREF="tref_09np.htm">Component table</A>. The entry in the Component column must follow the naming convention in <A HREF="merg_0ucz.htm">Naming Primary Keys in Merge Module Databases</A>.</DD>
+
+<DT>ModuleID</DT>
+
+<DD>The identifier for the merge module. This is a foreign key to the <A HREF="merg_4nad.htm">ModuleSignature table</A>.</DD>
+
+<DT>Language</DT>
+
+<DD>The Language identifier describes the default language for the merge module. The language identifier is in decimal format, for example, U.S. English is 1033. Foreign key to the <A HREF="merg_4nad.htm">ModuleSignature table</A>.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Language transforms must be able to update this table if the merge module supports multiple languages.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleComponents%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_21gl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleComponents%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_21gl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FeatureState Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="FeatureState Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_featurestate_property"></A>FeatureState Property</H1>
+
+<P>The read-only <B>FeatureState</B> property returns the installed state of a feature.</P>
+
+<PRE class=syntax><I>object</I>.FeatureState(<I>Product, Feature</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </DD>
+
+<DT><I>Product</I></DT>
+
+<DD>Specifies the product code of the product that contains the feature.</DD>
+
+<DT><I>Feature</I></DT>
+
+<DD>Specifies the feature.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This property returns one of the following values.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=41%>Value</TH>
+<TH align=left width=59%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateAbsent</TD>
+<TD width=59%>The feature is not installed. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateAdvertised</TD>
+<TD width=59%>The feature is advertised. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateLocal</TD>
+<TD width=59%>The feature is installed to run locally. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateSource</TD>
+<TD width=59%>The feature is installed to run from source. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateInvalidArg</TD>
+<TD width=59%>An invalid parameter was passed to the function. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateUnknown</TD>
+<TD width=59%>The product code or feature ID is unknown. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateBadConfig</TD>
+<TD width=59%>The configuration data is corrupt.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The <B>FeatureState</B> property does not validate that the feature is accessible.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_4e3p.htm"><B>MsiQueryFeatureState</B></A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FeatureState%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_3p89.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FeatureState%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_3p89.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Updating ProductLanguage and ProductCode Properties</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_updating_productlanguage_and_productcode_properties"></A>Updating ProductLanguage and ProductCode Properties</H2>
+
+<P>The <A HREF="pref_7aex.htm">ProductLanguage property</A> must be updated to the numeric language identifier (LANGID) for the new language. In the case of the localization example, the value of the ProductLanguage property must be changed from the LANGID for English (1033) to the LANGID for French (1036) in the <A HREF="tref_21d1.htm">Property Table</A>.</P>
+
+<P>The value of the <A HREF="pref_4tfd.htm">ProductCode property</A> in the <A HREF="tref_21d1.htm">Property Table</A> must be changed to a new, unique value when localizing a database because a localized product is considered a different product. For example, the German and English versions of an application are considered two different products and must have different product codes. See <A HREF="over_0joz.htm">Package and Product Codes</A>.</P>
+
+<P>Use your database table editor to update the values of the ProductCode and ProductLanguage properties in the Property table. Do not reuse the GUID shown if you copy this example.</P>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Property</TH>
+<TH align=left width=65%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ProductCode</TD>
+<TD width=65%>{EE389960-E426-4EEA-B669-AD8129249881}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ProductLanguage</TD>
+<TD width=65%>1036</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_9q5p.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Examples of Database Queries Using SQL and Script</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_examples_of_database_queries_using_sql_and_script"></A>Examples of Database Queries Using SQL and Script</H3>
+
+<P>An example of using script-driven database queries is provided in the <U>Microsoft</U>®<U> Windows</U>®<A HREF="app_5qwj.htm"> Installer Software Development Kit</A> (SDK) as the utility WiRunSQL.vbs. This utility handles database queries using the Windows Installer version of SQL described in the section <A HREF="qref_5j20.htm">SQL Syntax</A>. 
+
+<DL>
+<DT><B>Delete a record from a table</B></DT>
+</DL>
+
+<P>The following command line deletes the record having the primary key RED from the Feature table of the Test.msi database.</P>
+
+<PRE>Cscript WiRunSQL.vbs Test.msi "DELETE FROM Feature WHERE Feature.Feature='RED'"</PRE>
+
+<DL>
+<DT><B>Add a table to a database</B></DT>
+</DL>
+
+<P>The following command line adds the Directory table to the Test.msi database.</P>
+
+<PRE>CScript WiRunSQL.vbs Test.msi "CREATE TABLE `Directory` (`Directory` CHAR(72) NOT NULL, `Directory_Parent` CHAR(72), `DefaultDir` CHAR(255) NOT NULL LOCALIZABLE PRIMARY KEY `Directory`)"</PRE>
+
+<DL>
+<DT><B>Remove a table from a database</B></DT>
+</DL>
+
+<P>The following command line removes the Feature table from the Test.msi database.</P>
+
+<PRE>Cscript WiRunSQL.vbs Test.msi "DROP TABLE Feature"</PRE>
+
+<DL>
+<DT><B>Add a new column to a table</B></DT>
+</DL>
+
+<P>The following command line adds the Test column to the CustomAction table of the Test.msi database.</P>
+
+<PRE>CScript WiRunSQL.vbs Test.msi "ALTER TABLE `CustomAction` ADD `Test` INTEGER"</PRE>
+
+<DL>
+<DT><B>Insert a new record into a table</B></DT>
+</DL>
+
+<P>The following command line inserts a new record into the Feature table of the Test.msi database.</P>
+
+<PRE>Cscript WiRunSQL.vbs Test.msi "INSERT INTO Feature (Feature.Feature,Feature.Feature_Parent,Feature.Title,Feature.Description,Feature.Display,Feature.Level,Feature.Directory_,Feature.Attributes) VALUES ('Tennis','Sport','Tennis','Tournament',25,3,'SPORTDIR',2)"</PRE>
+
+<P>This inserts the following record into the Feature table of Test.msi.</P>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=11%>Feature</TH>
+<TH align=left width=18%>Feature_Parent</TH>
+<TH align=left width=9%>Title</TH>
+<TH align=left width=15%>Description</TH>
+<TH align=left width=11%>Display</TH>
+<TH align=left width=8%>Level</TH>
+<TH align=left width=13%>Directory_</TH>
+<TH align=left width=15%>Attributes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>Tennis</TD>
+<TD width=18%>Sport</TD>
+<TD width=9%>Tennis</TD>
+<TD width=15%>Tournament</TD>
+<TD width=11%>25</TD>
+<TD width=8%>3</TD>
+<TD width=13%>SPORTDIR</TD>
+<TD width=15%>2</TD>
+</TR>
+</TABLE><BR>
+
+<DL>
+<DT><B>Modify an existing record in a table</B></DT>
+</DL>
+
+<P>The following command line changes the existing value in the Title field to "Performances." The updated record has "Arts" as its primary key and is in the Feature table of the Test.msi database </P>
+
+<PRE>Cscript WiRunSQL.vbs Test.msi "UPDATE Feature SET Feature.Title='Performances' WHERE Feature.Feature='Arts'"</PRE>
+
+<DL>
+<DT><B>Select a group of records</B></DT>
+</DL>
+
+<P>The following command line selects the name and type of all controls that belong to the ErrorDialog in the Test.msi database.</P>
+
+<PRE>CScript WiRunSQL.vbs Test.msi "SELECT `Control`, `Type` FROM `Control` WHERE `Dialog_`='ErrorDialog' "</PRE>
+
+<DL>
+<DT><B>Hold a table in memory</B></DT>
+</DL>
+
+<P>The following command line locks the Component table of the Test.msi database in memory.</P>
+
+<PRE>CScript WiRunSQL.vbs Test.msi "ALTER TABLE `Component` HOLD"</PRE>
+
+<DL>
+<DT><B>Free a table in memory</B></DT>
+</DL>
+
+<P>The following command line frees the Component table of the Test.msi database from memory.</P>
+
+<PRE>CScript WiRunSQL.vbs Test.msi "ALTER TABLE `Component` FREE"</PRE>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

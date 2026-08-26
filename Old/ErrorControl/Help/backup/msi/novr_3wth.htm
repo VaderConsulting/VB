@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using the Directory Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_using_the_directory_table"></A>Using the Directory Table</H2>
+
+<P>The <A HREF="tref_6an9.htm">Directory table</A> specifies the layout of an installation. When the directories are resolved during the <A HREF="aref_22we.htm">CostFinalize action</A>, the keys in the Directory table become <A HREF="prop_1xyr.htm">properties</A> set to directory paths. Note that the installer sets a number of standard <A HREF="prop_1xyr.htm">properties</A> to system folder paths. See the <A HREF="pref_3mp1.htm">Property Reference</A> for a list of the properties that are set to system folders.</P>
+
+<P>The following is an example of a Directory table.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Directory</TH>
+<TH align=left width=33%>Directory_Parent</TH>
+<TH align=left width=34%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>TARGETDIR</TD>
+<TD width=33%>&nbsp;</TD>
+<TD width=34%>SourceDir</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>EXEDIR</TD>
+<TD width=33%>TARGETDIR</TD>
+<TD width=34%>App</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>DLLDIR</TD>
+<TD width=33%>EXEDIR</TD>
+<TD width=34%>Bin</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>DesktopFolder</TD>
+<TD width=33%>TARGETDIR</TD>
+<TD width=34%>Desktop</TD>
+</TR>
+</TABLE><BR>
+
+<P>Each row of the Directory table indicates a directory both at the source and the target. For example, assume the installation package resides at \\applications\source\. Because the Directory_Parent field of the first row is Null, this record indicates the root directories for both the source and the target. For the source, the value of this directory is given by the DefaultDir field. The <A HREF="pref_6uwp.htm">SourceDir property</A> defaults to the location of the installation package. Thus, unless the SourceDir property is overridden, the root source directory is \\applications\source\.</P>
+
+<P>The Directory field of the first record indicates the location of the root target directory. In this case, the value of the <A HREF="pref_73ax.htm">TARGETDIR property</A> indicates this directory. Typically, the value of the TARGETDIR property is set at the command line or through a user interface. In this case, assume the TARGETDIR property is set to C:\Program Files\Target\.</P>
+
+<P>For the second record, the Directory_Parent field is not Null. Therefore, this record indicates a non-root directory for both the source and the target. For a non-root source directory, the source directory indicated by the record described in the Directory_Parent field is the parent directory. For the second record, the Directory_Parent field is TARGETDIR. As shown earlier, the source directory indicated by the TARGETDIR record resolved to \\applications\source\. Thus, the source directory indicated by the second record is \\applications\source\App\.</P>
+
+<P>A similar process works for the target directory. The value of the parent directory for the target directory described in the second record is the target directory resolved by the Directory_Parent field. Again, the Directory_Parent field contains the value TARGETDIR. This indicates the first record that resolves to a target directory of C:\Program Files\Target\. The Directory field contains an author-defined property called EXEDIR. If this property is set, then its value gives the full path of the directory. Thus, if this property is set to C:\Data\Common\, the value of the target directory indicated by the second record is C:\Data\Common\. If it is not set, the target directory takes the name given by the DefaultDir field. In this case, the target directory is C:\Program Files\Target\App\.</P>
+
+<P>The same process works for the third record. If EXEDIR and DLLDIR are not set, the target directory is C:\Program Files\Target\App\Bin, and the source directory is \\applications\source\App\Bin\.</P>
+
+<P>The fourth record uses the <A HREF="pref_4g6x.htm">DesktopFolder property</A>. If the location of the user's desktop is C:\Winnt\Profiles\User\Desktop\, the target directory resolves to C:\Winnt\Profiles\User\Desktop\. The source directory resolves to \\applications\source\Desktop\.</P>
+
+<P>There are two additional syntax features that can be used in the DefaultDir column of the Directory table. For a non-root source directory, a period (.) entered in the DefaultDir column indicates that the directory should be located in its parent directory without a subdirectory. To specify different source and target directory paths, separate the target and source paths in the DefaultDir column with a colon as follows: [targetpath]:[sourcepath]. These features can be used together to add levels to either the source or target paths for a single directory. See the following example of a Directory table.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Directory</TH>
+<TH align=left width=35%>Directory_Parent</TH>
+<TH align=left width=44%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>TARGETDIR</TD>
+<TD width=35%> </TD>
+<TD width=44%>SourceDir</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>MyAppDir</TD>
+<TD width=35%>TARGETDIR</TD>
+<TD width=44%>MyApp</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>BinDir</TD>
+<TD width=35%>MyAppDir</TD>
+<TD width=44%>Bin</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Binx86Dir</TD>
+<TD width=35%>BinDir</TD>
+<TD width=44%>.:x86</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>BinAlphaDir</TD>
+<TD width=35%>BinDir</TD>
+<TD width=44%>.:Alpha</TD>
+</TR>
+</TABLE><BR>
+
+<P>The source and target paths resolve for the MyAppDir, BinDir, Binx86Dir, and BinAlphaDir rows as follows. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Record</TH>
+<TH align=left width=35%>Target paths</TH>
+<TH align=left width=44%>Source paths</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>MyAppDir:</TD>
+<TD width=35%>[TARGETDIR]MyApp</TD>
+<TD width=44%>[SourceDir]MyApp</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>BinDir:</TD>
+<TD width=35%>[TARGETDIR]MyApp\Bin</TD>
+<TD width=44%>[SourceDir]MyApp\Bin</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Binx86Dir:</TD>
+<TD width=35%>[TARGETDIR]MyApp\Bin</TD>
+<TD width=44%>[SourceDir]MyApp\Bin\x86</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>BinAlphaDir:</TD>
+<TD width=35%>[TARGETDIR]MyApp\Bin</TD>
+<TD width=44%>[SourceDir]MyApp\Bin\Alpha</TD>
+</TR>
+</TABLE><BR>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;The Alpha platform is not supported by Windows Installer version 1.1.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

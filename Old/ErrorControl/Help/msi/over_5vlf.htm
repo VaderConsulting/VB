@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I advertise a per-user application to be installed with elevated privileges?</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_how_do_i_advertise_a_per_user_application_to_be_installed_with_elevated_privileges"></A>How do I advertise a per-user application to be installed with elevated privileges?</H1>
+
+<P>Adhere to the following points to advertise an application on a per-user installation basis when the application requires elevated (system) privileges for installation. This advertises the application to the specified user, and when they choose install, will install the application with elevated privileges. 
+
+<UL>
+	<LI>Your process must be a service running under the LocalSystem system account on Windows 2000 or a later operating system.</LI>
+
+	<LI>Generate an advertise script by calling <A HREF="msi_1h2s.htm"><B>MsiAdvertiseProduct</B></A> or <A HREF="msi_954o.htm"><B>MsiAdvertiseProductEx</B></A>.</LI>
+
+	<LI>Your process must impersonate the user that is the target for the advertisement.</LI>
+
+	<LI>Call <A HREF="msi_2h2s.htm"><B>MsiAdvertiseScript</B></A>, and use the flags SCRIPTFLAGS_CACHEINFO | SCRIPTFLAGS_REGDATA_APPINFO |  SCRIPTFLAGS_REGDATA_CNFGINFO | SCRIPTFLAGS_SHORTCUTS.</LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20advertise%20a%20per-user%20application%20to%20be%20installed%20with%20elevated%20privileges%3F;%20RELEASE:%20August%202001;%20URL:%20over_5vlf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20advertise%20a%20per-user%20application%20to%20be%20installed%20with%20elevated%20privileges%3F;%20RELEASE:%20August%202001;%20URL:%20over_5vlf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

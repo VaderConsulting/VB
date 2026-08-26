@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>IsolateComponents Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="IsolateComponents Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_isolatecomponents_action"></A>IsolateComponents Action</H1>
+
+<P>The IsolateComponents action installs a copy of a component (commonly a shared DLL) into a private location for use by a specific application (typically an .exe). This isolates the application from other copies of the component that may be installed to a shared location on the computer. For more information, see <A HREF="over_2inn.htm">Isolated Components</A>.</P>
+
+<P>The action refers to each record of the <A HREF="tref_6jc5.htm">IsolatedComponent table</A> and associates the files of the component listed in the Component_Shared field with the component listed in the Component_Application field. The installer installs the files of Component_Shared into the same directory as Component_Application. The installer generates a file in this directory, zero bytes in length, having the short filename name of the key file for Component_Application (typically this is the same file name as the .exe) appended with .local. The IsolatedComponent action does not affect the installation of Component_Application. Uninstalling Component_Application also removes the Component_Shared files and the .local file from the directory. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The IsolateComponents action can be used only in the <A HREF="tref_1git.htm">InstallUISequence table</A> and the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>. This action must come after the <A HREF="aref_4bam.htm">CostInitialize action</A> and before the <A HREF="aref_22we.htm">CostFinalize action</A>.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Remarks</H4>
+
+<P>If the Condition column for the IsolateComponents action evaluates to True, or is left blank, the installer isolates all the components listed in the <A HREF="tref_6jc5.htm">IsolatedComponent table</A>. If the Condition column evaluates to False, the installer ignores the IsolatedComponent table and shares the components usual. The <A HREF="pref_4l4p.htm">RedirectedDLLSupport property</A> may be used to condition this action. For more information, see <A HREF="novr_3mqt.htm">Using a Sequence Table</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

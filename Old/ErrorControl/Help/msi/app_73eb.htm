@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Command Line Options</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="command line options [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_system_error_codes">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_command_line_options"></A>Command Line Options</H1>
+
+<P>The executable program that interprets packages and installs products is Msiexec.exe. Note that Msiexec also sets an error level on return that corresponds to <A HREF="JavaScript:hhobj_1.Click()">system error codes</A>. The following table describes the command-line options for this program. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=13%>Option</TH>
+<TH align=left width=36%>Parameters</TH>
+<TH align=left width=51%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/I</TD>
+<TD width=36%><I>Package|ProductCode</I></TD>
+<TD width=51%>Installs or configures a product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/f</TD>
+<TD width=36%>[p|o|e|d|c|a|u|m|s|v] <I>Package</I>|<I>ProductCode</I></TD>
+<TD width=51%>Repairs a product. This option ignores any property values entered on the command line. The default argument list for this option is 'pecms'. This option shares the same argument list as the <A HREF="pref_7bll.htm"><B>REINSTALLMODE</B> property</A>.
+<P>p - Reinstall only if file is missing</P>
+
+<P>o - Reinstall if file is missing or if an older version is installed.</P>
+
+<P>e - Reinstall if file is missing or an equal or older version is installed.</P>
+
+<P>d - Reinstall if file is missing or a different version is installed.</P>
+
+<P>c - Reinstall if file is missing or the stored checksum doesn't match the calculated value. Only repairs files that have <B>msidbFileAttributesChecksum</B> in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>.</P>
+
+<P>a - Force all files to be reinstalled.</P>
+
+<P>u - Rewrite all required user specific registry entries. </P>
+
+<P>m - Rewrite all required computer-specific registry entries.</P>
+
+<P>s - Overwrite all existing shortcuts.</P>
+
+<P>v - Run from source and re-cache the local package. Do not use the v reinstall option for the first installation of an application or feature.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/a</TD>
+<TD width=36%><I>Package</I></TD>
+<TD width=51%><A HREF="over_6jzi.htm">Administrative installation</A> option. Installs a product on the network.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/x</TD>
+<TD width=36%><I>Package|ProductCode</I></TD>
+<TD width=51%>Uninstalls a product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/j</TD>
+<TD width=36%>[u|m]<I>Package</I>
+<P><I>or</I></P>
+
+<P>[u|m]<I>Package</I> /t<I> Transform List</I></P>
+
+<P><I>or</I></P>
+
+<P>[u|m]<I>Package</I> /g<I> LanguageID</I></P>
+</TD>
+<TD width=51%>Advertises a product. This option ignores any property values entered on the command line.
+<P>u - Advertise to the current user.</P>
+
+<P>m - Advertise to all users of machine.</P>
+
+<P>g - Language ID</P>
+
+<P>t - Applies transform to advertised package.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/L</TD>
+<TD width=36%>[i|w|e|a|r|u|c|m|o|p|v|+|!]<I>Logfile</I></TD>
+<TD width=51%>Specifies path to log file and the flags indicate which information to log.
+<P>i - Status messages</P>
+
+<P>w - Non-fatal warnings</P>
+
+<P>e - All error messages</P>
+
+<P>a - Start up of actions</P>
+
+<P>r - Action-specific records</P>
+
+<P>u - User requests</P>
+
+<P>c - Initial UI parameters</P>
+
+<P>m - Out-of-memory or fatal exit information</P>
+
+<P>o - Out-of-disk-space messages</P>
+
+<P>p - Terminal properties</P>
+
+<P>v - Verbose output</P>
+
+<P>+ - Append to existing file</P>
+
+<P>! -  Flush each line to the log</P>
+
+<P>"*" - Wildcard, log all information except for the v option. To include the v option, specify "/l*v".</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/m</TD>
+<TD width=36%><I>filename</I></TD>
+<TD width=51%>Generates an SMS status .mif file. Must be used with either the install (-i), remove (-x), administrative installation (-a), or reinstall (-f) options. The ISMIF32.DLL is installed as part of SMS and must be on the path. 
+<P>The fields of the status mif file are filled with the following information:</P>
+
+<P>Manufacturer - <A HREF="sref_76k9.htm"><B>Author</B></A></P>
+
+<P>Product - <A HREF="sref_1am1.htm">Revision <B>Number</B></A></P>
+
+<P>Version - <A HREF="sref_0b5l.htm"><B>Subject</B></A></P>
+
+<P>Locale - <A HREF="sref_80hl.htm"><B>Template</B></A></P>
+
+<P>Serial Number - not set</P>
+
+<P>Installation - set by ISMIF32.DLL to "DateTime"</P>
+
+<P>InstallStatus - "Success" or "Failed"</P>
+
+<P>Description - Error messages in the following order: 1) Error messages generated by installer. 2) Resource from Msi.dll if install could not commence or user exit. 3) System error message file. 4) Formatted message: "Installer error %i", where %i is error returned from Msi.dll</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/p</TD>
+<TD width=36%><I>PatchPackage</I></TD>
+<TD width=51%>Applies a patch. To apply a patch to an installed administrative image you must combine options as follows:
+<P>/p &lt;<I>PatchPackage</I>&gt; /a &lt;<I>Package</I>&gt;</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/q</TD>
+<TD width=36%>n|b|r|f</TD>
+<TD width=51%>Sets <A HREF="hand_9vn7.htm">user interface level</A>.
+<P>q , qn -  No UI</P>
+
+<P>qb  -  <A HREF="dglo_2kc9.htm#_msi_basic_ui_gly">Basic UI</A> . Use qb! to hide the Cancel button.</P>
+
+<P>qr  -  <A HREF="dglo_62gp.htm#_msi_reduced_ui_gly">Reduced UI</A> with no modal dialog box displayed at the end of the installation. </P>
+
+<P>qf  -  <A HREF="dglo_0xvd.htm#_msi_full_ui_gly">Full UI</A> and any authored <A HREF="href_4u1z.htm">FatalError</A>, <A HREF="href_2013.htm">UserExit</A>, or <A HREF="href_8euf.htm">Exit</A> modal dialog boxes at the end.</P>
+
+<P>qn+  -  No UI except for a modal dialog box displayed at the end. </P>
+
+<P>qb+  -  <A HREF="dglo_2kc9.htm#_msi_basic_ui_gly">Basic UI</A> with a modal dialog box displayed at the end. The modal box is not displayed if the user cancels the installation. Use qb+! or qb!+ to hide the Cancel button.</P>
+
+<P>qb- -  <A HREF="dglo_2kc9.htm#_msi_basic_ui_gly">Basic UI</A> with no modal dialog boxes. Please note that /qb+- is not a supported UI level. Use qb-! or qb!- to hide the Cancel button.</P>
+
+<P>Note that the ! option is available with Windows Installer version 2.0 and works only with basic UI. It is not valid with full UI.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/? or /h</TD>
+<TD width=36%>&nbsp;</TD>
+<TD width=51%>Displays copyright information for the Windows Installer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/y</TD>
+<TD width=36%><I>module</I></TD>
+<TD width=51%>Calls the system API DllRegisterServer to self-register modules passed in on the command line. For example, msiexec /y my_file.dll.
+<P>This option is only used for registry information that can't be added using the registry tables of the .msi file.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>/z</TD>
+<TD width=36%><I>module</I></TD>
+<TD width=51%>Calls the system API DllUnRegisterServer to unregister modules passed in on the command line. For example, msiexec /z my_file.dll.
+<P>This option is only used for registry information that can't be removed using the registry tables of the .msi file.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P>The options /i, /x, /f[p|o|e|d|c|a|u|m|s|v], /j[u|m], /a, /p, /y and /z should not be used together. The one exception to this rule is that patching an <A HREF="over_6jzi.htm">administrative installation</A> requires using both /p and /a. The options /t and /g should only be used with /j. The options /l and /q can be used with /i, /x, /f[p|o|e|d|c|a|u|m|s|v], /j[u|m], /a, and /p. </P>
+
+<P>To install a product from A:\Example.msi, install the product as follows:</P>
+
+<PRE>msiexec /i A:\Example.msi </PRE>
+
+<P>Only <A HREF="prop_0gfn.htm">public properties</A> can be modified using the command line. All property names on the command line are interpreted as uppercase but the value retains case sensitivity. If you enter MyProperty at a command line, the installer overrides the value of MYPROPERTY and not the value of MyProperty in the Property table. For more information, see <A HREF="prop_0ylv.htm">About Properties</A>. </P>
+
+<P>To install a product with PROPERTY set to VALUE use the following syntax on the command line. You can put the property anywhere except between an option and its argument.</P>
+
+<P>Correct syntax:</P>
+
+<PRE>msiexec /i A:\Example.msi PROPERTY=VALUE </PRE>
+
+<P>Incorrect syntax:</P>
+
+<PRE>msiexec /i PROPERTY=VALUE A:\Example.msi </PRE>
+
+<P>Property values that are literal strings must be enclosed in quotation marks. Include any white spaces in the string between these marks.</P>
+
+<PRE>msiexec /i A:\Example.msi PROPERTY="Embedded White Space"</PRE>
+
+<P>To clear a public property using the command line, set its value to an empty string.</P>
+
+<PRE>msiexec /i A:\Example.msi PROPERTY="" </PRE>
+
+<P>For sections of text set apart by literal quotation marks, enclose the section with a second pair of quotation marks.</P>
+
+<PRE>msiexec /i A:\Example.msi PROPERTY="Embedded ""Quotes"" White Space"</PRE>
+
+<P>The following is an example of a complicated command line.</P>
+
+<PRE>msiexec /i testdb.msi INSTALLLEVEL=3 /l* msi.log COMPANYNAME="Acme ""Widgets"" and ""Gizmos."""</PRE>
+
+<P>The following example illustrates advertisement options. Note that switches are not case-sensitive.</P>
+
+<PRE>msiexec /JM msisample.msi /T transform.mst /LIME logfile.txt</PRE>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Command%20Line%20Options;%20RELEASE:%20August%202001;%20URL:%20app_73eb.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Command%20Line%20Options;%20RELEASE:%20August%202001;%20URL:%20app_73eb.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

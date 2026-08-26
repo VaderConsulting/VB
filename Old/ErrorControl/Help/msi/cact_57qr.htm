@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Debugging Custom Actions</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_debugging_custom_actions"></A>Debugging Custom Actions</H2>
+
+<P>You can debug custom actions that are based on <A HREF="cact_15mb.htm">Dynamic-Link Libraries</A> using the techniques described in this section. It is not possible to use dynamic debugging with custom actions based on <A HREF="cact_0b77.htm">Executable Files</A> or <A HREF="cact_7asz.htm">Scripts</A>.</P>
+
+<P>Windows Installer uses the MsiBreak environment variable to determine which custom action is to be debugged. If you have access to the custom action's source code, you may be able to use debugging without MsiBreak. To start debugging without MsiBreak, put a temporary message box at the beginning of the action's code. When the message box appears during the installation, attach the debugger to the process owning the message box. You can then set any necessary breakpoints and dismiss the message box to resume execution. It is not possible to debug the earlier portions of the custom action by this method.</P>
+
+<P>To use the MsiBreak environment variable to debug the custom action, set MsiBreak to the custom action's name in the <A HREF="tref_71b9.htm">CustomAction table</A>. With Windows Installer versions earlier than version 2.0, MsiBreak should be a system environment variable on Windows NT or Windows 2000. With Windows Installer version 2.0 or later versions, MsiBreak can be either a system or a user environment variable. If the variable is set as a system variable, a reboot of the system may be needed whenever the value is changed to detect the new value. </P>
+
+<P>Windows Installer version 2.0 and later versions only checks the MsiBreak environment variable if the user is an Administrator. The installer ignores the value of MsiBreak if the user is not an Administrator, even if this is a <A HREF="dglo_83jt.htm#_msi_managed_application_gly">managed application</A>. Windows Installer versions earlier than 2.0 checks the value for all users; however, because of security restrictions, non-administrators are unable to debug the custom action. In this case, the custom action appears to generate an exception and the installation may continue or fail depending on the attributes of the custom action, for example, <B>msidbCustomActionTypeContinue</B>. For more information, see <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A>.</P>
+
+<P>If no debugger is attached to the process at the time the breakpoint is hit, the behavior depends on the system configuration. On Windows 95/98 or Windows Me, attach the debugger to the installation process by launching the installation in the debugger. </P>
+
+<P>On Windows NT or Windows 2000, and with Windows Installer versions earlier than 2.0, launch the installation process in the debugger if you are debugging a custom action running in the user interface sequence. If you are debugging a custom action that runs with elevated (system) privileges in the execution sequence, attach the debugger to the Windows Installer service. When debugging a custom action that runs with impersonated privileges in the execution sequence, the system prompts with a dialog box that indicates which process should be debugged. With Windows Installer version 2.0 and later, the user is prompted with a dialog box indicating which process to debug. For more information about elevated custom actions, see <A HREF="cact_8o3d.htm">Custom Action Security</A>.</P>
+
+<P>Once the debugger has been attached to the correct process, the installer triggers a debugger breakpoint immediately before calling the entry point of the DLL. At the breakpoint, your DLL is already loaded into the process and the entry point address determined. If your custom action DLL could not be loaded or the custom action entry point did not exist, no breakpoint is triggered. Because the breakpoint is triggered before calling the DLL function, once the breakpoint has been triggered you should use your debugger to step forward until your custom action entry point is called. Alternately, you can set a breakpoint anywhere in your custom action and resume normal execution.</P>
+
+<P>The Windows Installer executes DLLs not stored in the <A HREF="tref_04px.htm">Binary table</A> directly from the DLL location. The installer does not know the original name of a DLL stored in the Binary table and runs the DLL custom action under a temporary file name. The form of the temporary filename is MSI?????.TMP. On Windows NT, Windows 2000, or Windows XP, this temporary file is stored in a secure location, commonly &lt;WindowFolder&gt;\Installer. On Windows 95/98 and Windows Me, the temporary file may be stored in the system or user temporary folder.</P>
+
+<P>Note that many DLLs created for debugging contain the name and path of the corresponding PDB file as part of the DLL itself. When debugging this type of DLL on a system where the PDB can be found at the location stored in the DLL, symbols may be loaded automatically by the debugger tool. In situations where the PDB cannot be found at the stored location, where the debugger does not support loading symbols from the stored location, or where the DLL was not built with debugging information, you may need to place your symbol files in the folder with the temporary DLL file.</P>
+
+<P>Starting with Windows Installer version 2.0, the installer adds debugging information for custom action scripts to the installation log file. For example the following:</P>
+
+<PRE>There is a problem with this Windows Installer package. A script 
+required for this install to complete could not be run. Contact your 
+support personnel or package vendor.  {Custom action [2] script error 
+[3], [4]: [5] Line [6], Column [7], [8] }</PRE>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Debugging%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_57qr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Debugging%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_57qr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

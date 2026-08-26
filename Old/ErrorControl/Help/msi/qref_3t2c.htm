@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiFormatRecord</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiFormatRecord">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msiformatrecord"></A>MsiFormatRecord</H1>
+
+<P>The <B>MsiFormatRecord</B> function formats record field data and properties using a format string.</P>
+
+<PRE class=syntax><B>UINT MsiFormatRecord(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>    // installer handle
+<B>  MSIHANDLE</B> <I>hRecord</I><B>,</B><I>     </I>// record to execute
+<B>  LPTSTR </B><I>szResultBuf</I><B>,</B>    // buffer to return formatted string
+<B>  DWORD *</B><I>pcchResultBuf   </I>// in/out buffer character count
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>[in] Handle to the installation. This may be omitted, in which case only the record field parameters are processed and properties are not available for substitution.</DD>
+
+<DT><I>hRecord</I></DT>
+
+<DD>[in] Handle to the record to format. The template string must be stored in record field 0 followed by referenced data parameters.</DD>
+
+<DT><I>szResultBuf</I></DT>
+
+<DD>[out] Specifies the buffer to return the formatted string to.</DD>
+
+<DT><I>pcchResultBuf</I></DT>
+
+<DD>[out] Specifies the in/out character count. On input, this is the full size of the buffer, including a space for a terminating NULL. If the buffer passed in is too small, the count returned does not include the terminating NULL. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_MORE_DATA</DT>
+
+<DD>A buffer was too small to hold the entire value.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiFormatRecord</B> function uses the following format process.</P>
+
+<P>Parameters that are to be <A HREF="tref_0qp0.htm">formatted</A> are enclosed in square brackets [...]. The square brackets can be iterated because the substitutions are resolved from the inside out.</P>
+
+<P>If a part of the string is enclosed in curly braces { } and contains no square brackets, it is left unchanged, including the curly braces.</P>
+
+<P>If a part of the string is enclosed in curly braces { } and contains one or more property names, and if all the properties are found, the text (with the resolved substitutions) is displayed without the curly braces. If any of the properties is not found, all the text in the braces and the braces themselves are removed.</P>
+
+<P>Note in the case of deferred execution custom actions, <B>MsiFormatRecord</B> only supports <B>CustomActionData</B> and <B>ProductCode</B> properties. For more information, see <A HREF="cact_5fg3.htm">Obtaining Context Information for Deferred Execution Custom Actions</A>.</P>
+
+<P>The following steps describe how to format strings using the <B>MsiFormatRecord</B> function:</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To format strings using the MsiFormatRecord function</B>
+
+<OL>
+	<LI>The numeric parameters are substituted by replacing the marker with the value of the corresponding record field, with missing or null values producing no text.</LI>
+
+	<LI>The resultant string is processed by replacing the non-record parameters with the corresponding values, described next.
+<UL>
+	<LI>If a substring of the form [propertyname] is encountered, it is replaced by the value of the property.</LI>
+
+	<LI>If a substring of the form [%environmentvariable] is found, the value of the environment variable is substituted. </LI>
+
+	<LI>If a substring of the form [#<I>filekey</I>] is found, it is replaced by the full path of the file, with the value <I>filekey</I> used as a key into the <A HREF="tref_4n6t.htm">File table</A>. The value of [#<I>filekey</I>] remains blank and is not replaced by a path until the installer runs the <A HREF="aref_4bam.htm">CostInitialize action</A>, <A HREF="aref_2f8u.htm">FileCost action</A>, and <A HREF="aref_22we.htm">CostFinalize action</A>. The value of [<I>#filekey</I>] depends upon the installation state of the component to which the file belongs. If the component is being run from source, the value is the path to the source location of the file. If the component is being run locally, the value is the path to the target location of the file after installation. If the component is absent, the path is blank. For more information about checking the installation state of components, see <A HREF="over_1yur.htm">Checking the Installation of Features, Components, Files</A>. </LI>
+
+	<LI>If a substring of the form [$<I>componentkey</I>] is found, it is replaced by the install directory of the component, with the value <I>componentkey</I> used as a key into the <A HREF="tref_09np.htm">Component table</A>. The value of [$<I>componentkey</I>]<I> </I>remains blank and is not replaced by a directory until the installer runs the <A HREF="aref_4bam.htm">CostInitialize action</A>, <A HREF="aref_2f8u.htm">FileCost action</A>, and <A HREF="aref_22we.htm">CostFinalize action</A>. The value of [$<I>componentkey</I>] depends upon the installation state of the component. If the component is being run from source, the value is the source directory of the file. If the component is being run locally, the value is the target directory after installation. If the component is absent, the value is left blank. For more information about checking the installation state of components, see <A HREF="over_1yur.htm">Checking the Installation of Features, Components, Files</A>. </LI>
+
+	<LI>Note that if a component is already installed, and is not being reinstalled, removed, or moved during the current installation, the action state of the component is null and therefore the string [$componentkey] evaluates to Null. </LI>
+
+	<LI>If a substring of the form [\c] is found, it is replaced by the character without any further processing. Only the first character after the backslash is kept; everything else is removed. </LI>
+</UL>
+</LI>
+</OL>
+
+<P>If ERROR_MORE_DATA is returned, the parameter which is a pointer gives the size of the buffer required to hold the string. If ERROR_SUCCESS is returned, it gives the number of characters written to the string buffer. Therefore you can get the size of the buffer by passing in an empty string (for example "") for the parameter that specifies the buffer. Do not attempt to determine the size of the buffer by passing in a Null (value=0).</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiFormatRecord;%20RELEASE:%20August%202001;%20URL:%20qref_3t2c.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiFormatRecord;%20RELEASE:%20August%202001;%20URL:%20qref_3t2c.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

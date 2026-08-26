@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>RemoveFiles Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="RemoveFiles Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_removefiles_action"></A>RemoveFiles Action</H1>
+
+<P>The RemoveFiles action removes files previously installed by the <A HREF="aref_3hym.htm">InstallFiles</A> action. Each of these files is gated by a link to an entry in the <A HREF="tref_09np.htm">Component</A> table. Only those files with components resolved to either the <I>msiInstallSateAbsent</I> state or the <I>msiInstallStateLocal</I> state if the component is installed locally, are removed. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The <A HREF="aref_9fzi.htm">InstallValidate</A> action must be called before calling RemoveFiles. If an <A HREF="aref_3hym.htm">InstallFiles</A> action is used, it must appear after RemoveFiles.</P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Identifier of removed file</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[9]</TD>
+<TD width=84%>Identifier of directory holding removed file</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The <A HREF="tref_7gth.htm">RemoveFile</A> table can be omitted from the installer database if there are no miscellaneous files to remove.</P>
+
+<P>The RemoveFiles action can also remove author-specified files that are not installed by the InstallFiles action. These files are specified in the <A HREF="tref_7gth.htm">RemoveFile</A> table. Each of these files is gated by a link to an entry in the <A HREF="tref_09np.htm">Component</A> table. Those files whose components are resolved to any active Action state (that is, not in the Off or Null state) are removed if the file exists in the specified directory. The removal of files specified in the RemoveFile table is attempted when the linked component is first installed, during a reinstall, and again when the linked component is removed.</P>
+
+<P>The RemoveFiles action can also remove folders. An empty folder is removed if the value in the FileName column of the RemoveFile table is null.</P>
+
+<P>When removing previously installed files, the RemoveFiles action queries the same fields in the same tables as those queried by the <A HREF="aref_3hym.htm">InstallFiles</A> action with the exception that the <A HREF="tref_4mlh.htm">Media table</A> is not used by the RemoveFiles action. </P>
+
+<P>The target file name can be specified in localized text in the FileName column of the RemoveFile table.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

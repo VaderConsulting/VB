@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE23</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE23 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice23"></A>ICE23</H1>
+
+<P>ICE23 validates the control tab order for each dialog box.</P>
+
+<P>ICE23 validates the following in the <A HREF="tref_51wl.htm">Dialog table</A> and <A HREF="tref_6nad.htm">Control table</A>: 
+
+<UL>
+	<LI>That every record in the Dialog table specifies a control in the Control_First column that exists in the dialog box specified by the Dialog column. </LI>
+
+	<LI>That every record in the Control table specifies a control in the Control_Next column that is on the same dialog as the control listed in the Control column, or Control_Next contains the Null value. </LI>
+
+	<LI>That following the Control_Next entries from control to control in the Control table makes a single, closed, loop that comes back to the initial control. Not every control needs to be in the loop, but the loop must pass through every control that has an entry in the Control_Next column.</LI>
+</UL>
+
+<H4>Result</H4>
+
+<P>ICE23 posts an error message if the tab order of controls does not form a single closed loop in the dialog box.</P>
+
+<H4>Example</H4>
+
+<P>ICE23 would post the following error messages for the example shown.
+
+<UL>
+	<LI>Dialog1 has no Control_First.</LI>
+
+	<LI>Control_First of dialog Dialog2 refers to nonexistent control ControlX.</LI>
+
+	<LI>Dialog3 has dead-end tab order at control ControlB. </LI>
+
+	<LI>Dialog4 has malformed tab order at control ControlC </LI>
+
+	<LI>Dialog5 has malformed tab order at control ControlC. </LI>
+
+	<LI>Control_Next of control Dialog6.ControlC links to unknown control.</LI>
+</UL>
+
+<P><A HREF="tref_51wl.htm"><B>Dialog Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Dialog</TH>
+<TH align=left width=65%>Control_First</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Dialog1</TD>
+<TD width=65%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Dialog2</TD>
+<TD width=65%>ControlX</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Dialog3</TD>
+<TD width=65%>ControlA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Dialog4</TD>
+<TD width=65%>ControlA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Dialog5</TD>
+<TD width=65%>ControlA</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_6nad.htm"><B>Control Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Dialog</TH>
+<TH align=left width=30%>Control</TH>
+<TH align=left width=45%>Control_Next</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog1</TD>
+<TD width=30%>ControlA</TD>
+<TD width=45%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog1</TD>
+<TD width=30%>ControlB</TD>
+<TD width=45%>ControlA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog2</TD>
+<TD width=30%>ControlA</TD>
+<TD width=45%>ControlB</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog2</TD>
+<TD width=30%>ControlB</TD>
+<TD width=45%>ControlA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog3</TD>
+<TD width=30%>ControlA</TD>
+<TD width=45%>ControlB</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog3</TD>
+<TD width=30%>ControlB</TD>
+<TD width=45%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog4</TD>
+<TD width=30%>ControlA</TD>
+<TD width=45%>ControlB</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog4</TD>
+<TD width=30%>ControlB</TD>
+<TD width=45%>ControlC</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog4</TD>
+<TD width=30%>ControlC</TD>
+<TD width=45%>ControlB</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog5</TD>
+<TD width=30%>ControlA</TD>
+<TD width=45%>ControlB</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog5</TD>
+<TD width=30%>ControlB</TD>
+<TD width=45%>ControlC</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog5</TD>
+<TD width=30%>ControlC</TD>
+<TD width=45%>ControlA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog5</TD>
+<TD width=30%>ControlD</TD>
+<TD width=45%>ControlA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog6</TD>
+<TD width=30%>ControlA</TD>
+<TD width=45%>ControlB</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog6</TD>
+<TD width=30%>ControlB</TD>
+<TD width=45%>ControlC</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog6</TD>
+<TD width=30%>ControlC</TD>
+<TD width=45%>ControlX</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Dialog6</TD>
+<TD width=30%>ControlD</TD>
+<TD width=45%>ControlA</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix these errors note the following in the above tables and make the indicated changes.</P>
+
+<P>Not every row in the Dialog table has a control specified in the Control_First column. Change the Control_First column of the Dialog1 record in the Dialog table to a control that exists in Dialog1.</P>
+
+<P>Not every row in the Dialog table has a control specified in the Control_First column that exists on the dialog box. Change the Control_First column of the Dialog2 to a control that exists in Dialog2.</P>
+
+<P>Following the Control_Next entries in the Control table from control to control does not make a closed loop in every case. Change the Control_Next column for ControlB in Dialog3 to ControlA.</P>
+
+<P>Following the Control_Next entries in the Control table from control to control does not lead back to the initial control in every case. Change the Control_Next column for ControlC in Dialog4 to refer to ControlA. </P>
+
+<P>Following the Control_Next entries in the Control table from control to control does not pass through every control in the dialog box having an entry in the Control_Next column. Change the Control_Next column for ControlC in Dialog5 to ControlD. </P>
+
+<P>Control_Next does not refer to a valid control that is in the same dialog as the control listed in the Control column. Change the Control_Next column for ControlC in Dialog6 to refer to ControlD. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

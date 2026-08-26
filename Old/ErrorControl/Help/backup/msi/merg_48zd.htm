@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleKeys Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ModuleKeys Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_modulekeys_property"></A>ModuleKeys Property</H1>
+
+<P>The read-only ModuleKeys property returns a pointer to a string collection containing the primary keys of the row in the module causing the error, one key per entry in the collection.</P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax><I>object</I>.ModuleKeys</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="merg_7yr8.htm"><B>Error</B> Object</A> 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The client is responsible for releasing the string collection when it is no longer needed.</P>
+
+<P>The collection is empty if the error is of type msmErrorLanguageUnsupported or msmErrorLanguageFailed. You can determine the type of error by calling the <A HREF="merg_8vll.htm">Type property</A> of the <A HREF="merg_7yr8.htm"><B>Error</B> Object</A>.</P>
+
+<H4>C++</H4>
+
+<P>See <A HREF="merg_65da.htm"><B>get_ModuleKeys Function</B></A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

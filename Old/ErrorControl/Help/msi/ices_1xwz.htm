@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE33</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE33">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice33"></A>ICE33</H1>
+
+<P>ICE33 validates that the all the entries in the <A HREF="tref_3obp.htm">Registry table</A> belong in that table. It issues a warning for each Registry table entry that should be moved and suggests the appropriate table. ICE33 posts warnings for any entries that register Classes, Filename Extensions, ProgIDs, Shell Verbs, Remote Server AppIDs, MIME types, or Typelibs.</P>
+
+<P>It is strongly recommended that any Registry table entries generating a warning be moved to the table suggested by the warning. It can make the database easier to author and maintain and is commonly necessary to support advertisement and install-on-demand. </P>
+
+<P>Extensions, ProgIds, Verbs, and MIME types must be registered through their respective <A HREF="tref_219h.htm">Extension</A>, <A HREF="tref_4x5x.htm">ProgId</A>, <A HREF="tref_3kdh.htm">Verb</A>, <A HREF="tref_3sh1.htm">MIME</A> tables to support advertisement and install-on-demand. Entries in the Registry table are not written to the registry until the component controlling the value is installed to run Locally or to Run From Source. This precludes the advertisement of components registered through the Registry table. It also precludes install-on-demand for any feature or product requiring the component because advertisement is the only way install-on-demand is available through the Windows Shell. </P>
+
+<P>For Windows 2000, COM Classes must be registered through the <A HREF="tref_5n8l.htm">Class table</A> to advertise CLSID Contexts and for install-on-demand. </P>
+
+<P>Note that the tables available cannot handle all possible COM registration. In these cases an author should enter as much information as possible into to the individual tables and the remaining information into the Registry table. A common authoring error that must be avoided in this case is that of duplicating an entry in both a COM table and in the Registry table. </P>
+
+<P>It is easier to manage registry keys if they are listed in the appropriate tables rather than being mixed together into the Registry tables. The values in the <A HREF="tref_3085.htm">Typelib</A> and <A HREF="tref_6p2d.htm">AppId</A> tables are registered when the component controlling the value is installed to run Locally or From Source. These tables are provided for the convenience of authors. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE33;%20RELEASE:%20August%202001;%20URL:%20ices_1xwz.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE33;%20RELEASE:%20August%202001;%20URL:%20ices_1xwz.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

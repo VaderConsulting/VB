@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>UiCreatePatchPackage (PATCHWIZ.DLL)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="UiCreatePatchPackage (PATCHWIZ.DLL)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_uicreatepatchpackage_patchwiz.dll_"></A>UiCreatePatchPackage (PATCHWIZ.DLL)</H1>
+
+<P>The <B>UiCreatePatchPackage</B> function is the one API of PatchWiz.dll. It takes a package creation file (.pcp file) and generates a Windows Installer patch package (.msp package). Calling <A HREF="updat_33ad.htm">MsiMsp.exe</A> is the recommended method for using <A HREF="updat_8f70.htm">PatchWiz.dll</A>.</P>
+
+<PRE class=syntax><B>UINT UiCreatePatchPackage(
+</B>  <B>LPCTSTR</B> <I>szPcpPath,</I>    // path to .pcp file
+  <B>LPCTSTR</B> <I>szPatchPath,</I>    // path to .msp file or NULL
+  <B>LPCTSTR</B> <I>szLogPath,</I>    // path to log file or NULL
+  <B>HWND</B> <I>hwndStatus,</I>    // handle to window or NULL 
+  <B>LPCTSTR</B> <I>szTempFolder,</I>    // temp file location or NULL
+  <B>Bool</B> <I>fRemoveTempFolderContents</I>    // remove temp folder
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szPcpPath</I></DT>
+
+<DD>Full path to the patch creation properties file (.pcp file) for this patch.</DD>
+
+<DT><I>szPatchPath</I></DT>
+
+<DD>Full path to the Windows Installer patch package (.msp file) that is to be created. This parameter may be NULL or an empty string but may not be omitted. If it is NULL or an empty string, the function uses the value of PatchOutputPath in the<A HREF="updat_8me7.htm"><I> </I>Properties Table (PATCHWIZ.DLL)</A>.</DD>
+
+<DT><I>szLogPath</I></DT>
+
+<DD>Full path to a text log file that will be appended. This parameter may be NULL or an empty string but may not be omitted. </DD>
+
+<DT><I>hwndStatus</I></DT>
+
+<DD>Handle to a window that displays the status text. This parameter may be NULL or an empty string but may not be omitted. </DD>
+
+<DT><I>szTempFolder</I></DT>
+
+<DD>Location for temporary files. This parameter may be NULL or an empty string but may not be omitted. The default location is %TEMP%\~pcw_tmp.tmp\.</DD>
+
+<DT><I>fRemoveTempFolderContents</I></DT>
+
+<DD>If TRUE, remove the temporary folder and all of its contents if present. If FALSE, and folder is present, the function fails.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>See <A HREF="updat_8fxh.htm">Return Values for UiCreatePatchPackage</A>.</DT>
+
+<DD></DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>For an example of authoring a .pcp file and using <B>UiCreatePatchPackage</B> to generate a Windows Installer patch package, see the section <A HREF="samp_6rxh.htm">A Small Update Patching Example</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

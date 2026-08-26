@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Updating Properties for an Upgrade</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_updating_properties_for_an_upgrade"></A>Updating Properties for an Upgrade</H2>
+
+<P>Because the upgrade changes the name of the .msi file and changes the component code of some components, the product code of the upgrade must be changed from that of the original product. For a description of the cases where an upgrade is required to change the <A HREF="pref_4tfd.htm"><B>ProductCode</B> property</A>, see <A HREF="updat_3rad.htm">Changing the Product Code</A>. An upgrade that changes the ProductCode is referred to as a <A HREF="updat_8do3.htm">Major Upgrade</A>. </P>
+
+<P>The upgrade package's <A HREF="pref_52m1.htm"><B>ProductName</B> property</A>, <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>, <A HREF="pref_7aex.htm"><B>ProductLanguage</B> property</A>, and <A HREF="pref_7mux.htm"><B>UpgradeCode</B> property</A> may be changed, or left unchanged, from the original product. Based upon the values of these properties, the Windows Installer may determine whether to apply future upgrade packages to the current upgrade.</P>
+
+<P>The property specified in the ActionProperty column of the <A HREF="tref_4qxx.htm">Upgrade table</A> must be added to the <A HREF="pref_1eux.htm">SecureCustomProperties Property</A>.</P>
+
+<P>Use your database editor to open MNP2001.msi and enter the following data into the <A HREF="tref_21d1.htm">Property Table</A>. The list provides links to the reference topics for built-in installer properties. The property names that are not links are author-defined properties. Many of the properties were imported from Uisample.msi that comes with the SDK. For details, see <A HREF="samp_18h1.htm">Importing the User Interface</A>. </P>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Property</TH>
+<TH align=left width=65%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_067t.htm"><B>ARPHELPLINK</B></A></TD>
+<TD width=65%>http://www.microsoft.com/management</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>BannerBitmap</TD>
+<TD width=65%>bannrbmp</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Back</TD>
+<TD width=65%>&lt; &amp;Back</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Browse</TD>
+<TD width=65%>Br&amp;owse</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Cancel</TD>
+<TD width=65%>Cancel</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Exit</TD>
+<TD width=65%>&amp;Exit</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Finish</TD>
+<TD width=65%>&amp;Finish</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Ignore</TD>
+<TD width=65%>&amp;Ignore</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Install</TD>
+<TD width=65%>&amp;Install</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Next</TD>
+<TD width=65%>&amp;Next &gt;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_No</TD>
+<TD width=65%>&amp;No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_OK</TD>
+<TD width=65%>OK</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Remove</TD>
+<TD width=65%>&amp;Remove</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Reset</TD>
+<TD width=65%>&amp;Reset</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Resume</TD>
+<TD width=65%>&amp;Resume</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Retry</TD>
+<TD width=65%>&amp;Retry</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Return</TD>
+<TD width=65%>&amp;Return</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Yes</TD>
+<TD width=65%>&amp;Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>CompleteSetupIcon</TD>
+<TD width=65%>completi </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ComponentDownload</TD>
+<TD width=65%>ftp://anonymous@microsoft.com/components/</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>CustomSetupIcon</TD>
+<TD width=65%>custicon</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_4ku1.htm"><B>DefaultUIFont</B></A></TD>
+<TD width=65%>DlgFont8</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>DialogBitmap</TD>
+<TD width=65%>dlgbmp</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>DlgTitleFont</TD>
+<TD width=65%>{&amp;DlgFontBold8}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ErrorDialog</TD>
+<TD width=65%>ErrorDlg</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ExclamationIcon</TD>
+<TD width=65%>exclamic</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>False</TD>
+<TD width=65%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Iagree</TD>
+<TD width=65%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>InfoIcon</TD>
+<TD width=65%>info</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>InstallerIcon</TD>
+<TD width=65%>insticon</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_9bzt.htm"><B>INSTALLLEVEL</B></A></TD>
+<TD width=65%>3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>InstallMode</TD>
+<TD width=65%>Typical</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_9z09.htm"><B>Manufacturer</B></A></TD>
+<TD width=65%>Microsoft</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_0z21.htm"><B>PIDTemplate</B></A></TD>
+<TD width=65%>12345&lt;###-%%%%%%%&gt;@@@@@</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_4tfd.htm"><B>ProductCode</B></A></TD>
+<TD width=65%>{34CF587C-1D8F-4DD5-ADFE-440F4B593987}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_6et5.htm"><B>ProductID</B></A></TD>
+<TD width=65%>none</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_7aex.htm"><B>ProductLanguage</B></A></TD>
+<TD width=65%>1033</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_52m1.htm"><B>ProductName</B></A></TD>
+<TD width=65%>MNP2001</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_120p.htm"><B>ProductVersion</B></A></TD>
+<TD width=65%>01.50.0000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Progress1</TD>
+<TD width=65%>Installing</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Progress2</TD>
+<TD width=65%>installs</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_8wop.htm"><B>PROMPTROLLBACKCOST</B></A></TD>
+<TD width=65%>P</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>RemoveIcon</TD>
+<TD width=65%>removico</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>RepairIcon</TD>
+<TD width=65%>repairic</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Setup</TD>
+<TD width=65%>Setup</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>True</TD>
+<TD width=65%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_7mux.htm"><B>UpgradeCode</B></A></TD>
+<TD width=65%>{908E378A-9551-4772-BF1D-5CFAF6FD9CB4}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Wizard</TD>
+<TD width=65%>Setup Wizard</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>SecureCustomProperties</TD>
+<TD width=65%>OLDAPPFOUND</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_0bfp.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Updating%20Properties%20for%20an%20Upgrade;%20RELEASE:%20August%202001;%20URL:%20samp_3rvp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Updating%20Properties%20for%20an%20Upgrade;%20RELEASE:%20August%202001;%20URL:%20samp_3rvp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

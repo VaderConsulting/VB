@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiEnableLog</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiEnableLog">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msienablelog"></A>MsiEnableLog</H1>
+
+<P>The <B>MsiEnableLog</B> function sets the log mode for all installations that are initiated in the calling process.</P>
+
+<PRE class=syntax><B>UINT MsiEnableLog(
+  DWORD </B><I>dwLogMode</I><B>,      </B>// flags designating operations to report
+<B>  LPCTSTR </B><I>szLogFile</I><B>,    </B>//<B> </B>log file or NULL for external handler
+<B>  DWORD </B><I>dwLogAttributes</I><B> </B>//<B> </B>INSTALLLOGATTRIBUTES flags
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>dwLogMode</I></DT>
+
+<DD>[in] Specifies the log mode. This parameter can be one or more of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Value</TH>
+<TH align=left width=63%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_FATALEXIT</TD>
+<TD width=63%>Logs out of memory or fatal exit information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_ERROR</TD>
+<TD width=63%>Logs the error messages.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_WARNING</TD>
+<TD width=63%>Logs the warning messages.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_USER</TD>
+<TD width=63%>Logs the user requests.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_INFO</TD>
+<TD width=63%>Logs the status messages that are not displayed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_RESOLVESOURCE</TD>
+<TD width=63%>Request to determine a valid source location.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_OUTOFDISKSPACE</TD>
+<TD width=63%>Indicates insufficient disk space.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_ACTIONSTART</TD>
+<TD width=63%>Logs the start of new installation actions.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_ACTIONDATA</TD>
+<TD width=63%>Logs the data record with the installation action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_COMMONDATA</TD>
+<TD width=63%>Logs the parameters for user-interface initialization.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_PROPERTYDUMP </TD>
+<TD width=63%>Logs the property values at termination.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>INSTALLLOGMODE_VERBOSE </TD>
+<TD width=63%>Sends large amounts of information to log file not generally useful to users. May be used for support. </TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>szLogFile</I></DT>
+
+<DD>[in] Specifies the string that holds the full path to the log file. Entering a Null disables logging, in which case <I>dwlogmode </I>is ignored. If a path is supplied, then <I>dwlogmode</I> must not be zero.</DD>
+
+<DT><I>dwLogAttributes</I></DT>
+
+<DD>[in] Specifies how frequently the log buffer is to be flushed. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Value</TH>
+<TH align=left width=55%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLLOGATTRIBUTES_APPEND</TD>
+<TD width=55%>Forces the log buffer to be flushed after every 20 log lines.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLLOGATTRIBUTES_FLUSHEACHLINE</TD>
+<TD width=55%>Forces the log buffer to be flushed after each line. </TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>An invalid log mode was specified.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function succeeded.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>For a description of the Logging policy, see <A HREF="over_37ll.htm">System Policy</A>. </P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_user_interface_and_logging_functions">Interface and Logging Functions</A>, <A HREF="over_9xbb.htm">Logging</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiEnableLog;%20RELEASE:%20August%202001;%20URL:%20msi_2ch3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiEnableLog;%20RELEASE:%20August%202001;%20URL:%20msi_2ch3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Connect Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Connect Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_connect_method"></A>Connect Method</H1>
+
+<P>The <B>Connect</B> method connects a module to an additional feature. The module must have already been merged into the database or will be merged into the database. The feature must already exist before calling this function. </P>
+
+<P>Changes made to the database are not saved to disk unless the  <A HREF="merg_2750.htm">CloseDatabase method</A> is called with bCommit set to TRUE. </P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax>object.Connect(Feature)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="merg_4th0.htm"><B>Merge</B> Object</A> </DD>
+
+<DT><I>Feature</I></DT>
+
+<DD>The name of a feature already existing in the database. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Errors may be retrieved through the <A HREF="merg_4tix.htm">Errors property</A>. Errors and informational messages are posted to the current log file. </P>
+
+<H4>C++</H4>
+
+<P>See <A HREF="merg_86jy.htm"><B>Connect Function</B></A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

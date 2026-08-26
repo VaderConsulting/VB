@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetMode</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiGetMode">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msigetmode"></A>MsiGetMode</H1>
+
+<P>The <B>MsiGetMode</B> function is used to determine whether the installer is currently running in a specified mode, as listed in the table. The function returns a Boolean value of TRUE or FALSE, indicating whether the specific property passed into the function is currently set (TRUE) or not set (FALSE). </P>
+
+<PRE class=syntax><B>BOOL MsiGetMode(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>    // installer handle
+  <B>MSIRUNMODE</B> <I>iRunMode</I>    // run mode
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>[in] Handle to the installation.</DD>
+
+<DT><I>iRunMode</I></DT>
+
+<DD>[in] Specifies the run mode. This parameter must have one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=57%>Value</TH>
+<TH align=left width=43%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_ADMIN</TD>
+<TD width=43%>The administrative mode is installing, or the product is installing.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_ADVERTISE</TD>
+<TD width=43%>The advertisements are installing or the product is installing or updating. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_MAINTENANCE</TD>
+<TD width=43%>An existing installation is being modified or there is a new installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_ROLLBACKENABLED</TD>
+<TD width=43%>Rollback is enabled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_LOGENABLED</TD>
+<TD width=43%>The log file is active. It was enabled prior to the installation session.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_OPERATIONS</TD>
+<TD width=43%>Execute operations are spooling or they are in the determination phase.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_REBOOTATEND</TD>
+<TD width=43%>A reboot is necessary after a successful installation (settable).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_REBOOTNOW</TD>
+<TD width=43%>A reboot is necessary to continue the installation (settable).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_CABINET</TD>
+<TD width=43%>Files from cabinets and <A HREF="tref_4mlh.htm">Media table</A> files are installing.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_SOURCESHORTNAMES</TD>
+<TD width=43%>The source LongFileNames is suppressed through the PID_MSISOURCE summary property.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_TARGETSHORTNAMES</TD>
+<TD width=43%>The target LongFileNames is suppressed through the <B>SHORTFILENAMES</B> property.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_RESERVED11</TD>
+<TD width=43%>Reserved for future use.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_WINDOWS9X</TD>
+<TD width=43%>The operating system is Windows&reg; 95 or Windows 98.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_ZAWENABLED</TD>
+<TD width=43%>The operating system supports demand installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_RESERVED14</TD>
+<TD width=43%>Reserved for future use.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_RESERVED15</TD>
+<TD width=43%>Reserved for future use.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_SCHEDULED</TD>
+<TD width=43%>A custom action called from install script execution.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_ROLLBACK</TD>
+<TD width=43%>A custom action called from rollback execution script.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>MSIRUNMODE_COMMIT</TD>
+<TD width=43%>A custom action called from commit execution script.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<P>TRUE indicates the specific property passed into the function is currently set.</P>
+
+<P>FALSE indicates the specific property passed into the function is currently not set.</P>
+
+<H4>Remarks</H4>
+
+<P>Note that not all the run mode values of <I>iRunMode</I> are available when calling <B>MsiGetMode</B> from a deferred custom action. For details, see <A HREF="cact_5fg3.htm">Obtaining Context Information for Deferred Execution Custom Actions</A>.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_state_access_functions">Installer State Access Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetMode;%20RELEASE:%20August%202001;%20URL:%20qref_8u05.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetMode;%20RELEASE:%20August%202001;%20URL:%20qref_8u05.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FirstRun Dialog</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="FirstRun Dialog">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_firstrun_dialog"></A>FirstRun Dialog</H3>
+
+<P>A FirstRun dialog box sequence collects user name, company name, and product ID information. The installer verifies the product ID during this dialog. </P>
+
+<P>A FirstRun dialog box sequence is usually not a part of the action sequence and is instead called by the <A HREF="msi_9crz.htm"><B>MsiCollectUserInfo</B></A> function on the first run of the product.</P>
+
+<P>An author of an installer package may use the template dialog sequence or create a different sequence. The dialog sequence however needs to have the user set the following properties: </P>
+
+<P><A HREF="pref_9shl.htm"><B>USERNAME</B> property</A><BR>
+<A HREF="pref_5oc9.htm"><B>COMPANYNAME</B> property</A><BR>
+<A HREF="pref_1v21.htm"><B>PIDKEY</B> property</A></P>
+
+<P>The product ID will be validated during the dialog using the <A HREF="aref_0cdq.htm">ValidateProductID action</A> or the <A HREF="href_0jqs.htm">ValidateProductID ControlEvent</A>.</P>
+
+<P>If the product ID is set as a property on the command line, or by a transform, then the necessity of having the user reenter the product ID during the first-run dialog can be circumvented by controlling the display using the <A HREF="pref_6et5.htm"><B>ProductID</B> property</A>. Following the successful validation of the product ID the <B>ProductID</B> property is set to the full valid product ID.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FirstRun%20Dialog;%20RELEASE:%20August%202001;%20URL:%20href_6g87.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FirstRun%20Dialog;%20RELEASE:%20August%202001;%20URL:%20href_6g87.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

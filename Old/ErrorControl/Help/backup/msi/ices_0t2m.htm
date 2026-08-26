@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Internal Validation</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_internal_validation"></A>Internal Validation</H1>
+
+<P>When authoring an installation package, you can use the <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A> function or the View.Modify method to ensure that the data you enter is syntactically correct. For more information, see <A HREF="vref_6204.htm"><B>Modify</B> method</A>. At the lowest level, a database table's column can store integers (short or long), strings, or binary data. However, an installation package requires specific integers or strings in certain tables. These specifications are maintained in the <A HREF="tref_8fl1.htm">_Validation table</A>. For example, the FileName column of the <A HREF="tref_4n6t.htm">File table</A> is a string column, but it specifically stores a filename. Therefore, not only should your entry be a string, but it should also follow the requirements for naming files.</P>
+
+<P>The various validation enum values used with the <B>MsiViewModify</B> function allow for immediate validation at different levels. The MSIMODIFY_VALIDATE_FIELD enum can be used to validate individual fields of a record. It does not validate foreign keys. The MSIMODIFY_VALIDATE enum validates an entire row and includes foreign key validation. If you are inserting a new row into a table, use the MSIMODIFY_VALIDATE_NEW enum to verify that you are adding valid data as well as using unique primary keys. An insert fails if the primary keys are not unique. If a call to <B>MsiViewModify</B> with one of the validation enums returns an error, you can make repeated calls to <A HREF="qref_541e.htm"><B>MsiViewGetError</B></A> for diagnosing the problem. <B>MsiViewGetError</B> indicates the column where the error occurred as well as the enum value to help fix the problem. For more information, see <A HREF="vref_14pw.htm"><B>GetError </B>method</A>. </P>
+
+<P>You can also use internal validation to ensure that other authors enter data correctly into your custom table. Add each of the columns of your custom table to the _Validation table using the custom table name and column name as the primary key. Provide a description or purpose of each column in the Description column of the _Validation table. Enter the applicable requirements for each column using the Nullable, MinValue, MaxValue, KeyTable, KeyColumn, Category, and Set columns: 
+
+<UL>
+	<LI>If the column is Nullable, enter a 'Y'. If not, enter a 'N'. </LI>
+
+	<LI>If the column is an integer column and can contain a range of integers, enter that range using the MinValue and MaxValue columns. </LI>
+
+	<LI>Foreign key columns are identified using the KeyTable and KeyColumn columns. </LI>
+
+	<LI>For string columns, specify a Category such as Filename, GUID, Identifier, etc. For more information, see <A HREF="tref_6b77.htm">column data types</A>. </LI>
+
+	<LI>If the data can only pertain to a specific number of values (string or integer), use the Set column to list the acceptable values. </LI>
+</UL>
+
+<P>The following is a list of the columns (in addition to Table, Column, and Description) in the _Validation table that can be filled in if your column is of the specified type. (Note that you do not have to fill in all the columns.)</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Type</TH>
+<TH align=left width=82%>Columns</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Integer</TD>
+<TD width=82%>Nullable, MinValue, MaxValue, KeyTable, KeyColumn, Set</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>String</TD>
+<TD width=82%>Nullable, KeyTable, KeyColumn, Category, Set, MinValue, MaxValue</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Binary</TD>
+<TD width=82%>Nullable, Category (Category must be "Binary")</TD>
+</TR>
+</TABLE><BR>
+
+<P>Authoring environments may make use of MSIMODIFY_VALIDATE_DELETE. This enum assumes that you want to delete the row. No field or foreign key validation is performed. This enum actually performs a reverse foreign key validation. It checks the _Validation table for references in the KeyTable and KeyColumn columns for the table to which the "deleted" row belongs. If there are columns that list the table containing the "deleted" row as a potential foreign key, it cycles through that column to see if any of the values reference values in the "deleted" row. An error return means that you break the relational integrity of the database by deleting the row. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

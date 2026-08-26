@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I search for a directory and a file in that directory?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_how_do_i_search_for_a_directory_and_a_file_in_that_directory"></A>How do I search for a directory and a file in that directory?</H2>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To search for a directory and then a file in that directory</B>
+
+<OL>
+	<LI>First do a search for the directory. No record is included in the Signature table for the directory search. For the file search, list the file's signature and name in the Signature table. The remaining fields in this record can be null to search for any version of MyApp.exe. 
+<P><A HREF="tref_149x.htm"><B>Signature Table</B></A><B> (partial)</B> 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Signature</TH>
+<TH align=left width=81%>Filename</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>AppFile</TD>
+<TD width=81%>MyApp.exe</TD>
+</TR>
+</TABLE><BR>
+</LI>
+
+	<LI>Enter the property that the installer is to set if the directory with the signature AppDir is installed. If the installer finds this directory is installed, it sets MYDIR to the directory's path. Enter the property that the installer is to set if MyApp.exe is installed.
+<P><A HREF="tref_0w9x.htm"><B>AppSearch Table</B></A><B> (partial)</B> 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Property</TH>
+<TH align=left width=81%>Signature</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>MYDIR</TD>
+<TD width=81%>AppDir</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>MYAPP</TD>
+<TD width=81%>AppFile</TD>
+</TR>
+</TABLE><BR>
+</LI>
+
+	<LI>Use the DrLocator table. Enter the property set to the directory path into the Parent column. Specify in the Depth column the number of subdirectory levels to search in this directory. 
+<P><A HREF="tref_3azp.htm"><B>DrLocator Table</B></A> 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Signature</TH>
+<TH align=left width=35%>Parent</TH>
+<TH align=left width=20%>Path</TH>
+<TH align=left width=26%>Depth</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>AppFile</TD>
+<TD width=35%>MYDIR</TD>
+<TD width=20%> </TD>
+<TD width=26%>0</TD>
+</TR>
+</TABLE><BR>
+</LI>
+
+	<LI>Include the AppSearch action in the action sequence. If MyApp.exe is found to be installed in AppDir, the installer sets the property MYAPP to the location of file.</LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

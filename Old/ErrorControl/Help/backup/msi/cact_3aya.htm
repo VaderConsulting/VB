@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I use a custom action to create user accounts on the local computer?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_how_do_i_use_a_custom_action_to_create_user_accounts_on_the_local_computer"></A>How do I use a custom action to create user accounts on the local computer?</H2>
+
+<P>This sample demonstrates how to use custom actions to create user accounts on the local computer when installing a component. Removal of the component removes the local user accounts created by the custom action. Several custom actions are demonstrated including <A HREF="cact_10fn.htm">deferred execution custom actions</A> and <A HREF="cact_0k8j.htm">rollback custom actions</A>.</P>
+
+<P>The sample meets the following specifications.
+
+<UL>
+	<LI>The installation creates user accounts only if running Windows&nbsp;NT or Windows&nbsp;2000.</LI>
+
+	<LI>The installation creates user accounts only if the component is being installed to run locally. Note that this precludes creating user accounts during the repair or reinstallation of the component.</LI>
+
+	<LI>The installer removes the accounts when the component is removed.</LI>
+
+	<LI>User account information is read from a custom table in the installation database and is not hard-coded into the custom action code. </LI>
+
+	<LI>Because the creation or removal of user accounts requires elevated privileges, some of the custom actions must be capable of making changes to the system that require elevated privileges. These custom actions must be deferred custom actions that run when in the execution script.</LI>
+
+	<LI>Each account has a rollback custom action to ensure the account is removed upon rollback of the component's installation. Note that this does not include the rollback of an account deletion during the removal of the component. </LI>
+
+	<LI>Custom actions send ActionData messages for each account that is created or removed. Note this does not include providing progress messages for the progress bar.</LI>
+
+	<LI>Custom actions report an error if an account cannot be created. </LI>
+</UL>
+
+<P>The sample includes a hypothetical component named TestAccount. The discussion in the following sections assumes that you have already created the resources required by TestAccount and have authored the <A HREF="tref_0a91.htm">Feature</A>, <A HREF="tref_09np.htm">Component</A>, <A HREF="tref_4n6t.htm">File</A>, <A HREF="tref_6an9.htm">Directory</A>, and <A HREF="tref_52hx.htm">FeatureComponents</A> tables in the sample database required to install this component. For an example of how to author these database tables to install a component see <A HREF="samp_2k11.htm">An Installation Example</A>.</P>
+
+<P>The following sections demonstrate how to create the required custom actions and add them to the installation package.
+
+<UL>
+	<LI><A HREF="cact_63g3.htm">Authoring the Custom Actions</A> </LI>
+
+	<LI><A HREF="cact_11lx.htm">Adding a Custom CustomUserAccounts Table</A> </LI>
+
+	<LI><A HREF="cact_9x0l.htm">Authoring the CustomAction Table</A> </LI>
+
+	<LI><A HREF="cact_33cj.htm">Authoring the ActionText and Error Tables</A> </LI>
+
+	<LI><A HREF="cact_3ejp.htm">Authoring the InstallExecuteSequence Table</A> </LI>
+</UL>
+
+<P>Continue to <A HREF="cact_63g3.htm">Authoring the Custom Actions</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

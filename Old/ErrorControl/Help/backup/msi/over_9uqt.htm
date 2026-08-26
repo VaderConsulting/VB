@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I search all fixed drives for a file?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_how_do_i_search_all_fixed_drives_for_a_file"></A>How do I search all fixed drives for a file?</H2>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To search all fixed drives for a file</B>
+
+<OL>
+	<LI>Enter the file's signature and name in the Signature table. The remaining fields in this record can be null to search for any version of MyApp.exe. 
+<P><A HREF="tref_149x.htm"><B>Signature Table</B></A><B> (partial)</B> 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Signature</TH>
+<TH align=left width=79%>Filename</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>AppFile</TD>
+<TD width=79%>MyApp.exe</TD>
+</TR>
+</TABLE><BR>
+</LI>
+
+	<LI>Enter the property that the installer is to set if MyApp.exe is installed.
+<P><A HREF="tref_0w9x.htm"><B>AppSearch Table</B></A> 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Property</TH>
+<TH align=left width=79%>Signature</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>MYAPP</TD>
+<TD width=79%>AppFile</TD>
+</TR>
+</TABLE><BR>
+</LI>
+
+	<LI>Use the DrLocator table. Leave the Parent and Path fields empty to search all fixed drives of the user's system. Specify in the Depth column the number of subdirectory levels to search. For example, setting Depth to 0 would find c:\MyApp.exe but would not detect the file at a depth of 2, such as c:\Program Files\MyApps\MyApp.exe. 
+<P><A HREF="tref_3azp.htm"><B>DrLocator Table</B></A> 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Signature</TH>
+<TH align=left width=33%>Parent</TH>
+<TH align=left width=22%>Path</TH>
+<TH align=left width=24%>Depth</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>AppFile</TD>
+<TD width=33%> </TD>
+<TD width=22%> </TD>
+<TD width=24%>3</TD>
+</TR>
+</TABLE><BR>
+</LI>
+
+	<LI>Include the AppSearch action in the action sequence. If MyApp.exe is found to be installed, the installer sets the property MYAPP to the location of file. If the file is installed, MYAPP evaluates as True in a conditional expression.</LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

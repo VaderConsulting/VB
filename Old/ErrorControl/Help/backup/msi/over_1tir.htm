@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>File Versioning Rules</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="file versioning rules [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_file_versioning_rules"></A>File Versioning Rules</H1>
+
+<P>At the core of any installer is the actual installation of files. But determining whether to install a file is a complex process. At the highest level, making the determination depends on whether the component to which a file belongs is marked for installation. Once the determination is made that a file should be copied, the process is complicated if another file with the same name exists in the target folder. In such situations, making the determination requires a set of rules involving the following properties:
+
+<UL>
+	<LI>Version</LI>
+
+	<LI>Date</LI>
+
+	<LI>Language</LI>
+</UL>
+
+<P>The installer only uses these rules when trying to install a file to a location that already contains a file with the same name. In this case, the Microsoft® Windows® Installer uses the following rules to determine whether to install.</P>
+
+<P>Highest Version Wins — All other things being equal, the file with the highest version wins, even if the file on the machine has the highest version. </P>
+
+<P>Versioned Files Win — All other things being equal, a versioned file gets installed over a non-versioned file. </P>
+
+<P>Favor Product Language — All other things being equal, if the file being installed has a different language than the file on the machine, favor the file with the language that matches the product being installed. Language neutral files are treated as just another language so the product being installed is favored again. </P>
+
+<P>Mismatched Multiple Languages — All other things being equal, after factoring out any common languages between the file being installed and the file on the machine, any remaining languages are favored according to what is needed by the product being installed. </P>
+
+<P>Preserve Superset Languages — All other things being equal, preserve the file that supports multiple languages regardless of whether it is already on the machine or is being installed. </P>
+
+<P>Non-versioned Files Are User Data — All other things being equal, if the Modified date is later than the Create date for the file on the machine, do not install the file because user customizations would be wiped out. If the Modified and Create dates are the same, install the file. If the Create date is later than the Modified date, the file is considered unmodified, install the file.</P>
+
+<P>Non-versioned Files Using Companion — All other things being equal, a non-versioned file that is associated with a versioned file using the companion mechanism abides by the rules for the versioned file. The only exception is if the versioned file on the machine and the versioned file being installed have the same version and language but the companion file is missing on the machine. In this case the companion file being installed is used even though the versioned file on the machine is used. </P>
+
+<P>Rules Are Global — The rules for determining when to install a file reside in one place within the installer and are global, meaning they apply to all files equally. </P>
+
+<P>For examples of the format used for file versions, see the <A HREF="tref_1iy6.htm">Version</A> data type. For more specific information, see <A HREF="over_5odv.htm">Replacing Existing Files</A> or <A HREF="over_5qef.htm">Default File Versioning</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

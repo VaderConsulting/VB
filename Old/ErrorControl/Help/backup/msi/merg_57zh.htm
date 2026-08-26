@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Merge Module Summary Information Stream</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_merge_module_summary_information_stream"></A>Merge Module Summary Information Stream</H2>
+
+<P>Every merge module is required to have a <A HREF="dglo_5nuh.htm#_msi_summary_information_stream_gly">Summary Information Stream</A> containing the following properties. These properties are basically the same as for an installation package, see the main topic for each property. For a list of all the summary information streams in merge modules see <A HREF="merg_0c2t.htm">Merge Module Summary Information Stream Reference</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Summary information property</TH>
+<TH align=left width=50%>Meaning in merge modules</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%><A HREF="sref_80hl.htm">Template Summary Property</A></TD>
+<TD width=50%>Lists numeric language identifiers for all languages supported by the module. The first language in the list is the default language of the module. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%><A HREF="sref_1am1.htm">Revision Number Summary Property</A></TD>
+<TD width=50%>The unique GUID for this merge module.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%><A HREF="sref_8eex.htm">Page Count Summary Property</A></TD>
+<TD width=50%>Minimum required installer version. Stored as an integer in the form: Major * 100 + minor.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%><A HREF="sref_8ge1.htm">Word Count Summary Property</A></TD>
+<TD width=50%>Enter 0 for this property. Note that in a merge module, files are always inside an embedded cabinet file regardless of the value of this property.</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Importing Localized Error and ActionText Tables</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_importing_localized_error_and_actiontext_tables"></A>Importing Localized Error and ActionText Tables</H2>
+
+<P>Localized language versions of the <A HREF="tref_5dk5.htm">Error Table</A> and <A HREF="tref_7het.htm">ActionText Table</A> are provided by the Windows Installer SDK. The French language versions of these tables, Error.FRA and ActionTe.FRA, are located in the Intl folder of the Windows Installer SDK. </P>
+
+<P>You may use the table editor Orca or the utility Msidb.exe provided with the SDK to import the French versions of these tables into the database. </P>
+
+<P>An example of using <A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A> and the <A HREF="vref_795w.htm"><B>Import </B>Method</A> of the <A HREF="vref_64dw.htm">Database object</A> is provided in the Windows Installer SDK as the utility WiImport.vbs. The following snippet, Imp.vbs, also illustrates the use of the Import method and is for use with Windows Script Host.</P>
+
+<PRE>'Imp.vbs. Argument(0) is the original database. Argument(1) is the
+'    path of the folder containing the file to be imported. Argument(2) is the name of the file to be imported.
+'
+Option Explicit
+ 
+' Connect to Windows Installer object
+On Error Resume Next
+Dim installer : Set installer = Wscript.CreateObject("WindowsInstaller.Installer")
+Dim databasePath : databasePath = Wscript.Arguments(0)
+Dim folder : folder = Wscript.Arguments(1)
+ 
+' Open database and process file
+Dim database : Set database = installer.OpenDatabase(databasePath, 1)
+Dim table : table = Wscript.Arguments(2)
+database.Import folder, table 
+ 
+' Commit database changes
+database.Commit 'commit changes
+Wscript.Quit 0</PRE>
+
+<P>To import and replace the Error table with Error.FRA you may use a command line such as the following.</P>
+
+<PRE>Cscript Imp.vbs MNPFren.msi C:\Note_Installer\French Error.FRA</PRE>
+
+<P>To import and replace the ActionText table with ActionTe.FRA you may use a command line such as the following.</P>
+
+<PRE>Cscript Imp.vbs MNPFren.msi C:\Note_Installer\French ActionTe.FRA</PRE>
+
+<P>Rerun validation on MNPFren.msi as described in <A HREF="samp_2elh.htm">Validating an Installation Upgrade</A>. Note that you may need to modify the column widths of the <A HREF="tref_5dk5.htm">Error Table</A> to pass validation when using the Windows Installer version 1.1 SDK.</P>
+
+<P><A HREF="samp_37cj.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Importing%20Localized%20Error%20and%20ActionText%20Tables;%20RELEASE:%20August%202001;%20URL:%20samp_0tyr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Importing%20Localized%20Error%20and%20ActionText%20Tables;%20RELEASE:%20August%202001;%20URL:%20samp_0tyr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

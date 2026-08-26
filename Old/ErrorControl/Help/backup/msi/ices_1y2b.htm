@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE63</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE63 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice63"></A>ICE63</H1>
+
+<P>ICE63 checks for proper sequencing of the <A HREF="aref_8r72.htm">RemoveExistingProducts action</A>. The RemoveExistingProducts action may be placed: 
+
+<OL>
+	<LI>Between InstallValidate and InstallInitialize </LI>
+
+	<LI>Immediately after InstallInitialize, or after InstallInitialize if the actions between InstallInitialize and RemoveExistingProducts do not generate any script actions. </LI>
+
+	<LI>Immediately after InstallExecute or InstallExecuteAgain and before InstallFinalize (the same restriction as above applies). </LI>
+
+	<LI>After InstallFinalize. </LI>
+</OL>
+
+<P>Failure to fix a warning or error reported by ICE63 leads to failure of the upgrade.</P>
+
+<H4>Result</H4>
+
+<P>ICE63 posts a warning or error if the sequencing of the RemoveExistingProducts action is not correct.</P>
+
+<H4>Example</H4>
+
+<P>ICE63 reports the following error for the example shown.</P>
+
+<PRE>WARNING: Some action falls between InstallInitialize and RemoveExistingProducts.</PRE>
+
+<P>The action 'MyCustomAction' occurs between InstallInitialize and RemoveExistingProducts. If MyCustomAction generates any actions in the script, this causes problems in the installation.</P>
+
+<P>To fix this error, verify that MyCustomAction does not generate any script actions or resequence the actions.</P>
+
+<P><A HREF="tref_5pid.htm"><B>InstallExecuteSequence Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Action</TH>
+<TH align=left width=23%>Condition</TH>
+<TH align=left width=29%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>InstallInitialize</TD>
+<TD width=23%> </TD>
+<TD width=29%>1000 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MyCustomAction</TD>
+<TD width=23%> </TD>
+<TD width=29%> 1010</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>RemoveExistingProducts</TD>
+<TD width=23%> </TD>
+<TD width=29%> 1020</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>RemoveFolders Action</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="RemoveFolders Action">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_removefolders_action"></A>RemoveFolders Action</H1>
+
+<P>The RemoveFolders action removes any folders linked to components set to be removed or run from source. These folders are removed only if they are empty. If a folder is removed, it is unregistered with the appropriate component identifier.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The RemoveFolders action must come after the <A HREF="aref_9xny.htm">RemoveFiles</A> action or any action that may remove files from folders.</P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Identifier of removed folder</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The installer does not automatically remove the folders created by the <A HREF="aref_6p0u.htm">CreateFolders action</A> during an uninstall of the application. The installer must be instructed to remove these folders by authoring the RemoveFolders action into the action sequence. </P>
+
+<P>To specify the name and location of the folder, use the Directory_ column of the <A HREF="tref_152d.htm">CreateFolder table</A>. Each folder name in the CreateFolder table is assumed to be a property defining the folder location.</P>
+
+<P>To specify the component owning the folder, use the ComponentId column of the <A HREF="tref_09np.htm">Component table</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20RemoveFolders%20Action;%20RELEASE:%20August%202001;%20URL:%20aref_0pf2.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20RemoveFolders%20Action;%20RELEASE:%20August%202001;%20URL:%20aref_0pf2.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

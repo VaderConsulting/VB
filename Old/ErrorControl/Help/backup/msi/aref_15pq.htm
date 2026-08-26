@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MoveFiles Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MoveFiles Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_movefiles_action"></A>MoveFiles Action</H1>
+
+<P>The MoveFiles action locates existing files on the user's computer and moves or copies those files to a new location. The MoveFiles action queries the <A HREF="tref_5un9.htm">MoveFile table</A> and moves files specified there if the component linked to the entries is specified to be install locally or is being run from source.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The MoveFiles action must come after the <A HREF="aref_9fzi.htm">InstallValidate</A> action and before the <A HREF="aref_3hym.htm">InstallFiles</A> action.</P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Identifier of moved file</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[6]</TD>
+<TD width=84%>Size of installed file in bytes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[9]</TD>
+<TD width=84%>Identifier of directory holding moved file</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The MoveFiles table contain a column named "options" which specifies the source files to be moved or copied. A moved source file is deleted after it has been copied to a new location. For the exact syntax, see the <A HREF="tref_5un9.htm">MoveFile table</A>.</P>
+
+<P>The SourceFolder and DestFolder columns of the MoveFile table are property names whose values are expected to resolve to fully qualified paths. These properties can be any of the directory entries in the <A HREF="tref_6an9.htm">Directory</A> table, any predefined folder property (<A HREF="pref_048p.htm">FavoritesFolder</A>, for example), or a property set by any entry in the <A HREF="tref_0w9x.htm">AppSearch</A> table. These properties may contain a full path containing the file name to a specific file. For example, the AppSearch table can be authored to search for a particular file and set a property to the full path to that file. In this example, the SourceName column in the MoveFile table can be left blank to indicate that the value in the SourceFolder property contains a full file path. The semicolon is the list delimiter for transforms, sources, and patches and should not be used in file names or paths.</P>
+
+<P>The MoveFiles action does not act on entries in the MoveFile table in which either the SourceFolder or DestFolder property does not evaluate to a full path.</P>
+
+<P>The MoveFiles action attempts to move or copy all files in the source directory that match the name given in the SourceName column of the MoveFiles table. The name in the SourceName column can include either the * or ? wildcards which allow a group of files to be moved or copied. For example, the SourceName column may contain an entry of "*.xls" and the MoveFiles action moves or copies every Microsoft® Excel workbook from the source directory to the destination.</P>
+
+<P>The name to be given to the destination file can be specified in the DestName column of the MoveFile table. The destination file name retains the source file name if this column is left blank.</P>
+
+<P>It is good practice to leave the DestName column of the MoveFile table blank if a wildcard is specified in the SourceName column. If a destination file name is specified in the DestName column and a wildcard is used in the SourceName column, the first source file that matches the wildcard criteria is given the specified destination name. All other moved or copied files will have the same name as the source file.</P>
+
+<P>Files that are moved or copied by the MoveFiles action are not deleted when the product is uninstalled.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

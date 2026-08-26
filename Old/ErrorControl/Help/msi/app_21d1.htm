@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Msidb.exe</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Msidb.exe [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_msidb.exe"></A>Msidb.exe</H2>
+
+<P>Msidb.exe uses <A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A> and <A HREF="qref_4qyc.htm"><B>MsiDatabaseExport</B></A> to import and export <A HREF="tref_29ir.htm">database tables</A> and streams.</P>
+
+<P>If the mode, folder, database and table list are specified on the command line, Msidb.exe does not bring up any user interface and operates as a silent command-line utility suitable for build script. </P>
+
+<H4>Syntax</H4>
+
+<P>MsiDb {option}...{option}... {table}...{table}</P>
+
+<H4>Command Line Options</H4>
+
+<P>Msidb.exe uses the following case-insensitive command line options. A slash delimiter may also be used in place of a dash. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Option</TH>
+<TH align=left width=84%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-i</TD>
+<TD width=84%>Import text archive files from folder into database. Table names for import are file names 8 characters long with an ".idt" extension. Longer names are truncated to 8 characters if supplied by command for import. Standard wild card specifications may be used.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-e</TD>
+<TD width=84%>Export selected tables from database into text archive files in folder. Table names for export are table names. Only the wildcard specification, "*", may be used. Tables may be exported from a read only database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-c</TD>
+<TD width=84%>Creates a new database file and imports tables. Overwrites an existing database file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-f</TD>
+<TD width=84%>Specifies the folder containing the text archive files for tables and streams. If the folder containing the text archive files is not specified, the utility prompts the user for the folder.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-d</TD>
+<TD width=84%>Fully-qualified path to the database file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-m</TD>
+<TD width=84%>Fully-qualified path to the database that is to be merged in. This option is available only in silent command line mode. Multiple instances of this option may occur to a maximum of 10. If the database is not specified on the command-line, the utility prompts the user for the database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-t</TD>
+<TD width=84%>Fully-qualified path to the transform to be applied. This option is available only in silent command line mode. Multiple instances of this option may occur to a maximum of 10.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-j</TD>
+<TD width=84%>Name of storage to remove from the database. This option is available only in silent command line mode. Multiple instances of this option may occur to a maximum of 10.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-k</TD>
+<TD width=84%>Name of stream to remove from the database. This option available only in silent command line mode. Multiple instances of this option may occur to a maximum of 10.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-x</TD>
+<TD width=84%>Name of stream to save to a disk file in the current directory. This option is available only in silent command line mode. Binary data streams are stored as separate files with the extension ".ibd". Binary filename used is primary key data for the row containing the stream.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-w</TD>
+<TD width=84%>Name of storage to save to a disk file in the current directory. This option is available only in silent command line mode.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-a</TD>
+<TD width=84%>Name of file to add to the database as a stream. This option is available only in silent command line mode. Multiple instances of this option may occur to a maximum of 10. Binary data streams are stored as separate files with the extension ".ibd". Binary filename used is primary key data for the row containing the stream.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-r</TD>
+<TD width=84%>Name of storage to add to the database as a substorage. This option available only in silent command line mode. Multiple instances of this option may occur to a maximum of 10.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-s</TD>
+<TD width=84%>Truncate table names to 8 chars on export to an .idt. The table name is truncated to 8 characters and the extension ".idt" is added.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>-?</TD>
+<TD width=84%>Displays the command line help dialog</TD>
+</TR>
+</TABLE><BR>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;When using long filenames with spaces, use quotes around them. For example, for a database that is in the "My Documents" folder, specify it as "c:\my documents".</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="app_9303.htm">Windows Installer Development Tools</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Msidb.exe;%20RELEASE:%20August%202001;%20URL:%20app_21d1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Msidb.exe;%20RELEASE:%20August%202001;%20URL:%20app_21d1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

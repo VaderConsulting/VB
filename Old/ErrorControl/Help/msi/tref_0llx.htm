@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>SelfReg Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="SelfReg Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_selfreg_table"></A>SelfReg Table</H1>
+
+<P>The SelfReg table contains information about modules that need to be self-registered. The installer calls the DllRegisterServer() function at the time of installing the module and the DllUnregisterServer() function at the time of uninstalling the module. The installer does not self-register EXE files.</P>
+
+<P>The SelfReg table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Column</TH>
+<TH align=left width=44%>Type</TH>
+<TH align=left width=15%>Key</TH>
+<TH align=left width=22%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>File_</TD>
+<TD width=44%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%>Y</TD>
+<TD width=22%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>Cost</TD>
+<TD width=44%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%> </TD>
+<TD width=22%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>File_</DT>
+
+<DD>External key into the first column of the <A HREF="tref_4n6t.htm">File table</A> indicating the module that needs to be registered.</DD>
+
+<DT>Cost</DT>
+
+<DD>The cost of registering the module in bytes. This must be a non-negative number.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>It is strongly recommended that installation package authors not use self-registration. Instead they should register modules by authoring one or more of the other tables provided by the installer for this purpose. See <A HREF="novr_4300.htm">Registry Tables Group</A>. Many of the benefits of having a central installer service are lost with self-registration because self-registration routines tend to hide critical configuration information. 
+
+<UL>
+	<LI>A rollback of an installation with self-registered modules cannot be safely done using DllUnregisterServer because there is no way of telling if the self-registered keys are used by another feature or application. </LI>
+
+	<LI>The ability to use advertisement is reduced if Class or extension server registration is performed within self-registration routines.</LI>
+
+	<LI>The installer automatically handles HKCR keys in the registry tables for both per-user or per-machine installations. DllRegisterServer routines currently do not support the notion of a per-user HKCR key.</LI>
+
+	<LI>If multiple users are using a self-registered application on the same computer, each user must install the application the first time they run it. Otherwise the installer cannot easily determine that the proper HKCU registry keys exist. </LI>
+
+	<LI>The DLLRegisterServer can be denied access to network resources such as type libraries if a component is both specified as run-from-source and is listed in the SelfReg table. This can cause the installation of the component to fail to during an administrative installation. </LI>
+
+	<LI>Self-registering DLLs are more susceptible to coding errors because the new code required for DllRegisterServer is commonly different for each DLL. Instead use the registry tables in the database to take advantage of existing code provided by the installer.</LI>
+
+	<LI>Self-registering DLLs can sometimes link to auxiliary DLLs that are not present or are the wrong version. In contrast, the installer can register the DLLs using the registry tables with no dependency on the current state of the system.</LI>
+</UL>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;You cannot specify the order in which the installer registers or unregisters self-registering DLLs by using the <A HREF="aref_1gku.htm">SelfRegModules</A> and <A HREF="aref_9jce.htm">SelfUnRegModules</A> actions. See <A HREF="novr_0a0e.htm">Specifying the Order of Self Registration</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20SelfReg%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_0llx.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20SelfReg%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_0llx.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

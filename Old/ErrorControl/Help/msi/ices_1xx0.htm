@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE34</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE34">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice34"></A>ICE34</H1>
+
+<P>ICE34 validates that each radio button on every <A HREF="href_6iwc.htm">RadioButtonGroup Control</A> has a property in the Property column of the <A HREF="tref_4t7p.htm">RadioButton table</A> that specifies its radio button group. ICE34 validates that this property exists and is set to a default value in the <A HREF="tref_21d1.htm">Property table</A> which is equal to one of the group's radio button values in the Value column of the RadioButton table.</P>
+
+<P>A radio button group must have a default for users to be able to select a choice using the TAB key. This is required for proper user accessibility.</P>
+
+<P>ICE34 reports missing tables.</P>
+
+<H4>Result</H4>
+
+<P>ICE34 post an error message if there is a radio button that specifies an invalid property.</P>
+
+<H4>Example</H4>
+
+<P>ICE34 reports the following errors for the example shown.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE34 error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Control DialogA.Control2 must have a property because it is of type RadioButtonGroup. </TD>
+<TD width=63%>There is a <A HREF="href_6iwc.htm">RadioButtonGroup control</A>, without the <A HREF="href_8m05.htm">Indirect control</A> bit set in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>, that does not have a property listed in the Property column.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Maybe is not a valid default value for the RadioButtonGroup using property Property3. The value must be listed as an option in the RadioButtonGroup table. </TD>
+<TD width=63%>There is a default value for a property specified in the Value column of the <A HREF="tref_21d1.htm">Property table</A> that is not one of the values for the radio button group specified in the Value column of the <A HREF="tref_4t7p.htm">RadioButton table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Property PropertyB must be defined because it is an indirect property of a RadioButtonGroup control DialogA.Control4 </TD>
+<TD width=63%>The property referenced by this RadioButton group is an indirect property, and the value of the indirect property is not one of the choices for the RadioButton group.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Maybe is not a valid default value for the property PropertyA. The property is an indirect RadioButtonGroup property of control DialogA.Control5 (via property Property5). </TD>
+<TD width=63%>The value of the indirect property referenced via the control is not one of the default values for that RadioButtonGroup.</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_6nad.htm"><B>Control Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Dialog</TH>
+<TH align=left width=19%>Control</TH>
+<TH align=left width=29%>Type</TH>
+<TH align=left width=18%>Attributes</TH>
+<TH align=left width=18%>Property</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>DialogA</TD>
+<TD width=19%>Control1</TD>
+<TD width=29%>RadioButtonGroup</TD>
+<TD width=18%>0</TD>
+<TD width=18%>Property1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>DialogA</TD>
+<TD width=19%>Control2</TD>
+<TD width=29%>RadioButtonGroup</TD>
+<TD width=18%>0</TD>
+<TD width=18%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>DialogA</TD>
+<TD width=19%>Control3</TD>
+<TD width=29%>RadioButtonGroup</TD>
+<TD width=18%>0</TD>
+<TD width=18%>Property3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>DialogA</TD>
+<TD width=19%>Control4</TD>
+<TD width=29%>RadioButtonGroup</TD>
+<TD width=18%>8</TD>
+<TD width=18%>Property4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>DialogA</TD>
+<TD width=19%>Control5</TD>
+<TD width=29%>RadioButtonGroup</TD>
+<TD width=18%>8</TD>
+<TD width=18%>Property5</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=46%>Property</TH>
+<TH align=left width=54%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>Property1</TD>
+<TD width=54%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>Property3</TD>
+<TD width=54%>Maybe</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>Property4</TD>
+<TD width=54%>PropertyB</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>Property5</TD>
+<TD width=54%>PropertyA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>PropertyA</TD>
+<TD width=54%>Maybe</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4t7p.htm"><B>RadioButton Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Property</TH>
+<TH align=left width=20%>Order</TH>
+<TH align=left width=52%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Property1</TD>
+<TD width=20%>1</TD>
+<TD width=52%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Property1</TD>
+<TD width=20%>2</TD>
+<TD width=52%>Now</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Property2</TD>
+<TD width=20%>1</TD>
+<TD width=52%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Property2</TD>
+<TD width=20%>2</TD>
+<TD width=52%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Property3</TD>
+<TD width=20%>1</TD>
+<TD width=52%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Property3</TD>
+<TD width=20%>2</TD>
+<TD width=52%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Property4</TD>
+<TD width=20%>1</TD>
+<TD width=52%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Property4</TD>
+<TD width=20%>2</TD>
+<TD width=52%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>PropertyA</TD>
+<TD width=20%>1</TD>
+<TD width=52%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>PropertyA</TD>
+<TD width=20%>2</TD>
+<TD width=52%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>PropertyB</TD>
+<TD width=20%>1</TD>
+<TD width=52%>Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>PropertyB</TD>
+<TD width=20%>2</TD>
+<TD width=52%>No</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix the errors reported by this ICE, check the following: 
+
+<UL>
+	<LI>That every RadioButton control entry without the indirect attribute set has a property listed in the Property column: </LI>
+
+	<LI>That every such property has at least one corresponding entry in the RadioButton table. </LI>
+
+	<LI>That every such property is defined in the Property table, with a value that is one of the choices from the RadioButton table. </LI>
+
+	<LI>That every property referenced in the Property column of a RadioButton control with the indirect attribute set is defined in the Property table. </LI>
+</UL>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE34;%20RELEASE:%20August%202001;%20URL:%20ices_1xx0.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE34;%20RELEASE:%20August%202001;%20URL:%20ices_1xx0.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

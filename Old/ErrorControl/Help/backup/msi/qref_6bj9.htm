@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiRecordDataSize</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiRecordDataSize">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msirecorddatasize"></A>MsiRecordDataSize</H1>
+
+<P>The <B>MsiRecordDataSize</B> function returns the length of a record field. The count does not include the terminating null. </P>
+
+<PRE class=syntax><B>unsigned int MsiRecordDataSize(
+</B>  <B>MSIHANDLE</B> <I>hRecord</I><B>,</B>    // record handle
+  <B>unsigned int</B> <I>iField</I>   // record field
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hRecord</I></DT>
+
+<DD>Handle to the record.</DD>
+
+<DT><I>iField</I></DT>
+
+<DD>Specifies a field of the record.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<P>The <B>MsiRecordDataSize</B> function returns 0 if the field is NULL, non-existent, or an internal object pointer. The function also returns 0 if the handle is not a valid record handle.</P>
+
+<P>If the data is in integer format, the function returns sizeof(int).</P>
+
+<P>If the data is in string format, the function returns the character count (not including the NULL terminator).</P>
+
+<P>If the data is in stream format, the function returns the byte count.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_record_processing_functions">Record Processing Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

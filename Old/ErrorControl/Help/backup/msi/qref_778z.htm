@@ -1,0 +1,425 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Database Functions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_database_functions"></A>Database Functions</H2>
+
+<P>The material in this section is intended for developers who are writing their own setup programs and developers who want to learn more about the installer database tables. For general information on the installer, see <A HREF="over_2fjm.htm">About Windows Installer</A>.</P>
+
+<P>You can use the installer access functions to access the database and the installation process. These functions should only be used by custom installation actions and authoring tools. Some of the installer access functions require SQL query strings for querying the database. Queries must adhere to the installer <A HREF="qref_5j20.htm">SQL syntax</A>.</P>
+
+<P>This topic lists the installer database access functions by category.</P>
+
+<H4><A NAME="_msi_general_database_access_functions"></A>General Database Access Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function Name</TH>
+<TH align=left width=73%>Brief Description of Function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A></TD>
+<TD width=73%>Commits changes to a database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_0w8j.htm"><B>MsiDatabaseGetPrimaryKeys</B></A></TD>
+<TD width=73%>Returns the names of all the primary key columns.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_5244.htm"><B>MsiDatabaseIsTablePersistent</B></A></TD>
+<TD width=73%>Returns an enumeration describing the state of a table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_5h9z.htm"><B>MsiDatabaseOpenView</B></A></TD>
+<TD width=73%>Prepares a database query and creates a view object.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_4e1x.htm"><B>MsiGetActiveDatabase</B></A></TD>
+<TD width=73%>Returns the active database for the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_8vlb.htm"><B>MsiViewGetColumnInfo</B></A></TD>
+<TD width=73%>Returns column names or definitions.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_27tx.htm"><B>MsiOpenDatabase</B></A></TD>
+<TD width=73%>Opens a database file for data access.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_9fvp.htm"><B>MsiViewClose</B></A></TD>
+<TD width=73%>Releases the result set for an executed view.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_8hgl.htm"><B>MsiViewExecute</B></A></TD>
+<TD width=73%>Executes the view query and supplies required parameters.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_9b54.htm"><B>MsiViewFetch</B></A></TD>
+<TD width=73%>Fetches the next sequential record from the view.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_541e.htm"><B>MsiViewGetError</B></A></TD>
+<TD width=73%>Returns the error that occurred in the <B>MsiViewModify</B> function. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A></TD>
+<TD width=73%>Updates a fetched record.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A NAME="_msi_database_management_functions"></A>Database Management Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function Name</TH>
+<TH align=left width=73%>Brief Description of Function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_5zlb.htm"><B>MsiCreateTransformSummaryInfo</B></A></TD>
+<TD width=73%>Creates summary information for an existing transform.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_5tyl.htm"><B>MsiDatabaseApplyTransform</B></A></TD>
+<TD width=73%>Applies a transform to a database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_4qyc.htm"><B>MsiDatabaseExport</B></A></TD>
+<TD width=73%>Exports a table from an open database to a text archive file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_29rh.htm"><B>MsiDatabaseGenerateTransform</B></A></TD>
+<TD width=73%>Generates a transform file of differences between two databases.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A></TD>
+<TD width=73%>Imports an installer text archive table into an open database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_5pd1.htm"><B>MsiDatabaseMerge</B></A></TD>
+<TD width=73%>Merges two databases together.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_3iw5.htm"><B>MsiGetDatabaseState</B></A></TD>
+<TD width=73%>Returns the state of the database.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A NAME="_msi_record_processing_functions"></A>Record Processing Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function Name</TH>
+<TH align=left width=73%>Brief Description of Function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_3v50.htm"><B>MsiCreateRecord</B></A></TD>
+<TD width=73%>Creates new record object with specified number of fields.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_3t2c.htm"><B>MsiFormatRecord</B></A></TD>
+<TD width=73%>Formats record field data and properties using a format string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_1l9d.htm"><B>MsiRecordClearData</B></A></TD>
+<TD width=73%>Sets all fields in a record to NULL.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_6bj9.htm"><B>MsiRecordDataSize</B></A></TD>
+<TD width=73%>Returns the length of a record field.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_8ulw.htm"><B>MsiRecordGetFieldCount</B></A></TD>
+<TD width=73%>Returns the number of fields in a record.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_1dma.htm"><B>MsiRecordGetInteger</B></A></TD>
+<TD width=73%>Returns the integer value from a record field.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_202v.htm"><B>MsiRecordGetString</B></A></TD>
+<TD width=73%>Returns the string value of a record field.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_1v58.htm"><B>MsiRecordIsNull</B></A></TD>
+<TD width=73%>Reports whether a record field is NULL.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_1vsd.htm"><B>MsiRecordReadStream</B></A></TD>
+<TD width=73%>Reads bytes from a record stream field into a buffer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_10vm.htm"><B>MsiRecordSetInteger</B></A></TD>
+<TD width=73%>Sets a record field to an integer field.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_4wq5.htm"><B>MsiRecordSetStream</B></A></TD>
+<TD width=73%>Sets a record stream field from a file. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_5a07.htm"><B>MsiRecordSetString</B></A></TD>
+<TD width=73%>Copies a string into the designated field.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A NAME="_msi_summary_information_property_functions"></A>Summary Information Property Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function Name</TH>
+<TH align=left width=73%>Brief Description of Function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_5dpq.htm"><B>MsiGetSummaryInformation</B></A></TD>
+<TD width=73%>Obtains handle to summary information stream of installer database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_1ypl.htm"><B>MsiSummaryInfoGetProperty</B></A></TD>
+<TD width=73%>Gets a single property from the summary information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_4z5g.htm"><B>MsiSummaryInfoGetPropertyCount</B></A></TD>
+<TD width=73%>Returns number of properties in the summary information stream.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_65ys.htm"><B>MsiSummaryInfoPersist</B></A></TD>
+<TD width=73%>Writes changed summary information back to summary information stream.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_9bax.htm"><B>MsiSummaryInfoSetProperty</B></A></TD>
+<TD width=73%>Sets a single summary information property.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A NAME="_msi_installer_state_access_functions"></A>Installer State Access Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function Name</TH>
+<TH align=left width=73%>Brief Description of Function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_86xx.htm"><B>MsiGetLanguage</B></A></TD>
+<TD width=73%>Returns the numeric language of the current installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_7jhg.htm"><B>MsiGetLastErrorRecord</B></A></TD>
+<TD width=73%>Returns error record last returned for the calling process.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_8u05.htm"><B>MsiGetMode</B></A></TD>
+<TD width=73%>Returns one of the Boolean internal installation states.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_7u2h.htm"><B>MsiGetProperty</B></A></TD>
+<TD width=73%>Gets the value of an installer property.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_56nt.htm"><B>MsiSetProperty</B></A></TD>
+<TD width=73%>Sets the value of an installation property.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_1d9h.htm"><B>MsiSetMode</B></A></TD>
+<TD width=73%>Sets an internal engine Boolean state.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A NAME="_msi_installer_action_functions"></A>Installer Action Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function Name</TH>
+<TH align=left width=73%>Brief Description of Function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_9woe.htm"><B>MsiDoAction</B></A></TD>
+<TD width=73%>Executes built-in action, custom action, or user-interface wizard action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_6je6.htm"><B>MsiEvaluateCondition</B></A></TD>
+<TD width=73%>Evaluates a conditional expression containing property names and values.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A></TD>
+<TD width=73%>Sends an error record to the installer for processing.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_6zad.htm"><B>MsiSequence</B></A></TD>
+<TD width=73%>Executes an action sequence.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A NAME="_msi_installer_location_functions"></A>Installer Location Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function Name</TH>
+<TH align=left width=73%>Brief Description of Function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_7g14.htm"><B>MsiGetSourcePath</B></A></TD>
+<TD width=73%>Returns the full source path for a folder in the Directory table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_05bc.htm"><B>MsiGetTargetPath</B></A></TD>
+<TD width=73%>Returns the full target path for a folder in the Directory table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_4wko.htm"><B>MsiSetTargetPath</B></A></TD>
+<TD width=73%>Sets the full target path for a folder in the Directory table.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A NAME="_msi_installer_selection_functions"></A>Installer Selection Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function Name</TH>
+<TH align=left width=73%>Brief Description of Function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_47l1.htm"><B>MsiGetComponentState</B></A></TD>
+<TD width=73%>Obtains the state of a component.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_5ub8.htm"><B>MsiGetFeatureCost</B></A></TD>
+<TD width=73%>Returns the disk space required by a feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_3wmd.htm"><B>MsiGetFeatureState</B></A></TD>
+<TD width=73%>Gets the state of a feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_3k4z.htm"><B>MsiGetFeatureValidStates</B></A></TD>
+<TD width=73%>Returns a valid installation state.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_3s6d.htm"><B>MsiSetComponentState</B></A></TD>
+<TD width=73%>Sets a component to the specified state.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_5wkz.htm"><B>MsiSetFeatureAttributes</B></A></TD>
+<TD width=73%>Modifies the default attributes of a feature at run time.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_9ejp.htm"><B>MsiSetFeatureState</B></A></TD>
+<TD width=73%>Sets a feature to a specified state.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_7yr0.htm"><B>MsiSetInstallLevel</B></A></TD>
+<TD width=73%>Sets the installation level of a full product installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_6ucl.htm"><B>MsiVerifyDiskSpace</B></A></TD>
+<TD width=73%>Checks for sufficient disk space.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A NAME="_msi_user_interface_functions"></A>User Interface Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function Name</TH>
+<TH align=left width=73%>Brief Description of Function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_4ek7.htm"><B>MsiEnableUIPreview</B></A></TD>
+<TD width=73%>Enables preview mode of the user interface.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_9s2s.htm"><B>MsiPreviewBillboard</B></A></TD>
+<TD width=73%>Displays a billboard with the host control in the displayed dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_1tpj.htm"><B>MsiPreviewDialog</B></A></TD>
+<TD width=73%>Displays a dialog box as modeless and inactive.</TD>
+</TR>
+</TABLE><BR>
+
+<P>All functions support both ANSI and Unicode calls. To use these functions, include MsiQuery.h and link with Msi.lib.</P>
+
+<H4>Installation Functions</H4>
+
+<P>In addition to the database access functions listed above, you create an installation package for an application by using the installer functions listed in the <A HREF="msi_8vqd.htm">Installer Function Reference</A> section.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

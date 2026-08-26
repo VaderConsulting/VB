@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Component Guidelines for Terminal Server</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_component_guidelines_for_terminal_server"></A>Component Guidelines for Terminal Server</H2>
+
+<P>The following guidelines are recommended when developing components for Windows Installer installations that may be run on a terminal server:
+
+<UL>
+	<LI>Use profile folders with values that depend on the <A HREF="pref_6tx5.htm">ALLUSERS property</A>. Do not install resources into profile folders that are always per-user, even if the installation is per-machine. Not all users will receive copies of the resources.</LI>
+
+	<LI>Do not install any per-user registry information at setup time. Instead, generate the registry information when the application is first run. Alternatively, use default values and only write per-user registry information when it differs from the default value.</LI>
+
+	<LI>If you must write per-user information to the registry during setup, separate the per-user and per-machine data into different installer components. Author the package such that the installer does not verify and attempt to repair the per-user components when the application is activated. Many terminal servers are configured such that users cannot repair applications. Your application should handle the case of missing registry keys gracefully.</LI>
+
+	<LI>Write all <B>HKCU</B> registry information under the <B>HKCU\Software</B> hive.</LI>
+
+	<LI>Storing configuration information in INI files is not recommended.</LI>
+
+	<LI>If a package used for only <A HREF="over_1tdf.htm">per-machine installations</A> should write environment variables to the machine's environment by including * in the Name column of the <A HREF="tref_025h.htm">Environment Table</A>. If the package can be used for <A HREF="over_2tf7.htm">per-user installations</A> or per-machine installations, create two components: (1) a per-user component with the Environment table entries authored for user settings, and (2) a per-machine component with the Environment table authored for machine settings. Create a condition for the installation of this component using the <A HREF="pref_6tx5.htm"><B>ALLUSERS</B> property</A>. When performing per-machine installations from a terminal server, the installer writes per-user environment variables to <B>HKU\.Default\Environment</B>. Because Terminal Services does not replicate this section of the registry, the installation does not set the per-user environment variables.</LI>
+
+	<LI>Do not save user information, such as the user name or the path to user files, in the <B>HKCU</B> registry hive or INI files. The Terminal Services system copies this information make them the default for all future users. </LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Component%20Guidelines%20for%20Terminal%20Server;%20RELEASE:%20August%202001;%20URL:%20over_5xde.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Component%20Guidelines%20for%20Terminal%20Server;%20RELEASE:%20August%202001;%20URL:%20over_5xde.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

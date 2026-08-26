@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>One File Has a Version</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_one_file_has_a_version"></A>One File Has a Version</H3>
+
+<P>If the key file of a component being installed (copy-A) has the same name as a file already installed in the target location (copy-B), the installer compares the version number, date, and language of the two files. </P>
+
+<P>If only one of the files has a version number, the installer uses the logic illustrated by the following flow diagram to determine whether to replace all of the installed files belonging to the component. Because the installer only installs entire components, if the installed key file is replaced, then all the component's files are replaced.</P>
+
+<P>Note that this diagram illustrates the default <A HREF="over_1tir.htm">File Versioning Rules</A>, which can be overridden by setting the <A HREF="pref_7bll.htm">REINSTALLMODE property</A>. The default value of the REINSTALLMODE property is "omus". </P>
+
+<P><IMG SRC="images/waiflow3.gif" ALT="" BORDER=0></P>
+
+<P>See the examples of default file versioning in <A HREF="over_5odv.htm">Replacing Existing Files</A>.
+
+<UL>
+	<LI><A HREF="over_0b3i.htm">Both Files Have a Version</A> </LI>
+
+	<LI><A HREF="over_91ym.htm">Neither File Has a Version</A> </LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

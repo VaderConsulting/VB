@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring Merge Module Component Tables</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_merge_module_component_tables"></A>Authoring Merge Module Component Tables</H3>
+
+<P>A <A HREF="tref_09np.htm">Component table</A> is required in every merge module. This table contains a record for each component delivered by the merge module to the target .msi file. Note that each of these components must also be specified in the <A HREF="merg_21gl.htm">ModuleComponents table</A> described in <A HREF="merg_0reb.htm">Authoring ModuleComponents Tables</A>.</P>
+
+<P>Use the standard naming convention when entering names into the Component column to ensure that the identifier for each component is unique for all merge modules and installation databases. For more information, see <A HREF="merg_0ucz.htm">Naming Primary Keys in Merge Module Databases</A>.</P>
+
+<P>Complete the remaining fields in each record as described for an installation database in <A HREF="tref_09np.htm">Component table</A>. The components added to a package by a merge module must adhere to the guidelines for valid Windows Installer Components described in the following sections:
+
+<UL>
+	<LI><A HREF="over_28oj.htm">Windows Installer Components</A> </LI>
+
+	<LI><A HREF="over_286r.htm">Organizing Applications into Components</A> </LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

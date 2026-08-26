@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE15</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE15 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice15"></A>ICE15</H1>
+
+<P>ICE15 validates that content type and extension references in the <A HREF="tref_3sh1.htm">MIME</A> and <A HREF="tref_219h.htm">Extension</A> tables are reciprocal. The MIME table must reference a content type to an extension that the Extension table references back to the same content type.</P>
+
+<P>Multiple extensions can reference the same MIME type, as long as the MIME type references back to one of the extensions. Multiple MIME types can reference the same extension, as long as the extension references back to one of the MIME types.</P>
+
+<P>Note that whenever a MIME references an extension, that extension cannot have the MIME_ column in the Extension table set to Null.</P>
+
+<H4>Result</H4>
+
+<P>ICE15 posts an error if the content type and extension references are not reciprocal.</P>
+
+<H4>Example</H4>
+
+<P>ICE15 posts two error messages for the example shown:
+
+<UL>
+	<LI>The content type test/x-flaps in the MIME table references the extension tst, but the extension tst in the Extension table references flaps/x-flaps. This is not reciprocal. </LI>
+
+	<LI>The content type flaps/x-flaps references the extension flp, but that extension has a Null entry in the MIME_ column of the Extension table. </LI>
+</UL>
+
+<P><A HREF="tref_3sh1.htm"><B>MIME Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=40%>ContentType</TH>
+<TH align=left width=60%>Extension_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>test/x-test</TD>
+<TD width=60%>tst</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>flaps/x-flaps</TD>
+<TD width=60%>flp</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_219h.htm"><B>Extension Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=40%>Extension</TH>
+<TH align=left width=60%>MIME_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>tst</TD>
+<TD width=60%>flaps/x-flaps</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>flp</TD>
+<TD width=60%>NULL</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

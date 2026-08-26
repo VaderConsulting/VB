@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Returning Error Messages from Custom Actions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_returning_error_messages_from_custom_actions"></A>Returning Error Messages from Custom Actions</H2>
+
+<P>This section describes how to send messages from custom actions that actually perform a part of the installation by calling a dynamic link library or script. Note that <A HREF="cact_07i1.htm">Custom Action Type 19</A> only sends a specified error message, returns failure, and then terminates the installation. CustomAction Type 19 cannot perform any part of the installation.</P>
+
+<P>To send an error message from a custom action that uses a <A HREF="cact_15mb.htm">dynamic-link library</A>, have the custom action call <A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A>. See <A HREF="hand_3f39.htm">Sending Messages to Windows Installer Using MsiProcessMessage</A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To display an error message from within a custom action using a DLL</B>
+
+<OL>
+	<LI>The custom action should call <A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A> and pass in the parameters <I>hInstall</I>, <I>eMessageType</I>, and <I>hRecord</I>. The handle to the installation, <I>hInstall</I>, may be provided to the custom action as described in <A HREF="cact_99gu.htm">How do I access the current installer session from inside a custom action?</A> or from <A HREF="msi_5f78.htm"><B>MsiOpenProduct</B></A> or <A HREF="msi_9n39.htm"><B>MsiOpenPackage</B></A>. </LI>
+
+	<LI>The parameter <I>eMessageType</I> should specify one of the message types as listed in <A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A>. </LI>
+
+	<LI>The <I>hRecord</I> parameter of the <B>MsiProcessMessage</B> function depends upon the message type. See <A HREF="hand_3f39.htm">Sending Messages to Windows Installer Using <B>MsiProcessMessage</B></A>. If the message contains formatted data, enter the message into the <A HREF="tref_5dk5.htm">Error table</A> using the formatting described in <A HREF="tref_0qp0.htm">Formatted</A>.  </LI>
+</OL>
+
+<P>To send an error message from a custom action that uses <A HREF="cact_7asz.htm">Scripts</A>, the custom action may call the <A HREF="vref_3mlg.htm">Message method</A> of the <A HREF="vref_8xis.htm">Session Object</A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To display an error message from within a custom action using script</B>
+
+<OL>
+	<LI>The custom action should call <A HREF="vref_3mlg.htm"><B>Message</B> method</A> of the <A HREF="vref_8xis.htm"><B>Session</B> Object</A> and pass in the parameters <I>kind</I> and <I>record</I>. </LI>
+
+	<LI>The parameter <I>kind</I> should specify one of the message types listed in <A HREF="vref_3mlg.htm"><B>Message</B> method</A>. </LI>
+
+	<LI>The <I>record </I>parameter of the <B>Method</B> method depends upon the message type. If the message contains formatted data, enter the message into the <A HREF="tref_5dk5.htm">Error table</A> using the formatting described in <A HREF="tref_0qp0.htm">Formatted</A>. </LI>
+</OL>
+
+<P>Custom actions using <A HREF="cact_0b77.htm">Executable Files</A> cannot send a message by calling <B>MsiProcessMessage</B> or the <B>Message</B> method because they cannot get a handle to the installation. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_8h0z.htm">Custom Action Return Values</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

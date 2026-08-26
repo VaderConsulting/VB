@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Installing a COM Component to a Private Location</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_installing_a_com_component_to_a_private_location"></A>Installing a COM Component to a Private Location</H2>
+
+<P>To force a COM-client application to always use the same copy of a COM-server, author the application's installation package to specify an <A HREF="over_2inn.htm">isolated components</A> relationship between the COM server and client. This installs a private copy of the COM-server component to a location used exclusively by the client application. Do the following when authoring the package:
+
+<UL>
+	<LI>Put the COM server DLL and the .exe client in separate components.</LI>
+
+	<LI>Enter a record in the <A HREF="tref_6jc5.htm">IsolatedComponent table</A> with the COM-client component in the Component_Shared column and the client application in the Component_Application column. Include the <A HREF="aref_71gu.htm">IsolateComponents action</A> in the sequence tables. </LI>
+
+	<LI>Set the msidbComponentAttributesSharedDllRefCount bit in the <A HREF="tref_09np.htm">Component table</A> record for Component_Shared. The installer requires this global refcount on the shared location to protect the shared files and registration in cases where there is sharing with other installation technologies.</LI>
+
+	<LI>Windows Installer version 1.1 is required. </LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

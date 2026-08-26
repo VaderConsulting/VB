@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiOpenPackageEx</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiOpenPackageEx">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_system_error_codes">
+</OBJECT>
+<OBJECT ID="hhobj_2" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msiopenpackageex"></A>MsiOpenPackageEx</H1>
+
+<P>The <B>MsiOpenPackageEx</B> function opens a package for use with functions that access the product database. The <B>MsiCloseHandle</B> function must be called with the handle when the handle is no longer needed. </P>
+
+<PRE class=syntax><B>UINT WINAPI MsiOpenPackageEx(
+</B>  <B>LPCTSTR</B> <I>szPackagePath</I>,   // fully qualified path to package,
+                           //  or database handle: #nnnn
+  <B>DWORD</B> <I>dwOptions</I>,         // options flags to indicate whether
+                           //  or not to ignore computer state
+  <B>MSIHANDLE</B> <B>*</B><I>hProduct</I>      // returned product handle, must be closed
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szPackagePath</I></DT>
+
+<DD>[in] Specifies the path to the package.</DD>
+
+<DT>dwOptions</DT>
+
+<DD>[in] Bit flags to indicate whether or not to ignore the computer state. Pass in 0 to use <B>MsiOpenPackage</B> behavior.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=39%>Constant</TH>
+<TH align=left width=12%>Value</TH>
+<TH align=left width=49%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>MSIOPENPACKAGEFLAGS_IGNOREMACHINESTATE</TD>
+<TD width=12%>1</TD>
+<TD width=49%>Ignore the computer state when creating the product handle</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>hProduct</I></DT>
+
+<DD>[out] Pointer to a variable that receives the product handle.</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_CONFIGURATION</TD>
+<TD width=52%>The configuration information is corrupt.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INSTALL_FAILURE</TD>
+<TD width=52%>The product could not be opened.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+</TABLE><BR>
+
+<P>If this function fails, it may return a system error code. For more information, see <A HREF="JavaScript:hhobj_1.Click()">System Error Codes</A>.</P>
+
+<H4>Remarks</H4>
+
+<P><B>MsiOpenPackageEx</B> is available with Windows Installer version 2.0 or later.</P>
+
+<P>To create a restricted product handle that is independent of the current machine state and incapable of changing the current machine state, use <B>MsiOpenPackageEx</B> with MSIOPENPACKAGEFLAGS_IGNOREMACHINESTATE set in <I>dwOptions</I>. </P>
+
+<P>Note that if <I>dwOptions</I> is MSIOPENPACKAGEFLAGS_IGNOREMACHINESTATE or 1, <B>MsiOpenPackageEx</B> ignores the current machine state when creating the product handle. If the value of <I>dwOptions</I> is 0, <B>MsiOpenPackageEx</B> is the same as <A HREF="msi_9n39.htm"><B>MsiOpenPackage</B></A> and creates a product handle that is dependent upon whether the package specified by <I>szPackagePath </I>is already installed on the computer. </P>
+
+<P>The restricted handle created by using <B>MsiOpenPackageEx</B> with MSIOPENPACKAGEFLAGS_IGNOREMACHINESTATE only permits execution of dialogs, a subset of the standard actions, and custom actions that set properties (<A HREF="cact_07lh.htm">Custom Action Type 35</A>, <A HREF="cact_07ox.htm">Custom Action Type 51</A>, and <A HREF="cact_07i1.htm">Custom Action Type 19</A>). The restricted handle prevents the use of custom actions that run <A HREF="cact_15mb.htm">Dynamic-Link Libraries</A>, <A HREF="cact_0b77.htm">Executable Files</A>, <A HREF="cact_7asz.htm">Scripts</A>, or <A HREF="cact_260j.htm">Nested Installation Actions</A>.</P>
+
+<P>You can call <A HREF="qref_9woe.htm"><B>MsiDoAction</B></A> on the following standard actions using the restricted handle. All other actions return ERROR_FUNCTION_NOT_CALLED if called with the restricted handle.</P>
+
+<P class=indent1><A HREF="aref_4hbi.htm">ADMIN</A> </P>
+
+<P class=indent1><A HREF="aref_2o8e.htm">ADVERTISE</A> </P>
+
+<P class=indent1><A HREF="aref_986m.htm">INSTALL</A> </P>
+
+<P class=indent1><A HREF="aref_2n8u.htm">SEQUENCE</A> </P>
+
+<P class=indent1><A HREF="aref_16zy.htm">AppSearch action</A> </P>
+
+<P class=indent1><A HREF="aref_77se.htm">CCPSearch</A> </P>
+
+<P class=indent1><A HREF="aref_22we.htm">CostFinalize</A> </P>
+
+<P class=indent1><A HREF="aref_4bam.htm">CostInitialize</A> </P>
+
+<P class=indent1><A HREF="aref_2f8u.htm">FileCost</A> </P>
+
+<P class=indent1><A HREF="aref_4rse.htm">FindRelatedProducts</A> </P>
+
+<P class=indent1><A HREF="aref_71gu.htm">IsolateComponents action</A> </P>
+
+<P class=indent1><A HREF="aref_6jhq.htm">LaunchConditions</A> </P>
+
+<P class=indent1><A HREF="aref_61wu.htm">MigrateFeatureStates</A> </P>
+
+<P class=indent1><A HREF="aref_21im.htm">ResolveSource</A> </P>
+
+<P class=indent1><A HREF="aref_5pgu.htm">RMCCPSearch</A> </P>
+
+<P class=indent1><A HREF="aref_0cdq.htm">ValidateProductID</A> </P>
+
+<P>The <A HREF="msi_6g6d.htm"><B>MsiCloseHandle</B></A> function must be called when the handle is no longer needed. </P>
+
+<H4><A HREF="JavaScript:hhobj_2.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows XP and Windows .NET Server.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 2.0 on Windows NT 4.0 SP6; Windows 2000; and Windows Me.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiOpenPackageEx;%20RELEASE:%20August%202001;%20URL:%20msi_1auw.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiOpenPackageEx;%20RELEASE:%20August%202001;%20URL:%20msi_1auw.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

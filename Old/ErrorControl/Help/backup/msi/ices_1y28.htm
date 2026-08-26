@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE60</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE60 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice60"></A>ICE60</H1>
+
+<P>ICE60 checks that files in the <A HREF="tref_4n6t.htm">File table</A> meet the following condition:
+
+<UL>
+	<LI>If the file is not a font and has a version, then it must have a language.</LI>
+</UL>
+
+<P>Failure to fix a warning reported by ICE60 generally leads to a file being needlessly reinstalled when a product repair is done. This happens because the file to be installed in the repair and the existing file on disk have the same version (they are the same file) but different languages. The file table lists the language as null, but the file itself has a language value in the resource. Based on the <A HREF="over_1tir.htm">file versioning rules</A>, the installer favors the file to be installed, so it is recopied needlessly.</P>
+
+<H4>Result</H4>
+
+<P>ICE60 posts a warning or an error if a file in the <A HREF="tref_4n6t.htm">File table</A> that is not a font and has a version, does not have a language.</P>
+
+<H4>Example</H4>
+
+<P>ICE60 reports the following error and warning for the example shown. (File B is a font; the other files are not.)</P>
+
+<PRE>WARNING: The file FileE is not a Font, and its version is not a companion file reference. It should have a language specified in the Language column. </PRE>
+
+<P>FileA has both a version and a language; therefore no warning or error is generated.</P>
+
+<P>FileB has a version but no language. No warning or error is generated, however, because it is a font.</P>
+
+<P>FileC is a companion reference, so it does not have to have a language. No warning or error is generated.</P>
+
+<P>FileD has no version, so it does not need to have a language. No warning or error is generated.</P>
+
+<P>FileE has a version but no language. Therefore a warning is generated.</P>
+
+<P>To fix this warning, add a language to FileE.</P>
+
+<P>Files should have language values stored in the version resource whenever possible. If a file is language neutral, use the <A HREF="tref_6b77.htm">LANGID</A> 0.</P>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A> (FileB is a font; the other files are not.)</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>File</TH>
+<TH align=left width=33%>Version</TH>
+<TH align=left width=39%>Language</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FileA</TD>
+<TD width=33%>1.0</TD>
+<TD width=39%>1033</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FileB</TD>
+<TD width=33%>1.0</TD>
+<TD width=39%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FileC</TD>
+<TD width=33%>FileA</TD>
+<TD width=39%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FileD</TD>
+<TD width=33%> </TD>
+<TD width=39%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FileE</TD>
+<TD width=33%>1.0</TD>
+<TD width=39%> </TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_9tnp.htm"><B>Font Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=44%>File</TH>
+<TH align=left width=56%>FontTitle</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>FileB</TD>
+<TD width=56%>Font Title</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

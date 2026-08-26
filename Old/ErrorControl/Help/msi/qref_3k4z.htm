@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetFeatureValidStates</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiGetFeatureValidStates">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msigetfeaturevalidstates"></A>MsiGetFeatureValidStates</H1>
+
+<P>The <B>MsiGetFeatureValidStates</B> function returns a valid installation state.</P>
+
+<PRE class=syntax><B>UINT MsiGetFeatureValidStates(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>     // installer handle
+  <B>LPCTSTR</B> <I>szFeature</I><B>,</B>      // feature name
+  <B>DWORD</B> <B>*</B><I>pInstallState</I>    // install state
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>[in] Handle to the installation.</DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>[in] Specifies the feature name.</DD>
+
+<DT><I>pInstallState</I></DT>
+
+<DD>[out] Receives the location to hold the valid installation states. For each valid installation state, the installer sets <I>pInstallState</I> to a combination of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=20%>Decimal Value</TH>
+<TH align=left width=38%>INSTALLSTATE</TH>
+<TH align=left width=42%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>2</TD>
+<TD width=38%>INSTALLSTATE_ADVERTISED</TD>
+<TD width=42%>The feature can be advertised.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>4</TD>
+<TD width=38%>INSTALLSTATE_ABSENT</TD>
+<TD width=42%>The feature can be absent.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>8</TD>
+<TD width=38%>INSTALLSTATE_LOCAL</TD>
+<TD width=42%>The feature can be installed on the local drive.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>16</TD>
+<TD width=38%>INSTALLSTATE_SOURCE</TD>
+<TD width=42%>The feature can be configured to run from source, CD-ROM, or network.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>32</TD>
+<TD width=38%>INSTALLSTATE_DEFAULT</TD>
+<TD width=42%>The feature can be configured to use the default location: local or source.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_HANDLE_STATE</DT>
+
+<DD>An invalid handle state was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>ERROR_UNKNOWN_FEATURE</DT>
+
+<DD>An unknown feature was requested.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>See <A HREF="novr_9vw3.htm">Calling Database Functions From Programs</A>.</P>
+
+<P>The <B>MsiGetFeatureValidStates</B> function determines state validity by querying all components that are linked to the specified feature without taking into account the current installed state of any component. If any of these components have a value of IRSOPTIONAL in the RunFromSource column, or if at least one component is marked IRSTLOCALONLY and at least one other component is marked IRSSOURCEONLY, then both INSTALLSTATE_LOCAL and INSTALLSTATE_SOURCE are valid states for the feature. If all components are set to IRSLOCALONLY, INSTALLSTATE_LOCAL is the only valid state. If all components are set to IRSSOURCEONLY, INSTALLSTATE_SOURCE is the only valid state.</P>
+
+<P>After calling <B>MsiGetFeatureValidStates</B> a conditional statement may then be used to test the valid installation states of a feature. For example, the following call to <B>MsiGetFeatureValidStates</B> gets the installation state of Feature1.</P>
+
+<PRE>MsiGetFeatureValidStates(hProduct, "Feature1", &amp;dwValidStates) </PRE>
+
+<P>If Feature1 has attributes of value 0 (favor local), and Feature1 has one component with attributes of value 0 (local only), the value of dwValidStates after the call is 14. This indicates that INSTALLSTATE_LOCAL, INSTALLSTATE_ABSENT,and INSTALLSTATE_ADVERTISED are valid states for Feature1. The following conditional statement evaluates to True if local is a valid state for this feature.</P>
+
+<P>( ( dwValidStates &amp; ( 1 &lt;&lt; INSTALLSTATE_LOCAL ) ) == ( 1 &lt;&lt; INSTALLSTATE_LOCAL ) )</P>
+
+<P>For more information, see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_selection_functions">Installer Selection Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetFeatureValidStates;%20RELEASE:%20August%202001;%20URL:%20qref_3k4z.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetFeatureValidStates;%20RELEASE:%20August%202001;%20URL:%20qref_3k4z.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

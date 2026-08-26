@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Billboard Control</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Billboard Control">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_billboard_control"></A>Billboard Control</H1>
+
+<P>Billboards display commonly used controls that are added and removed from the dialog box by control events. Only controls that are not associated with a property, such as a <A HREF="href_4s30.htm">Text</A>, <A HREF="href_2ey4.htm">Bitmap</A>, or <A HREF="href_1tt8.htm">Icon</A> or a custom control can be placed on a billboard. A typical use for a Billboard control is to display progress messages. </P>
+
+<H4>Control Attributes</H4>
+
+<P>You can use the following attributes with this control. To change the value of an attribute using an event, subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A> and list the attribute's identifier in the Attribute column. Enter the Identifier of the ControlEvent in the Event column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Attribute<BR>
+identifier</TH>
+<TH align=left width=25%>Hexadecimal<BR>
+bit</TH>
+<TH align=left width=56%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_21np.htm">BillboardName</A></TD>
+<TD width=25%> </TD>
+<TD width=56%>Name of the current billboard.
+<P>Enter the billboard's identifier in the Billboard column of the <A HREF="tref_78it.htm">BBControl table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2w6d.htm">Position</A></TD>
+<TD width=25%> </TD>
+<TD width=56%>Position of control in the dialog box.
+<P>Enter the control's width, height, and coordinates of the control's left corner into the Width, Height, X, and Y columns of the <A HREF="tref_78it.htm">BBControl table</A>. Use pixels for units of length and distance.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8bqd.htm">Visible</A></TD>
+<TD width=25%>0x00000000
+<P>0x00000001</P>
+</TD>
+<TD width=56%>Hidden control.
+<P>Visible control.</P>
+
+<P>Include this bit in the bit word of the Attributes column in the <A HREF="tref_78it.htm">BBControl table</A>.to make the control visible or hidden upon its creation. </P>
+
+<P>You can also hide or show a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0vad.htm">Sunken</A></TD>
+<TD width=25%>0x00000000
+<P>0x00000004</P>
+</TD>
+<TD width=56%>Display the default visual style.
+<P>Display the control with a sunken, 3-D, look.</P>
+
+<P>Include these bits in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This control has no window of its own.</P>
+
+<P>Billboard controls that appear in the Full user interface are listed in the <A HREF="tref_0c4l.htm">Billboard table</A>.</P>
+
+<P>Controls that are located on a billboard must be listed in the <A HREF="tref_78it.htm">BBControl table</A> rather than the Control table.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

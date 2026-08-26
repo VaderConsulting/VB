@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using Transforms to Add Resources</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_using_transforms_to_add_resources"></A>Using Transforms to Add Resources</H2>
+
+<P>Resources that are needed for the customization of an application, such as corporate templates, can be deployed with the application by including a transform with the application's installation package. The following rules should be followed when deploying resources, such as files, registry keys, or shortcuts, using a transform.
+
+<UL>
+	<LI>The transform should add one or more new components to the installation database to contain the additional resources. The transform should not add resources to a component that already exists in the installation.</LI>
+
+	<LI>The transform should add one or more new features to the installation database to contain these new components. These new features should not be the parents of any existing features, but new parent and child features may be introduced together. New features should be given names that are unique across all other transforms for this product. No two transforms should ever add a feature to this product that has the same name listed in the Feature column of the <A HREF="tref_0a91.htm">Feature table</A> and containing different components or resources.</LI>
+</UL>
+
+<P></P>
+
+<P></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

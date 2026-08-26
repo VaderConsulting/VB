@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE35</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE35">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice35"></A>ICE35</H1>
+
+<P>ICE35 validates that components containing compressed files stored in a <A HREF="over_8kkz.htm">cabinet file</A> are not set to run from source. With Windows Installer 2.0 or later, this restriction has been removed. </P>
+
+<P>ICE35 queries the Cabinet column of the <A HREF="tref_4mlh.htm">Media table</A> to determine which files are compressed and stored in a cabinet file. It queries the <A HREF="tref_4n6t.htm">File table</A> to determine which components contain these files. Finally, it checks the <A HREF="tref_09np.htm">Component table</A> to determine whether the run-from-source bits are set in the Attributes column.</P>
+
+<H4>Result</H4>
+
+<P>ICE35 posts an error message if there is a compressed file stored in a cabinet file belonging to a component with the msidbComponentAttributesSourceOnly bit set in the Attributes column of the <A HREF="tref_09np.htm">Component table</A>. With Windows Installer 2.0 or later, this is changed from an error to a warning message. A package that supports only Windows Installer 2.0 and later has the PID_PAGECOUNT property of the Summary Information Stream set to a value of at least 200.</P>
+
+<P>ICE35 posts warning message if there is a compressed file stored in a cabinet file belonging to a component with the msidbComponentAttributesOptional bit set in the Attributes column of the <A HREF="tref_09np.htm">Component table</A>. This warning message has been removed with Windows Installer 2.0 and later. </P>
+
+<P>If multiple files in a component are in a cabinet file, ICE35 reports errors for each file that has the run from source bit set. </P>
+
+<H4>Example</H4>
+
+<P>ICE35 reports the following errors and warnings for the example shown using a version earlier than Windows Installer version 2.0.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE35 Error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>ERROR: Component Component3 cannot be Run From Source only, because its member file 'File3' is compressed.</CODE></TD>
+<TD width=63%>There is a compressed file stored in a cabinet file and this file belongs to a component with the SourceOnly bit set in the Attributes column of the <A HREF="tref_09np.htm">Component table</A>. 
+<P>To fix this error change the lower 2 bits of Component2's Attributes value to "00", meaning Local only, or remove File4 from the CAB file.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>ERROR: Component Component3 cannot be Run From Source only, because its member file 'File3' is compressed.</CODE></TD>
+<TD width=63%>There is a compressed file stored in a cabinet file and this file belongs to a component with the SourceOnly bit set in the Attributes column of the <A HREF="tref_09np.htm">Component table</A>. 
+<P>Because the files in a component do not all have to originate from the same media, ICE35 reports errors for each file in the component that is in a cabinet.</P>
+
+<P>To fix this error change the lower 2 bits of Component2's Attributes value to "00", meaning Local only, or remove File4 from the CAB file.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4mlh.htm"><B>Media Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=15%>DiskID</TH>
+<TH align=left width=35%>LastSequence</TH>
+<TH align=left width=50%>Cabinet</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>1</TD>
+<TD width=35%>2</TD>
+<TD width=50%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>2</TD>
+<TD width=35%>4</TD>
+<TD width=50%>One.cab</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>3</TD>
+<TD width=35%>5</TD>
+<TD width=50%>#Two.cab</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=15%>File</TH>
+<TH align=left width=35%>Component_</TH>
+<TH align=left width=50%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>File1</TD>
+<TD width=35%>Component1</TD>
+<TD width=50%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>File2</TD>
+<TD width=35%>Component2</TD>
+<TD width=50%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>File3</TD>
+<TD width=35%>Component2</TD>
+<TD width=50%>3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>File4</TD>
+<TD width=35%>Component3</TD>
+<TD width=50%>4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>File5</TD>
+<TD width=35%>Component3</TD>
+<TD width=50%>5</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Component</TH>
+<TH align=left width=50%>Attributes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Component1</TD>
+<TD width=50%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Component2</TD>
+<TD width=50%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Component3</TD>
+<TD width=50%>1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Shortcut</TH>
+<TH align=left width=50%>Icon_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Shortcut1</TD>
+<TD width=50%>Icon2</TD>
+</TR>
+</TABLE><BR>
+
+<P>Note that that files can also be marked as compressed using the <A HREF="sref_8ge1.htm">Word Count Summary Property</A> of the <A HREF="sovr_99yl.htm">Summary Information stream</A>.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE35;%20RELEASE:%20August%202001;%20URL:%20ices_1xx1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE35;%20RELEASE:%20August%202001;%20URL:%20ices_1xx1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

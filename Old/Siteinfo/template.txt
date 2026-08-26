@@ -1,0 +1,16 @@
+; DO NOT MODIFY THE NEXT 2 LINES DIRECTLY
+$SITENAME = "TUSK"
+$SERIALNUMBER = "AB1234Z"
+;----------------------------------------------
+; Start work
+;
+$COMPUTERNAME = $SITENAME + "-" + $SERIALNUMBER
+
+SetM "SITE=" + $SITENAME + "NW"
+SetM "COMPUTERNAME=" + $COMPUTERNAME
+
+; The following two lines are deprecated due to the use of the WIN32 API SetComputerName()
+;$Result = WriteValue ("HKLM\System\CurrentControlSet\Control\ComputerName\ActiveComputerName", "ComputerName", $COMPUTERNAME, "REG_SZ")
+;$Result = WriteValue ("HKLM\System\CurrentControlSet\Control\ComputerName\ComputerName", "ComputerName", $COMPUTERNAME, "REG_SZ")
+; This next line was found to be necessary due to the TCP/IP Hostname not being changed.
+$Result = WriteValue ("HKLM\System\CurrentControlSet\Services\Tcpip\Parameters", "Hostname", $COMPUTERNAME, "REG_SZ")

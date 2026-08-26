@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Source Resiliency Policy - Windows Installer Version 1.1</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_source_resiliency_policy_windows_installer_version_1.1"></A>Source Resiliency Policy - Windows Installer Version 1.1</H2>
+
+<P>The installer begins searching for a source by checking the most recently used source location in the source list, then the list of network sources, then media sources, and finally URL sources. For more information, see <A HREF="over_1lq1.htm">Source Resiliency</A>. If the search fails, the installer presents a <A HREF="href_246f.htm">Browse Dialog</A> enabling the user to search for the source manually. The browse dialog cannot be displayed if the <A HREF="hand_9vn7.htm">user interface levels</A> is set to None. An administrator controls the display of the browse dialog to users by setting system policy. </P>
+
+<P>With Windows Installer version 1.1, administrators should secure managed applications by setting the <A HREF="over_9py9.htm">DisableMedia</A> policy, the <A HREF="over_5rmt.htm">DisableBrowse</A> policy, and by omitting the "m" option from the <A HREF="over_6r76.htm">SearchOrder</A> policy. This prevents non-administrators from using the browse dialog to search for sources located on media, and prevents non-administrators from using these sources to install managed applications. An administrator can enable a non-administrator to browse or install managed applications from media by using the <A HREF="over_6k2t.htm">AllowLockdownBrowse</A> and <A HREF="over_4qe9.htm">AllowLockdownMedia</A> policies. Note that setting the DisableMedia policy does not prevent first-time installation from sources located on media, it only prevents users from installing from media sources during maintenance installations.</P>
+
+<P>The following table summarizes the use of these system policies in Windows Installer version 1.1.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=20%>System Policy</TH>
+<TH align=left width=27%>Non-Administrator User
+<P>Non-Managed Application</P>
+</TH>
+<TH align=left width=24%>Non-Administrator User
+<P>Managed Application</P>
+</TH>
+<TH align=left width=29%>Administrator
+<P>Managed Application</P>
+
+<P>Non-Managed Application</P>
+</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><A HREF="over_6k2t.htm">AllowLockdownBrowse</A></TD>
+<TD width=27%>Users can install unmanaged applications using sources located on media.
+<P>Users can browse media for the sources of unmanaged applications. </P>
+</TD>
+<TD width=24%>Users cannot install managed applications using sources located on media.
+<P>Users can browse media for the sources of managed applications. </P>
+</TD>
+<TD width=29%>Administrators can install applications using sources located on media.
+<P>Administrators can browse media for the sources of applications. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><A HREF="over_4qe9.htm">AllowLockdownMedia</A></TD>
+<TD width=27%>Users can install unmanaged applications using sources located on media.
+<P>Users can browse media for the sources of unmanaged applications. </P>
+</TD>
+<TD width=24%>Users can install managed applications using sources located on media.
+<P>Users cannot browse media for the sources of managed applications. </P>
+</TD>
+<TD width=29%>Administrators can install applications using sources located on media.
+<P>Administrators can browse media for the sources of applications. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><I>Default</I></TD>
+<TD width=27%>Users can install unmanaged applications using sources located on media.
+<P>Users can browse media for the sources of unmanaged applications. </P>
+</TD>
+<TD width=24%>Users can install managed applications using sources located on media.
+<P>Users cannot browse media for the sources of managed applications. </P>
+</TD>
+<TD width=29%>Administrators can install applications using sources located on media.
+<P>Administrators can browse media for the sources of applications. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><A HREF="over_5rmt.htm">DisableBrowse</A>
+<P><A HREF="over_6r76.htm">SearchOrder</A> omits the "m" parameter.</P>
+</TD>
+<TD width=27%>Users can install unmanaged applications using sources located on media.
+<P>Users cannot browse media for the sources of unmanaged applications. </P>
+</TD>
+<TD width=24%>Users cannot install managed applications using sources located on media.
+<P>Users cannot browse media for the sources of managed applications. .</P>
+</TD>
+<TD width=29%>Administrators can install applications using sources located on media.
+<P>Administrators cannot browse media for the sources of applications. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><A HREF="over_9py9.htm">DisableMedia</A>
+<P><A HREF="over_6r76.htm">SearchOrder</A> omits the "m" parameter.</P>
+</TD>
+<TD width=27%>Users cannot install unmanaged applications using sources located on media.
+<P>Users can browse media for the sources of unmanaged applications. </P>
+</TD>
+<TD width=24%>Users cannot install managed applications using sources located on media.
+<P>Users cannot browse media for the sources of managed applications. </P>
+</TD>
+<TD width=29%>Administrators cannot install applications using sources located on media.
+<P>Administrators can browse media for the sources of applications. </P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_1lq1.htm">Source Resiliency</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Source%20Resiliency%20Policy%20-%20Windows%20Installer%20Version%201.1;%20RELEASE:%20August%202001;%20URL:%20over_9f75.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Source%20Resiliency%20Policy%20-%20Windows%20Installer%20Version%201.1;%20RELEASE:%20August%202001;%20URL:%20over_9f75.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CostFinalize Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="CostFinalize Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_costfinalize_action"></A>CostFinalize Action</H1>
+
+<P>The CostFinalize action ends the internal installation <A HREF="dglo_25q1.htm#_msi_costing_gly">costing</A> process begun by the <A HREF="aref_4bam.htm">CostInitialize action</A>. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The <A HREF="aref_4bam.htm">CostInitialize action</A> and any cost-calculation actions, such as the <A HREF="aref_2f8u.htm">FileCost action</A>, must be executed prior to the CostFinalize action.</P>
+
+<P>The CostFinalize action must be executed before starting any user interface sequence which allows the user to view or modify <A HREF="tref_0a91.htm">Feature table</A> selections or directories.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Remarks</H4>
+
+<P>The CostFinalize action queries the <A HREF="tref_83qd.htm">Condition table</A> to determine which features are scheduled to be installed. Costing is done for each component in the <A HREF="tref_09np.htm">Component table</A>. </P>
+
+<P>The CostFinalize action also verifies that all the target directories are writable before allowing the installation to continue.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

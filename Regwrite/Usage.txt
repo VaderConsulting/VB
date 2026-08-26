@@ -1,0 +1,31 @@
+Write values to the local computer's registry
+
+Usage:
+
+NOTE:  Square brackets ('[',']') indicates optional arguments
+
+regwrite.exe ["]root:RegRootValue["] ["]key:RegKeyString["] ["]value:RegKeyString["] ["]data:RegDataValue["] [["]type:RegType["]]
+
+Example:
+
+regwrite.exe "root:HKLM" key:SOFTWARE\Daveware value:Version "data:The version data has a string embedded, so quotes must be used" REG_SZ
+
+
+NOTE:
+When passing in the value, '(default)' and 'default' are equal and will be replaced with ''
+When passing in the data, $time$ will enter the current time
+When passing in the data, $date$ will enter the current date
+When passing in the data, $datetime$ will enter the current date and time separated by a space character
+When passing in the data, $computername$ will enter the current computername
+When passing in the data, $username$ will enter the current username
+When passing in the data, /% will be replaced with %.  This allows the entry of data such as %username%.  DOS will turn the environment variable into the value, which may be not what is required.
+
+If there are any spaces in any argument passed, use double quotes around the whole argument
+Ie, if the argument is 'value', and the string passed is 'My Value', then '"value:My Value"' should be entered.
+
+RegTypes:
+Only two reg types are currently supported:  
+REG_SZ and REG_EXPAND_SZ
+
+Returncodes
+If there is any error, or invalid/incomplete arguments are passed, a DOS errorlevel 1 is returned.

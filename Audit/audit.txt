@@ -1,0 +1,2239 @@
+1.  D:\Development\VB\Old\netserverenum
+2.  See code below
+3.  D:\Development\VB\Old\Nbtstat
+4.  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+      DefaultDomainName  (if same as machinename, then in a workgroup)
+5.  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+      ProductName        ("Microsoft Windows 2000", "Microsoft Windows XP")
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+      CSDVersion         ("" or "Service Pack x")
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+      CurrentType        ("UniProcessor Free" or "Multiprocessor Free")
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\HotFix\*
+      Comments           (Hotfix number)
+      FixDescription     (Hotfix number)
+6.  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*
+      QuietDisplayName   (Name of installed app)   -or- 
+      DisplayName        (Name of installed app)
+
+      HelpLink           (Link to vendor assistance)
+      DisplayVersion     (Application version number)
+      Publisher          (Vendor name)
+7.  D:\Development\VB\Old\netusermanager
+    ---------------------------------------------------------------------------
+Sub ListUsers(strDomain)
+    Set objComputer = GetObject("WinNT://" & strDomain)
+    objComputer.Filter = Array("User")
+    For Each objUser In objComputer
+        Debug.Print "Name: " & objUser.Name
+        Debug.Print "Fullname: " & objUser.Fullname
+        Debug.Print "Description: " & objUser.Description
+        Debug.Print "AccountDisabled: " & objUser.AccountDisabled
+        Debug.Print "IsAccountLocked: " & objUser.IsAccountLocked
+        Debug.Print "Profile: " & objUser.Profile
+        Debug.Print "LoginScript: " & objUser.LoginScript
+        Debug.Print "HomeDirectory: " & objUser.HomeDirectory
+        Debug.Print ""
+    Next
+End Sub
+    ---------------------------------------------------------------------------
+8.  D:\Development\VB\ServiceInfo
+    http://vbnet.mvps.org/index.html?code/network/enumservicesadvremote.htm
+    http://msdn.microsoft.com/archive/default.asp?url=/archive/en-us/dnarvb4/html/msdn_qrysvc.asp
+9.  C:\WINDOWS\system32\drivers\etc\hosts 
+
+
+ --------------------------------------------------
+The following retrieves info such as OS version
+--
+Private Const NERR_SUCCESS As Long = 0&
+Private Const MAX_PREFERRED_LENGTH As Long = -1
+Private Const ERROR_MORE_DATA As Long = 234&
+Private Const LB_SETTABSTOPS As Long = &H192
+
+'for use on Win NT/2000 only
+Private Type WKSTA_INFO_102
+  wki102_platform_id As Long
+  wki102_computername As Long
+  wki102_langroup As Long
+  wki102_ver_major As Long
+  wki102_ver_minor As Long
+  wki102_lanroot As Long
+  wki102_logged_on_users As Long
+End Type
+
+Private Declare Function NetWkstaGetInfo Lib "netapi32" _
+  (ByVal servername As Long, _
+   ByVal level As Long, _
+   bufptr As Long) As Long
+   
+Private Declare Function NetApiBufferFree Lib "netapi32" _
+   (ByVal Buffer As Long) As Long
+   
+'common routines
+Private Declare Sub CopyMemory Lib "kernel32" _
+   Alias "RtlMoveMemory" _
+  (pTo As Any, _
+   uFrom As Any, _
+   ByVal lSize As Long)
+   
+Private Declare Function lstrlenW Lib "kernel32" _
+  (ByVal lpString As Long) As Long
+
+Private Declare Function SendMessage Lib "user32" _
+   Alias "SendMessageA" _
+  (ByVal hwnd As Long, _
+   ByVal wMsg As Long, _
+   ByVal wParam As Long, _
+   lParam As Any) As Long
+
+
+Private Sub Form_Load()
+
+   ReDim TabArray(0 To 6) As Long
+   
+   TabArray(0) = 78
+   TabArray(1) = 129
+   TabArray(2) = 159
+   TabArray(3) = 198
+   TabArray(4) = 227
+   TabArray(5) = 253
+   TabArray(6) = 302
+
+  'Clear any existing tabs
+  'and set the list tabstops
+   Call SendMessage(List1.hwnd, LB_SETTABSTOPS, 0&, ByVal 0&)
+   Call SendMessage(List1.hwnd, LB_SETTABSTOPS, 7&, TabArray(0))
+   List1.Refresh
+
+   Command1.Caption = "NetWkstaGetInfo"
+   Label1.Caption = "call success (0) or error :"
+   Label2.Caption = ""
+      
+End Sub
+
+
+Private Sub Command1_Click()
+
+   Dim bufptr          As Long
+   Dim dwServer        As Long
+   Dim success         As Long
+   Dim nStructSize     As Long
+   Dim bServer         As String
+   Dim ws102           As WKSTA_INFO_102
+        
+   bServer = "\\" & Environ$("COMPUTERNAME") & vbNullString
+   dwServer = StrPtr(bServer)
+   
+   success = NetWkstaGetInfo(dwServer, 102, bufptr)
+
+   List1.Clear
+   Label2.Caption = success
+   
+   If success = NERR_SUCCESS And _
+      success <> ERROR_MORE_DATA Then
+      
+      nStructSize = LenB(ws102)
+      
+        'cast data into a WKSTA_INFO_102 type
+        'and add the data to a list
+         CopyMemory ws102, ByVal bufptr, nStructSize
+
+   
+         List1.AddItem GetPointerToByteStringW(ws102.wki102_computername) & vbTab & _
+                       GetPointerToByteStringW(ws102.wki102_langroup) & vbTab & _
+                       ws102.wki102_logged_on_users & vbTab & _
+                       ws102.wki102_platform_id & vbTab & _
+                       ws102.wki102_ver_major & vbTab & _
+                       ws102.wki102_ver_minor & vbTab & _
+                       GetPointerToByteStringW(ws102.wki102_lanroot)
+
+   End If
+   
+   Call NetApiBufferFree(bufptr)
+
+End Sub
+
+
+Private Function GetPointerToByteStringW(ByVal dwData As Long) As String
+  
+   Dim tmp() As Byte
+   Dim tmplen As Long
+   
+   If dwData <> 0 Then
+   
+      tmplen = lstrlenW(dwData) * 2
+      
+      If tmplen <> 0 Then
+      
+         ReDim tmp(0 To (tmplen - 1)) As Byte
+         CopyMemory tmp(0), ByVal dwData, tmplen
+         GetPointerToByteStringW = tmp
+         
+     End If
+     
+   End If
+    
+End Function
+---------------------------------------------------------------------------
+IsDestinationReachable
+---------------------------------------------------------------------------
+Private Type QOCINFO
+   dwSize As Long
+   dwFlags As Long
+   dwInSpeed As Long
+   dwOutSpeed As Long
+End Type
+
+Private Const NETWORK_ALIVE_LAN As Long = &H1 'active LAN cards
+Private Const NETWORK_ALIVE_WAN As Long = &H2 'active RAS connections
+Private Const NETWORK_ALIVE_AOL As Long = &H4 'connected to AOL (Win95/98 only)
+                                              
+Private Declare Function IsDestinationReachable Lib "sensapi.dll" _
+   Alias "IsDestinationReachableA" _
+  (ByVal lpszDestination As String, _
+   lpQOCInfo As QOCINFO) As Long
+
+
+Private Sub Form_Load()
+  
+   Dim c As Integer
+   Dim TotalRequired As Integer
+   
+   TotalRequired = 4
+   
+  'create an array of textboxes. The
+  'array is 0-based, so the first control is
+  'index 0, and the last is TotalRequired -1
+   For c = 0 To TotalRequired - 1
+    
+      'since array element(0) already exists,
+      'don't try to load it
+       If c > 0 Then Load Text1(c)
+       
+      'position the newly-created control
+      'and its label, if present
+       Text1(c).Move 1600, 600 + (c * 300), 3615
+       Label1(c).Move 200, 300 + (c * 300)
+       
+      'clear and show
+       Text1(c).Text = ""
+       Text1(c).Visible = True
+       
+    Next
+    
+   'oops - one more label! 
+    Label1(4).Move 200, 300 + (4 * 300)
+    
+   
+   With Combo1
+      .Clear
+      .Move 1600, 260, 3615
+      .AddItem "209.68.48.119"  'mvps IP
+      .AddItem "www.mvps.org"   'mvps dns
+      .AddItem "64.58.76.177"   'yahoo IP
+      .AddItem "www.yahoo.com"  'yahoo dns
+      .AddItem "192.168.0.1"    'local router
+      .AddItem "192.168.0.100"  'machine on lan
+      .AddItem "www.gov.on.ca"  'gov of Ontario internet
+   End With
+   
+   With Command1
+      .Caption = "Is Destination Reachable?"
+      .Move 2880, 2040, 2415, 375
+      .Default = True
+   End With
+   
+   Me.Move Me.Left, Me.Top, 5640, 2985
+   Me.Caption = "VBnet Network Destination Reachable Test"   
+      
+End Sub
+
+
+Private Sub Combo1_Click()
+
+   Text1(0).Text = ""
+   Text1(1).Text = ""
+   Text1(2).Text = ""
+   Text1(3).Text = ""
+   
+End Sub
+
+
+Private Sub Command1_Click()
+
+  'Notes: - This function is only available for
+  '         TCP/IP connections.
+  '       - You can supply a NULL pointer (0&) if
+  '         the QOC information is not required (and
+  '         change the declare's parameter to As Any).
+
+   Dim result As Long
+   Dim tmp As String
+   Dim qoc As QOCINFO
+
+   With qoc
+      .dwSize = Len(qoc)
+   End With
+   
+   result = IsDestinationReachable((Combo1.Text), qoc)
+   
+   With qoc
+      Select Case .dwFlags
+         Case NETWORK_ALIVE_LAN: tmp = "computer has one or more active LAN cards"
+         Case NETWORK_ALIVE_WAN: tmp = "computer has one or more active RAS connections"
+         Case NETWORK_ALIVE_AOL: tmp = "computer is connected to the America Online network"
+         Case Else
+      End Select
+      
+      Text1(0).Text = Format$(result, "Yes/No")
+      Text1(1).Text = FormatNumber(.dwInSpeed, 0) & " bytes per second"
+      Text1(2).Text = FormatNumber(.dwOutSpeed, 0) & " bytes per second"
+      Text1(3).Text = tmp
+      
+   End With
+   
+End Sub
+-----------------------------------------------------------------------------------------
+NetServerEnumVer
+-----------------------------------------------------------------------------------------
+Private Const MAX_PREFERRED_LENGTH As Long = -1
+Private Const NERR_SUCCESS As Long = 0&
+Private Const ERROR_MORE_DATA As Long = 234&
+
+Private Const SV_TYPE_WORKSTATION         As Long = &H1
+Private Const SV_TYPE_SERVER              As Long = &H2
+Private Const SV_TYPE_SQLSERVER           As Long = &H4
+Private Const SV_TYPE_DOMAIN_CTRL         As Long = &H8
+Private Const SV_TYPE_DOMAIN_BAKCTRL      As Long = &H10
+Private Const SV_TYPE_TIME_SOURCE         As Long = &H20
+Private Const SV_TYPE_AFP                 As Long = &H40
+Private Const SV_TYPE_NOVELL              As Long = &H80
+Private Const SV_TYPE_DOMAIN_MEMBER       As Long = &H100
+Private Const SV_TYPE_PRINTQ_SERVER       As Long = &H200
+Private Const SV_TYPE_DIALIN_SERVER       As Long = &H400
+Private Const SV_TYPE_XENIX_SERVER        As Long = &H800
+Private Const SV_TYPE_SERVER_UNIX         As Long = SV_TYPE_XENIX_SERVER
+Private Const SV_TYPE_NT                  As Long = &H1000
+Private Const SV_TYPE_WFW                 As Long = &H2000
+Private Const SV_TYPE_SERVER_MFPN         As Long = &H4000
+Private Const SV_TYPE_SERVER_NT           As Long = &H8000
+Private Const SV_TYPE_POTENTIAL_BROWSER   As Long = &H10000
+Private Const SV_TYPE_BACKUP_BROWSER      As Long = &H20000
+Private Const SV_TYPE_MASTER_BROWSER      As Long = &H40000
+Private Const SV_TYPE_DOMAIN_MASTER       As Long = &H80000
+Private Const SV_TYPE_SERVER_OSF          As Long = &H100000
+Private Const SV_TYPE_SERVER_VMS          As Long = &H200000
+Private Const SV_TYPE_WINDOWS             As Long = &H400000  'Windows95 +
+Private Const SV_TYPE_DFS                 As Long = &H800000  'Root of a DFS tree
+Private Const SV_TYPE_CLUSTER_NT          As Long = &H1000000 'NT Cluster
+Private Const SV_TYPE_TERMINALSERVER      As Long = &H2000000 'Terminal Server
+Private Const SV_TYPE_DCE                 As Long = &H10000000'IBM DSS
+Private Const SV_TYPE_ALTERNATE_XPORT     As Long = &H20000000'return alternate transport
+Private Const SV_TYPE_LOCAL_LIST_ONLY     As Long = &H40000000'return local only
+Private Const SV_TYPE_DOMAIN_ENUM         As Long = &H80000000
+Private Const SV_TYPE_ALL                 As Long = &HFFFFFFFF
+
+Private Const SV_PLATFORM_ID_OS2 As Long = 400
+Private Const SV_PLATFORM_ID_NT  As Long = 500
+
+Private Const PLATFORM_ID_DOS    As Long = 300
+Private Const PLATFORM_ID_OS2    As Long = 400
+Private Const PLATFORM_ID_NT     As Long = 500
+Private Const PLATFORM_ID_OSF    As Long = 600
+Private Const PLATFORM_ID_VMS    As Long = 700
+
+'Mask applied to svX_version_major in
+'order to obtain the major version number
+Private Const MAJOR_VERSION_MASK As Long = &HF
+
+Private Type SERVER_INFO_101
+  sv101_platform_id  As Long
+  sv101_name As Long
+  sv101_version_major As Long
+  sv101_version_minor As Long
+  sv101_type As Long
+  sv101_comment As Long
+End Type
+
+Private Declare Function NetServerEnum Lib "netapi32" _
+  (ByVal servername As Long, _
+   ByVal level As Long, _
+   buf As Any, _
+   ByVal prefmaxlen As Long, _
+   entriesread As Long, _
+   totalentries As Long, _
+   ByVal servertype As Long, _
+   ByVal domain As Long, _
+   resume_handle As Long) As Long
+
+Private Declare Function NetApiBufferFree Lib "netapi32" _
+   (ByVal Buffer As Long) As Long
+
+Private Declare Sub CopyMemory Lib "kernel32" _
+   Alias "RtlMoveMemory" _
+  (pTo As Any, uFrom As Any, _
+   ByVal lSize As Long)
+   
+Private Declare Function lstrlenW Lib "kernel32" _
+  (ByVal lpString As Long) As Long
+
+Private Sub Form_Load()
+
+   Command1.Caption = "Net Server Enum"
+   
+   With Combo1
+      .AddItem "All servers"
+      .ItemData(.NewIndex) = SV_TYPE_ALL
+      
+      'os-specific
+      .AddItem "NT/2000 workstations or servers"
+      .ItemData(.NewIndex) = SV_TYPE_NT
+      
+      .AddItem "Windows 95 or later"
+      .ItemData(.NewIndex) = SV_TYPE_WINDOWS
+      
+      .AddItem "Servers running Windows for Workgroups"
+      .ItemData(.NewIndex) = SV_TYPE_WFW
+      
+      .AddItem "Servers running Unix"
+      .ItemData(.NewIndex) = SV_TYPE_SERVER_UNIX
+      
+      'function-specific
+      .AddItem "LAN Manager workstations"
+      .ItemData(.NewIndex) = SV_TYPE_WORKSTATION
+      
+      .AddItem "LAN Manager servers"
+      .ItemData(.NewIndex) = SV_TYPE_SERVER
+      
+      .AddItem "NT/2000 servers not domain controller"
+      .ItemData(.NewIndex) = SV_TYPE_SERVER_NT
+      
+      .AddItem "Servers maintained by the browser"
+      .ItemData(.NewIndex) = SV_TYPE_LOCAL_LIST_ONLY
+      
+      .AddItem "Primary Domain (ignore version info)"
+      .ItemData(.NewIndex) = SV_TYPE_DOMAIN_ENUM
+      
+      .ListIndex = 0
+      
+  End With
+     
+End Sub
+
+Private Sub Combo1_Click()
+
+   Call GetServers(vbNullString)
+   
+End Sub
+
+
+Private Sub Command1_Click()
+
+   Call GetServers(vbNullString)
+ 
+End Sub
+
+
+Private Function GetServers(sDomain As String) As Long
+
+  'lists all servers of the specified type
+  'that are visible in a domain.
+   Dim bufptr          As Long
+   Dim dwEntriesread   As Long
+   Dim dwTotalentries  As Long
+   Dim dwResumehandle  As Long
+   Dim dwServertype    As Long
+   Dim se101           As SERVER_INFO_101
+   Dim success         As Long
+   Dim nStructSize     As Long
+   Dim cnt             As Long
+
+   nStructSize = LenB(se101)
+   dwServertype = Combo1.ItemData(Combo1.ListIndex)
+   
+   List1.Clear
+   
+  'Call passing MAX_PREFERRED_LENGTH to have the
+  'API allocate required memory for the return values.
+  '
+  'The call is enumerating all machines on the
+  'network (SV_TYPE_ALL); however, by Or'ing
+  'specific bit masks for defined types you can
+  'customize the returned data. For example, a
+  'value of 0x00000003 combines the bit masks for
+  'SV_TYPE_WORKSTATION (0x00000001) and
+  'SV_TYPE_SERVER (0x00000002).
+  '
+  'dwServerName must be Null. The level parameter
+  '(101 here) specifies the data structure being
+  'used (in this case a SERVER_INFO_101 structure).
+  '
+  'The domain member is passed as Null, indicating
+  'machines on the primary domain are to be retrieved.
+  'If you decide to use this member, pass
+  'StrPtr("domain name"), not the string itself.
+   success = NetServerEnum(0&, _
+                           101, _
+                           bufptr, _
+                           MAX_PREFERRED_LENGTH, _
+                           dwEntriesread, _
+                           dwTotalentries, _
+                           dwServertype, _
+                           0&, _
+                           dwResumehandle)
+
+  'if all goes well
+   If success = NERR_SUCCESS And _
+      success <> ERROR_MORE_DATA Then
+      
+    'loop through the returned data, adding each
+    'machine to the list
+      For cnt = 0 To dwEntriesread - 1
+         
+        'get one chunk of data and cast
+        'into an SERVER_INFO_101 struct
+        'in order to add the name to a list
+         CopyMemory se101, ByVal bufptr + (nStructSize * cnt), nStructSize
+            
+         List1.AddItem GetPointerToByteStringW(se101.sv101_name) & vbTab & _
+                       GetPlatformString(se101.sv101_platform_id) & " " & _
+                      (se101.sv101_version_major And MAJOR_VERSION_MASK) & "." & _
+                       se101.sv101_version_minor
+         
+      Next
+      
+   End If
+   
+  'clean up, regardless of success
+   Call NetApiBufferFree(bufptr)
+   
+   GetServers = dwEntriesread
+
+End Function
+
+
+Private Function GetPlatformString(ByVal dwPlatformID As Long) As String
+
+   Select Case dwPlatformID
+      Case PLATFORM_ID_DOS: GetPlatformString = "DOS"
+      Case PLATFORM_ID_OS2: GetPlatformString = "Windows"
+      Case PLATFORM_ID_NT:  GetPlatformString = "Windows NT"
+      Case PLATFORM_ID_OSF: GetPlatformString = "OSF"
+      Case PLATFORM_ID_VMS: GetPlatformString = "VMS"
+   End Select
+   
+End Function
+
+
+Private Function GetPointerToByteStringW(ByVal dwData As Long) As String
+  
+   Dim tmp() As Byte
+   Dim tmplen As Long
+   
+   If dwData <> 0 Then
+   
+      tmplen = lstrlenW(dwData) * 2
+      
+      If tmplen <> 0 Then
+      
+         ReDim tmp(0 To (tmplen - 1)) As Byte
+         CopyMemory tmp(0), ByVal dwData, tmplen
+         GetPointerToByteStringW = tmp
+         
+     End If
+     
+   End If
+    
+End Function
+-----------------------------------------------------------------------------
+ResolveIPAddress
+-----------------------------------------------------------------------------
+Private Const IP_SUCCESS As Long = 0
+Private Const MAX_WSADescription As Long = 256
+Private Const MAX_WSASYSStatus As Long = 128
+Private Const WS_VERSION_REQD As Long = &H101
+Private Const WS_VERSION_MAJOR As Long = WS_VERSION_REQD \ &H100 And &HFF&
+Private Const WS_VERSION_MINOR As Long = WS_VERSION_REQD And &HFF&
+Private Const MIN_SOCKETS_REQD As Long = 1
+Private Const SOCKET_ERROR As Long = -1
+Private Const ERROR_SUCCESS As Long = 0
+
+Private Type WSADATA
+   wVersion As Integer
+   wHighVersion As Integer
+   szDescription(0 To MAX_WSADescription) As Byte
+   szSystemStatus(0 To MAX_WSASYSStatus) As Byte
+   wMaxSockets As Long
+   wMaxUDPDG As Long
+   dwVendorInfo As Long
+End Type
+
+Private Declare Function gethostbyname Lib "wsock32.dll" _
+  (ByVal hostname As String) As Long
+ 
+Private Declare Sub CopyMemory Lib "kernel32" _
+   Alias "RtlMoveMemory" _
+  (xDest As Any, _
+   xSource As Any, _
+   ByVal nbytes As Long)
+
+Private Declare Function lstrlenA Lib "kernel32" _
+  (lpString As Any) As Long
+
+Private Declare Function WSAStartup Lib "wsock32.dll" _
+   (ByVal wVersionRequired As Long, _
+    lpWSADATA As WSADATA) As Long
+   
+Private Declare Function WSACleanup Lib "wsock32.dll" () As Long
+
+Private Declare Function inet_ntoa Lib "wsock32.dll" _
+  (ByVal addr As Long) As Long
+
+Private Declare Function lstrcpyA Lib "kernel32" _
+  (ByVal RetVal As String, _
+   ByVal Ptr As Long) As Long
+                       
+Private Declare Function gethostname Lib "wsock32.dll" _
+   (ByVal szHost As String, _
+    ByVal dwHostLen As Long) As Long
+
+
+       
+Private Sub Command1_Click()
+
+   Dim sHostName As String
+  
+   If SocketsInitialize() Then
+  
+          'obtain and pass the host address to the function
+      Text1.Text = GetMachineName()
+      Text2.Text = GetIPFromHostName(Text1.Text)
+     
+      SocketsCleanup
+     
+   Else
+        MsgBox "Windows Sockets for 32 bit Windows " & _
+               "environments is not successfully responding."
+   End If
+  
+End Sub
+
+
+Private Function SocketsInitialize() As Boolean
+
+   Dim WSAD As WSADATA
+   Dim success As Long
+  
+   SocketsInitialize = WSAStartup(WS_VERSION_REQD, WSAD) = IP_SUCCESS
+   
+End Function
+
+
+Private Sub SocketsCleanup()
+  
+   If WSACleanup() <> 0 Then
+       MsgBox "Windows Sockets error occurred in Cleanup.", vbExclamation
+   End If
+   
+End Sub
+  
+
+Private Function GetMachineName() As String
+
+   Dim sHostName As String * 256
+  
+   If gethostname(sHostName, 256) = ERROR_SUCCESS Then
+      GetMachineName = Trim$(sHostName)
+   End If
+  
+End Function
+
+
+Private Function GetIPFromHostName(ByVal sHostName As String) As String
+
+  'converts a host name to an IP address
+
+   Dim nbytes As Long
+   Dim ptrHosent As Long  'address of HOSENT structure
+   Dim ptrName As Long    'address of name pointer
+   Dim ptrAddress As Long 'address of address pointer
+   Dim ptrIPAddress As Long
+   Dim ptrIPAddress2 As Long
+
+   ptrHosent = gethostbyname(sHostName & vbNullChar)
+
+   If ptrHosent <> 0 Then
+
+     'assign pointer addresses and offset
+
+     'Null-terminated list of addresses for the host.
+     'The Address is offset 12 bytes from the start of
+     'the HOSENT structure. Note: Here we are retrieving
+     'only the first address returned. To return more than
+     'one, define sAddress as a string array and loop through
+     'the 4-byte ptrIPAddress members returned. The last
+     'item is a terminating null. All addresses are returned
+     'in network byte order.
+      ptrAddress = ptrHosent + 12
+     
+     'get the IP address
+      CopyMemory ptrAddress, ByVal ptrAddress, 4
+      CopyMemory ptrIPAddress, ByVal ptrAddress, 4
+      CopyMemory ptrIPAddress2, ByVal ptrIPAddress, 4
+
+      GetIPFromHostName = GetInetStrFromPtr(ptrIPAddress2)
+
+   End If
+  
+End Function
+
+
+Private Function GetStrFromPtrA(ByVal lpszA As Long) As String
+
+   GetStrFromPtrA = String$(lstrlenA(ByVal lpszA), 0)
+   Call lstrcpyA(ByVal GetStrFromPtrA, ByVal lpszA)
+  
+End Function
+
+
+Private Function GetInetStrFromPtr(Address As Long) As String
+ 
+   GetInetStrFromPtr = GetStrFromPtrA(inet_ntoa(Address))
+
+End Function
+--------------------------------------------------------------------------------
+PingIPAddress
+--------------------------------------------------------------------------------
+Private Const IP_SUCCESS As Long = 0
+Private Const IP_STATUS_BASE As Long = 11000
+Private Const IP_BUF_TOO_SMALL As Long = (IP_STATUS_BASE + 1)
+Private Const IP_DEST_NET_UNREACHABLE As Long = (IP_STATUS_BASE + 2)
+Private Const IP_DEST_HOST_UNREACHABLE As Long = (IP_STATUS_BASE + 3)
+Private Const IP_DEST_PROT_UNREACHABLE As Long = (IP_STATUS_BASE + 4)
+Private Const IP_DEST_PORT_UNREACHABLE As Long = (IP_STATUS_BASE + 5)
+Private Const IP_NO_RESOURCES As Long = (IP_STATUS_BASE + 6)
+Private Const IP_BAD_OPTION As Long = (IP_STATUS_BASE + 7)
+Private Const IP_HW_ERROR As Long = (IP_STATUS_BASE + 8)
+Private Const IP_PACKET_TOO_BIG As Long = (IP_STATUS_BASE + 9)
+Private Const IP_REQ_TIMED_OUT As Long = (IP_STATUS_BASE + 10)
+Private Const IP_BAD_REQ As Long = (IP_STATUS_BASE + 11)
+Private Const IP_BAD_ROUTE As Long = (IP_STATUS_BASE + 12)
+Private Const IP_TTL_EXPIRED_TRANSIT As Long = (IP_STATUS_BASE + 13)
+Private Const IP_TTL_EXPIRED_REASSEM As Long = (IP_STATUS_BASE + 14)
+Private Const IP_PARAM_PROBLEM As Long = (IP_STATUS_BASE + 15)
+Private Const IP_SOURCE_QUENCH As Long = (IP_STATUS_BASE + 16)
+Private Const IP_OPTION_TOO_BIG As Long = (IP_STATUS_BASE + 17)
+Private Const IP_BAD_DESTINATION As Long = (IP_STATUS_BASE + 18)
+Private Const IP_ADDR_DELETED As Long = (IP_STATUS_BASE + 19)
+Private Const IP_SPEC_MTU_CHANGE As Long = (IP_STATUS_BASE + 20)
+Private Const IP_MTU_CHANGE As Long = (IP_STATUS_BASE + 21)
+Private Const IP_UNLOAD As Long = (IP_STATUS_BASE + 22)
+Private Const IP_ADDR_ADDED As Long = (IP_STATUS_BASE + 23)
+Private Const IP_GENERAL_FAILURE As Long = (IP_STATUS_BASE + 50)
+Private Const MAX_IP_STATUS As Long = (IP_STATUS_BASE + 50)
+Private Const IP_PENDING As Long = (IP_STATUS_BASE + 255)
+Private Const PING_TIMEOUT As Long = 500
+Private Const WS_VERSION_REQD As Long = &H101
+Private Const MIN_SOCKETS_REQD As Long = 1
+Private Const SOCKET_ERROR As Long = -1
+Private Const INADDR_NONE As Long = &HFFFFFFFF
+Private Const MAX_WSADescription As Long = 256
+Private Const MAX_WSASYSStatus As Long = 128
+
+Private Type WSADATA
+   wVersion As Integer
+   wHighVersion As Integer
+   szDescription(0 To MAX_WSADescription) As Byte
+   szSystemStatus(0 To MAX_WSASYSStatus) As Byte
+   wMaxSockets As Long
+   wMaxUDPDG As Long
+   dwVendorInfo As Long
+End Type
+
+Private Type ICMP_OPTIONS
+   Ttl             As Byte
+   Tos             As Byte
+   Flags           As Byte
+   OptionsSize     As Byte
+   OptionsData     As Long
+End Type
+
+Private Type ICMP_ECHO_REPLY
+   Address         As Long
+   status          As Long
+   RoundTripTime   As Long
+   DataSize        As Long
+  'Reserved        As Integer
+   DataPointer     As Long
+   Options         As ICMP_OPTIONS
+   Data            As String * 250
+End Type
+
+Private Declare Function gethostbyname Lib "wsock32" _
+  (ByVal hostname As String) As Long
+  
+Private Declare Sub CopyMemory Lib "kernel32" _
+   Alias "RtlMoveMemory" _
+  (xDest As Any, _
+   xSource As Any, _
+   ByVal nbytes As Long)
+
+Private Declare Function lstrlenA Lib "kernel32" _
+  (lpString As Any) As Long
+
+Private Declare Function WSAStartup Lib "wsock32" _
+   (ByVal wVersionRequired As Long, _
+    lpWSADATA As WSADATA) As Long
+    
+Private Declare Function WSACleanup Lib "wsock32" () As Long
+
+Private Declare Function IcmpCreateFile Lib "icmp.dll" () As Long
+
+Private Declare Function IcmpCloseHandle Lib "icmp.dll" _
+   (ByVal IcmpHandle As Long) As Long
+   
+Private Declare Function IcmpSendEcho Lib "icmp.dll" _
+   (ByVal IcmpHandle As Long, _
+    ByVal DestinationAddress As Long, _
+    ByVal RequestData As String, _
+    ByVal RequestSize As Long, _
+    ByVal RequestOptions As Long, _
+    ReplyBuffer As ICMP_ECHO_REPLY, _
+    ByVal ReplySize As Long, _
+    ByVal Timeout As Long) As Long
+    
+Private Declare Function inet_addr Lib "wsock32" _
+   (ByVal s As String) As Long
+   
+Private Declare Function inet_ntoa Lib "wsock32.dll" _
+  (ByVal addr As Long) As Long
+
+Private Declare Function lstrcpyA Lib "kernel32" _
+  (ByVal RetVal As String, _
+   ByVal Ptr As Long) As Long
+   
+
+
+Private Sub Form_Load()
+
+   Text1.Text = "www.yahoo.com"
+   Text2.Text = ""
+   Text3.Text = "Echo this"
+   
+End Sub
+
+
+Private Sub Command1_Click()
+
+   Dim ECHO As ICMP_ECHO_REPLY
+   Dim pos As Long
+   Dim success As Long
+   Dim sIPAddress As String
+   
+   If SocketsInitialize() Then
+   
+     'convert the host name into an IP address
+      sIPAddress = GetIPFromHostName(Text1.Text)
+      Text2.Text = sIPAddress
+      
+     'ping the ip passing the address, text
+     'to use, and the ECHO structure
+      success = Ping(sIPAddress, (Text3.Text), ECHO)
+      
+     'display the results
+      Text4(0).Text = GetStatusCode(success)
+      Text4(1).Text = ECHO.Address
+      Text4(2).Text = ECHO.RoundTripTime & " ms"
+      Text4(3).Text = ECHO.DataSize & " bytes"
+      
+      If Left$(ECHO.Data, 1) <> Chr$(0) Then
+         pos = InStr(ECHO.Data, Chr$(0))
+         Text4(4).Text = Left$(ECHO.Data, pos - 1)
+      End If
+   
+      Text4(5).Text = ECHO.DataPointer
+      
+      SocketsCleanup
+      
+   Else
+        MsgBox "Windows Sockets for 32 bit Windows " & _
+               "is not successfully responding."
+   End If
+   
+End Sub
+
+
+Private Function Ping(sAddress As String, _
+                      sDataToSend As String, _
+                      ECHO As ICMP_ECHO_REPLY) As Long
+
+  'If Ping succeeds :
+  '.RoundTripTime = time in ms for the ping to complete,
+  '.Data is the data returned (NULL terminated)
+  '.Address is the IP address that actually replied
+  '.DataSize is the size of the string in .Data
+  '.Status will be 0
+  '
+  'If Ping fails .Status will be the error code
+   
+   Dim hPort As Long
+   Dim dwAddress As Long
+   
+  'convert the address into a long representation
+   dwAddress = inet_addr(sAddress)
+   
+  'if dwAddress is valid
+   If dwAddress <> INADDR_NONE Then
+   
+     'open a port
+      hPort = IcmpCreateFile()
+      
+     'and if successful,
+      If hPort Then
+      
+        'ping it.
+         Call IcmpSendEcho(hPort, _
+                           dwAddress, _
+                           sDataToSend, _
+                           Len(sDataToSend), _
+                           0, _
+                           ECHO, _
+                           Len(ECHO), _
+                           PING_TIMEOUT)
+
+        'return the status as ping success
+         Ping = ECHO.status
+
+        'close the port handle
+         Call IcmpCloseHandle(hPort)
+      
+      End If  'If hPort
+      
+   Else
+   
+        'the address format was probably invalid
+         Ping = INADDR_NONE
+         
+   End If
+  
+End Function
+
+
+Private Function GetStatusCode(status As Long) As String
+
+   Dim msg As String
+   
+   Select Case status
+      Case IP_SUCCESS:               msg = "ip success"
+      Case INADDR_NONE:              msg = "inet_addr: bad IP format"
+      Case IP_BUF_TOO_SMALL:         msg = "ip buf too_small"
+      Case IP_DEST_NET_UNREACHABLE:  msg = "ip dest net unreachable"
+      Case IP_DEST_HOST_UNREACHABLE: msg = "ip dest host unreachable"
+      Case IP_DEST_PROT_UNREACHABLE: msg = "ip dest prot unreachable"
+      Case IP_DEST_PORT_UNREACHABLE: msg = "ip dest port unreachable"
+      Case IP_NO_RESOURCES:          msg = "ip no resources"
+      Case IP_BAD_OPTION:            msg = "ip bad option"
+      Case IP_HW_ERROR:              msg = "ip hw_error"
+      Case IP_PACKET_TOO_BIG:        msg = "ip packet too_big"
+      Case IP_REQ_TIMED_OUT:         msg = "ip req timed out"
+      Case IP_BAD_REQ:               msg = "ip bad req"
+      Case IP_BAD_ROUTE:             msg = "ip bad route"
+      Case IP_TTL_EXPIRED_TRANSIT:   msg = "ip ttl expired transit"
+      Case IP_TTL_EXPIRED_REASSEM:   msg = "ip ttl expired reassem"
+      Case IP_PARAM_PROBLEM:         msg = "ip param_problem"
+      Case IP_SOURCE_QUENCH:         msg = "ip source quench"
+      Case IP_OPTION_TOO_BIG:        msg = "ip option too_big"
+      Case IP_BAD_DESTINATION:       msg = "ip bad destination"
+      Case IP_ADDR_DELETED:          msg = "ip addr deleted"
+      Case IP_SPEC_MTU_CHANGE:       msg = "ip spec mtu change"
+      Case IP_MTU_CHANGE:            msg = "ip mtu_change"
+      Case IP_UNLOAD:                msg = "ip unload"
+      Case IP_ADDR_ADDED:            msg = "ip addr added"
+      Case IP_GENERAL_FAILURE:       msg = "ip general failure"
+      Case IP_PENDING:               msg = "ip pending"
+      Case PING_TIMEOUT:             msg = "ping timeout"
+      Case Else:                     msg = "unknown  msg returned"
+   End Select
+   
+   GetStatusCode = CStr(status) & "   [ " & msg & " ]"
+   
+End Function
+
+
+Private Function GetIPFromHostName(ByVal sHostName As String) As String
+
+  'converts a host name to an IP address
+   Dim ptrHosent As Long  'address of HOSENT structure
+   Dim ptrName As Long    'address of name pointer
+   Dim ptrAddress As Long 'address of address pointer
+   Dim ptrIPAddress As Long
+   Dim ptrIPAddress2 As Long
+
+   ptrHosent = gethostbyname(sHostName & vbNullChar)
+
+   If ptrHosent <> 0 Then
+
+     'assign pointer addresses and offset
+     
+     'ptrName is the official name of the host (PC).
+     'If using the DNS or similar resolution system,
+     'it is the Fully Qualified Domain Name (FQDN)
+     'that caused the server to return a reply.
+     'If using a local hosts file, it is the first
+     'entry after the IP address.
+      ptrName = ptrHosent
+      
+     'Null-terminated list of addresses for the host.
+     'The Address is offset 12 bytes from the start of
+     'the HOSENT structure. Note: Here we are retrieving
+     'only the first address returned. To return more than
+     'one, define sAddress as a string array and loop through
+     'the 4-byte ptrIPAddress members returned. The last
+     'item is a terminating null. All addresses are returned
+     'in network byte order.
+      ptrAddress = ptrHosent + 12
+      
+     'get the IP address
+      CopyMemory ptrName, ByVal ptrName, 4
+      CopyMemory ptrAddress, ByVal ptrAddress, 4
+      CopyMemory ptrIPAddress, ByVal ptrAddress, 4
+      CopyMemory ptrIPAddress2, ByVal ptrIPAddress, 4
+
+      GetIPFromHostName = GetInetStrFromPtr(ptrIPAddress2)
+
+   End If
+   
+End Function
+
+
+Private Function GetStrFromPtrA(ByVal lpszA As Long) As String
+
+   GetStrFromPtrA = String$(lstrlenA(ByVal lpszA), 0)
+   Call lstrcpyA(ByVal GetStrFromPtrA, ByVal lpszA)
+   
+End Function
+
+
+Private Function GetInetStrFromPtr(Address As Long) As String
+  
+   GetInetStrFromPtr = GetStrFromPtrA(inet_ntoa(Address))
+
+End Function
+
+
+Private Sub SocketsCleanup()
+   
+   If WSACleanup() <> 0 Then
+       MsgBox "Windows Sockets error occurred in Cleanup.", vbExclamation
+   End If
+    
+End Sub
+
+
+Private Function SocketsInitialize() As Boolean
+
+   Dim WSAD As WSADATA
+   
+   SocketsInitialize = WSAStartup(WS_VERSION_REQD, WSAD) = IP_SUCCESS
+    
+End Function
+--------------------------------------------------------------------------
+RemoteMAC
+--------------------------------------------------------------------------
+Private Const NO_ERROR = 0
+
+Private Declare Function inet_addr Lib "wsock32.dll" _
+  (ByVal s As String) As Long
+
+Private Declare Function SendARP Lib "iphlpapi.dll" _
+  (ByVal DestIP As Long, _
+   ByVal SrcIP As Long, _
+   pMacAddr As Long, _
+   PhyAddrLen As Long) As Long
+
+Private Declare Sub CopyMemory Lib "kernel32" _
+   Alias "RtlMoveMemory" _
+  (dst As Any, _
+   src As Any, _
+   ByVal bcount As Long)
+   
+
+
+Private Sub Form_Load()
+
+   Text1.Text = "192.168.1.101" 'or address of interest
+   Text2.Text = ""
+   Command1.Caption = "Get Remote Mac Address"
+   
+End Sub
+
+
+Private Sub Command1_Click()
+
+   Dim sRemoteMacAddress As String
+   
+   If Len(Text1.Text) > 0 Then
+   
+      If GetRemoteMACAddress(Text1.Text, sRemoteMacAddress, "-") Then
+         Text2.Text = sRemoteMacAddress
+      Else
+         Text2.Text = "(SendARP call failed)"
+      End If
+      
+   End If
+
+End Sub
+
+
+Private Function GetRemoteMACAddress(ByVal sRemoteIP As String, _
+                                     sRemoteMacAddress As String, _
+                                     sDelimiter As String) As Boolean
+
+   Dim dwRemoteIP As Long
+   Dim pMacAddr As Long
+   Dim bpMacAddr() As Byte
+   Dim PhyAddrLen As Long
+    
+  'convert the string IP into
+  'an unsigned long value containing
+  'a suitable binary representation
+  'of the Internet address given
+   dwRemoteIP = ConvertIPtoLong(sRemoteIP)
+
+   If dwRemoteIP <> 0 Then
+   
+     'must set this up first!
+      PhyAddrLen = 6
+   
+    'assume failure 
+     GetRemoteMACAddress = False
+     
+     'retrieve the remote MAC address
+      If SendARP(dwRemoteIP, 0&, pMacAddr, PhyAddrLen) = NO_ERROR Then
+      
+         If (pMacAddr <> 0) And (PhyAddrLen <> 0) Then
+      
+           'returned value is a long pointer
+           'to the MAC address, so copy data
+           'to a byte array
+            ReDim bpMacAddr(0 To PhyAddrLen - 1)
+            CopyMemory bpMacAddr(0), pMacAddr, ByVal PhyAddrLen
+            
+           'convert the byte array to a string 
+           'and return success 
+            sRemoteMacAddress = MakeMacAddress(bpMacAddr(), sDelimiter)
+            GetRemoteMACAddress = True
+            
+         End If 'pMacAddr
+
+      End If  'SendARP
+      
+   End If  'dwRemoteIP
+      
+End Function
+
+
+Private Function ConvertIPtoLong(sIpAddress) As Long
+
+   ConvertIPtoLong = inet_addr(sIpAddress)
+
+End Function
+
+
+Private Function MakeMacAddress(b() As Byte, sDelim As String) As String
+
+   Dim cnt As Long
+   Dim buff As String
+   
+   On Local Error GoTo MakeMac_error
+ 
+  'so far, MAC addresses are
+  'exactly 6 segments in size (0-5)
+   If UBound(b) = 5 Then
+   
+     'concatenate the first five values
+     'together and separate with the
+     'delimiter char
+      For cnt = 0 To 4
+         buff = buff & Right$("00" & Hex(b(cnt)), 2) & sDelim
+      Next
+      
+     'and append the last value
+      buff = buff & Right$("00" & Hex(b(5)), 2)
+         
+   End If  'UBound(b)
+   
+   MakeMacAddress = buff
+   
+MakeMac_exit:
+   Exit Function
+   
+MakeMac_error:
+   MakeMacAddress = "(error building MAC address)"
+   Resume MakeMac_exit
+   
+End Function
+-----------------------------------------------------------------------------------
+NetShareEnum
+http://vbnet.mvps.org/index.html?code/network/netshareenum.htm
+-----------------------------------------------------------------------------------
+'Windows type used to call the Net API
+Private Const MAX_PREFERRED_LENGTH As Long = -1
+Private Const NERR_SUCCESS As Long = 0&
+Private Const ERROR_MORE_DATA As Long = 234&
+Private Const LB_SETTABSTOPS As Long = &H192
+
+'See NetServerEnum demo for complete
+'list of server types supported
+Private Const SV_TYPE_ALL                 As Long = &HFFFFFFFF
+Private Const SV_TYPE_WORKSTATION         As Long = &H1
+Private Const SV_TYPE_SERVER              As Long = &H2
+
+Private Const STYPE_ALL       As Long = -1  'note: my const
+Private Const STYPE_DISKTREE  As Long = 0
+Private Const STYPE_PRINTQ    As Long = 1
+Private Const STYPE_DEVICE    As Long = 2
+Private Const STYPE_IPC       As Long = 3
+Private Const STYPE_SPECIAL   As Long = &H80000000
+Private Const ACCESS_READ     As Long = &H1
+Private Const ACCESS_WRITE    As Long = &H2
+Private Const ACCESS_CREATE   As Long = &H4
+Private Const ACCESS_EXEC     As Long = &H8
+Private Const ACCESS_DELETE   As Long = &H10
+Private Const ACCESS_ATRIB    As Long = &H20
+Private Const ACCESS_PERM     As Long = &H40
+Private Const ACCESS_ALL      As Long = ACCESS_READ Or _
+                                        ACCESS_WRITE Or _
+                                        ACCESS_CREATE Or _
+                                        ACCESS_EXEC Or _
+                                        ACCESS_DELETE Or _
+                                        ACCESS_ATRIB Or _
+                                        ACCESS_PERM
+'for use on Win NT/2000 only
+Private Type SERVER_INFO_100
+  sv100_platform_id  As Long
+  sv100_name         As Long
+End Type
+
+'shi2_current_uses: number of current connections to the resource
+'shi2_max_uses    : max concurrent connections resource can accommodate
+'shi2_netname     : share name of a resource
+'shi2_passwd      : share's password when
+'                  (server running with share-level security)
+'shi2_path        : local path for the shared resource
+'shi2_permissions : shared resource's permissions
+'                  (servers running with share-level security)
+'shi2_remark      : string containing optional comment about the resource
+'shi2_type        : the type of the shared resource
+Private Type SHARE_INFO_2
+  shi2_netname       As Long
+  shi2_type          As Long
+  shi2_remark        As Long
+  shi2_permissions   As Long
+  shi2_max_uses      As Long
+  shi2_current_uses  As Long
+  shi2_path          As Long
+  shi2_passwd        As Long
+End Type
+
+Private Declare Function NetServerEnum Lib "netapi32" _
+  (ByVal servername As Long, _
+   ByVal level As Long, _
+   buf As Any, _
+   ByVal prefmaxlen As Long, _
+   entriesread As Long, _
+   totalentries As Long, _
+   ByVal servertype As Long, _
+   ByVal domain As Long, _
+   resume_handle As Long) As Long
+
+Private Declare Function NetShareEnum Lib "netapi32" _
+  (ByVal servername As Long, _
+   ByVal level As Long, _
+   bufptr As Long, _
+   ByVal prefmaxlen As Long, _
+   entriesread As Long, _
+   totalentries As Long, _
+   resume_handle As Long) As Long
+   
+Private Declare Function NetApiBufferFree Lib "netapi32" _
+   (ByVal Buffer As Long) As Long
+     
+Private Declare Sub CopyMemory Lib "kernel32" _
+   Alias "RtlMoveMemory" _
+  (pTo As Any, uFrom As Any, _
+   ByVal lSize As Long)
+   
+Private Declare Function lstrlenW Lib "kernel32" _
+  (ByVal lpString As Long) As Long
+
+Private Declare Function SendMessage Lib "user32" _
+   Alias "SendMessageA" _
+  (ByVal hwnd As Long, _
+   ByVal wMsg As Long, _
+   ByVal wParam As Long, _
+   lParam As Any) As Long
+
+
+Private Sub Form_Load()
+
+   ReDim TabArray(0 To 4) As Long
+   
+   TabArray(0) = 73
+   TabArray(1) = 125
+   TabArray(2) = 151
+   TabArray(3) = 232
+   
+  'Clear any existing tabs
+  'and set the list tabstops
+   Call SendMessage(List1.hwnd, LB_SETTABSTOPS, 0&, ByVal 0&)
+   Call SendMessage(List1.hwnd, LB_SETTABSTOPS, 4&, TabArray(0))
+   List1.Refresh
+   
+   Command1.Caption = "Net Share Enum"
+   Label1.Caption = "call success (0) or error :"
+   Label2.Caption = ""
+
+End Sub
+
+
+Private Sub Command1_Click()
+
+   Dim bufptr          As Long  'output
+   Dim dwServer        As Long  'pointer to the server
+   Dim dwEntriesread   As Long  'out
+   Dim dwTotalentries  As Long  'out
+   Dim dwResumehandle  As Long  'out
+   Dim success         As Long
+   Dim nStructSize     As Long
+   Dim cnt             As Long
+   Dim usrname         As String
+   Dim bServer         As String
+   Dim shi2            As SHARE_INFO_2
+     
+  'demo using the local machine
+   bServer = "\\" & Environ$("COMPUTERNAME") & vbNullString
+   
+  'create pointer to the machine name
+   dwServer = StrPtr(bServer)
+   
+   success = NetShareEnum(dwServer, _
+                          2, _
+                          bufptr, _
+                          MAX_PREFERRED_LENGTH, _
+                          dwEntriesread, _
+                          dwTotalentries, _
+                          dwResumehandle)
+
+   List1.Clear
+   Label2.Caption = success
+   
+   If success = NERR_SUCCESS And _
+      success <> ERROR_MORE_DATA Then
+      
+      nStructSize = LenB(shi2)
+      
+      For cnt = 0 To dwEntriesread - 1
+         
+        'get one chunk of data and cast
+        'into an SHARE_INFO_2 type, and
+        'add the data to a list
+         CopyMemory shi2, ByVal bufptr + (nStructSize * cnt), nStructSize
+
+         List1.AddItem GetPointerToByteStringW(shi2.shi2_netname) & vbTab & _
+                       GetConnectionType(shi2.shi2_type) & vbTab & _
+                       GetConnectionPermissions(shi2.shi2_permissions) & vbTab & _
+                       GetPointerToByteStringW(shi2.shi2_remark) & vbTab & _
+                       GetPointerToByteStringW(shi2.shi2_path)  ' & vbTab & _
+
+      Next
+      
+   End If
+   
+   Call NetApiBufferFree(bufptr)
+
+End Sub
+
+
+Private Function GetConnectionPermissions(ByVal dwPermissions As Long) As String
+
+  'Permissions are only returned a shared
+  'resource running with share-level security.
+  'A server running user-level security ignores
+  'this member, so the function returns
+  '"not applicable".
+   Dim tmp As String
+   
+   If (dwPermissions And ACCESS_READ) Then tmp = tmp & "R"
+   If (dwPermissions And ACCESS_WRITE) Then tmp = tmp & " W"
+   If (dwPermissions And ACCESS_CREATE) Then tmp = tmp & " C"
+   If (dwPermissions And ACCESS_DELETE) Then tmp = tmp & " D"
+   If (dwPermissions And ACCESS_EXEC) Then tmp = tmp & " E"
+   If (dwPermissions And ACCESS_ATRIB) Then tmp = tmp & " A"
+   If (dwPermissions And ACCESS_PERM) Then tmp = tmp & " P"
+
+   If Len(tmp) = 0 Then tmp = "n/a"
+  
+   GetConnectionPermissions = tmp
+   
+   
+End Function
+
+
+Private Function GetConnectionType(ByVal dwConnectType As Long) As String
+
+  'compare connection type value
+   Select Case dwConnectType
+      Case STYPE_DISKTREE: GetConnectionType = "disk drive"
+      Case STYPE_PRINTQ:   GetConnectionType = "print queue"
+      Case STYPE_DEVICE:   GetConnectionType = "communication device"
+      Case STYPE_IPC:      GetConnectionType = "ipc"
+      Case STYPE_SPECIAL:  GetConnectionType = "administrative"
+      Case Else
+         
+        'weird case. On my NT2000 machines,
+        'I have to do this to identify the
+        'IPC$ share type
+         Select Case (dwConnectType Xor STYPE_SPECIAL) 'rtns 3 if IPC
+            Case STYPE_IPC: GetConnectionType = "ipc"
+            Case Else:      GetConnectionType = "undefined"
+         End Select
+         
+   End Select
+   
+End Function
+
+
+Public Function GetPointerToByteStringW(ByVal dwData As Long) As String
+  
+   Dim tmp() As Byte
+   Dim tmplen As Long
+   
+   If dwData <> 0 Then
+   
+      tmplen = lstrlenW(dwData) * 2
+      
+      If tmplen <> 0 Then
+      
+         ReDim tmp(0 To (tmplen - 1)) As Byte
+         CopyMemory tmp(0), ByVal dwData, tmplen
+         GetPointerToByteStringW = tmp
+         
+     End If
+     
+   End If
+    
+End Function
+-------------------------------------------------------------------------------
+File search and info retrieval
+http://vbnet.mvps.org/index.html?code/fileapi/foldercontent.htm
+-------------------------------------------------------------------------------
+Private Type VS_FIXEDFILEINFO
+   dwSignature As Long
+   dwStrucVersion As Long     'e.g. 0x00000042 = "0.42"
+   dwFileVersionMS As Long    'e.g. 0x00030075 = "3.75"
+   dwFileVersionLS As Long    'e.g. 0x00000031 = "0.31"
+   dwProductVersionMS As Long 'e.g. 0x00030010 = "3.10"
+   dwProductVersionLS As Long 'e.g. 0x00000031 = "0.31"
+   dwFileFlagsMask As Long    'e.g. 0x3F for version "0.42"
+   dwFileFlags As Long        'e.g. VFF_DEBUG Or VFF_PRERELEASE
+   dwFileOS As Long           'e.g. VOS_DOS_WINDOWS16
+   dwFileType As Long         'e.g. VFT_DRIVER
+   dwFileSubtype As Long      'e.g. VFT2_DRV_KEYBOARD
+   dwFileDateMS As Long       'e.g. 0
+   dwFileDateLS As Long       'e.g. 0
+End Type
+
+Private Declare Function GetFileVersionInfoSize Lib "version.dll" _
+   Alias "GetFileVersionInfoSizeA" _
+  (ByVal lptstrFilename As String, _
+   lpdwHandle As Long) As Long
+
+Private Declare Function GetFileVersionInfo Lib "version.dll" _
+   Alias "GetFileVersionInfoA" _
+  (ByVal lptstrFilename As String, _
+   ByVal dwHandle As Long, _
+   ByVal dwLen As Long, _
+   lpData As Any) As Long
+   
+Private Declare Function VerQueryValue Lib "version.dll" _
+   Alias "VerQueryValueA" _
+  (pBlock As Any, _
+   ByVal lpSubBlock As String, _
+   lplpBuffer As Any, nVerSize As Long) As Long
+
+Private Declare Sub CopyMemory Lib "kernel32" _
+   Alias "RtlMoveMemory" _
+  (Destination As Any, _
+   Source As Any, _
+   ByVal Length As Long)
+
+
+Private Const MAXDWORD As Long = &HFFFFFFFF
+Private Const MAX_PATH As Long = 260
+Private Const INVALID_HANDLE_VALUE As Long = -1
+Private Const FILE_ATTRIBUTE_DIRECTORY As Long = &H10
+
+Private Type FILETIME
+   dwLowDateTime As Long
+   dwHighDateTime As Long
+End Type
+
+Private Type WIN32_FIND_DATA
+   dwFileAttributes As Long
+   ftCreationTime As FILETIME
+   ftLastAccessTime As FILETIME
+   ftLastWriteTime As FILETIME
+   nFileSizeHigh As Long
+   nFileSizeLow As Long
+   dwReserved0 As Long
+   dwReserved1 As Long
+   cFileName As String * MAX_PATH
+   cAlternate As String * 14
+End Type
+
+Private Type FILE_PARAMS  'my custom type for passing info
+   bRecurse As Boolean   'var not used in this demo
+   bList As Boolean
+   bFound As Boolean     'var not used in this demo
+   sFileRoot As String
+   sFileNameExt As String
+   sResult As String     'var not used in this demo
+   nFileCount As Long    'var not used in this demo
+   nFileSize As Double   'var not used in this demo
+End Type
+
+Private Declare Function FindClose Lib "kernel32" _
+  (ByVal hFindFile As Long) As Long
+   
+Private Declare Function FindFirstFile Lib "kernel32" _
+   Alias "FindFirstFileA" _
+  (ByVal lpFileName As String, _
+   lpFindFileData As WIN32_FIND_DATA) As Long
+   
+Private Declare Function FindNextFile Lib "kernel32" _
+   Alias "FindNextFileA" _
+  (ByVal hFindFile As Long, _
+   lpFindFileData As WIN32_FIND_DATA) As Long
+   
+Private Declare Function lstrcpyA Lib "kernel32" _
+  (ByVal RetVal As String, ByVal Ptr As Long) As Long
+                        
+Private Declare Function lstrlenA Lib "kernel32" _
+  (ByVal Ptr As Any) As Long
+  
+  
+
+Private Sub Form_Load()
+
+   With Combo1
+      .AddItem "*.*"
+      .AddItem "*.dll"
+      .AddItem "*.exe"
+      .AddItem "*.ini"
+      .AddItem "*.ocx"
+      .AddItem "*.vxd"
+      .ListIndex = 2
+   End With
+   
+End Sub
+
+
+Private Sub Command1_Click()
+
+   Dim FP As FILE_PARAMS
+    
+   ListView1.ListItems.Clear
+   
+   With FP
+      .sFileRoot = Text1.Text
+      .sFileNameExt = Combo1.Text
+      .bRecurse = Check1.Value = 1
+      .bList = True
+   End With
+   
+   Call SearchForFiles(FP)
+
+End Sub
+  
+
+Private Function SearchForFiles(FP As FILE_PARAMS) As Double
+
+   Dim WFD As WIN32_FIND_DATA
+   Dim hFile As Long
+   Dim nSize As Long
+   Dim sPath As String
+   Dim sRoot As String
+   Dim sTmp As String
+      
+   sRoot = QualifyPath(FP.sFileRoot)
+   sPath = sRoot & "*.*"
+   
+  'obtain handle to the first match
+   hFile = FindFirstFile(sPath, WFD)
+   
+  'if valid ...
+   If hFile <> INVALID_HANDLE_VALUE Then
+   
+     'This is where the method obtains the file
+     'list and data for the folder passed.
+     '
+     'GetFileInformation function returns the size,
+     'in bytes, of the files found matching the
+     'filespec in the passed folder, so its
+     'assigned to nSize. It is not directly assigned
+     'to FP.nFileSize because nSize is incremented
+     'below if a recursive search was specified.
+      nSize = GetFileInformation(FP)
+      FP.nFileSize = nSize
+
+      Do
+      
+        'if the returned item is a folder...
+         If (WFD.dwFileAttributes And FILE_ATTRIBUTE_DIRECTORY) Then
+            
+           '..and the Recurse flag was specified
+            If FP.bRecurse Then
+            
+              'remove trailing nulls
+               sTmp = TrimNull(WFD.cFileName)
+               
+              'and if the folder is not the default
+              'self and parent folders...
+               If sTmp <> "." And sTmp <> ".." Then
+               
+                 '..then the item is a real folder, which
+                 'may contain other sub folders, so assign
+                 'the new folder name to FP.sFileRoot and
+                 'recursively call this function again with
+                 'the amended information.
+                 '
+                 'Since nSize is a local variable whose value
+                 'is both set above as well as returned as the
+                 'function call value, nSize needs to be added 
+                 'to previous calls in order to maintain accuracy.
+                 '
+                 'However, because the nFileSize member of
+                 'FILE_PARAMS is passed back and forth through
+                 'the calls, nSize is simply assigned to it
+                 'after the recursive call finishes.
+                  FP.sFileRoot = sRoot & sTmp
+                  nSize = nSize + SearchForFiles(FP)
+                  FP.nFileSize = nSize
+                  
+               End If
+               
+            End If
+            
+         End If
+         
+     'continue looping until FindNextFile returns
+     '0 (no more matches)
+      Loop While FindNextFile(hFile, WFD)
+      
+     'close the find handle
+      hFile = FindClose(hFile)
+   
+   End If
+   
+  'because this routine is recursive, return
+  'the size of matching files
+   SearchForFiles = nSize
+   
+End Function
+
+
+Private Function GetFileInformation(FP As FILE_PARAMS) As Long
+
+   Dim WFD As WIN32_FIND_DATA
+   Dim hFile As Long
+   Dim nSize As Long
+   Dim sPath As String
+   Dim sRoot As String
+   Dim sTmp As String
+   Dim itmx As ListItem
+      
+  'FP.sFileRoot (assigned to sRoot) contains
+  'the path to search.
+  '
+  'FP.sFileNameExt (assigned to sPath) contains
+  'the full path and filespec.
+   sRoot = QualifyPath(FP.sFileRoot)
+   sPath = sRoot & FP.sFileNameExt
+   
+  'obtain handle to the first filespec match
+   hFile = FindFirstFile(sPath, WFD)
+   
+  'if valid ...
+   If hFile <> INVALID_HANDLE_VALUE Then
+
+      Do
+      
+        'remove trailing nulls
+         sTmp = TrimNull(WFD.cFileName)
+         
+        'Even though this routine uses filespecs,
+        '*.* is still valid and will cause the search
+        'to return folders as well as files, so a
+        'check against folders is still required.
+         If Not (WFD.dwFileAttributes And FILE_ATTRIBUTE_DIRECTORY) _
+            = FILE_ATTRIBUTE_DIRECTORY Then
+      
+           'file found, so increase the file count
+            FP.nFileCount = FP.nFileCount + 1
+            
+           'retrieve the size and assign to nSize to
+           'be returned at the end of this function call
+            nSize = nSize + (WFD.nFileSizeHigh * (MAXDWORD + 1)) + WFD.nFileSizeLow
+            
+           'add to the list if the flag indicates
+            If FP.bList Then
+                             
+              'got the data, so add it to the listview
+               Set itmx = ListView1.ListItems.Add(, , LCase$(sTmp))
+               
+               itmx.SubItems(1) = GetFileVersion(sRoot & sTmp)
+               itmx.SubItems(3) = GetFileSizeStr(WFD.nFileSizeHigh + WFD.nFileSizeLow)
+               itmx.SubItems(2) = GetFileDescription(sRoot & sTmp)
+               itmx.SubItems(4) = LCase$(sRoot)
+               
+            End If
+         
+         End If
+         
+      Loop While FindNextFile(hFile, WFD)
+      
+      
+     'close the handle
+      hFile = FindClose(hFile)
+   
+   End If
+   
+  'return the size of files found
+   GetFileInformation = nSize
+
+End Function
+
+
+Private Function GetFileSizeStr(fsize As Long) As String
+
+    GetFileSizeStr = Format$((fsize), "###,###,###")   '& " kb"
+  
+End Function
+
+
+Private Function QualifyPath(sPath As String) As String
+
+  'assures that a passed path ends in a slash
+  
+   If Right$(sPath, 1) <> "\" Then
+      QualifyPath = sPath & "\"
+   Else 
+      QualifyPath = sPath
+   End If
+      
+End Function
+
+
+Public Function TrimNull(startstr As String) As String
+
+  'returns the string up to the first
+  'null, if present, or the passed string
+   
+   Dim pos As Integer
+   
+   pos = InStr(startstr, Chr$(0))
+   
+   If pos Then
+      TrimNull = Left$(startstr, pos - 1)
+      Exit Function
+   End If
+  
+   TrimNull = startstr
+  
+End Function
+
+
+Private Function HiWord(dw As Long) As Long
+  
+   If dw And &H80000000 Then
+      HiWord = (dw \ 65535) - 1
+   Else
+      HiWord = dw \ 65535
+   End If
+    
+End Function
+  
+
+Private Function LoWord(dw As Long) As Long
+  
+   If dw And &H8000& Then
+      LoWord = &H8000& Or (dw And &H7FFF&)
+   Else
+      LoWord = dw And &HFFFF&
+   End If
+    
+End Function
+
+
+Private Function GetFileDescription(sSourceFile As String) As String
+
+   Dim FI As VS_FIXEDFILEINFO
+   Dim sBuffer() As Byte
+   Dim nBufferSize As Long
+   Dim lpBuffer As Long
+   Dim nVerSize As Long
+   Dim nUnused As Long
+   Dim tmpVer As String
+   Dim sBlock As String
+   
+   If Len(sSourceFile) > 0 Then
+
+     'set file that has the encryption level
+     'info and call to get required size
+      nBufferSize = GetFileVersionInfoSize(sSourceFile, nUnused)
+      
+      ReDim sBuffer(nBufferSize)
+      
+      If nBufferSize > 0 Then
+      
+        'get the version info
+         Call GetFileVersionInfo(sSourceFile, 0&, nBufferSize, sBuffer(0))
+         Call VerQueryValue(sBuffer(0), "\", lpBuffer, nVerSize)
+         Call CopyMemory(FI, ByVal lpBuffer, Len(FI))
+   
+         If VerQueryValue(sBuffer(0), "\VarFileInfo\Translation", lpBuffer, nVerSize) Then
+            
+            If nVerSize Then
+               tmpVer = GetPointerToString(lpBuffer, nVerSize)
+               tmpVer = Right("0" & Hex(Asc(Mid(tmpVer, 2, 1))), 2) & _
+                        Right("0" & Hex(Asc(Mid(tmpVer, 1, 1))), 2) & _
+                        Right("0" & Hex(Asc(Mid(tmpVer, 4, 1))), 2) & _
+                        Right("0" & Hex(Asc(Mid(tmpVer, 3, 1))), 2)
+               sBlock = "\StringFileInfo\" & tmpVer & "\FileDescription"
+               
+              'Get predefined version resources
+               If VerQueryValue(sBuffer(0), sBlock, lpBuffer, nVerSize) Then
+               
+                  If nVerSize Then
+                  
+                    'get the file description
+                     GetFileDescription = GetStrFromPtrA(lpBuffer)
+
+                  End If  'If nVerSize
+               End If  'If VerQueryValue
+            End If  'If nVerSize
+         End If  'If VerQueryValue
+      End If  'If nBufferSize
+   End If  'If sSourcefile
+
+End Function
+
+
+Private Function GetStrFromPtrA(ByVal lpszA As Long) As String
+
+   GetStrFromPtrA = String$(lstrlenA(ByVal lpszA), 0)
+   Call lstrcpyA(ByVal GetStrFromPtrA, ByVal lpszA)
+   
+End Function
+
+
+Private Function GetPointerToString(lpString As Long, nBytes As Long) As String
+
+   Dim Buffer As String
+   
+   If nBytes Then
+      Buffer = Space$(nBytes)
+      CopyMemory ByVal Buffer, ByVal lpString, nBytes
+      GetPointerToString = Buffer
+   End If
+   
+End Function
+
+
+Private Function GetFileVersion(sDriverFile As String) As String
+   
+   Dim FI As VS_FIXEDFILEINFO
+   Dim sBuffer() As Byte
+   Dim nBufferSize As Long
+   Dim lpBuffer As Long
+   Dim nVerSize As Long
+   Dim nUnused As Long
+   Dim tmpVer As String
+   
+  'GetFileVersionInfoSize determines whether the operating
+  'system can obtain version information about a specified
+  'file. If version information is available, it returns
+  'the size in bytes of that information. As with other
+  'file installation functions, GetFileVersionInfoSize
+  'works only with Win32 file images.
+  '
+  'A empty variable must be passed as the second
+  'parameter, which the call returns 0 in.
+   nBufferSize = GetFileVersionInfoSize(sDriverFile, nUnused)
+   
+   If nBufferSize > 0 Then
+   
+     'create a buffer to receive file-version
+     '(FI) information.
+      ReDim sBuffer(nBufferSize)
+      Call GetFileVersionInfo(sDriverFile, 0&, nBufferSize, sBuffer(0))
+      
+     'VerQueryValue function returns selected version info
+     'from the specified version-information resource. Grab
+     'the file info and copy it into the  VS_FIXEDFILEINFO structure.
+      Call VerQueryValue(sBuffer(0), "\", lpBuffer, nVerSize)
+      Call CopyMemory(FI, ByVal lpBuffer, Len(FI))
+     
+     'extract the file version from the FI structure
+      tmpVer = Format$(HiWord(FI.dwFileVersionMS)) & "." & _
+               Format$(LoWord(FI.dwFileVersionMS), "00") & "."
+         
+      If FI.dwFileVersionLS > 0 Then
+         tmpVer = tmpVer & Format$(HiWord(FI.dwFileVersionLS), "00") & "." & _
+                           Format$(LoWord(FI.dwFileVersionLS), "00")
+      Else
+         tmpVer = tmpVer & Format$(FI.dwFileVersionLS, "0000")
+      End If
+      
+      End If
+   
+   GetFileVersion = tmpVer
+   
+End Function
+----------------------------------------------------------------------------------
+RemoteUserAccounts
+----------------------------------------------------------------------------------
+Private Const MAX_PREFERRED_LENGTH As Long = -1
+Private Const NERR_SUCCESS As Long = 0&
+Private Const ERROR_MORE_DATA As Long = 234
+Private Const FILTER_NORMAL_ACCOUNT  As Long = &H2
+Private Const LB_SETTABSTOPS As Long = &H192
+
+Private Const SV_TYPE_WORKSTATION As Long = &H1
+Private Const SV_TYPE_SERVER As Long = &H2
+
+Private Type SERVER_INFO_100
+   sv100_platform_id As Long
+   sv100_name As Long
+End Type
+
+Private Type USER_INFO_1
+  usri1_name As Long
+  usri1_password As Long
+  usri1_password_age As Long
+  usri1_priv As Long
+  usri1_home_dir As Long
+  usri1_comment As Long
+  usri1_flags As Long
+  usri1_script_path As Long
+End Type
+
+Private Declare Function NetServerEnum Lib "Netapi32" _
+  (ByVal Servername As Long, _
+   ByVal Level As Long, _
+   buf As Any, _
+   ByVal prefmaxlen As Long, _
+   entriesread As Long, _
+   totalentries As Long, _
+   ByVal servertype As Long, _
+   ByVal domain As Long, _
+   resume_handle As Long) As Long
+
+Private Declare Function NetUserEnum Lib "Netapi32" _
+  (ByVal Servername As Long, _
+   ByVal Level As Long, _
+   ByVal Filter As Long, _
+   bufptr As Long, _
+   ByVal prefmaxlen As Long, _
+   entriesread As Long, _
+   totalentries As Long, _
+   resumehandle As Long) As Long
+
+Private Declare Function NetApiBufferFree Lib "Netapi32" _
+   (ByVal Buffer As Long) As Long
+
+Private Declare Sub CopyMemory Lib "kernel32" _
+   Alias "RtlMoveMemory" _
+  (pTo As Any, uFrom As Any, _
+   ByVal lSize As Long)
+   
+Private Declare Function lstrlenW Lib "kernel32" _
+  (ByVal lpString As Long) As Long
+
+Private Declare Function SendMessage Lib "user32" _
+   Alias "SendMessageA" _
+   (ByVal hwnd As Long, _
+    ByVal wMsg As Long, _
+    ByVal wParam As Long, _
+    lParam As Any) As Long
+
+
+
+Private Sub Form_Load()
+
+   With List1
+      .Move 200, 600, 2000, 2300
+   End With
+   
+   With List2
+      .Move List1.Left + List1.Width + 100, 600, 4700, 2300
+   End With
+   
+   Me.Width = List2.Left + List2.Width + 300
+   Me.Height = List1.Top + List2.Height + 600
+   
+   With Label1
+      .Caption = "Logged in machines"
+      .Move 250, 300, 2000
+      .WordWrap = True
+      .AutoSize = True
+   End With
+   
+   With Label2
+      .Caption = "Users"
+      .Move List2.Left + 50, 300, 2000
+      .WordWrap = True
+      .AutoSize = True
+   End With
+   
+   With Label3
+      .Caption = "Password Age"
+      .Move List2.Left + 2060, 300, 2000
+      .WordWrap = True
+      .AutoSize = True
+   End With
+   
+  'set up a tabstop in list2
+   Dim TabStop(0 To 0) As Long
+   TabStop(0) = 90
+   Call SendMessage(List2.hwnd, LB_SETTABSTOPS, 0&, ByVal 0&)
+   Call SendMessage(List2.hwnd, LB_SETTABSTOPS, 1, TabStop(0))
+   
+  'load the available machines
+  '(both servers and workstations)
+   Call GetServers
+
+End Sub
+
+
+Private Sub List1_Click()
+
+   If List1.ListIndex > -1 Then
+   
+      With List2
+         .Clear
+         .AddItem "working ..."
+         .Refresh
+      End With
+      
+      GetUserEnumInfo List1.List(List1.ListIndex)
+      
+   End If
+   
+End Sub
+
+
+Private Sub GetServers()
+
+  'lists all servers of the specified type
+  'that are visible in a domain
+
+   Dim bufptr          As Long
+   Dim dwEntriesread   As Long
+   Dim dwTotalentries  As Long
+   Dim dwResumehandle  As Long
+   Dim se100           As SERVER_INFO_100
+   Dim success         As Long
+   Dim nStructSize     As Long
+   Dim cnt             As Long
+
+  'Call passing MAX_PREFERRED_LENGTH to have the
+  'API allocate required memory for the return values.
+  '
+  'dwServerName must be Null. The level parameter
+  '(100 here) specifies the data structure being
+  'used (in this case a SERVER_INFO_100 structure).
+  '
+  'The domain member is passed as Null, indicating
+  'machines on the primary domain are to be retrieved.
+  'If you decide to use this member to specify a
+  'specific domain, use or pass StrPtr("domain name"),
+  'not the string itself.
+   nStructSize = LenB(se100)
+   
+   success = NetServerEnum(0&, _
+                           100, _
+                           bufptr, _
+                           MAX_PREFERRED_LENGTH, _
+                           dwEntriesread, _
+                           dwTotalentries, _
+                           SV_TYPE_WORKSTATION Or SV_TYPE_SERVER, _
+                           0&, _
+                           dwResumehandle)
+
+  'if all goes well
+   If success = NERR_SUCCESS And _
+      success <> ERROR_MORE_DATA Then
+
+     'loop through the returned data, adding each
+     'machine to the list
+      For cnt = 0 To dwEntriesread - 1
+
+        'get one chunk of data and cast
+        'into an SERVER_INFO_100 type
+        'in order to add the machine
+        'name to the list
+         CopyMemory se100, ByVal bufptr + (nStructSize * cnt), nStructSize
+         List1.AddItem GetPointerToByteStringW(se100.sv100_name)
+
+      Next
+
+   End If
+
+  'clean up, regardless of success
+   Call NetApiBufferFree(bufptr)
+
+End Sub
+
+
+Private Sub GetUserEnumInfo(Optional sServer As String)
+
+   Dim bufptr As Long
+   Dim dwEntriesread As Long
+   Dim dwTotalentries As Long
+   Dim dwResumehandle As Long
+   Dim success As Long
+   Dim dwServer As Long
+   Dim cnt As Long
+   Dim nStructSize As Long
+   Dim ui1 As USER_INFO_1
+
+   sServer = QualifyServer(sServer)
+   dwServer = StrPtr(sServer)
+   
+   success = NetUserEnum(dwServer, _
+                         1, _
+                         FILTER_NORMAL_ACCOUNT, _
+                         bufptr, _
+                         MAX_PREFERRED_LENGTH, _
+                         dwEntriesread, _
+                         dwTotalentries, _
+                         dwResumehandle)
+   
+   List2.Clear
+   
+   If success = NERR_SUCCESS And _
+      success <> ERROR_MORE_DATA Then
+   
+      nStructSize = LenB(ui1)
+     
+      For cnt = 0 To dwEntriesread - 1
+         
+         CopyMemory ui1, ByVal bufptr + (nStructSize * cnt), nStructSize
+
+         List2.AddItem GetPointerToByteStringW(ui1.usri1_name) & _
+                       vbTab & _
+                       ConvertPwSeconds(ui1.usri1_password_age)
+         
+      Next
+   
+   End If
+   
+   NetApiBufferFree bufptr   
+   
+End Sub
+
+
+Private Function ConvertPwSeconds(dwSeconds As Long) As String
+
+   Dim buff As String
+
+  'assume password has expired
+   buff = "(password expired)"
+
+   If dwSeconds > 0 Then
+   
+      Select Case dwSeconds
+      
+         Case Is >= 31449600:
+            buff = FormatNumber(dwSeconds / 31449600, 2) & " years" & _
+                  "  (" & FormatNumber(dwSeconds, 0) & " seconds)"
+
+         Case Is >= 604800:
+            buff = FormatNumber(dwSeconds / 604800, 2) & " weeks" & _
+                  "  (" & FormatNumber(dwSeconds, 0) & " seconds)"
+                  
+         Case Is >= 86400:
+            buff = FormatNumber(dwSeconds / 86400, 2) & " days" & _
+                  "  (" & FormatNumber(dwSeconds, 0) & " seconds)"
+
+         Case Is >= 3600:
+            buff = FormatNumber(dwSeconds / 3600, 2) & " hours" & _
+                  "  (" & FormatNumber(dwSeconds, 0) & " seconds)"
+
+         Case Is >= 60:
+            buff = FormatNumber(dwSeconds / 60, 2) & " minutes" & _
+                  "  (" & FormatNumber(dwSeconds, 0) & " seconds)"
+
+         Case Is < 60:
+            buff = FormatNumber(dwSeconds, 2) & " seconds"
+      
+      End Select
+      
+   End If
+
+   ConvertPwSeconds = buff
+
+End Function
+
+
+Private Function GetPointerToByteStringW(ByVal dwData As Long) As String
+
+   Dim tmp() As Byte
+   Dim tmplen As Long
+
+   If dwData <> 0 Then
+      tmplen = lstrlenW(dwData) * 2
+      If tmplen <> 0 Then
+         ReDim tmp(0 To (tmplen - 1)) As Byte
+         CopyMemory tmp(0), ByVal dwData, tmplen
+         GetPointerToByteStringW = tmp
+     End If
+   End If
+    
+End Function
+
+
+Private Function QualifyServer(ByVal sServer As String) As String
+
+  'see if there are already two slashes
+  'preceeding the server name
+   If Left$(sServer, 2) = "\\" Then
+   
+     'there are, so the server is already
+     'qualified; return the passed string
+      QualifyServer = sServer
+   
+   Else
+   
+     'there aren't two, but is there one?
+      If Left$(sServer, 1) = "\" Then
+      
+        'yes, so add one more
+         QualifyServer = "\" & sServer
+      
+      Else
+      
+        'the string needs both
+         QualifyServer = "\\" & sServer
+      
+      End If  'If Left$(sServer, 1)
+   End If  'If Left$(sServer, 2)
+   
+End Function
+
+
+
+

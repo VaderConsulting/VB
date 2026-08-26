@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Merge Module Summary Information Stream Reference</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="merge module summary information stream reference [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_merge_module_summary_information_stream_reference"></A>Merge Module Summary Information Stream Reference</H2>
+
+<P>The following table describes the merge module's summary information stream. See also <A HREF="sovr_99yl.htm">Summary Information Stream</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Property name</TH>
+<TH align=left width=19%>Property ID</TH>
+<TH align=left width=10%>PID</TH>
+<TH align=left width=18%>Type</TH>
+<TH align=left width=36%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_4r5l.htm"><B>Codepage</B></A></TD>
+<TD width=19%>PID_CODEPAGE</TD>
+<TD width=10%>1</TD>
+<TD width=18%>VT_I2</TD>
+<TD width=36%>Identifies the code page used to display the Summary Information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_82rd.htm"><B>Title</B></A></TD>
+<TD width=19%>PID_TITLE</TD>
+<TD width=10%>2</TD>
+<TD width=18%>VT_LPSTR</TD>
+<TD width=36%>"merge module"</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_0b5l.htm"><B>Subject</B></A></TD>
+<TD width=19%>PID_SUBJECT</TD>
+<TD width=10%>3</TD>
+<TD width=18%>VT_LPSTR</TD>
+<TD width=36%><A HREF="pref_52m1.htm"><B>ProductName</B> property</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_76k9.htm"><B>Author</B></A></TD>
+<TD width=19%>PID_AUTHOR</TD>
+<TD width=10%>4</TD>
+<TD width=18%>VT_LPSTR</TD>
+<TD width=36%><A HREF="pref_9z09.htm"><B>Manufacturer</B> property</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_7xfd.htm"><B>Keywords</B></A></TD>
+<TD width=19%>PID_KEYWORDS</TD>
+<TD width=10%>5</TD>
+<TD width=18%>VT_LPSTR</TD>
+<TD width=36%>"MergeModule, MSI, database"</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_4lfd.htm"><B>Comments</B></A></TD>
+<TD width=19%>PID_COMMENTS</TD>
+<TD width=10%>6</TD>
+<TD width=18%>VT_LPSTR</TD>
+<TD width=36%>Description of the merge module and its components.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_80hl.htm"><B>Template</B></A></TD>
+<TD width=19%>PID_TEMPLATE</TD>
+<TD width=10%>7</TD>
+<TD width=18%>VT_LPSTR</TD>
+<TD width=36%>Platform and language versions supported by database. Required in every merge module. See <A HREF="sref_80hl.htm"><B>Template</B></A> for syntax.
+<P>A module containing 64-bit components must have Intel64 set. For information, see <A HREF="merg_2otv.htm">Using 64-bit Merge Modules</A>.</P>
+
+<P>List numeric language identifiers for all languages supported by the module. The first language in the list is the default language of the module. Specifying more than one language results in a multi-language merge.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_7dyx.htm"><B>Last Saved By</B></A></TD>
+<TD width=19%>PID_LASTAUTHOR</TD>
+<TD width=10%>8</TD>
+<TD width=18%>VT_LPSTR</TD>
+<TD width=36%>Specifies the platform and language of the patched database using the same syntax as the <A HREF="sref_80hl.htm"><B>Template Summary</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_1am1.htm"><B>Revision Number</B></A></TD>
+<TD width=19%>PID_REVNUMBER</TD>
+<TD width=10%>9</TD>
+<TD width=18%>VT_LPSTR</TD>
+<TD width=36%>The unique GUID for this merge module. Required in every merge module.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_1cs9.htm"><B>Last Printed</B></A></TD>
+<TD width=19%>PID_LASTPRINTED</TD>
+<TD width=10%>11</TD>
+<TD width=18%>VT_FILETIME</TD>
+<TD width=36%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_2ut5.htm"><B>Create Time/Date</B></A></TD>
+<TD width=19%>PID_CREATE_DTM</TD>
+<TD width=10%>12</TD>
+<TD width=18%>VT_FILETIME</TD>
+<TD width=36%>Time and date when the installer database was created.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_0hkp.htm"><B>Last Saved Time/Date</B></A></TD>
+<TD width=19%>PID_LASTSAVE_DTM</TD>
+<TD width=10%>13</TD>
+<TD width=18%>VT_FILETIME</TD>
+<TD width=36%>Initially NULL. Each time a user changes an installation database the value is updated to the current system time/date at the time the merge database was saved.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_8eex.htm"><B>Page Count</B></A></TD>
+<TD width=19%>PID_PAGECOUNT</TD>
+<TD width=10%>14</TD>
+<TD width=18%>VT_I4</TD>
+<TD width=36%>Minimum required installer version. Stored as an integer in the form: Major * 100 + minor. Required in every merge module.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_8ge1.htm"><B>Word Count</B></A></TD>
+<TD width=19%>PID_WORDCOUNT</TD>
+<TD width=10%>15</TD>
+<TD width=18%>VT_I4</TD>
+<TD width=36%>Enter 0 for this property. Note that in a merge module, files are always inside an embedded cabinet file regardless of the value of this property. Required in every merge module.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_6r5l.htm"><B>Character Count</B></A></TD>
+<TD width=19%>PID_CHARCOUNT</TD>
+<TD width=10%>16</TD>
+<TD width=18%>VT_I4</TD>
+<TD width=36%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_4qrd.htm"><B>Creating Application</B></A></TD>
+<TD width=19%>PID_APPNAME</TD>
+<TD width=10%>18</TD>
+<TD width=18%>VT_LPSTR</TD>
+<TD width=36%>Application used to create the installer database. In general the value is the name of the software used to author this merge module.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%><A HREF="sref_2mbd.htm"><B>Security</B></A></TD>
+<TD width=19%>PID_SECURITY</TD>
+<TD width=10%>19</TD>
+<TD width=18%>VT_I4</TD>
+<TD width=36%>"2"</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Merge%20Module%20Summary%20Information%20Stream%20Reference;%20RELEASE:%20August%202001;%20URL:%20merg_0c2t.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Merge%20Module%20Summary%20Information%20Stream%20Reference;%20RELEASE:%20August%202001;%20URL:%20merg_0c2t.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

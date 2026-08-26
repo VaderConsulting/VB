@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I open a multiple-language merge module in a specific language?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_how_do_i_open_a_multiple_language_merge_module_in_a_specific_language"></A>How do I open a multiple-language merge module in a specific language?</H3>
+
+<P>When merging a module into an installation database, there are two languages of interest. The first is the language of the target installation package specified by <A HREF="pref_7aex.htm">ProductLanguage</A> in the <A HREF="tref_21d1.htm">Property table</A>. The second is the language of the merge module, which appears in the Language column of the <A HREF="merg_4nad.htm">ModuleSignature table</A>. </P>
+
+<P>The language of the installation package may be passed to the module by the merge tool when the package is opened for the merge. However, in some cases it may be necessary to disregard the language of the target and request that the module be opened in another language. For example, in the case of an English package installing both the English and German resources from the module.</P>
+
+<P>When opening a module with a language request, the merge tool checks the requested language against the languages specified in the Language column of the <A HREF="merg_4nad.htm">ModuleSignature table</A>. The following process is used to determine which language to use: 
+
+<OL>
+	<LI>If the language in the ModuleSignature table is equal or more general than the requested language, the module opens.</LI>
+
+	<LI>If the module supports the exact language requested, that language is used.</LI>
+
+	<LI>If the module supports the language group of the language requested that language group is used. For example, check 9 if 1033 was requested but not found in step 2. </LI>
+
+	<LI>Check if there is a language transform that changes the module to neutral. </LI>
+
+	<LI>If none of the above succeed, the module does not support the requested language and so the merge fails.</LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

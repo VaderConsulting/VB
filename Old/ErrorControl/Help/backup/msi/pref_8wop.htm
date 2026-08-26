@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>PROMPTROLLBACKCOST Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="PROMPTROLLBACKCOST Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_promptrollbackcost_property"></A>PROMPTROLLBACKCOST Property</H1>
+
+<P>The PROMPTROLLBACKCOST property specifies the action the installer takes if <A HREF="over_0bzi.htm">rollback installation</A> capabilities are enabled and there is insufficient disk space to complete the installation.</P>
+
+<P>The possible values of PROMPTROLLBACKCOST are as follows.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=12%>Value</TH>
+<TH align=left width=88%>Action</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>P</TD>
+<TD width=88%>Display a dialog box asking whether to continue without a rollback.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>D</TD>
+<TD width=88%>Disable rollback and continue without asking user.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>F</TD>
+<TD width=88%>Fail with the out-of-disk-space error prompt.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>When the user interface is run at the Basic or no UI level, the installer handles all the out-of-disk-space logic automatically.</P>
+
+<P>When the user interface runs at the Full level, the user can be given additional options, such as prompting before proceeding with a rollback, disabling rollback, or proceeding without rollback when the disk is full. It is up to the package developer to author the dialog box sequence to provide the appropriate choices to the user. The elements available to do this are the <A HREF="href_7awk.htm">EnableRollback ControlEvent</A>, <A HREF="pref_5m2h.htm">OutOfDiskSpace property</A>, <A HREF="pref_5mk9.htm">OutOfNoRbDiskSpace property</A>, and the <A HREF="#_msi_promptrollbackcost_property">PROMPTROLLBACKCOST property</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,14 @@
+FrmMain = 11, 11, 1197, 899, C, 50, 50, 443, 403, C
+frmAbout = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+FrmSettings = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+FrmStats = 75, 75, 1079, 683, C, 0, 0, 0, 0, C
+modSlider = 275, 275, 1214, 886, C
+CIpHelper = 3, 3, 1042, 912, C
+CInterface = 175, 175, 1114, 786, C
+CInterfaces = 200, 200, 1139, 811, C
+NetStat = 15, 11, 1000, 904, C
+FrmDesktop = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+ModScreenCapture = 100, 100, 1039, 711, C
+FrmColors = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+ModStart = 150, 150, 1089, 758, C
+FrmMenu = 0, 0, 0, 0, C, 0, 0, 0, 0, C

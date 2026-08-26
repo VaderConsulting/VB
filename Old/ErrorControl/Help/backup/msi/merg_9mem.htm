@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CloseDatabase Function</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="CloseDatabase Function">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_closedatabase_function"></A>CloseDatabase Function</H1>
+
+<P>The function <B>CloseDatabase</B> implements the <A HREF="merg_2750.htm"><B>CloseDatabase</B> method</A> of the <A HREF="merg_4th0.htm"><B>Merge</B> Object</A>. The function closes the currently open Windows Installer database. </P>
+
+<P><B>IMsmMerge::CloseDatabase</B> </P>
+
+<PRE class=syntax><B>HRESULT CloseDatabase(
+</B>  <B>VARIANT_BOOL</B> <I>bCommit</I>
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>bCommit</I> </DT>
+
+<DD>TRUE if changes should be saved, FALSE otherwise. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>E_FAIL </TD>
+<TD width=52%>There was an error closing the database. The state of the IMsmMerge interface is now in an undefined state. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>STG_E_CANTSAVE as HRESULT </TD>
+<TD width=52%>Unable to save database. This error will not be generated if bCommit is FALSE.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>S_FALSE</TD>
+<TD width=52%>No database was open.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>S_OK </TD>
+<TD width=52%>The function succeeded. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This function closes the currently open database. Closing a database clears all dependency information but does not affect any errors that have not been retrieved.</P>
+
+<P>See <A HREF="merg_29f2.htm">Merge Module Automation</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Isolated Components</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="isolated components [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_isolated_components"></A>Isolated Components</H1>
+
+<P>Authors of installation packages can specify that the installer copy the shared files (commonly shared DLLs) of an application into the application's folder rather than to a shared location. This private set of files (DLLs) are then used only by the application. Isolating the application together with its shared components in this manner has the following advantages:
+
+<UL>
+	<LI>The application always uses the versions of shared files with which it was deployed.</LI>
+
+	<LI>Installing the application does not overwrite other versions of the shared files by other applications.</LI>
+
+	<LI>Subsequent installations of other applications using different versions of the shared files cannot overwrite the files used by this application.</LI>
+</UL>
+
+<P>Because the current implementation of COM keeps a single full path in the registry for each CLSID/Context pair, it forces all applications to use the same version of a shared DLL. To enable an application to keep a private copy of a COM server, the system loader in Windows 98 and Windows 2000 checks for the presence of a .LOCAL file in the application's folder. If the system loader detects a .LOCAL file, it alters its search logic to prefer DLLs located in the same folder as the application. </P>
+
+<P>When Windows Installer version 1.1 executes the <A HREF="aref_71gu.htm">IsolateComponents action</A> it copies the files of the component (commonly a shared DLL) specified in the Component_Shared column of the <A HREF="tref_6jc5.htm">IsolatedComponent table</A> into the same folder as the component (commonly an .exe) specified in the Component_Application column. The installer creates a file in this directory, zero bytes in length, having the short filename name of the key file for Component_Application (typically the name is the same as the application's .exe) appended with .LOCAL. The installer uses the registration for the component in its shared location and does not write any registration information for the copy of the component in the private location. The IsolatedComponent action and table are not available with Windows Installer version 1.0. </P>
+
+<P>For more information, see:</P>
+
+<P><A HREF="over_0kfn.htm">Installation of Isolated Components</A> </P>
+
+<P><A HREF="over_6p9v.htm">Reinstallation of Isolated Components</A> </P>
+
+<P><A HREF="over_38fn.htm">Removal of Isolated Components</A> </P>
+
+<P><A HREF="over_9iib.htm">Using Isolated Components</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

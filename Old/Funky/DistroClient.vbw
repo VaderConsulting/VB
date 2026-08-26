@@ -1,0 +1,7 @@
+frmMain = 5, 5, 1260, 923, , 7, 8, 322, 338, C
+modGlobal = 16, 7, 1126, 579, 
+RegistryGrip = 13, 4, 918, 614, C
+modDatabase = 6, 11, 843, 603, C
+modWIN32API = 6, 3, 829, 619, C
+clsProcess = 7, 7, 846, 623, C
+clsTCP = 2, 10, 849, 608, C

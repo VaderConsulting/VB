@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleConfiguration Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ModuleConfiguration table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_moduleconfiguration_table"></A>ModuleConfiguration Table</H1>
+
+<P>The ModuleConfiguration table identifies the configurable attributes of the module. This table is not merged into the database.</P>
+
+<P>The ModuleConfiguration table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Column</TH>
+<TH align=left width=41%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=20%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Name</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Format</TD>
+<TD width=41%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%>N</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Type</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>N</TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>ContextData</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>N</TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>DefaultValue</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>N</TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Attributes</TD>
+<TD width=41%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%>N</TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>DisplayName</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>N</TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Description</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>N</TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>HelpLocation</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>N</TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>HelpKeyword</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>N</TD>
+<TD width=20%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Name</DT>
+
+<DD>This field defines the name of the configurable item. This name is referenced in the formatting template in the Value column of the <A HREF="merg_9zvp.htm">ModuleSubstitution table</A>.</DD>
+
+<DT>Format</DT>
+
+<DD>This column specifies the format of the data being changed.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=78%>Format</TH>
+<TH align=left width=22%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=78%><A HREF="merg_1lir.htm">Text</A></TD>
+<TD width=22%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=78%><A HREF="merg_5iyb.htm">Key</A></TD>
+<TD width=22%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=78%><A HREF="merg_9w6r.htm">Integer</A></TD>
+<TD width=22%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=78%><A HREF="merg_1wdv.htm">Bitfield Format</A></TD>
+<TD width=22%>3</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Type</DT>
+
+<DD>This column specifies the type for the data being changed. This type is used to provide a context for any user-interface and is not used in the merge process. The valid values for this column depend on the value in the Format column. </DD>
+
+<DT>ContextData</DT>
+
+<DD>This column specifies a semantic context for the requested data. The type is used to provide a context for any user-interface and is not used in the merge process. The valid values for this column depend on the values in the Format and Type columns. </DD>
+
+<DT>DefaultValue</DT>
+
+<DD>This column specifies a default value for the item in this record if the merge tool declines to provide a value. This value must have the format, type, and context of the item. If this is a "Key" format item, the foreign key must be a valid key into the tables of the module. NULL may be a valid value for this column depending on the item. For "Key" format items, this value is in <A HREF="merg_3kxg.htm">CMSM special format</A>. For all other types, the value is treated literally.
+
+<P>Module authors must ensure that the module is valid in its default state. This ensures that versions of Mergemod.dll earlier than version 2.0 can still use the module in its default state.
+</DD>
+
+<DT>Attributes</DT>
+
+<DD>This column is a bit field containing attributes for this configurable item. NULL is equivalent to 0. All other bits in this column are reserved for future use and must be 0.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Name</TH>
+<TH align=left width=10%>Decimal</TH>
+<TH align=left width=14%>Hexadecimal</TH>
+<TH align=left width=49%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>msmConfigurableOptionKeyNoOrphan</TD>
+<TD width=10%>1</TD>
+<TD width=14%>0x00000001</TD>
+<TD width=49%>This attribute only applies to records that list a foreign key to a module table in their DefaultValue field. The merge tool ignores the attribute for any formats other than the <A HREF="merg_5iyb.htm">Key Format Types</A>. Items not listed in the <A HREF="merg_9zvp.htm">ModuleSubstitution table</A> are excluded from the following check.
+<P>The merge tool does not merge the row referenced by the DefaultValue column into the target database if the following conditions are satisfied after completing all configuration options. </P>
+
+<P>Every row in the ModuleConfiguration table with the same DefaultValue has the msmConfigurationItemsKeyNoOrphan set.</P>
+
+<P>No rows use the DefaultValue because the authoring tool declined to provide a value.</P>
+
+<P>The merge tool merges the row if any of the following conditions are satisfied.</P>
+
+<P>The merge tool finds any row that does not have msmConfigItemsKeyNoOrphan set.</P>
+
+<P>If the merge tool finds any row using DefaultValue because the authoring tool declined to provide a value.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>msmConfigurableOptionNonNullable</TD>
+<TD width=10%>2</TD>
+<TD width=14%>0x00000002</TD>
+<TD width=49%>When this attribute is set, NULL is not a valid response for this item. This attribute has no effect for <A HREF="merg_9w6r.htm">Integer Format Types</A> or <A HREF="merg_1wdv.htm">Bitfield Format Types</A>.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>DisplayName</DT>
+
+<DD>This column provides a short description of this item that the authoring tool may use in the user interface. This column may not be localized. Set this column to NULL to have the module is request that the authoring tool not expose this property in the UI. The tool may disregard the value in this field.</DD>
+
+<DT>Description</DT>
+
+<DD>This column provides a description of this item that the authoring tool may use in UI elements. This string may be localized by the module's language transform. This column may be NULL.</DD>
+
+<DT>HelpLocation</DT>
+
+<DD>This column provides either the name of a help file (without the .chm extension) or a semicolon delimited list of help namespaces. This column can be NULL if no help is available. This column can be NULL only if the HelpKeyword column is NULL.</DD>
+
+<DT>HelpKeyword</DT>
+
+<DD>This column provides a keyword into the help file or namespace from the HelpLocation column. The interpretation of this keyword depends on the HelpLocation column. This column may be NULL.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The ModuleConfiguration table is used by <A HREF="merg_833n.htm">Configurable Merge Modules</A>. Mergemod.dll version 2.0 or later is required to create a configurable merge module.</P>
+
+<P>To ensure compatibility with older versions of Mergemod.dll, the ModuleConfiguration table and <A HREF="merg_9zvp.htm">ModuleSubstitution table</A> should be added to the <A HREF="merg_5f51.htm">ModuleIgnoreTable table</A> of every module. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleConfiguration%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_96cl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleConfiguration%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_96cl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

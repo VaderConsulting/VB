@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE30</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE30">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice30"></A>ICE30</H1>
+
+<P>ICE30 validates that the installation of components containing the same file never installs the file more than once in the same directory.</P>
+
+<P>ICE30 goes to every component in the <A HREF="tref_09np.htm">Component table</A> and then determines the component's target directory from the <A HREF="tref_6an9.htm">Directory table</A>. It then checks to see which of these components install to the same target directory. Finally, it uses the <A HREF="tref_4n6t.htm">File table</A> to verify that none of the files in these components have the same name.</P>
+
+<P>ICE30 checks both long file names (LFN) and short file names (SFN). </P>
+
+<P>ICE30 does not evaluate properties in the resolution of directories because these properties can change at runtime and alter the directory resolution scheme. This means ICE30 can detect file collisions due to directories with the same property in their paths, but does not detect collisions resulting from two properties having the same value.</P>
+
+<H4>Result</H4>
+
+<P>ICE30 posts an error message for each pair of components that installs the same file to the same directory.</P>
+
+<H4>Example</H4>
+
+<P>The example shown returns each of the following errors twice.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE30 error or warning</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>ERROR: The target file 'README.1st' is installed in 'TARGETDIR\PRODUCT' by two different components on an SFN system: 'Component1' and 'Component2'. This breaks component reference counting.</CODE></TD>
+<TD width=63%>Component1 and Component2 both have a file named 'READEME.1st'.
+<P>When using short file names, the installer installs both Dir1 and Dir2 to the same directory, TARGETDIR\PRODUCT. </P>
+
+<P>ICE30 generate two errors, one for each file. In an authoring environment that displays error locations, the first error is at one file's entry in the <A HREF="tref_4n6t.htm">File Table</A>, and the second at the location of the other file. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>ERROR: Installation of a conditionalized component would cause the target file 'README.1st' to be installed in 'TARGETDIR\COMMON TOOLS' by two different components on an LFN system: 'Component3' and 'Component4'. This would break component reference counting.</CODE></TD>
+<TD width=63%>Component4 has an entry in the Condition column of the <A HREF="tref_09np.htm">Component table</A> and Component3 does not.
+<P>If <A HREF="pref_37nd.htm"><B>VersionNT</B></A> is True, Component4 is installed, and there a collision with the Readme.1st always installed by Component3.</P>
+
+<P>ICE30 generates 4 errors, one pair for SFN, one for LFN.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>WARNING: The target file 'README.1st' might be installed in 'TARGETDIR\COMMON TOOLS' by two different conditionalized components on an SFN system: 'Component4' and 'Component5'. If the conditions are not mutually exclusive, this will break the component reference counting system.</CODE></TD>
+<TD width=63%>Because Component4 and Component5 both have entries in the Condition column of the <A HREF="tref_09np.htm">Component table</A> this file collision may not occur. 
+<P>ICE30 only posts a warning because the conditions must be determined at the time of the installation.</P>
+
+<P>ICE30 generates 4 warnings, one pair for SFN, one for LFN. </P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Component</TH>
+<TH align=left width=26%>Directory</TH>
+<TH align=left width=50%>Condition</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Component1</TD>
+<TD width=26%>Dir1</TD>
+<TD width=50%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Component2</TD>
+<TD width=26%>Dir2</TD>
+<TD width=50%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Component3</TD>
+<TD width=26%>Dir3</TD>
+<TD width=50%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Component4</TD>
+<TD width=26%>Dir3</TD>
+<TD width=50%>VersionNT</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Component5</TD>
+<TD width=26%>Dir3</TD>
+<TD width=50%>Version9X</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_6an9.htm"><B>Directory Table</B></A><B> </B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Directory</TH>
+<TH align=left width=28%>Parent_Directory</TH>
+<TH align=left width=50%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>SOURCEDIR</TD>
+<TD width=28%>&nbsp;</TD>
+<TD width=50%>TARGETDIR</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Dir1</TD>
+<TD width=28%>SOURCEDIR</TD>
+<TD width=50%>Product|Component1 Product:.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Dir2</TD>
+<TD width=28%>SOURCEDIR</TD>
+<TD width=50%>Product:.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Dir3</TD>
+<TD width=28%>SOURCEDIR</TD>
+<TD width=50%>Common|Common Tools:</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>File</TH>
+<TH align=left width=28%>Component_</TH>
+<TH align=left width=50%>FileName</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>File1</TD>
+<TD width=28%>Component1</TD>
+<TD width=50%>README.1st</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>File2</TD>
+<TD width=28%>Component2</TD>
+<TD width=50%>README.1st</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>File3</TD>
+<TD width=28%>Component3</TD>
+<TD width=50%>README.1st</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>File4</TD>
+<TD width=28%>Component4</TD>
+<TD width=50%>README.1st</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>File5</TD>
+<TD width=28%>Component5</TD>
+<TD width=50%>README.1st</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE30;%20RELEASE:%20August%202001;%20URL:%20ices_1xww.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE30;%20RELEASE:%20August%202001;%20URL:%20ices_1xww.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

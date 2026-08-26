@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>IniFile Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="IniFile Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_inifile_table"></A>IniFile Table</H1>
+
+<P>The IniFile table contains the .ini information that the application needs to set in an .ini file. </P>
+
+<P>The IniFile table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Column</TH>
+<TH align=left width=41%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>IniFile</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>FileName</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>DirProperty</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Section</TD>
+<TD width=41%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Key</TD>
+<TD width=41%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Value</TD>
+<TD width=41%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Action</TD>
+<TD width=41%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Component_</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>IniFile</DT>
+
+<DD>The key for this table.</DD>
+
+<DT>FileName</DT>
+
+<DD>The localizable name of the .ini file in which to write the information.</DD>
+
+<DT>DirProperty</DT>
+
+<DD>Name of a property having a value that  resolves to the full path of the folder containing the .ini file. The property can be the name of a directory in the <A HREF="tref_6an9.htm">Directory table</A>, a property set by the <A HREF="tref_0w9x.htm">AppSearch table</A>, or any other property that represents a full path. If this field is left blank, the .ini file is created in the folder having the full path specified by the <A HREF="pref_88l5.htm"><B>WindowsFolder</B> property</A>.</DD>
+
+<DT>Section</DT>
+
+<DD>The localizable .ini file section.</DD>
+
+<DT>Key</DT>
+
+<DD>The localizable .ini file key within the section.</DD>
+
+<DT>Value</DT>
+
+<DD>The localizable value to be written.</DD>
+
+<DT>Action</DT>
+
+<DD>The type of modification to be made. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Constant</TH>
+<TH align=left width=21%>Hexadecimal</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=45%>Modification</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%><B>msidbIniFileActionAddLine</B></TD>
+<TD width=21%>0x000</TD>
+<TD width=16%>0</TD>
+<TD width=45%>Creates or updates a .ini entry.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%><B>msidbIniFileActionCreateLine</B></TD>
+<TD width=21%>0x001</TD>
+<TD width=16%>1</TD>
+<TD width=45%>Creates a .ini entry only if the entry does not already exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%><B>msidbIniFileActionAddTag</B></TD>
+<TD width=21%>0x003</TD>
+<TD width=16%>3</TD>
+<TD width=45%>Creates a new entry or appends a new comma-separated value to an existing entry.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Component_</DT>
+
+<DD>External key into the first column of the <A HREF="tref_09np.htm">Component table</A> referencing the component that controls the installation of the .ini value.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The .ini file information is written out when the corresponding component has been selected to be installed as local or run from source.</P>
+
+<P>This table is referred to when the <A HREF="aref_8432.htm">WriteIniValues action</A> or the <A HREF="aref_4tv2.htm">RemoveIniValues action</A> is executed.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20IniFile%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_56jp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20IniFile%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_56jp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

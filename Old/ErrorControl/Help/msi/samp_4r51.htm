@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Updating Files and File Attributes for an Upgrade</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_updating_files_and_file_attributes_for_an_upgrade"></A>Updating Files and File Attributes for an Upgrade</H2>
+
+<P>Because the upgrade updates the files used by the application, you must modify the <A HREF="tref_4n6t.htm">File table</A> of the database. Use the database editor Orca that is provided with the SDK, or another editor to open MNP2001.msi and enter the following data into the <A HREF="tref_4n6t.htm">File Table</A>.</P>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>File</TH>
+<TH align=left width=15%>Component_</TH>
+<TH align=left width=14%>FileName</TH>
+<TH align=left width=10%>FileSize</TH>
+<TH align=left width=11%>Version</TH>
+<TH align=left width=10%>Language</TH>
+<TH align=left width=10%>Attributes</TH>
+<TH align=left width=16%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Baseba01.txt</TD>
+<TD width=15%>Baseball</TD>
+<TD width=14%>Baseba01.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Concer01.txt</TD>
+<TD width=15%>Concert</TD>
+<TD width=14%>Concer01.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Dance01.txt</TD>
+<TD width=15%>Dance</TD>
+<TD width=14%>Dance01.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Opera01.txt</TD>
+<TD width=15%>Opera</TD>
+<TD width=14%>Opera01.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Footba01.txt</TD>
+<TD width=15%>Football</TD>
+<TD width=14%>Footba01.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Basket01.txt</TD>
+<TD width=15%>Basketball</TD>
+<TD width=14%>Basket01.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%>&nbsp;</TD>
+<TD width=10%>&nbsp;</TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Help.txt</TD>
+<TD width=15%>Help</TD>
+<TD width=14%>Help.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Januar01.txt</TD>
+<TD width=15%>January</TD>
+<TD width=14%>Januar01.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>NewYea01.txt</TD>
+<TD width=15%>NewYears</TD>
+<TD width=14%>NewYea01.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Memori01.txt</TD>
+<TD width=15%>Memorial</TD>
+<TD width=14%>Memori01.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Redpark.exe</TD>
+<TD width=15%>Notepad</TD>
+<TD width=14%>Redpark.exe</TD>
+<TD width=10%>45328</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Readme.txt</TD>
+<TD width=15%>Notepad</TD>
+<TD width=14%>Readme.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_6nz9.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Updating%20Files%20and%20File%20Attributes%20for%20an%20Upgrade;%20RELEASE:%20August%202001;%20URL:%20samp_4r51.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Updating%20Files%20and%20File%20Attributes%20for%20an%20Upgrade;%20RELEASE:%20August%202001;%20URL:%20samp_4r51.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

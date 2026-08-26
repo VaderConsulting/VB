@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ProductInfo Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ProductInfo Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_productinfo_property"></A>ProductInfo Property</H1>
+
+<P>The ProductInfo<B> </B>property is a read-only property that returns the value of the specified attribute for an installed or published product.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.ProductInfo(<I>Product, Attribute</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </DD>
+
+<DT><I>Product</I></DT>
+
+<DD>Specifies the product code of the installed product that contains the attribute of interest.</DD>
+
+<DT><I>Attribute</I></DT>
+
+<DD>Identifies the attribute to be retrieved. The properties in the following list can only be retrieved from applications that are installed. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Property name</TH>
+<TH align=left width=76%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>InstalledProductName</TD>
+<TD width=76%>Installed product name. See <A HREF="pref_52m1.htm">ProductName property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>VersionString</TD>
+<TD width=76%>Product version. See <A HREF="pref_120p.htm">ProductVersion property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>HelpLink</TD>
+<TD width=76%>Support link. See <A HREF="pref_067t.htm">ARPHELPLINK property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>HelpTelephone</TD>
+<TD width=76%>Support telephone. See <A HREF="pref_8vp5.htm">ARPHELPTELEPHONE property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>InstallLocation</TD>
+<TD width=76%>Installation location. See <A HREF="pref_8d4p.htm">ARPINSTALLLOCATION property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>InstallSource</TD>
+<TD width=76%>Installation source. See <A HREF="pref_6uwp.htm">SourceDir property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>InstallDate</TD>
+<TD width=76%>Installation date.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Publisher</TD>
+<TD width=76%>Publisher. See <A HREF="pref_9z09.htm">Manufacturer property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>LocalPackage</TD>
+<TD width=76%>Local cached package</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>URLInfoAbout</TD>
+<TD width=76%>URL information. See <A HREF="pref_2upl.htm">ARPURLINFOABOUT property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>URLUpdateInfo</TD>
+<TD width=76%>URL update information. See <A HREF="pref_7hmh.htm">ARPURLUPDATEINFO property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>VersionMinor</TD>
+<TD width=76%>Minor product version derived from <A HREF="pref_120p.htm">ProductVersion property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>VersionMajor</TD>
+<TD width=76%>Major product version derived from <A HREF="pref_120p.htm">ProductVersion property</A>.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<P>The attributes in the following list can be retrieved from applications that are advertised.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Property Name</TH>
+<TH align=left width=76%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Transforms</TD>
+<TD width=76%>Transforms</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Language</TD>
+<TD width=76%>Product language</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>ProductName</TD>
+<TD width=76%>Human readable product name. See <A HREF="pref_52m1.htm">ProductName property</A>.<A HREF="pref_52m1.htm">ProductName property</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>AssignmentType</TD>
+<TD width=76%>Assignment type</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>AdvertiseFlags</TD>
+<TD width=76%>Advertisement flags.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>PackageCode</TD>
+<TD width=76%>Identifier of package product was installed from. See <A HREF="over_0joz.htm">Package and Product Codes</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Version</TD>
+<TD width=76%>Product 
+<P>version derived from <A HREF="pref_120p.htm">ProductVersion property</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>ProductIcon</TD>
+<TD width=76%>Primary Icon for the package. See <A HREF="pref_8x6h.htm">ARPPRODUCTICON property</A>.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P><B>ProductInfo</B>("LocalPackage") does not necessarily return a path to the cached package. Maintenance mode installations should be not be invoked from the LocalPackage. The cached package is for internal uses only. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8wa7.htm"><B>MsiGetProductInfo</B></A>, <A HREF="msi_6str.htm"><B>MsiGetUserInfo</B></A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

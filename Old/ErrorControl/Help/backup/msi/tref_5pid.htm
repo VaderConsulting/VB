@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>InstallExecuteSequence Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="InstallExecuteSequence Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_installexecutesequence_table"></A>InstallExecuteSequence Table</H1>
+
+<P>The InstallExecuteSequence table lists actions that are executed when the top-level <A HREF="aref_986m.htm">INSTALL action</A> is executed. </P>
+
+<P>Actions in the install sequence up to the <A HREF="aref_9fzi.htm">InstallValidate action</A>, and any exit dialog boxes, are located in the <A HREF="tref_1git.htm">InstallUISequence table</A>. All actions from the InstallValidate through the end of the install sequence are in the InstallExecuteSequence table. Because the InstallExecuteSequence table needs to stand alone, it has any necessary initialization actions such as the <A HREF="aref_6jhq.htm">LaunchConditions</A>, <A HREF="aref_4bam.htm">CostInitialize</A>, <A HREF="aref_2f8u.htm">FileCost</A>, and <A HREF="aref_22we.htm">CostFinalize</A> actions.</P>
+
+<P><A HREF="cact_5t2r.htm">Custom actions</A> requiring a user interface should use <A HREF="qref_163p.htm">MsiProcessMessage</A> instead of authored dialog boxes created using the <A HREF="tref_51wl.htm">Dialog table</A>.</P>
+
+<P>The InstallExecuteSequence table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Column</TH>
+<TH align=left width=37%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Action</TD>
+<TD width=37%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Condition</TD>
+<TD width=37%><A HREF="tref_735a.htm">Condition</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Sequence</TD>
+<TD width=37%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Action</DT>
+
+<DD>Name of the action to execute. This is either a built-in action or a custom action.
+
+<P>Primary table key.
+</DD>
+
+<DT>Condition</DT>
+
+<DD>This field contains a conditional expression. If the expression evaluates to False, then the action is skipped. If the expression syntax is invalid, then the sequence terminates, returning iesBadActionData. For information on the syntax of conditional statements, see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.</DD>
+
+<DT>Sequence</DT>
+
+<DD>Number that determines the sequence position in which this action is to be executed.
+
+<P>A positive value represents the sequence position. A Null value indicates that the action is not executed. The following negative values indicate that this action is to be executed if the installer returns the associated code.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Termination flag</TH>
+<TH align=left width=12%>Value</TH>
+<TH align=left width=46%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusSuccess</TD>
+<TD width=12%>-1</TD>
+<TD width=46%>Successful completion.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusUserExit</TD>
+<TD width=12%>-2</TD>
+<TD width=46%>User terminates install.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusFailure</TD>
+<TD width=12%>-3</TD>
+<TD width=46%>Fatal exit terminates.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusSuspend</TD>
+<TD width=12%>-4</TD>
+<TD width=46%>Install is suspended.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Zero, all other negative numbers, or a Null value indicate that the action is never run.
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Localized text for progress display or logging is specified in the <A HREF="tref_7het.htm">ActionText table</A>.</P>
+
+<P>For an example of a sequence table, see <A HREF="novr_3mqt.htm">Using a Sequence Table</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

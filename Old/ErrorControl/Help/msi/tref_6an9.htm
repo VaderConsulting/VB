@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Directory Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Directory Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_directory_table"></A>Directory Table</H1>
+
+<P>The Directory table specifies the directory layout for the product. Each row of the table indicates a directory both at the source and the target. </P>
+
+<P>The Directory table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Column</TH>
+<TH align=left width=37%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Directory</TD>
+<TD width=37%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Directory_Parent</TD>
+<TD width=37%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>DefaultDir</TD>
+<TD width=37%><A HREF="tref_8gfm.htm">DefaultDir</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Directory</DT>
+
+<DD>The Directory column contains a unique identifier for a directory or directory path. This column can contain the name of a property that is set to the full path of a target directory. If this column contains a property, the target directory takes the name specified in the DefaultDir column and takes the parent directory specified in the Directory_Parent column. 
+
+<P>If the Directory_Parent column is either null or equal to the value of the Directory column, the Directory column represents a root target directory. Only one root directory may be specified in the Directory table.
+</DD>
+
+<DT>Directory_Parent</DT>
+
+<DD>This column is a reference to the directory's parent directory. A record that has a Directory_Parent column equal to NULL or equal to the Directory column represents a root directory. The full path of the parent directory is resolved by reference in the Directory_Parent column is an external key into the Directory column. For example, if a folder has a parent directory named PDIR, the parent directory of PDIR is given in the Directory_Parent column of the row with PDIR in the Directory column.</DD>
+
+<DT>DefaultDir</DT>
+
+<DD>The DefaultDir column contains the directory's name (localizable)under the parent directory. By default, this is the name of both the target and source directories. To specify different source and target directory names, separate the target and source names with a colon as follows: [targetname]:[sourcename].
+
+<P>If the value of the Directory_Parent column is NULL or is equal to the Directory column, the DefaultDir column specifies the name of a root source directory.
+
+
+<P>For a non-root source directory, a period (.) entered in the DefaultDir column indicates the directory should be located in its parent directory without a subdirectory.
+
+
+<P>The directory names in this column may be formatted as short filename | long filename pairs.
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Each record in the table represents a directory in both the source and the destination images. The Directory table must specify a single root directory  with a Directory column value equal to the <A HREF="pref_73ax.htm"><B>TARGETDIR</B> property</A>.</P>
+
+<P>For an <A HREF="over_6jzi.htm">administrative installation</A>, install the administrative image into the root directory named TARGETDIR and use the source directory names to resolve the target directories.</P>
+
+<P>Note the installer sets a number of standard <A HREF="prop_1xyr.htm">properties</A> to system folder paths. See the <A HREF="pref_3mp1.htm">Property Reference</A> for a list of the properties that are set to system folders.</P>
+
+<P>Directory resolution is performed during the <A HREF="aref_22we.htm">CostFinalize action</A> and is done as follows:</P>
+
+<P><B>Root Destination Directory</B></P>
+
+<P>There may only be a single root destination directory. To specify the root destination directory, set the Directory column to the <A HREF="pref_73ax.htm"><B>TARGETDIR</B> property</A> and the DefaultDir column to the <A HREF="pref_6uwp.htm"><B>SourceDir</B> property</A>. If the <A HREF="pref_73ax.htm"><B>TARGETDIR</B> property</A> is defined, the destination directory is resolved to the property's value. If the <A HREF="pref_73ax.htm"><B>TARGETDIR</B> property</A> is undefined, the <A HREF="pref_3zll.htm"><B>ROOTDRIVE</B> property</A> is used to resolve the path.</P>
+
+<P><B>Root Source Directory</B></P>
+
+<P>The value of the DefaultDir column for the root directory entry must be set to the <A HREF="pref_6uwp.htm"><B>SourceDir</B> property</A>.</P>
+
+<P><B>Non-root Destination Directories</B></P>
+
+<P>The Directory value for a non-root directory is also interpreted as the name of a property defining the location of the destination. If the property is defined, the destination directory is resolved to the property's value. If the property is not defined, the destination directory is resolved to a subdirectory beneath the resolved destination directory for the Directory_Parent entry. The DefaultDir value defines the name of the subdirectory.</P>
+
+<P><B>Non-root Source Directories</B></P>
+
+<P>The source directory for a non-root directory is resolved to a subdirectory of the resolved source directory for the Directory_Parent entry. Again, the DefaultDir value defines the name of the subdirectory.</P>
+
+<P><B>Short or Long File Names</B></P>
+
+<P>When resolving destination directories, the short file names specified in the DefaultDir column are used if either the <B>SHORTFILENAMES</B> property is set or the volume the directory is located on does not support long file names. Otherwise, the long file name is used.</P>
+
+<P>Note that when the directories are resolved during the CostFinalize action, the keys in the Directory table become <A HREF="prop_1xyr.htm">properties</A> set to directory paths. </P>
+
+<P><B>CreateFolder Table</B></P>
+
+<P>For creating empty folders during an installation, see <A HREF="tref_152d.htm">CreateFolder Table</A>.</P>
+
+<P><B>Using the Directory Table</B></P>
+
+<P>For more information about the Directory table, including samples, see <A HREF="novr_3wth.htm">Using the Directory Table</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Directory%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_6an9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Directory%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_6an9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

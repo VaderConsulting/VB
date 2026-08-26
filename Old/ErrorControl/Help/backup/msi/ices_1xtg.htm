@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE14</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE14 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice14"></A>ICE14</H1>
+
+<P>ICE14 validates the following for features: 
+
+<UL>
+	<LI>That root parent features do not have the msidbFeatureAttributesFollowParent bit set in the Attributes column of the <A HREF="tref_0a91.htm">Feature table</A>. A root feature does not have a parent.</LI>
+
+	<LI>That no feature has the same entry in the Feature and Feature_Parent columns of the <A HREF="tref_0a91.htm">Feature table</A>. No feature can be its own parent.</LI>
+</UL>
+
+<H4>Result</H4>
+
+<P>ICE14 posts an error message if it finds a root feature with the msidbFeatureAttributesFollowParent bit set or a feature with identical entries in the Feature and Feature_Parent columns of the Feature table.</P>
+
+<H4>Example</H4>
+
+<P>ICE14 would return the following errors for the following example: 
+
+<UL>
+	<LI>The feature Sport has the same value in the Feature and Feature_Parent columns of the File table.</LI>
+
+	<LI>The root feature Sport has the msidbFeatureAttributesFollowParent bit set. </LI>
+</UL>
+
+<P>In the feature tree of this example, Sport is the root feature and a parent of the Swimming and Football features. Freestyle is a child feature of Swimming. TouchFootball is a child feature of Football.</P>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Feature</TH>
+<TH align=left width=30%>Attributes</TH>
+<TH align=left width=43%>Feature_Parent</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Sport</TD>
+<TD width=30%>4</TD>
+<TD width=43%>Sport</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Swimming</TD>
+<TD width=30%>1</TD>
+<TD width=43%>Sport</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Football</TD>
+<TD width=30%>4</TD>
+<TD width=43%>Sport</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Freestyle</TD>
+<TD width=30%>1</TD>
+<TD width=43%>Swimming</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>TouchFootball</TD>
+<TD width=30%>4</TD>
+<TD width=43%>Football</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

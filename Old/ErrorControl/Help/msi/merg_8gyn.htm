@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Merge Method (Merge Object)</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Merge method">
+<META NAME="MS-HKWD" CONTENT="Merge object, Merge method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_merge_method_merge_object_"></A>Merge Method (Merge Object)</H1>
+
+<P>The <B>Merge </B>method of the <B>Merge</B> object executes a merge of the current database and current module. The merge attaches the components in the module to the feature identified by <I>Feature</I>. The root of the module's directory tree is redirected to the location given by <I>RedirectDir</I>.</P>
+
+<P>The <B>Merge</B> method can only be called once to merge a particular combination of .msi and .msm files.</P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax>object.Merge(Feature, RedirectDir)</PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="merg_4th0.htm"><B>Merge</B> object</A> </DD>
+
+<DT><I>Feature</I></DT>
+
+<DD>The name of a feature in the database.</DD>
+
+<DT><I>RedirectDir</I></DT>
+
+<DD>The key of an entry in the <A HREF="tref_6an9.htm">Directory table</A> of the database. This parameter may be NULL or an empty string. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Once the merge is complete, components in the module are attached to the feature identified by <I>Feature</I>. This feature is not created and must be an existing feature. Note that the <B>Merge</B> method gets all the feature references in the module and substitutes the feature reference for all occurrences of the null GUID in the module database. For more information, see <A HREF="merg_70z7.htm">Referencing Features in Merge Modules</A>. </P>
+
+<P>The module may be attached to additional features using the <A HREF="merg_28mc.htm"><B>Connect</B> method</A>. Note that calling the <B>Connect</B> method only creates feature-component associations. It doesn't modify the rows that have already been merged in to the database. </P>
+
+<P>Changes made to the database are saved if and only if the <B>CloseDatabase</B> method is called with <I>bCommit</I> set to TRUE.</P>
+
+<P>If any merge conflicts occur, including exclusions, they are placed in the error enumerator for later retrieval, but does not cause the merge to fail. Errors may be retrieved through the <B>Errors</B> property. Errors and informational messages are posted to the current log file. </P>
+
+<H4>C++</H4>
+
+<P>See <A HREF="merg_7uwe.htm"><B>Merge </B>function</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Merge%20Method%20(Merge%20Object);%20RELEASE:%20August%202001;%20URL:%20merg_8gyn.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Merge%20Method%20(Merge%20Object);%20RELEASE:%20August%202001;%20URL:%20merg_8gyn.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

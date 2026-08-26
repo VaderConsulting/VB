@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>RemoveRegistry Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="RemoveRegistry Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_removeregistry_table"></A>RemoveRegistry Table</H1>
+
+<P>The RemoveRegistry table contains the registry information the application needs to delete from the system registry. </P>
+
+<P>The RemoveRegistry table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=36%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=24%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>RemoveRegistry</TD>
+<TD width=36%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=24%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Root</TD>
+<TD width=36%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=24%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Key</TD>
+<TD width=36%><A HREF="tref_0xgo.htm">RegPath</A></TD>
+<TD width=13%> </TD>
+<TD width=24%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Name</TD>
+<TD width=36%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=13%> </TD>
+<TD width=24%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Component_</TD>
+<TD width=36%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=24%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>RemoveRegistry</DT>
+
+<DD>The key for this table.</DD>
+
+<DT>Root</DT>
+
+<DD>The predefined root key for the registry value.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Constant</TH>
+<TH align=left width=18%>Hexadecimal</TH>
+<TH align=left width=13%>Decimal</TH>
+<TH align=left width=32%>Root key</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>(none)</TD>
+<TD width=18%>- 0x001</TD>
+<TD width=13%>-1</TD>
+<TD width=32%>HKEY_CURRENT_USER
+<P>Installer sets this key while doing a per-user installation.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>(none)</TD>
+<TD width=18%>-0x001</TD>
+<TD width=13%>-1</TD>
+<TD width=32%>HKEY_LOCAL_MACHINE
+<P>Installer sets this key while doing an all-users installation with <A HREF="pref_6tx5.htm">ALLUSERS</A> set to 1.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbRegistryRootClassesRoot</B></TD>
+<TD width=18%>0x000</TD>
+<TD width=13%>0</TD>
+<TD width=32%>HKEY_CLASSES_ROOT</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbRegistryRootCurrentUser</B></TD>
+<TD width=18%>0x001</TD>
+<TD width=13%>1</TD>
+<TD width=32%>HKEY_CURRENT_USER</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbRegistryRootLocalMachine</B></TD>
+<TD width=18%>0x002</TD>
+<TD width=13%>2</TD>
+<TD width=32%>HKEY_LOCAL_MACHINE</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbRegistryRootUsers</B></TD>
+<TD width=18%>0x003</TD>
+<TD width=13%>3</TD>
+<TD width=32%>HKEY_USERS</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Key</DT>
+
+<DD>The localizable key for the registry value.</DD>
+
+<DT>Name</DT>
+
+<DD>The localizable registry value name. 
+
+<P>The following string in the Name column have special significance.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=13%>String</TH>
+<TH align=left width=87%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=13%>"-"</TD>
+<TD width=87%>The key is to be deleted, if present, with all of its values and subkeys, when the component is installed.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Note that the <A HREF="tref_3obp.htm">Registry table</A> should be used to create or remove a registry key when the component is removed.
+</DD>
+
+<DT>Component_</DT>
+
+<DD>External key into the first column of the <A HREF="tref_09np.htm">Component table</A> referencing the component that controls the deletion of the registry value.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The registry information is deleted from the system registry when the corresponding component has been selected to be installed locally or run from source. </P>
+
+<P>This table is referred to when the <A HREF="aref_5mem.htm">RemoveRegistryValues action</A> is executed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

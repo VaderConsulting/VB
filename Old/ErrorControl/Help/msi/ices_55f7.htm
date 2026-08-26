@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Internal Consistency Evaluators - ICEs</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Internal Consistency Evaluators - ICEs [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="ICEs [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_internal_consistency_evaluators_ices"></A>Internal Consistency Evaluators - ICEs</H1>
+
+<P>Internal consistency evaluators, also called ICEs, are custom actions written in VBScript, JScript, or as a DLL or EXE. When these custom actions are executed, they scan the database for entries in database records that are valid when examined individually but that may cause incorrect behavior in the context of the whole database. Note that this is different than the validation done on individual records using <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A>. </P>
+
+<P>For example, the <A HREF="tref_09np.htm">Component table</A> may list several components that are all valid when tested individually with <B>MsiViewModify</B>. However, <B>MsiViewModify</B> would not catch the error when two components use the same <A HREF="tref_7kf8.htm">GUID</A> as their component code. The custom action <A HREF="ices_1xrs.htm">ICE08</A> is designed to validate that the Component table does not contain duplicate component code GUIDs.</P>
+
+<P>ICE custom actions return four kinds of messages:
+
+<UL>
+	<LI><B>Errors</B>  Error messages report database authoring that cause incorrect behavior. For example, duplicate component GUIDs cause the installer to incorrectly register components. </LI>
+
+	<LI><B>Warnings</B>  Warning messages report database authoring that causes incorrect behavior in certain cases. Warnings can also report unexpected side-effects of database authoring. For example, entering the same property name in two conditions that differ only by the case of letters in the name. Because the installer is case-sensitive, the installer treats these as different properties.</LI>
+
+	<LI><B>Failures</B>  Failure messages report the failure of the ICE custom action. Failure is commonly caused by a database with such severe problems that the ICE cannot even run.</LI>
+
+	<LI><B>Informational</B>  Informational messages provide information from the ICE and do not indicate a problem with the database. Often they are information about the ICE itself, such as a brief description. They can also provide progress information as the ICE runs.</LI>
+</UL>
+
+<P>For more information, see <A HREF="ices_0zub.htm">Using Internal Consistency Evaluators</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Internal%20Consistency%20Evaluators%20-%20ICEs;%20RELEASE:%20August%202001;%20URL:%20ices_55f7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Internal%20Consistency%20Evaluators%20-%20ICEs;%20RELEASE:%20August%202001;%20URL:%20ices_55f7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>String-Pool Validation</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_string_pool_validation"></A>String-Pool Validation</H1>
+
+<P>The Microsoft® Windows® Installer stores all database strings in a single shared string pool to reduce the size of the database and to improve performance. The only means of validating the string pool is to use the MsiInfo tool found in the Windows Installer SDK.</P>
+
+<P>String pool verification consists of two main checks: DBCS string tests and reference count verification.</P>
+
+<P><B>DBCS string tests:</B></P>
+
+<P>The DBCS string tests scan each string in the database for two criteria: For packages with a neutral code page marked, if any character is an extended character (greater than 127), the string is flagged and a message is displayed saying that the code page of the database is invalid because these characters require a specific code page to be rendered consistently on all systems.</P>
+
+<P>If the database has a code page, each string is scanned for an invalid DBCS indicator. If a non-neutral string has been improperly marked, the characters will not render correctly. (This is most commonly caused by forcing the code page to a particular value using the _ForceCodepage table with non-neutral strings already in the database.) Note that this check requires that the code page of the database be installed on the system. </P>
+
+<P>If there is a code page problem, the user may fix the error by using the _ForceCodepage table to force the code page of the database to the appropriate value. For details, see <A HREF="over_3fq7.htm">Code Page Handling</A>.</P>
+
+<P><B>Reference count verification:</B></P>
+
+<P>To verify the reference counts of all strings, every table is scanned for string values, a count of each distinct string is kept, and the result is compared to the stored reference count in the database string pool.</P>
+
+<P>If there is a string reference count problem, the user should immediately export each table of the database using <A HREF="qref_4qyc.htm">MsiDatabaseExport</A>, create a new database, and import the tables into the new database using <A HREF="qref_59pw.htm">MsiDatabaseImport</A>. The new database then has the same content as the old database, but the string reference counts are correct. Adding or deleting data from a database with a corrupt string pool can increase corruption of the database and loss of data, so taking these steps quickly is important to prevent further data loss. </P>
+
+<P>When rebuilding databases, remember to embed any necessary storages and streams in the new database (see <A HREF="tref_9gbp.htm">_Streams Table</A> and <A HREF="tref_4did.htm">_Storages Table</A>) and be aware of code page issues. Also remember to set each of the necessary <A HREF="sovr_99yl.htm">Summary Information Stream</A> properties.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20String-Pool%20Validation;%20RELEASE:%20August%202001;%20URL:%20ices_2pta.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20String-Pool%20Validation;%20RELEASE:%20August%202001;%20URL:%20ices_2pta.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

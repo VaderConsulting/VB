@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiDatabaseIsTablePersistent</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiDatabaseIsTablePersistent">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msidatabaseistablepersistent"></A>MsiDatabaseIsTablePersistent</H1>
+
+<P>The <B>MsiDatabaseIsTablePersistent</B> function returns an enumeration describing the state of a particular table.</P>
+
+<PRE class=syntax><B>UINT MsiDatabaseIsTablePersistent(
+</B>  <B>MSIHANDLE</B> <I>hDatabase</I><B>,</B>   // database handle
+  <B>LPCTSTR</B> <I>szTableName   </I> // name of relevant table
+<B>)</B>;</PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hDatabase</I></DT>
+
+<DD>Handle to the database to which the relevant table belongs.</DD>
+
+<DT><I>szTableName</I></DT>
+
+<DD>Specifies the name of the relevant table.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>MSICONDITION_ERROR </DT>
+
+<DD>An invalid handle or invalid parameter was passed to the function.</DD>
+
+<DT>MSICONDITION_FALSE </DT>
+
+<DD>The table is temporary.</DD>
+
+<DT>MSICONDITION_NONE  </DT>
+
+<DD>The table is unknown.</DD>
+
+<DT>MSICONDITION_TRUE</DT>
+
+<DD>The table is persistent.
+</DD>
+</DL>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_general_database_access_functions">General Database Access Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I install a package with elevated privileges as a non-admin?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_how_do_i_install_a_package_with_elevated_privileges_as_a_non_admin"></A>How do I install a package with elevated privileges as a non-admin?</H1>
+
+<P>An application is called a "managed application" if elevated (system) privileges are used to install the application. There are three methods by which an administrator can enable a non-administrator user to install managed applications. 
+
+<UL>
+	<LI>On Windows NT 4.0 or Windows 2000, an administrator can set the AlwaysInstallElevated registry keys for both per-user and per-machine installations on the computer. For more information, see <A HREF="over_77xb.htm">AlwaysInstallElevated (Per-User)</A> and <A HREF="over_3xnj.htm">AlwaysInstallElevated (Per-Machine)</A>. Note that this method can open the computer to a security risk because once an administrator with elevated privileges has set these registry keys, non-administrator users can run installations with elevated privileges and access secure locations on the computer, such as the SystemFolder or <B>HKLM</B> registry key. </LI>
+
+	<LI>On Windows NT 4.0 or Windows 2000, an administrator can install or advertise the package on the computer for a per-machine installation. See <A HREF="over_1tdf.htm">Per-Machine Installations</A> and <A HREF="over_2vn2.htm">How do I specify a per-user or per-machine installation</A>? The Windows Installer always has elevated privileges while doing per-machine installations. The administrator uses elevated privileges to advertise the package. If a non-administrator user then installs the application the installation can run with elevated privileges. Non-administrator users still cannot install unadvertised packages that require elevated system privileges. For more information, see <A HREF="over_1v1w.htm">Advertisement</A>. </LI>
+
+	<LI>On Windows 2000, an administrator can advertise an application on a user's computer by assigning or publishing the Windows Installer package using application deployment and Group Policy. The administrator uses elevated privileges to advertise the package for per-machine. If a non-administrator user then installs the application, the installation can run with elevated privileges. Non-administrator users still cannot install unadvertised packages that require elevated system privileges.</LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Compressed and Uncompressed Sources</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_compressed_and_uncompressed_sources"></A>Compressed and Uncompressed Sources</H2>
+
+<P>Package authors can reduce the size of their installation packages by compressing the source files and including them in <A HREF="over_8kkz.htm">cabinet files</A>. The source file image can be compressed, uncompressed, or a mixture of both types.</P>
+
+<P><B>Compressed Sources</B></P>
+
+<P>A source consisting entirely of compressed files should include the compressed flag bit in the <A HREF="sref_8ge1.htm">Word Count Summary Property</A>. The compressed source files must be stored in cabinet files located in a data stream inside the .msi file or in a separate cabinet file located at the root of the source tree. All the cabinets in the source must be listed in the <A HREF="tref_4mlh.htm">Media table</A>.</P>
+
+<P><B>Uncompressed Sources</B></P>
+
+<P>A source consisting entirely of uncompressed source files should omit the compressed flag bit from the <A HREF="sref_8ge1.htm">Word Count Summary Property</A>. All the uncompressed files in the source must exist in the source tree specified by the <A HREF="tref_6an9.htm">Directory Table</A>.</P>
+
+<P><B>Mixed Sources</B></P>
+
+<P>To mix compressed and uncompressed source files in the same package, override the Word Count Summary property default by setting the msidbFileAttributesCompressed or msidbFileAttributesNoncompressed bit flags on particular files. These bit flags are set in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A> if the compression state of the file does not match the default specified by the Word Count Summary property. </P>
+
+<P>For example, if the Word Count Summary property has the compressed flag bit set, all files are treated as compressed into a cabinet. Any uncompressed files in the source must include msidbFileAttributesNoncompressed in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>. The uncompressed files must be located at the root of the source tree.</P>
+
+<P>If the Word Count Summary property has the uncompressed flag set, files are treated as uncompressed by default and any compressed files must include msidbFileAttributesCompressed in the Attributes column of the File table. All the compressed files must be stored in cabinet files located in a data stream inside the .msi file or in a separate cabinet file located at the root of the source tree. </P>
+
+<P>For more information, see <A HREF="over_3nla.htm">Including a Cabinet File in an Installation</A> and <A HREF="over_8kkz.htm">Cabinet Files</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Manage Substorages</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_manage_substorages"></A>Manage Substorages</H2>
+
+<P>The VBScript file WiSubStg.vbs is provided in the <A HREF="app_5qwj.htm">Platform SDK Components for Windows Installer Developers</A>. This sample shows how script can be used to manage substorages in a Windows Installer database. A transform or nested Windows Installer database may be added to an existing Windows Installer database as a substorage. </P>
+
+<P>The sample demonstrates the use of:
+
+<UL>
+	<LI><A HREF="tref_4did.htm">_Storages table</A> </LI>
+
+	<LI><A HREF="vref_1w7z.htm"><B>OpenDatabase</B> method (Installer Object)</A> </LI>
+
+	<LI><A HREF="vref_5ack.htm"><B>CreateRecord</B> method</A> </LI>
+
+	<LI><A HREF="vref_6884.htm"><B>LastErrorRecord</B> method</A> of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </LI>
+
+	<LI><A HREF="vref_5tb8.htm"><B>OpenView</B> method</A> </LI>
+
+	<LI><A HREF="vref_6jdw.htm"><B>Commit</B> method</A> of the <A HREF="vref_64dw.htm"><B>Database</B> object</A> </LI>
+
+	<LI><A HREF="vref_2204.htm"><B>Fetch</B> method</A> </LI>
+
+	<LI><A HREF="vref_6204.htm"><B>Modify</B> method</A> </LI>
+
+	<LI><A HREF="vref_2k6c.htm"><B>Execute</B> method</A> of the <A HREF="vref_7bxw.htm"><B>View </B>object</A> </LI>
+
+	<LI><A HREF="vref_2ol5.htm"><B>StringData</B> property</A> </LI>
+
+	<LI><A HREF="vref_8jhg.htm"><B>SetStream</B> method</A> of the <A HREF="vref_6kac.htm"><B>Record</B> object</A> </LI>
+</UL>
+
+<P>You'll require the CScript.exe or WScript.exe version of Windows Script Host to use this sample. To use CScript.exe to run this sample, type a command line at the command prompt using the following syntax. Help is displayed if the first argument is /? or if too few arguments are specified. To redirect the output to a file, end the command line with VBS &gt; [<I>path to file</I>]. The sample returns a value of 0 for success, 1 if help is invoked, and 2 if the script fails.</P>
+
+<PRE>cscript WiSubStg.vbs [<I>path to database</I>][<I>path to file</I>][<I>options</I>][<I>substorage name</I>]</PRE>
+
+<P>Specify the path to the Windows Installer database to add or remove substorage. Specify a path to the transform or database file that is being added as substorage. To list the substorages in the Windows Installer database, omit the path to this file. You may specify an optional substorage name, if this is omitted the substorage name defaults to the filename. </P>
+
+<P>The following option may be specified.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Option</TH>
+<TH align=left width=72%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><I>no option specified</I></TD>
+<TD width=72%>Add a substorage to the Windows Installer database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>/d</TD>
+<TD width=72%>Remove a substorage. This option flag must be followed by the name of the substorage to be removed.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For additional scripting examples, see <A HREF="samp_2dv7.htm">Windows Installer Scripting Examples</A>. For sample utilities that do not require Windows Script Host, see <A HREF="app_9303.htm">Windows Installer Development Tools</A>.</P>
+
+<P>Note that <A HREF="samp_2nhh.htm">A Localization Example</A> demonstrates <A HREF="samp_61b9.htm">Embedding Customization Transforms as Substorage</A>. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Manage%20Substorages;%20RELEASE:%20August%202001;%20URL:%20samp_68c3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Manage%20Substorages;%20RELEASE:%20August%202001;%20URL:%20samp_68c3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

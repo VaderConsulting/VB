@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE94</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE94">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice94"></A>ICE94</H1>
+
+<P>ICE94 checks the <A HREF="tref_2i91.htm">Shortcut table</A>, <A HREF="tref_0a91.htm">Feature table</A>, and <A HREF="tref_4u05.htm">MsiAssembly table</A> and posts a warning if there are any unadvertised shortcuts pointing to an assembly file in the global assembly cache. If the entry in the Target field of the Shortcut table is not a feature in the Feature table, the shortcut is unadvertised. If the entry in the Component_ field of the Shortcut table is also listed in the MsiAssembly table, the shortcut points to an assembly file. If the entry in the File_Application field in the MsiAssembly table is empty, the assembly file is in the global assembly cache. </P>
+
+<H4>Result</H4>
+
+<P>ICE94 posts the following warning.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>ICE94 warning</TH>
+<TH align=left width=49%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>The non-advertised shortcut '[2]' points to an assembly file in the global assembly cache.</TD>
+<TD width=49%>An unadvertised shortcut is pointing to an assembly file in the global assembly cache.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Example</H4>
+
+<P>ICE94 reports the following error for the example:</P>
+
+<PRE>The non-advertised shortcut 'shortcut1' points to an assembly file in the global assembly cache.
+</PRE>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Shortcut</TH>
+<TH align=left width=35%>Component_ </TH>
+<TH align=left width=36%>Target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>shortcut1</TD>
+<TD width=35%>c1</TD>
+<TD width=36%>[file1]</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>shortcut2</TD>
+<TD width=35%>c2</TD>
+<TD width=36%>feature1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>shortcut3</TD>
+<TD width=35%>c3</TD>
+<TD width=36%>[file2]</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Feature</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>feature1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4u05.htm"><B>MsiAssembly Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Component_</TH>
+<TH align=left width=55%>File_Application</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>c1</TD>
+<TD width=55%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>c2</TD>
+<TD width=55%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>c3</TD>
+<TD width=55%>fa1</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE94;%20RELEASE:%20August%202001;%20URL:%20ices_1y7o.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE94;%20RELEASE:%20August%202001;%20URL:%20ices_1y7o.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

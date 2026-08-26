@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ControlShowRollbackCost Control Attribute</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ControlShowRollbackCost Control Attribute">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_controlshowrollbackcost_control_attribute"></A>ControlShowRollbackCost Control Attribute</H1>
+
+<P>This attribute specifies whether or not the rollback backup files are included in the costs displayed by the <A HREF="href_7ing.htm">VolumeCostList control</A>.</P>
+
+<P>If this bit is set and <A HREF="pref_8wop.htm">PROMPTROLLBACKCOST property</A> = P, the rollback backup files are included in the cost displayed by the VolumeCostList Control.</P>
+
+<P>If this bit is not set and PROMPTROLLBACKCOST property = P, the rollback backup files are not included in the cost displayed by the VolumeCostList Control.</P>
+
+<H4>Valid Controls</H4>
+
+<P><A HREF="href_7ing.htm">VolumeCostList</A> </P>
+
+<H4>Value</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=24%>Hexadecimal </TH>
+<TH align=left width=60%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>4194304</TD>
+<TD width=24%>0x00400000</TD>
+<TD width=60%><B>msidbControlShowRollbackCost</B></TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This control attribute is ignored if PROMPTROLLBACKCOST = D or F. </P>
+
+<P>If PROMPTROLLBACKCOST = F, the cost of the rollback backup files is included. </P>
+
+<P>If PROMPTROLLBACKCOST = D, or <A HREF="pref_26pl.htm">DISABLEROLLBACK property</A> =1, the cost of the rollback backup files is not included.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

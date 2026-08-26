@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CCPSearch Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="CCPSearch Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ccpsearch_action"></A>CCPSearch Action</H1>
+
+<P>The CCPSearch action uses file signatures to validate that qualifying products are installed on a system before an upgrade installation is performed.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The CCPSearch action must come before the <A HREF="aref_5pgu.htm">RMCCPSearch</A> action.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Remarks</H4>
+
+<P>The CCPSearch action searches for file signatures listed in the CCPSearch table on the system using the following tables in order: Signature, CompLocator, RegLocator, IniLocator, and DrLocator. </P>
+
+<P>If any signature is determined to exist, the <B>CCP_Success</B> property is set to 1 and the CCPSearch action terminates.</P>
+
+<P>The absence of the signature from the Signature table denotes a directory. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="tref_8nad.htm">CCPSearch</A>, <A HREF="tref_149x.htm">Signature</A>, <A HREF="tref_771h.htm">CompLocator</A>, <A HREF="tref_91wl.htm">RegLocator</A>, <A HREF="tref_00o5.htm">IniLocator</A>, <A HREF="tref_3azp.htm">DrLocator</A> tables </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Organizing Applications into Components</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_organizing_applications_into_components"></A>Organizing Applications into Components</H1>
+
+<P>The Microsoft® Windows® Installer installs and removes an application or product from a user's system in pieces referred to as<A HREF="over_28oj.htm"> components</A>. Components are collections of resources that are always installed or removed from a user's system together. A resource can be a file, registry key, shortcut, or anything else that may be installed. Every component is assigned a unique component code <A HREF="tref_7kf8.htm">GUID</A>. </P>
+
+<P>Authors of installation packages should only create components, and versions of components, that can be installed and removed without damaging other components. Also, the removal of a component should not leave behind orphan resources on the user's computer, such as unused files, registry keys, or shortcuts. To ensure this, authors should adhere to the following general rules whenever organizing resources into components:
+
+<UL>
+	<LI>Never create two components that install a resource under the same name and target location. If a resource must be duplicated in multiple components, change its name or target location in each component. This rule should be applied across applications, products, product versions, and companies.</LI>
+
+	<LI>Note that the previous rule means that no two components can ever have the same key path file. The key path value points to a particular file or folder belonging to the component which the installer uses to detect the component. If two components had the same key path file, the installer would be unable to distinguish which component is installed. Two components however may share a key path folder.</LI>
+
+	<LI>Never create a version of a component that is not compatible with all previous versions of the component. This rule should be applied across applications, products, product versions, and companies. </LI>
+
+	<LI>Don't create components that contain resources which will need to be installed into more than one directory on the user's system. The installer installs all the resources in a component into the same directory. It is not possible to install some resources into subdirectories.</LI>
+
+	<LI>Don't include more than one COM server per component. If a component contains a COM server, this must be the key path for the component.</LI>
+
+	<LI>Don't specify more than one file per component as a target for a Start menu or desktop shortcut.</LI>
+</UL>
+
+<P>When organizing an application into components, package authors may need to add, remove, or modify the resources in an existing installation. In this case, the author must decide whether to provide the resources by introducing a new component or by modifying existing components and changing them into a new versions of the component. Because a unique component code must be assigned when a new component is introduced, authors must determine whether their changes require changing the component code. For more information, see <A HREF="over_9crp.htm">Changing the Component Code</A>, <A HREF="over_0xim.htm">What happens if the component rules are broken?</A>, or <A HREF="over_7hpv.htm">Defining Installer Components</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

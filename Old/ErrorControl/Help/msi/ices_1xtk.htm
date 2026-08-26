@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE18</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE18">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice18"></A>ICE18</H1>
+
+<P>ICE18 validates that any empty directories used as a key path for a component are listed in the <A HREF="tref_152d.htm">CreateFolder table</A>. </P>
+
+<P>If the KeyPath column of the <A HREF="tref_09np.htm">Component table</A> is Null, this means that directory listed in the Directory_ column is the key path for that component. Because folders created by the installer are deleted when they become empty, this folder must be listed in the <A HREF="tref_152d.htm">CreateFolder table</A> to prevent the installer from attempting to install every time.</P>
+
+<P>Do not make the SystemFolder directory the key path of a component. Because this folder is present on every operating system, the installer always detects the key path whether or not the component is present. In this case, the key path should be a file, registry entry, or ODBC data source.</P>
+
+<P>When performing a validation ICE18 first checks whether the following are all true: 
+
+<UL>
+	<LI>The KeyPath column of the <A HREF="tref_09np.htm">Component table</A> contains a Null value.</LI>
+
+	<LI>That there are no files listed for the component in the <A HREF="tref_4n6t.htm">File table</A>. </LI>
+
+	<LI>That there are no files for the component listed in the <A HREF="tref_7gth.htm">RemoveFile table</A> and that the value in the DirProperty is the same as the Directory_ column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+
+	<LI>That there are no files for the component listed in the <A HREF="tref_310l.htm">DuplicateFile table</A> and that the value in the DestFolder is the same as the Directory_ column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+
+	<LI>That there are no files for the component listed in the <A HREF="tref_5un9.htm">MoveFile table</A> and that the value in the DestFolder is the same as the Directory_ column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+</UL>
+
+<P>If these are all true then ICE18 validates the following:
+
+<UL>
+	<LI>That the Component_ column of the <A HREF="tref_152d.htm">CreateFolder table</A> has the same value as the Component column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+
+	<LI>That the Directory_ column of the CreateFolder table has the same value as the Directory_ column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+</UL>
+
+<H4>Result</H4>
+
+<P>ICE18 posts an error message if the installation package specifies a directory as the key path for component that is not listed in the <A HREF="tref_152d.htm">CreateFolder table</A>. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE18;%20RELEASE:%20August%202001;%20URL:%20ices_1xtk.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE18;%20RELEASE:%20August%202001;%20URL:%20ices_1xtk.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

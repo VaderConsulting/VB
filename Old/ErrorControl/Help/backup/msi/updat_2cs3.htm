@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Preparing an Application for Future Major Upgrades</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_preparing_an_application_for_future_major_upgrades"></A>Preparing an Application for Future Major Upgrades</H1>
+
+<P>Although the Microsoft® Windows®  Installer version 1.0 does not support <A HREF="updat_8do3.htm">major upgrades</A> that change the product code, authors of installation packages should begin now to include upgrading information in their .msi files. This enables your application to take advantage of the full upgrading functionality available with future installer versions. Follow the procedure below to ensure that an installation done with version 1.0 of the installer is able to use the upgrade capabilities in future installer versions.</P>
+
+<P>Every application, or suite of applications, should be assigned an <A HREF="pref_7mux.htm">UpgradeCode Property</A>, <A HREF="pref_120p.htm">ProductVersion Property</A>, and <A HREF="pref_7aex.htm">ProductLanguage Property</A>. The UpgradeCode property indicates a family of related applications consisting of different versions and different language versions of the same product.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>Preparing an application for future major upgrades</B>
+
+<OL>
+	<LI>Determine a new <A HREF="pref_4tfd.htm">ProductCode property</A> for the application. See <A HREF="updat_3rad.htm">Changing the Product Code</A> for more information. Enter ProductCode and its value into the <A HREF="tref_21d1.htm">Property table</A>.</LI>
+
+	<LI>Determine the application's version and the <A HREF="pref_120p.htm">ProductVersion property</A>. The ProductVersion should increase with each new version of the application. Note that Windows Installer uses only the first three fields of the product version. If you include a fourth field in your product version, the installer ignores the fourth field. Enter ProductVersion and its value into the Property table.</LI>
+
+	<LI>Determine the language of the package and the <A HREF="pref_7aex.htm">ProductLanguage property</A>. The value of this property must be a numeric language identifier (LANGID). Enter ProductLanguage and its value into the <A HREF="tref_21d1.htm">Property table</A>. Note that the <A HREF="aref_4rse.htm">FindRelatedProducts action</A> uses the language returned by <A HREF="msi_8wa7.htm"><B>MsiGetProductInfo</B></A>. For FindRelatedProducts to work correctly,  the package author must be sure that the ProductVersion property is set in the Property table to a language that is also listed in the <A HREF="sref_80hl.htm">Template Summary Property</A>.</LI>
+
+	<LI>If you are authoring an installation package for the first version of your product, use a new UpgradeCode. If your package is intended for a newer version of an existing product, or is the same version as an existing product in a different language, use the same UpgradeCode as the existing product. No two products with the same ProductVersion and the same ProductLanguage can have the same UpgradeCode, unless one is a <A HREF="updat_9m0j.htm">small update</A> of the other.</LI>
+
+	<LI>The UpgradeCode has the format of a <A HREF="tref_7kf8.htm">GUID</A>. Enter the UpgradeCode GUID into the Property table.</LI>
+</OL>
+
+<P>For more information, see <A HREF="updat_80xa.htm">How do I prevent an old package from installing over a newer version?</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

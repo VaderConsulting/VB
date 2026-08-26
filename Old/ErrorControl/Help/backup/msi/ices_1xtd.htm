@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE11</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE11 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice11"></A>ICE11</H1>
+
+<P>ICE11 validates the Source column of the <A HREF="tref_71b9.htm">CustomAction table</A> for<A HREF="cact_260j.htm"> Nested Installation custom Actions</A>. The Source column must contain a valid <A HREF="tref_7kf8.htm">GUID</A> (MSI product code).</P>
+
+<H4>Result</H4>
+
+<P>ICE11 posts an error if the Source column of the CustomAction table is authored incorrectly for nested installlation custom actions.</P>
+
+<H4>Example</H4>
+
+<P>ICE posts the following error messages for the example shown.</P>
+
+<PRE>CustomAction: CA4 is a nested install of an advertised MSI.  The 'Source' must contain a valid MSI product code.  Current: ProductCode.
+CustomAction: CA1 is a nested install of an advertised MSI.  It duplicates the ProductCode of the base MSI package.  Current: {BFB69273-F0AE-45C4-9853-0AF946714768}.
+CustomAction: CA2 is a nested install of an advertised MSI.  The GUID must be all upper-case.  Current: {BFB69273-F0AE-55c5-9853-0AF946714768}.</PRE>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Property</TH>
+<TH align=left width=76%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>ProductCode</TD>
+<TD width=76%>{BFB69273-F0AE-45C4-9853-0AF946714768}</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_71b9.htm"><B>CustomAction Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>CustomAction</TH>
+<TH align=left width=15%>Type</TH>
+<TH align=left width=63%>Source</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>CA1</TD>
+<TD width=15%>39</TD>
+<TD width=63%>{BFB69273-F0AE-45C4-9853-0AF946714768}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>CA2</TD>
+<TD width=15%>39</TD>
+<TD width=63%>{BFB69273-F0AE-55c5-9853-0AF946714768}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>CA3</TD>
+<TD width=15%>39</TD>
+<TD width=63%>{BFB69273-F0AE-66C6-9853-0AF946714768}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>CA4</TD>
+<TD width=15%>39</TD>
+<TD width=63%>ProductCode</TD>
+</TR>
+</TABLE><BR>
+
+<P>Fixing the errors is easy.  For CA1, you cannot do a nested-installation of the "base package". This would result in a recursive installation. This entry should be removed or the Source column should be changed to a GUID for an advertised MSI that differs from the base package's GUID. For CA2, make all characters of the GUID uppercase.  Lastly, change CA4's Source column to reference a valid GUID of an advertised MSI.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

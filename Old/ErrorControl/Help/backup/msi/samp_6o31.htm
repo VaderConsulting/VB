@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Adding Summary Information to Customization Transform</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_adding_summary_information_to_customization_transform"></A>Adding Summary Information to Customization Transform</H2>
+
+<P>To apply the customization transform during an installation of the product, you must add a <A HREF="sovr_99yl.htm">Summary Information Stream</A> to the transform file MNPtrans.mst generated in <A HREF="samp_42nh.htm">Generating a Customization Transform</A>. </P>
+
+<P>You may generate summary information for a transform using <A HREF="qref_5zlb.htm"><B>MsiCreateTransformSummaryInfo</B></A> or the <A HREF="vref_1mw4.htm"><B>CreateTransformSummaryInfo</B> Method</A>. The following snippet, Sum.vbs, illustrates the <A HREF="vref_1mw4.htm"><B>CreateTransformSummaryInfo</B> Method</A> and is for use with Windows Scripting Host. Note that this example performs no validation and suppresses no error conditions.</P>
+
+<PRE>'Sum.vbs. Argument(0) is the original database. Argument(1) is the
+'    customized database. Argument(2) is the transform file.
+ 
+Option Explicit
+ 
+' Connect to Windows Installer object
+On Error Resume Next
+Dim installer : Set installer = Nothing
+Set installer = Wscript.CreateObject("WindowsInstaller.Installer") 
+ 
+' Open databases and transform 
+Dim database1 : Set database1 =
+    installer.OpenDatabase(Wscript.Arguments(0), 0) 
+Dim database2 : Set database2 =
+    installer.OpenDatabase(Wscript.Arguments(1), 0) 
+Dim transform : transform = Wscript.Arguments(2)
+ 
+' Create and add Summary Information
+Dim transinfo : transinfo =
+    Database2.CreateTransformSummaryInfo(Database1, transform,0,0)</PRE>
+
+<P>To create and add summary information to the transform file MNPtrans.mst you created in <A HREF="samp_42nh.htm">Generating a Customization Transform</A>, change directories to the folder containing Gen.vbs, the original database, the updated database, and the transform, and enter the following command line.</P>
+
+<PRE>Cscript.exe Sum.vbs MNP2000.msi MNP2000t.msi MNPtrans.mst</PRE>
+
+<P>Click on the MNP2000.msi icon to launch an install or use the following command line.</P>
+
+<P>msiexec /i MNP2000.msi</P>
+
+<P>This installs the product without the customizations. To install with the customization, enter the following command line. Note that the value of the <A HREF="pref_8q2h.htm">TRANSFORMS Property</A> refers to transform file located at the source.</P>
+
+<P>msiexec /i MNP2000.msi TRANSFORMS=MNPtrans.mst</P>
+
+<P>The Gate feature does not appear in the feature selection tree and the components of the Gate feature are not installed even if a Complete type of installation is selected in the user interface.</P>
+
+<P><A HREF="samp_61b9.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

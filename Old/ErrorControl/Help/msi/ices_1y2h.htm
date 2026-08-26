@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE69</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE69">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice69"></A>ICE69</H1>
+
+<P>ICE69 checks that all substrings of the form [$componentkey] within a <A HREF="tref_0qp0.htm">Formatted</A> string do not cross-reference components. A cross-component reference occurs when the [$componentkey] property of a formatted string refers to a component other than the component stored in the Component_ column of your tables.</P>
+
+<P>Problems with cross-component referencing of components arise from the way formatted strings are evaluated. If the component referenced with the [$componentkey] property is already installed and is not being changed during the current installation (for example, being re-installed, moved to source, etc.), the expression [$componentkey] evaluates to null, because the action state of the component in [$componentkey] is null. Similar problems can occur during upgrade and repair operations.</P>
+
+<H4>Result</H4>
+
+<P>ICE69 returns an error if a [$componentkey] substring within a Formatted string cross-references a component in another feature. ICE69 returns a warning if a [$componentkey] substring within a Formatted string cross-references a component in the same feature. (The FeatureComponents table is used to determine this mapping. It must map to the same feature for the warning. Referencing components in parent features or referencing components in child features is considered to be an error.)</P>
+
+<H4>Example</H4>
+
+<P>ICE69 reports the following for the examples shown.</P>
+
+<PRE>WARNING: "Mismatched component reference. Entry 'Test' of the Shortcut table belongs to component 'QuickTest'. However, the formatted string in column 'Argument' references component 'Test'. Components are in the same feature."
+ERROR: "Mismatched component reference. Entry 'Shortcut2' of the Shortcut table belongs to component 'QuickTest'. However, the formatted string in column 'Argument' references component 'Test2'. Components are not in the same feature."</PRE>
+
+<P>To fix this error, do not cross-reference components. Change the [$componentkey] to match the component of the shortcut.</P>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Shortcut</TH>
+<TH align=left width=35%>Component_</TH>
+<TH align=left width=36%>Argument</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Test</TD>
+<TD width=35%>QuickTest</TD>
+<TD width=36%>-v [$Test]</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Shortcut2</TD>
+<TD width=35%>QuickTest</TD>
+<TD width=36%>[$Test2]</TD>
+</TR>
+</TABLE><BR>
+
+<P>The <A HREF="tref_3kdh.htm">Verb</A> and <A HREF="tref_219h.htm">Extension</A> tables are special cases in that the Verb table references an extension that belongs to a component. An Extension, however, can belong to multiple components because the primary key for the extension table is made up of the Extension and Component_ columns. You can logically have the following situation.</P>
+
+<P><A HREF="tref_3kdh.htm"><B>Verb Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Extension</TH>
+<TH align=left width=35%>Verb_</TH>
+<TH align=left width=36%>Argument</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>tst</TD>
+<TD width=35%>open</TD>
+<TD width=36%>-v [$comp1][$comp2]</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_219h.htm"><B>Extension Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Extension</TH>
+<TH align=left width=55%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>tst</TD>
+<TD width=55%>comp1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>tst</TD>
+<TD width=55%>comp2</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_52hx.htm"><B>FeatureComponents Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Feature_</TH>
+<TH align=left width=55%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Feature1</TD>
+<TD width=55%>QuickTest</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Feature1</TD>
+<TD width=55%>Test</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Feature2</TD>
+<TD width=55%>Test2</TD>
+</TR>
+</TABLE><BR>
+
+<P>In this case, you must ensure that at least one of the [$componentkey] properties evaluates to a non-null value. However, every [$componentkey] property in the Argument column of the Verb table ([$comp1] and [$comp2] in the above example) must reference a possible component included with the extension associated with the verb. A reference like [$comp3] would result in a warning from ICE69. </P>
+
+<P>The <A HREF="tref_6p2d.htm">AppId table</A> has a similar situation to the Verb table. It uses the <A HREF="tref_5n8l.htm">Class table</A> for its component reference. In this case, the AppId table is validated in the same way as the Verb-Extension validation (now AppId-Class). </P>
+
+<P>The Class table's Argument column is validated like the Shortcut, Registry, and similar tables.</P>
+
+<H4>Table used during execution (only if found)</H4>
+
+<P><A HREF="tref_56jp.htm"><B>IniFile</B></A> </P>
+
+<P><A HREF="tref_9k6d.htm"><B>RemoveIniFile</B></A> </P>
+
+<P><A HREF="tref_3obp.htm"><B>Registry</B></A> </P>
+
+<P><A HREF="tref_3wmd.htm"><B>RemoveRegistry</B></A> </P>
+
+<P><A HREF="tref_1691.htm"><B>ServiceControl</B></A> </P>
+
+<P><A HREF="tref_81r9.htm"><B>ServiceInstall</B></A> </P>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut</B></A> </P>
+
+<P><A HREF="tref_3kdh.htm"><B>Verb</B></A> </P>
+
+<P><A HREF="tref_219h.htm"><B>Extension</B></A> </P>
+
+<P><A HREF="tref_5n8l.htm"><B>Class</B></A> </P>
+
+<P><A HREF="tref_6p2d.htm"><B>AppId</B></A> </P>
+
+<P><A HREF="tref_025h.htm"><B>Environment</B></A> </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE69;%20RELEASE:%20August%202001;%20URL:%20ices_1y2h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE69;%20RELEASE:%20August%202001;%20URL:%20ices_1y2h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

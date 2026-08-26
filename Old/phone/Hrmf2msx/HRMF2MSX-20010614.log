@@ -1,0 +1,340 @@
+20010614 11:47:55 Application started
+20010614 11:47:55 Transfer started
+20010614 11:47:55 Opening ADO Connection
+20010614 11:47:56 Deleting Admin Users from HRMF_Admin_User
+20010614 11:47:56 Retrieving members of pb_Helpdesk in Domain wadev
+20010614 11:47:56 Application closed due to previous instance already running
+20010614 11:47:57 Application closed due to previous instance already running
+20010614 11:47:58 Application closed due to previous instance already running
+20010614 11:47:59 Application closed due to previous instance already running
+20010614 11:48:01 Application closed due to previous instance already running
+20010614 11:48:16 Automation error
+The network path was not found.  (Error -2147024843) whilst retrieving members of pb_Helpdesk.
+20010614 11:48:16 Updating HRMF_Admin_User with Admin users
+20010614 11:48:16 Subscript out of range (Error 9) whilst in step1 Function.
+20010614 11:48:16 Step 1 error
+20010614 11:48:16 Application ended cleanly
+20010614 11:52:10 Application started
+20010614 11:52:11 Transfer started
+20010614 11:52:11 Opening ADO Connection
+20010614 11:52:11 Deleting Admin Users from HRMF_Admin_User
+20010614 11:52:11 Retrieving members of pb_Helpdesk in Domain wadev
+20010614 11:52:31 Automation error
+The network path was not found.  (Error -2147024843) whilst retrieving members of pb_Helpdesk.
+20010614 11:52:31 Updating HRMF_Admin_User with Admin users
+20010614 11:52:31 Subscript out of range (Error 9) whilst in step1 Function.
+20010614 11:52:31 Step 1 error
+20010614 11:52:31 Application ended cleanly
+20010614 11:55:35 Application started
+20010614 11:55:35 Transfer started
+20010614 11:55:35 Opening ADO Connection
+20010614 11:55:35 Deleting Admin Users from HRMF_Admin_User
+20010614 11:55:35 Retrieving members of pb_Helpdesk in Domain wadev
+20010614 11:55:55 Automation error
+The network path was not found.  (Error -2147024843) whilst retrieving members of pb_Helpdesk.
+20010614 11:55:55 GetUsers(pb_Helpdesk,wadev) returned an error!
+20010614 11:55:55 Step 1 error
+20010614 11:55:55 Application ended cleanly
+20010614 14:57:14 Application started
+20010614 14:57:14 Transfer started
+20010614 14:57:18 Opening ADO Connection
+20010614 14:57:19 Deleting Admin Users from HRMF_Admin_User
+20010614 14:57:19 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 14:57:35 Updating HRMF_Admin_User with Admin users
+20010614 14:57:36 Retrieving modified users from HRMF_D
+20010614 14:57:36 Modifying mailboxes on SVNTDEV-54
+20010614 14:57:37 Application ended with one or more errors.
+20010614 15:54:30 Application started
+20010614 15:54:30 Transfer started
+20010614 15:54:30 Opening ADO Connection
+20010614 15:54:31 Deleting Admin Users from HRMF_Admin_User
+20010614 15:54:31 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 15:54:46 Updating HRMF_Admin_User with Admin users
+20010614 15:54:48 Retrieving modified users from HRMF_D
+20010614 15:54:49 Nothing to do
+20010614 15:54:49 Application ended cleanly.
+20010614 15:57:40 Application started
+20010614 15:57:40 Transfer started
+20010614 15:57:40 Opening ADO Connection
+20010614 15:57:40 Deleting Admin Users from HRMF_Admin_User
+20010614 15:57:40 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 15:57:40 Updating HRMF_Admin_User with Admin users
+20010614 15:57:41 Retrieving modified users from HRMF_D
+20010614 15:57:41 Modifying mailboxes on SVNTDEV-54
+20010614 15:57:41 Invalid use of Null (Error 94) whilst in step2 Function.
+20010614 15:57:41 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in step2 Function.
+20010614 15:57:41 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in step2 Function.
+20010614 15:57:41 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in step2 Function.
+20010614 15:57:41 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in step2 Function.
+20010614 15:57:41 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in step2 Function.
+20010614 15:57:52 Automation error
+20010614 15:57:53 Invalid use of Null (Error 94) whilst in step2 Function.
+20010614 15:57:53 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in step2 Function.
+20010614 15:57:53 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in step2 Function.
+20010614 15:57:53 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in step2 Function.
+20010614 15:57:53 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in step2 Function.
+20010614 15:57:53 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in step2 Function.
+20010614 15:58:17 Automation error
+20010614 15:58:17 Application ended with one or more errors.
+20010614 16:02:00 Application started
+20010614 16:02:00 Transfer started
+20010614 16:02:00 Opening ADO Connection
+20010614 16:02:00 Deleting Admin Users from HRMF_Admin_User
+20010614 16:02:00 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 16:02:15 Updating HRMF_Admin_User with Admin users
+20010614 16:02:16 Retrieving modified users from HRMF_D
+20010614 16:02:16 Modifying mailboxes on SVNTDEV-54
+20010614 16:04:09 Automation error
+20010614 16:06:24 Automation error
+20010614 16:09:46 Automation error
+20010614 16:09:50 Automation error
+20010614 16:09:50 Automation error
+20010614 16:09:51 Automation error
+20010614 16:09:51 Application ended cleanly.
+20010614 16:13:23 Application started
+20010614 16:13:23 Transfer started
+20010614 16:13:23 Opening ADO Connection
+20010614 16:13:23 Deleting Admin Users from HRMF_Admin_User
+20010614 16:13:23 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 16:13:38 Updating HRMF_Admin_User with Admin users
+20010614 16:13:39 Retrieving modified users from HRMF_D
+20010614 16:13:39 Nothing to do
+20010614 16:13:39 Application ended cleanly.
+20010614 16:14:04 Application started
+20010614 16:14:04 Transfer started
+20010614 16:14:04 Opening ADO Connection
+20010614 16:14:04 Deleting Admin Users from HRMF_Admin_User
+20010614 16:14:04 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 16:14:04 Updating HRMF_Admin_User with Admin users
+20010614 16:14:05 Retrieving modified users from HRMF_D
+20010614 16:14:05 Modifying mailboxes on SVNTDEV-54
+20010614 16:16:44 Application started
+20010614 16:16:44 Transfer started
+20010614 16:16:44 Opening ADO Connection
+20010614 16:16:44 Deleting Admin Users from HRMF_Admin_User
+20010614 16:16:44 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 16:16:45 Updating HRMF_Admin_User with Admin users
+20010614 16:16:46 Retrieving modified users from HRMF_D
+20010614 16:16:46 Modifying mailboxes on SVNTDEV-54
+20010614 16:16:46 Automation error (Error -2147016656) whilst in extract process
+20010614 16:16:46 Application ended cleanly.
+20010614 16:17:04 Application started
+20010614 16:17:04 Transfer started
+20010614 16:17:04 Opening ADO Connection
+20010614 16:17:05 Deleting Admin Users from HRMF_Admin_User
+20010614 16:17:05 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 16:17:05 Updating HRMF_Admin_User with Admin users
+20010614 16:17:06 Retrieving modified users from HRMF_D
+20010614 16:17:06 Modifying mailboxes on SVNTDEV-54
+20010614 16:17:06 Automation error (Error -2147016656) whilst in extract process
+20010614 16:17:06 Application ended cleanly.
+20010614 16:17:14 Application started
+20010614 16:17:14 Transfer started
+20010614 16:17:14 Opening ADO Connection
+20010614 16:17:14 Deleting Admin Users from HRMF_Admin_User
+20010614 16:17:14 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 16:17:14 Updating HRMF_Admin_User with Admin users
+20010614 16:17:15 Retrieving modified users from HRMF_D
+20010614 16:17:15 Modifying mailboxes on SVNTDEV-54
+20010614 16:18:00 Application started
+20010614 16:18:00 Transfer started
+20010614 16:18:00 Opening ADO Connection
+20010614 16:18:00 Deleting Admin Users from HRMF_Admin_User
+20010614 16:18:00 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 16:18:00 Updating HRMF_Admin_User with Admin users
+20010614 16:18:01 Retrieving modified users from HRMF_D
+20010614 16:18:01 Modifying mailboxes on SVNTDEV-54
+20010614 16:19:36 Application started
+20010614 16:19:36 Transfer started
+20010614 16:19:36 Opening ADO Connection
+20010614 16:19:36 Deleting Admin Users from HRMF_Admin_User
+20010614 16:19:36 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 16:19:51 Updating HRMF_Admin_User with Admin users
+20010614 16:19:53 Retrieving modified users from HRMF_D
+20010614 16:19:53 Modifying mailboxes on SVNTDEV-54
+20010614 16:20:06 Invalid use of Null (Error 94) whilst in extract process
+20010614 16:20:16 Application ended cleanly.
+20010614 16:20:52 Application started
+20010614 16:20:52 Transfer started
+20010614 16:20:52 Opening ADO Connection
+20010614 16:20:52 Deleting Admin Users from HRMF_Admin_User
+20010614 16:20:52 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 16:20:52 Updating HRMF_Admin_User with Admin users
+20010614 16:20:53 Retrieving modified users from HRMF_D
+20010614 16:20:53 Modifying mailboxes on SVNTDEV-54
+20010614 16:21:50 Application started
+20010614 16:21:50 Transfer started
+20010614 16:21:50 Opening ADO Connection
+20010614 16:21:51 Deleting Admin Users from HRMF_Admin_User
+20010614 16:21:51 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 16:21:51 Updating HRMF_Admin_User with Admin users
+20010614 16:21:52 Retrieving modified users from HRMF_D
+20010614 17:24:09 Modifying mailboxes on SVNTDEV-54
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=AL1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=BA1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=BY1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=CONHUB,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=CSC1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=CV1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=GN1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=HH1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=JTC,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=KG1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=KR1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=MH1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=MSXAPPS,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=msxdev40,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=msxdev41,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=NO1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=SAPBBP,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=SP1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=WADEVJT1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=WADEVMS1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=MARTINT0,cn=Recipients,ou=_ABViews_,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=AL1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=BA1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=BY1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=CONHUB,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=CSC1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=CV1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=GN1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=HH1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=JTC,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=KG1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=KR1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=MH1,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=MSXAPPS,o=Water Corporation
+20010614 17:24:38 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=msxdev40,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=msxdev41,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=NO1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=SAPBBP,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=SP1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=WADEVJT1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=WADEVMS1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SELLERL0,cn=Recipients,ou=_ABViews_,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=AL1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=BA1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=BY1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=CONHUB,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=CSC1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=CV1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=GN1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=HH1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=JTC,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=KG1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=KR1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=MH1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=MSXAPPS,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=msxdev40,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=msxdev41,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=NO1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=SAPBBP,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=SP1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=WADEVJT1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=WADEVMS1,o=Water Corporation
+20010614 17:24:39 UNKNOWN ERROR 0 - LDAP://SVNTDEV-54/cn=SMITHS0,cn=Recipients,ou=_ABViews_,o=Water Corporation
+20010614 17:24:39 Application ended cleanly.
+20010614 17:24:51 Application started
+20010614 17:24:51 Transfer started
+20010614 17:24:51 Opening ADO Connection
+20010614 17:24:51 Deleting Admin Users from HRMF_Admin_User
+20010614 17:24:51 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:25:07 Updating HRMF_Admin_User with Admin users
+20010614 17:25:09 Retrieving modified users from HRMF_D
+20010614 17:30:17 Nothing to do
+20010614 17:30:17 Application ended cleanly.
+20010614 17:30:20 Application started
+20010614 17:30:20 Transfer started
+20010614 17:30:20 Opening ADO Connection
+20010614 17:30:20 Deleting Admin Users from HRMF_Admin_User
+20010614 17:30:20 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:30:40 Updating HRMF_Admin_User with Admin users
+20010614 17:30:41 Retrieving modified users from HRMF_D
+20010614 17:31:00 Nothing to do
+20010614 17:31:00 Application ended cleanly.
+20010614 17:31:13 Application started
+20010614 17:31:13 Transfer started
+20010614 17:31:13 Opening ADO Connection
+20010614 17:31:13 Deleting Admin Users from HRMF_Admin_User
+20010614 17:31:13 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:31:13 Updating HRMF_Admin_User with Admin users
+20010614 17:31:14 Retrieving modified users from HRMF_D
+20010614 17:38:25 Application started
+20010614 17:38:25 Transfer started
+20010614 17:38:25 Opening ADO Connection
+20010614 17:38:25 Deleting Admin Users from HRMF_Admin_User
+20010614 17:38:25 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:38:40 Updating HRMF_Admin_User with Admin users
+20010614 17:38:41 Retrieving modified users from HRMF_D
+20010614 17:38:47 Modifying mailboxes on SVNTDEV-54
+20010614 17:40:38 Application started
+20010614 17:40:38 Transfer started
+20010614 17:40:38 Opening ADO Connection
+20010614 17:40:38 Deleting Admin Users from HRMF_Admin_User
+20010614 17:40:38 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:40:38 Updating HRMF_Admin_User with Admin users
+20010614 17:40:39 Retrieving modified users from HRMF_D
+20010614 17:40:39 Modifying mailboxes on SVNTDEV-54
+20010614 17:41:17 Application started
+20010614 17:41:17 Transfer started
+20010614 17:41:17 Opening ADO Connection
+20010614 17:41:17 Deleting Admin Users from HRMF_Admin_User
+20010614 17:41:17 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:41:17 Updating HRMF_Admin_User with Admin users
+20010614 17:41:18 Retrieving modified users from HRMF_D
+20010614 17:41:18 Modifying mailboxes on SVNTDEV-54
+20010614 17:43:45 Application started
+20010614 17:43:45 Transfer started
+20010614 17:43:45 Opening ADO Connection
+20010614 17:43:45 Deleting Admin Users from HRMF_Admin_User
+20010614 17:43:45 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:44:00 Updating HRMF_Admin_User with Admin users
+20010614 17:44:01 Retrieving modified users from HRMF_D
+20010614 17:44:01 Modifying mailboxes on SVNTDEV-54
+20010614 17:47:03 Application started
+20010614 17:47:03 Transfer started
+20010614 17:47:03 Opening ADO Connection
+20010614 17:47:03 Deleting Admin Users from HRMF_Admin_User
+20010614 17:47:03 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:47:03 Updating HRMF_Admin_User with Admin users
+20010614 17:47:05 Retrieving modified users from HRMF_D
+20010614 17:47:05 Modifying mailboxes on SVNTDEV-54
+20010614 17:47:50 Automation error (Error -2147016694) whilst in extract process
+20010614 17:48:08 Application started
+20010614 17:48:08 Transfer started
+20010614 17:48:08 Opening ADO Connection
+20010614 17:48:08 Deleting Admin Users from HRMF_Admin_User
+20010614 17:48:08 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:48:08 Updating HRMF_Admin_User with Admin users
+20010614 17:48:10 Retrieving modified users from HRMF_D
+20010614 17:48:10 Modifying mailboxes on SVNTDEV-54
+20010614 17:48:10 Automation error
+20010614 17:48:49 Application started
+20010614 17:48:49 Transfer started
+20010614 17:48:49 Opening ADO Connection
+20010614 17:48:49 Deleting Admin Users from HRMF_Admin_User
+20010614 17:48:49 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:48:49 Updating HRMF_Admin_User with Admin users
+20010614 17:48:50 Retrieving modified users from HRMF_D
+20010614 17:48:50 Modifying mailboxes on SVNTDEV-54
+20010614 17:48:50 Automation error
+20010614 17:49:16 Application started
+20010614 17:49:16 Transfer started
+20010614 17:49:16 Opening ADO Connection
+20010614 17:49:16 Deleting Admin Users from HRMF_Admin_User
+20010614 17:49:16 Retrieving members of pb_Helpdesk in Domain A000677
+20010614 17:49:31 Updating HRMF_Admin_User with Admin users
+20010614 17:49:32 Retrieving modified users from HRMF_D
+20010614 17:49:32 Modifying mailboxes on SVNTDEV-54
+20010614 17:49:32 Automation error
+20010614 17:49:37 Application ended cleanly.
+20010614 17:52:31 Application started
+20010614 17:52:31 Transfer started
+20010614 17:52:31 Opening ADO Connection
+20010614 17:52:32 Deleting Admin Users from HRMF_Admin_User
+20010614 17:52:32 Retrieving members of pb_Helpdesk in Domain wadev
+20010614 17:52:52 Automation error
+The network path was not found.  (Error -2147024843) whilst retrieving members of pb_Helpdesk.
+20010614 17:52:52 GetUsers(pb_Helpdesk,wadev) returned an error!
+20010614 17:52:52 Step 1 error
+20010614 17:52:52 Application ended cleanly.

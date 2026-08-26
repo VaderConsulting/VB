@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>LIMITUI Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="LIMITUI Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_limitui_property"></A>LIMITUI Property</H1>
+
+<P>If the LIMITUI property is set, the UI level used when installing the package is restricted to Basic. This property is required in packages that have no authored UI but still contain UI tables such as the <A HREF="tref_51wl.htm">Dialog table</A>. For a description of UI levels, see <A HREF="msi_2j3d.htm">MsiSetInternalUI</A>.</P>
+
+<H4>Remarks</H4>
+
+<P>Installation packages containing the LIMITUI property must also contain the <A HREF="pref_1g8p.htm">ARPNOMODIFY property</A>. This is required for a user to obtain the correct behavior from the Add/Remove Program control panel applet when attempting to configure a product.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_2j3d.htm">MsiSetInternalUI</A>, <A HREF="pref_1g8p.htm">ARPNOMODIFY property</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

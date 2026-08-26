@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>PatchFiles Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="PatchFiles Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_patchfiles_action"></A>PatchFiles Action</H1>
+
+<P>The PatchFiles action queries the <A HREF="tref_0h5x.htm">Patch table</A> to determine which patches are to be applied. The PatchFiles action also performs the byte-wise patching of the files.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>If the file that is to be patched is not installed, the PatchFiles action must come after the <A HREF="aref_3hym.htm">InstallFiles action</A> that installs the file. Previously installed files may be patched at any point in the action sequence. The <A HREF="aref_7yr2.htm">DuplicateFiles Action</A> must come after the PatchFiles action to prevent duplicating the unpatched version of the file.</P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Identifier of patched file</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[2]</TD>
+<TD width=84%>Identifier of directory holding patched file</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[3]</TD>
+<TD width=84%>Size of patch in bytes</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

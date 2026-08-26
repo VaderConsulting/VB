@@ -1,0 +1,7 @@
+StartForm = 0, 8, 889, 678, , 66, 66, 854, 600, C
+Mk3dObject = 0, 4, 883, 675, C
+Mk3d = 4, 4, 883, 673, C
+Mk3dAnimatedObject = 2, 6, 883, 675, C
+Game = 4, 4, 887, 677, C
+RenderForm = 66, 66, 770, 628, C, 110, 110, 840, 644, C
+Mk3dEffectObject = 2, 6, 882, 674, C

@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MaskedEdit Control</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MaskedEdit Control">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_maskededit_control"></A>MaskedEdit Control</H1>
+
+<P>This is an edit field control with a mask contained in the text field of the control. You can associate the control with a string value property by entering the property's name into the Property column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+
+<P>The MaskedEdit Control can be used to create a template for user entry of information such as a phone number or Product ID code. For example, the <A HREF="pref_1v21.htm">PIDKEY property</A> can be entered by the user through a MaskedEdit Control that has been specified by setting the <A HREF="pref_0z21.htm">PIDTemplate property</A> to a string such as:</P>
+
+<P>12345&lt;### -%%%%%%%&gt;@@@@@</P>
+
+<P>This string defines the masking template for the entry of the <A HREF="pref_1v21.htm">PIDKEY property</A> by the user.</P>
+
+<P>The syntax of the mask is a described below. The visible segment of the string is enclosed by the pair of &lt;&gt; characters.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Character</TH>
+<TH align=left width=82%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%><B>&lt;</B></TD>
+<TD width=82%>This is the left end of the visible segment of the template. This character and everything to its left is hidden in the user interface. There should be no more than one instance of this character in the template.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%><B>&gt;</B></TD>
+<TD width=82%>This is the right end of the visible segment of the template. This character and everything to its right is hidden in the user interface. This character is replaced by a dash during validation. If there is a visible segment started with &lt;, then it must be terminated with a matching &gt;.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%><B>#</B></TD>
+<TD width=82%>This character is a digit.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%><B>%</B></TD>
+<TD width=82%>An alternate digit, essentially the same as # , enabling a custom action to differentiate between fields in a way that can be controlled by the mask. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>@</TD>
+<TD width=82%>This character is a randomized digit. This character should not appear in the visible part of the template.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>_</TD>
+<TD width=82%>This character stands for an alpha-numeric character.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>^</TD>
+<TD width=82%>An alternate alpha-numeric character, enabling a custom action to differentiate between fields in a way that can be controlled by the mask..</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>?</TD>
+<TD width=82%>An alternate alpha-numeric character.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>'</TD>
+<TD width=82%>An alternate alpha-numeric character.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>=</TD>
+<TD width=82%>This character is the field terminator. This must follow a #, %, ^, or '. This creates one more input position of the same type as the preceding positions and terminates the field with a '-' separator.</TD>
+</TR>
+</TABLE><BR>
+
+<P>Any other character is treated as a literal constant.</P>
+
+<P>For the characters that can be edited the control creates separate edit windows with one window for each block of contiguous characters of the same kind. </P>
+
+<H4>Control Attributes</H4>
+
+<P>You can use the following attributes with this control. To change the value of an attribute using an event, subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A> and list the attribute's identifier in the Attribute column. Enter the Identifier of the ControlEvent in the Event column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Attribute identifier</TH>
+<TH align=left width=17%>Hexadecimal bit</TH>
+<TH align=left width=64%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_1i79.htm">IndirectPropertyName</A> </TD>
+<TD width=17%> </TD>
+<TD width=64%>This is the name of an indirect property associated with the control. If the Indirect attribute bit is set, the control displays or changes the value of the property having this name. If the Indirect attribute bit is set, this name is also the value of the property listed in the Property column of the <A HREF="tref_6nad.htm">Control table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2w6d.htm">Position</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Position of control in the dialog box.
+<P>Enter the control's width, height, and coordinates of the control's left corner into the Width, Height, X, and Y columns of the <A HREF="tref_6nad.htm">Control table</A>. Use pixels for units of length and distance.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_1nc5.htm">PropertyName</A> </TD>
+<TD width=17%> </TD>
+<TD width=64%>This is the name of the property associated with this control. If the Indirect attribute bit is not set, the control displays or changes the value of the property having this name. This attribute is specified in the Property column of the <A HREF="tref_6nad.htm">Control table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_4twl.htm">PropertyValue</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Current value of the property displayed or changed by this control. If the Indirect attribute bit is not set, this is the value of PropertyName. If the Indirect attribute bit is set, this is the value of IndirectPropertyName. If the attribute changes, the control reflects the new value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2kmd.htm">Text</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>To specify the font style and the masking template used in the edit field of this control, enter a string of text into the Text column of the <A HREF="tref_6nad.htm">Control Table</A>. Prefix this string with {\<I>style</I>}. Where <I>style</I> is an identifier listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. Use {&amp;<I>style</I>} to apply the base font and font style. The string that specifies the masking template follows this prefix and uses the syntax described above.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8bqd.htm">Visible</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000001</P>
+</TD>
+<TD width=64%>Hidden control.
+<P>Visible control.</P>
+
+<P>Include this bit in the bit word of the Attributes column in the <A HREF="tref_6nad.htm">Control table</A> to make the control visible or hidden upon its creation. </P>
+
+<P>You can also hide or show a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2ig5.htm">Enabled</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000002</P>
+</TD>
+<TD width=64%>Control in a disabled state.
+<P>Control in an enabled state. </P>
+
+<P>Include this bit in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> to enable the control on creation.</P>
+
+<P>You can also enable or disable a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0vad.htm">Sunken</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000004</P>
+</TD>
+<TD width=64%>Display the default visual style.
+<P>Display the control with a sunken, 3D, look.</P>
+
+<P>Include these bits in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8m05.htm">Indirect</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000008</P>
+</TD>
+<TD width=64%>The control displays or changes the value of the property in the Property column of the <A HREF="tref_6nad.htm">Control table</A>. 
+<P>The control displays or changes the value of the property that has the Identifier listed in the Property column of the Control table.</P>
+
+<P>Determines if the property associated with this control is referenced indirectly.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The control creates one parent window of the "BUTTON" class with the BS_OWNERDRAW and WS_EX_CONTROLPARENT styles. It creates several child windows to this window: for the constant text parts it creates "STATIC" windows with the SS_LEFT and WS_CHILD styles. For the editable fields it creates an "EDIT" window with the WS_CHILD, WS_BORDER and WS_TABSTOP styles. In case of a numeric field the window also has the ES_NUMBER style.</P>
+
+<P>The alternate digit, %, and alternate alpha-numeric characters, ^, ?, and ' fields are intended to allow custom actions differentiate between fields in a way that can be controlled by the mask. For example, ^ could be used for fields that should be uppercase.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

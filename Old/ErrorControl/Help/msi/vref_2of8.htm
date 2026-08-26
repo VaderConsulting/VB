@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>GenerateTransform Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="GenerateTransform Method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_generatetransform_method"></A><A NAME="helpid_msidatabase_generatetransform"></A>GenerateTransform Method</H1>
+
+<P>The <B>GenerateTransform</B> method of the <A HREF="vref_64dw.htm"><B>Database</B> object</A> creates a <A HREF="dglo_5989.htm#_msi_transform_gly">transform</A> that, when applied to the <I>object</I> database, results in the <I>reference</I> database. The transform is stored in the <I>storage</I> object.</P>
+
+<P>If the transform is to be applied during an installation you must use the <A HREF="vref_1mw4.htm"><B>CreateTransformSummaryInfo</B> method</A> to populate the summary information stream.</P>
+
+<PRE class=syntax><I>object</I>.GenerateTransform(<I>reference, storage</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD>Database that includes the changes.</DD>
+
+<DT><I>reference</I></DT>
+
+<DD>Required database that does not include the changes.</DD>
+
+<DT><I>storage</I></DT>
+
+<DD>The name of the generated transform file. This is optional. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>A transform can add non-primary key columns to the end of a table. A transform cannot be created that adds primary key columns to a table. A transform cannot be created that changes the order, names, or definitions of columns.</P>
+
+<P>This method returns a Boolean value. It returns TRUE if a transform is generated. It returns FALSE if a transform is not generated because there are no differences between the two databases. If the method fails, it generates an error.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="updat_5wab.htm">Transforms</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20GenerateTransform%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_2of8.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20GenerateTransform%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_2of8.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

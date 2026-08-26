@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Core Tables Group</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_core_tables_group"></A>Core Tables Group</H2>
+
+<P>For more information about the following diagram, see the <A HREF="app_7q3o.htm">entity relationship diagram legend</A>.</P>
+
+<P><IMG SRC="images/core.gif" ALT="Core tables group" BORDER=0></P>
+
+<P>The core group consists of tables describing the fundamental features and components of the application and the installer package. Developers of install packages should therefore consider how to populate these tables first because the organization of much of the database will become apparent from the content of this group.
+
+<UL>
+	<LI>The <A HREF="tref_0a91.htm">Feature table</A> lists all features belonging to the application.</LI>
+
+	<LI>The <A HREF="tref_83qd.htm">Condition table</A> contains the conditional expressions that determine whether or not a particular feature will be installed.</LI>
+
+	<LI>The <A HREF="tref_52hx.htm">FeatureComponents table</A> describes which components belong to each feature.</LI>
+
+	<LI>The <A HREF="tref_09np.htm">Component table</A> lists all components belonging to the installation.</LI>
+
+	<LI>The <A HREF="tref_6an9.htm">Directory table</A> lists the directories that are needed during the installation. Because each component must be associated with one and only one directory, the Component table is closely related to this table and has an external key to the Directory table.</LI>
+
+	<LI>The <A HREF="tref_7xt1.htm">PublishComponent table</A> lists the features and components that are published for use by other applications. <A HREF="over_8p83.htm">Components and Features</A> are the two types of feature advertisement.</LI>
+
+	<LI>The <A HREF="tref_4u05.htm">MsiAssembly table</A> specifies Windows Installer settings for .NET Framework common language runtime assemblies and Win32 assemblies. </LI>
+
+	<LI>The <A HREF="tref_8vhh.htm">MsiAssemblyName table</A> specifies the schema for the elements of a strong assembly cache name for a common language runtime or Win32 assembly. </LI>
+
+	<LI>The <A HREF="tref_2y1x.htm">Complus table</A> contains information needed to install COM+ applications.</LI>
+
+	<LI>The <A HREF="tref_6jc5.htm">IsolatedComponent table</A> associates the component specified in the Component_Application column (commonly an .exe) with the component specified in the Component_Shared column (commonly a shared DLL). </LI>
+
+	<LI>The <A HREF="tref_4qxx.htm">Upgrade table</A> contains information required during <A HREF="updat_8do3.htm">major upgrades</A>. </LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Core%20Tables%20Group;%20RELEASE:%20August%202001;%20URL:%20novr_29f4.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Core%20Tables%20Group;%20RELEASE:%20August%202001;%20URL:%20novr_29f4.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ScriptInProgress ControlEvent</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ScriptInProgress ControlEvent">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_scriptinprogress_controlevent"></A>ScriptInProgress ControlEvent</H1>
+
+<P>The installer uses this event to display an informational string while the installation's execution script is being compiled.</P>
+
+<H4>Published By</H4>
+
+<P>This ControlEvent is published by the installer.</P>
+
+<H4>Argument</H4>
+
+<P>None.</P>
+
+<H4>Action on Subscribers</H4>
+
+<P>A <A HREF="href_4s30.htm">Text control</A> subscribing to ScriptInProgress will display text string specified in <A HREF="tref_0vz9.htm">UIText table</A>.</P>
+
+<H4>Typical Use</H4>
+
+<P>While the execution script is being compiled, the installer displays a progress bar indicating the time remaining before the beginning of script execution. The package author can display a preliminary message at this time explaining the progress bar. To display a preliminary message, include a <A HREF="href_4s30.htm">Text control</A> on the same modeless dialog box as the progress bar. Specify that this Text control subscribe to the ScriptInProgress ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A>. Include an entry in the <A HREF="tref_0vz9.htm">UIText table</A> with ScriptInProgress specified in the Key field. Specify the preliminary message as a text string in the Text field of the UIText table. Then during script compilation, the installer will display the this string within the text control. The displayed text disappears as soon as the script compilation is finished.</P>
+
+<P>The same text control that subscribes to the ScriptInProgress ControlEvent can also subscribe to the <A HREF="href_1egk.htm">TimeRemaining ControlEvent</A>. In this case, as text of the preliminary ScriptInProgress string disappears, it is replaced by the "Time Remaining: xx minutes" string.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ScriptInProgress%20ControlEvent;%20RELEASE:%20August%202001;%20URL:%20href_4gl0.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ScriptInProgress%20ControlEvent;%20RELEASE:%20August%202001;%20URL:%20href_4gl0.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

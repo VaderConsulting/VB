@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring ModuleSignature Tables</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_modulesignature_tables"></A>Authoring ModuleSignature Tables</H3>
+
+<P>The <A HREF="merg_4nad.htm">ModuleSignature table</A> contains all the information needed to identify the merge module. </P>
+
+<P>The ModuleID field is the primary key for this table and must follow the convention described in <A HREF="merg_0ucz.htm">Naming Primary Keys in Merge Module Databases</A>. For example, if the readable name of the merge module is MyLibrary and the GUID for the merge module is {880DE2F0-CDD8-11D1-A849-006097ABDE17}, the entry in the ModuleID column of the ModuleSignature table becomes MyLibrary.880DE2F0_CDD8_11D1_A849_006097ABDE17.</P>
+
+<P>Enter the decimal identifier for the default language of the merge module into the Language field of the ModuleSignature table.</P>
+
+<P>Enter the version of the merge module into the Version field.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

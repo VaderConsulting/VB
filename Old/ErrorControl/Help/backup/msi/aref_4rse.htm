@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FindRelatedProducts Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FindRelatedProducts Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_findrelatedproducts_action"></A>FindRelatedProducts Action</H1>
+
+<P>The FindRelatedProducts action runs through each record of the <A HREF="tref_4qxx.htm">Upgrade table</A> in sequence and compares the upgrade code, product version, and language in each row to products installed on the system. When FindRelatedProducts detects a correspondence between the upgrade information and an installed product, it appends the product code to the property specified in the ActionProperty column of the UpgradeTable. </P>
+
+<H4>Database Tables Queried</H4>
+
+<P>This action queries the following table:</P>
+
+<P><A HREF="tref_4qxx.htm">Upgrade Table</A> </P>
+
+<H4>Properties Used</H4>
+
+<P>The FindRelatedProducts action uses the <A HREF="pref_7mux.htm">UpgradeCode property</A> and the version and language information authored into the Upgrade table to detect installed products affected by the pending upgrade. It appends the product code of detected products to the property in the ActionProperty column of the UpgradeTable. </P>
+
+<P>FindRelatedProducts only recognizes existing products that have been installed using the Windows Installer with an .msi that defines an <A HREF="pref_7mux.htm">UpgradeCode property</A>, a <A HREF="pref_120p.htm">ProductVersion property</A>, and a value for the <A HREF="pref_7aex.htm">ProductLanguage property</A> that is one of the languages listed in the <A HREF="sref_80hl.htm">Template Summary Property</A>. </P>
+
+<P>Note that FindRelatedProducts uses the language returned by <A HREF="msi_8wa7.htm">MsiGetProductInfo</A>. For FindRelatedProducts to work correctly, the package author must be sure that the ProductVersion property in the <A HREF="tref_21d1.htm">Property table</A> is set to a language that is also listed in the Template Summary Property. See <A HREF="updat_2cs3.htm">Preparing an Application for Future Major Upgrades</A>.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>FindRelatedProducts should be authored into the <A HREF="tref_1git.htm">InstallUISequence table</A> and <A HREF="tref_5pid.htm">InstallExecuteSequence</A> tables. The installer prevents FindRelated Products from running in InstallExecuteSequence if the action has already run in InstallUISequence. The FindRelatedProducts action must come before the <A HREF="aref_61wu.htm">MigrateFeatureStates action</A> and the <A HREF="aref_8r72.htm">RemoveExistingProducts action</A>. </P>
+
+<H4>ActionData Messages</H4>
+
+<P>FindRelatedProducts sends an action data message for each related product it detects installed on the system.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

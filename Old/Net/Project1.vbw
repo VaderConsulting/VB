@@ -1,0 +1,8 @@
+Form1 = 11, 10, 1248, 906, , 22, 22, 388, 328, C
+modUsers = 5, 7, 1129, 909, C
+modServers = 9, 2, 1275, 934, C
+modGeneral = 0, 297, 1268, 923, C
+modGroups = 132, 132, 1099, 758, C
+modConstants = 655, 7, 1270, 633, C
+frmShutdown = 45, 308, 1275, 928, C, 420, 71, 681, 250, C
+modShutdown = 0, 0, 1186, 924, C

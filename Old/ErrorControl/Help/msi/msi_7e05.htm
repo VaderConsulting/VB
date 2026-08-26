@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSourceListAddSource</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiSourceListAddSource">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_getusername">
+</OBJECT>
+<OBJECT ID="hhobj_2" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msisourcelistaddsource"></A>MsiSourceListAddSource</H1>
+
+<P>The <B>MsiSourceListAddSource </B>function adds to the list of valid network sources in the source list. </P>
+
+<P>For Windows Installer versions earlier than version 2.0, the <B>SOURCELIST</B> property is limited to a maximum of 26 network sources plus 26 URL sources. For Windows Installer version 2.0 and later, the number of sources in the <B>SOURCELIST</B> property is unlimited. For Windows Installer version 1.1 and later <B>MsiSourceListAddSource</B> may be used to add network sources beyond the limit of 26.</P>
+
+<PRE class=syntax><B>UINT MsiSourceListAddSource(
+</B>  <B>LPCTSTR</B> <I>szProduct</I><B>,</B>     // product code
+  <B>LPCTSTR</B> <I>szUserName</I><B>,</B>    // user name or NULL
+  <B>DWORD</B> <I>dwReserved</I><B>,</B>      // reserved, must be 0
+  <B>LPCTSTR</B> <I>szSource</I><B> </B>      // pointer
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szProduct</I></DT>
+
+<DD>[in] Specifies the product code.</DD>
+
+<DT><I>szUserName</I></DT>
+
+<DD>[in] User name for per-user installation; NULL or empty string for per-machine installation. On Windows NT, Windows 2000, or Windows XP, the user name should always be in the format of DOMAIN\USERNAME (or MACHINENAME\USERNAME for a local user). On Windows 95/98 and Windows Me the user name should be as reported by <A HREF="JavaScript:hhobj_1.Click()"><B>GetUserName</B></A>.</DD>
+
+<DT><I>dwReserved</I></DT>
+
+<DD>[in] Reserved for future use. This value must be set to 0. </DD>
+
+<DT><I>szSource</I></DT>
+
+<DD>[in] Pointer to the string specifying the source. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER </TD>
+<TD width=52%>An invalid parameter was passed to the function. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS </TD>
+<TD width=52%>The source was added. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_UNKNOWN_PRODUCT </TD>
+<TD width=52%>The specified product is unknown. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_FUNCTION_FAILED </TD>
+<TD width=52%>The function did not succeed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_ACCESS_DENIED</TD>
+<TD width=52%>The user does not have the ability to add a source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_USERNAME </TD>
+<TD width=52%>Could not resolve the user name. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INSTALL_SERVICE_FAILURE </TD>
+<TD width=52%>Could not access installer service</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_CONFIGURATION </TD>
+<TD width=52%>The configuration data is corrupt. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>An administrator can modify per-user non-managed installations for himself/herself, per-machine installations, and per-user managed installations for any user. Non-administrators can only modify their own installations (managed or non-managed) and per-machine installations, and then only if they are allowed to browse for a source for the product. For more information, see <A HREF="over_5rmt.htm">DisableBrowse</A>, <A HREF="over_6k2t.htm">AllowLockdownBrowse</A>, and <A HREF="over_0wpw.htm">AlwaysInstallElevated</A> policies.</P>
+
+<P>Note that the newly added source is merely added to the set of valid sources. If another source in the set was used to install the product, the new source is not used until the current source is unavailable.</P>
+
+<P>It is the responsibility of the caller to ensure that the provided source is a valid source image for the product.</P>
+
+<P>If the user name is an empty string or NULL, the function operates on the per-machine install of the product. If the product is installed, but is a per-user install, the function returns ERROR_UNKNOWN_PRODUCT. </P>
+
+<P>If the user name argument is non-empty, it specifies the name of the user whose product install is modified. If the current user name is provided, the function first attempts to modify a non-managed installation. If no product is found, the function then tries the same product but managed per-user. If the product is not found in either place, the function returns ERROR_UNKNOWN_PRODUCT, even if the product is installed per-machine.</P>
+
+<P>If the user name does not belong to the current user, the function only checks the managed product for the specified user. It is not possible to modify a non-managed installation for a user besides the current one. If the product is not installed in a managed per-user state for the specified user, the function returns ERROR_UNKNOWN_PRODUCT, even if the product is installed per-machine.</P>
+
+<P>This function is not available with Windows Installer version 1.0.</P>
+
+<H4><A HREF="JavaScript:hhobj_2.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.1 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_1lq1.htm">Source Resiliency</A>, <A HREF="over_5rmt.htm">DisableBrowse</A>, <A HREF="over_6k2t.htm">AllowLockdownBrowse</A>, <A HREF="over_0wpw.htm">AlwaysInstallElevated</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiSourceListAddSource;%20RELEASE:%20August%202001;%20URL:%20msi_7e05.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiSourceListAddSource;%20RELEASE:%20August%202001;%20URL:%20msi_7e05.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Obtaining Context Information for Deferred Execution Custom Actions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_obtaining_context_information_for_deferred_execution_custom_actions"></A>Obtaining Context Information for Deferred Execution Custom Actions</H2>
+
+<P>Because the installation script can be executed outside of the installation session in which it was written, the session may no longer exist during execution of the installation script. This means that the session handle and property data set during the installation sequence are not available to a <A HREF="cact_10fn.htm">deferred execution custom action</A>. Functions that do not require a session handle can be accessed from a custom action. Functions that require a session handle, however, must use one of a few methods that can retrieve context information, or property values that are needed during script execution must be written into the installation script. </P>
+
+<P>A dynamic-link library (DLL) custom action requires a handle to the installation session. If this is also a deferred execution custom action, the custom action must use one of the following methods to retrieve its context. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Method name</TH>
+<TH align=left width=73%>Description </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_7u2h.htm"><B>MsiGetProperty</B></A></TD>
+<TD width=73%>Supports a limited set of properties when used with <A HREF="cact_10fn.htm">deferred execution custom actions</A>: the CustomActionData and ProductCode properties.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_8u05.htm"><B>MsiGetMode</B></A></TD>
+<TD width=73%>When called from <A HREF="cact_10fn.htm">deferred execution custom actions</A>, <A HREF="cact_45tf.htm">commit custom actions</A>, or <A HREF="cact_0k8j.htm">rollback custom actions</A>, <B>MsiGetMode</B> returns True or False when requested to check the mode parameters MSIRUNMODE_SCHEDULED, MSIRUNMODE_COMMIT, or MSIRUNMODE_ROLLBACK. Requests to check any other run mode parameters from a deferred, commit, or rollback custom action returns False.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_86xx.htm"><B>MsiGetLanguage</B></A></TD>
+<TD width=73%>The numeric language ID for the current product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A></TD>
+<TD width=73%>Processes error or progress messages from the custom action</TD>
+</TR>
+</TABLE><BR>
+
+<P>A custom action that is written in JScript or VBScript requires the install session object. This is of the type <A HREF="vref_8xis.htm">Session Object</A> and the installer attaches it to the script with the name "Session". Because the session object may not exist during an installation rollback, a deferred custom action written in script must use one of the following methods or properties of the Session Object to retrieve its context. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Name</TH>
+<TH align=left width=68%>Description </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="vref_53i1.htm"><B>Mode Property</B></A><B> </B></TD>
+<TD width=68%>Returns True for MSIRUNMODE_SCHEDULED only.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="vref_3hlr.htm"><B>Property Property (Session Object)</B></A><B> </B></TD>
+<TD width=68%>Returns the CustomActionData or ProductCode properties.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="vref_4w67.htm"><B>Language Property (Session Object)</B></A> </TD>
+<TD width=68%>Returns numeric language ID of the install session.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="vref_3mlg.htm"><B>Message Method</B></A> </TD>
+<TD width=68%>Can be called to handle errors and progress.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="vref_6tx5.htm"><B>Installer Property</B></A><B> </B> </TD>
+<TD width=68%>Returns the parent object, which is used for non-session functions such as registry access and installer configuration management.</TD>
+</TR>
+</TABLE><BR>
+
+<P>Property values that are set at the time the installation sequence are processed into script can be unavailable at the time of script execution. Only the following limited set of properties are always accessible to custom actions during script execution.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Property name</TH>
+<TH align=left width=73%>Description </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>CustomActionData</TD>
+<TD width=73%>Value at time custom action is processed in sequence table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="pref_4tfd.htm">ProductCode</A></TD>
+<TD width=73%>Unique code for the product, a <A HREF="tref_7kf8.htm">GUID</A> string.</TD>
+</TR>
+</TABLE><BR>
+
+<P>If other property data is required by the deferred execution custom action, then their values must be stored in the installation script. You can do this using a second custom action.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To write the value of a property into the installation script for use during the execution of a deferred execution custom action</B>
+
+<OL>
+	<LI>Insert a small custom action into the installation sequence that sets the property of interest to a property having the same name as the deferred execution custom action. For example, if the primary key for the deferred execution custom action is "MyAction" set a property named "MyAction" to the property X which you need to retrieve. You must set the "MyAction" property in the installation sequence before the "MyAction" custom action. Although any type of custom action can set the context data, the simplest method is to use a property assignment custom action (for example <A HREF="cact_07ox.htm">Custom Action Type 51</A>).</LI>
+
+	<LI>At the time when the installation sequence is processed, the installer will write the value of property X into the execution script as the value of the property CustomActionData.</LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

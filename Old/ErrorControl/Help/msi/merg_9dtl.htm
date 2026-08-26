@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICEM09</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICEM09">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_icem09"></A>ICEM09</H1>
+
+<P>ICEM09 verifies the merge module safely handles predefined directories. It does this by verifying that no component in the module installs a directory to a predefined system directory such as "ProgramFilesFolder" or "StartMenuFolder". Instead, modules should use directories with unique names (created with the merge module naming convention) and use custom actions to target the appropriate target directory. This approach prevents modules from conflicting with an existing directory structure in the final database. ICEM09 checks that the custom actions needed for this technique to work either do not exist (so that the merge tool can generate them) or exist in the correct form (so that they work as expected).</P>
+
+<P>Failure to fix a warning or error reported by ICEM09 could cause problems for the clients of your merge module. Directory table rows with primary keys such as ProgramFilesFolder often exist in a database; therefore, if components in your module install directly to predefined directories such as ProgramFilesFolder, the directory entries in the module may collide with already existing rows. This condition would require the user of your module to split the source files from your module in order to match the existing source directory.</P>
+
+<H4>Result</H4>
+
+<P>ICEM09 reports an error or warning when a module component installs a directory to a pre-defined system directory, causing a possible name conflict with the existing directory structure.</P>
+
+<H4>Example</H4>
+
+<P>ICEM09 posts the following warnings for a module containing the database entries shown.</P>
+
+<PRE>Warning: The component 'Component1.&lt;GUID&gt;' installs directly into the pre-defined 
+directory 'ProgramFilesFolder'. It is recommended that merge modules alias 
+all such directories to unique names.</PRE>
+
+<P>Rename the merge module directory so it does not match a Windows Installer property and therefore is unique. Then set a property of the same name to the value of the Windows Installer directory. When directory resolution takes place, the directory has a property of the same name, so the install location of the directory is the value of the property. Files move from the distinct source location to the same target location. This process should completely remove the merge conflicts. </P>
+
+<PRE>Warning: The 'ModuleInstallExecuteSequence' table contains a type 51 action 
+(StartMenuFolder.&lt;GUID&gt;) for a pre-defined directory, but this action 
+does not have sequence number '1'</PRE>
+
+<P>If the action does not have sequence number 1, it may not merge in to the target database early enough in the sequence to work effectively. </P>
+
+<P>To fix this warning, set the sequence number to 1. Note that most current merge tools (but not some older versions) will generate these custom actions at merge time, so it is not always necessary to explicitly author the actions into the merge module.</P>
+
+<PRE>Warning: The 'CustomAction' table contains a type 51 action (MyAppDataFolderAction) 
+for a pre-defined directory, but the name is not the same as the target directory. 
+Many merge tools will generate duplicate actions."</PRE>
+
+<P>Because the CustomAction column is the primary key of CustomAction table, some merge tools may generate duplicate actions because the pre-authored action name is different.</P>
+
+<P>To fix this warning, name the action the same as the target directory. Note that most current merge tools (but not some older versions) generate these custom actions at merge time, so it is not always necessary to explicitly author the actions into the merge module.</P>
+
+<P><A HREF="tref_6an9.htm"><B>Directory Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=36%>Directory</TH>
+<TH align=left width=35%>Directory_Parent</TH>
+<TH align=left width=29%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ProgramFilesFolder</TD>
+<TD width=35%>Directory1</TD>
+<TD width=29%>A</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>StartMenuFolder</TD>
+<TD width=35%>Directory2</TD>
+<TD width=29%>B:C</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>AppDataFolder</TD>
+<TD width=35%>Directory3</TD>
+<TD width=29%>D</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>MyPicturesFolder</TD>
+<TD width=35%>Directory4</TD>
+<TD width=29%>E</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=52%>Component</TH>
+<TH align=left width=48%>Directory</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>Component1.&lt;GUID&gt;</TD>
+<TD width=48%>ProgramFilesFolder</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>Component2.&lt;GUID&gt;</TD>
+<TD width=48%>StartMenuFolder</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>Component3.&lt;GUID&gt;</TD>
+<TD width=48%>AppDataFolder</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>Component4.&lt;GUID&gt;</TD>
+<TD width=48%>MyPicturesFolder</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_71b9.htm"><B>CustomAction Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>CustomAction</TH>
+<TH align=left width=11%>Type</TH>
+<TH align=left width=33%>Source</TH>
+<TH align=left width=24%>Target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>StartMenuFolder.&lt;GUID&gt;</TD>
+<TD width=11%>51</TD>
+<TD width=33%>StartMenuFolder.&lt;GUID&gt;</TD>
+<TD width=24%>[StartMenuFolder]</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>MyAppDataFolderAction</TD>
+<TD width=11%>51</TD>
+<TD width=33%>AppDataFolder.&lt;GUID&gt;</TD>
+<TD width=24%>[AppDataFolder]</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="merg_7fmt.htm"><B>ModuleInstallExecuteSequence Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Action</TH>
+<TH align=left width=18%>Sequence</TH>
+<TH align=left width=19%>BaseAction</TH>
+<TH align=left width=14%>After</TH>
+<TH align=left width=16%>Condition</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>StartMenuFolder.&lt;GUID&gt;</TD>
+<TD width=18%>100</TD>
+<TD width=19%> </TD>
+<TD width=14%> </TD>
+<TD width=16%> </TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_54md.htm">Merge Module ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICEM09;%20RELEASE:%20August%202001;%20URL:%20merg_9dtl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICEM09;%20RELEASE:%20August%202001;%20URL:%20merg_9dtl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

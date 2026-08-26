@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Dynamic-Link Libraries</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_com_coinitializeex">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_dynamic_link_libraries"></A>Dynamic-Link Libraries</H2>
+
+<P>A custom action can call a function defined in a dynamic-link library (DLL) written in C or C++. The DLL can exist as a file installed during the current installation or as a temporary binary stream originating from the <A HREF="tref_04px.htm">Binary table</A> of the installation database.</P>
+
+<P>Note that any called functions, including custom actions in DLLs, must specify the __stdcall calling convention. </P>
+
+<P>The following types of custom actions call a dynamic-link library.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Custom action type</TH>
+<TH align=left width=68%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_7nqp.htm">Custom Action Type 1</A></TD>
+<TD width=68%>DLL file stored in a Binary table stream.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_07hz.htm">Custom Action Type 17</A></TD>
+<TD width=68%>DLL file that is installed with a product.&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE><BR>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;To use COM you need to call <A HREF="JavaScript:hhobj_1.Click()"><B>CoInitializeEx</B></A> in the custom action. Do not quit if you find that the thread has already been initialized. For example, the thread is initialized in a per-machine installation but not in a per-user installation.</P>
+
+<P>See <A HREF="cact_09pv.htm">Summary List of All Custom Action Types</A> for a summary of all types of custom actions and how they are encoded into the <A HREF="tref_71b9.htm">CustomAction table</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Dynamic-Link%20Libraries;%20RELEASE:%20August%202001;%20URL:%20cact_15mb.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Dynamic-Link%20Libraries;%20RELEASE:%20August%202001;%20URL:%20cact_15mb.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

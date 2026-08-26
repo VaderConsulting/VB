@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Class Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Class Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_class_table"></A>Class Table</H1>
+
+<P>The Class table contains COM server-related information that must be generated as a part of the product advertisement. Each row may generate a set of registry keys and values. The associated ProgId information is included in this table.</P>
+
+<P>The Class table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Column</TH>
+<TH align=left width=35%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>CLSID</TD>
+<TD width=35%><A HREF="tref_7kf8.htm">GUID</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Context</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Component_</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ProgId_Default</TD>
+<TD width=35%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Description</TD>
+<TD width=35%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>AppId_</TD>
+<TD width=35%><A HREF="tref_7kf8.htm">GUID</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>FileTypeMask</TD>
+<TD width=35%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Icon_</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>IconIndex</TD>
+<TD width=35%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>DefInprocHandler</TD>
+<TD width=35%><A HREF="tref_0oit.htm">Filename</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Argument</TD>
+<TD width=35%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Feature_</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Attributes</TD>
+<TD width=35%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>CLSID</DT>
+
+<DD>The Class identifier (ID) of a COM server.</DD>
+
+<DT>Context</DT>
+
+<DD>The server context for this server.
+
+<P>This may be one of the following values:
+
+
+<P class=indent1>LocalServer</P>
+
+
+<P class=indent1>LocalServer32</P>
+
+
+<P class=indent1>InprocServer</P>
+
+
+<P class=indent1>InprocServer32</P>
+</DD>
+
+<DT>Component_</DT>
+
+<DD>External key into the <A HREF="tref_09np.htm">Component table</A> specifying the component whose key file provides the COM server.</DD>
+
+<DT>ProgId_Default</DT>
+
+<DD>The default Program ID associated with this Class ID.</DD>
+
+<DT>Description</DT>
+
+<DD>Localized description associated with the Class ID and Program ID.</DD>
+
+<DT>AppId_</DT>
+
+<DD>Application ID containing DCOM information for the associated application (string <A HREF="tref_7kf8.htm">GUID</A>). This column is a foreign key into the <A HREF="tref_6p2d.htm">AppId table</A>.</DD>
+
+<DT>FileTypeMask</DT>
+
+<DD>Contains information for the HKCR (this CLSID) key. 
+
+<P>If multiple patterns exist, they must be delimited by a semicolon, and numeric subkeys are generated: 0, 1, 2... For more information about this functionality, see GetClassFile.
+</DD>
+
+<DT>Icon_</DT>
+
+<DD>The file providing the icon associated with this CLSID. The installer writes the entry in this column under the DefaultIcon key associated with the ProgId. If it is not null, the column is a foreign key into the <A HREF="tref_7vmt.htm">Icon table</A>. If it is null, the COM server provides the icon resource. Advertised file associations and shortcuts require a non-null value in this column to display properly.</DD>
+
+<DT>IconIndex</DT>
+
+<DD>Icon index into the icon file. This can be NULL.
+
+<P>Non-negative numbers only.
+</DD>
+
+<DT>DefInprocHandler</DT>
+
+<DD>Default inproc handler. 
+
+<P>May be optionally provided only for Context = LocalServer or LocalServer32. A non-numeric value is treated as a system file that serves as the 32-bit InprocHandler (appearing as the InprocHandler32 value).
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=36%>Value</TH>
+<TH align=left width=64%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>1 = default (system)</TD>
+<TD width=64%>16-bit InprocHandler (appearing as the InprocHandler value)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>2 = default (system) </TD>
+<TD width=64%>32-bit InprocHandler (appearing as the InprocHandler32 value)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>3 = default (system) </TD>
+<TD width=64%>16-bit as well as 32-bit InprocHandlers</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Argument</DT>
+
+<DD>This column is optional only when the Context column is set to the LocalServer or LocalServer32 server context. The text is registered as the argument against the OLE server and is used by OLE for invoking the server.
+
+<P>Note that the resolution of properties in the Argument field is limited. A property formatted as [<I>Property</I>] in this field can only be resolved if the property already has the intended value when the component owning the class is installed. For example, for the argument "[#MyDoc.doc]" to resolve to the correct value, the same process must be installing the file MyDoc.doc and the component that owns the class. 
+</DD>
+
+<DT>Feature_</DT>
+
+<DD>External key into the <A HREF="tref_0a91.htm">Feature table</A> specifying the feature that provides the COM server.
+
+<P>External key to column one of the Feature table.
+</DD>
+
+<DT>Attributes</DT>
+
+<DD>If <B>msidbClassAttributesRelativePath</B> is set in this column, the bare file name can be used for COM servers. The installer registers the file name only instead of the complete path. This enables the server in the current directory to take precedence and allows multiple copies of the same component. This is available in Windows Installer version 1.1.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Attribute</TH>
+<TH align=left width=21%>Decimal</TH>
+<TH align=left width=37%>Hexadecimal</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%><B>msidbClassAttributesRelativePath</B></TD>
+<TD width=21%>1</TD>
+<TD width=37%>0x001</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is referred to when the <A HREF="aref_04oe.htm">RegisterClassInfo action</A> or the <A HREF="aref_8wby.htm">UnregisterClassInfo action</A> is executed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

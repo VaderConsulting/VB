@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ConfigureFeature Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ConfigureFeature Method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_configurefeature_method"></A>ConfigureFeature Method</H1>
+
+<P>The <B>ConfigureFeature</B> method configures the installed state of a product feature.</P>
+
+<PRE class=syntax><I>object</I>.ConfigureFeature(<I>Product, Feature, InstallState</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </DD>
+
+<DT><I>Product</I></DT>
+
+<DD>Specifies the product code of the product.</DD>
+
+<DT><I>Feature</I></DT>
+
+<DD>Specifies the feature ID of the feature to be configured.</DD>
+
+<DT><I>InstallState</I></DT>
+
+<DD>Specifies the installation state for the feature. This parameter must be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=41%>Value</TH>
+<TH align=left width=59%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateAdvertised</TD>
+<TD width=59%>The feature is advertised</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateLocal</TD>
+<TD width=59%>The feature is installed locally. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateAbsent</TD>
+<TD width=59%>The feature is uninstalled. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateSource</TD>
+<TD width=59%>The feature is installed to run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateDefault</TD>
+<TD width=59%>The feature is installed to its default location.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8cit.htm"><B>MsiConfigureFeature</B></A>, <A HREF="msi_8vqd.htm#_msi_installation_and_configuration_functions">Installation and Configuration Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ConfigureFeature%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_9604.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ConfigureFeature%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_9604.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

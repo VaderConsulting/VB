@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I Install Win32 assemblies for the private use of an application on Windows XP?</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_how_do_i_install_win32_assemblies_for_the_private_use_of_an_application_on_windows_xp"></A>How do I Install Win32 assemblies for the private use of an application on Windows XP?</H2>
+
+<P>The following describes how to create a Windows Installer package to install a Win32 assembly. The package installs the assembly and an application manifest file into an authored folder used by the application. The application manifest specifies the dependence of the application on the private assembly. After installing the package, the private assembly is available for the exclusive use of the application. The assembly dependence specified in the application manifest overrides for this application any other global assembly dependencies specified in assembly manifest files.</P>
+
+<P>Before continuing you should understand how to author a Windows Installer package without assemblies. For an example of how to author a simple installation, see <A HREF="samp_2k11.htm">An Installation Example</A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To install a private assembly on Windows XP</B>
+
+<OL>
+	<LI>Define a Windows Installer component that includes the Win32 assembly and the application manifest file. This component may contain other resources that should always be installed or removed with the assembly. The remaining steps of this procedure describe how to author the installation database to install this component. All the other components of the application can be authored just as for a Windows 2000 installation without assemblies. </LI>
+
+	<LI>Add a row to the <A HREF="tref_09np.htm">Component table</A> for the component containing the Win32 assembly and application manifest file. Enter a valid Windows Installer <A HREF="tref_7kf8.htm">GUID</A> for this component code. For information about component codes, see <A HREF="over_9crp.htm">Changing the Component Code</A> and <A HREF="over_0xim.htm">What happens if the component rules are broken?</A> </LI>
+
+	<LI>The installer copies the assembly manifest file into the folder containing the file specified in the File_Application field of the <A HREF="tref_4u05.htm">MsiAssembly table</A>.  </LI>
+
+	<LI>Add a row to the <A HREF="tref_52hx.htm">FeatureComponents table</A> tying the component to a Windows Installer feature. For information see, <A HREF="over_8p83.htm">Components and Features</A>. A Windows Installer feature should be a piece of the application's functionality that is recognizable to a user. The assembly is activated when this feature is selected by a user or faulted in by an application. If the assembly defines an additional feature, then add an additional row to the <A HREF="tref_0a91.htm">Feature table</A> for the feature's attributes. This step is not required if authoring a merge module.</LI>
+
+	<LI>For side-by-side assemblies, binding and activation information, such as COM classes, interfaces, and type libraries, is stored in manifest files rather than the registry. Private assemblies store this information in an assembly manifest. On systems that support side-by-side assemblies, the installer skips processing any information about the component entered in the <A HREF="tref_219h.htm">Extension table</A>, <A HREF="tref_3kdh.htm">Verb table</A>, <A HREF="tref_3085.htm">TypeLib table</A>, <A HREF="tref_3sh1.htm">MIME table</A>, <A HREF="tref_5n8l.htm">Class table</A>, <A HREF="tref_4x5x.htm">ProgId table</A>, and <A HREF="tref_6p2d.htm">AppId table</A>. Binding and activation information may be entered into these tables for use by systems that do not support side-by-side assembly sharing. </LI>
+
+	<LI>Side-by-side installation does not globally register the assembly, the installer skips self-registering the component if any self-registration information has been entered in the <A HREF="tref_0llx.htm">SelfReg table</A>. Self-registration information may be entered into the SelfReg table for self-registration of the component on systems that do not support side-by-side assembly sharing.</LI>
+
+	<LI>Add any other registry information, exclusive of binding and activation or self-registration of the component, to the <A HREF="tref_3obp.htm">Registry table</A>, <A HREF="tref_3wmd.htm">RemoveRegistry table</A>, and <A HREF="tref_025h.htm">Environment table</A>.</LI>
+
+	<LI>The installer skips the <A HREF="tref_6jc5.htm">IsolatedComponent table</A> for this component on operating systems that support side-by-side sharing. Enter information into this table if you want the assembly to be private on systems that support .local files.</LI>
+
+	<LI>Add a row to the <A HREF="tref_4u05.htm">MsiAssembly table</A> for the component that contains the Win32 assembly. Enter a value of 1 in the Attributes field of the MsiAssembly table to specify that this is a Win32 assembly. The installer installs the private assembly and application manifest into the same folder containing the file specified in the File_Application field. Commonly this is the application's executable file. The <A HREF="tref_6an9.htm">Directory table</A> to resolve this directory. Add the <A HREF="aref_9bn2.htm">MsiPublishAssemblies action</A> to the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> or <A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A>. Add the <A HREF="aref_3een.htm">MsiUnpublishAssemblies action</A> to the InstallExecuteSequence table.. Author a folder for the assembly and manifest file into the <A HREF="tref_6an9.htm">Directory table</A>. This folder should be in the application's root directory and contain the file specified in the File_Application field of the <A HREF="tref_4u05.htm">MsiAssembly table</A>. During the installation of the application, the installer resolves the Directory table for the path to this folder. For more information, see <A HREF="novr_3wth.htm">Using the Directory Table</A>. </LI>
+
+	<LI>Add rows to the <A HREF="tref_8vhh.htm">MsiAssemblyName table</A> for the component. Add one row for each name and value pair specified in the assemblyIdentity section of the manifest. For an example, see <A HREF="tref_8vhh.htm">MsiAssemblyName table</A>.</LI>
+</OL>
+
+<P></P>
+
+<P></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20Install%20Win32%20assemblies%20for%20the%20private%20use%20of%20an%20application%20on%20Windows%20XP%3F;%20RELEASE:%20August%202001;%20URL:%20assm_7bao.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20Install%20Win32%20assemblies%20for%20the%20private%20use%20of%20an%20application%20on%20Windows%20XP%3F;%20RELEASE:%20August%202001;%20URL:%20assm_7bao.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

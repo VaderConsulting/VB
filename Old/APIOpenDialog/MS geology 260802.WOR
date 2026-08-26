@@ -1,0 +1,1230 @@
+!Workspace
+!Version 650
+!Charset WindowsLatin1
+Open Table "\\tuskprint\c$\Tenement\AusTenement" As AusTenement Interactive
+Open Table "\\Expfile01\AIRGEO\ECWImages\LandsatTM\TM742\_112_078_742.TAB" As _112_078_742 Interactive
+Open Table "\\Expfile01\techdata\55  Talc\Projects\Mt Seabrook\Topography\MS drainage" As MS_drainage Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Topography\MS infrastructure" As MS_infrastructure Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Geology\MS structural symbols 5K" As MS_structural_symbols_5K Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Geology\MS field points" As MS_field_points Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Drilling\MS GPS collars 260602" As MS_GPS_collars_260602 Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Geology\MS geology" As MS_geology Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Geology\MS geology lines" As MS_geology_lines Interactive
+Open Table "\\tuskprint\c$\Topography\Australia\AUSLIG 10M\Aust Land" As Aust_Land Interactive
+Open Table "Grids\Trillbar_5K" As Trillbar_5K Interactive
+Open Table "Grids\Winja_Well_5K" As Winja_Well_5K Interactive
+Open Table "C:\Documents and Settings\dave.HOME\Desktop\Scripts\ECWImages\LandsatTM\TmIAS\_112_078_IAS.TAB" As _112_078_IAS Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Geophysics\mtseabrook_tmi\mtseabrook_tmi_Image.TAB" As mtseabrook_tmi_Image Interactive
+Open Table "\\tuskprint\c$\Topography\Western Australia\250K Raster\Zone 49_50\Robinson Range.TAB" As Robinson_Range Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Geochemistry\MS soils" As MS_soils Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Tenement\Aboriginal exclusion zones AGD66" As Aboriginal_exclusion_zones_AGD Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Database\SBRKCol" As SBRKCol Interactive
+Open Table "D:\55  Talc\Projects\Mt Seabrook\Database\SBRK_lease_Col" As SBRK_lease_Col Interactive
+Map From Aboriginal_exclusion_zones_AGD,Winja_Well_5K,MS_GPS_collars_260602,MS_structural_symbols_5K,AusTenement,SBRK_lease_Col,
+  MS_soils,MS_geology_lines,MS_infrastructure,MS_drainage,MS_geology,_112_078_742 
+  Position (0.885417,0.03125) Units "in"
+  Width 6.57292 Units "in" Height 5.70833 Units "in" Min
+Set Window FrontWindow() ScrollBars Off Autoscroll On Snap Mode On
+Set Map
+  CoordSys Earth Projection 8, 12, "m", 117, 0, 0.9996, 500000, 10000000
+  Center (581045.6074,7168137.613)
+  Zoom 3.436478929 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "m"
+  Distance Type Spherical
+Set Map Layer 0 Selectable
+Set Map
+  Layer 1
+    Display Graphic
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Type
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 2
+    Display Graphic
+    Selectable Off
+    Label Line Arrow Position Above Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Coord
+      Parallel On Auto Off Overlap Off Duplicates Off Offset 2
+      Visibility On
+  Layer 3
+    Display Graphic
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Hole#
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 4
+    Display Graphic
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Date
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 5
+    Display Global
+    Global Pen (2,2,14680176)  Brush (1,16777215,16777215)    
+    Selectable Off
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 6
+    Display Graphic
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Hole_id
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 7
+    Display Graphic
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With SAMP_TYPE_ID
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 8
+    Display Graphic
+    Label Line Arrow Position Above Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Type
+      Parallel On Auto Off Overlap Off Duplicates Off Offset 2
+      Visibility On
+  Layer 9
+    Display Graphic
+    Selectable Off
+    Label Line Arrow Position Above Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Name
+      Parallel On Auto Off Overlap Off Duplicates Off Offset 2
+      Visibility On
+  Layer 10
+    Display Graphic
+    Selectable Off
+    Label Line Arrow Position Above Font ("Arial",0,9,0) Pen (1,2,0) 
+      With ID
+      Parallel On Auto Off Overlap Off Duplicates Off Offset 2
+      Visibility On
+  Layer 11
+    Display Graphic
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Unit
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 12
+    Display Off
+    Selectable Off
+    Zoom (0.094, 38) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+Set CoordSys Earth Projection 8, 12, "m", 117, 0, 0.9996, 500000, 10000000 Bounds (-7745874.38492, 1999.40969607) (8745874.38492, 19998000.5903)
+Set Map Layer 0 Editable
+Create Text
+    "32"
+    (581516.72,7168063.18) (581532.98,7168079.34)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "70"
+    (581685.73,7167899.8) (581701.99,7167915.95)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "58"
+    (581631.94,7167742.75) (581648.2,7167759.12)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "87"
+    (581604.17,7167716.89) (581620.43,7167733.27)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "40"
+    (581538.49,7168730.42) (581554.75,7168746.58)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "65"
+    (580662.93,7168446.05) (580679.19,7168462.2)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "59"
+    (575316.75,7169691.65) (575333.01,7169707.8)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "63"
+    (574382.37,7169520.71) (574398.63,7169536.87)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "88"
+    (574414.59,7169606.69) (574430.85,7169622.85)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "82"
+    (574456.87,7169482.31) (574473.13,7169498.47)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "85"
+    (574427.86,7169519.01) (574444.12,7169535.17)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "88"
+    (574425.51,7169495.44) (574441.77,7169511.59)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "39"
+    (574456.56,7169514.87) (574472.82,7169531.03)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "50"
+    (574424.94,7169535.53) (574441.2,7169551.71)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "62"
+    (574451.27,7169521.32) (574467.53,7169537.48)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "20"
+    (574445.64,7169594.67) (574461.92,7169610.82)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "75"
+    (574417.57,7169512.65) (574433.83,7169528.81)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "52"
+    (574415.31,7170167.72) (574431.57,7170183.9)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "55"
+    (574354.25,7169610.9) (574370.51,7169627.06)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "68"
+    (574273.13,7169615.67) (574289.39,7169631.83)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "53"
+    (574333.48,7169560.74) (574349.74,7169576.9)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "75"
+    (574348.67,7169528.54) (574364.93,7169544.92)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "80"
+    (573894.13,7169530.3) (573910.39,7169546.46)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "15"
+    (573878.43,7169560.06) (573894.69,7169576.22)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "37"
+    (573945.51,7169650.62) (573961.77,7169666.77)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "82"
+    (573733.63,7169547.46) (573749.89,7169563.85)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "78"
+    (573732.25,7169516.13) (573748.51,7169532.29)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "81"
+    (574630.12,7169303.37) (574646.38,7169319.52)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "50"
+    (574448.32,7169102.83) (574464.58,7169118.98)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "53"
+    (574606.55,7169274.15) (574622.81,7169290.31)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "34"
+    (573266.3,7169106.51) (573282.56,7169122.67)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "55"
+    (573300.97,7168928.58) (573317.23,7168944.74)
+    Font ("Arial",0,0,0)
+
+Set Map Layer 0 Editable Off
+Set CoordSys Earth
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Map From Trillbar_5K,AusTenement,SBRK_lease_Col,MS_soils,MS_structural_symbols_5K,MS_geology_lines,
+  MS_infrastructure,MS_drainage,MS_GPS_collars_260602,MS_geology,_112_078_742 
+  Position (1.44792,0.229167) Units "in"
+  Width 7.625 Units "in" Height 5.83333 Units "in" Min
+Set Window FrontWindow() ScrollBars Off Autoscroll On Snap Mode On
+Set Map
+  CoordSys Earth Projection 8, 12, "m", 117, 0, 0.9996, 500000, 10000000
+  Center (573830.5627,7169310.566)
+  Zoom 3.06531127 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "m"
+Set Map Layer 0 Selectable
+Set Map
+  Layer 1
+    Display Graphic
+    Selectable Off
+    Label Line Arrow Position Above Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Coord
+      Parallel On Auto Off Overlap Off Duplicates Off Offset 2
+      Visibility On
+  Layer 2
+    Display Global
+    Global Pen (2,2,14680176)  Brush (1,16777215,16777215)    
+    Selectable Off
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 3
+    Display Global
+    Global   Symbol (34,0,6)   
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Hole_id
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 4
+    Display Graphic
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With SAMP_TYPE_ID
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 5
+    Display Graphic
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Date
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 6
+    Display Graphic
+    Label Line Arrow Position Above Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Type
+      Parallel On Auto Off Overlap Off Duplicates Off Offset 2
+      Visibility On
+  Layer 7
+    Display Graphic
+    Selectable Off
+    Label Line Arrow Position Above Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Name
+      Parallel On Auto Off Overlap Off Duplicates Off Offset 2
+      Visibility On
+  Layer 8
+    Display Graphic
+    Selectable Off
+    Label Line Arrow Position Above Font ("Arial",0,9,0) Pen (1,2,0) 
+      With ID
+      Parallel On Auto Off Overlap Off Duplicates Off Offset 2
+      Visibility On
+  Layer 9
+    Display Off
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Hole#
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 10
+    Display Graphic
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Unit
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 11
+    Display Off
+    Selectable Off
+    Zoom (0.094, 38) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Map From AusTenement,Aust_Land 
+  Position (0.885417,1.01042) Units "in"
+  Width 3.94792 Units "in" Height 3.125 Units "in" Min
+Set Window FrontWindow() ScrollBars On Autoscroll On
+Set Map
+  CoordSys Earth Projection 1, 33
+  Center (133.425,-27.1285)
+  Zoom 6369.666354 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "degree"
+Set Map
+  Layer 1
+    Display Off
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 2
+    Display Global
+    Global Pen (2,2,0)     
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Feature
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+Set CoordSys Earth Projection 1, 33
+Set Map Layer 0 Editable
+Create Point (117.757572,-25.599772)
+    Symbol (34,16711680,12) 
+Set CoordSys Earth
+Set Map Layer 0 Editable
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Map From AusTenement,Aust_Land 
+  Position (0.0520833,0.0520833) Units "in"
+  Width 7.96875 Units "in" Height 1.88542 Units "in" Min
+Set Window FrontWindow() ScrollBars On Autoscroll On
+Set Map
+  CoordSys Earth Projection 1, 33
+  Center (117.7399755,-25.58831344)
+  Zoom 1.24957689 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "degree"
+Set Map
+  Layer 1
+    Display Off
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 2
+    Display Off
+    Global Pen (2,2,0)     
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Feature
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+Set CoordSys Earth Projection 1, 33
+Set Map Layer 0 Editable
+Create Region  1
+  5
+(117.734899,-25.588429)
+(117.737389,-25.588429)
+(117.737389,-25.588485)
+(117.734899,-25.588485)
+(117.734899,-25.588429)
+    Pen (1,2,0) 
+    Brush (2,16777215,0)
+    Center (117.736144,-25.588457)
+Create Region  1
+  5
+(117.734899,-25.588429)
+(117.734899,-25.588373)
+(117.737389,-25.588373)
+(117.737389,-25.588429)
+(117.734899,-25.588429)
+    Pen (1,2,0) 
+    Brush (2,0,16777215)
+    Center (117.736144,-25.588401)
+Create Region  1
+  5
+(117.737389,-25.588429)
+(117.739879,-25.588429)
+(117.739879,-25.588485)
+(117.737389,-25.588485)
+(117.737389,-25.588429)
+    Pen (1,2,0) 
+    Brush (2,0,16777215)
+    Center (117.738634,-25.588457)
+Create Region  1
+  5
+(117.737389,-25.588429)
+(117.739879,-25.588429)
+(117.739879,-25.588373)
+(117.737389,-25.588373)
+(117.737389,-25.588429)
+    Pen (1,2,0) 
+    Brush (2,16777215,0)
+    Center (117.738634,-25.588401)
+Create Region  1
+  7
+(117.739879,-25.588429)
+(117.742369,-25.588429)
+(117.744859,-25.588429)
+(117.744859,-25.588485)
+(117.742369,-25.588485)
+(117.739879,-25.588485)
+(117.739879,-25.588429)
+    Pen (1,2,0) 
+    Brush (2,16777215,0)
+    Center (117.742369,-25.588457)
+Create Region  1
+  7
+(117.739879,-25.588373)
+(117.742369,-25.588373)
+(117.744859,-25.588373)
+(117.744859,-25.588429)
+(117.742369,-25.588429)
+(117.739879,-25.588429)
+(117.739879,-25.588373)
+    Pen (1,2,0) 
+    Brush (2,0,16777215)
+    Center (117.742369,-25.588401)
+Create Text
+    "0"
+    (117.734843,-25.588373) (117.734955,-25.588148)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "0.5"
+    (117.739711,-25.588373) (117.740047,-25.588148)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "1"
+    (117.744803,-25.588373) (117.744915,-25.588148)
+    Font ("Arial",0,0,0)
+
+Create Text
+    "kilometers"
+    (117.739318,-25.588766) (117.74044,-25.588485)
+    Font ("Arial",0,0,0)
+
+Set CoordSys Earth
+Set Map Layer 0 Editable
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Map From AusTenement,Robinson_Range,_112_078_742,_112_078_IAS 
+  Position (2.41667,1.375) Units "in"
+  Width 5.66667 Units "in" Height 3.82292 Units "in" Min
+Set Window FrontWindow() ScrollBars On Autoscroll On
+Set Map
+  CoordSys Earth Projection 8, 12, "m", 117, 0, 0.9996, 500000, 10000000
+  Center (577225.7412,7168358.034)
+  Zoom 17.71557573 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "degree"
+Set Map
+  Layer 1
+    Display Global
+    Global Pen (2,2,14680176)  Brush (1,14680176,16777215)    
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 2
+    Display Graphic
+    Selectable Off
+    Zoom (1.1, 430) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency on 
+  color 0 
+    grayscale off 
+  Layer 3
+    Display Off
+    Selectable Off
+    Zoom (0.094, 38) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+  Layer 4
+    Display Off
+    Selectable Off
+    Zoom (0.094, 38) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Map From AusTenement,_112_078_742,_112_078_IAS 
+  Position (0.0520833,0.0520833) Units "in"
+  Width 5.66667 Units "in" Height 3.82292 Units "in" Min
+Set Window FrontWindow() ScrollBars On Autoscroll On
+Set Map
+  CoordSys Earth Projection 8, 12, "m", 117, 0, 0.9996, 500000, 10000000
+  Center (577225.7412,7168358.034)
+  Zoom 17.71557573 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "degree"
+Set Map
+  Layer 1
+    Display Global
+    Global Pen (2,2,14680176)  Brush (1,14680176,16777215)    
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 2
+    Display Graphic
+    Selectable Off
+    Zoom (0.094, 38) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+  Layer 3
+    Display Off
+    Selectable Off
+    Zoom (0.094, 38) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Map From AusTenement,mtseabrook_tmi_Image,_112_078_742,_112_078_IAS 
+  Position (0.260417,0.291667) Units "in"
+  Width 5.66667 Units "in" Height 3.82292 Units "in" Min
+Set Window FrontWindow() ScrollBars On Autoscroll On
+Set Map
+  CoordSys Earth Projection 8, 12, "m", 117, 0, 0.9996, 500000, 10000000
+  Center (577225.7412,7168358.034)
+  Zoom 17.71557573 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "degree"
+Set Map
+  Layer 1
+    Display Global
+    Global Pen (2,2,14680176)  Brush (1,14680176,16777215)    
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 2
+    Display Off
+    Selectable Off
+    Zoom (1.3, 510) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+  Layer 3
+    Display Off
+    Selectable Off
+    Zoom (0.094, 38) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+  Layer 4
+    Display Graphic
+    Selectable Off
+    Zoom (0.094, 38) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Map From AusTenement,mtseabrook_tmi_Image,_112_078_742,_112_078_IAS 
+  Position (0.46875,0.53125) Units "in"
+  Width 5.66667 Units "in" Height 3.82292 Units "in" Min
+Set Window FrontWindow() ScrollBars On Autoscroll On
+Set Map
+  CoordSys Earth Projection 8, 1006, "m", 117, 0, 0.9996, 500000, 10000000
+  Center (577226.4331,7168356.142)
+  Zoom 17.71557573 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "degree"
+Set Map
+  Layer 1
+    Display Global
+    Global Pen (2,2,14680176)  Brush (1,14680176,16777215)    
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 2
+    Display Graphic
+    Selectable Off
+    Zoom (1.3, 510) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+  Layer 3
+    Display Off
+    Selectable Off
+    Zoom (0.094, 38) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+  Layer 4
+    Display Off
+    Selectable Off
+    Zoom (0.094, 38) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Layout
+  Position (0.635417,-0.09375) Units "in"
+  Width 9.53125 Units "in" Height 5.70833 Units "in" Min
+  Set CoordSys Layout Units "in"
+  Create Frame (29.5215,1.2681) (53.6576,21.8535)
+    Pen (1,2,0) 
+    Brush (2,16777215,16777215)
+    Title "Trillbar_5K,...,_112_078_742 Map"
+    FillFrame On
+  Create Frame (2.0007,1.2896) (29.059,23.9576)
+    Pen (1,2,0) 
+    Brush (2,16777215,16777215)
+    Title "Aboriginal_exclusion_zones_AGD,...,_112_078_742 Map"
+    FillFrame On
+  Create Pline 5
+(1.1312,0.7625)
+(1.1312,29.0882)
+(54.2389,29.0882)
+(54.2389,0.7625)
+(1.1312,0.7625)
+    Pen (3,2,0) 
+  Create Pline 5
+(49.9278,29.0882)
+(49.9278,26.1062)
+(54.2389,26.1062)
+(54.2389,29.0882)
+(49.9278,29.0882)
+    Pen (1,2,0) 
+  Create Line (49.9375,26.7285) (54.2417,26.7285)
+    Pen (2,2,0) 
+  Create Line (49.9375,27.1028) (50.9292,27.1028)
+    Pen (1,2,0) 
+  Create Line (49.9375,27.3576) (50.9292,27.3576)
+    Pen (1,2,0) 
+  Create Line (49.9375,27.6125) (50.9292,27.6125)
+    Pen (1,2,0) 
+  Create Line (49.9375,27.8681) (50.9292,27.8681)
+    Pen (1,2,0) 
+  Create Line (50.9292,28.3701) (50.9292,26.7285)
+    Pen (1,2,0) 
+  Create Line (49.9375,28.1236) (54.25,28.1236)
+    Pen (1,2,0) 
+  Create Text
+    "Rio Tinto Exploration Pty Ltd"
+    (50.8847,26.1549) (53.4812,26.3917)
+    Font ("Book Antiqua",1,14,0)
+    Justify Center
+
+  Create Text
+    "Mt Seabrook Talc\nGeology\n1:5,000"
+    (51.2264,26.8472) (53.9931,28.0271)
+    Font ("Arial",1,24,0)
+    Justify Center
+
+  Create Text
+    "Date:27/08/2002"
+    (49.9625,27.1556) (50.7562,27.2854)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Author: GJL"
+    (49.9625,27.409) (50.5424,27.5389)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Office: Perth"
+    (49.9632,27.6625) (50.5701,27.7924)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Projection: AGD66 AMG Zone 50"
+    (51.009,28.1806) (52.6021,28.3104)
+    Font ("Arial",0,8,0)
+
+  Create Line (49.9375,28.3778) (54.2417,28.3778)
+    Pen (2,2,0) 
+  Create Text
+    "Drawing: "
+    (49.9625,27.916) (50.416,28.0458)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Scale: 1:5,000"
+    (49.9625,28.1694) (50.6493,28.2993)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Luzenac Talc"
+    (51.0993,28.5354) (53.0861,28.9389)
+    Font ("Book Antiqua",1,24,0)
+
+  Create Text
+    "RIO\nTINTO"
+    (50.0667,28.434) (50.8264,28.9743)
+    Font ("Book Antiqua",1,16,9437256)
+    Justify Center
+
+  Create Text
+    "Australasia Region    "
+    (51.1097,26.3757) (53.5431,26.6757)
+    Font ("Book Antiqua",1,18,0)
+
+  Create Frame (46.1215,26.3229) (49.6375,28.9667)
+    Pen (1,1,0) 
+    Brush (2,16777215,16777215)
+    Title "AusTenement,Aust_Land Map:1"
+    FillFrame On
+  Create Frame (42.7306,22.8764) (52.5694,24.2972)
+    Pen (1,1,0) 
+    Brush (2,16777215,16777215)
+    Title "AusTenement,Aust_Land Map:2"
+    FillFrame On
+  Create Pline 5
+(45.7736,26.1062)
+(45.7736,29.0882)
+(54.2389,29.0882)
+(54.2389,26.1062)
+(45.7736,26.1062)
+    Pen (3,2,0) 
+  Create Point (39.2743,23.4368)
+    Symbol (33,255,6) 
+  Create Point (39.2785,23.7243)
+    Symbol (41,0,6,"MapInfo Cartographic",0,0) 
+  Create Text
+    "Auger sample"
+    (39.6507,23.3451) (40.6806,23.5417)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "WMC drillhole"
+    (39.6507,23.6382) (40.7104,23.8347)
+    Font ("Arial",0,12,0)
+
+  Create Pline 2
+(39.5222,24.3611)
+(39.0271,24.3611)
+    Pen (1,2,255) 
+  Create Text
+    "Drainage"
+    (39.6507,24.2618) (40.334,24.4583)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Mine lease"
+    (39.6507,22.3201) (40.4639,22.5167)
+    Font ("Arial",0,12,0)
+
+  Create Rect (39.0264,22.316) (39.5222,22.5771)
+    Pen (2,2,14680176) 
+    Brush (1,16777215,16777215)
+  Create Pline 2
+(39.5222,24.6542)
+(39.0271,24.6542)
+    Pen (1,5,16711680) 
+  Create Pline 2
+(39.5222,24.9472)
+(39.0271,24.9472)
+    Pen (1,23,0) 
+  Create Pline 2
+(39.5222,25.2403)
+(39.0271,25.2403)
+    Pen (1,39,0) 
+  Create Point (39.2743,25.5333)
+    Symbol (32,255,8) 
+  Create Text
+    "Road"
+    (39.6507,24.5549) (40.0507,24.7514)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Pipeline"
+    (39.6507,24.8479) (40.2542,25.0444)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Fence"
+    (39.6507,25.141) (40.1174,25.3375)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Bore"
+    (39.6507,25.434) (40.0042,25.6306)
+    Font ("Arial",0,12,0)
+
+  Create Point (39.2743,25.8264)
+    Symbol (76,0,10,"MapInfo Cartographic",0,0) 
+  Create Text
+    "Gate"
+    (39.6507,25.7271) (40.0139,25.9236)
+    Font ("Arial",0,12,0)
+
+  Create Pline 2
+(34.0861,22.3375)
+(33.591,22.3375)
+    Pen (1,2,0) 
+  Create Pline 2
+(34.0861,22.6097)
+(33.591,22.6097)
+    Pen (1,5,0) 
+  Create Pline 2
+(34.0861,22.8819)
+(33.591,22.8819)
+    Pen (2,5,0) 
+  Create Text
+    "Contact (mapped)"
+    (34.234,22.2347) (35.5708,22.4312)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Contact (approximate)"
+    (34.234,22.509) (35.8875,22.7056)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Fault (interpreted)"
+    (34.234,22.7833) (35.5771,22.9799)
+    Font ("Arial",0,12,0)
+
+  Create Rect (33.584,27.7889) (34.091,28.0576)
+    Pen (1,2,0) 
+    Brush (2,16760960,16777215)
+  Create Text
+    "Footwall quartzite"
+    (34.2215,28.4549) (35.5417,28.6514)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Footwall quartz-muscovite schist and psammopelite"
+    (34.2215,28.1333) (38.0549,28.3299)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Footwall quartzite/psammopelite lags"
+    (34.2208,27.8111) (36.9806,28.0076)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Colluvium over quartzite/psammopelite"
+    (34.2208,27.3556) (37.1076,27.5521)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Ferruginous duricrust / lags"
+    (34.2215,27.0347) (36.2646,27.2312)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Calcrete"
+    (34.2215,24.4812) (34.8479,24.6778)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Pebble psammite / lags"
+    (34.2215,26.4111) (35.9583,26.6076)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Silicified marble and talc / lags"
+    (34.2208,25.7674) (36.491,25.9639)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Marble breccia / lags"
+    (34.2215,26.0896) (35.775,26.2861)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Vuggy quartz / lags"
+    (34.2215,25.4451) (35.6583,25.6417)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Colluvium over marble unit / ferruginous lags"
+    (34.2208,24.8028) (37.5472,24.9993)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Hangingwall pelite"
+    (34.2215,25.1243) (35.5917,25.3208)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Granite"
+    (34.2215,23.9125) (34.775,24.109)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Intrusive breccia and hornfels zone"
+    (34.2215,23.5903) (36.8312,23.7868)
+    Font ("Arial",0,12,0)
+
+  Create Rect (33.584,28.1111) (34.091,28.3799)
+    Pen (1,2,0) 
+    Brush (2,16765136,16777215)
+  Create Rect (33.584,28.4333) (34.091,28.7021)
+    Pen (1,2,0) 
+    Brush (2,16776960,16777215)
+  Create Rect (33.584,24.4514) (34.091,24.7201)
+    Pen (1,2,0) 
+    Brush (2,8432639,16777215)
+  Create Rect (33.584,23.8826) (34.091,24.1514)
+    Pen (1,2,0) 
+    Brush (2,16749680,16777215)
+  Create Rect (33.584,23.5604) (34.091,23.8292)
+    Pen (1,2,0) 
+    Brush (2,16758944,16777215)
+  Create Rect (33.584,27.3326) (34.091,27.6014)
+    Pen (1,2,0) 
+    Brush (2,16777113,16777215)
+  Create Region  1
+  5
+(34.091,25.0965)
+(33.584,25.0965)
+(33.584,25.3653)
+(34.091,25.3653)
+(34.091,25.0965)
+    Pen (1,2,0) 
+    Brush (2,8388736,16777215)
+    Center (33.8375,25.2306)
+  Create Region  1
+  4
+(34.091,25.4187)
+(33.584,25.6875)
+(33.584,25.4187)
+(34.091,25.4187)
+    Pen (1,2,0) 
+    Brush (2,14694400,16777215)
+    Center (33.8375,25.5528)
+  Create Region  1
+  4
+(34.091,25.6875)
+(34.091,25.4187)
+(33.584,25.6875)
+(34.091,25.6875)
+    Pen (1,2,0) 
+    Brush (2,16744192,16777215)
+    Center (33.8375,25.5535)
+  Create Region  1
+  4
+(33.584,25.741)
+(33.584,26.0097)
+(34.091,25.741)
+(33.584,25.741)
+    Pen (1,2,0) 
+    Brush (2,10543104,16777215)
+    Center (33.8375,25.875)
+  Create Region  1
+  4
+(34.091,25.741)
+(34.091,26.0097)
+(33.584,26.0097)
+(34.091,25.741)
+    Pen (1,2,0) 
+    Brush (2,12648288,16777215)
+    Center (33.8375,25.8757)
+  Create Region  1
+  4
+(33.584,26.0639)
+(33.584,26.3326)
+(34.091,26.0639)
+(33.584,26.0639)
+    Pen (1,2,0) 
+    Brush (2,65280,16777215)
+    Center (33.8375,26.1979)
+  Create Region  1
+  4
+(34.091,26.0639)
+(34.091,26.3326)
+(33.584,26.3326)
+(34.091,26.0639)
+    Pen (1,2,0) 
+    Brush (2,9502608,16777215)
+    Center (33.9639,26.1979)
+  Create Region  1
+  4
+(33.584,26.3861)
+(34.091,26.3861)
+(33.584,26.6549)
+(33.584,26.3861)
+    Pen (1,2,0) 
+    Brush (2,32768,16777215)
+    Center (33.8375,26.5201)
+  Create Region  1
+  4
+(33.584,26.6549)
+(34.091,26.6549)
+(34.091,26.3861)
+(33.584,26.6549)
+    Pen (1,2,0) 
+    Brush (2,53352,16777215)
+    Center (33.9639,26.5201)
+  Create Region  1
+  4
+(34.091,27.0104)
+(33.584,27.2792)
+(34.091,27.2792)
+(34.091,27.0104)
+    Pen (1,2,0) 
+    Brush (2,13671424,16777215)
+    Center (33.8375,27.1451)
+  Create Region  1
+  4
+(34.091,27.0104)
+(33.584,27.0104)
+(33.584,27.2792)
+(34.091,27.0104)
+    Pen (1,2,0) 
+    Brush (2,8388608,16777215)
+    Center (33.8375,27.1444)
+  Create Region  1
+  4
+(33.584,24.7743)
+(33.584,25.0431)
+(34.091,24.7743)
+(33.584,24.7743)
+    Pen (1,2,0) 
+    Brush (2,13684991,16777215)
+    Center (33.8375,24.9083)
+  Create Region  1
+  4
+(34.091,24.7743)
+(34.091,25.0431)
+(33.584,25.0431)
+(34.091,24.7743)
+    Pen (1,2,0) 
+    Brush (2,16771280,16777215)
+    Center (33.9639,24.9083)
+  Create Pline 4
+(33.4646,25.4014)
+(33.3417,25.4014)
+(33.3417,26.6417)
+(33.4868,26.6417)
+    Pen (1,5,0) 
+  Create Text
+    "Talc alteration"
+    (33.1076,26.5965) (34.2479,26.7931)
+    Font ("Arial",3,12,8421504)
+    Angle 89.8
+    Justify Center
+
+  Create Frame (2.0174,24.1333) (8.9924,28.725)
+    Pen (1,2,0) 
+    Brush (2,16777215,16777215)
+    Title "AusTenement,...,_112_078_IAS Map:1"
+    FillFrame On
+  Create Frame (9.2056,24.1333) (16.1806,28.725)
+    Pen (1,2,0) 
+    Brush (2,16777215,16777215)
+    Title "AusTenement,...,_112_078_IAS Map:2"
+    FillFrame On
+  Create Frame (16.3937,24.1333) (23.3687,28.725)
+    Pen (1,2,0) 
+    Brush (2,16777215,16777215)
+    Title "AusTenement,...,_112_078_IAS Map:3"
+    FillFrame On
+  Create Frame (23.5819,24.1333) (30.5569,28.725)
+    Pen (1,2,0) 
+    Brush (2,16777215,16777215)
+    Title "AusTenement,...,_112_078_IAS Map:4"
+    FillFrame On
+  Create Pline 2
+(34.0861,23.1542)
+(33.591,23.1542)
+    Pen (1,6,0) 
+  Create Text
+    "Fold axis"
+    (34.234,23.0576) (34.9076,23.2542)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Aboriginal site exclusion zone"
+    (39.6583,22.6604) (41.8785,22.8569)
+    Font ("Arial",0,12,0)
+
+  Create Collection 2
+Region  1
+  5
+(39.0264,22.6333)
+(39.0264,22.8944)
+(39.5222,22.8944)
+(39.5222,22.6333)
+(39.0264,22.6333)
+    Pen (2,5,16711680) 
+    Brush (1,16777215,16777215)
+    Center (39.2743,22.7639)
+Pline 2
+(39.5222,22.6333)
+(39.0264,22.8944)
+    Pen (1,5,16711680) 
+  Set Layout Ruler On Pagebreaks On Frame Contents Active
+  Zoom 14.0868 Center (32.4135,18.7934) Extents To Fit
+  Set Window FrontWindow() Autoscroll On
+  Set CoordSys Earth
+Set Window FrontWindow() Printer
+ Name "\\expprt01\DJ2500CPa" Orientation Landscape Copies 1
+ Papersize 257
+Set Digitizer
+  (590332,7434033) (13145,14024) Label "Pt 1",
+  (587740,7432645.5) (12131,13468) Label "Pt 2",
+  (591331,7432832.5) (13539,13549) Label "Pt 3",
+  (582933,7428071) (10260,11662) Label "Pt 4",
+  (585126.5,7427466.5) (11127,11434) Label "Pt 5",
+  (584426.5,7427069.5) (10849,11274) Label "Pt 6",
+  (592272,7414873.5) (13956,6508) Label "Pt 7",
+  (596658,7413665) (15682,6049) Label "Pt 8"
+  CoordSys Earth Projection 8, 12, "m", 147, 0, 0.9996, 500000, 10000000
+  Units "m"
+  Width 24000 Height 18000
+  Resolution 1000, 1000
+  Button 1, 2
+  Mode Off
+

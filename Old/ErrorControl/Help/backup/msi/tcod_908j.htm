@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Windows Installer and Logo Requirements</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Windows Installer and Logo Requirements [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_windows_installer_and_logo_requirements"></A>Windows Installer and Logo Requirements</H1>
+
+<P>The Certified for Microsoft® Windows® Logo identifies products that have been verified through independent testing to comply with the Application Specification for Windows 2000. This specification was developed by Microsoft in cooperation with customers and other developers to provide a road map for building reliable and manageable applications. Software vendors who comply with the specification qualify for the Certified for Microsoft Windows logo and then license the logo for use on their product packaging, advertising, collateral, and other marketing materials. </P>
+
+<P>For more information about the Application Specification for Windows 2000 and how to earn the Certified for Windows logo for your application, see <A HREF="http://msdn.microsoft.com/certification/default.asp">http://msdn.microsoft.com/certification/default.asp</A>. Download the Application Specification for Windows 2000 at <A HREF="http://msdn.microsoft.com/certification/appspec.asp">http://msdn.microsoft.com/certification/appspec.asp</A>.</P>
+
+<P>If you are authoring an installation package for your application, you may take advantage of the capabilities of the Microsoft Windows Installer to help satisfy several of the requirements for certification. The following table provides links to information in the Windows Installer documentation pertinent for some of the certification requirements. Note that the not every requirement for certification discussed in the Application Specification for Windows 2000 is dependent upon the Windows Installer. </P>
+
+<P>The following table refers to the chapter and requirement number described in the Application Specification for Windows 2000. For example, the row marked 2.3 refers to certification requirement 3 in chapter 2.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=38%>Requirement for Certification</TH>
+<TH align=left width=62%>See the following sections </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>1.1
+<P>Application should perform primary functionality and maintain stability.</P>
+</TD>
+<TD width=62%>If you provide an installation package, your application can use the Windows Installer service available on all 32-bit Windows platforms. Using the Installer can improve the functionality and stability of your application. See <A HREF="over_5id5.htm">Resiliency</A>
+<P><A HREF="over_1gdu.htm">Overview of Windows Installer</A></P>
+
+<P><A HREF="legl_5bxq.htm">Roadmap to Windows Installer Documentation</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>1.3
+<P>Application should support Long File Names and UNC paths</P>
+</TD>
+<TD width=62%>The installer supports installing to and from both UNC and drive network and always uses the long file names provided in your package except if the SHORTFILENAMES property is set or if the target volume does not support long file names. See <A HREF="tref_0oit.htm">Filename</A>, <A HREF="tref_4n6t.htm">File Table</A>, <A HREF="tref_6an9.htm">Directory Table</A>, <A HREF="pref_3d6h.htm">SHORTFILENAMES Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>1.5
+<P>The application should not read from or write to Win.ini, System.ini, Autoexec.bat or Config.sys on any Windows operating system based on Windows NT technology.</P>
+</TD>
+<TD width=62%>Your installation program should add entries to the registry <I>not</I> to the Win.ini, System.ini, Autoexec.bat or Config.sys on any Windows operating system based on Windows NT technology. The Windows Installer supports informational keys in the registry. When your application uses the installer, these registry keys become available as installer properties. You can author the package for your application such that it is easy to check and set the values of these keys. 
+<P>If your application uses information that you do not want to put in the registry, create a private initialization file and place it in the directory with the application's executable files. You can easily manage the installation of a private .ini file, as well as add or remove information from existing .ini files, by using the Windows Installer to install your application. See <A HREF="acts_0et5.htm">Modifying the Registry</A>, <A HREF="novr_4300.htm">Registry Tables Group</A>, <A HREF="tref_3obp.htm">Registry Table</A>, <A HREF="tref_3wmd.htm">RemoveRegistry Table</A>, <A HREF="aref_1cmm.htm">WriteRegistryValues Action</A>, <A HREF="aref_5mem.htm">RemoveRegistryValues Action</A>, <A HREF="app_4hix.htm">Uninstall Registry Key</A>,<A HREF="prop_1xyr.htm"> Properties</A>, <A HREF="tref_4n6t.htm">File Table</A>, <A HREF="tref_6an9.htm">Directory Table</A>, <A HREF="novr_3wth.htm">Using the Directory Table</A>, <A HREF="tref_56jp.htm">IniFile Table</A>, <A HREF="tref_9k6d.htm">RemoveIniFile Table</A>, <A HREF="tref_00o5.htm">IniLocator Table</A>, <A HREF="aref_8432.htm">WriteIniValues Action</A> , <A HREF="aref_4tv2.htm">RemoveIniValues Action</A>, <A HREF="tref_9k6d.htm">RemoveIniFile Table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>1.7
+<P>The application should perform Windows version checking correctly.</P>
+</TD>
+<TD width=62%>When you prepare an installation package for your application, you must include information about the product's operating system version requirements. On initialization, the installer automatically sets certain properties to the version of the current operating system. Your setup program can use these installer properties to provide easy version checking. See <A HREF="prop_1xyr.htm">Properties</A>, <A HREF="pref_6gs9.htm">Version9X Property</A>, <A HREF="pref_5jp5.htm">VersionDatabase Property</A>, <A HREF="pref_37nd.htm">VersionNT Property</A>, <A HREF="pref_4hh5.htm">WindowsBuild Property</A>, <A HREF="pref_4tfd.htm">ProductCode Property</A>, <A HREF="pref_52m1.htm">ProductName Property</A>, <A HREF="pref_120p.htm">ProductVersion Property</A>, <A HREF="sovr_99yl.htm">Summary Information Stream</A>, <A HREF="sref_1am1.htm">Revision Number Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>2.1
+<P>The application should install using a Windows Installer package that passes validation testing.</P>
+</TD>
+<TD width=62%>You can check that your installation package passes validation testing by using a specific set of validation rules known as <A HREF="ices_55f7.htm">Internal Consistency Evaluators - ICEs</A>. These ICEs are contained in the file Logo.cub. To qualify for certification, an installation package must not produce any errors when validated using these rules. Warnings are acceptable, but generally should be corrected. 
+<P>The Windows Installer version 1.1 SDK includes the Logo.cub, Darice.cub, and Mergemod.cub files. The ICEs in the Logo.cub file are included in the Darice.cub file. If your package passes validation using Darice.cub, it will pass with Logo.cub. For more information, see <A HREF="ices_16su.htm">Package Validation</A>. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>2.2
+<P>The installation package used to install the application should follow the rules for creating components.</P>
+</TD>
+<TD width=62%>An installer component is a part of an application that is always installed or removed as one piece. There is a set of rules to help you decide how best to divide your application into components. If the components in your installation package are correctly defined, the installer can install and remove them safely. See <A HREF="over_286r.htm">Organizing Applications into Components</A>, <A HREF="over_8p83.htm">Components and Features</A>, <A HREF="over_9crp.htm">Changing the Component Code</A>, <A HREF="over_0xim.htm">What happens if the component rules are broken?</A>, <A HREF="func_1vub.htm">Working with Features and Components</A>, <A HREF="tref_09np.htm">Component Table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>2.3
+<P>The application's installation package should identify shared components.</P>
+</TD>
+<TD width=62%>If you provide an installation package that correctly organizes your application into components, and set <B>msidbComponentAttributesSharedDllRefCount</B> in the Component Table, the Windows Installer can track shared components using the reference count in the shared DLL registry of the component's key file. If you do not use the installer, then your application must keep track of its use of shared DLLs by incrementing a usage counter for the DLL in the SharedDLLs registry key. 
+<P>For more information, see <A HREF="tref_6an9.htm">Directory Table</A>, <A HREF="novr_3wth.htm">Using the Directory Table</A>, <A HREF="tref_09np.htm">Component Table</A>. For the discussion of the SharedDllRefCount bit, see <A HREF="tref_09np.htm">Component Table</A>, <A HREF="over_286r.htm">Organizing Applications into Components</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>2.4
+<P>The application should install to the Program Files folder by default.</P>
+</TD>
+<TD width=62%>On initialization, the installer sets a property to the full path of the Program Files folder. When you prepare the installation package you can specify that the installer install your application to this folder by default. If you also include a UI in your package, the installer can provide users with an option to select another installation location. For more information, see <A HREF="tref_6an9.htm">Directory Table</A>, <A HREF="novr_3wth.htm">Using the Directory Table</A>, <A HREF="pref_73ax.htm">TARGETDIR Property</A>, <A HREF="qref_4wko.htm"><B>MsiSetTargetPath</B></A>, <A HREF="prop_1xyr.htm">Properties</A>, <A HREF="pref_3xfd.htm">ProgramFilesFolder Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>2.5
+<P>The application should support Add/Remove Program Files properly.</P>
+</TD>
+<TD width=62%>You can supply all the information that is needed by Add/Remove Programs in the Control Panel by setting the values of certain installer properties in your application's Windows Installer package. Setting these properties automatically writes the corresponding values into the registry. See <A HREF="prop_1xyr.htm">Properties</A>, <A HREF="prop_55tf.htm">Required Properties</A>, <A HREF="pref_52m1.htm">ProductName Property</A>, <A HREF="pref_8d4p.htm">ARPINSTALLLOCATION Property</A>, <A HREF="pref_9z09.htm">Manufacturer Property</A>, <A HREF="pref_120p.htm">ProductVersion Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>2.6
+<P>The application should ensure that the Windows Installer package supports advertising.</P>
+</TD>
+<TD width=62%>Support advertising by organizing your application for advertising and by including all the information needed for advertisement in the application's Windows Installer package. For more information, see <A HREF="over_1v1w.htm">Advertisement</A>, <A HREF="over_3kys.htm">Installation-On-Demand</A>, <A HREF="acts_9x83.htm">Publishing Products, Features, and Components</A>, <A HREF="app_1v90.htm">Platform Support of Advertisement</A>, <A HREF="over_8p83.htm">Components and Features</A>, <A HREF="novr_8yp1.htm">Suggested AdvtExecuteSequence</A>, <A HREF="novr_7r1h.htm">Suggested AdvtUISequence</A>, <A HREF="pref_6k8p.htm">Advertise Property</A>, <A HREF="aref_2o8e.htm">Advertise Action</A>, <A HREF="aref_10dq.htm">PublishProduct Action</A>, <A HREF="tref_0a91.htm">Feature Table</A>, <A HREF="tref_2i91.htm">Shortcut Table</A>, <A HREF="tref_5n8l.htm">Class Table</A>, <A HREF="tref_219h.htm">Extension Table</A>, <A HREF="tref_7vmt.htm">Icon Table</A>, <A HREF="tref_3sh1.htm">MIME Table</A>, <A HREF="tref_4x5x.htm">ProgId Table</A>, <A HREF="tref_3085.htm">TypeLib Table</A>, <A HREF="tref_3kdh.htm">Verb Table</A>, <A HREF="msi_8cit.htm"><B>MsiConfigureFeature</B></A>, <A HREF="msi_3p9w.htm"><B>MsiConfigureProduct</B></A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>2.7
+<P>The application's installation package should ensure correct uninstall support.</P>
+</TD>
+<TD width=62%>If you use the installer to install your application, you do not need to create a separate uninstaller. You can author an installation package that enables the installer to install, uninstall, and repair your application. See <A HREF="over_1gdu.htm">Overview of Windows Installer</A>, <A HREF="over_286r.htm">Organizing Applications into Components</A>, <A HREF="acts_4lmb.htm">Standard Actions</A>, <A HREF="acts_10xf.htm">About Standard Actions</A>, <A HREF="acts_9dgz.htm">Using Standard Actions</A>, <A HREF="aref_1wo5.htm">Standard Actions Reference</A>, <A HREF="func_37e6.htm">Installing an Application</A>, <A HREF="msi_75x0.htm"><B>MsiInstallProduct</B></A>, <A HREF="aref_986m.htm">INSTALL Action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>3.1
+<P>On Windows 2000 do not attempt to replace files that are protected by Windows File Protection.</P>
+</TD>
+<TD width=62%>The Windows Installer adheres to Windows File Protection (WFP) when installing essential system files on Windows 2000. The Windows Installer never attempts to install or replace a protected file. If a protected system file is modified by an unattended installation of an application, WFP restores the file to the verified file version. For more information, see <A HREF="over_5d0w.htm">Windows File Protection on Windows 2000</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>3.2
+<P>Authors writing new redistributable components must use side-by-side sharing techniques so their components can be installed into the application directory.  </P>
+</TD>
+<TD width=62%>Authors of Windows Installer packages can specify that the installer copy the shared files (commonly shared DLLs) of an application into the application's folder rather than to a shared location. This private set of files (DLLs) are then used only by the application. See <A HREF="over_2inn.htm">Isolated Components</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>3.3
+<P>For Windows 2000 and Windows 98 Second Edition, any side-by-side DLLs that your application depends on must be installed into your application directory:</P>
+</TD>
+<TD width=62%>Authors of Windows Installer packages can specify that the installer copy the shared files (commonly shared DLLs) of an application into the application's folder rather than to a shared location. This private set of files (DLLs) are then used only by the application. See <A HREF="over_2inn.htm">Isolated Components</A> or <A HREF="over_0kfn.htm">Installation of Isolated Components</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>4.3
+<P>The application should degrade gracefully if access is denied.</P>
+</TD>
+<TD width=62%>The objective of this requirement is to ensure that if the user is denied access to resources, the application fails in a manner that maintains a secure environment.
+<P>The Windows Installer handles privileges only during installation. The application must handle privileges at run time. The installer can set certain properties on initialization to the user's privilege level or to a level specified by System Policy. You can then author your Windows Installer package such that the installer checks the user's access privileges before installation begins. </P>
+
+<P>You can author the installation package so that the installer determines whether there is sufficient disk space. If you author a user interface (UI) for the application's package, it can display options to users that run out of disk space.</P>
+
+<P>If the installation is unsuccessful, the installer can switch into its rollback mode and automatically restore the original state of the computer.</P>
+
+<P>For more information, see <A HREF="over_1gdu.htm">Overview of Windows Installer</A>, <A HREF="over_5id5.htm">Resiliency</A>, <A HREF="over_1lq1.htm">Source Resiliency</A>, <A HREF="pref_9kah.htm">Privileged Property</A>, <A HREF="pref_79mh.htm">AdminUser Property</A>, <A HREF="over_37ll.htm">System Policy</A>, <A HREF="aref_9fzi.htm">InstallValidate Action</A>, <A HREF="acts_07s7.htm">File Costing</A>, <A HREF="href_0x7r.htm">DiskCost Dialog</A>, <A HREF="pref_5m2h.htm">OutOfDiskSpace Property</A>, <A HREF="pref_5mk9.htm">OutOfNoRbDiskSpace Property</A>, <A HREF="aref_8sha.htm">AllocateRegistrySpace Action</A>, <A HREF="href_7ing.htm">VolumeCostList Control</A>, Rollback, <A HREF="over_9jjh.htm">Installation Mechanism</A>, <A HREF="pref_8wop.htm">PROMPTROLLBACKCOST Property</A>, <A HREF="pref_26pl.htm">DISABLEROLLBACK Property</A>, <A HREF="href_7awk.htm">EnableRollback ControlEvent</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>4.5
+<P>The application should adhere to system-level Group Policy settings.</P>
+</TD>
+<TD width=62%>Windows Installer can follow policies pertaining to installation. For more information, see <A HREF="over_37ll.htm">System Policy</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>7.1
+<P>Applications should continue to function after upgrade to Microsoft Windows 2000 Professional without reinstall </P>
+</TD>
+<TD width=62%>The installer has a component attribute that can facilitate preparation of your application for migration to Windows 2000. For more information, see <A HREF="over_0ws3.htm">Using Transitive Components</A>.</TD>
+</TR>
+</TABLE><BR>
+
+<P></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiQueryFeatureState</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiQueryFeatureState">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiqueryfeaturestate"></A>MsiQueryFeatureState</H1>
+
+<P>The <B>MsiQueryFeatureState</B> function returns the installed state for a product feature.</P>
+
+<PRE class=syntax><B>INSTALLSTATE MsiQueryFeatureState(
+</B>  <B>LPCTSTR</B> <I>szProduct</I><B>,</B>    // product code
+  <B>LPCTSTR</B> <I>szFeature</I>     // feature ID
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szProduct</I></DT>
+
+<DD>Specifies the product code for the product that contains the feature of interest.</DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>Identifies the feature of interest.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_ABSENT</TD>
+<TD width=52%>The feature is not installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_ADVERTISED</TD>
+<TD width=52%>The feature is advertised</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_LOCAL</TD>
+<TD width=52%>The feature is installed locally.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_SOURCE</TD>
+<TD width=52%>The feature is installed to run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_INVALIDARG</TD>
+<TD width=52%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_UNKNOWN</TD>
+<TD width=52%>The product code or feature ID is unknown.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_BAD_CONFIGURATION</TD>
+<TD width=52%>The configuration data is corrupt.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiQueryFeatureState</B> function does not validate that the feature is actually accessible.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_system_status_functions">System Status Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

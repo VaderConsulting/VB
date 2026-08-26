@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Adding Summary Information</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_adding_summary_information"></A>Adding Summary Information</H2>
+
+<P>The following summary information properties must be defined in every installation package, using a software tool to access the <B>Istream</B> interface of the <A HREF="sovr_99yl.htm">Summary Information Stream</A>. For example, you can use the tool MsiInfo.exe provided with the Windows Installer SDK to set these properties. If these properties are not set, the package will not pass <A HREF="ices_16su.htm">Package Validation</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Summary information property</TH>
+<TH align=left width=24%>Data</TH>
+<TH align=left width=50%>Notes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_80hl.htm">Template</A> 
+<P>(Platform and Language)</P>
+</TD>
+<TD width=24%> ;1033</TD>
+<TD width=50%>Platform and language used by the database. Leaving the platform field empty indicates the package is platform independent. The <A HREF="pref_7aex.htm">ProductLanguage property</A> from the database is typically used for this summary property. The sample's Language ID indicates that the package uses U.S. English.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_1am1.htm">Revision Number</A>
+<P>(Package Code)</P>
+</TD>
+<TD width=24%>{4966AEC4-3C59-4B07-9B98-1B6A7103C0D3}</TD>
+<TD width=50%>This is the package code <A HREF="tref_7kf8.htm">GUID</A> that uniquely identifies the sample package. If you reproduce this sample, use a utility such as GUIDGEN to generate a different GUID for your package. The results of GUIDGEN contain lowercase characters, note that you must change all lowercase characters to uppercase for a valid package code. See <A HREF="over_0joz.htm">Package and Product Codes</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_8eex.htm">Page Count</A>
+<P>(Minimum Installer Version)</P>
+</TD>
+<TD width=24%>110</TD>
+<TD width=50%>For Windows Installer version 1.0, this property should be set to the integer 100. For Windows Installer version 1.1, this property should be set to the integer 110.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_8ge1.htm">Word Count</A>
+<P>(Type of Source)</P>
+</TD>
+<TD width=24%>0</TD>
+<TD width=50%>The global source type for the package is long file names and uncompressed. See <A HREF="over_44z7.htm">Compressed and Uncompressed Sources</A> and the description of the Attributes column of the <A HREF="tref_4n6t.htm">File table</A> for more information. </TD>
+</TR>
+</TABLE><BR>
+
+<P>The remaining summary information stream properties are not required, but should be set for the MNP2000.msi sample.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Summary information property</TH>
+<TH align=left width=24%>Data</TH>
+<TH align=left width=50%>Notes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_82rd.htm">Title</A></TD>
+<TD width=24%>Installation Database</TD>
+<TD width=50%>Informs users that this database is for an installation rather than a transform or a patch.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_0b5l.htm">Subject</A></TD>
+<TD width=24%>MNP2000</TD>
+<TD width=50%>File browsers can display this as the product to be installed with this database. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_7xfd.htm">Keywords</A></TD>
+<TD width=24%>Installer, MSI, Database</TD>
+<TD width=50%>File browsers that are capable of keyword searching can search for these words.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_76k9.htm">Author</A></TD>
+<TD width=24%>Microsoft Corporation</TD>
+<TD width=50%>Name of the product's manufacturer. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_4lfd.htm">Comments</A></TD>
+<TD width=24%>This installer database contains the logic and data required to install Notepad.</TD>
+<TD width=50%>Informs users about the purpose of this database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_4qrd.htm">Creating Application</A></TD>
+<TD width=24%>Orca</TD>
+<TD width=50%>Application used to create the installation database. The sample specifies the Orca database editor as an example.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_2mbd.htm">Security</A></TD>
+<TD width=24%>0</TD>
+<TD width=50%>The sample database is unrestricted read-write.</TD>
+</TR>
+</TABLE><BR>
+
+<P>You do not need the set the <A HREF="sref_7dyx.htm">Last Saved By</A>, <A HREF="sref_0hkp.htm">Last Saved Time/Date</A>, <A HREF="sref_2ut5.htm">Create Time/Date</A>, <A HREF="sref_1cs9.htm">Last Printed</A>, <A HREF="sref_6r5l.htm">Character Count</A>, and <A HREF="sref_4r5l.htm">Codepage</A> summary properties to complete this sample database. The sample relies upon the database editing tool to set and update these optional properties.</P>
+
+<P>For example, to use MsiInfo to add the summary information to the sample, change to the directory containing the database Notepad.msi and use the following command line. Do not reuse the example package ID shown below.</P>
+
+<P><CODE>MsiInfo.exe Notepad.msi -T "Installation Database" -J Subject -A "Microsoft Corporation" -K "Installer, MSI, Database" -O "This installer database contains the logic and data required to install Notepad." -P ;1033 -V {4966AEC4-3C59-4B07-9B98-1B6A7103C0D3} -G 100 -W 0 -N Orca -U 0</CODE></P>
+
+<P>For more details about summary information, see <A HREF="sovr_7q99.htm">About the Summary Information Stream</A>, <A HREF="sovr_09wt.htm">Using the Summary Information Stream</A>, and <A HREF="sref_8yhx.htm">Summary Information Stream Reference</A>. </P>
+
+<P>See the <A HREF="sovr_43w4.htm">Summary Information Stream Property Set</A> for a complete list of all the summary information properties and <A HREF="sovr_6cfn.htm">Summary Property Descriptions</A> for their description.</P>
+
+<P><A HREF="samp_18h1.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

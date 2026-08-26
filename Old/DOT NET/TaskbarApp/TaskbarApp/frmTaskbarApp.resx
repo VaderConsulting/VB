@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" targetNamespace="" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <data name="cmdShutdown.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Assembly</value>
+  </data>
+  <data name="cmdShutdown.Image" mimetype="text/microsoft-urt/binary-serialized/base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFRTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0xLjAuMjQxMS4wLCBD
+        dWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0u
+        RHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAyQQAAAJHSUY4OWEYABgA9wAAAAAA
+        gAAAAIAAgIAAAACAgACAAICAgICAwMDA/wAAAP8A//8AAAD//wD/AP//////AAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAzAABmAACZAADMAAD/ADMAADMzADNmADOZADPMADP/AGYAAGYzAGZmAGaZAGbMAGb/AJkAAJkzAJlm
+        AJmZAJnMAJn/AMwAAMwzAMxmAMyZAMzMAMz/AP8AAP8zAP9mAP+ZAP/MAP//MwAAMwAzMwBmMwCZMwDM
+        MwD/MzMAMzMzMzNmMzOZMzPMMzP/M2YAM2YzM2ZmM2aZM2bMM2b/M5kAM5kzM5lmM5mZM5nMM5n/M8wA
+        M8wzM8xmM8yZM8zMM8z/M/8AM/8zM/9mM/+ZM//MM///ZgAAZgAzZgBmZgCZZgDMZgD/ZjMAZjMzZjNm
+        ZjOZZjPMZjP/ZmYAZmYzZmZmZmaZZmbMZmb/ZpkAZpkzZplmZpmZZpnMZpn/ZswAZswzZsxmZsyZZszM
+        Zsz/Zv8AZv8zZv9mZv+ZZv/MZv//mQAAmQAzmQBmmQCZmQDMmQD/mTMAmTMzmTNmmTOZmTPMmTP/mWYA
+        mWYzmWZmmWaZmWbMmWb/mZkAmZkzmZlmmZmZmZnMmZn/mcwAmcwzmcxmmcyZmczMmcz/mf8Amf8zmf9m
+        mf+Zmf/Mmf//zAAAzAAzzABmzACZzADMzAD/zDMAzDMzzDNmzDOZzDPMzDP/zGYAzGYzzGZmzGaZzGbM
+        zGb/zJkAzJkzzJlmzJmZzJnMzJn/zMwAzMwzzMxmzMyZzMzMzMz/zP8AzP8zzP9mzP+ZzP/MzP///wAA
+        /wAz/wBm/wCZ/wDM/wD//zMA/zMz/zNm/zOZ/zPM/zP//2YA/2Yz/2Zm/2aZ/2bM/2b//5kA/5kz/5lm
+        /5mZ/5nM/5n//8wA/8wz/8xm/8yZ/8zM/8z///8A//8z//9m//+Z///M////IfkEAQAAEAAsAAAAABgA
+        GAAACP8AxRSi9q+gwYMIDVL7M2bLP3jGjKkzlk5dsXHFfhXbiO6XR2LG/ImhxkwdPHjN1E1Ux6xiSYnp
+        isX0Zazaw2nxcDJrBk8lM4kQI1IstklTwWLx4t1L2pPZO5UR31VM92ucr00F0zWLh5IZM3jyDPqLF3Fj
+        zF9G/7k0qe5eQXxwDcZLh7EYMaz/jJ1sxizs2JYSm/n7x+ziOLQFf7E0+c/fRJmQ1eVzvPGXr4J69RKc
+        qy5d4o3T/k0TV+xq4nTGmE3+ufHouHHptvk7XCwtRnXvGnfunJVY6Xz/0GX8dbTYxH/4ilE0VhDjOHSD
+        fROzjTrd4HWoix1FN44ZcnFW8WqmbBl2mnHPai+6hbfRF66jU5n587cOMuxi8P7lKyaO9OV/v8REUTyN
+        UdNTMczEM5g6pInjS1rcXZROgmLhY5BF6BDjy4aJaZTdhPIM1thcxXDXny+UFOTLaxthFKBZG/EnjoYb
+        /udLaSW2eFFGz/nyi4ZW4WJUNRn5qIllPiKJY40barJJNVz8U5uTV2ni5JW4PKjJg5QUs80WXWxhU0Jk
+        HkQNF1wEBAA7Cw==
+</value>
+  </data>
+  <data name="pnlStartMenu.SnapToGrid" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pnlStartMenu.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Assembly</value>
+  </data>
+  <data name="cmdStart.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Assembly</value>
+  </data>
+  <data name="pnlTaskBar.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Assembly</value>
+  </data>
+  <data name="TipShutdown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
+  </data>
+  <data name="TipShutdown.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Assembly</value>
+  </data>
+  <data name="tipBegin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 17</value>
+  </data>
+  <data name="tipBegin.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Assembly</value>
+  </data>
+  <data name="$this.Name">
+    <value>frmMain</value>
+  </data>
+  <data name="$this.Icon" mimetype="text/microsoft-urt/binary-serialized/base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFRTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0xLjAuMjQxMS4wLCBD
+        dWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABNTeXN0ZW0u
+        RHJhd2luZy5JY29uAgAAAAhJY29uRGF0YQhJY29uU2l6ZQcEAhNTeXN0ZW0uRHJhd2luZy5TaXplAgAA
+        AAIAAAAJAwAAAAX/////E1N5c3RlbS5EcmF3aW5nLlNpemUCAAAABXdpZHRoBmhlaWdodAAACAgCAAAA
+        IAAAACAAAAAPAwAAADYEAAACAAABAAIAICAQAAAAAADoAgAAJgAAABAQEAAAAAAAKAEAAA4DAAAoAAAA
+        IAAAAEAAAAABAAQAAAAAAIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAgAAAAICAAIAAAACAAIAA
+        gIAAAICAgADAwMAAAAD/AAD/AAAA//8A/wAAAP8A/wD//wAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABzMzMzMzMzMzMzMzMzMzMw
+        f7i4uLi4uLi4uLi4uLi4MH+Li4uLhOxAix2RC4uLizB/uLi4uLTsQLgdkQi4uLgwf4uLi4uE7ECLHZEL
+        i4uLMH+4uLi4tI7AuB+JCLi4uDB/i4uLi4tES4uBEYuLi4swf7i4uLi4CAi4t4C4uLi4MH+Li4uLiwgL
+        i4eAi4uLizB/uLi4uLgICLi3gLi4uLgwf4uLgAuACACLgACLi4uLMH+4uHdwB3h3AAcAuLi4uDB/i4t4
+        h3iIiHd/AIuLi4swf7i4f4/4iIiI8IC4uLi4MH+Li3/3f////wiHC4uLizB/uLi3eLd3d3d4hwi4uLgw
+        f4uLi4uLi4uLeIcLi4uLMH+4uLi4uLi4uH+HCLi4uDB/i4uLi4uLi4t3dwuLi4swf7i4uLi4uLi4uLi4
+        uLi4MH///////////////////wB4iIiIiIiIiHd3d3d3d3cAB/uLi4uLi4cAAAAAAAAAAAB/uLi4uLhw
+        AAAAAAAAAAAAB//////3AAAAAAAAAAAAAAB3d3d3cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAA////////////////gAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAOAAP//
+        wAH//+AD///wB/////////////8oAAAAEAAAACAAAAABAAQAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAgAAAgAAAAICAAIAAAACAAIAAgIAAAICAgADAwMAAAAD/AAD/AAAA//8A/wAAAP8A/wD//wAA
+        ////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHd3d3d3d3cAf7i4uLi4twB/i4vAiRuHAH+4uMC5GLcA
+        f4BwhwALhwB/t3j/CHC3AH+Hh3CPcIcAf7i4uLdwtwB////////3AHi4uLh3d3cAB4uLhwAAAAAAd3dw
+        AAAAAAAAAAAAAAAA//8AAP//AACAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAA
+        AAMAAID/AADB/wAA//8AAAs=
+</value>
+  </data>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter</value>
+  </resheader>
+</root>

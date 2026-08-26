@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>TablePersistent Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="TablePersistent Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_tablepersistent_property"></A><A NAME="helpid_msidatabase_tablepersistent"></A>TablePersistent Property</H1>
+
+<P>The TablePersistent property of the <A HREF="vref_64dw.htm"><B>Database</B> object</A> returns the persistence state of the table as one of the following parameters.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=41%>Table state</TH>
+<TH align=left width=13%>Value</TH>
+<TH align=left width=46%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiEvaluateConditionFalse</TD>
+<TD width=13%>0</TD>
+<TD width=46%>Table is temporary.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiEvaluateConditionTrue</TD>
+<TD width=13%>1</TD>
+<TD width=46%>Table is persistent.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiEvaluateConditionNone</TD>
+<TD width=13%>2</TD>
+<TD width=46%>Table is not in the database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiEvaluateConditionError</TD>
+<TD width=13%>3</TD>
+<TD width=46%>Invalid or missing table name.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.TablePersistent <I>table</I></P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_64dw.htm"><B>Database</B> object</A></DD>
+
+<DT><I>table</I></DT>
+
+<DD>Required name of the table.
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

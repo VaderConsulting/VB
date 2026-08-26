@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I specify a per-user or per-machine installation?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_how_do_i_specify_a_per_user_or_per_machine_installation"></A>How do I specify a per-user or per-machine installation?</H1>
+
+<P>On Microsoft® Windows® 2000 and Microsoft Windows NT®, the installer performs a per-user or per machine installation depending on the value of the <A HREF="pref_6tx5.htm">ALLUSERS property</A>.</P>
+
+<P>If ALLUSERS is not set, the installer does a per-user installation. If the ALLUSERS property is set to 1, the installer attempts a per-machine installation. The per-machine installation succeeds only if the user has administrative access privileges on the computer. If ALLUSERS is set to 2, the installer first attempts a per-machine installation. In this case, the per-machine installation succeeds only if the user has administrative access privileges on the computer, otherwise the installer does a per-user installation. If ALLUSERS is set to 2, the installer always resets ALLUSERS property to null or 1 based upon whether it determines to do a per-user or a per-machine installation.</P>
+
+<P>On Microsoft® Windows® 95 and Windows 98, the installation is per user or per machine depending upon operating system configuration. If Profiles are on and the Start menu is per-user, the installer does a per user installation. If Profiles are on and Start menu is shared, the installer does a per-machine installation. If Profiles are not on and Start menu is shared, then the installer does a per-user installation. The installer always resets the ALLUSERS property to null or 1 based on whether it determines to do a per-user or a per-machine installation.</P>
+
+<P>For more information, see <A HREF="over_2tf7.htm">Per-User Installations</A> and <A HREF="over_1tdf.htm">Per-Machine Installations</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

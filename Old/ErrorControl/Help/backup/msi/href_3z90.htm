@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Error Dialog Style Bit</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Error Dialog Style Bit">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_error_dialog_style_bit"></A>Error Dialog Style Bit</H1>
+
+<P>If this bit is set the dialog is an error dialog.</P>
+
+<P>There can be more than one dialog with this style. The ErrorDialog property determines which dialog is used as an error dialog. The selected dialog can be only one of those that have this style bit set. The error dialog must have a static text control named ErrorText. This control receives the text of the error message. The dialog should also have the seven push buttons corresponding to the possible return values. The error message determines which of these buttons are actually displayed. The displayed buttons are rearranged so they are evenly distributed on the dialog. This rearrangement changes the X coordinate of the buttons, but not the other three coordinates. Therefore it is advisable that no other control should be authored in the same horizontal region of the dialog as the buttons. If the error message specifies no button, the OK button is displayed. The Default button, First active control and Cancel button values are ignored for an error dialog. The default button defined in the error message will be assigned to all three values. The effect of pushing these buttons have to be defined in the <A HREF="tref_6k11.htm">ControlEvent Table</A> just like for all other buttons. The title of the dialog is authored in a way similar to other dialogs. It can get overwritten by the error message if it specifies a header text after the button list. </P>
+
+<H4>Value</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Decimal</TH>
+<TH align=left width=25%>Hexadecimal</TH>
+<TH align=left width=57%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>65536</TD>
+<TD width=25%>0x00010000</TD>
+<TD width=57%><B>msidbDialogAttributesError</B></TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

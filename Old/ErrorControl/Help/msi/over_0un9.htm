@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Installation Package</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="installation packages [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="packages [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_installation_package"></A>Installation Package</H2>
+
+<P>An installation package contains all the information the Microsoft® Windows® Installer requires to install or uninstall an application or product and to run the setup user interface. Each installation package includes an .msi file, containing an installation database, a summary information stream, and data streams for various parts of the installation. The .msi file can also contain one or more transforms, internal source files, and external source files or cabinet files required by the installation.</P>
+
+<P>Application developers must author an installation to use the installer. Because the installer organizes installations around the concept of <A HREF="over_8p83.htm">components and features</A>, and stores all information about the installation in a relational database, the process of authoring an installation package broadly entails the following steps: 
+
+<UL>
+	<LI>Identify the features to be presented to users.</LI>
+
+	<LI>Organize the application into components.</LI>
+
+	<LI>Populate the installation database with information.</LI>
+
+	<LI>Validate the installation package.</LI>
+</UL>
+
+<P>The next section discusses installer components and features. For more information, see <A HREF="over_8p83.htm">Components and Features</A>. The choice of features is commonly determined by the application's functionality from the user's perspective.</P>
+
+<P>It is recommended that developers use a standard procedure for choosing components. For more information, see <A HREF="over_286r.htm">Organizing Applications into Components</A>. </P>
+
+<P>Package authors can use third-party package creation tools, or a table editor and the Windows Installer SDK, to populate the installation database. All installation packages need to be validated for internal consistency. For more information, see <A HREF="ices_16su.htm">Package Validation</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Installation%20Package;%20RELEASE:%20August%202001;%20URL:%20over_0un9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Installation%20Package;%20RELEASE:%20August%202001;%20URL:%20over_0un9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

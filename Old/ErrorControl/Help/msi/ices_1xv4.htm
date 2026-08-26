@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE20</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE20">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice20"></A>ICE20</H1>
+
+<P>ICE20 validates the standard dialogs and dialog requirements of an installation package having an authored user interface. Installation packages with an authored user interface have a <A HREF="tref_51wl.htm">Dialog table</A> and the <A HREF="pref_1ypl.htm"><B>LIMITUI</B> property</A> is not set.</P>
+
+<P>ICE20 validates the following tables and requirements.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Standard dialog</TH>
+<TH align=left width=76%>Dialog requirements</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="href_73mv.htm">FilesInUse Dialog</A></TD>
+<TD width=76%>A <A HREF="tref_5f1h.htm">ListBox table</A>.
+<P>A <A HREF="href_1yjw.htm">ListBox control</A> with the Property column of the <A HREF="tref_6nad.htm">Control table</A> set to FileInUseProcess.</P>
+
+<P>A <A HREF="href_331o.htm">PushButton control</A> with EndDialog entered into the Event column of the <A HREF="tref_6k11.htm">ControlEvent table</A> and Ignore in the Argument column. </P>
+
+<P>A <A HREF="href_331o.htm">PushButton control</A> with EndDialog entered into the Event column of the <A HREF="tref_6k11.htm">ControlEvent table</A> and Exit in the Argument column. </P>
+
+<P>A <A HREF="href_331o.htm">PushButton control</A> with EndDialog entered into the Event column of the <A HREF="tref_6k11.htm">ControlEvent table</A> and Retry in the Argument column. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="href_119j.htm">Error Dialog</A></TD>
+<TD width=76%>The <A HREF="href_3z90.htm">Error Dialog Style bit</A> must be set to specify the dialog, with any name, is an Error Dialog.
+<P>A Text control named ErrorText.</P>
+
+<P>ErrorText in the Control_First column of the <A HREF="tref_51wl.htm">Dialog table</A>.</P>
+
+<P>A Pushbutton control, named A, with EndDialog in the Event column of the <A HREF="tref_6k11.htm">ControlEvent table</A> and ErrorAbort in the Argument column.</P>
+
+<P>A Pushbutton control, named C, with EndDialog in the Event column of the <A HREF="tref_6k11.htm">ControlEvent table</A> and ErrorCancel in the Argument column.</P>
+
+<P>A Pushbutton control, named I, with EndDialog in the Event column of the <A HREF="tref_6k11.htm">ControlEvent table</A> and ErrorIgnore in the Argument column.</P>
+
+<P>A Pushbutton control, named N, with EndDialog in the Event column of the <A HREF="tref_6k11.htm">ControlEvent table</A> and ErrorNo in the Argument column.</P>
+
+<P>A Pushbutton control, named O, with EndDialog in the Event column of the <A HREF="tref_6k11.htm">ControlEvent table</A> and ErrorOk in the Argument column.</P>
+
+<P>A Pushbutton control, named R, with EndDialog in the Event column of the <A HREF="tref_6k11.htm">ControlEvent table</A> and ErrorRetry in the Argument column.</P>
+
+<P>A Pushbutton control, named Y, with EndDialog in the Event column of the <A HREF="tref_6k11.htm">ControlEvent table</A> and ErrorYes in the Argument column.</P>
+
+<P>The width, height, and Y coordinates should be the same for all of the buttons. The X coordinates are determined by the installer.</P>
+
+<P>If a control named ErrorIcon exists, it must have Icon in the Type column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="href_8euf.htm">Exit Dialog</A></TD>
+<TD width=76%>There must be either a Dialog or Custom Action in the <A HREF="tref_5lnp.htm">AdminUISequence table</A> and <A HREF="tref_1git.htm">InstallUISequence table</A> with a value -1 in the Sequence Column.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="href_2013.htm">UserExit Dialog</A></TD>
+<TD width=76%>There must be either a Dialog or Custom Action in the <A HREF="tref_5lnp.htm">AdminUISequence table</A> and <A HREF="tref_1git.htm">InstallUISequence table</A> with a value -2 in the Sequence Column.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="href_4u1z.htm">FatalError Dialog</A></TD>
+<TD width=76%>There must be either a Dialog or Custom Action in the <A HREF="tref_5lnp.htm">AdminUISequence table</A> and <A HREF="tref_1git.htm">InstallUISequence table</A> with a value -3 in the Sequence Column.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Result</H4>
+
+<P>ICE20 posts an error message if it cannot validate that the standard dialogs and requirements are present in the installation package. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE20;%20RELEASE:%20August%202001;%20URL:%20ices_1xv4.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE20;%20RELEASE:%20August%202001;%20URL:%20ices_1xv4.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

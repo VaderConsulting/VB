@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FileCost Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FileCost Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_filecost_action"></A>FileCost Action</H1>
+
+<P>The FileCost action initiates dynamic <A HREF="dglo_25q1.htm#_msi_costing_gly">costing</A> of standard installation actions.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The <A HREF="aref_4bam.htm">CostInitialize</A> action must be executed before the FileCost action. The installer then determines the disk-space cost of every file in the <A HREF="tref_4n6t.htm">File table</A>, on a per-component basis (See <A HREF="tref_09np.htm">Component Table</A>), taking both <A HREF="dglo_4fzt.htm#_msi_volume_gly">volume</A> clustering and the presence of existing files that may need to be overwritten into account. All actions that consume or release disk space are also considered. If an existing file is found, a file version check is performed to determine whether the new file actually needs to be installed or not. If the existing file is of an equal or greater version number, the existing file is not overwritten and no disk-space cost is incurred. In all cases, the installer uses the results of version number checking to set the installation state of each file.</P>
+
+<P>The FileCost action initializes cost calculation with the installer. Actual dynamic <A HREF="dglo_25q1.htm#_msi_costing_gly">costing</A> does not occur until the <A HREF="aref_22we.htm">CostFinalize</A> action is executed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

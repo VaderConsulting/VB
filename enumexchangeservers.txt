@@ -1,0 +1,50 @@
+' Enumerate Exchange 2000 Server Computers with ADSI
+' The following sample queries Active Directory using ADO for all of the Exchange Server
+' computers in the Forest.
+' This code can be run from any Windows 2000 or DSCLient computer.
+
+
+    Sub main()
+
+    Dim iAdRootDSE As IADs
+    Dim Conn As New ADODB.Connection
+    Dim Com As New ADODB.Command
+    Dim Rs As ADODB.Recordset
+    Dim varConfigNC As Variant
+    Dim strQuery As String
+    Dim varVersion() As Variant
+
+    ' Get the configuration naming context.
+    Set iAdRootDSE = GetObject("LDAP://RootDSE")
+    varConfigNC = iAdRootDSE.Get("configurationNamingContext")
+
+    ' Open the connection.
+    Conn.Provider = "ADsDSOObject"
+    Conn.Open "ADs Provider"
+
+    ' Build the query to find all Exchange Server computers.
+    strQuery = "<LDAP://" & varConfigNC & ">;(objectCategory=msExchExchangeServer);name,serialNumber;subtree"
+
+    Com.ActiveConnection = Conn
+    Com.CommandText = strQuery
+    Set Rs = Com.Execute
+
+    ' Iterate through the results.
+    While Not Rs.EOF
+
+    ' serialNumber is returned as a variant array.
+    varVersion = Rs.Fields("serialNumber").Value
+
+    ' Output the name of the server and the first element of the array.
+    MsgBox "Server: " & Rs.Fields("name") & vbLf & "Version: " & varVersion(0)
+    Rs.MoveNext
+    Wend
+
+    ' Clean up.
+    Rs.Close
+    Conn.Close
+    Set Rs = Nothing
+    Set Com = Nothing
+    Set Conn = Nothing
+
+End Sub

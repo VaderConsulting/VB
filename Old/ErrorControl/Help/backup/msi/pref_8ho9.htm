@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>REMOVE Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="REMOVE Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_remove_property"></A>REMOVE Property</H1>
+
+<P>The value of the REMOVE property is a list of features delimited by commas that are to be removed. The features must be present in the Feature column of the <A HREF="tref_0a91.htm">Feature</A> table. To remove all features (for example, uninstall the entire product), use REMOVE=All on the command line.</P>
+
+<H4>Remarks</H4>
+
+<P>To determine whether a product has been set to be completely uninstalled, a package author may use a conditional expression to check whether REMOVE=ALL. Note that if the product is removed by setting its top feature to absent, the REMOVE property may not equal "ALL" until after the <A HREF="aref_9fzi.htm">InstallValidate action</A>. This means that any custom action that depends upon REMOVE=ALL must be sequenced after the InstallValidate. Note that the feature names are case-sensitive.</P>
+
+<P>The installer always evaluates the following properties in the following order:
+
+<OL>
+	<LI><A HREF="pref_3dvd.htm">ADDLOCAL</A> </LI>
+
+	<LI><A HREF="#_msi_remove_property">REMOVE</A> </LI>
+
+	<LI><A HREF="pref_7g1l.htm">ADDSOURCE</A> </LI>
+
+	<LI><A HREF="pref_7yex.htm">ADDDEFAULT</A> </LI>
+
+	<LI><A HREF="pref_19x5.htm">REINSTALL</A> </LI>
+
+	<LI><A HREF="pref_6k8p.htm">ADVERTISE</A> </LI>
+
+	<LI><A HREF="pref_3htl.htm">COMPADDLOCAL</A> </LI>
+
+	<LI><A HREF="pref_4gvt.htm">COMPADDSOURCE</A> </LI>
+
+	<LI><A HREF="pref_89yx.htm">FILEADDLOCAL</A> </LI>
+
+	<LI><A HREF="pref_0id5.htm">FILEADDSOURCE</A> </LI>
+
+	<LI><A HREF="pref_42yh.htm">FILEADDDEFAULT</A> </LI>
+</OL>
+
+<P>For example, if the command line specifies ADDLOCAL=ALL, ADDSOURCE = MyFeature, all the features are first set to run-local and then MyFeature is set to run-from-source. If the command line is ADDSOURCE=ALL, ADDLOCAL=MyFeature, first MyFeature is set to run-local, then when ADDSOURCE=ALL is evaluated, all features (including MyFeature) are reset to run-from-source.</P>
+
+<P>The installer sets the <A HREF="pref_84u1.htm">Preselected property</A> to a value of "1" during the resumption of a suspended install or when any of the above properties are specified on the command line.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

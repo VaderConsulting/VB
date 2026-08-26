@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetUserInfo</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetUserInfo">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetuserinfo"></A>MsiGetUserInfo</H1>
+
+<P>The <B>MsiGetUserInfo</B> function returns the registered user information for an installed product.</P>
+
+<PRE class=syntax><B>USERINFOSTATE MsiGetUserInfo(
+</B>  <B>LPCTSTR</B> <I>szProduct</I><B>,</B>      // product code
+  <B>LPTSTR</B> <I>lpUserNameBuf</I><B>,</B>   // buffer to return user name
+  <B>DWORD</B> <I>*pcchUserNameBuf</I><B>,</B> // buffer character count, 
+  <B>LPTSTR</B> <I>lpOrgNameBuf</I><B>,</B>    // buffer to return organization name
+  <B>DWORD</B> <I>*pcchOrgNameBuf</I><B>,</B>  // buffer character count, including NULL
+  <B>LPTSTR</B> <I>lpSerialBuf</I><B>,</B>     // buffer to return product ID
+  <B>DWORD</B> <I>*pcchSerialBuf</I>    // buffer character count, including NULL
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szProduct</I></DT>
+
+<DD>Specifies the product code for the product to be queried.</DD>
+
+<DT><I>lpUserNameBuf</I></DT>
+
+<DD>Pointer to a variable that receives the name of the user.</DD>
+
+<DT><I>pcchUserNameBuf</I></DT>
+
+<DD>[in/out] Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpUserNameBuf</I> parameter. This size should include the terminating null character.</DD>
+
+<DT><I>lpOrgNameBuf</I></DT>
+
+<DD>Pointer to a buffer that receives the organization name.</DD>
+
+<DT><I>pcchOrgNameBuf</I></DT>
+
+<DD>[in/out] Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpOrgNameBuf</I> parameter.  The count does not include the terminating null. </DD>
+
+<DT><I>lpSerialBuf</I></DT>
+
+<DD>Pointer to a buffer that receives the product ID.</DD>
+
+<DT><I>pcchSerialBuf</I></DT>
+
+<DD>[in/out] Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpSerialBuf</I> parameter. The count does not include the terminating null. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>USERINFOSTATE_ABSENT</TD>
+<TD width=52%>Some or all of the user information is absent.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>USERINFOSTATE_INVALIDARG</TD>
+<TD width=52%>One of the function parameters was invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>USERINFOSTATE_MOREDATA</TD>
+<TD width=52%>A buffer is too small to hold the requested data.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>USERINFOSTATE_PRESENT</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>USERINFOSTATE_UNKNOWN</TD>
+<TD width=52%>The product code does not identify a known product.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>When the <B>MsiGetUserInfo</B> function returns, the <I>pcchNameBuf</I> parameter contains the length of the class string stored in the buffer. The count returned does not include the terminating NULL character. If the buffer is not big enough, the <B>MsiGetUserInfo</B> function returns USERINFOSTATE_MOREDATA, and <B>MsiGetUserInfo</B> contains the size of the string, in characters, without counting the NULL character.</P>
+
+<P>The user information is considered to be present even in the absence of a company name.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_system_status_functions">System Status Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

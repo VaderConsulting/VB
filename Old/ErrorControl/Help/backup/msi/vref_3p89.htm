@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FeatureState Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FeatureState Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_featurestate_property"></A>FeatureState Property</H1>
+
+<P>The read-only FeatureState property returns the installed state of a feature.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.FeatureState(<I>Product, Feature</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A></DD>
+
+<DT><I>Product</I></DT>
+
+<DD>Specifies the product code of the product that contains the feature.</DD>
+
+<DT><I>Feature</I></DT>
+
+<DD>Specifies the feature.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This property returns one of the following values.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=41%>Value</TH>
+<TH align=left width=59%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateAbsent</TD>
+<TD width=59%>The feature is not installed. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateAdvertised</TD>
+<TD width=59%>The feature is advertised. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateLocal</TD>
+<TD width=59%>The feature is installed to run locally. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateSource</TD>
+<TD width=59%>The feature is installed to run from source. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateInvalidArg</TD>
+<TD width=59%>An invalid parameter was passed to the function. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateUnknown</TD>
+<TD width=59%>The product code or feature ID is unknown. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>msiInstallStateBadConfig</TD>
+<TD width=59%>The configuration data is corrupt.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The FeatureState property does not validate that the feature is accessible.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_4e3p.htm"><B>MsiQueryFeatureState</B></A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

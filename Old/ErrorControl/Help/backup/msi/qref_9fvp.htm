@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiViewClose</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiViewClose">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiviewclose"></A>MsiViewClose</H1>
+
+<P>The <B>MsiViewClose</B> function releases the result set for an executed view.</P>
+
+<PRE class=syntax><B>UINT MsiViewClose(
+</B>  <B>MSIHANDLE</B> <I>hView</I>    // view handle
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hView</I></DT>
+
+<DD>Handle to a view that is set to release.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_HANDLE_STATE</DT>
+
+<DD>The handle is in an invalid state.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiViewClose</B> function must be called before the <A HREF="qref_8hgl.htm"><B>MsiViewExecute</B></A> function is called again on the view, unless all rows of the result set have been obtained with the <A HREF="qref_9b54.htm"><B>MsiViewFetch</B></A> function.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_general_database_access_functions">General Database Access Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

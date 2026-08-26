@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Cabinet</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Cabinet [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_cabinet"></A>Cabinet</H1>
+
+<P>The Cabinet data type must be used in the Cabinet column of the <A HREF="tref_4mlh.htm">Media table</A></P>
+
+<P>If the cabinet name is preceded by the number sign, the cabinet is stored as a data stream inside the package. The character string which follows the # is an <A HREF="tref_5elu.htm">Identifier</A> for this data stream. Note that if the cabinet is stored as a data stream, the name of a cabinet is case-sensitive. </P>
+
+<P>If the cabinet name is not preceded by the number sign #, the cabinet is stored in a separate file located at the root of the source tree specified by the <A HREF="tref_6an9.htm">Directory Table</A>. The cabinet file must use the short file name syntax consisting of an eight character name, a period, and a three character extension. The Cabinet data type cannot use the short|longname syntax for file names. If the cabinet file is stored as a separate file, the name of the cabinet file is not case-sensitive.</P>
+
+<P>To conserve disk space, the installer removes any cabinets embedded in the .msi file before caching the installation package on the user's computer. </P>
+
+<P>See <A HREF="over_3nla.htm">Including a Cabinet File in an Installation</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

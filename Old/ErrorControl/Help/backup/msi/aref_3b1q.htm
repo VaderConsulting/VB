@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ExecuteAction Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ExecuteAction Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_executeaction_action"></A>ExecuteAction Action</H1>
+
+<P>The ExecuteAction action initiates the execution sequence using the <A HREF="pref_2dq1.htm">EXECUTEACTION property</A> to determine which type of installation to perform. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>This action should be sequenced after all information collection necessary to begin the installation is complete. Additional actions may be sequenced after ExecuteAction action in the <A HREF="tref_1git.htm">InstallUISequence table</A>, <A HREF="tref_5lnp.htm">AdminUISequence table</A>, and the <A HREF="tref_3rvp.htm">AdvtUISequence table</A>. A sequence will typically begin with <A HREF="dglo_25q1.htm#_msi_costing_gly">costing</A> actions, such as the <A HREF="aref_4bam.htm">CostInitialize action</A>, followed by the user interface actions, and then the ExecuteAction action.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Remarks</H4>
+
+<P>The ExecuteAction action is run with system privileges if the installer service is enabled. The top-level actions, such as the <A HREF="aref_986m.htm">INSTALL action</A>, <A HREF="aref_2o8e.htm">ADVERTISE action</A>, and <A HREF="aref_4hbi.htm">ADMIN action</A> include internal logic that determines whether calling the ExecuteAction action requires either the execution sequence or the user interface sequence to run. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="tref_1git.htm">InstallUISequence table</A>, <A HREF="tref_5lnp.htm">AdminUISequence table</A>, <A HREF="tref_3rvp.htm">AdvtUISequence table</A>, <A HREF="aref_4bam.htm">CostInitialize action</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

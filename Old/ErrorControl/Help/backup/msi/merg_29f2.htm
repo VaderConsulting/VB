@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Merge Module Automation</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_merge_module_automation"></A>Merge Module Automation</H2>
+
+<P>MergeMod.dll provides a COM object that implements merge operations and source image generation for merge modules. The main object implements interfaces for C/C++ programs and automation clients, including Visual Basic and VBScript. Note that MergeMod.dll requires that the Msvcrt.dll be installed on the system.</P>
+
+<P>The preferred method for installing MergeMod.dll is by using the Microsoft Windows Installer. The Component ID for the component containing the MergeMod COM interface is {FD153241-37EC-11D2-8892-00A0C981B015}. The same binary can be used on all Windows systems and the DLL will self-register via regsvr32 on older systems.</P>
+
+<P>Note that MergeMod.dll requires that the Msvcrt.dll be installed on the system.</P>
+
+<P>The object model for MergeMod.dll is organized as follows.</P>
+
+<P><IMG SRC="images/mergobj.gif" ALT="" BORDER=0></P>
+
+<P>The <A HREF="merg_4th0.htm"><B>Merge</B> Object</A> is the primary object of the model. The <A HREF="merg_2qb8.htm"><B>GetFiles</B> Object</A> is a secondary object. Dependencies are collections of <A HREF="merg_325w.htm"><B>Dependency</B> Objects</A>. Errors are collections of <A HREF="merg_7yr8.htm"><B>Error</B> Objects</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

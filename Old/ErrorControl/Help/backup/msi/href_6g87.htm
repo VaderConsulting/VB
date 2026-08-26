@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FirstRun Dialog</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FirstRun Dialog">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_firstrun_dialog"></A>FirstRun Dialog</H3>
+
+<P>A FirstRun dialog box sequence collects user name, company name, and product ID information. The installer verifies the product ID during this dialog. </P>
+
+<P>A FirstRun dialog box sequence is usually not a part of the action sequence and is instead called by the <A HREF="msi_9crz.htm"><B>MsiCollectUserInfo</B></A> function on the first run of the product.</P>
+
+<P>An author of an installer package may use the template dialog sequence or create a different sequence. The dialog sequence however needs to have the user set the following properties: </P>
+
+<P><A HREF="pref_9shl.htm">USERNAME property</A><BR>
+<A HREF="pref_5oc9.htm">COMPANYNAME property</A><BR>
+<A HREF="pref_1v21.htm">PIDKEY property</A></P>
+
+<P>The product ID will be validated during the dialog using the <A HREF="aref_0cdq.htm">ValidateProductID action</A> or the <A HREF="href_0jqs.htm">ValidateProductID ControlEvent</A>.</P>
+
+<P>If the product ID is set as a property on the command line, or by a transform, then the necessity of having the user reenter the product ID during the first-run dialog can be circumvented by controlling the display using the <A HREF="pref_6et5.htm">ProductID property</A>. Following the successful validation of the product ID the ProductID property is set to the full valid product ID.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

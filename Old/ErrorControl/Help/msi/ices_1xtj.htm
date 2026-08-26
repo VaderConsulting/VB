@@ -1,0 +1,280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE17</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE17">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice17"></A>ICE17</H1>
+
+<P>ICE17 checks for the situations shown in the example at the end of this topic.</P>
+
+<H4>Result</H4>
+
+<P>ICE17 displays an error or warning message for each of the situations in the example. Samples of such messages are shown here.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE17 error or warning</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>PushButton: Button1 of Dialog: MyDialog does not have an event defined in the ControlEvent table.</CODE>
+<P><B>Error</B></P>
+</TD>
+<TD width=63%>There is a <A HREF="href_331o.htm">Pushbutton control</A> that is not listed in the <A HREF="tref_6k11.htm">ControlEvent table</A>.
+<P>If ICE17 returns this error on a PushButton for which the Enable Control Attribute or the Visible Control Attribute is not set in the Attributes column of the Control table, check whether the control also has an entry in the <A HREF="tref_4vhh.htm">ControlCondition table</A>. The control can unexpectedly become enabled, or visible, if the value in the Condition column changes to True, Enable, or Show.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Bitmap: Bitmap1 of Control: Bitmap1 of Dialog: MyDialog is not in the Binary table.</CODE>
+<P><B>Error</B></P>
+</TD>
+<TD width=63%>There is a <A HREF="href_2ey4.htm">Bitmap control</A> or <A HREF="href_1tt8.htm">Icon control</A>, but the corresponding bitmap or icon is not listed in the Binary table. Add the bitmap or icon to the Binary table. 
+<P>If the <A HREF="href_3tut.htm">ImageHandle</A> bit is set in the Attributes column of the Control table the picture or icon can be created at run time and does not need to be in the <A HREF="tref_04px.htm">Binary table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>RadioButtonGroup: RadioButton1 of Control: RadioButton1 of Dialog: MyDialog is not in the RadioButton table.</CODE>
+<P><B>Warning</B></P>
+</TD>
+<TD width=63%>There is a RadioButtonGroup control with values in the Property column and the Attribute column of the <A HREF="tref_6nad.htm">Control table</A>; the <A HREF="href_8m05.htm">Indirect</A> bit is not set in the Attributes column. ICE17 posts a warning because the installer uses the property's value as a foreign key into the RadioButton table, but the value is missing from the primary key of that table.
+<P>If the <A HREF="href_8m05.htm">Indirect</A> bit is set, then the property listed for the control is not used as the property; instead, it is used as the name of the property that is actually used.</P>
+
+<P>This warning can be ignored if the control is created at runtime. For example, the <A HREF="href_1yjw.htm">ListBox control</A> for on the <A HREF="href_73mv.htm">FilesInUse Dialog</A> is only created at runtime if there are files in use during the installation.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>ListBox: ListBox1 of Control: ListBox1 of Dialog: MyDialog is not in the ListBox table.</CODE>
+<P><B>Warning</B></P>
+</TD>
+<TD width=63%>There is a <A HREF="href_1yjw.htm">ListBox control</A> with a value in the Property column of the <A HREF="tref_6nad.htm">Control table</A> and for which the <A HREF="href_8m05.htm">Indirect</A> bit is not set in the Attributes column. ICE17 posts a warning because the installer uses the property's value as a foreign key into the <A HREF="tref_5f1h.htm">ListBox table</A>, but the value is missing from the primary key of that table.
+<P>If the <A HREF="href_8m05.htm">Indirect</A> bit is set, the control changes the value of a property having a name that is the value of the property associated with this control.</P>
+
+<P>This warning can be ignored if the control is created at runtime. For example, the <A HREF="href_1yjw.htm">ListBox control</A> for on the <A HREF="href_73mv.htm">FilesInUse Dialog</A> is only created at runtime if there are files in use during the installation.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>ComboBox: ComboBox1 of Control: ComboBox1 of Dialog: ByDialog is not in the ComboBox table</CODE>
+<P><B>Warning</B></P>
+</TD>
+<TD width=63%>There is a <A HREF="href_4yp8.htm">ComboBox control</A> with a value in the Property column of the <A HREF="tref_6nad.htm">Control table</A> and for which the <A HREF="href_8m05.htm">Indirect</A> bit is not set in the Attributes column. ICE17 posts a warning because the installer uses the property's value as a foreign key into the <A HREF="tref_9wit.htm">ComboBox table</A>, but the value is missing from the primary key of that table.
+<P>If the <A HREF="href_8m05.htm">Indirect</A> bit is set, the control changes the value of a property having a name that is the value of the property associated with this control.</P>
+
+<P>This warning can be ignored if the control is created at runtime. For example, the <A HREF="href_1yjw.htm">ListBox control</A> for on the <A HREF="href_73mv.htm">FilesInUse Dialog</A> is only created at runtime if there are files in use during the installation.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>ListView: ListView1 of Control: ListView1 of Dialog: MyDialog is not in the ListView table.</CODE>
+<P><B>Warning</B></P>
+</TD>
+<TD width=63%>There is a <A HREF="href_6omk.htm">ListView control</A> with a value in the Property column of the <A HREF="tref_6nad.htm">Control table</A> and for which the <A HREF="href_8m05.htm">Indirect</A> bit is not set in the Attributes column. ICE17 posts a warning because the installer uses the property's value as a foreign key into the <A HREF="tref_0vs5.htm">ListView table</A>, but the value is missing from the primary key of that table.
+<P>If the <A HREF="href_8m05.htm">Indirect</A> bit is set, the control changes the value of a property having a name that is the value of the property associated with this control.</P>
+
+<P>This warning can be ignored if the control is created at runtime. For example, the <A HREF="href_1yjw.htm">ListBox control</A> for on the <A HREF="href_73mv.htm">FilesInUse Dialog</A> is only created at runtime if there are files in use during the installation.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Bitmap: 'Bitmap2' for Control: 'Button2' of Dialog: 'MyDialog' not found in Binary table </CODE>
+<P><B>Error</B></P>
+</TD>
+<TD width=63%>There is a <A HREF="href_331o.htm">Pushbutton Control</A> or <A HREF="href_7dt8.htm">Checkbox Control</A> for which the Text column of the <A HREF="tref_6nad.htm">Control table</A> does not contain a foreign key into the record of the <A HREF="tref_04px.htm">Binary table</A> containing the bitmap or icon.
+<P>Use the <A HREF="href_3tut.htm">ImageHandle</A> bit if the bitmap or icon is to be loaded at runtime.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Bitmap: 'Bitmap3' for Control: 'RadioButton2' of Dialog: 'MyDialog' not found in Binary table </CODE>
+<P>or</P>
+
+<P><CODE>Icon: 'Icon1' for Control: 'RadioButton3' of Dialog: 'MyDialog' not found in Binary table </CODE></P>
+
+<P><B>Error</B></P>
+</TD>
+<TD width=63%>There is a <A HREF="href_6iwc.htm">RadioButtonGroup Control</A> for which the Text column of the <A HREF="tref_4t7p.htm">RadioButton table</A> does not contain a foreign key into the record of the <A HREF="tref_04px.htm">Binary table</A> containing the bitmap or icon.
+<P>Use the <A HREF="href_3tut.htm">ImageHandle</A> bit if the bitmap or icon is to be loaded at runtime.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Picture control: 'Button3' of Dialog: 'MyDIalog' has both the Icon and Bitmap attributes set </CODE>
+<P><B>Error</B></P>
+</TD>
+<TD width=63%>There is a <A HREF="href_331o.htm">PushButton</A>, <A HREF="href_7dt8.htm">CheckBox</A>, or <A HREF="href_6iwc.htm">RadioButtonGroup</A> control with both the <A HREF="href_9v8l.htm">Icon</A> bit or <A HREF="href_0bxh.htm">Bitmap</A> bit set in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>. You cannot set both attributes together. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Example</H4>
+
+<P><A HREF="tref_6nad.htm"><B>Control Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=12%>Dialog_</TH>
+<TH align=left width=17%>Control</TH>
+<TH align=left width=22%>Type</TH>
+<TH align=left width=14%>Attributes</TH>
+<TH align=left width=17%>Property</TH>
+<TH align=left width=18%>Text</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MyDialog</TD>
+<TD width=17%>Button1</TD>
+<TD width=22%>PushButton</TD>
+<TD width=14%>0</TD>
+<TD width=17%> </TD>
+<TD width=18%>OK</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MyDialog</TD>
+<TD width=17%>Bitmap1</TD>
+<TD width=22%>Bitmap</TD>
+<TD width=14%>0</TD>
+<TD width=17%> </TD>
+<TD width=18%>Bitmap1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MyDialog</TD>
+<TD width=17%>RadioButton1</TD>
+<TD width=22%>RadioButtonGroup</TD>
+<TD width=14%>0</TD>
+<TD width=17%>RadioButton1</TD>
+<TD width=18%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MyDialog</TD>
+<TD width=17%>ListBox1</TD>
+<TD width=22%>ListBox</TD>
+<TD width=14%>0</TD>
+<TD width=17%>ListBox1</TD>
+<TD width=18%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MyDialog</TD>
+<TD width=17%>ComboBox1</TD>
+<TD width=22%>ComboBox</TD>
+<TD width=14%>0</TD>
+<TD width=17%>ComboBox1</TD>
+<TD width=18%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MyDialog</TD>
+<TD width=17%>ListView1</TD>
+<TD width=22%>ListView</TD>
+<TD width=14%>0</TD>
+<TD width=17%>ListView1</TD>
+<TD width=18%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MyDialog</TD>
+<TD width=17%>Button2</TD>
+<TD width=22%>Pushbutton</TD>
+<TD width=14%>262144</TD>
+<TD width=17%> </TD>
+<TD width=18%>Bitmap2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MyDialog</TD>
+<TD width=17%>RadioButton2</TD>
+<TD width=22%>RadioButtonGroup</TD>
+<TD width=14%>262144</TD>
+<TD width=17%> </TD>
+<TD width=18%>Property2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MyDialog</TD>
+<TD width=17%>RadioButton3</TD>
+<TD width=22%>RadioButtonGroup</TD>
+<TD width=14%>524288</TD>
+<TD width=17%> </TD>
+<TD width=18%>Property3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MyDialog</TD>
+<TD width=17%>Button3</TD>
+<TD width=22%>Pushbutton</TD>
+<TD width=14%>786432</TD>
+<TD width=17%> </TD>
+<TD width=18%>Ambiguous1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4t7p.htm"><B>RadioButton Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Property_</TH>
+<TH align=left width=26%>Order</TH>
+<TH align=left width=40%>Text</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Property2</TD>
+<TD width=26%>1</TD>
+<TD width=40%>Bitmap3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Property3</TD>
+<TD width=26%>2</TD>
+<TD width=40%>Icon1</TD>
+</TR>
+</TABLE><BR>
+
+<P>The following tables are empty:
+
+<UL>
+	<LI><A HREF="tref_6k11.htm">ControlEvent Table</A> </LI>
+
+	<LI><A HREF="tref_5f1h.htm">ListBox Table</A> </LI>
+
+	<LI><A HREF="tref_9wit.htm">ComboBox Table</A> </LI>
+
+	<LI><A HREF="tref_0vs5.htm">ListView Table</A> </LI>
+
+	<LI><A HREF="tref_04px.htm">Binary Table</A> </LI>
+</UL>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE17;%20RELEASE:%20August%202001;%20URL:%20ices_1xtj.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE17;%20RELEASE:%20August%202001;%20URL:%20ices_1xtj.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

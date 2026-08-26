@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetFileHash</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiGetFileHash">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msigetfilehash"></A>MsiGetFileHash</H1>
+
+<P>The <B>MsiGetFileHash</B> function takes the path to a file and returns a 128-bit hash of that file. Authoring tools may use <B>MsiGetFileHash</B> to obtain the file hash needed to populate the <A HREF="tref_8fad.htm">MsiFileHash table</A>. </P>
+
+<P>The Windows Installer uses file hashing as a means to detect and eliminate unnecessary file copying. A file hash stored in the MsiFileHash table may be compared to a hash of an existing file on the user's computer.</P>
+
+<PRE class=syntax><B>UINT MsiGetFileHash(
+</B>  <B>LPCTSTR</B> <I>szFilePath</I><B>,</B>         // path to file
+  <B>DWORD</B> <I>dwOptions</I><B>,</B>            // options — must be 0
+  <B>PMSIFILEHASHINFO </B><I>pHash</I>      // returned file hash info
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szFilePath</I></DT>
+
+<DD>[in] Path to file that is to be hashed.</DD>
+
+<DT><I>dwOptions</I></DT>
+
+<DD>[in] The value in this column must be 0. This parameter is reserved for future use.</DD>
+
+<DT><I>pHash</I></DT>
+
+<DD>[out] Pointer to the returned file hash information.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>Successful completion.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_FILE_NOT_FOUND</TD>
+<TD width=52%>File does not exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_ACCESS_DENIED</TD>
+<TD width=52%>File could not be opened to get version information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>E_FAIL</TD>
+<TD width=52%>Unexpected error.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The entire 128-bit file hash is returned as four 32-bit fields. The numbering of the four fields is 0-based. The values returned by <B>MsiGetFileHash</B> correspond to the four fields of the <A HREF="msi_1tkf.htm"><B>MSIFILEHASHINFO</B></A> structure. The first field corresponds to the HashPart1 column of the MsiFileHash table, the second field corresponds to the HashPart2 column, the third field corresponds to the HashPart3 column, and the fourth field corresponds to the HashPart4 column. </P>
+
+<P>The hash information entered into the MsiFileHash table must be obtained by calling <B>MsiGetFileHash</B> or the <A HREF="vref_3fac.htm"><B>FileHash</B></A> method. Do not attempt to use other methods to generate the file hash.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows XP and Windows .NET Server.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 2.0 on Windows NT 4.0 SP6; Windows 2000; and Windows Me.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="tref_8fad.htm">MsiFileHash table</A>, <A HREF="msi_1tkf.htm"><B>MSIFILEHASHINFO</B></A>, <A HREF="over_5qef.htm">Default File Versioning</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetFileHash;%20RELEASE:%20August%202001;%20URL:%20msi_1uso.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetFileHash;%20RELEASE:%20August%202001;%20URL:%20msi_1uso.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

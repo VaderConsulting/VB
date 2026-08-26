@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>TargetImages Table (Patchwiz.dll)</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="TargetImages table (Patchwiz.dll) [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_targetimages_table_patchwiz.dll_"></A>TargetImages Table (Patchwiz.dll)</H1>
+
+<P>The TargetImages table contains information about the target images of the product. A Windows Installer patch package updates a target image into an upgraded image.</P>
+
+<P>A TargetImages table containing at least one record is required in every patch creation database (.pcp file). This table is used by <A HREF="app_6yu7.htm"><B>UiCreatePatchPackage</B></A>.</P>
+
+<P>The TargetImages table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Target</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>MsiPath</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>SymbolPaths</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Upgraded</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Order</TD>
+<TD width=40%>integer</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>ProductValidateFlags</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>IgnoreMissingSrcFiles</TD>
+<TD width=40%>integer</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Target</DT>
+
+<DD>Identifier for a target image. The patch package updates the target image specified in this column to the upgraded image specified in the Upgraded column. There are one or more target images for each upgraded image. The target image must be a fully uncompressed setup image of the product, such as an administrative image or an uncompressed setup image on a CD-ROM. Note that <A HREF="app_6yu7.htm"><B>UiCreatePatchPackage</B></A> does not generate binary patches for files in cabinets. The value in this field is used with the value in the Upgraded field to generate the names of the transforms that the installer adds to the patch package.</DD>
+
+<DT>MsiPath</DT>
+
+<DD>This field specifies the full path, including the file name, to the location of the .msi file for the target image. This is the location of the source files for the target image. </DD>
+
+<DT>SymbolPaths</DT>
+
+<DD>A semicolon delimited list of folders that are to be searched for symbol files that may be used to optimize the generation of the binary patch. Note that the subdirectories of folders specified in this field are not searched. An optimized binary patch may be smaller. Visual C++ must be installed on the computer generating the patch and used to create the symbol files. This field is optional, and the installer creates a binary patch even if no symbol files are specified or if the symbol files become unavailable to Patchwiz.dll.</DD>
+
+<DT>Upgraded</DT>
+
+<DD>Foreign key to the Upgraded column of the <A HREF="app_18tb.htm">UpgradedImages Table</A>. <B>UiCreatePatchPackage</B> ignores any upgraded image that is not referenced by at least one record of the TargetImages table.</DD>
+
+<DT>Order</DT>
+
+<DD>Relative order of the target image. Because multiple targets can be patched to an upgraded image, the Order field provides a means to sequence the transforms in the patch transforms list. Commonly the order is from oldest to newest image. </DD>
+
+<DT>ProductValidateFlags</DT>
+
+<DD>The ProductValidateFlags field is used to specify product checking to avoid applying irrelevant transforms. The value entered in this field must be an 8-digit hex integer and one of the valid values for the <I>iValidation</I> parameter of <A HREF="qref_5zlb.htm"><B>MsiCreateTransformSummaryInfo</B></A>. The default value is 0x00000922 which equals MSITRANSFORM_VALIDATE_UPDATEVERSION + MSITRANSFORM_VALIDATE_NEWEQUALBASEVERSION + MSITRANSFORM_VALIDATE_UPGRADECODE + MSITRANSFORM_VALIDATE_PRODUCT. </DD>
+
+<DT>IgnoreMissingSrcFiles</DT>
+
+<DD>If this field is set to a non-zero value, files missing from the target image are ignored by the installer and left unchanged during patching. This enables patches to be made without requiring the entire image; only the changed files of the product and the .msi file are required. This may reduce the time required to generate the patch.
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20TargetImages%20Table%20(Patchwiz.dll);%20RELEASE:%20August%202001;%20URL:%20app_8ov3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20TargetImages%20Table%20(Patchwiz.dll);%20RELEASE:%20August%202001;%20URL:%20app_8ov3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

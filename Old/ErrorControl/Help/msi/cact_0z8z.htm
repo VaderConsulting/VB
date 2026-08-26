@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Sequencing Custom Actions</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_sequencing_custom_actions"></A>Sequencing Custom Actions</H2>
+
+<P>Custom actions are scheduled in sequence tables in the same way as standard actions. </P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To schedule a custom action in a sequence table</B>
+
+<OL>
+	<LI>Enter the custom action name (which is the primary key of the <A HREF="tref_71b9.htm">CustomAction table</A>) into the Action column of the sequence table.</LI>
+
+	<LI>Enter the custom action's sequence relative to the other actions in the table into the Sequence column of the sequence table. For more information about sequence tables, see <A HREF="novr_3mqt.htm">Using a Sequence Table</A>.</LI>
+
+	<LI>To conditionally skip the action, enter a conditional expression into the Condition column of the sequence table. The installer skips this action if the expression evaluates to FALSE.</LI>
+</OL>
+
+<P>As in the case of standard actions, custom actions that are scheduled in the <A HREF="tref_1git.htm">InstallUISequence</A> or <A HREF="tref_5lnp.htm">AdminUISequence</A> are run only if the internal user interface is set to the Full level. The UI level is set by using the <A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> function.</P>
+
+<P>Standard and custom actions scheduled in the <A HREF="tref_5pid.htm">InstallExecuteSequence</A>, <A HREF="tref_70f9.htm">AdminExecuteSequence</A>, or <A HREF="tref_5mn9.htm">AdvtExecuteSequence tables</A> do not make system changes. Instead the installer queues up execution records in a script for subsequent execution during the install service. If there is no install service, then the actions scheduled in these tables are run in the same context as the UI sequence. </P>
+
+<P>If the installer server is not registered, as is the case of Windows 95 and Windows 98, then the custom actions are executed on the client side. If the server is registered and using the full UI mode, then the custom actions are run on the server side. </P>
+
+<P>If using full UI with the server, the initial actions prior to the <A HREF="aref_9fzi.htm">InstallValidate action</A> are run on the client to allow full interaction. Execution is then switched to the server which repeats those actions and runs the script execution actions. This is followed by a return to the client for the final actions. </P>
+
+<P>Note that if a product is removed by setting its top feature to absent, the <A HREF="pref_8ho9.htm"><B>REMOVE</B> property</A> may not equal ALL until after the InstallValidate action. This means that any custom action that depends on REMOVE=ALL must be sequenced after the InstallValidate action. A custom action may check <B>REMOVE</B> to determine whether a product has been set to be completely uninstalled.</P>
+
+<P>Custom actions that reference an installed file as their source, such as Custom Action Type 17 (DLL), Custom Action Type 18 (EXE), Custom Action Type 21 (JScript), and Custom Action Type 22 (VBScript), must adhere to the following sequencing restrictions. 
+
+<UL>
+	<LI>The custom action must be sequenced after the CostFinalize action so that the path to the referenced file can be resolved.</LI>
+
+	<LI>If the source file is not already installed on the computer, deferred (in-script) custom actions must be sequenced after the InstallFiles action.</LI>
+
+	<LI>If the source file is not already installed on the computer, non-deferred custom actions must be sequenced after the InstallFinalize action.</LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Sequencing%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_0z8z.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Sequencing%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_0z8z.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Importing the AdminUISequence</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_importing_the_adminuisequence"></A>Importing the AdminUISequence</H2>
+
+<P>The <A HREF="tref_5lnp.htm">AdminUISequence table</A> lists actions that the installer calls when it executes the top-level <A HREF="aref_4hbi.htm">ADMIN action</A> and the internal user interface level is set to full UI or reduced UI. The installer skips the actions in this table if the user interface level is set to basic UI or no UI. See <A HREF="hand_0alh.htm">User Interface</A> and <A HREF="hand_9vn7.htm">User Interface Levels</A>. See <A HREF="novr_6zao.htm">Installation Procedure Tables Group</A>, <A HREF="novr_3mqt.htm">Using a Sequence Table</A>, and the <A HREF="novr_9nqd.htm">Sequence Table Detailed Example</A>. </P>
+
+<P>If in the section <A HREF="samp_4885.htm">Importing a Blank Database</A> you used uisample.msi from the Windows Installer SDK, the sequence tables in your copy of MNP2000.msi already contains the suggested action sequences described in <A HREF="novr_3mqt.htm">Using a Sequence Table</A>. No changes to these sequences should be necessary to install the Notepad sample.</P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the AdminExecuteSequence table.</P>
+
+<P><A HREF="tref_5lnp.htm"><B>AdminUISequence Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Action</TH>
+<TH align=left width=27%>Condition</TH>
+<TH align=left width=28%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>AdminWelcomeDlg</TD>
+<TD width=27%> </TD>
+<TD width=28%>1230</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>CostFinalize</TD>
+<TD width=27%> </TD>
+<TD width=28%>1000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>CostInitialize</TD>
+<TD width=27%> </TD>
+<TD width=28%>800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>ExecuteAction</TD>
+<TD width=27%> </TD>
+<TD width=28%>1300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>ExitDlg</TD>
+<TD width=27%> </TD>
+<TD width=28%>-1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>FatalErrorDlg</TD>
+<TD width=27%> </TD>
+<TD width=28%>-3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>FileCost</TD>
+<TD width=27%> </TD>
+<TD width=28%>900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>PrepareDlg</TD>
+<TD width=27%> </TD>
+<TD width=28%>140</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>ProgressDlg</TD>
+<TD width=27%> </TD>
+<TD width=28%>1280</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>UserExitDlg</TD>
+<TD width=27%> </TD>
+<TD width=28%>-2</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_265h.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

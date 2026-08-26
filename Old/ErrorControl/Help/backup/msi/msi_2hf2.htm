@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSourceListForceResolution</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiSourceListForceResolution">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msisourcelistforceresolution"></A>MsiSourceListForceResolution</H1>
+
+<P>The <B>MsiSourceListForceResolution</B> function forces the installer to search the source list for a valid product source the next time a source is needed. For example, when the installer performs an installation or reinstallation, or when it needs the path for a component that is set to run from source. </P>
+
+<PRE class=syntax><B>UINT MsiSourceListForceResolution(
+</B>  <B>LPCTSTR</B> <I>szProduct</I><B>,</B>     // product code
+  <B>LPCTSTR</B> <I>szUserName</I><B>,</B>    // user name or NULL
+  <B>DWORD</B> <I>dwReserved</I>       // reserved, must be 0
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szProduct</I></DT>
+
+<DD>Specifies the product code.</DD>
+
+<DT><I>szUserName</I></DT>
+
+<DD>User name for per-user installation; NULL or empty string for per-machine installation. The user name should always be in the format of DOMAIN\USERNAME (or MACHINENAME\USERNAME for a local user).</DD>
+
+<DT><I>dwReserved</I></DT>
+
+<DD>Reserved for future use. This value must be set to 0. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function succeeded.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_UNKNOWN_PRODUCT</TD>
+<TD width=52%>The specified product is unknown.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_FUNCTION_FAILED</TD>
+<TD width=52%>The function could not complete.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_ACCESS_DENIED</TD>
+<TD width=52%>The caller does not have sufficient access to force resolution for the product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_USER_NAME</TD>
+<TD width=52%>The specified user is not a valid user.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INSTALL_SERVICE_FAILURE</TD>
+<TD width=52%>The installation service could not be accessed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_CONFIGURATION</TD>
+<TD width=52%>The configuration data is corrupt.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>An administrator can force resolution for per-user non-managed installations for himself/herself, per-machine installations, and per-user managed installations for any user. Non-administrators can only force a resolution for their own installations (managed or non-managed) and per-machine installations.</P>
+
+<P>If the user name is an empty string or NULL, the function operates on the per-machine install of the product. If the product is installed, but is a per-user installation, the function returns ERROR_UNKNOWN_PRODUCT. </P>
+
+<P>If the user name argument is non-empty, it specifies the name of the user whose product installation will be modified. If the current user name is provided, the function first attempts to modify a non-managed install. If no product is found, the function then tries the same product but managed per-user. If the product is not found in either place, the function returns ERROR_UNKNOWN_PRODUCT, even if the product is installed per-machine.</P>
+
+<P>If the user name does not belong to the current user, the function only checks the managed product for the specified user. It is not possible to modify a non-managed install for a user other than the current one. If the product is not installed in a managed per-user state for the specified user, the function returns ERROR_UNKNOWN_PRODUCT, even if the product is installed per-machine.</P>
+
+<P>This function is not available with Windows Installer version 1.0.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_1lq1.htm">Source Resiliency</A>, <A HREF="msi_3fxk.htm"><B>MsiGetComponentPath</B></A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

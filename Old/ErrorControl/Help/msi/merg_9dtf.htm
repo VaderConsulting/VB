@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICEM03</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICEM03">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_icem03"></A>ICEM03</H1>
+
+<P>ICEM03 verifies that all actions in the module are either base actions or derive from a valid base action.</P>
+
+<P>Merge module ICEs are stored in a merge module .cub file called Mergemod.cub and not in the .cub file containing the ICEs used for package validation. </P>
+
+<H4>Result</H4>
+
+<P>ICEM03 posts the error messages for a module containing actions in a sequence table that is not a base action or derived from a valid base action.</P>
+
+<H4>Example</H4>
+
+<P>ICEM03 posts the following error messages for a module containing the database entries shown below.</P>
+
+<PRE>The action 'Action1' in the 'ModuleInstallExecuteSequence' table is 
+orphaned. It is not a valid base action and does not derive from a 
+valid base action.
+The action 'Action2' in the 'ModuleInstallExecuteSequence' table is 
+orphaned. It is not a valid base action and does not derive from a 
+valid base action.</PRE>
+
+<P><A HREF="merg_7fmt.htm"><B>ModuleInstallExecuteSequence Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Action</TH>
+<TH align=left width=19%>Sequence</TH>
+<TH align=left width=19%>BaseAction</TH>
+<TH align=left width=19%>After</TH>
+<TH align=left width=20%>Condition</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Action1</TD>
+<TD width=19%>  </TD>
+<TD width=19%>Action2 </TD>
+<TD width=19%>0 </TD>
+<TD width=20%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Action2</TD>
+<TD width=19%>   </TD>
+<TD width=19%>Action1 </TD>
+<TD width=19%>0 </TD>
+<TD width=20%> </TD>
+</TR>
+</TABLE><BR>
+
+<P>ICEM03 posts errors for these two actions because they refer to each other as base actions in the ModuleInstallExecuteSequence table. All actions in the <A HREF="merg_5fc5.htm">ModuleAdminUISequence</A>, <A HREF="merg_6mzp.htm">ModuleAdminExecuteSequence</A>, <A HREF="merg_3rs5.htm">ModuleAdvtUISequence</A>, <A HREF="merg_1vfp.htm">ModuleAdvtExecuteSequence</A>, <A HREF="merg_29r9.htm">ModuleInstallUISequence</A>, and <A HREF="merg_7fmt.htm">ModuleInstallExecuteSequence</A> tables must either be base actions or derive their position from the combination of another action and a before and after flag.</P>
+
+<P>To fix this error, determine the base actions for the two actions. Add a record for the base actions with a default sequence number. For Action1 and Action2 enter the base action names in the BaseAction column and 0 or 1 in the After column. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_54md.htm">Merge Module ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICEM03;%20RELEASE:%20August%202001;%20URL:%20merg_9dtf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICEM03;%20RELEASE:%20August%202001;%20URL:%20merg_9dtf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

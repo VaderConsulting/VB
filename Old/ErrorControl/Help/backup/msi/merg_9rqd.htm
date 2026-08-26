@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Merge Module Database</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_merge_module_database"></A>Merge Module Database</H2>
+
+<P>The database of a merge module contains all the installation properties and setup logic for the module. It is essentially a simplified <A HREF="novr_5h5x.htm">installer database</A> or .msi file. Standard merge module database files are indicated by a .msm extension. For a list of all database tables that can exist in merge modules, see <A HREF="merg_0wfn.htm">Merge Module Database Tables</A>. The following tables are required in the database of every .msm file: </P>
+
+<P><A HREF="tref_09np.htm">Component</A> <BR>
+<A HREF="tref_6an9.htm">Directory</A> <BR>
+<A HREF="tref_52hx.htm">FeatureComponents</A> <BR>
+<A HREF="tref_4n6t.htm">File</A> <BR>
+<A HREF="merg_4nad.htm">ModuleSignature</A> <BR>
+<A HREF="merg_21gl.htm">ModuleComponents</A> </P>
+
+<P>Note that the Component, Directory, FeatureComponents, and File tables are also present in all .msi files. A merge module database does not contain a <A HREF="tref_0a91.htm">Feature table</A> and so the .msi file cannot be installed alone. To install a merge module, it must first be merged by using a merge tool into a .msi file. </P>
+
+<P>The <A HREF="merg_4nad.htm">ModuleSignature Table</A> is only present in .msi files that has been merged with at least one .msm file. If this table is present in a .msi file, it contains one record for each merge module that has been previously merged into the installation database.</P>
+
+<P>Merge modules may contain optional MergeModule Sequence tables. These tables occur only in .msm files. When the .msm files are merged into an .msi file, these tables modify the action <A HREF="dglo_5nuh.htm#_msi_sequence_tables_gly">sequence tables</A> of the .msi file.</P>
+
+<P>Merge modules may contain custom tables. These tables are used by <A HREF="cact_5t2r.htm">custom actions</A> defined in the merge module.</P>
+
+<P>Merge modules rarely require user interface tables. These tables need to be present only in rare cases where the merge module requires input from the user during installation. For more information, see <A HREF="merg_55bn.htm">Authoring User Interfaces in Merge Modules</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

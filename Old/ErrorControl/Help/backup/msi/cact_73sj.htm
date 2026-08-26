@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Invoking Custom Actions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_invoking_custom_actions"></A>Invoking Custom Actions</H2>
+
+<P>Custom actions are invoked in the same manner as standard actions, either by explicit invocation or during the execution of a sequence table. There are two methods for calling actions:
+
+<UL>
+	<LI>You call the specified action directly with the <A HREF="qref_9woe.htm"><B>MsiDoAction</B></A> function.</LI>
+
+	<LI>A top-level action calls the sequence table containing the custom action. For more information about scheduling a custom action in a sequence table, see <A HREF="cact_0z8z.htm">Sequencing Custom Actions</A>.</LI>
+</UL>
+
+<P>When the installer obtains an action name from the <B>MsiDoAction</B> function, or from a sequence table, it first searches for a standard action of that name. If it cannot find the standard action, then the installer queries the <A HREF="tref_71b9.htm">CustomAction table</A> to check if the specified action is a custom action. If the specified action is not a custom action, then the installer queries the <A HREF="tref_51wl.htm">Dialog table</A> for a dialog box.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

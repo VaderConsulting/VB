@@ -1,0 +1,332 @@
+VERSION 5.00
+Object = "{FE0065C0-1B7B-11CF-9D53-00AA003C9CB6}#1.1#0"; "COMCT232.OCX"
+Begin VB.PropertyPage Settings 
+   Caption         =   "Settings"
+   ClientHeight    =   3465
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   5925
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   3465
+   ScaleWidth      =   5925
+   Begin VB.Frame Frame4 
+      Caption         =   "Parity"
+      Enabled         =   0   'False
+      Height          =   1936
+      Left            =   1664
+      TabIndex        =   25
+      Top             =   512
+      Width           =   1168
+      Begin VB.OptionButton optParity 
+         Caption         =   "None"
+         Height          =   208
+         Left            =   128
+         TabIndex        =   26
+         Top             =   256
+         Width           =   912
+      End
+   End
+   Begin VB.Frame Frame3 
+      Caption         =   "Data Bits"
+      Enabled         =   0   'False
+      Height          =   1936
+      Left            =   2944
+      TabIndex        =   19
+      Top             =   512
+      Width           =   1168
+      Begin VB.OptionButton optData 
+         Caption         =   "8"
+         Height          =   272
+         Index           =   4
+         Left            =   128
+         TabIndex        =   24
+         Top             =   1280
+         Width           =   784
+      End
+      Begin VB.OptionButton optData 
+         Caption         =   "7"
+         Height          =   272
+         Index           =   3
+         Left            =   128
+         TabIndex        =   23
+         Top             =   1024
+         Width           =   784
+      End
+      Begin VB.OptionButton optData 
+         Caption         =   "6"
+         Height          =   272
+         Index           =   2
+         Left            =   128
+         TabIndex        =   22
+         Top             =   768
+         Width           =   784
+      End
+      Begin VB.OptionButton optData 
+         Caption         =   "5"
+         Height          =   272
+         Index           =   1
+         Left            =   128
+         TabIndex        =   21
+         Top             =   512
+         Width           =   784
+      End
+      Begin VB.OptionButton optData 
+         Caption         =   "4"
+         Height          =   272
+         Index           =   0
+         Left            =   128
+         TabIndex        =   20
+         Top             =   256
+         Width           =   784
+      End
+   End
+   Begin VB.Frame Frame2 
+      Caption         =   "Stop Bits"
+      Enabled         =   0   'False
+      Height          =   1936
+      Left            =   4224
+      TabIndex        =   15
+      Top             =   512
+      Width           =   1168
+      Begin VB.OptionButton optStop 
+         Caption         =   "2"
+         Height          =   272
+         Index           =   2
+         Left            =   128
+         TabIndex        =   18
+         Top             =   768
+         Width           =   784
+      End
+      Begin VB.OptionButton optStop 
+         Caption         =   "1.5"
+         Height          =   272
+         Index           =   1
+         Left            =   128
+         TabIndex        =   17
+         Top             =   512
+         Width           =   784
+      End
+      Begin VB.OptionButton optStop 
+         Caption         =   "1"
+         Height          =   272
+         Index           =   0
+         Left            =   128
+         TabIndex        =   16
+         Top             =   256
+         Width           =   784
+      End
+   End
+   Begin VB.TextBox txtSettings 
+      Height          =   330
+      Left            =   3200
+      Locked          =   -1  'True
+      TabIndex        =   13
+      Top             =   3072
+      Width           =   2576
+   End
+   Begin ComCtl2.UpDown UpDown2 
+      Height          =   320
+      Left            =   2032
+      TabIndex        =   7
+      Top             =   2944
+      Visible         =   0   'False
+      Width           =   256
+      _ExtentX        =   450
+      _ExtentY        =   582
+      _Version        =   327681
+      Value           =   500
+      BuddyControl    =   "txtDelay"
+      BuddyDispid     =   196619
+      OrigLeft        =   5120
+      OrigTop         =   1152
+      OrigRight       =   5376
+      OrigBottom      =   1552
+      Max             =   30000
+      Min             =   125
+      Enabled         =   -1  'True
+   End
+   Begin ComCtl2.UpDown UpDown1 
+      Height          =   320
+      Left            =   768
+      TabIndex        =   6
+      Top             =   2944
+      Visible         =   0   'False
+      Width           =   256
+      _ExtentX        =   450
+      _ExtentY        =   582
+      _Version        =   327681
+      Value           =   1
+      BuddyControl    =   "txtCommPort"
+      BuddyDispid     =   196618
+      OrigLeft        =   1024
+      OrigTop         =   2944
+      OrigRight       =   1280
+      OrigBottom      =   3344
+      Max             =   255
+      Min             =   1
+      SyncBuddy       =   -1  'True
+      BuddyProperty   =   65547
+      Enabled         =   -1  'True
+   End
+   Begin VB.Frame Frame1 
+      Caption         =   "Speed"
+      Enabled         =   0   'False
+      Height          =   1936
+      Left            =   384
+      TabIndex        =   5
+      Top             =   512
+      Width           =   1168
+      Begin VB.OptionButton optSpeed 
+         Caption         =   "38400"
+         Height          =   272
+         Index           =   5
+         Left            =   128
+         TabIndex        =   27
+         Top             =   1536
+         Width           =   912
+      End
+      Begin VB.OptionButton optSpeed 
+         Caption         =   "33600"
+         Height          =   272
+         Index           =   4
+         Left            =   128
+         TabIndex        =   12
+         Top             =   1280
+         Width           =   912
+      End
+      Begin VB.OptionButton optSpeed 
+         Caption         =   "28800"
+         Height          =   272
+         Index           =   3
+         Left            =   128
+         TabIndex        =   11
+         Top             =   1024
+         Width           =   912
+      End
+      Begin VB.OptionButton optSpeed 
+         Caption         =   "19200"
+         Height          =   272
+         Index           =   2
+         Left            =   128
+         TabIndex        =   10
+         Top             =   768
+         Width           =   912
+      End
+      Begin VB.OptionButton optSpeed 
+         Caption         =   "14400"
+         Height          =   272
+         Index           =   1
+         Left            =   128
+         TabIndex        =   9
+         Top             =   512
+         Width           =   912
+      End
+      Begin VB.OptionButton optSpeed 
+         Caption         =   "9600"
+         Height          =   272
+         Index           =   0
+         Left            =   128
+         TabIndex        =   8
+         Top             =   256
+         Width           =   912
+      End
+   End
+   Begin VB.TextBox txtCommPort 
+      Height          =   330
+      Left            =   96
+      TabIndex        =   4
+      Top             =   2944
+      Width           =   672
+   End
+   Begin VB.TextBox txtDelay 
+      Height          =   330
+      Left            =   1376
+      TabIndex        =   2
+      Top             =   2944
+      Width           =   656
+   End
+   Begin VB.CheckBox chkEnabled 
+      Caption         =   "Enabled"
+      Height          =   285
+      Left            =   90
+      TabIndex        =   0
+      Top             =   120
+      Width           =   1040
+   End
+   Begin VB.Label Label1 
+      Alignment       =   2  'Center
+      Caption         =   "Settings"
+      Height          =   272
+      Left            =   3200
+      TabIndex        =   14
+      Top             =   2688
+      Width           =   2576
+   End
+   Begin VB.Label lblCommPort 
+      Caption         =   "CommPort:"
+      Height          =   240
+      Left            =   96
+      TabIndex        =   3
+      Top             =   2688
+      Width           =   912
+   End
+   Begin VB.Label lblDelay 
+      Caption         =   "Delay (mS):"
+      Height          =   240
+      Left            =   1376
+      TabIndex        =   1
+      Top             =   2688
+      Width           =   912
+   End
+End
+Attribute VB_Name = "Settings"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+
+Private Sub txtCommPort_Change()
+    Changed = True
+End Sub
+
+Private Sub txtSettings_Change()
+    Changed = True
+End Sub
+
+Private Sub txtDelay_Change()
+    Changed = True
+End Sub
+
+Private Sub chkEnabled_Click()
+    Changed = True
+End Sub
+
+Private Sub PropertyPage_ApplyChanges()
+    SelectedControls(0).CommPort = txtCommPort.Text
+    SelectedControls(0).Settings = txtSettings.Text
+    SelectedControls(0).Delay = txtDelay.Text
+    SelectedControls(0).Enabled = (chkEnabled.Value = vbChecked)
+End Sub
+
+Private Sub PropertyPage_SelectionChanged()
+    'Dim varSettings As String
+    'Dim varSpeed As Long
+    'Dim place As Integer
+    'Dim a As Integer
+    txtCommPort.Text = SelectedControls(0).CommPort
+    txtSettings.Text = SelectedControls(0).Settings
+    txtDelay.Text = SelectedControls(0).Delay
+    chkEnabled.Value = (SelectedControls(0).Enabled And vbChecked)
+    'varSettings = SelectedControls(0).Settings
+    'place = InStr(1, SelectedControls(0).Settings, ",", vbTextCompare) - 1
+    'varSpeed = Left$(varSettings, place)
+    'For a = 0 To optSpeed().UBound
+    '    If optSpeed(a).Caption = varSpeed Then optSpeed(a).Value = True
+    'Next a
+End Sub
+
+
+Private Sub UpDown1_Change()
+    txtCommPort.Refresh
+End Sub

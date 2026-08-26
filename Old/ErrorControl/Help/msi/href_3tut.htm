@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ImageHandle Control Attribute</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ImageHandle Control Attribute">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_imagehandle_control_attribute"></A>ImageHandle Control Attribute</H1>
+
+<P>The installer uses the ImageHandle control attribute to determine whether the <A HREF="href_2kmd.htm">Text control attribute</A> is an image specified in the <A HREF="tref_04px.htm">Binary table</A> or the handle to an image loaded in memory at run-time. See the links of the particular controls listed in the following as Valid Controls.</P>
+
+<P>The Text Control Attribute and <A HREF="#_msi_imagehandle_control_attribute">ImageHandle Control Attribute</A> must be used together in the Icon and Bitmap controls. For information on how to use this attribute in those controls, see <A HREF="href_1tt8.htm">Icon Control</A> and <A HREF="href_2ey4.htm">Bitmap Control</A>. </P>
+
+<P>A typical use of the control is to display all the running applications. This is commonly done with an action that finds all the running applications and puts their names and icons into the <A HREF="tref_0vs5.htm">ListView Table</A></P>
+
+<P>The handle to the image, in string format, must be specified in the Text column of the <A HREF="tref_6nad.htm">Control table</A>. Because the value of the handle cannot be authored into the table, it must be set by an action performed prior to creating the control.</P>
+
+<P>Even if this bit is set, the other style bits governing the size and stretching of the image are still observed. For example, if an action puts a handle of an image in the table, but other style bits describe a different size, the image is shrunk or stretched to size specified by the bits. </P>
+
+<H4>Valid Controls</H4>
+
+<P><A HREF="href_2ey4.htm">Bitmap</A><BR>
+<A HREF="href_7dt8.htm">CheckBox</A><BR>
+<A HREF="href_1tt8.htm">Icon</A><BR>
+<A HREF="href_331o.htm">PushButton</A><BR>
+<A HREF="href_6iwc.htm">RadioButtonGroup</A></P>
+
+<H4>Value</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Decimal</TH>
+<TH align=left width=25%>Hexadecimal </TH>
+<TH align=left width=57%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>65536</TD>
+<TD width=25%>0x00010000</TD>
+<TD width=57%><B>msidbControlAttributesImageHandle</B></TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>See <A HREF="href_8uk3.htm">Control Attributes</A> and the control you need to create under <A HREF="href_710z.htm">Controls</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ImageHandle%20Control%20Attribute;%20RELEASE:%20August%202001;%20URL:%20href_3tut.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ImageHandle%20Control%20Attribute;%20RELEASE:%20August%202001;%20URL:%20href_3tut.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

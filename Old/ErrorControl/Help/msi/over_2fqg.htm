@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AllowLockdownPatch</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="AllowLockdownPatch">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_allowlockdownpatch"></A>AllowLockdownPatch</H3>
+
+<P>If this per-machine <A HREF="over_37ll.htm">system policy</A> is not set, only administrators can patch existing products that were installed using elevated privileges. If AllowLockdownPatch is set to "1", non-administrative users can, in some cases, apply patches to products while running an installation using elevated privileges. With the policy set, the patch can install <A HREF="updat_50hf.htm">minor upgrades</A> while running an installation using elevated privileges, the patch cannot install <A HREF="updat_8do3.htm">major upgrades</A>. Setting this policy also enables non-administrative users to run programs at LocalSystem privileges during an elevated installation. </P>
+
+<P>This policy is not available with Windows Installer version 1.0.</P>
+
+<H4>Registry Key</H4>
+
+<P><B>HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer</B></P>
+
+<H4>Data Type</H4>
+
+<P><B>REG_DWORD</B></P>
+
+<H4>Remarks</H4>
+
+<P>Any user can apply a patch during a non-elevated installation. Setting this per-machine <A HREF="over_37ll.htm">system policy</A> to "1" gives non-administrative users the additional flexibility of applying patches to any product during an elevated installation. If this policy is not set, non-administrative users cannot apply a patch to assigned or published applications. </P>
+
+<P>Setting this policy also enables non-administrative users to run arbitrary programs at LocalSystem privileges if they have a Windows Installer patch package that installs or launches those programs.</P>
+
+<P>Note this policy is not available with Windows Installer version 1.0. Systems using version 1.0 of the installer should therefore be secured by setting <A HREF="over_7fag.htm">DisablePatch</A> policy. On Windows NT 4.0 using Windows Installer version 1.0, the possible security threat only applies to products that have been installed for all users of the computer.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20AllowLockdownPatch;%20RELEASE:%20August%202001;%20URL:%20over_2fqg.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20AllowLockdownPatch;%20RELEASE:%20August%202001;%20URL:%20over_2fqg.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Log Function</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Log Function">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_log_function"></A>Log Function</H1>
+
+<P>The function <B>Log</B> implements the <A HREF="merg_8h0k.htm"><B>Log</B> method</A> of the <A HREF="merg_4th0.htm"><B>Merge</B> Object</A>. This function writes a text string to the currently open log file. </P>
+
+<P><B>IMsmMerge::Log</B> </P>
+
+<PRE class=syntax><B>HRESULT Log(
+</B>  <B>BSTR </B><I>Message</I>
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>Message</I></DT>
+
+<DD>The text string to display. A <B>LPCWSTR</B> may be used instead of a <B>BSTR</B>.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Value</TH>
+<TH align=left width=70%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>E_FAIL </TD>
+<TD width=70%>There was an error writing to the log file. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>E_INVALIDARG</TD>
+<TD width=70%>The argument is invalid. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>S_FALSE</TD>
+<TD width=70%>No log file is open.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>S_OK </TD>
+<TD width=70%>The function succeeded.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_29f2.htm">Merge Module Automation</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

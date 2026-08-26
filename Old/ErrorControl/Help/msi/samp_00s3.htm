@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Specifying Shortcuts</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_specifying_shortcuts"></A>Specifying Shortcuts</H2>
+
+<P>The <A HREF="tref_2i91.htm">Shortcut table</A> and related tables of the installation database hold information needed to install shortcuts. See the <A HREF="novr_90z4.htm">Program Information Tables Group</A> and <A HREF="over_02gj.htm">Editing Installer Shortcuts</A>.</P>
+
+<P>In this section you add information that specifies advertised and non-advertised shortcuts for the Notepad sample.</P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the Shortcut Table.</P>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=8%>Shortcut</TH>
+<TH align=left width=8%>Directory_</TH>
+<TH align=left width=9%>Name</TH>
+<TH align=left width=9%>Component_</TH>
+<TH align=left width=11%>Target</TH>
+<TH align=left width=9%>Arguments</TH>
+<TH align=left width=8%>Description</TH>
+<TH align=left width=6%>Hotkey</TH>
+<TH align=left width=10%>Icon_</TH>
+<TH align=left width=8%>IconIndex</TH>
+<TH align=left width=8%>ShowCmd</TH>
+<TH align=left width=6%>WkDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sBaseball</TD>
+<TD width=8%>MENUDIR</TD>
+<TD width=9%>Baseball.txt</TD>
+<TD width=9%>Baseball</TD>
+<TD width=11%>Baseball</TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+<TD width=10%>orca_icon.exe</TD>
+<TD width=8%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sConcert</TD>
+<TD width=8%>MENUDIR</TD>
+<TD width=9%>Concert.txt</TD>
+<TD width=9%>Concert</TD>
+<TD width=11%>[#Concert.txt]</TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+<TD width=10%> </TD>
+<TD width=8%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sDance</TD>
+<TD width=8%>MENUDIR</TD>
+<TD width=9%>Dance.txt</TD>
+<TD width=9%>Dance</TD>
+<TD width=11%>[#Dance.txt]</TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+<TD width=10%> </TD>
+<TD width=8%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sFootball</TD>
+<TD width=8%>MENUDIR</TD>
+<TD width=9%>Football.txt</TD>
+<TD width=9%>Football</TD>
+<TD width=11%>[#Football.txt]</TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+<TD width=10%> </TD>
+<TD width=8%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sHelp</TD>
+<TD width=8%>MENUDIR</TD>
+<TD width=9%>Help.txt</TD>
+<TD width=9%>Help</TD>
+<TD width=11%>[#Help.txt]</TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+<TD width=10%> </TD>
+<TD width=8%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sJanuary</TD>
+<TD width=8%>MENUDIR</TD>
+<TD width=9%>January.txt</TD>
+<TD width=9%>January</TD>
+<TD width=11%>[#January.txt]</TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+<TD width=10%> </TD>
+<TD width=8%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sNewYears</TD>
+<TD width=8%>MENUDIR</TD>
+<TD width=9%>NewYears.txt</TD>
+<TD width=9%>NewYears</TD>
+<TD width=11%>[#NewYears.txt]</TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+<TD width=10%> </TD>
+<TD width=8%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sNotepad</TD>
+<TD width=8%>MENUDIR</TD>
+<TD width=9%>Redpark.exe</TD>
+<TD width=9%>Notepad</TD>
+<TD width=11%>[#Redpark.exe]</TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+<TD width=10%> </TD>
+<TD width=8%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sReadme</TD>
+<TD width=8%>MENUDIR</TD>
+<TD width=9%>Readme.txt</TD>
+<TD width=9%>Notepad</TD>
+<TD width=11%>[#Readme.txt]</TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+<TD width=10%> </TD>
+<TD width=8%> </TD>
+<TD width=8%> </TD>
+<TD width=6%> </TD>
+</TR>
+</TABLE><BR>
+
+<P>The sample installation needs to enable installation of an advertised shortcut for the Baseball feature. This requires specifying a key to the Icon table in the Icon_ column of the Shortcut table. For the purposes of this example you may copy the icon for the Orca database editor provided with the Windows Installer SDK. Export the <A HREF="tref_7vmt.htm">Icon table</A> from Orca.msi and then merge this table into the MNP2000.msi database using Orca or another merge tool. Orca also creates a directory named Icon in the directory containing MNP2000.msi, and adds the icon binary data file orca_icon.exe.ibd. See the Data column in Icon table. The completed Icon Table should look as follows when viewed in Orca.</P>
+
+<P><A HREF="tref_7vmt.htm"><B>Icon Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>Name</TH>
+<TH align=left width=49%>Data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>orca_icon.exe</TD>
+<TD width=49%>[Binary Data]</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_1pv7.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Specifying%20Shortcuts;%20RELEASE:%20August%202001;%20URL:%20samp_00s3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Specifying%20Shortcuts;%20RELEASE:%20August%202001;%20URL:%20samp_00s3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ARPNOMODIFY Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ARPNOMODIFY Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_arpnomodify_property"></A>ARPNOMODIFY Property</H1>
+
+<P>Setting the ARPNOMODIFY property disables Add/Remove functionality in Control Panel that modifies the product. For Windows 2000, this disables the Modify button for the product in Add/Remove Programs in Control Panel. On earlier operating systems, clicking the Add/Remove button uninstalls the product rather than entering the maintenance mode wizard.</P>
+
+<P>If the ARPNOMODIFY property is set, the <A HREF="aref_529a.htm">RegisterProduct action</A> writes the value "NoModify" under the registry key: HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\{product key}.</P>
+
+<P>If the ARPNOMODIFY property is set and the <A HREF="pref_46bd.htm">ARPNOREMOVE property</A> is not set, the RegisterProduct action also writes the UninstallString value under this key. The UnistallString value is a command line for removing the product, rather than reconfiguring the product.</P>
+
+<H4>Remarks</H4>
+
+<P>For example, this property can be set during a customization transform to prevent users from changing an administrator's customization.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

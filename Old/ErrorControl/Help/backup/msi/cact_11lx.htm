@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Adding a Custom CustomUserAccounts Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_adding_a_custom_customuseraccounts_table"></A>Adding a Custom CustomUserAccounts Table</H3>
+
+<P>A specification of the sample is that user account information be read from a custom table in the installation database and not hard-coded into the custom action. </P>
+
+<P>Add a custom table to the sample installation database named CustomUserAccounts to hold user account information. See <A HREF="novr_8yk4.htm">Examples of Database Queries Using SQL and Script</A> for an example of how to add a custom table. Use the following schema for the CustomUserAccounts table. See <A HREF="novr_2dv8.htm">Column Definition Format</A> for an explanation of the column types.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Column</TH>
+<TH align=left width=10%>Type</TH>
+<TH align=left width=8%>Key</TH>
+<TH align=left width=15%>Nullable</TH>
+<TH align=left width=46%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>UserName</TD>
+<TD width=10%>s72</TD>
+<TD width=8%>Y</TD>
+<TD width=15%>N</TD>
+<TD width=46%>Name of user account being created.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>TempPassWord</TD>
+<TD width=10%>s25</TD>
+<TD width=8%> </TD>
+<TD width=15%>N</TD>
+<TD width=46%>Temporary password for the user account. Note that the temporary password is visible and insecure.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Attributes</TD>
+<TD width=10%>i4</TD>
+<TD width=8%> </TD>
+<TD width=15%>Y</TD>
+<TD width=46%>Attributes for account. These are defined as the <B>DWORD</B> values for the usri1_flags member of the USER_INFO_1  structure.</TD>
+</TR>
+</TABLE><BR>
+
+<P>After the CustomUserAccounts table has been added to the database you may edit this table using Orca, a table editor provided with the Windows Installer SDK, or another editor. Enter the following record in the CustomUserAccounts table to create a user account that does not require a password for TestUser. Note that the value of UR_PASSWD_NOTREQD is 32.</P>
+
+<P><B>CustomUserAccounts Table</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>UserName</TH>
+<TH align=left width=40%>TempPassWord</TH>
+<TH align=left width=25%>Attributes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>TestUser</TD>
+<TD width=40%>1</TD>
+<TD width=25%>32</TD>
+</TR>
+</TABLE><BR>
+
+<P>Add the following records to the _Validation table for the custom table.</P>
+
+<P><A HREF="tref_8fl1.htm"><B>_Validation Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=10%>Table</TH>
+<TH align=left width=9%>Column</TH>
+<TH align=left width=9%>Nullable</TH>
+<TH align=left width=12%>MinValue</TH>
+<TH align=left width=12%>MaxValue</TH>
+<TH align=left width=10%>KeyTable</TH>
+<TH align=left width=11%>KeyColumn</TH>
+<TH align=left width=10%>Category</TH>
+<TH align=left width=5%>Set</TH>
+<TH align=left width=12%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>CustomUserAccounts</TD>
+<TD width=9%>UserName</TD>
+<TD width=9%>N</TD>
+<TD width=12%> </TD>
+<TD width=12%> </TD>
+<TD width=10%> </TD>
+<TD width=11%> </TD>
+<TD width=10%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=5%> </TD>
+<TD width=12%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>CustomUserAccounts</TD>
+<TD width=9%>TempPassWord</TD>
+<TD width=9%>N</TD>
+<TD width=12%> </TD>
+<TD width=12%> </TD>
+<TD width=10%> </TD>
+<TD width=11%> </TD>
+<TD width=10%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=5%> </TD>
+<TD width=12%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>CustomUserAccounts</TD>
+<TD width=9%>Attributes</TD>
+<TD width=9%>Y</TD>
+<TD width=12%>0</TD>
+<TD width=12%>2147483647</TD>
+<TD width=10%> </TD>
+<TD width=11%> </TD>
+<TD width=10%>NULL</TD>
+<TD width=5%> </TD>
+<TD width=12%> </TD>
+</TR>
+</TABLE><BR>
+
+<P>Continue to <A HREF="cact_33cj.htm">Authoring the ActionText and Error Tables</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

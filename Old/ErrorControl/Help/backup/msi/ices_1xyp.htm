@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE41</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE41 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice41"></A>ICE41</H1>
+
+<P>ICE41 validates that the entries in the <A HREF="tref_5n8l.htm">Class</A> and <A HREF="tref_219h.htm">Extension</A> tables refer to entries in the <A HREF="tref_09np.htm">Component table</A> that implement the class object or extension of the component.</P>
+
+<H4>Result</H4>
+
+<P>ICE41 posts an error if there is a feature that does not contain the component implementing the class object or extension. </P>
+
+<H4>Example</H4>
+
+<P>ICE41 reports the following errors for the example shown.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE41 error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Class {00000000-0000-0000-0000-0000000000000} references feature Feature2 and component Component1, but the that Component is not associated with that Feature in the FeatureComponents table.</TD>
+<TD width=63%>There is a feature that does not contain the component implementing the class object. This means that the installer does not install the component with the feature and that advertising may not work as expected.
+<P>To fix this error, change the entry in the Feature_ column of the <A HREF="tref_5n8l.htm">Class table</A> entry to reference a feature that installs component listed in the Component_ column or change the feature and component associated in the <A HREF="tref_52hx.htm">FeatureComponents table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Extension .yip references feature Feature1 and component Component2, but the that Component is not associated with that Feature in the FeatureComponents table.</TD>
+<TD width=63%>There is a feature that does not contain the component implementing the extension. This means that the installer does not install the component with the feature and that advertising may not work as expected.
+<P>To fix this error, change the entry in the Feature_ column of the <A HREF="tref_219h.htm">Extension table</A> entry to reference a feature that installs the component listed in the Component_ column or change the feature and component associated in the <A HREF="tref_52hx.htm">FeatureComponents table</A>.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_52hx.htm"><B>FeatureComponents Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Feature_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>Feature1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>Feature2</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_5n8l.htm"><B>Class Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=60%>CLSID</TH>
+<TH align=left width=23%>Component_</TH>
+<TH align=left width=17%>Feature_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=60%>{00000000-0000-0000-0000-000000000000}</TD>
+<TD width=23%>Component1</TD>
+<TD width=17%>Feature2</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_5n8l.htm"><B>Class Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=60%>Extension</TH>
+<TH align=left width=23%>Component_</TH>
+<TH align=left width=17%>Feature_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=60%>.yip</TD>
+<TD width=23%>Component2</TD>
+<TD width=17%>Feature1</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

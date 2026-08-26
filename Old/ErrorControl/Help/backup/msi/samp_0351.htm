@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Creating a Patch Creation Properties File</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_creating_a_patch_creation_properties_file"></A>Creating a Patch Creation Properties File</H2>
+
+<P>To reproduce the sample patch package, you need a software tool capable of creating and editing a Windows Installer patch package. Several patch package creation tools are available from independent software vendors. The example discussed in the following sections uses a Windows Installer database editor called Orca to author a patch creation properties file (.pcp extension). The .pcp file may be used with the utilities <A HREF="updat_33ad.htm">MsiMsp.exe</A> and <A HREF="updat_8f70.htm">Patchwiz.DLL</A> to generate a Windows Installer patch package (.msp extension). Orca, MsiMsp.exe, and Patchwiz.DLL are provided in the <A HREF="app_5qwj.htm">Platform SDK Components for Windows Installer Developers</A>.</P>
+
+<P>A blank patch creation properties file, template.pcp, is also provided with the SDK. Make a copy of template.pcp and rename this copy MNP2000.pcp. Use Orca or another database editor to enter the following data into the Properties table of MNP2000.pcp. The Properties table contains global settings for the patch package.</P>
+
+<P><A HREF="updat_8me7.htm"><B>Properties Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Name</TH>
+<TH align=left width=65%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>AllowProductCodeMismatches</TD>
+<TD width=65%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>AllowProductVersionMajorMismatches</TD>
+<TD width=65%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ApiPatchingSymbolFlags</TD>
+<TD width=65%>0x00000000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>DontRemoveTempFolderWhenFinished</TD>
+<TD width=65%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>IncludeWholeFilesOnly</TD>
+<TD width=65%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ListOfPatchGUIDsToReplace</TD>
+<TD width=65%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ListOfTargetProductCodes</TD>
+<TD width=65%>*</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>PatchGUID</TD>
+<TD width=65%>{5406B219-A1AC-4BC4-8695-72292C8195AC}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>PatchOutputPath</TD>
+<TD width=65%>c:\output.msp</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>PatchSourceList</TD>
+<TD width=65%>PatchSourceList</TD>
+</TR>
+</TABLE><BR>
+
+<P>Use the database editor to enter the following data into the ImageFamilies table of MNP2000.pcp. The ImageFamilies table contains information to be added to the <A HREF="tref_4mlh.htm">Media table</A> during patching. </P>
+
+<P><A HREF="updat_11pb.htm"><B>ImageFamilies Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=11%>Family</TH>
+<TH align=left width=23%>MediaSrcPropName</TH>
+<TH align=left width=14%>MediaDiskId</TH>
+<TH align=left width=22%>FileSequenceStart</TH>
+<TH align=left width=14%>DiskPrompt</TH>
+<TH align=left width=16%>VolumeLabel</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>MNPapps</TD>
+<TD width=23%>MNPSrcPropName</TD>
+<TD width=14%>2</TD>
+<TD width=22%>1000</TD>
+<TD width=14%> </TD>
+<TD width=16%> </TD>
+</TR>
+</TABLE><BR>
+
+<P>Enter the following data into the UpgradedImages table of MNP2000.pcp. The UpgradedImages table contains information about the Upgraded image you created in <A HREF="samp_9r54.htm">Planning a Small Update Patch</A>. </P>
+
+<P><A HREF="updat_18tb.htm"><B>UpgradedImages Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=12%>Upgraded</TH>
+<TH align=left width=45%>MsiPath</TH>
+<TH align=left width=16%>PatchMsiPath</TH>
+<TH align=left width=15%>SymbolPaths</TH>
+<TH align=left width=12%>Family</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>MNP_fixed</TD>
+<TD width=45%>C:\Note_Installer\Patch\Upgraded\MNP2000.msi</TD>
+<TD width=16%> </TD>
+<TD width=15%> </TD>
+<TD width=12%>MNPapps</TD>
+</TR>
+</TABLE><BR>
+
+<P>Enter the following data into the TargetImages table of MNP2000.pcp. The TargetImages table contains information about the Target image. </P>
+
+<P><A HREF="updat_8ov3.htm"><B>TargetImages Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=10%>Target</TH>
+<TH align=left width=16%>MsiPath</TH>
+<TH align=left width=13%>SymbolPaths</TH>
+<TH align=left width=11%>Upgraded</TH>
+<TH align=left width=7%>Order</TH>
+<TH align=left width=21%>ProductValidateFlags</TH>
+<TH align=left width=22%>IgnoreMissingSrcFiles</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>MNP_error</TD>
+<TD width=16%>C:\Note_Installer\Patch\Target\MNP2000.msi</TD>
+<TD width=13%> </TD>
+<TD width=11%>MNP_fixed</TD>
+<TD width=7%>1</TD>
+<TD width=21%> </TD>
+<TD width=22%>0</TD>
+</TR>
+</TABLE><BR>
+
+<P>For the sample patch package, leave the following tables in MNP2000.pcp blank. </P>
+
+<P><A HREF="updat_98pr.htm">UpgradedFiles_OptionalData Table</A></P>
+
+<P><A HREF="updat_4ajj.htm">FamilyFileRanges Table</A></P>
+
+<P><A HREF="updat_723j.htm">TargetFiles_OptionalData Table</A></P>
+
+<P><A HREF="updat_4p27.htm">ExternalFiles Table</A></P>
+
+<P><A HREF="updat_8uhr.htm">UpgradedFilesToIgnore Table</A></P>
+
+<P><A HREF="samp_2751.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

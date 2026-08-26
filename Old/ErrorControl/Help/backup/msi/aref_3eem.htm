@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>InstallSFPCatalogFile Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="InstallSFPCatalogFile Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_installsfpcatalogfile_action"></A>InstallSFPCatalogFile Action</H1>
+
+<P>The InstallSFPCatalogFile action installs the catalogs used by Microsoft® Windows® Millennium Edition for Windows File Protection. InstallSFPCatalogFile queries the <A HREF="tref_09np.htm">Component table</A>, <A HREF="tref_4n6t.htm">File table</A>, <A HREF="tref_2u79.htm">FileSFPCatalog table</A> and <A HREF="tref_38bp.htm">SFPCatalog table</A>. Catalogs are installed if they are associated with a file in a component that is set for local installation or if they are associated with a file being repaired in a locally installed component.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The InstallSFPCatalogFile action must be sequenced before <A HREF="aref_3hym.htm">InstallFiles</A> and after <A HREF="aref_22we.htm">CostFinalize</A>.</P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Name of the catalog being installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[2]</TD>
+<TD width=84%>Name of the catalog this catalog's installation depends upon. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>A catalog the is dependent on another catalog that is installed after the parent catalog.</P>
+
+<P>This feature is not available using Windows Installer versions 1.0 and 1.1.</P>
+
+<P>Windows File Protection for Windows Millennium Edition is provided with Windows Installer version 1.2. For more information, see <A HREF="over_1h9q.htm">Windows File Protection on Windows Millennium Edition</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

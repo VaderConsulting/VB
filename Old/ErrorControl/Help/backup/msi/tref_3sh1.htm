@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MIME Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MIME Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_mime_table"></A>MIME Table</H1>
+
+<P>The MIME table associates a MIME content type with a file extension or a CLSID to generate the extension or COM server information required for advertisement of the MIME (Multipurpose Internet Mail Extensions) content.</P>
+
+<P>The MIME table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Column</TH>
+<TH align=left width=30%>Type</TH>
+<TH align=left width=18%>Key</TH>
+<TH align=left width=26%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>ContentType</TD>
+<TD width=30%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=18%>Y</TD>
+<TD width=26%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Extension_</TD>
+<TD width=30%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=18%> </TD>
+<TD width=26%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>CLSID</TD>
+<TD width=30%><A HREF="tref_7kf8.htm">GUID</A></TD>
+<TD width=18%> </TD>
+<TD width=26%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>ContentType</DT>
+
+<DD>This column is an identifier for the MIME content. It is commonly written in the form of type/format.</DD>
+
+<DT>Extension_</DT>
+
+<DD>This column contains the server extension that is to be associated with the MIME content, without the dot. This column is a foreign key into the <A HREF="tref_219h.htm">Extension table</A>. The Extension table contains file extension server information which is used as a part of advertisement. </DD>
+
+<DT>CLSID</DT>
+
+<DD>This column contains the COM server CLSD that is to be associated with the MIME content. The CLSID in this column can be a foreign key into the <A HREF="tref_5n8l.htm">Class table</A> or it can be a CLSD that already exists on the user's machine. The Class table contains COM server-related information which is used as a part of advertisement. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is referred to when the <A HREF="aref_9r8u.htm">RegisterMIMEInfo action</A> or the <A HREF="aref_30oe.htm">UnregisterMIMEInfo action</A> is executed. In advertise mode, the RegisterMIMEInfo action registers all MIME information for servers from the MIME table for which the corresponding feature is enabled. Otherwise the action registers MIME information for servers from the MIME table for which the corresponding feature is currently selected to be installed. The <A HREF="aref_30oe.htm">UnregisterMIMEInfo action</A> unregisters MIME-related registry information from the system. The action unregisters MIME information for servers from the MIME table for which the corresponding feature is currently selected to be uninstalled.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

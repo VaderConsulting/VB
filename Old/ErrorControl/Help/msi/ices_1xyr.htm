@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE43</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE43">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice43"></A>ICE43</H1>
+
+<P>ICE43 validates that shortcuts that do not reference a feature as their Target (non-advertised shortcuts) are in components having a HKCU registry entry as their key path.</P>
+
+<H4>Result</H4>
+
+<P>ICE43 posts an error message if a non-advertised shortcut is in a component that does not have a HKCU registry entry as its key path.</P>
+
+<H4>Example</H4>
+
+<P>ICE43 would report the following errors for the example shown. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE43 error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Component Component1 has non-advertised shortcuts. It must use a registry key under HKCU as its KeyPath, not a file. </TD>
+<TD width=63%>The attributes column of Component1 is 0, meaning that the component uses a file as its KeyPath. This causes non-advertised shortcuts in this component to be installed for the first user on the computer ONLY. Users who install the component later do not see the shortcuts because the component appear to the installer as already existing on the computer.
+<P>To fix this error, set the RegistryKeyPath bit of the attributes to switch the Component to a Registry entry, then change the KeyPath value to a valid entry in the Registry table.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Component Component2 has non-advertised shortcuts. It must use a registry key under HKCU as its KeyPath. The KeyPath is currently NULL. </TD>
+<TD width=63%>The Attributes column is set to use the registry, but the KeyPath is NULL. The KeyPath must refer to an entry in the Registry Table.
+<P>To fix this error, change the KeyPath value to a valid entry in the Registry table.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Component Component3 has non-advertised shortcuts. Its KeyPath registry key must fall under HKCU. </TD>
+<TD width=63%>The Attributes column is set to use the registry, but the referenced registry entry is not under HKCU.
+<P>To fix this error, either switch to a different registry entry as the KeyPath for this component, or change the Root value of the Registry entry to either -1 or 1. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>The KeyPath registry entry for component Component4 does not exist.</TD>
+<TD width=63%>The Registry entry referenced in the KeyPath column of the component is not in the Registry Table.
+<P>To fix this error, create an entry.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>The Registry Entry Reg5 is set as the KeyPath for component Component5, but that registry entry doesn't belong to Component5.</TD>
+<TD width=63%>There is a Registry entry referenced in the KeyPath column of the component that lies under the HKCU tree, but the registry entry's Component_ column does not refer back to the same component that listed it as the KeyPath. This means that the registry entry used as the KeyPath of the component is only created if some other component was installed. 
+<P>To fix this error, change the KeyPath value to refer to a registry entry that belongs to the component or change the registry entry to belong to the component using it as a KeyPath.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Component</TH>
+<TH align=left width=33%>Attributes</TH>
+<TH align=left width=39%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Component1</TD>
+<TD width=33%>0</TD>
+<TD width=39%>File1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Component2</TD>
+<TD width=33%>4</TD>
+<TD width=39%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Component3</TD>
+<TD width=33%>4</TD>
+<TD width=39%>Reg3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Component4</TD>
+<TD width=33%>4</TD>
+<TD width=39%>Reg4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Component5</TD>
+<TD width=33%>4</TD>
+<TD width=39%>Reg5</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_3obp.htm"><B>Registry Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Registry</TH>
+<TH align=left width=15%>Root</TH>
+<TH align=left width=19%>Value</TH>
+<TH align=left width=38%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Reg3</TD>
+<TD width=15%>2</TD>
+<TD width=19%> </TD>
+<TD width=38%>Component3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Reg5</TD>
+<TD width=15%>0</TD>
+<TD width=19%> </TD>
+<TD width=38%>Component4</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE43;%20RELEASE:%20August%202001;%20URL:%20ices_1xyr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE43;%20RELEASE:%20August%202001;%20URL:%20ices_1xyr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

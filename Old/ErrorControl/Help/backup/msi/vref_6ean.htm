@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>UILevel Property (Installer object)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="UILevel Property (Installer object)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_uilevel_property_installer_object_"></A>UILevel Property (Installer object)</H1>
+
+<P>The UILevel property of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> is a read-write property that indicates the type of user interface to be used when opening and processing subsequent packages within the current process space. </P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.UILevel</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A>.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=46%>User interface level</TH>
+<TH align=left width=13%>Value</TH>
+<TH align=left width=40%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelNoChange</TD>
+<TD width=13%>0</TD>
+<TD colspan=2 width=41%>Does not change UI level.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelDefault</TD>
+<TD width=13%>1</TD>
+<TD colspan=2 width=41%>Uses Default UI level.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelNone</TD>
+<TD width=13%>2</TD>
+<TD colspan=2 width=41%>Silent installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelBasic</TD>
+<TD width=13%>3</TD>
+<TD colspan=2 width=41%>Simple progress and error handling.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelReduced</TD>
+<TD width=13%>4</TD>
+<TD colspan=2 width=41%>Authored UI, wizard dialogs suppressed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelFull</TD>
+<TD width=13%>5</TD>
+<TD colspan=2 width=41%>Authored UI with wizards, progress, and errors.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelEndDialog</TD>
+<TD width=13%>6</TD>
+<TD colspan=2 width=41%>If combined with any above value, the installer displays a modal dialog box at the end of a successful installation or if there has been an error. No dialog box is displayed if the user cancels.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiUILevelProgressOnly</TD>
+<TD width=13%>64</TD>
+<TD colspan=2 width=41%>If combined with the msiUILevelBasic value, the installer displays progress dialog boxes but does not display any modal dialog boxes or error dialog boxes.</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

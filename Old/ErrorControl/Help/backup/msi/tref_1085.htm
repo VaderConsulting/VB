@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>_TransformView Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="_TransformView Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi__transformview_table"></A>_TransformView Table</H1>
+
+<P>This is a read-only temporary table used to view transforms with the transform view mode. This table is never persisted by the installer.</P>
+
+<P>To invoke the transform view mode, obtain a handle and open the reference database. See <A HREF="novr_0hgl.htm">Obtaining a Database Handle</A>. Call <A HREF="qref_5tyl.htm"><B>MsiDatabaseApplyTransform</B></A> with MSITRANSFORM_ERROR_VIEWTRANSFORM. This stops the transform from being applied to the database and dumps the transform contents into the _TransformView table. The data in the table can be accessed using SQL queries. See <A HREF="novr_9cxf.htm">Working with Queries</A>.</P>
+
+<P>The _TransformView table is not cleared when another transform is applied. The table reflects the cumulative effect of successive applications. To view the transforms separately you must release the table.  </P>
+
+<P>The _TransformView Table has the following column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Column</TH>
+<TH align=left width=29%>Type</TH>
+<TH align=left width=20%>Key</TH>
+<TH align=left width=29%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Table</TD>
+<TD width=29%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=20%>Y</TD>
+<TD width=29%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Column</TD>
+<TD width=29%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=20%>Y</TD>
+<TD width=29%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Row</TD>
+<TD width=29%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=20%>Y</TD>
+<TD width=29%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Data</TD>
+<TD width=29%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=20%> </TD>
+<TD width=29%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Current</TD>
+<TD width=29%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=20%> </TD>
+<TD width=29%> </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Column</H4>
+
+<DL>
+<DT>Table</DT>
+
+<DD>Name of an altered database table.</DD>
+
+<DT>Column</DT>
+
+<DD>Name of an altered table column or INSERT, DELETE, CREATE, or DROP.</DD>
+
+<DT>Row</DT>
+
+<DD>A list of the primary key values separated by tabs. Null primary key values are represented by a single space character. Enter Null in this field if this is a schema change.</DD>
+
+<DT>Data</DT>
+
+<DD>Data, name of a data stream, or a column definition.</DD>
+
+<DT>Current</DT>
+
+<DD>Current value from reference database, or column a number.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The _TransformView is held in memory by a lock count, that can be released with the following SQL command.</P>
+
+<P>"ALTER TABLE _TransformView FREE".</P>
+
+<P>The data in the table can be accessed using SQL queries. The SQL language has two main divisions: Data Definition Language (DDL) that is used to define all the objects in an SQL database, and Data Manipulation Language (DML) that is used to select, insert, update, and delete data in the objects defined using DDL. </P>
+
+<P>The Data Manipulation Language (DML) transform operations are indicated as follows. Data Manipulation Language (DML) are those statements in SQL that manipulate, as opposed to define, data.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Transform operation</TH>
+<TH align=left width=69%>SQL result</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Modify data</TD>
+<TD width=69%>{table} {column} {row} {data} {current value}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Insert row</TD>
+<TD width=69%>{table} "INSERT" {row} NULL   NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Delete row</TD>
+<TD width=69%>{table} "DELETE" {row} NULL   NULL</TD>
+</TR>
+</TABLE><BR>
+
+<P>The Data Definition Language (DDL) transform operations are indicated as follows. Data Definition Language (DDL) are those statements in SQL that define, as opposed to manipulate, data.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Transform operation</TH>
+<TH align=left width=66%>SQL result</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Add column</TD>
+<TD width=66%>{table} {column} NULL  {defn} {column number}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Add table</TD>
+<TD width=66%>{table} "CREATE" NULL  NULL   NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Drop table</TD>
+<TD width=66%>{table} "DROP"   NULL  NULL   NULL</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

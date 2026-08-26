@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Synchronous and Asynchronous Custom Actions</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_synchronous_and_asynchronous_custom_actions"></A>Synchronous and Asynchronous Custom Actions</H2>
+
+<P>The Windows Installer processes custom actions as a separate thread from the main installation. During synchronous execution of a custom action, the installer waits for the thread of the custom action to complete before continuing the main installation. During asynchronous execution, the installer runs the custom action simultaneously as the current installation continues. Authors of custom actions must therefore be aware of any asynchronous threads that may be making changes to the installation database between function calls.</P>
+
+<P>In particular, calls to <A HREF="qref_05bc.htm">MsiGetTargetPath</A> and <A HREF="qref_4wko.htm">MsiSetTargetPath</A> should be avoided in asynchronous custom actions. Instead use <A HREF="qref_7u2h.htm">MsiGetProperty</A> to obtain a target path. Bulk database operations such as import, export, and transform operations should be avoided in any type of custom action.</P>
+
+<P>Option flags can be set in the Type field of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify that the main and custom action threads run synchronously or asynchronously. See <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A>.</P>
+
+<P>The installer can only execute nested installations and rollback custom actions as synchronous custom actions. </P>
+
+<P>For more information, see <A HREF="cact_260j.htm">Nested Installation Actions</A> and <A HREF="cact_0k8j.htm">Rollback Custom Actions</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Synchronous%20and%20Asynchronous%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_4qyb.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Synchronous%20and%20Asynchronous%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_4qyb.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

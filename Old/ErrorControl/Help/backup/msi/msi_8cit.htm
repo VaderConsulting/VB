@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiConfigureFeature</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiConfigureFeature">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiconfigurefeature"></A>MsiConfigureFeature</H1>
+
+<P>The <B>MsiConfigureFeature</B> function configures the installed state for a product feature.</P>
+
+<PRE class=syntax><B>UINT MsiConfigureFeature(
+</B>  <B>LPCTSTR</B> <I>szProduct</I><B>,</B>          // product code
+  <B>LPCTSTR</B> <I>szFeature</I><B>,</B>          // feature ID
+  <B>INSTALLSTATE</B> <I>eInstallState</I>  // install state
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szProduct</I></DT>
+
+<DD>Specifies the product code for the product to be configured. </DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>Specifies the feature ID for the feature to be configured.</DD>
+
+<DT><I>eInstallState</I></DT>
+
+<DD>Specifies the installation state for the feature. This parameter must be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=46%>Value</TH>
+<TH align=left width=54%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>INSTALLSTATE_ADVERTISED</TD>
+<TD width=54%>The feature is advertised</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>INSTALLSTATE_LOCAL</TD>
+<TD width=54%>The feature is installed locally.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>INSTALLSTATE_ABSENT</TD>
+<TD width=54%>The feature is uninstalled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>INSTALLSTATE_SOURCE</TD>
+<TD width=54%>The feature is installed to run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>INSTALLSTATE_DEFAULT</TD>
+<TD width=54%>The feature is installed to its default location.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function succeeded.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>An error relating to an action</TD>
+<TD width=52%>See <A HREF="code_13ub.htm">Error Codes</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Any <A HREF="msi_5svn.htm">Initialization Error</A></TD>
+<TD width=52%>An error relating to initialization occurred.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_installation_and_configuration_functions">Installation and Configuration Functions</A>, <A HREF="code_13ub.htm">Error Codes</A>, <A HREF="msi_5svn.htm">Initialization Error</A>, <A HREF="msi_1tir.htm">Displayed Error Messages</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

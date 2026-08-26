@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiProvideComponent</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiProvideComponent">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiprovidecomponent"></A>MsiProvideComponent</H1>
+
+<P>The <B>MsiProvideComponent</B> function returns the full component path, performing any necessary installation. This function prompts for source if necessary and increments the usage count for the feature.</P>
+
+<PRE class=syntax><B>UINT MsiProvideComponent(
+</B>  <B>LPCTSTR</B> <I>szProduct</I><B>,</B>    // product code in case install required
+  <B>LPCTSTR</B> <I>szFeature</I><B>,</B>    // feature ID in case install required
+  <B>LPCTSTR</B> <I>szComponent</I><B>,</B>  // component ID
+  <B>DWORD</B><I> dwInstallMode</I><B>,</B>  // the install mode
+  <B>LPTSTR</B> <I>lpPathBuf</I><B>,</B>     // returned path to component key file
+  <B>DWORD</B> <I>*pcchPathBuf</I>    // in/out buffer character count
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szProduct</I></DT>
+
+<DD>Specifies the product code for the product that contains the feature with the necessary component.</DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>Specifies the feature ID of the feature with the necessary component.</DD>
+
+<DT><I>szComponent</I></DT>
+
+<DD>Specifies the component code of the necessary component.</DD>
+
+<DT><I>dwInstallMode</I></DT>
+
+<DD>Defines the installation mode. This parameter can be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=43%>Value</TH>
+<TH align=left width=57%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLMODE_DEFAULT</TD>
+<TD width=57%>Provide the component and perform any installation necessary to provide the component. If the key file of a component in the requested feature, or a feature parent, is missing, reinstall the feature using <A HREF="msi_4ag5.htm"><B>MsiReinstallFeature</B></A> with the following flag bits set: REINSTALLMODE_FILEMISSING, REINSTALLMODE_FILEOLDERVERSION, REINSTALLMODE_FILEVERIFY, REINSTALLMODE_MACHINEDATA, REINSTALLMODE_USERDATA and REINSTALLMODE_SHORTCUT.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLMODE_EXISTING</TD>
+<TD width=57%>Provide the component only if the feature exists. Otherwise return ERROR_FILE_NOT_FOUND.
+<P>This mode verifies that the key file of the component exists.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLMODE_NODETECTION</TD>
+<TD width=57%>Provide the component only if the feature exists. Otherwise return ERROR_FILE_NOT_FOUND.
+<P>This mode only checks that the component is registered and does not verify that the key file of the component exists.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>combination of the <BR>
+REINSTALLMODE flags</TD>
+<TD width=57%>Call <A HREF="msi_4ag5.htm"><B>MsiReinstallFeature</B></A> to reinstall feature using this parameter for the <I>dwReinstallMode</I> parameter, and then provide the component.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLMODE_NOSOURCERESOLUTION </TD>
+<TD width=57%>Provide the component only if the feature's installation state is INSTALLSTATE_LOCAL. If the feature's installation state is INSTALLSTATE_SOURCE, return ERROR_INSTALL_SOURCE_ABSENT. Otherwise return ERROR_FILE_NOT_FOUND. This mode only checks that the component is registered and does not verify that the key file exists.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>lpPathBuf</I></DT>
+
+<DD>Pointer to a variable that receives the path to the component. This parameter can be NULL.</DD>
+
+<DT><I>pcchPathBuf</I></DT>
+
+<DD>Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpPathBuf</I> parameter. The count does not include the terminating null. 
+
+<P>If <I>lpPathBuf</I> is NULL, <I>pcchBuf</I> can be NULL.  
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_CONFIGURATION</TD>
+<TD width=52%>The configuration data is corrupt.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_FILE_NOT_FOUND</TD>
+<TD width=52%>The feature is absent or broken. this error is returned for dwInstallMode = INSTALLMODE_EXISTING.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INSTALL_FAILURE</TD>
+<TD width=52%>The installation failed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INSTALL_NOTUSED</TD>
+<TD width=52%>The component being requested is disabled on the computer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_UNKNOWN_FEATURE</TD>
+<TD width=52%>The feature ID does not identify a known feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_UNKNOWN_PRODUCT</TD>
+<TD width=52%>The product code does not identify a known product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_UNKNOWN</TD>
+<TD width=52%>An unrecognized product or a feature name was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_MORE_DATA</TD>
+<TD width=52%>The buffer overflow is returned.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INSTALL_SOURCE_ABSENT</TD>
+<TD width=52%>Unable to detect a source.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For more information, see <A HREF="msi_1tir.htm">Displayed Error Messages</A>.</P>
+
+<H4>Remarks</H4>
+
+<P>Upon success of the <B>MsiProvideComponent</B> function, the <I>pcchPathBuf</I> parameter contains the length of the string in <I>lpPathBuf</I>.</P>
+
+<P>The <B>MsiProvideComponent</B> function combines the functionality of <A HREF="msi_3ckl.htm"><B>MsiUseFeature</B></A>, <A HREF="msi_8cit.htm"><B>MsiConfigureFeature</B></A>, and <A HREF="msi_3fxk.htm"><B>MsiGetComponentPath</B></A>. You can use the <B>MsiProvideComponent</B> function to simplify the calling sequence. However, because this function increments the usage count, use it with caution to prevent inaccurate usage counts. The <B>MsiProvideComponent</B> function also provides less flexibility than the series of individual calls. </P>
+
+<P>If the application is recovering from an unexpected situation, the application has probably already called <B>MsiUseFeature</B> and incremented the usage count. In this case, the application should call <B>MsiConfigureFeature</B> instead of <B>MsiProvideComponent</B> to avoid incrementing the count again.</P>
+
+<P>The INSTALLMODE_EXISTING option cannot be used in combination with the REINSTALLMODE flag.</P>
+
+<P>Features with components containing a corrupted file or the wrong version of a file must be explicitly reinstalled by the user or by having the application call <A HREF="msi_4ag5.htm"><B>MsiReinstallFeature</B></A>. </P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_component_specific_functions">Component-Specific Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

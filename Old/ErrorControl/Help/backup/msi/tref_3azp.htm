@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DrLocator Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="DrLocator Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_drlocator_table"></A>DrLocator Table</H1>
+
+<P>The DrLocator table holds the information needed to find a file or directory by searching the directory tree.</P>
+
+<P>The DrLocator table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Column</TH>
+<TH align=left width=38%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Signature_</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Parent</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Path</TD>
+<TD width=38%><A HREF="tref_2tig.htm">AnyPath</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Depth</TD>
+<TD width=38%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Signature_</DT>
+
+<DD>The Signature_ column is an external key to the first column of the <A HREF="tref_149x.htm">Signature table</A>. This field may represent a unique file signature listed in the Signature table. If the value in this column is absent from the Signature table, then the search is assumed to be for a directory pointed to by the <A HREF="#_msi_drlocator_table">DrLocator table</A>.</DD>
+
+<DT>Parent</DT>
+
+<DD>This column is the signature of the parent directory of the file or directory in the Signature_ column. If this field is null, and the Path column does not expand to a full path, then all the fixed drives of the user's system are searched by using the Path.
+
+<P>This field is a key into one of the following tables: the <A HREF="tref_91wl.htm">RegLocator</A>, the <A HREF="tref_00o5.htm">IniLocator</A>, the <A HREF="tref_771h.htm">CompLocator</A>, or the <A HREF="#_msi_drlocator_table">DrLocator</A> tables. 
+</DD>
+
+<DT>Path</DT>
+
+<DD>The Path column contains the path on the user's system. This is a either a full path or a relative subpath below the directory specified in the Parent column. See the restrictions on the <A HREF="tref_2tig.htm">AnyPath</A> data type. </DD>
+
+<DT>Depth</DT>
+
+<DD>The depth below the path that the installer searches for the file or directory specified in the Signature_ column. The value used in the Depth field is based on zero. For example, if the Path field is c:/Program Files/bin, the Depth column must be set to 0 or greater, to detect a file located inside the folder bin. If the Depth field is empty, the depth is assumed to be zero.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is used with the <A HREF="tref_0w9x.htm">AppSearch Table</A>.</P>
+
+<P>This table's columns are generally not localized. If an author decides to search for products in multiple languages, then there must be a separate entry included in the table for each language.</P>
+
+<P>See <A HREF="over_84oj.htm">Searching for Existing Applications, Files, Registry Entries or .ini File Entries</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

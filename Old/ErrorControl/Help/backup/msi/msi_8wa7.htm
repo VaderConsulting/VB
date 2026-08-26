@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetProductInfo</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetProductInfo">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetproductinfo"></A>MsiGetProductInfo</H1>
+
+<P>The <B>MsiGetProductInfo</B> function returns product information for published and installed products.</P>
+
+<PRE class=syntax><B>UINT MsiGetProductInfo(
+</B>  <B>LPCTSTR</B> <I>szProduct</I><B>,</B>   // product code
+  <B>LPCTSTR</B> <I>szProperty</I><B>,</B>  // product property
+  <B>LPTSTR</B> <I>lpValueBuf</I><B>,</B>   // buffer to return property value
+  <B>DWORD</B> <I>*pcchValueBuf</I>  // buffer character count,
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szProduct</I></DT>
+
+<DD>Specifies the product code for the product.</DD>
+
+<DT><I>szProperty</I></DT>
+
+<DD>Specifies the property to be retrieved. The properties in the following list can only be retrieved from applications that are already installed. Note that <A HREF="prop_55tf.htm">required properties</A> are guaranteed to be available, but other properties are available only if that property has been set. See the indicated links to the installer <A HREF="prop_1xyr.htm">properties</A> for information about how each property is set. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=54%>Installed properties</TH>
+<TH align=left width=46%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_INSTALLEDPRODUCTNAME</TD>
+<TD width=46%>Installed product name. See <A HREF="pref_52m1.htm">ProductName property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_VERSIONSTRING</TD>
+<TD width=46%>Product version. See <A HREF="pref_120p.htm">ProductVersion property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_HELPLINK</TD>
+<TD width=46%>Support link. See <A HREF="pref_067t.htm">ARPHELPLINK property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_HELPTELEPHONE</TD>
+<TD width=46%>Support telephone. See <A HREF="pref_8vp5.htm">ARPHELPTELEPHONE property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_INSTALLLOCATION</TD>
+<TD width=46%>Installation location. See <A HREF="pref_8d4p.htm">ARPINSTALLLOCATION property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_INSTALLSOURCE</TD>
+<TD width=46%>Installation source. See <A HREF="pref_6uwp.htm">SourceDir property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_INSTALLDATE</TD>
+<TD width=46%>Installation date.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_PUBLISHER</TD>
+<TD width=46%>Publisher. See <A HREF="pref_9z09.htm">Manufacturer property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_LOCALPACKAGE</TD>
+<TD width=46%>Local cached package</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_URLINFOABOUT</TD>
+<TD width=46%>URL information. See <A HREF="pref_2upl.htm">ARPURLINFOABOUT property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_URLUPDATEINFO</TD>
+<TD width=46%>URL update information. See <A HREF="pref_7hmh.htm">ARPURLUPDATEINFO property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_VERSIONMINOR</TD>
+<TD width=46%>Minor product version derived from <A HREF="pref_120p.htm">ProductVersion property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_VERSIONMAJOR</TD>
+<TD width=46%>Major product version derived from <A HREF="pref_120p.htm">ProductVersion property</A>.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>The properties in the following list can also be retrieved from applications that are advertised.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=54%>Advertised properties</TH>
+<TH align=left width=46%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_TRANSFORMS</TD>
+<TD width=46%>Transforms</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_LANGUAGE</TD>
+<TD width=46%>Product language</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_PRODUCTNAME</TD>
+<TD width=46%>Human readable product name. See <A HREF="pref_52m1.htm">ProductName property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_ASSIGNMENTTYPE</TD>
+<TD width=46%>Assignment type</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_ADVTFLAGS</TD>
+<TD width=46%>Advertisment flags.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_PACKAGECODE</TD>
+<TD width=46%>Identifier of package product was installed from. See <A HREF="over_0joz.htm">Package and Product Codes (Windows Installer)</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_VERSION</TD>
+<TD width=46%>Product version derived from <A HREF="pref_120p.htm">ProductVersion property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_PRODUCTICON</TD>
+<TD width=46%>Primary Icon for the package. See <A HREF="pref_8x6h.htm">ARPPRODUCTICON property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLPROPERTY_PACKAGENAME</TD>
+<TD width=46%>Name of the original installation package.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>lpValueBuf</I></DT>
+
+<DD>Pointer to a buffer that receives the property value. This parameter can be NULL.</DD>
+
+<DT><I>pcchValueBuf</I></DT>
+
+<DD>[in/out] Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpValueBuf</I> parameter. The count does not include the terminating null. 
+
+<P>If <I>lpValueBuf</I> is NULL, <I>pcchValueBuf</I> can be NULL.
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_CONFIGURATION</TD>
+<TD width=52%>The configuration data is corrupt.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_MORE_DATA</TD>
+<TD width=52%>A buffer is too small to hold the requested data.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_UNKNOWN_PRODUCT</TD>
+<TD width=52%>The product is unadvertised or uninstalled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_UNKNOWN_PROPERTY</TD>
+<TD width=52%>The property is unrecognized.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>When the <B>MsiGetProductInfo </B>function returns, the <I>pcchValueBuf</I> parameter contains the length of the class string stored in the buffer. The count returned does not include the terminating NULL character. If the buffer is not big enough, <B>MsiGetProductInfo</B> returns ERROR_MORE_DATA, and <B>MsiGetProductInfo</B> contains the size of the string, in characters, without counting the NULL character.</P>
+
+<P><B>MsiGetProductInfo</B>(INSTALLPROPERTY_LOCALPACKAGE) does not necessarily return a path to the cached package. The cached package is for internal use only. Maintenance mode installations should be invoked via the <A HREF="msi_8cit.htm"><B>MsiConfigureFeature</B></A>, <A HREF="msi_3p9w.htm"><B>MsiConfigureProduct</B></A>, or <A HREF="msi_3u7s.htm"><B>MsiConfigureProductEx</B></A> functions.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_system_status_functions">System Status Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

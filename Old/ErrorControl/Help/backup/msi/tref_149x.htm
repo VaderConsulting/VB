@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Signature Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Signature Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_signature_table"></A>Signature Table</H1>
+
+<P>The Signature table holds the information that uniquely identifies a file signature. </P>
+
+<P>The Signature table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Column</TH>
+<TH align=left width=39%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Signature</TD>
+<TD width=39%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>FileName</TD>
+<TD width=39%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>MinVersion</TD>
+<TD width=39%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>MaxVersion</TD>
+<TD width=39%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>MinSize</TD>
+<TD width=39%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>MaxSize</TD>
+<TD width=39%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>MinDate</TD>
+<TD width=39%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>MaxDate</TD>
+<TD width=39%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Languages</TD>
+<TD width=39%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Signature</DT>
+
+<DD>The Signature column is a unique file signature.</DD>
+
+<DT>FileName</DT>
+
+<DD>The name of the file.</DD>
+
+<DT>MinVersion</DT>
+
+<DD>The minimum version of the file. If this field is specified, then the file must have a version that is at least equal to MinVersion.</DD>
+
+<DT>MaxVersion</DT>
+
+<DD>The maximum version of the file. If this field is specified, then the file must have a version that is at most equal to MaxVersion.</DD>
+
+<DT>MinSize</DT>
+
+<DD>The minimum size of the file. If this field is specified, then the file under inspection must have a size that is at least equal to MinSize. This must be a non-negative number.</DD>
+
+<DT>MaxSize</DT>
+
+<DD>The maximum size of the file. If this field is specified, then the file under inspection must have a size that is at most equal to MaxSize. This must be a non-negative number.</DD>
+
+<DT>MinDate</DT>
+
+<DD>The minimum creation date of the file. If this field is specified, then the file under inspection must have a creation date that is at least equal to MinDate. This must be a non-negative number.</DD>
+
+<DT>MaxDate</DT>
+
+<DD>The maximum creation date of the file. If this field is specified, then the file under inspection must have a creation date that is at most equal to MaxDate. This must be a non-negative number.</DD>
+
+<DT>Languages</DT>
+
+<DD>The languages supported by the file.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is used with the <A HREF="tref_0w9x.htm">AppSearch Table</A>.</P>
+
+<P>The signature is searched for using the <A HREF="tref_91wl.htm">RegLocator table</A>, the <A HREF="tref_00o5.htm">IniLocator table</A>, the <A HREF="tref_771h.htm">CompLocator table</A>, and the <A HREF="tref_3azp.htm">DrLocator table</A>. This table's columns are generally not localized. If an author decides to search for products in multiple languages, then there can be a separate entry included in the table for each language.</P>
+
+<P>The entries in the MinDate and MaxDate columns must be in the MS-DOS® date format, as shown in the following table. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Bits</TH>
+<TH align=left width=79%>Contents</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>0-4</TD>
+<TD width=79%>Day of the month (1-31)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>5-8</TD>
+<TD width=79%>Month (1 = January, 2 = February, and so on)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>9-15</TD>
+<TD width=79%>Year offset from 1980 (add 1980 to get actual year)</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

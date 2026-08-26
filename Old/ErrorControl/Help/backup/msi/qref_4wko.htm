@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSetTargetPath</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiSetTargetPath">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msisettargetpath"></A>MsiSetTargetPath</H1>
+
+<P>The <B>MsiSetTargetPath</B> function sets the full target path for a folder in the <A HREF="tref_6an9.htm">Directory table</A>.</P>
+
+<PRE class=syntax><B>UINT MsiSetTargetPath(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>, </B>  // installer handle
+  <B>LPCTSTR</B> <I>szFolder</I><B>,</B>     // folder identifier
+  <B>LPCTSTR</B> <I>szFolderPath</I>  // full path for folder, ending in
+                        //  directory separator
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>Handle to the installation.</DD>
+
+<DT><I>szFolder</I></DT>
+
+<DD>Specifies the folder identifier. This is a primary key in the Directory table.</DD>
+
+<DT><I>szFolderPath</I></DT>
+
+<DD>Specifies the full path for the folder, ending in a directory separator.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_DIRECTORY</DT>
+
+<DD>The directory specified was not found in the <A HREF="tref_6an9.htm">Directory table</A>.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiSetTargetPath</B> function changes the path specification for the target directory named in the in-memory <A HREF="tref_6an9.htm">Directory table</A>. Also, the path specifications of all other path objects in the table that are either subordinate or equivalent to the changed path are updated to reflect the change. The properties for each affected path are also updated.</P>
+
+<P><B>MsiSetTargetPath </B>fails if the selected directory is read only.</P>
+
+<P>If an error occurs in this function, all updated paths and properties revert to their previous values. Therefore, it is safe to treat errors returned by this function as non-fatal.</P>
+
+<P>Do<B> </B>not attempt to configure the target path if the components using those paths are already installed for the current user or for a different user. Check the <A HREF="pref_5qpl.htm">ProductState property</A> before calling <B>MsiSetTargetPath </B>to determine if the product containing this component is installed.</P>
+
+<P>See <A HREF="novr_9vw3.htm">Calling Database Functions From Programs</A>.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_location_functions">Installer Location Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Patch Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Patch Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_patch_table"></A>Patch Table</H1>
+
+<P>The Patch table specifies the file that is to receive a particular patch and the physical location of the patch files on the media images.</P>
+
+<P>The Patch table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Column</TH>
+<TH align=left width=43%>Type</TH>
+<TH align=left width=15%>Key</TH>
+<TH align=left width=21%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>File_</TD>
+<TD width=43%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Sequence</TD>
+<TD width=43%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>PatchSize</TD>
+<TD width=43%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Attributes</TD>
+<TD width=43%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Header</TD>
+<TD width=43%><A HREF="tref_8ghl.htm">Binary</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>File_</DT>
+
+<DD>The patch is applied to the file specified by the identifier in this column. This is a primary key for the table and it is a foreign key to the <A HREF="tref_4n6t.htm">File table</A>.</DD>
+
+<DT>Sequence</DT>
+
+<DD>This is the position of the patch file in the sequence order of files on the media images. The sequence order must correspond to the order of the files in the patch package cabinet file. This is a primary key for this table.</DD>
+
+<DT>PatchSize</DT>
+
+<DD>This column gives the size of the patch in bytes written as a long integer.</DD>
+
+<DT>Attributes</DT>
+
+<DD>Integer containing bit flags representing patch attributes. Insert a value of 1 in this column to indicate that the failure to apply this patch is not a fatal error.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=38%>Constant</TH>
+<TH align=left width=20%>Hexadecimal</TH>
+<TH align=left width=15%>Decimal</TH>
+<TH align=left width=27%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>(none)</TD>
+<TD width=20%>0x000</TD>
+<TD width=15%>0</TD>
+<TD width=27%>Failure to apply this patch is a fatal error.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%><B>msidbPatchAttributesNonVital</B></TD>
+<TD width=20%>0x001</TD>
+<TD width=15%>1</TD>
+<TD width=27%>Indicates that the failure to apply this patch is not a fatal error.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Header</DT>
+
+<DD>This column is the binary stream patch header used for patch validation.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is processed by the <A HREF="aref_9cby.htm">PatchFiles action</A>. It is usually added to the install package by a transform from a patch package. It is usually not authored directly into an install package.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I Install Win32 assemblies for Side-by-side sharing on Windows XP?</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_how_do_i_install_win32_assemblies_for_side_by_side_sharing_on_windows_xp"></A>How do I Install Win32 assemblies for Side-by-side sharing on Windows XP?</H2>
+
+<P>The following describes how to create a Windows Installer package to install a Win32 assembly. The package installs a side-by-side assembly in the Winsxs folder for the shared use of the application. After installing the package, the shared assembly is globally available to any application that specifies a dependence on the assembly in an assembly manifest file. The installer does not globally register the side-by-side assembly on the system.</P>
+
+<P>Note that you may install shared side-by-side assemblies using <A HREF="merg_9x9v.htm">merge modules</A>.</P>
+
+<P>Before continuing you should understand how to author a Windows Installer package without assemblies. For an example of how to author a simple installation, see <A HREF="samp_2k11.htm">An Installation Example</A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To install a shared assembly side-by-side on Windows XP</B>
+
+<OL>
+	<LI>Define a Windows Installer component that includes the Win32 assembly. This component may contain other resources that should always be installed or removed with the assembly. All the other components of the application can be authored just as for a Windows 2000 installation without assemblies. Add a row to the <A HREF="tref_09np.htm">Component table</A> for the component containing the Win32 assembly. Enter a valid Windows Installer <A HREF="tref_7kf8.htm">GUID</A> for this component code. Do not use the manifest file as the key path for this component. </LI>
+
+	<LI>Add a row to the <A HREF="tref_52hx.htm">FeatureComponents table</A> tying the component to a Windows Installer feature. For information see, <A HREF="over_8p83.htm">Components and Features</A>. A Windows Installer feature should be a piece of the application's functionality that is recognizable to a user. The assembly is activated when this feature is selected by a user or faulted in by an application. If the assembly defines an additional feature, then add an additional row to the <A HREF="tref_0a91.htm">Feature table</A> for the feature's attributes. This step is not needed when authoring a merge module.</LI>
+
+	<LI>For side-by-side assemblies, binding and activation information, such as COM classes, interfaces, and type libraries, is stored in manifest files rather than the registry. Shared assemblies store this information in an assembly manifest. On systems that support side-by-side assemblies, the installer skips processing any information about the component entered in the <A HREF="tref_219h.htm">Extension table</A>, <A HREF="tref_3kdh.htm">Verb table</A>, <A HREF="tref_3085.htm">TypeLib table</A>, <A HREF="tref_3sh1.htm">MIME table</A>, <A HREF="tref_5n8l.htm">Class table</A>, <A HREF="tref_4x5x.htm">ProgId table</A>, and <A HREF="tref_6p2d.htm">AppId table</A>. Binding and activation information may be entered into these tables for use by systems that do not support side-by-side assembly sharing. </LI>
+
+	<LI>Side-by-side installation does not globally register the assembly, the installer skips self-registering the component if any self-registration information has been entered in the <A HREF="tref_0llx.htm">SelfReg table</A>. Self-registration information may be entered into the SelfReg table for self-registration of the component on systems that do not support side-by-side assembly sharing.</LI>
+
+	<LI>Add any other registry information, exclusive of binding and activation or self-registration of the component, to the <A HREF="tref_3obp.htm">Registry table</A>, <A HREF="tref_3wmd.htm">RemoveRegistry table</A>, and <A HREF="tref_025h.htm">Environment table</A>. </LI>
+
+	<LI>Because this is a shared assembly do not generate a .local file. Do not include information for this component in the <A HREF="tref_6jc5.htm">IsolatedComponent table</A>. The installer skips the IsolatedComponent table for this component on operating systems that support side-by-side sharing. Add information to the IsolatedComponent table if you would like the assembly to be private on systems that support .local files.</LI>
+
+	<LI>To enable side-by-side sharing, the Win32 assembly must be installed into the Winsxs folder. This is accomplished by leaving the File_Application column of the <A HREF="tref_4u05.htm">MsiAssembly table</A> NULL for the assembly. This tells the installer to install the assembly to the WinSxS folder, instead of to the folder of the component. Add a row to the <A HREF="tref_4u05.htm">MsiAssembly table</A> for the component that contains the Win32 assembly. Enter a value of 1 in the Attributes field of the MsiAssembly table to specify that this is a Win32 assembly. For a shared assembly, leave the File_Application field empty. Add the <A HREF="aref_9bn2.htm">MsiPublishAssemblies action</A> to the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> or <A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A>. Add the <A HREF="aref_3een.htm">MsiUnpublishAssemblies action</A> to the InstallExecuteSequence table. </LI>
+
+	<LI>Add rows to the <A HREF="tref_8vhh.htm">MsiAssemblyName table</A> for the component. Add one row for each name and value pair specified in the assemblyIdentity section of the manifest. For an example, see <A HREF="tref_8vhh.htm">MsiAssemblyName table</A>.</LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20Install%20Win32%20assemblies%20for%20Side-by-side%20sharing%20on%20Windows%20XP%3F;%20RELEASE:%20August%202001;%20URL:%20assm_0ank.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20Install%20Win32%20assemblies%20for%20Side-by-side%20sharing%20on%20Windows%20XP%3F;%20RELEASE:%20August%202001;%20URL:%20assm_0ank.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

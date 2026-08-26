@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring Merge Module Directory Tables</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_authoring_merge_module_directory_tables"></A>Authoring Merge Module Directory Tables</H3>
+
+<P>A merge module can be applied to a .msi file to add directories to the installation but it cannot replace or remove any existing directories. The <A HREF="tref_6an9.htm">Directory table</A> specifies the layout of the directories the merge module provides to the target installation. A Directory table is required in every merge module. </P>
+
+<P>Use the following guidelines when authoring the Directory Table in a merge module. For more information, see <A HREF="tref_6an9.htm">Directory Table</A> and <A HREF="novr_3wth.htm">Using The Directory Table</A>. 
+
+<UL>
+	<LI>The directory structure added by the merge module must have a single root directory. The root must be named TARGETDIR. The user may change the value of TARGETDIR during the merge to specify where to attach the module's directory structure onto the target's directory tree.</LI>
+
+	<LI>Merge module tables other than the Directory table must not directly reference directory locations to TARGETDIR. The location of such a reference changes if the value of TARGETDIR is changed by the user.</LI>
+
+	<LI>The tables in the merge module must reference the location of a child directory of TARGETDIR, or another directory in the merge module's tree. Do the following to specify TARGETDIR as the parent of a directory in the merge module. Enter the directory into the Directory column and enter TARGETDIR into the Directory_Parent column. Use the "." notation in the DefaultDir column to indicate that this directory is located in TARGETDIR without a subdirectory. For more information, see <A HREF="novr_3wth.htm">Using the Directory Table</A>.</LI>
+
+	<LI>The names of directories added by the merge module must use the naming conventions described in <A HREF="merg_0ucz.htm">Naming Primary Keys in Merge Module Databases</A>. This includes directories predefined by properties such as the <A HREF="pref_4sft.htm"><B>SystemFolder</B> property</A> and <A HREF="pref_3xfd.htm"><B>ProgramFilesFolder</B> property</A>.</LI>
+
+	<LI>Append a <A HREF="dglo_0j95.htm#_msi_guid_gly">GUID</A> to every entry in the Directory table. This includes Directory Table entries that specify a Windows Installer system folder properties, for example, SystemFolder.00000000_0000_0000_0000_000000000000. The library Mergemod.dll adds custom actions to set the <B>SystemFolder</B> property.</LI>
+
+	<LI>When a predefined directory is included in a merge module, the merge tool automatically adds a <A HREF="cact_07ox.htm">Custom Action Type 51</A> to the target database. The merge module author must ensure that a <A HREF="tref_71b9.htm">CustomAction table</A> is also included. The CustomAction table may be empty, but this table is required to exist in the target database and ensures that the modified predefined directories are written to the correct locations. For example, when a system directory is included in a merge module, the merge module author must ensure that a Custom Action table exists. </LI>
+
+	<LI>Note that the matching algorithm for the generation of these type 51 custom actions only checks that the directory name begins with one of the predefined <A HREF="pref_4zar.htm">System Folder Properties</A>. It does not verify that the directory name exactly equals the directory property. Any directory beginning with one of these standard folder names gets a type 51 custom action, even if the rest of the name is not a GUID. Authors need to take care that this does not generate false positive matches, and unintended custom action generation, on derivative primary keys that begin with one of the System Folder Properties.</LI>
+</UL>
+
+<P>The following is an example of a Directory table in a merge module and the expected resolved directories.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Directory</TH>
+<TH align=left width=33%>Directory_Parent</TH>
+<TH align=left width=34%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>TARGETDIR</TD>
+<TD width=33%>&nbsp;</TD>
+<TD width=34%>SourceDir</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Dir00.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>TARGETDIR</TD>
+<TD width=34%>.:MMM_Prog</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>SystemFolder.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>TARGETDIR</TD>
+<TD width=34%>MMM_Sys</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Dir02.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>Dir00.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848_006097ABDE17</TD>
+<TD width=34%>MFC_OCX</TD>
+</TR>
+</TABLE><BR>
+
+<P>A merge module with the above Directory table is expected to result in the following directory structure.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Directory</TH>
+<TH align=left width=33%>Target</TH>
+<TH align=left width=34%>Source</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Dir00.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>[Merge Module's Install Point]\ </TD>
+<TD width=34%>[Merge Module's Source Point]\MMM_Prog</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>SystemFolder.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>[SystemFolder]\ </TD>
+<TD width=34%>[Merge Module's Source Point]\MMM_Sys</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Dir02.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>[Merge Module's Install Point]\MFC_OCX</TD>
+<TD width=34%>[Merge Module's Source Point]\MMM_Prog\MFC_OCX</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Authoring%20Merge%20Module%20Directory%20Tables;%20RELEASE:%20August%202001;%20URL:%20merg_7odv.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Authoring%20Merge%20Module%20Directory%20Tables;%20RELEASE:%20August%202001;%20URL:%20merg_7odv.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

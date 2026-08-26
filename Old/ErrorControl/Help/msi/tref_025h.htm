@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Environment Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Environment Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_environment_table"></A>Environment Table</H1>
+
+<P>The Environment table is used to set the values of environment variables.</P>
+
+<P>The Environment table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Environment</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Name</TD>
+<TD width=40%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Value</TD>
+<TD width=40%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Component_</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Environment</DT>
+
+<DD>This is the primary key of the table and is a non-localized token.</DD>
+
+<DT>Name</DT>
+
+<DD>This column is the localizable name of the environment variable. The key values are written or removed depending upon which of the characters in the following table are prefixed to the name. There is no effect in the ordering of the symbols used in a prefix.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Prefix</TH>
+<TH align=left width=81%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>=</TD>
+<TD width=81%>Create the environment variable if it does not exist, and then set it during installation. If the environment variable exists, set it during the installation. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>+</TD>
+<TD width=81%>Create the environment variable if it does not exist, then set it during installation. This has no effect on the value of the environment variable if it already exists.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>-</TD>
+<TD width=81%>Remove the environment variable when the component is removed. This symbol can be combined with any prefix.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>!</TD>
+<TD width=81%>Remove the environment variable during an installation. The installer only removes an environment variable during an installation if the name and value of the variable match the entries in the Name and Value fields of the Environment table. If you want to remove an environment variable, regardless of its value, use the '!' syntax, and leave the Value field empty.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>*</TD>
+<TD width=81%>This prefix is used with Microsoft® Windows®&nbsp;NT/Windows®&nbsp;2000 to indicate that the name refers to a system environment variable. If no asterisk is present, the installer writes the variable to the user's environment. Microsoft Windows 95/98 ignores the asterisk and add the environment variable to autoexec.bat. This symbol can be combined with any prefix. A package that is used for <A HREF="over_1tdf.htm">per-machine installations</A> should write environment variables to the machine's environment by including * in the Name column. For more information, see Remarks.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>=-</TD>
+<TD width=81%>The environment variable is set on install and removed on uninstall. This is the usual behavior.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>!-</TD>
+<TD width=81%>Removes an environment variable during an install or uninstall.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>=+
+<P>!+</P>
+
+<P>!=</P>
+</TD>
+<TD width=81%>These are not a valid prefixes</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>If the Value field in the table includes a [~], then the prefix characters apply to only the specified portion of the string. The use of [~] is described below in the Value column section.
+
+
+<P>The environment variable is removed if the Value field of the table is blank. Therefore, with a blank in the Value field, an = prefix deletes the environment variable on install and a - prefix deletes any current values on uninstall.
+</DD>
+
+<DT>Value</DT>
+
+<DD>This column contains the localizable value that is to be set as a formatted string. See <A HREF="tref_0qp0.htm">Formatted</A>. If this field is left blank, the variable is removed. If the field is blank and the string in the Name field is prefixed by the - symbol, the variable is removed only when the component is removed.
+
+<P>To append a value to the end of an existing variable, prefix the string in this field by the Null character [~] and the separator character. For example, if the semicolon is the chosen separator:  [~];<I>Value</I>.
+
+
+<P>To prefix a value to the front of an existing variable, append the string in this field by the separator character and the Null character [~]. For example, if the semicolon is the chosen separator:  <I>Value</I>;[~] .
+
+
+<P>If no [~] is present in the field, the string represents the entire value to be set or deleted.
+
+
+<P>Each row can contain only one value. For example, the entry <I>Value</I>;<I>Value</I>;[~] is more than one value and should not be used because it causes unpredictable results. The entry <I>Value</I>;[~] is just one value.
+</DD>
+
+<DT>Component_</DT>
+
+<DD>An external key to the first column of the <A HREF="tref_09np.htm">Component table</A>. This column references the component that controls the installation of the environment values.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>For the installer to set environment variables, the <A HREF="aref_5fla.htm">WriteEnvironmentStrings action</A> and <A HREF="aref_45da.htm">RemoveEnvironmentStrings action</A> need to be listed in the <A HREF="tref_5pid.htm">InstallExecuteSequence Table</A>.</P>
+
+<P>Note that environment variables do not change for the installation in progress when either the <A HREF="aref_5fla.htm">WriteEnvironmentStrings action</A> or <A HREF="aref_45da.htm">RemoveEnvironmentStrings action</A> are run. On Windows&nbsp;NT and Windows&nbsp;2000, this information is stored in the registry and a message notifies the system of changes when the installation completes. A new process, or another process that checks for these messages, uses the new environment variables. On Windows&nbsp;95 and Windows&nbsp;98, this information is stored in the Autoexec.bat file, and do not affect the system until a system reboot.</P>
+
+<P>When modifying the path environment variable with the Environment table, do not attempt to enter the entire new path explicitly into the Value field. Instead, extend the existing path by prefixing or appending a value and delimiter (;) to [~]. If [~] is not present in the Value field, the existing path information is lost and installing the .msi file may prevent the computer from booting. The path variable is mostly commonly set using the syntax: [~];Value.</P>
+
+<P>When performing <A HREF="over_1tdf.htm">per-machine installations</A> from a terminal server, the installer writes per-user environment variables to <B>HKU\.Default\Environment</B>. Because Terminal Services does not replicate this section of the registry, the installation does not set the per-user environment variables. A package used for per-machine installations should write environment variables to the computer's environment by including * in the Name column. If the package can be installed per-user or per-machine, create two components: (1) a per-user component with the Environment table entries authored for user settings, and (2) a per-machine component with the Environment table authored for computer settings. Condition the installation of this component using the <A HREF="pref_9kah.htm">Privileged property</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Environment%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_025h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Environment%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_025h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

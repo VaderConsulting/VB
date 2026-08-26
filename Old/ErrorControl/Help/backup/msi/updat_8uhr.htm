@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>UpgradedFilesToIgnore Table (PATCHWIZ.DLL)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="UpgradedFilesToIgnore Table (PATCHWIZ.DLL)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_upgradedfilestoignore_table_patchwiz.dll_"></A>UpgradedFilesToIgnore Table (PATCHWIZ.DLL)</H1>
+
+<P>The UpgradedFilesToIgnore table prevents the updating of specific files that are in fact changed in the upgraded image relative to the target images. It may be useful to do this in certain cases. For example, a patch package that is intended only for use with non-administrative installations does not need to include patching files that are only part of administrative images. Excluding the files used only in administrative images can reduce the size of the patch package in this case; however, administrators should be informed on how to update these files separately. This table is optional in the patch creation database (.pcp file) and is used by <A HREF="updat_6yu7.htm"><B>UiCreatePatchPackage (PATCHWIZ.DLL)</B></A>.</P>
+
+<P>The UpgradedFilesToIgnore table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Upgraded</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>FTK</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Upgraded</DT>
+
+<DD>Foreign key to the Upgraded column of the <A HREF="updat_18tb.htm">UpgradedImages Table (PATCHWIZ.DLL)</A>. A value of "*" in this field specifies that all upgraded images.</DD>
+
+<DT>FTK</DT>
+
+<DD>Foreign key into the <A HREF="tref_4n6t.htm">File table</A> of the upgraded image. A value of the form "&lt;prefix&gt;*" will match all file table keys in the File table that begin with that prefix. No text can follow the asterisk.
+
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action Type 51</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_custom_action_type_51"></A>Custom Action Type 51</H2>
+
+<P>This custom action sets a property from a formatted text string. </P>
+
+<P>To affect a property used in a condition on a component or feature, the custom action must come before the <A HREF="aref_22we.htm">CostFinalize action</A> in the action sequence.</P>
+
+<H4>Source</H4>
+
+<P>The Source field of the <A HREF="tref_71b9.htm">CustomAction table</A> can contain either the name of a property or a key to the <A HREF="tref_21d1.htm">Property table</A>. This property is set by the formatted string in the Target field using <A HREF="qref_56nt.htm"><B>MsiSetProperty</B></A>.</P>
+
+<H4>Type Value</H4>
+
+<P>Include the following value in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify the basic numeric type. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Constants</TH>
+<TH align=left width=25%>Hexadecimal</TH>
+<TH align=left width=25%>Decimal</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%><B>msidbCustomActionTypeTextData + msidbCustomActionTypeProperty</B></TD>
+<TD width=25%>0x033</TD>
+<TD width=25%>51</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Target</H4>
+
+<P>The Target column of the <A HREF="tref_71b9.htm">CustomAction table</A> contains a text string formatted using the functionality specified in <A HREF="qref_3t2c.htm"><B>MsiFormatRecord</B></A> (without the numeric field specifiers). Parameters to be replaced are enclosed in square brackets, […], and may be properties, environment variables (% prefix), file paths (# prefix), or component directory paths ($ prefix).</P>
+
+<H4>Return Processing Options</H4>
+
+<P>Not used.</P>
+
+<H4>Execution Scheduling Options</H4>
+
+<P>Include optional flag bits in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify execution scheduling options. These options control the multiple execution of custom actions. For a description of the options, see <A HREF="cact_0dpv.htm">Custom Action Execution Scheduling Options</A>.</P>
+
+<H4>In-Script Execution Options</H4>
+
+<P>Not used.</P>
+
+<H4>Return Values</H4>
+
+<P>See <A HREF="cact_8h0z.htm">Custom Action Return Values</A>.</P>
+
+<H4>Remarks</H4>
+
+<P>If you set a <A HREF="prop_2bw3.htm">private property</A> in the UI sequence by authoring a custom action in one of the user interface sequence tables, that property is not set in the execution sequence. To set the property in the execution sequence, you must also put a custom action in an execution sequence table. Alternatively, you can make the property a <A HREF="prop_0gfn.htm">public property</A> and include it in the <A HREF="pref_1eux.htm">SecureCustomProperties property</A>. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_6a05.htm">Custom Action Reference</A>, <A HREF="cact_1zhv.htm">About Custom Actions</A>, <A HREF="cact_5gj7.htm">Formatted Text Custom Actions</A>, <A HREF="cact_93lf.htm">Using Custom Actions</A>, <A HREF="cact_8h0z.htm">Custom Action Return Values</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Custom%20Action%20Type%2051;%20RELEASE:%20August%202001;%20URL:%20cact_07ox.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Custom%20Action%20Type%2051;%20RELEASE:%20August%202001;%20URL:%20cact_07ox.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

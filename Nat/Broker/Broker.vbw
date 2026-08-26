@@ -1,0 +1,6 @@
+frmMain = 2, 2, 1120, 649, C, 22, 22, 316, 312, C
+clsProcess = 111, 110, 1078, 730, C
+modWIN32API = 37, 14, 1219, 835, C
+modGlobal = 5, 4, 1119, 648, C
+modDatabase = 3, 3, 1121, 647, 
+modMain = 3, 303, 970, 923, C

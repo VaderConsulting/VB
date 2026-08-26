@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE16</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE16 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice16"></A>ICE16</H1>
+
+<P>ICE16 validates that the value of the <A HREF="pref_52m1.htm">ProductName property</A> in the <A HREF="tref_21d1.htm">Property table</A> is no greater than 63 characters in length.</P>
+
+<P>The installer truncates ProductName values that are 31 to 63 characters in length to 31 characters. A longer name does not show when the registry key for DisplayName is set in the Uninstall for ARP. </P>
+
+<H4>Result</H4>
+
+<P>ICE16 posts an error message if the ProductName set in the Property table is longer than 63 characters.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

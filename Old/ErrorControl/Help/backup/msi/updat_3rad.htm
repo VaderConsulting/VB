@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Changing the Product Code</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_changing_the_product_code"></A>Changing the Product Code</H1>
+
+<P>The product code is a GUID that is the principal identification of an application or product. See <A HREF="over_0joz.htm">Package and Product Codes</A>.</P>
+
+<P>An update that meets the following guidelines generally does not require a change of the product code and can be handled as a <A HREF="updat_9m0j.htm">Small Update</A>, or if the version is to change, as a <A HREF="updat_50hf.htm">Minor Upgrade</A>: 
+
+<UL>
+	<LI>The update can enlarge or reduce the feature-component tree but it must not reorganize the existing hierarchy of features and components described by the <A HREF="tref_0a91.htm">Feature</A> and <A HREF="tref_52hx.htm">FeatureComponents</A> tables. It can add a new feature to the existing feature-component tree. If it removes a parent feature, it must also remove all the child features of the removed feature. The update can add a new component only if that component is associated with a new feature.</LI>
+
+	<LI>The update must not change the component code of any component. Consequently, a small update or Minor Upgrade must never change the name of a component's key file because this would require changing the component code.</LI>
+
+	<LI>The update must not change the name of the .msi file of the installation package. Instead, because it modifies the package, it should change the package code. Note that this means that the update can change the tables, custom actions, and dialogs in the .msi file without changing the file's name.</LI>
+
+	<LI>The update can add, remove, or modify the files, registry keys, or shortcuts of components that are not shared by one or more features. If the update modifies a versioned file, that file's version must be incremented in the <A HREF="tref_4n6t.htm">File table</A>. If the update removes resources, it should also update the <A HREF="tref_7gth.htm">RemoveFile</A> and <A HREF="tref_3wmd.htm">RemoveRegistry</A> tables to remove any unused files, registry keys, or shortcuts that have already been installed. </LI>
+
+	<LI>The update of a component that is shared by two or more features must be backward compatible with all applications and features that use the component. The update can modify the resource of a shared component, such as files, registry entries, and shortcuts, as long as the changes are backward compatible. It is not recommended that the update add or remove files, registry entries, or shortcuts from a shared component.</LI>
+
+	<LI>A small update is shipped as a Windows Installer <A HREF="updat_7dmb.htm">patch package</A>. A full product CD-ROM is usually not provided with a small update.</LI>
+</UL>
+
+<P>The product code must be changed if an any of the following are true for the update:
+
+<UL>
+	<LI>Its a requirement that it be possible to have coexisting installations of the original and updated products on the same system. </LI>
+
+	<LI>The name of the .msi file has been changed.</LI>
+
+	<LI>The component code of an existing component has changed.</LI>
+
+	<LI>A component has been added or removed from an existing feature.</LI>
+
+	<LI>An existing feature has been made into a child of an existing feature.</LI>
+
+	<LI>An existing child feature has been removed from its parent feature.</LI>
+</UL>
+
+<P>Note that adding a new child feature, consisting entirely of new components, to an existing feature does not require changing the product code.</P>
+
+<P>Note that an upgrade that changes the product code cannot be in the form of a patch when using version 1.0 of the Windows Installer. Future versions of the installer will be capable of using a patch for a major upgrade.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiProvideQualifiedComponentEx</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiProvideQualifiedComponentEx">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msiprovidequalifiedcomponentex"></A>MsiProvideQualifiedComponentEx</H1>
+
+<P>The <B>MsiProvideQualifiedComponentEx</B> function returns the full component path for a qualified component that is published by a product and performs any necessary installation. This function prompts for source if necessary and increments the usage count for the feature.</P>
+
+<PRE class=syntax><B>UINT MsiProvideQualifiedComponentEx(
+</B>  <B>LPCTSTR</B> <I>szComponent</I><B>,</B>  // component ID
+  <B>LPCTSTR</B> <I>szQualifier</I><B>,</B>  // specifies which component to access
+  <B>DWORD</B><I> dwInstallMode</I><B>,</B>  // the install mode
+  <B>LPTSTR</B> <I>szProduct</I><B>, </B>    // specifies the product to match that has
+                        // published the qualified component
+  <B>DWORD</B> <I>dwUnused1</I><B>,</B>      // unused, must be zero
+  <B>DWORD</B> <I>dwUnused2</I><B>,</B>      // unused, must be zero
+  <B>LPTSTR</B> <I>lpPathBuf</I><B>, </B>    // in/out returned path, Null if not needed
+  <B>DWORD</B> <B>*</B><I>pcchPathBuf</I>    // in/out buffer character count
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szComponent</I></DT>
+
+<DD>[in] Specifies the component ID that for the requested component. This may not be the GUID for the component itself but rather a server that provides the correct functionality, as in the ComponentId column of the <A HREF="tref_7xt1.htm">PublishComponent table</A>.</DD>
+
+<DT><I>szQualifier</I></DT>
+
+<DD>[in] Specifies a qualifier into a list of advertising components (from <A HREF="tref_7xt1.htm">PublishComponent Table</A>).</DD>
+
+<DT><I>dwInstallMode</I></DT>
+
+<DD>[in] Defines the installation mode. This parameter can be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=44%>Value</TH>
+<TH align=left width=56%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>INSTALLMODE_DEFAULT</TD>
+<TD width=56%>Provide the component and perform any installation necessary to provide the component. If the key file of a component in the requested feature, or a feature parent, is missing, reinstall the feature using <A HREF="msi_4ag5.htm"><B>MsiReinstallFeature</B></A> with the following flag bits set: REINSTALLMODE_FILEMISSING, REINSTALLMODE_FILEOLDERVERSION, REINSTALLMODE_FILEVERIFY, REINSTALLMODE_MACHINEDATA, REINSTALLMODE_USERDATA and REINSTALLMODE_SHORTCUT.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>INSTALLMODE_EXISTING</TD>
+<TD width=56%>Provide the component only if the feature exists. Otherwise return ERROR_FILE_NOT_FOUND.
+<P>This mode verifies that the key file of the component exists.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>INSTALLMODE_NODETECTION</TD>
+<TD width=56%>Provide the component only if the feature exists. Otherwise return ERROR_FILE_NOT_FOUND.
+<P>This mode only checks that the component is registered and does not verify that the key file of the component exists.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>INSTALLMODE_EXISTING</TD>
+<TD width=56%>Provide the component only if the feature exists, else return ERROR_FILE_NOT_FOUND.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>combination of the <BR>
+REINSTALLMODE flags</TD>
+<TD width=56%>Call <A HREF="msi_4ag5.htm"><B>MsiReinstallFeature</B></A> to reinstall feature using this parameter for the <I>dwReinstallMode</I> parameter, and then provide the component.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%> INSTALLMODE_NOSOURCERESOLUTION </TD>
+<TD width=56%>Provide the component only if the feature's installation state is INSTALLSTATE_LOCAL. If the feature's installation state is INSTALLSTATE_SOURCE, return ERROR_INSTALL_SOURCE_ABSENT. Otherwise return ERROR_FILE_NOT_FOUND. This mode only checks that the component is registered and does not verify that the key file exists.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>szProduct</I></DT>
+
+<DD>[in] Specifies the product to match that has published the qualified component. If this is null, then this API works the same as <B>MsiProvideQualifiedComponent</B>.</DD>
+
+<DT><I>dwUnused1</I></DT>
+
+<DD>[in] Reserved. Must be zero.</DD>
+
+<DT><I>dwUnused2</I></DT>
+
+<DD>[in] Reserved. Must be zero.</DD>
+
+<DT><I>lpPathBuf</I></DT>
+
+<DD>[out] Pointer to a variable that receives the path to the component. This parameter can be NULL.</DD>
+
+<DT><I>pcchPathBuf</I></DT>
+
+<DD>[out] Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpPathBuf</I> parameter. On input, this is the full size of the buffer, including a space for a terminating NULL. If the buffer passed in is too small, the count returned does not include the terminating NULL. 
+
+<P>If <I>lpPathBuf</I> is NULL, <I>pcchBuf</I> can be NULL. 
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INDEX_ABSENT</TD>
+<TD width=52%>Component qualifier invalid or not present.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_FILE_NOT_FOUND</TD>
+<TD width=52%>The feature is absent or broken. this error is returned for <I>dwInstallMode</I> = INSTALLMODE_EXISTING.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_UNKNOWN_COMPONENT</TD>
+<TD width=52%>The specified component is unknown.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>An error relating to an action</TD>
+<TD width=52%>See <A HREF="code_13ub.htm">Error Codes</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Any <A HREF="msi_5svn.htm">Initialization Error</A></TD>
+<TD width=52%>An error relating to initialization occurred.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>Upon success of the <B>MsiProvideQualifiedComponentEx</B> function, the <I>pcchPathBuf</I> parameter contains the length of the string in <I>lpPathBuf</I>.</P>
+
+<P>Features with components containing a corrupted file or the wrong version of a file must be explicitly reinstalled by the user or by having the application call <A HREF="msi_4ag5.htm"><B>MsiReinstallFeature</B></A>. </P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_component_specific_functions">Component-Specific Functions</A>, <A HREF="code_13ub.htm">Error Codes</A>, <A HREF="msi_5svn.htm">Initialization Error</A>, <A HREF="msi_1tir.htm">Displayed Error Messages</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiProvideQualifiedComponentEx;%20RELEASE:%20August%202001;%20URL:%20msi_8n94.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiProvideQualifiedComponentEx;%20RELEASE:%20August%202001;%20URL:%20msi_8n94.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

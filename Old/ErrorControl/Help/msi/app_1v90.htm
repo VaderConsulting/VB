@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Platform Support of Advertisement</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_platform_support_of_advertisement"></A>Platform Support of Advertisement</H1>
+
+<P>Microsoft® Windows® Installer supports advertisement of applications and features according to operating system. The following outlines advertisement support on different platforms.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=40%>Platform</TH>
+<TH align=left width=60%>Advertisement support</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>Microsoft® Windows® 2000 and Windows XP</TD>
+<TD width=60%>Shortcuts and their icons. Extensions and their icons specified in the <A HREF="tref_4x5x.htm">ProgId Table</A>. Shell and command Verbs registered underneath the ProgId key. CLSID contexts and InProcHandler. Install-On-Demand through OLE is only available programmatically through <B>CoCreateInstance</B> (C/C++) and <B>CreateObject</B> or <B>GetObject</B> (Visual Basic).
+<P>NOTE: AppId and Typelib information is only written when an advertised component is installed.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>Microsoft Windows® 98 and Windows Millennium Edition</TD>
+<TD width=60%>Shell and MIME support. All of the above except CLSID, which is only written when installing an advertised component.  </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>Microsoft Windows® 95 and Windows NT® 4.0
+<P>+ IE4.01 sp1</P>
+
+<P>+ Windows Desktop Update</P>
+
+<P>(shell32.DLL &gt;= 4.72.3110.0)</P>
+</TD>
+<TD width=60%>Shell and MIME support. All of the above except CLSID, which is only written when installing an advertised component.  </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>Windows 95 and Windows NT 4.0
+<P>(shell32.DLL &lt; 4.72.3110.0)</P>
+</TD>
+<TD width=60%>Advertisement is not supported by this platform.</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Platform%20Support%20of%20Advertisement;%20RELEASE:%20August%202001;%20URL:%20app_1v90.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Platform%20Support%20of%20Advertisement;%20RELEASE:%20August%202001;%20URL:%20app_1v90.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

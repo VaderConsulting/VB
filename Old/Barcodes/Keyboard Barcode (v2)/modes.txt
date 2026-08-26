@@ -1,0 +1,11 @@
+## ID,Scan,Function
+##
+1,M-001,Add item to Database
+2,M-002,Delete item from Database
+3,M-003,Inventory Item
+4,M-004,Move Item to another location
+5,M-005,Decommision item
+6,M-006,Remove item (Stolen, missing etc)
+7,M-007,Lock Item
+8,M-008,Unlock item
+9,M-009,Warehouse item

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using Transitive Components</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_using_transitive_components"></A>Using Transitive Components</H1>
+
+<P>A typical use for transitive components is to prepare a product to gracefully reinstall during an upgrade from Microsoft® Windows® 98 to Microsoft Windows® 2000. This is an aspect of <A HREF="over_5id5.htm">Resiliency</A>. The author of the installation package specifies those components that need to be swapped out during a system upgrade as having the transitive attribute. When the user later upgrades the system from Windows 98 to Windows 2000, the product has to be reinstalled. Upon this reinstall, the installer removes the Windows 98 components and installs the Windows 2000 components, saving having to install the entire product. </P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To include two transitive components in the installation package</B>
+
+<OL>
+	<LI>Include both transitive components in the installation package.</LI>
+
+	<LI>Author both transitive components into the <A HREF="tref_09np.htm">Component table</A> the same as regular components. Each transitive component must have its own unique GUID specified in the ComponentId column.</LI>
+
+	<LI>Include the <B>msidbComponentAttributesTransitive </B>bit in the Attributes column of the Component table for each transitive component. If this bit is set, the installer reevaluates the value of the statement in the Condition column upon a reinstall. If the value was previously False and has changed to True, the installer installs the component. If the value was previously True and has changed to False the installer removes the component even if the component has other products as clients. Note that unless the transitive bit is set, the component remains enabled once installed even if the conditional statement evaluates to False on a subsequent maintenance installation of the product. Note that the conditions must be based only on machine states. Do not use with conditions based on user states or properties set on the command line because this can cause the installer to require a reinstall of the product on each use by a different user.</LI>
+
+	<LI>Enter complementary conditional expressions into the Condition fields of the Control table such that whenever the condition on the first transitive component changes to False the condition on the second transitive component changes to True. This results in the removal of the first component and installation of the second component upon reinstallation of the application. </LI>
+</OL>
+
+<P>A reinstallation of the product is necessary to switch the transitive components. Package authors therefore need to provide users with a method for reinstalling the product and for setting the modes of the <A HREF="pref_7bll.htm">REINSTALLMODE property</A>. There are basically three ways to trigger the reinstallation. 
+
+<UL>
+	<LI>Run and configure the reinstallation through the user interface by authoring a package that uses the <A HREF="dglo_0xvd.htm#_msi_full_ui_gly">full UI</A>.</LI>
+
+	<LI>Run the reinstallation from the command line by using msiexec /f and select the modes from the list for the /f <A HREF="app_73eb.htm">command line option</A>.</LI>
+
+	<LI>Have the application can call <A HREF="msi_9n78.htm"><B>MsiReInstallProduct</B></A> or <A HREF="msi_4ag5.htm"><B>MsiReInstallFeature</B></A>. </LI>
+</UL>
+
+<P>The bit should only be used with conditions based on machine states. Do not use with conditions based on user states or properties set on the command line because this can cause the installer to require a reinstall of the product on each use by a different user.</P>
+
+<P>Note that unless the Transitive bit in the Attributes column is set for a component, the component remains enabled once installed even if the conditional statement in the Condition column evaluates to False on a subsequent maintenance installation of the product.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

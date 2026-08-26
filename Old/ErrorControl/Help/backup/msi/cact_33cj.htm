@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring the ActionText and Error Tables</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_the_actiontext_and_error_tables"></A>Authoring the ActionText and Error Tables</H3>
+
+<P>The sample specifications include sending ActionData messages when a custom action creates or removes a user account and reporting an error if an account cannot be created.</P>
+
+<P>Enter the following entries into the ActionText table to provide information used by ActionText messages.</P>
+
+<P><A HREF="tref_7het.htm"><B>ActionText Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Action</TH>
+<TH align=left width=34%>Description</TH>
+<TH align=left width=41%>Template</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>ProcessAccounts</TD>
+<TD width=34%>Generating actions to create user accounts on the local computer.</TD>
+<TD width=41%>Account: [1], Attributes: [2]</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>CreateAccount</TD>
+<TD width=34%>Creating user account on the local computer.</TD>
+<TD width=41%>Account: [1]</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>RemoveAccount</TD>
+<TD width=34%>Removing user account from the local computer.</TD>
+<TD width=41%>Account: [1]</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>RollbackAccount</TD>
+<TD width=34%>Rolling back the creation of user accounts on the local computer.</TD>
+<TD width=41%>Account: [1]</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>UninstallAccounts</TD>
+<TD width=34%>Generating actions to remove user accounts on the local computer.</TD>
+<TD width=41%>Account: [1]</TD>
+</TR>
+</TABLE><BR>
+
+<P>Enter the following entries into the Error table to provide information used by error reporting.</P>
+
+<P><A HREF="tref_5dk5.htm"><B>Error Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Error</TH>
+<TH align=left width=70%>Message</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>25001</TD>
+<TD width=70%>Unable to create user account '[2]' on the local machine. Error Code: [3].</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>25002</TD>
+<TD width=70%>User account '[2]' already exists on the local machine.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>25003</TD>
+<TD width=70%>Unable to remove user account '[2]' on the local machine.  Error Code: [3].</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>25004</TD>
+<TD width=70%>User account '[2]' does not exist on the local machine.</TD>
+</TR>
+</TABLE><BR>
+
+<P>Continue to <A HREF="cact_3ejp.htm">Authoring the InstallExecuteSequence Table</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

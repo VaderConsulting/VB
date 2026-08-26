@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MSIMSP.EXE</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_msimsp.exe"></A>MSIMSP.EXE</H2>
+
+<P>The recommended method for generating a patch package is to use a patch creation tool such as MsiMsp.exe and <A HREF="updat_8f70.htm">Patchwiz.dll</A>. The tool MsiMsp.exe is provided in the <A HREF="app_5qwj.htm">Platform SDK Components for Windows Installer Developers</A>. The source code for Patchwiz.DLL is also provided in the SDK so that you can customize and enhance the patch creation process.</P>
+
+<P>The MsiMsp.exe tool is a executable that calls PatchWiz.dll. The tool may be used to create a patch package by passing in the path to a patch creation properties file (.pcp file) and the path to the patch package being created. The tool can also be used to create a log file and to specify a temporary folder in which the transforms, cabinets and files used to create the patch package are saved. The command line syntax for MsiMsp.exe is:</P>
+
+<P>MsiMsp.exe -s <I>[path to .pcp file]</I> -p <I>[path to .msp file] {options}</I></P>
+
+<P>The command line options are not case-sensitive and slash delimiters may be used instead of a dash.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=12%>Option</TH>
+<TH align=left width=22%>Parameter</TH>
+<TH align=left width=66%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>-s</TD>
+<TD width=22%><I>path to .pcp file</I></TD>
+<TD width=66%>This is required and must be followed by the path to the patch creation properties file (.pcp extension). For more information about patch creation files see <A HREF="updat_8f70.htm">PatchWiz.dll</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>-p</TD>
+<TD width=22%><I>path to .msp file</I></TD>
+<TD width=66%>This is required and followed by the path to patch package being created (.msp extension).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>-f</TD>
+<TD width=22%><I>path to temporary folder</I></TD>
+<TD width=66%>Optional. Followed by path to temporary folder. The default location is %TEMP%\~pcw_tmp.tmp\. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>-k</TD>
+<TD width=22%> </TD>
+<TD width=66%>Optional. Fail if the temporary folder already exists.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>-l</TD>
+<TD width=22%><I>path to log file</I></TD>
+<TD width=66%>Optional. Followed by the path to log file describing patch creation process and errors. See <A HREF="updat_8fxh.htm">Return Values for UiCreatePatchPackage</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>-d</TD>
+<TD width=22%> </TD>
+<TD width=66%>Optional. Displays a dialog if the patch creation completes successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=12%>-?</TD>
+<TD width=22%> </TD>
+<TD width=66%>Displays command line help.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="samp_6rxh.htm">A Small Update Patching Example</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

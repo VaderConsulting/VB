@@ -1,0 +1,430 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Sending Messages to Windows Installer Using MsiProcessMessage</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_sending_messages_to_windows_installer_using_msiprocessmessage"></A>Sending Messages to Windows Installer Using MsiProcessMessage</H2>
+
+<P>The messages sent using <A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A> are the same messages that are received by the <A HREF="msi_2g4y.htm">INSTALLUI_HANDLER</A> callback function if <A HREF="msi_5dm1.htm"><B>MsiSetExternalUI</B></A> was called. Otherwise, Windows Installer handles the messages. For details, see <A HREF="hand_16ib.htm">Parsing Windows Installer Messages</A>. </P>
+
+<P>For example, to send a INSTALLMESSAGE_ERROR message with the MB_ICONWARNING icon and the MB_ABORTRETRYCANCEL buttons:</P>
+
+<PRE>MsiProcessMessage(hInstall, INSTALLMESSAGE(INSTALLMESSAGE_ERROR|MB_ABORTRETRYCANCEL|MB_ICONWARNING), hRec)</PRE>
+
+<P>Where <I>hInstall</I> is the handle to the installation, provided to a custom action or the <I>hProduct</I> handle from <A HREF="msi_5f78.htm"><B>MsiOpenProduct</B></A> or <A HREF="msi_9n39.htm"><B>MsiOpenPackage</B></A>, and <I>hRec</I> is the record containing the error information to format. For information on how formatting is performed, see <A HREF="qref_3t2c.htm"><B>MsiFormatRecord</B></A>.</P>
+
+<P>By default, if an INSTALLMESSAGE_ERROR or INSTALLMESSAGE_FATALEXIT message is sent without specifying button type or icon types, MB_OK, no icon, and MB_DEFBUTTON1 are used.</P>
+
+<P>Windows Installer does not label the ABORT button with the "Abort" string when displaying a MessageBox with the MB_ABORTRETRYIGNORE button specification, instead it labels the button with the "Cancel" string. All error messages refrain from using the word "Abort" and instead use the word "Cancel".</P>
+
+<P>The <I>hRecord</I> parameter of the <A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A> function depends upon the message type sent to the <B>MsiProcessMessage</B>. The following list details the requirements of the record in relation to the message type:</P>
+
+<P><B>INSTALLMESSAGE_FATALEXIT<BR>
+INSTALLMESSAGE_INFO<BR>
+INSTALLMESSAGE_OUTOFDISKSPACE</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Field</TH>
+<TH align=left width=52%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>0</TD>
+<TD width=52%>Template for the formatting of the resultant string. See <A HREF="qref_3t2c.htm"><B>MsiFormatRecord</B></A> for more information. The fields of the record are referenced using [1] for field 1, [2] for field 2, etc.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>1 through <I>n</I></TD>
+<TD width=52%>All subsequent fields are directly related to the fields referenced by the template in field 0.</TD>
+</TR>
+</TABLE><BR>
+
+<P>If field 0 is NULL, the string received by the user interface handler is formatted as:  1: [data from field 1]   2: [data from field 2] meaning that for each field of the record, the string contains the field number followed by the data stored in the field.</P>
+
+<P>Information messages from <B>MsiProcessMessage</B> are logged when <A HREF="msi_2ch3.htm"><B>MsiEnableLog</B></A>, the '/l' <A HREF="app_73eb.htm">command line option</A>, or the <A HREF="over_4mux.htm">logging policy</A> specify 'i' or INSTALLLOGMODE_INFO.</P>
+
+<P><B>INSTALLMESSAGE_ERROR<BR>
+INSTALLMESSAGE_WARNING<BR>
+INSTALLMESSAGE_USER</B></P>
+
+<P>To use a message from the Error table.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Field</TH>
+<TH align=left width=52%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>0</TD>
+<TD width=52%>Must be NULL.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>1</TD>
+<TD width=52%>Message number in the <A HREF="tref_5dk5.htm">Error table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>2 through <I>n</I></TD>
+<TD width=52%>Related to the specified message in the Error table.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For example.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Field</TH>
+<TH align=left width=34%>Type</TH>
+<TH align=left width=35%>Data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>0</TD>
+<TD width=34%>string</TD>
+<TD width=35%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>1</TD>
+<TD width=34%>int</TD>
+<TD width=35%>1304</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>2</TD>
+<TD width=34%>string</TD>
+<TD width=35%>Myfile.txt</TD>
+</TR>
+</TABLE><BR>
+
+<P>The resulting message received from the UI handler is:</P>
+
+<P>Error 1304.  Error writing to file: Myfile.txt. Verify that you have access to that directory.</P>
+
+<P>If field 0 is not NULL, the message from the error table is overridden. Instead, the field 0 template determines the format of the message.</P>
+
+<P>The message may also specify the buttons, including the default button, and the icon for use with the message as mentioned above. The button and icon types are listed in <A HREF="msi_2g4y.htm"><B>INSTALLUI_HANDLER</B></A>.</P>
+
+<P><B>INSTALLMESSAGE_COMMONDATA</B></P>
+
+<P>This message is sent to enable or disable the <B>Cancel </B>button in a progress dialog box.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Field</TH>
+<TH align=left width=52%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>0</TD>
+<TD width=52%>Unused.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>1</TD>
+<TD width=52%>2 refers to the <B>Cancel</B> button.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>2</TD>
+<TD width=52%>A value of 1 indicates the <B>Cancel </B>button should be visible.
+<P>A value of 0 indicates the <B>Cancel</B> button should be invisible.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P>For example, to disable or hide the <B>Cancel </B>button, the record would appear as follows.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Field</TH>
+<TH align=left width=34%>Type</TH>
+<TH align=left width=35%>Data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>0</TD>
+<TD width=34%>string</TD>
+<TD width=35%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>1</TD>
+<TD width=34%>int</TD>
+<TD width=35%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>2</TD>
+<TD width=34%>int</TD>
+<TD width=35%>0</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>INSTALLMESSAGE_ACTIONSTART<BR>
+INSTALLMESSAGE_ACTIONDATA</B></P>
+
+<P>The INSTALLMESSAGE_ACTIONSTART record determines the format of the ActionData record.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Field</TH>
+<TH align=left width=52%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>0</TD>
+<TD width=52%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>1</TD>
+<TD width=52%>Action name.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>2</TD>
+<TD width=52%>Action description.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>3</TD>
+<TD width=52%>Action template. This is used for the ActionData whose message is being formatted according to this template.</TD>
+</TR>
+</TABLE><BR>
+
+<P>Do not reference field 0 in the Action template message.</P>
+
+<P>The INSTALLMESSAGE_ACTIONDATA record is formatted as follows.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Field</TH>
+<TH align=left width=52%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>0</TD>
+<TD width=52%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>1 through <I>n</I></TD>
+<TD width=52%>Dependent upon field 3 of the corresponding INSTALLMESSAGE_ACTIONSTART message or template specified in <A HREF="tref_7het.htm">ActionText table</A>.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For example, the INSTALLMESSAGE_ACTIONSTART record.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Field</TH>
+<TH align=left width=34%>Type</TH>
+<TH align=left width=35%>Data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>0</TD>
+<TD width=34%>string</TD>
+<TD width=35%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>1</TD>
+<TD width=34%>string</TD>
+<TD width=35%>MyAction</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>2</TD>
+<TD width=34%>string</TD>
+<TD width=35%>This is the description of "MyAction"</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>3</TD>
+<TD width=34%>string</TD>
+<TD width=35%>MyAction template: field1 data is [1].  field 2 data is [2].</TD>
+</TR>
+</TABLE><BR>
+
+<P>The template for INSTALLMESSAGE_ACTIONSTART (field 3) references fields 1 and 2, the INSTALLMESSAGE_ACTIONDATA record should have 2 fields containing the warranted data. The fields could be either string or integer fields.</P>
+
+<P>INSTALLMESSAGE_ACTIONDATA record.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Field</TH>
+<TH align=left width=34%>Type</TH>
+<TH align=left width=35%>Data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>0</TD>
+<TD width=34%>string</TD>
+<TD width=35%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>1</TD>
+<TD width=34%>int</TD>
+<TD width=35%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>2</TD>
+<TD width=34%>string</TD>
+<TD width=35%>ActionData for MyAction</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>INSTALLMESSAGE_FILESINUSE</B></P>
+
+<P>The FILESINUSE record is a variable length record. Field 0 of the record may be NULL or contain optional static text for display in the <A HREF="href_1yjw.htm">ListBox control</A> of the FilesInUse dialog. The first field is the name of the file in use. The second record field is the title of the window of the process holding the file in use.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Field</TH>
+<TH align=left width=52%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>0</TD>
+<TD width=52%>This field can be NULL. For an installation using a basic UI, this field may specify static text to be displayed by the built-in <A HREF="href_73mv.htm">FilesInUse dialog</A>. For an installation using a full UI, this field has no effect because the text is specified by the authoring of the custom FilesInUse dialog.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>1</TD>
+<TD width=52%>Name of the file in use.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>2</TD>
+<TD width=52%>Title of window for the process holding the file in use.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For example, to send a FilesInUse message showing two files in use, red.exe and blue.exe, the record has 4 fields plus the 0 field. The format of the record would be:</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Field</TH>
+<TH align=left width=52%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>0</TD>
+<TD width=52%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>1</TD>
+<TD width=52%>red.exe</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>2</TD>
+<TD width=52%>Red Window Title</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>3</TD>
+<TD width=52%>blue.exe</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>4</TD>
+<TD width=52%>Blue Window Title</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>INSTALLMESSAGE_RESOLVESOURCE</B></P>
+
+<P>The INSTALLMESSAGE_RESOLVESOURCE record has 7 fields. For INSTALLMESSAGE_RESOLVESOURCE to work correctly, an external user interface handler may not handle the INSTALLMESSAGE_RESOLVESOURCE message. Windows Installer must handle the INSTALLMESSAGE_RESOLVESOURCE message. That is, the external user interface handler returns 0 to indicate "no action taken" when filtering the INSTALLMESSAGE_RESOLVESOURCE message. The best practice is to avoid sending a RESOLVESOURCE message.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Field</TH>
+<TH align=left width=52%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>0</TD>
+<TD width=52%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>1</TD>
+<TD width=52%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>2</TD>
+<TD width=52%>Package name.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>3</TD>
+<TD width=52%>Product code.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>4</TD>
+<TD width=52%>Relative path if known, can be NULL.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>5</TD>
+<TD width=52%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>6</TD>
+<TD width=52%>Whether to validate the package code. A value of '1' indicates the package code should be validated. A value of '0' indicates the package should not be validated.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>7</TD>
+<TD width=52%>Required disk from media table. A value of '0' indicates that any disk is acceptable.</TD>
+</TR>
+</TABLE><BR>
+
+<P></P>
+
+<P></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Sending%20Messages%20to%20Windows%20Installer%20Using%20MsiProcessMessage;%20RELEASE:%20August%202001;%20URL:%20hand_3f39.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Sending%20Messages%20to%20Windows%20Installer%20Using%20MsiProcessMessage;%20RELEASE:%20August%202001;%20URL:%20hand_3f39.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

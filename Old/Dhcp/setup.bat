@@ -1,0 +1,3 @@
+@echo off
+echo Displaying Installation Notes ...
+cmd /c start install.htm

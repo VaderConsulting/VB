@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Obtaining Merge Module Authoring Tools</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_obtaining_merge_module_authoring_tools"></A>Obtaining Merge Module Authoring Tools</H3>
+
+<P>To generate a merge module, you need to obtain a software tool with which to edit a .msm file. Because a .msm file is basically a simplified .msi file, you may be able to use the same tools used to create an installation database. For example, the application Orca.exe provided with the Windows Installer SDK.</P>
+
+<P>An alternative is to purchase one of the installer packaging tools to be available from independent software vendors. There are several third party tools under development that may be used for producing merge modules. If you choose to use a third party tool you should verify that it generates merge modules that are consistent with the standard described in this document. In particular, you should determine that the editing tools have not done any of the following to the merge module.
+
+<UL>
+	<LI>Added extraneous tables to the merge module that are not referenced in the <A HREF="merg_5f51.htm">ModuleIgnoreTable table</A>. Delete these tables or add them to the ModuleIgnoreTable table.</LI>
+
+	<LI>Added an unnecessary <A HREF="tref_30px.htm">TextStyle table</A> to the merge module. If your merge module has no UI (and it generally should not) you can safely delete this table. </LI>
+
+	<LI>Added unnecessary entries to the <A HREF="tref_6an9.htm">Directory table</A>. Remove unnecessary entries from the Directory table. </LI>
+
+	<LI>Left out the merge module's _Validation table this table incomplete. This prevents merge module validation. Add a complete _Validation table. </LI>
+</UL>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_55bn.htm">Authoring User Interfaces in Merge Modules</A>, <A HREF="merg_7odv.htm">Authoring Merge Module Directory Tables</A>, <A HREF="merg_941f.htm">Validating Merge Modules</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

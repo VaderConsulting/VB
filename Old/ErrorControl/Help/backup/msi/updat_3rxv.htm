@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Secure-At-Source Transforms</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_secure_at_source_transforms"></A>Secure-At-Source Transforms</H3>
+
+<P>Secure-at-source transforms must have a source located at the root of the source for the package. When the package is installed or advertised, the installer saves the transforms on the user's computer in a cache where, on a secure file system, the user does not have write access. If the local copy of the transform becomes unavailable, the installer searches for a source to restore the cache. The method is the same as searching the source list for an .msi file. For more information, see <A HREF="over_1lq1.htm">Source Resiliency</A>. The removal of a product by any user removes all secure transforms for that product from the user's computer. </P>
+
+<P>To apply secure-at-source transforms at the installation of a package, set the <A HREF="over_9u91.htm">TransformsSecure</A> policy or the <A HREF="pref_0uwp.htm">TRANSFORMSSECURE property</A>, or make @ the first character passed in the transform list. Each transform must be indicated by a filename and must be located at the root of the source for the package. If any of the transforms are not located at the root of the package source, the installation fails. For more information, see <A HREF="updat_22ib.htm">Applying Transforms</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

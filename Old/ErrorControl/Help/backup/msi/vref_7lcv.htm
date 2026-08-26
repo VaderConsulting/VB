@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>SummaryInformation Property (Installer Object)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="SummaryInformation Property (Installer Object)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_summaryinformation_property_installer_object_"></A>SummaryInformation Property (Installer Object)</H1>
+
+<P>The SummaryInformation property of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> returns a <A HREF="vref_7sxg.htm"><B>SummaryInfo</B> object</A> that can be used to examine, update, and add properties to the summary information stream of a package or transform.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.SummaryInformation(<I>packagePath, maxProperties</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A>.</DD>
+
+<DT><I>packagePath</I></DT>
+
+<DD>Required full path to the package (database) or transform.</DD>
+
+<DT><I>maxProperties</I></DT>
+
+<DD>Required maximum number of properties to be added or modified. Used solely to allocate sufficient working memory during the stream generation. It is not required to actually store this number of properties. A value of zero prevents the stream from being updated and must be used if the database is opened as read-only.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If a value of <I>maxProperties</I> greater than 0 is used to open an existing summary information stream, the <A HREF="vref_31r8.htm"><B>Persist</B> Method</A> must be called before closing the object. Failing to do this loses the existing stream information.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

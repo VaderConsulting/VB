@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>SFPCatalog Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="SFPCatalog Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_sfpcatalog_table"></A>SFPCatalog Table</H1>
+
+<P>The SFPCatalog table contains the catalogs used by Windows Millennium Edition for <A HREF="over_1h9q.htm">Windows File Protection on Windows Millennium Edition</A>.</P>
+
+<P>The SFPCatalog table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Column</TH>
+<TH align=left width=44%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=20%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>SFPCatalog</TD>
+<TD width=44%><A HREF="tref_0oit.htm">Filename</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Catalog</TD>
+<TD width=44%><A HREF="tref_8ghl.htm">Binary</A></TD>
+<TD width=13%>&nbsp;</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Dependency</TD>
+<TD width=44%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=13%>&nbsp;</TD>
+<TD width=20%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>SFPCatalog</DT>
+
+<DD>The short file name for the catalog. Because catalogs have no version, the catalog specified in this column can overwrite a catalog that has the same name and is already installed on the local system. See the file versioning topic <A HREF="over_91ym.htm">Neither File Has a Version</A>.</DD>
+
+<DT>Catalog</DT>
+
+<DD>Binary data for the catalog.</DD>
+
+<DT>Dependency</DT>
+
+<DD>The catalog specified in this field is the parent of the dependent catalog specified in the SFPCatalog field. Enter the short file name of the parent catalog into the Dependency field. This field is a key back into the SFPCatalog column. The dependency match is case sensitive. 
+
+<P>If the Dependency field references another record in this SFPCatalog table, the parent catalog is installed before the dependent catalog. 
+
+
+<P>If the Dependency field references a parent catalog that is not present in the SFPCatalog field of this table, and if the parent catalog is not already installed, the installation fails.
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This feature is not available in Windows Installer versions 1.0 or 1.1.</P>
+
+<P>Windows File Protection for Windows Millennium Edition is provided with Windows Installer version 1.2. For more information see <A HREF="over_1h9q.htm">Windows File Protection on Windows Millennium Edition</A>.</P>
+
+<P>The <A HREF="aref_3eem.htm">InstallSFPCatalogFile action</A> queries the <A HREF="tref_09np.htm">Component table</A>, <A HREF="tref_4n6t.htm">File table</A>, <A HREF="tref_2u79.htm">FileSFPCatalog table</A> and SFPCatalog table.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

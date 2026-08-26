@@ -1,0 +1,108 @@
+' begin Holiday_Reminder.wsf
+<job>
+<reference object="Scheduler.SchAgent" version="1.0"/>
+<script language="VBScript">
+Option Explicit
+'
+'
+'   Script : Holiday_Reminder.wsf
+' Object : Win 95/98 Task Scheduler Wrapper  (mstask.exe)
+'  Code Base : http://home.sprintmail.com/~mpryor/tasksch.htm
+' Description : Test Script to create mulitple triggers
+'   keywords : Schedule, Task, Job, mstask, holiday, Shell
+'
+'On error resume next
+dim oSch, oTrig,oTrig1, tsk, sOut, i
+dim oNew ' as Job
+dim jbStatus
+
+'
+'  test out reference to constants -- 192
+WScript.Echo(tfDontStartIfOnBatteries Or tfKillIfGoingOnBatteries)
+'WScript.quit
+'
+set oSch = CreateObject("Scheduler.SchAgent")
+if err then
+msgbox "Failed to create custom object -- " & err.description
+WScript.quit
+end if
+
+oSch.TargetComputer = "\\SprintMail"
+if err then WScript.echo hex(err.number- vbObjectError), err.description
+Call oSch.Refresh
+
+dim MyJob
+MyJob = "Holidays"
+if isobject( oSch.Job(MyJob)) then
+    if err then
+    WScript.echo "OK, All clear to create job"
+    'do nothing
+    err.clear
+    else
+        oSch.Delete(MyJob)
+        WScript.sleep 200
+        WScript.echo "deleting existing job"
+    end if
+end if
+Set oNew = oSch.CreateTask(MyJob)  ' return Job Object
+oNew.ApplicationName = "c:\windows\command\Cscript.exe"
+oNew.CommandLine = "Holiday_Reminder.vbs null" '  can be self aware
+oNew.Comment = "Remind me on the holidays."
+oNew.WorkingDirectory = ScriptFolder()  ' func call--see below
+oNew.Creator = "Joe Hacker"
+oNew.Flags = tfDontStartIfOnBatteries Or tfKillIfGoingOnBatteries
+
+
+' MLK and Presidents Day
+'WScript.echo NewTrig( tmFebruary, twThird , tdMonday )
+WScript.echo NewTrig( tmJanuary OR tmFebruary, twThird, tdMonday )
+
+'Mardigras/Carnaval
+WScript.echo NewTrig( tmFebruary, twSecond, tdFriday)
+
+' Fat Tuesday
+WScript.echo NewTrig( tmFebruary, twSecond, tdTuesday )
+
+'  - Lincoln
+WScript.echo NewTrig( tmFebruary, twSecond, tdMonday )
+
+' Easter
+WScript.echo NewTrig( tmMarch, twLast, tdSunday )
+
+' Mother's Day
+WScript.echo NewTrig( tmMay, twSecond, tdSunday )
+
+' Memorial
+WScript.echo NewTrig( tmMay, twLast, tdMonday )
+
+
+oNew.Triggers.Update
+oNew.Save
+oSch.Refresh
+
+WScript.echo("Check your MS Scheduler Interface - Job " & MyJob & " has been created")
+
+function NewTrig(  sMnth, sWk, sDy) ' as string
+    Set oTrig = oNew.Triggers.Add
+    With oTrig
+        .TriggerType = ttMonthlyWeekDay 
+        .BeginDay = #01/04/02# 
+        .StartTime = #7:30:00 AM# 
+        ' more than one month is OK
+        .Months = sMnth
+        .Week = sWk
+        .DaysOfTheWeek = sDy 
+        .Interval = 5
+        .Duration = 15
+        .Update
+        NewTrig=  .Text
+    End with
+end function
+
+function ScriptFolder()  ' as string
+   with WScript
+      ScriptFolder = Mid(.ScriptFullName,1, instrrev(.ScriptFullName,"\"))
+   end with
+end function
+</script>
+</job>

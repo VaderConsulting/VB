@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Sequencing Custom Actions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_sequencing_custom_actions"></A>Sequencing Custom Actions</H2>
+
+<P>Custom actions are scheduled in sequence tables in the same way as standard actions. </P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To schedule a custom action in a sequence table</B>
+
+<OL>
+	<LI>Enter the custom action name (which is the primary key of the <A HREF="tref_71b9.htm">CustomAction table</A>) into the Action column of the sequence table.</LI>
+
+	<LI>Enter the custom action's sequence relative to the other actions in the table into the Sequence column of the sequence table. For more information about sequence tables, see <A HREF="novr_3mqt.htm">Using a Sequence Table</A>.</LI>
+
+	<LI>To conditionally skip the action, enter a conditional expression into the Condition column of the sequence table. The installer skips this action if the expression evaluates to FALSE.</LI>
+</OL>
+
+<P>As in the case of standard actions, custom actions that are scheduled in the <A HREF="tref_1git.htm">InstallUISequence</A> or <A HREF="tref_5lnp.htm">AdminUISequence</A> are run only if the internal user interface is set to the Full level. The UI level is set by using the <A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> function.</P>
+
+<P>Standard and custom actions scheduled in the <A HREF="tref_5pid.htm">InstallExecuteSequence</A>, <A HREF="tref_70f9.htm">AdminExecuteSequence</A>, or <A HREF="tref_5mn9.htm">AdvtExecuteSequence tables</A> do not make system changes. Instead the installer queues up execution records in a script for subsequent execution during the install service. If there is no install service, then the actions scheduled in these tables are run in the same context as the UI sequence. </P>
+
+<P>If the installer server is not registered, as is the case of Windows 95 and Windows 98, then the custom actions are executed on the client side. If the server is registered and using the full UI mode, then the custom actions are run on the server side. </P>
+
+<P>If using full UI with the server, the initial actions prior to the <A HREF="aref_9fzi.htm">InstallValidate action</A> are run on the client to allow full interaction. Execution is then switched to the server which repeats those actions and runs the script execution actions. This is followed by a return to the client for the final actions. </P>
+
+<P>Note that if a product is removed by setting its top feature to absent, the <A HREF="pref_8ho9.htm">REMOVE property</A> may not equal "ALL" until after the InstallValidate action. This means that any custom action that depends on REMOVE=ALL must be sequenced after the InstallValidate action. A custom action may check REMOVE to determine if a product has been set to be completely uninstalled.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

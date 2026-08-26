@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Major Upgrades by Patching an Administrative Image</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_major_upgrades_by_patching_an_administrative_image"></A>Major Upgrades by Patching an Administrative Image</H2>
+
+<P>An <A HREF="over_6jzi.htm">administrative installation</A> creates a source image of an application or product on a network. Users in a workgroup who have access to this administrative image can install the product from this source. Upgrading the application for this workgroup is done in two steps. First, the major upgrade patch can be applied to the administrative image. Second, the changes in the major upgrade need to be propagated to the users.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To apply a Small Update patch to an administrative image</B>
+
+<OL>
+	<LI>Obtain the major upgrade in the form of a <A HREF="updat_7dmb.htm">patch package</A>. For example, the major upgrade named Patch.msp.</LI>
+
+	<LI>Obtain the path to the administrative image.</LI>
+
+	<LI>From the command line use: msiexec /a [<I>path to administrative image .msi file</I>] /p patch.msp . This updates the application files and the .msi file of the administrative image. For a list of the options that can be used with Msiexec.exe, see <A HREF="app_73eb.htm">Command Line Options</A>. If during the original administrative installation <A HREF="pref_3d6h.htm"><B>SHORTFILENAMES</B></A> was set to 1, and you are using an installer version earlier than Windows Installer version 2.0, you must also pass the <B>SHORTFILENAMES</B> property when applying the major upgrade patch. Windows Installer version 2.0 or later versions automatically determine whether the administrative image is using short file names and sets the <B>SHORTFILENAMES</B> property. </LI>
+
+	<LI>The resulting administrative image is the same as that produced by an administrative installation using a full product CD-ROM that includes the upgrade. When new users install the application from this source they receive the upgraded application. </LI>
+</OL>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To propagate the Small Update to the workgroup</B>
+
+<OL>
+	<LI>Members of the workgroup obtain the changes by reinstalling the application from the administrative image using the procedure described in <A HREF="updat_50ac.htm">Small Updates by Reinstalling the Product</A>.</LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Major%20Upgrades%20by%20Patching%20an%20Administrative%20Image;%20RELEASE:%20August%202001;%20URL:%20updat_61et.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Major%20Upgrades%20by%20Patching%20an%20Administrative%20Image;%20RELEASE:%20August%202001;%20URL:%20updat_61et.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

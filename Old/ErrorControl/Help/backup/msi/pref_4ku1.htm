@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DefaultUIFont Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="DefaultUIFont Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_defaultuifont_property"></A>DefaultUIFont Property</H1>
+
+<P>The DefaultUIFont property sets the default font style used for controls. To specify the default, set DefaultUIFont to one of the predefined styles in the <A HREF="tref_30px.htm">TextStyle table</A> in the <A HREF="tref_21d1.htm">Property table</A>. </P>
+
+<H4>Remarks</H4>
+
+<P>The <A HREF="#_msi_defaultuifont_property">DefaultUIFont property</A> of every installation package with a UI should be set in the <A HREF="tref_21d1.htm">Property table</A> to one of the predefined styles listed in the <A HREF="tref_30px.htm">TextStyle table</A>. If this property is not specified, the installer uses the System font. This can cause the installer to improperly display text strings when the package's code page is different from the user's default UI code page.</P>
+
+<P>The text and font style of a control can be set as described in <A HREF="hand_7bec.htm">Adding Controls and Text</A>. If the character string listed in the Text column of the <A HREF="tref_6nad.htm">Control table</A> or <A HREF="tref_78it.htm">BBControl table</A> does not specify the font style, the control uses the value of the DefaultUIFont property as the font style.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

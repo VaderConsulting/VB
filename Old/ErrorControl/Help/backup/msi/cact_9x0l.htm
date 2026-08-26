@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring the CustomAction Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_the_customaction_table"></A>Authoring the CustomAction Table</H3>
+
+<P>Enter records for the five sample custom actions created in the previous section to the <A HREF="tref_71b9.htm">CustomAction Table</A>. For more information on how to populate the CustomAction table for this type of custom action see <A HREF="cact_7nqp.htm">Custom Action Type 1</A>. </P>
+
+<P><A HREF="tref_71b9.htm"><B>CustomAction Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Action</TH>
+<TH align=left width=16%>Type</TH>
+<TH align=left width=21%>Source</TH>
+<TH align=left width=38%>Target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>ProcessAccounts</TD>
+<TD width=16%>1</TD>
+<TD width=21%>Process.dll</TD>
+<TD width=38%>ProcessUserAccounts</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>UninstallAccounts</TD>
+<TD width=16%>1</TD>
+<TD width=21%>Process.dll</TD>
+<TD width=38%>UninstallUserAccounts</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>CreateAccount</TD>
+<TD width=16%>3073</TD>
+<TD width=21%>Create.dll</TD>
+<TD width=38%>CreateUserAccount</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>RemoveAccount</TD>
+<TD width=16%>3073</TD>
+<TD width=21%>Remove.dll</TD>
+<TD width=38%>RemoveUserAccount</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>RollbackAccount</TD>
+<TD width=16%>1281</TD>
+<TD width=21%>Remove.dll</TD>
+<TD width=38%>RemoveUserAccount</TD>
+</TR>
+</TABLE><BR>
+
+<P>The C++ source code for the dynamic-link libraries are provided in the Windows Installer SDK. Use process.cpp to create the file Process.dll. Use create.cpp to create the file Create.dll. Use remove.cpp to create Remove.dll. Add these dynamic-link library files to the Binary table. </P>
+
+<P><A HREF="tref_04px.htm"><B>Binary Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Name</TH>
+<TH align=left width=70%>Data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Process.dll</TD>
+<TD width=70%><I>{binary data}</I></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Create.dll</TD>
+<TD width=70%><I>{binary data}</I></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Remove.dll</TD>
+<TD width=70%><I>{binary data}</I></TD>
+</TR>
+</TABLE><BR>
+
+<P>Continue to <A HREF="cact_11lx.htm">Adding a Custom CustomUserAccounts Table</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

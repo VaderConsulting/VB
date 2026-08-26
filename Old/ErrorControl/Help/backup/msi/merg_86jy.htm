@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Connect Function</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Connect Function">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_connect_function"></A>Connect Function</H1>
+
+<P>The function <B>Connect</B> implements the <A HREF="merg_28mc.htm"><B>Connect</B> method</A> of the <A HREF="merg_4th0.htm"><B>Merge</B> Object</A>. This function connects a module that has been, or will be, merged into the database to an additional feature. </P>
+
+<P><B>IMsmMerge::Connect </B></P>
+
+<PRE class=syntax><B>HRESULT Connect(
+</B>  <B>BSTR</B> <I>Feature</I>   //[in] 
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>Feature </I></DT>
+
+<DD>The name of a feature in the database. A <B>LPCWSTR</B> may be used in place of a <B>BSTR</B>. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>E_INVALIDARG </TD>
+<TD width=52%>One of the arguments is invalid. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>E_FAIL</TD>
+<TD width=52%>The connect failed. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>S_OK</TD>
+<TD width=52%>The function succeeded. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The feature must exist before this function is called. Errors may be retrieved using <A HREF="merg_4dgu.htm"><B>get_Errors function</B></A>. Errors and informational messages are posted to the current log file. </P>
+
+<P>Changes made to the database are not be saved to disk unless <A HREF="merg_9mem.htm"><B>CloseDatabase function</B></A> is called with <I>bCommit</I> set to TRUE. </P>
+
+<P>See <A HREF="merg_29f2.htm">Merge Module Automation</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

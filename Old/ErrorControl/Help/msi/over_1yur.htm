@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Checking the Installation of Features, Components, Files</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_checking_the_installation_of_features_components_files"></A>Checking the Installation of Features, Components, Files</H1>
+
+<P>If after running an installation, you need to verify that a particular feature, component, or file has been installed, turn on the verbose logging option during the installation. See <A HREF="over_9xbb.htm">Logging</A> and <A HREF="app_73eb.htm">Command Line Options</A>. </P>
+
+<P>The verbose log includes an entry for each feature and component the installation package may install. The log tells what the state of that feature or component was prior to the installation, what state was requested by the installation, and in what state the installer left the feature or component. Feature and component entries in the log appear as the following examples. </P>
+
+<PRE>MSI (s) (40:A4): Feature: QuickTest; Installed: Absent;   Request:
+ Local;   Action: Local
+MSI (s) (40:A4): Component: QuickTest; Installed: Absent;   Request:
+ Local;   Action: Local</PRE>
+
+<P>This verbose log indicates that the installation state of the QuickTest feature and component was Absent before running the package, that the package requested a local installation of these, and that the feature and component were both left in the locally installed state after running the package.</P>
+
+<P>The verbose log has an entry for each file that may be installed by the package. The log tells what was done to the file and provides some explanation. File entries in the log appear as in the following example.</P>
+
+<PRE>MSI (s) (40:A4): File: C:\Test\TESTDB.EXE;  Won't Overwrite;  Existing
+ file is of an equal version</PRE>
+
+<P>This log indicates that the installer will not overwrite the existing Testdb.exe file because the existing file is the same as the version being installed.</P>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;If you need to author an installation package that searches for an existing file or directory on the user's computer during an installation, use the method described in <A HREF="over_84oj.htm">Searching for Existing Applications, Files, Registry Entries or .ini File Entries</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Checking%20the%20Installation%20of%20Features,%20Components,%20Files;%20RELEASE:%20August%202001;%20URL:%20over_1yur.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Checking%20the%20Installation%20of%20Features,%20Components,%20Files;%20RELEASE:%20August%202001;%20URL:%20over_1yur.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

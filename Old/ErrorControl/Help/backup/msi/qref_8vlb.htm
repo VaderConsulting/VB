@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiViewGetColumnInfo</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiViewGetColumnInfo">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiviewgetcolumninfo"></A>MsiViewGetColumnInfo</H1>
+
+<P>The <B>MsiViewGetColumnInfo</B> function returns a record containing column names or definitions.</P>
+
+<PRE class=syntax><B>UINT MsiViewGetColumnInfo(
+  MSIHANDLE </B><I>hView</I><B>,</B>       <B>  </B>// view handle
+<B>  MSICOLINFO</B> <I>eColumnInfo</I><B>,  </B>// type of information to return, names
+                           //  or definitions
+<B>  MSIHANDLE </B><I>*phRecord    </I>  // handle for returned record
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hView</I></DT>
+
+<DD>Handle to the view from which to obtain column information.</DD>
+
+<DT><I>eColumnInfo</I></DT>
+
+<DD>Specifies a flag indicating what type of information is needed. This parameter must be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSICOLINFO_NAMES </TD>
+<TD width=52%>Column names are returned.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSICOLINFO_TYPES </TD>
+<TD width=52%>Definitions are returned.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>phRecord</I></DT>
+
+<DD>Pointer to a handle to receive the column information data record.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_HANDLE_STATE</DT>
+
+<DD>The view is not in an active state.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid MSICOLINFO column information enumeration value was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded, and a handle to a record was returned.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The column description returned by <B>MsiViewGetColumnInfo</B> is in the format described in the section: <A HREF="novr_2dv8.htm">Column Definition Format</A>. Each column is described by a string in the corresponding record field. The definition string consists of a single letter representing the data type followed by the width of the column (in characters when applicable, bytes otherwise). A width of zero designates an unbounded width (for example, long text fields and streams). An uppercase letter indicates that NULL values are allowed in the column.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

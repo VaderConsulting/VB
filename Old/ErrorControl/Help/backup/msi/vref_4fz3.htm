@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ProductState Property (Installer object)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ProductState Property (Installer object)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_productstate_property_installer_object_"></A>ProductState Property (Installer object)</H1>
+
+<P>The ProductState property is a read-only property that returns the install state information for a product.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.ProductState(<I>Product</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer </B>object</A> </DD>
+
+<DT><I>Product</I></DT>
+
+<DD>Specifies the product code of the product.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Returns one of the following values.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=39%>Installation state</TH>
+<TH align=left width=61%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateAbsent</TD>
+<TD width=61%>The product is installed for a different user.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateDefault</TD>
+<TD width=61%>The product is installed for the current user.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateAdvertised</TD>
+<TD width=61%>The product is advertised but not installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateInvalidArg</TD>
+<TD width=61%>An invalid parameter was passed to the function. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateUnknown</TD>
+<TD width=61%>The product is neither advertised nor installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallStateBadConfig</TD>
+<TD width=61%>The configuration data is corrupt.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_93l1.htm"><B>MsiQueryProductState</B></A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

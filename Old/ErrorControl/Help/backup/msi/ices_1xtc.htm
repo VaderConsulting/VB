@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE10</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE10 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice10"></A>ICE10</H1>
+
+<P>ICE10 validates that the advertise state of child features matches that of its parent feature. If a parent feature favors or disallows advertisement, its child features must similarly favor or disallow advertisement. </P>
+
+<P>The ICE10 custom action determines the state of parent and child features from the Attributes column of the <A HREF="tref_0a91.htm">Feature table</A>. Note that it is valid to set the state of a feature to 0 and have its parent or child set to favor or disallow advertisement.</P>
+
+<H4>Result</H4>
+
+<P>ICE10 posts an error if the Attributes column of the Feature table contains a mismatch in the advertise state.</P>
+
+<H4>Example</H4>
+
+<P>ICE10 posts the following error message for the example shown.</P>
+
+<PRE>Conflicting states, one favors, one disallows. Child: Word differs in advertise state 
+from Parent: Office. </PRE>
+
+<P>Note for this example that Microsoft Excel and Microsoft Word are child features of Microsoft Office.</P>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Feature</TH>
+<TH align=left width=28%>Feature_Parent</TH>
+<TH align=left width=48%>Attributes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Office</TD>
+<TD width=28%>NULL</TD>
+<TD width=48%>8</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Excel</TD>
+<TD width=28%>Office</TD>
+<TD width=48%>8</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Word</TD>
+<TD width=28%>Office</TD>
+<TD width=48%>4</TD>
+</TR>
+</TABLE><BR>
+
+<P>Word is set to favor advertise, conflicts with the disallow advertise state of the parent Office.</P>
+
+<P>In some cases ICE10 posts the following error: </P>
+
+<PRE>Parent feature: 'Parent' not found for child feature: 'Child'. This error means 
+that for the child feature 'Child', the feature 'Parent' is not listed in the 
+Feature table.</PRE>
+
+<P>This refers to an invalid foreign key reference. The fix is to have 'Child' point to its correct parent feature, or add an entry for the parent feature 'Parent' to the feature table. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

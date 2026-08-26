@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Media Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Media Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_media_table"></A>Media Table</H1>
+
+<P>The Media table describes the set of disks that make up the source media for the installation.</P>
+
+<P>The Media table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Column</TH>
+<TH align=left width=39%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>DiskId</TD>
+<TD width=39%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>LastSequence</TD>
+<TD width=39%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>DiskPrompt</TD>
+<TD width=39%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Cabinet</TD>
+<TD width=39%><A HREF="tref_5iyc.htm">Cabinet</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>VolumeLabel</TD>
+<TD width=39%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Source</TD>
+<TD width=39%><A HREF="tref_2ygp.htm">Property</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>DiskId</DT>
+
+<DD>Determines the sort order for the table. This number must be equal or greater than 1.</DD>
+
+<DT>LastSequence</DT>
+
+<DD>File sequence number for the last file for this media. The numbers in the LastSequence column specify which of the files in the <A HREF="tref_4n6t.htm">File table</A> are found on a particular source disk. Each source disk contains all the files whose sequence numbers (as shown in the Sequence column of the File table) are less than or equal to the value in the LastSequence column, and greater than the LastSequence value of the previous disk (or greater than 0, for the first entry in the Media table). This number must be non-negative. </DD>
+
+<DT>DiskPrompt</DT>
+
+<DD>The disk name, which is usually the visible text printed on the disk. This localizable text is used to prompt the user when this disk needs to be inserted.</DD>
+
+<DT>Cabinet</DT>
+
+<DD>The name of the cabinet if some or all of the files stored on the media are compressed into a cabinet file. If no cabinets are used this column must be blank. The name of the cabinet must use the syntax of the <A HREF="tref_5iyc.htm">Cabinet</A> data type. Note that to conserve disk space, the installer always removes any cabinets embedded in the .msi file before caching the installation package on the user's computer. </DD>
+
+<DT>VolumeLabel</DT>
+
+<DD>The label attributed to the volume. This is the volume label returned by the <B>GetVolumeInformation</B> function. If the <A HREF="pref_6uwp.htm">SourceDir property</A> refers to a removable (floppy or CD-ROM) volume, then this volume label is used to verify that the proper disk is in the drive before attempting to install files. The entry in this column must match the volume label of the physical media.</DD>
+
+<DT>Source</DT>
+
+<DD>This field is only used by patching and is otherwise left blank. A patch transform can enter a property here that is the location of the cabinet file containing the patch files or any new files added by the patch. A different source needs to be specified for these files because the source of the patch package can be stored separately from the product's source. If the Cabinet field is empty, the installer ignores the value in this column. If this field is empty, the installer uses the value of the <A HREF="pref_6uwp.htm">SourceDir property</A> as the source of the cabinet. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If the cabinet name is preceded by a number sign (#), then the files referencing this Media table record are packed in a cabinet file that is stored within the database as a separate stream.</P>
+
+<P><B>Determining the SourceMode</B></P>
+
+<P>The <A HREF="sref_8ge1.htm">Word Count Summary Property</A> determines the source mode for the current install. If this property is set to 2 or 3, a cabinet install is assumed. In this mode, the cabinet files are assumed to exist in the directory indicated by the SourceDir property. If the Source Type value is 0 or 1, all source files are assumed to exist in the tree whose root is indicated by the SourceDir property.</P>
+
+<P>Note that this only applies to files in the File table that do not have either the Compressed or Uncompressed bits set in the attributes column. These bits override the value of the <A HREF="sref_8ge1.htm">Word Count Summary property</A> when determining if a particular file is compressed or uncompressed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>OpenLog Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="OpenLog Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_openlog_method"></A>OpenLog Method</H1>
+
+<P>The <B>OpenLog</B> method opens a log file that receives progress and error messages. If the log file already exists, the installer appends new messages. If the log file does not exists, the installer creates a log file.</P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax>object.OpenLog(Filename)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="merg_4th0.htm"><B>Merge</B> Object</A> </DD>
+
+<DT><I>Filename</I></DT>
+
+<DD>Fully qualified filename pointing to a file to open or create.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Clients may send their own messages to this log file via the <A HREF="merg_8h0k.htm"><B>Log</B> method</A>.</P>
+
+<H4>C++</H4>
+
+<P>See <A HREF="merg_04dq.htm"><B>OpenLog Function</B></A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

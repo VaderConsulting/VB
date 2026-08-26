@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE72</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE72 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice72"></A>ICE72</H1>
+
+<P>ICE72 verifies that non-built-in custom actions are not used in the <A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A>. Specifically, only type 19, type 35, and type 51 custom actions are allowed in the AdvtExecuteSequence table. If other custom actions are used, advertisement may not behave as expected. </P>
+
+<H4>Result</H4>
+
+<P>ICE72 returns an error if the AdvExecuteSequence table uses custom actions other than type 35, type 51, and type 19.</P>
+
+<H4>Example</H4>
+
+<P>ICE72 reports the following error for the example shown:</P>
+
+<PRE>Custom Action 'CA1' in the AdvtExecuteSequence table is not allowed. Only built-in custom actions are allowed.</PRE>
+
+<P>To fix the error, remove 'CA1' from the AdvtExecuteSequence table.</P>
+
+<P><A HREF="tref_5mn9.htm"><B>AdvtExecuteSequence Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Action</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>CA1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>CA35</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_71b9.htm"><B>CustomAction Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>Action</TH>
+<TH align=left width=49%>Type</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>CA1</TD>
+<TD width=49%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>CA35</TD>
+<TD width=49%>35</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Tables used during execution</H4>
+
+<P><A HREF="tref_5mn9.htm">AdvtExecuteSequence Table</A> </P>
+
+<P><A HREF="tref_71b9.htm">CustomAction Table</A> </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_07i1.htm">Custom Action Type 19</A>, <A HREF="cact_07lh.htm">Custom Action Type 35</A>, <A HREF="cact_07ox.htm">Custom Action Type 51</A>, <A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

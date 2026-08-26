@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>EndDialog ControlEvent</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="EndDialog ControlEvent">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_enddialog_controlevent"></A>EndDialog ControlEvent</H1>
+
+<P>This event notifies the installer to remove a modal dialog box. In all cases the installer removes the present dialog box.The following table lists the action of the event resulting from different arguments entered into the <A HREF="tref_6k11.htm">ControlEvent table</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Argument</TH>
+<TH align=left width=83%>Action by the installer</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>Exit</TD>
+<TD width=83%>The wizard sequence is closed and the control returns to the installer with the UserExit value. This argument cannot be used in a dialog box that is a child of another dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>Retry</TD>
+<TD width=83%>The wizard sequence is closed and the control returns to the installer with the Suspend value. This argument cannot be used in a dialog box that is a child of another dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>Ignore</TD>
+<TD width=83%>The wizard sequence is closed and the control returns to the installer with the Finished value. This argument cannot be used in a dialog box that is a child of another dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%> Return</TD>
+<TD width=83%>The control returns to the parent of the present dialog box, or if there is no parent, the control returns to the installer with the Success value.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Published By</H4>
+
+<P>This ControlEvent is published by the installer.</P>
+
+<H4>Argument</H4>
+
+<P>On regular dialog boxes the Argument column of the <A HREF="tref_6k11.htm">ControlEvent table</A> can be "Return", "Exit", "Retry", or "Ignore".</P>
+
+<P>On error dialog boxes the Argument column of the <A HREF="tref_6k11.htm">ControlEvent table</A> can be "ErrorOk", "ErrorCancel", "ErrorAbort", "ErrorRetry", "ErrorIgnore", "ErrorYes", or "ErrorNo".</P>
+
+<H4>Action on Subscribers</H4>
+
+<P>None.</P>
+
+<H4>Typical Use</H4>
+
+<P>A <A HREF="href_331o.htm">PushButton</A> control on a modal dialog is tied to this event in the <A HREF="tref_6k11.htm">ControlEvent</A> table to close a dialog box.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

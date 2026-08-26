@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Specifying Shortcuts</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_specifying_shortcuts"></A>Specifying Shortcuts</H2>
+
+<P>The <A HREF="tref_2i91.htm">Shortcut table</A> and related tables of the installation database hold information needed to install shortcuts. See the <A HREF="novr_90z4.htm">Program Information Tables Group</A> and <A HREF="over_02gj.htm">Editing Installer Shortcuts</A>.</P>
+
+<P>In this section you add information that specifies advertised and non-advertised shortcuts for the Notepad sample.</P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the Shortcut Table.</P>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=8%>Shortcut</TH>
+<TH align=left width=7%>Directory_</TH>
+<TH align=left width=10%>Name</TH>
+<TH align=left width=9%>Component_</TH>
+<TH align=left width=10%>Target</TH>
+<TH align=left width=8%>Arguments</TH>
+<TH align=left width=9%>Description</TH>
+<TH align=left width=6%>Hotkey</TH>
+<TH align=left width=9%>Icon_</TH>
+<TH align=left width=8%>IconIndex</TH>
+<TH align=left width=9%>ShowCmd</TH>
+<TH align=left width=7%>WkDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sBaseball</TD>
+<TD width=7%>MENUDIR</TD>
+<TD width=10%>Baseball.txt</TD>
+<TD width=9%>Baseball</TD>
+<TD width=10%>Baseball</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=6%> </TD>
+<TD width=9%>orca_icon.exe</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=7%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sConcert</TD>
+<TD width=7%>MENUDIR</TD>
+<TD width=10%>Concert.txt</TD>
+<TD width=9%>Concert</TD>
+<TD width=10%>[#Concert.txt]</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=6%> </TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=7%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sDance</TD>
+<TD width=7%>MENUDIR</TD>
+<TD width=10%>Dance.txt</TD>
+<TD width=9%>Dance</TD>
+<TD width=10%>[#Dance.txt]</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=6%> </TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=7%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sFootball</TD>
+<TD width=7%>MENUDIR</TD>
+<TD width=10%>Football.txt</TD>
+<TD width=9%>Football</TD>
+<TD width=10%>[#Football.txt]</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=6%> </TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=7%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sHelp</TD>
+<TD width=7%>MENUDIR</TD>
+<TD width=10%>Help.txt</TD>
+<TD width=9%>Help</TD>
+<TD width=10%>[#Help.txt]</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=6%> </TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=7%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sJanuary</TD>
+<TD width=7%>MENUDIR</TD>
+<TD width=10%>January.txt</TD>
+<TD width=9%>January</TD>
+<TD width=10%>[#January.txt]</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=6%> </TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=7%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sNewYears</TD>
+<TD width=7%>MENUDIR</TD>
+<TD width=10%>NewYears.txt</TD>
+<TD width=9%>NewYears</TD>
+<TD width=10%>[#NewYears.txt]</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=6%> </TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=7%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sNotepad</TD>
+<TD width=7%>MENUDIR</TD>
+<TD width=10%>Redpark.exe</TD>
+<TD width=9%>Notepad</TD>
+<TD width=10%>[#Redpark.exe]</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=6%> </TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=7%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sReadme</TD>
+<TD width=7%>MENUDIR</TD>
+<TD width=10%>Readme.txt</TD>
+<TD width=9%>Notepad</TD>
+<TD width=10%>[#Readme.txt]</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=6%> </TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=7%> </TD>
+</TR>
+</TABLE><BR>
+
+<P>The sample installation needs to enable installation of an advertised shortcut for the Baseball feature. This requires specifying a key to the Icon table in the Icon_ column of the Shortcut table. For the purposes of this example you may copy the icon for the Orca database editor provided with the Windows Installer SDK. Export the <A HREF="tref_7vmt.htm">Icon table</A> from Orca.msi and then merge this table into the MNP2000.msi database using Orca or another merge tool. Orca also creates a directory named Icon in the directory containing MNP2000.msi, and adds the icon binary data file orca_icon.exe.ibd. See the Data column in Icon table. The completed Icon Table should look as follows when viewed in Orca.</P>
+
+<P><A HREF="tref_7vmt.htm"><B>Icon Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>Name</TH>
+<TH align=left width=49%>Data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>orca_icon.exe</TD>
+<TD width=49%>[Binary Data]</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_1pv7.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

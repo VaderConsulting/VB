@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action Return Processing Options</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_custom_action_return_processing_options"></A>Custom Action Return Processing Options</H2>
+
+<P>The following option flags can be used to control the processing of the custom action thread. They are used to specify that the main and custom action threads run synchronously (the installer waits for the custom action thread to complete before resuming the main installation thread) or asynchronously (the installer runs the custom action simultaneously as the main installation continues).</P>
+
+<P>To enable these options add the value indicated in this table to the value in the Type field of the <A HREF="tref_71b9.htm">CustomAction table</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Constant</TH>
+<TH align=left width=16%>Hexadecimal</TH>
+<TH align=left width=9%>Decimal</TH>
+<TH align=left width=38%>Description </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>(none)</TD>
+<TD width=16%>0x00000000</TD>
+<TD width=9%>+0</TD>
+<TD width=38%>Synchronous execution. Fails if exit code not 0. If the flag msidbCustomActionTypeContinue is <B>not</B> set then the custom action must return one of the return values described in <A HREF="cact_8h0z.htm">Custom Action Return Values</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbCustomActionTypeContinue</B></TD>
+<TD width=16%>0x00000040</TD>
+<TD width=9%>+64</TD>
+<TD width=38%>Synchronous execution. Ignores exit code and continues. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbCustomActionTypeAsync</B></TD>
+<TD width=16%>0x00000080</TD>
+<TD width=9%>+128</TD>
+<TD width=38%>Asynchronous execution. Waits for exit code at sequence end.
+<P>This option cannot be used with <A HREF="cact_260j.htm">Nested Installation Actions</A> or <A HREF="cact_0k8j.htm">Rollback Custom Actions</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbCustomActionTypeAsync + msidbCustomActionTypeContinue</B></TD>
+<TD width=16%>0x00000040 + 0x00000080</TD>
+<TD width=9%>+192</TD>
+<TD width=38%>Asynchronous execution. No wait for completion. Execution continues after installer terminates.
+<P>This option cannot be used with <A HREF="cact_260j.htm">Nested Installation Actions</A>.</P>
+</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

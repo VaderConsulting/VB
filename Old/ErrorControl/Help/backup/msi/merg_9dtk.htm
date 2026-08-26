@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICEM08</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICEM08 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_icem08"></A>ICEM08</H1>
+
+<P>ICEM08 ensures that a module does not exclude another module that it depends on.</P>
+
+<H4>Result</H4>
+
+<P>ICEM08 posts an error when a module excludes another module that it depends on.</P>
+
+<H4>Example</H4>
+
+<P>ICEM08 posts the following error message for a module containing the database entries shown in the example.</P>
+
+<PRE>Error: This module requires module ModuleB.&lt;GUID&gt; (1033v1.0) but also 
+lists it as an exclusion.</PRE>
+
+<P><A HREF="merg_7z39.htm"><B>ModuleDependency Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>ModuleID</TH>
+<TH align=left width=20%>ModuleLanguage</TH>
+<TH align=left width=20%>RequiredID</TH>
+<TH align=left width=21%>RequiredLanguage</TH>
+<TH align=left width=20%>RequiredVersion</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>ModuleA.&lt;GUID&gt;</TD>
+<TD width=20%>1033</TD>
+<TD width=20%>ModuleB.&lt;GUID&gt;</TD>
+<TD width=21%>1033</TD>
+<TD width=20%>1.0</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="merg_8c4l.htm"><B>ModuleExclusion Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>ModuleID</TH>
+<TH align=left width=16%>ModuleLanguage</TH>
+<TH align=left width=16%>ExcludedID</TH>
+<TH align=left width=18%>ExcludedLanguage</TH>
+<TH align=left width=18%>ExcludedMinVersion</TH>
+<TH align=left width=18%>ExcludedMaxVersion</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>ModuleA.&lt;GUID&gt;</TD>
+<TD width=16%>1033</TD>
+<TD width=16%>ModuleB.&lt;GUID&gt;</TD>
+<TD width=18%>1033</TD>
+<TD width=18%>&nbsp;</TD>
+<TD width=18%>1.0</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix the error, remove either the dependency or the exclusion. If ModuleB is a dependency (RequiredID) of ModuleA, you cannot exclude it (as shown in the ExludedID column of the ModuleExclusion table). If you must exclude ModuleB, then you must remove ModuleA's dependency on it.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_54md.htm">Merge Module ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

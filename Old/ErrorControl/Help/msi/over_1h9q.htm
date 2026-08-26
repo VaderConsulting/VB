@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Windows File Protection on Windows Millennium Edition</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Windows Installer, Windows File Protection on Windows Millennium Edition">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_windows_file_protection_start_page">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_windows_file_protection_on_windows_millennium_edition"></A>Windows File Protection on Windows Millennium Edition</H1>
+
+<P>Support for Windows File Protection on Microsoft® Windows® Millennium Edition (Windows Me) is provided with Windows Installer version 1.2. Windows Me implements its own version of system file protection using catalogs that describe protected files. To completely protect a file on Windows Me, the file must be listed by Windows File Protection and there must be a catalog with version information. To install a protected file, update the version information for the file with a catalog. Windows File Protection catalogs are provided to developers to enable their applications to update system components. </P>
+
+<P>Note that if a Windows Installer component contains a WFP file, this file must be specified as the KeyPath for the component.</P>
+
+<P>The <A HREF="aref_3eem.htm">InstallSFPCatalogFile action</A> queries the <A HREF="tref_09np.htm">Component table</A>, <A HREF="tref_4n6t.htm">File table</A>, <A HREF="tref_2u79.htm">FileSFPCatalog table</A>, and <A HREF="tref_38bp.htm">SFPCatalog table</A> for catalogs and files. Each protected file in a catalog that can be installed separately should be put into a separate component. A catalog is associated with a protected file and is installed only if the component controlling the file is set for local installation or is already locally installed and is being repaired. The <B>msidbComponentAttributesPermanent </B>bit flag must be included for the component in the Attributes column of the <A HREF="tref_09np.htm">Component Table</A>. This prevents the removal of the catalog and protected file if the component is subsequently removed. The entry in the KeyPath column of the Component Table must exactly match the path specified by the provider of the Windows File Protection catalog. If the paths do not match, the file is not protected.</P>
+
+<P>The <A HREF="aref_3eem.htm">InstallSFPCatalogFile action</A>, <A HREF="tref_2u79.htm">FileSFPCatalog table</A>, and <A HREF="tref_38bp.htm">SFPCatalog table</A> are not available with Windows Installer versions 1.0 or 1.1. </P>
+
+<P>For more information about Windows File Protection, see <A HREF="JavaScript:hhobj_1.Click()">Windows File Protection</A> in the Platform SDK. For information about using Windows File Protection with Windows 2000 see <A HREF="over_9omo.htm">Windows File Protection on Windows 2000 and Windows XP</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Windows%20File%20Protection%20on%20Windows%20Millennium%20Edition;%20RELEASE:%20August%202001;%20URL:%20over_1h9q.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Windows%20File%20Protection%20on%20Windows%20Millennium%20Edition;%20RELEASE:%20August%202001;%20URL:%20over_1h9q.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

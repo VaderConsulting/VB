@@ -1,0 +1,1272 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href="C:\PROGRA~1\MZTools\sample.xsl" ?>
+<Project>
+<Name>RegWrite</Name>
+<FileName>Regwrite.vbp</FileName>
+<PathFileName>C:\Documents and Settings\dave\Desktop\Woodside\Regwrite\Regwrite.vbp</PathFileName>
+<BuildFileName>RegWrite.exe</BuildFileName>
+<BuildPathFileName>C:\Documents and Settings\dave\Desktop\Woodside\Regwrite\RegWrite.exe</BuildPathFileName>
+<CompatibleOleServer></CompatibleOleServer>
+<Description></Description>
+<HelpContextID>0</HelpContextID>
+<HelpFile></HelpFile>
+<StartMode>0</StartMode>
+<Type>Standard Exe</Type>
+<References>
+<Reference>
+<Name>VBA</Name>
+<FileName>vba6.dll</FileName>
+<PathFileName>c:\program files\microsoft visual studio\vb98\vba6.dll</PathFileName>
+<Description>Visual Basic For Applications</Description>
+<BuiltIn>True</BuiltIn>
+<Guid>{000204EF-0000-0000-C000-000000000046}</Guid>
+<Major>6</Major>
+<Minor>0</Minor>
+<Type>TypeLib</Type>
+</Reference>
+<Reference>
+<Name>VBRUN</Name>
+<FileName>msvbvm60.dll\3</FileName>
+<PathFileName>c:\windows\system32\msvbvm60.dll\3</PathFileName>
+<Description>Visual Basic runtime objects and procedures</Description>
+<BuiltIn>True</BuiltIn>
+<Guid>{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}</Guid>
+<Major>6</Major>
+<Minor>0</Minor>
+<Type>TypeLib</Type>
+</Reference>
+<Reference>
+<Name>VB</Name>
+<FileName>vb6.olb</FileName>
+<PathFileName>c:\program files\microsoft visual studio\vb98\vb6.olb</PathFileName>
+<Description>Visual Basic objects and procedures</Description>
+<BuiltIn>True</BuiltIn>
+<Guid>{FCFB3D2E-A0FA-1068-A738-08002B3371B5}</Guid>
+<Major>6</Major>
+<Minor>0</Minor>
+<Type>TypeLib</Type>
+</Reference>
+<Reference>
+<Name>stdole</Name>
+<FileName>stdole2.tlb</FileName>
+<PathFileName>c:\windows\system32\stdole2.tlb</PathFileName>
+<Description>OLE Automation</Description>
+<BuiltIn>False</BuiltIn>
+<Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+<Major>2</Major>
+<Minor>0</Minor>
+<Type>TypeLib</Type>
+</Reference>
+</References>
+<Files>
+<File>
+<Name>frmMain</Name>
+<FileName>frmMain.frm</FileName>
+<PathFileName>C:\Documents and Settings\dave\Desktop\Woodside\Regwrite\frmMain.frm</PathFileName>
+<Type>VBForm</Type>
+<Description></Description>
+<HelpContextID>0</HelpContextID>
+<Properties>
+<Property>
+<Name>Name</Name>
+<Value>frmMain</Value>
+</Property>
+<Property>
+<Name>Caption</Name>
+<Value>RegWrite</Value>
+</Property>
+<Property>
+<Name>BackColor</Name>
+<Value>-2147483633</Value>
+</Property>
+<Property>
+<Name>ForeColor</Name>
+<Value>-2147483630</Value>
+</Property>
+<Property>
+<Name>Left</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>Top</Name>
+<Value>-105</Value>
+</Property>
+<Property>
+<Name>Width</Name>
+<Value>4770</Value>
+</Property>
+<Property>
+<Name>Height</Name>
+<Value>3675</Value>
+</Property>
+<Property>
+<Name>Enabled</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>WindowState</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>MousePointer</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>ScaleLeft</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>ScaleTop</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>ScaleWidth</Name>
+<Value>4680</Value>
+</Property>
+<Property>
+<Name>ScaleHeight</Name>
+<Value>3195</Value>
+</Property>
+<Property>
+<Name>ScaleMode</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>FontTransparent</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>DrawStyle</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>DrawWidth</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>FillStyle</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>FillColor</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>DrawMode</Name>
+<Value>13</Value>
+</Property>
+<Property>
+<Name>AutoRedraw</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>BorderStyle</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>LinkTopic</Name>
+<Value>Form1</Value>
+</Property>
+<Property>
+<Name>LinkMode</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>MaxButton</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>MinButton</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>ControlBox</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>HasDC</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>Visible</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>Tag</Name>
+<Value></Value>
+</Property>
+<Property>
+<Name>MDIChild</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>KeyPreview</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>ClipControls</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>HelpContextID</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>NegotiateMenus</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>Appearance</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>WhatsThisButton</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>WhatsThisHelp</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>ShowInTaskbar</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>RightToLeft</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>StartUpPosition</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>OLEDropMode</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>PaletteMode</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>Moveable</Name>
+<Value>True</Value>
+</Property>
+</Properties>
+<CodeModule>
+<CountOfDeclarationLines>12</CountOfDeclarationLines>
+<CountOfLines>85</CountOfLines>
+<Interfaces>
+</Interfaces>
+<Events>
+</Events>
+<Procedures>
+<Procedure>
+<Name>Form_Load</Name>
+<Scope>Private</Scope>
+<Type>Subroutine</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>73</CountOfLines>
+<CommentLines>
+</CommentLines>
+<Declaration>Private Sub Form_Load()</Declaration>
+<Parameters>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+</Procedures>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Module    : frmMain</CommentLine>
+<CommentLine> DateTime  : 15-04-2003 10:45</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   : Insert registry keys/strings/values into the current machine&apos;s registry</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   15-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine> 1.1   15-04-2003  Dave Robinson   Added DOS ErrorLevel</CommentLine>
+<CommentLine> 1.2   20-07-2003  Dave Robinson   Added REG_EXPAND_SZ capability, cleaned up and sorted.</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+</CodeModule>
+<Controls>
+</Controls>
+</File>
+<File>
+<Name>modRegistry</Name>
+<FileName>modRegistry.bas</FileName>
+<PathFileName>C:\Documents and Settings\dave\Desktop\Woodside\Regwrite\modRegistry.bas</PathFileName>
+<Type>StdModule</Type>
+<Description></Description>
+<HelpContextID>0</HelpContextID>
+<Properties>
+<Property>
+<Name>Name</Name>
+<Value>modRegistry</Value>
+</Property>
+</Properties>
+<CodeModule>
+<CountOfDeclarationLines>35</CountOfDeclarationLines>
+<CountOfLines>645</CountOfLines>
+<Interfaces>
+</Interfaces>
+<Events>
+</Events>
+<Procedures>
+<Procedure>
+<Name>CopyRegByte</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>48</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : CopyRegByte</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   : Copy a registry Byte value</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function CopyRegByte(ByVal From_hKey As RegHive, ByVal From_strPath As String, ByVal From_strKeyName As String, ByVal To_strPath As String, Optional ByVal To_hKey As RegHive, Optional ByVal To_strKeyName As String)</Declaration>
+<Parameters>
+<Parameter>
+<Name>From_hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>From_strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>From_strKeyName</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>To_strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>To_hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>To_strKeyName</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+<Procedure>
+<Name>CopyRegLong</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>40</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : CopyRegLong</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   : Copy a registry Long value</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function CopyRegLong(ByVal hKey As RegHive, ByVal From_strPath As String, ByVal From_strKeyName As String, ByVal To_strPath As String, Optional ByVal To_hKey As RegHive, Optional ByVal From_hKey As RegHive, Optional ByVal To_strKeyName As String)</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>From_strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>From_strKeyName</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>To_strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>To_hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>From_hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>To_strKeyName</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+<Procedure>
+<Name>CopyRegString</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>39</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : CopyRegString</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   : As it says ...</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function CopyRegString(ByVal From_hKey As RegHive, ByVal From_strPath As String, ByVal From_strKeyName As String, ByVal To_strPath As String, Optional ByVal To_hKey As RegHive, Optional ByVal To_strKeyName As String)</Declaration>
+<Parameters>
+<Parameter>
+<Name>From_hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>From_strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>From_strKeyName</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>To_strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>To_hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>To_strKeyName</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+<Procedure>
+<Name>CreateRegKey</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>32</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : CreateRegKey</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   : As it says...</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function CreateRegKey(hKey As RegHive, strPath As String)</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+<Procedure>
+<Name>DelRegKey</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>28</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : DelRegKey</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function DelRegKey(ByVal hKey As RegHive, ByVal strPath As String) As Long</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>Long</ReturnType>
+</Procedure>
+<Procedure>
+<Name>DelRegValue</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>30</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : DelRegValue</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:08</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function DelRegValue(ByVal hKey As RegHive, ByVal strPath As String, ByVal strValue As String)</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strValue</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+<Procedure>
+<Name>GetRegByte</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>51</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : GetRegByte</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function GetRegByte(ByVal hKey As RegHive, ByVal strPath As String, ByVal strValueName As String, Optional Default As Variant) As Variant</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strValueName</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>Default</Name>
+<Type>Variant</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>Variant</ReturnType>
+</Procedure>
+<Procedure>
+<Name>GetRegLong</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>47</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : GetRegLong</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function GetRegLong(ByVal hKey As RegHive, ByVal strPath As String, ByVal strValue As String, Optional Default As Long) As Long</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strValue</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>Default</Name>
+<Type>Long</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>Long</ReturnType>
+</Procedure>
+<Procedure>
+<Name>GetRegString</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>72</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : GetRegString</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function GetRegString(hKey As RegHive, strPath As String, strValue As String, Optional Default As String) As String</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strValue</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>Default</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>String</ReturnType>
+</Procedure>
+<Procedure>
+<Name>GetRegSubKeyList</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>44</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : GetRegSubKeyList</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function GetRegSubKeyList(ByVal hKey As RegHive, ByVal strPath As String, ByRef strKeys() As String)</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strKeys(</Name>
+<Type></Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>String)</ReturnType>
+</Procedure>
+<Procedure>
+<Name>GetRegType</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>24</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : GetRegType</CommentLine>
+<CommentLine> DateTime  : 28/07/2003 12:15</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   : Determine the registry type passed</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine></CommentLine>
+</CommentLines>
+<Declaration>Public Function GetRegType(strRegType As String) As Integer</Declaration>
+<Parameters>
+<Parameter>
+<Name>strRegType</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>Integer</ReturnType>
+</Procedure>
+<Procedure>
+<Name>GetRootValue</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>26</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : GetRootValue</CommentLine>
+<CommentLine> DateTime  : 28/07/2003 12:15</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   : Retrieve the registry value of the string passed in</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine></CommentLine>
+</CommentLines>
+<Declaration>Public Function GetRootValue(strRegRoot As String) As Long</Declaration>
+<Parameters>
+<Parameter>
+<Name>strRegRoot</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>Long</ReturnType>
+</Procedure>
+<Procedure>
+<Name>SaveRegByte</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>30</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : SaveRegByte</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function SaveRegByte(ByVal hKey As RegHive, ByVal strPath As String, ByVal strValueName As String, byData() As Byte)</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strValueName</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>byData(</Name>
+<Type></Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>Byte)</ReturnType>
+</Procedure>
+<Procedure>
+<Name>SaveRegExpandString</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>33</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : SaveRegExpandString</CommentLine>
+<CommentLine> DateTime  : 09-07-2003 19:42</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function SaveRegExpandString(hKey As RegHive, strPath As String, strValue As String, strData As String)</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strValue</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strData</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+<Procedure>
+<Name>SaveRegLong</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>33</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : SaveRegLong</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date    Author      History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function SaveRegLong(ByVal hKey As RegHive, ByVal strPath As String, ByVal strValue As String, ByVal lData As Long)</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strValue</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>lData</Name>
+<Type>Long</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+<Procedure>
+<Name>SaveRegString</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>33</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : SaveRegString</CommentLine>
+<CommentLine> DateTime  : 07-04-2003 08:09</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date        Author          History</CommentLine>
+<CommentLine> 1.0   07-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function SaveRegString(hKey As RegHive, strPath As String, strValue As String, strData As String)</Declaration>
+<Parameters>
+<Parameter>
+<Name>hKey</Name>
+<Type>RegHive</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strPath</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strValue</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strData</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+</Procedures>
+<CommentLines>
+</CommentLines>
+</CodeModule>
+</File>
+<File>
+<Name>modMain</Name>
+<FileName>modMain.bas</FileName>
+<PathFileName>C:\Documents and Settings\dave\Desktop\Woodside\Regwrite\modMain.bas</PathFileName>
+<Type>StdModule</Type>
+<Description></Description>
+<HelpContextID>0</HelpContextID>
+<Properties>
+<Property>
+<Name>Name</Name>
+<Value>modMain</Value>
+</Property>
+</Properties>
+<CodeModule>
+<CountOfDeclarationLines>17</CountOfDeclarationLines>
+<CountOfLines>133</CountOfLines>
+<Interfaces>
+</Interfaces>
+<Events>
+</Events>
+<Procedures>
+<Procedure>
+<Name>GetParam</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>47</CountOfLines>
+<CommentLines>
+</CommentLines>
+<Declaration>Public Function GetParam(Count As Integer) As String</Declaration>
+<Parameters>
+<Parameter>
+<Name>Count</Name>
+<Type>Integer</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>String</ReturnType>
+</Procedure>
+<Procedure>
+<Name>GetParamCount</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>43</CountOfLines>
+<CommentLines>
+</CommentLines>
+<Declaration>Public Function GetParamCount() As Integer</Declaration>
+<Parameters>
+</Parameters>
+<ReturnType>Integer</ReturnType>
+</Procedure>
+<Procedure>
+<Name>GetParamName</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>8</CountOfLines>
+<CommentLines>
+</CommentLines>
+<Declaration>Public Function GetParamName(strParameter As String) As String</Declaration>
+<Parameters>
+<Parameter>
+<Name>strParameter</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>String</ReturnType>
+</Procedure>
+<Procedure>
+<Name>GetparamValue</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>8</CountOfLines>
+<CommentLines>
+</CommentLines>
+<Declaration>Public Function GetparamValue(strParameter As String) As String</Declaration>
+<Parameters>
+<Parameter>
+<Name>strParameter</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>String</ReturnType>
+</Procedure>
+<Procedure>
+<Name>LogEvent</Name>
+<Scope>Public</Scope>
+<Type>Subroutine</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>8</CountOfLines>
+<CommentLines>
+</CommentLines>
+<Declaration>Public Sub LogEvent(strMessage As String, Optional EventType As EventLogError = Information)</Declaration>
+<Parameters>
+<Parameter>
+<Name>strMessage</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>EventType</Name>
+<Type>EventLogError</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>True</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue>Information</DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+</Procedures>
+<CommentLines>
+</CommentLines>
+</CodeModule>
+</File>
+</Files>
+</Project>

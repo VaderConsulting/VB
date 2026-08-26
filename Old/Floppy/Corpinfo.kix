@@ -1,0 +1,242 @@
+;
+; CorpInfo.kix
+; Version 1.0
+; Adapted from CInfo.kix
+; Retrieves Computer Info, specifically corporate application info
+; for use prior to computer replacement during SOE rollout
+;
+; 
+; Requirements: 
+; Kixtart 3.63 in current directory (kix32.exe)
+; 
+;
+; Copyright
+; Dave Robinson
+; Noovember 2 2001
+;
+; Written using KiXscripts Editor Alpha 1
+; 
+; Formatting of this document's 'writeline' methods are 
+; written to allow easy reading of the HTML output log file. 
+;
+; Define constants
+  $CRLF      = Chr(13) + Chr(10)
+  $backslash = Chr(92)
+  $quote     = Chr(34)
+  $nbsp      = "&nbsp" + Chr(59)
+  $KIXDir    = 16
+  $Version   = "1.0"
+  $Outfile   = "c:\apps.htm"
+  $Date      = @DAY + ", " + @MDAYNO + " " + @MONTH + " " + @YEAR
+;
+; Enable user to CTRL C
+  Break on 
+;
+; 
+; Because this code is designed to be re-entrant, look For variable declaration.
+If $dirname = "" 
+    ; Create array to store corporate applications
+    Global $appexe[255]  ; Maximum of 255 Applications in a GLOBAL Array - available to all Kix apps in this session
+    Global $appname[255] ; Maximum of 255 Applications in a GLOBAL Array - available to all Kix apps in this session
+    ;	
+	; Get list of corporate applications
+	;
+	$err = Open (1,@CURDIR + "\BHP.csv",2) ; Open file for input   
+	
+	; Continue reading until EOF
+	While @error = 0
+		$fileinfo = Ucase(ReadLine(1))
+		$pos = InStr($fileinfo,",")                                ; strip out portions of fileinfo delimited by comma's
+        $appexename = SubStr ($fileinfo,1,$pos-1)                  ; This is the executable name
+        $Len = Len($fileinfo) - $pos + 1
+        $fileinfo = SubStr ($fileinfo , $pos + 1 , $Len)           ; remove leftmost portion
+        $pos = InStr($fileinfo,",")                                ; strip out portions of fileinfo delimited by comma's
+        $app = SubStr ($fileinfo,1,$pos-1)                         ; This is the program name
+		;
+		; Remove quote charaters from beginning and end
+		;
+		If SubStr($appexename,1,1) = $quote                        ; Is leftmost character a quote character?
+			$appexename = SubStr($appexename,2,Len($appexename)-1) ; if so, remove it
+		EndIf
+		If SubStr($appexename,Len($appexename),1) = $quote         ; Is rightmost character a quote character?
+			$appexename = SubStr($appexename,1,Len($appexename)-1) ; if so, remove it
+		EndIf
+		If SubStr($app,1,1) = $quote                               ; Is leftmost character a quote character?
+			$app = SubStr($app,2,Len($app)-1)                      ; if so, remove it
+		EndIf
+		If SubStr($app,Len($app),1) = $quote                       ; Is rightmost character a quote character?
+			$app = SubStr($app,1,Len($app)-1)                      ; if so, remove it
+		EndIf
+		
+		$appexe[$appindex] = $appexename
+		$appname[$appindex] = $app  
+		
+		$appindex = $appindex + 1
+	Loop
+    ; No dirname specified, so delete existing output file
+    Del ($outfile)
+    ; Open file for writing
+    $temp = Open (1,$outfile,5)
+    ;
+    ; This must be the original script, so set variable to remember it
+    $original = "yes"
+    $dirname = "c:"
+    ;
+    ; If the directory name ends with a backslash, remove the slash.
+    If SubStr($dirname,Len($dirname)-1,1) = $backslash
+        $dirname = SubStr($dirname,1,Len($dirname)-1)
+    EndIf
+    $temp = WriteLine (1,"<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.0 Transitional//EN'>" + $CRLF)
+    $temp = WriteLine (1,"<html>" + $CRLF)
+    $temp = WriteLine (1,"<head>" + $CRLF)
+    $temp = WriteLine (1,"    <title>Application log from CInfo.kix " + $Version + "</title>" + $CRLF)
+    $temp = WriteLine (1,"</head>" + $CRLF)
+    $temp = WriteLine (1,"<body>" + $CRLF)
+    $temp = WriteLine (1,"<div align='left'>" + $CRLF)
+    $temp = WriteLine (1,"<h1>Workstation info</h1>" + $CRLF)
+    $temp = WriteLine (1,$Date + " " + @TIME + "<br>" + $CRLF)  
+    $temp = WriteLine (1,"Username         : " + @USERID + "<br>" + $CRLF) 
+    $temp = WriteLine (1,"Windows Username : " + @WUSERID + "<br>" + $CRLF)
+    $temp = WriteLine (1,$CRLF)   
+    $temp = WriteLine (1,"Local workstation info follows" + "<br>" + $CRLF)
+    $temp = WriteLine (1,"Computername     : " + @WKSTA + "<br>" + $CRLF)  
+    $temp = WriteLine (1,"MAC Address      : " + @ADDRESS + "<br>" + $CRLF) 
+    $temp = WriteLine (1,"IP Address       : " + @IPADDRESS0 + "<br>" + $CRLF) 
+    $temp = WriteLine (1,"OS Version       : " + @DOS + "<br>" + $CRLF) 
+    $temp = WriteLine (1,"   Comment       : " + @COMMENT + "<br>" + $CRLF)
+    $temp = WriteLine (1,"<br>" + $CRLF)
+    $temp = WriteLine (1,"Start dir        : " + $dirname + "<br>" + $CRLF)
+    $temp = WriteLine (1,"Search pattern   : " + $pattern + "<br>" + $CRLF)
+    $temp = WriteLine (1,"<br>" + $CRLF)
+    $temp = WriteLine (1,"<h1>Application info</h1>" + $CRLF)
+    $temp = WriteLine (1,"<br>" + $CRLF)
+    $temp = WriteLine (1,"<br>" + $CRLF)
+    $temp = WriteLine (1,"<h2>Installed Applications</h2>" + $CRLF)
+    $temp = WriteLine (1,"    <table align='left' >" + $CRLF)
+    $temp = WriteLine (1,"        <tr>" + $CRLF)
+    $temp = WriteLine (1,"            <td>" + $CRLF)
+    $temp = WriteLine (1,"                <table align='left'>" + $CRLF)
+    ;
+    ; List all applications in Control Panel|Add Remove Programs
+    ;
+    ? "Listing all applications in Control Panel|Add Remove Programs"
+    ?
+    $Index = 0
+	:Loop1
+	$KeyName = EnumKey("HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall" + $backslash, $Index)
+	If @ERROR = 0
+ 	    $App = ReadValue("HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\$KeyName","DisplayName")
+ 	    If $App <> ""
+ 	        $temp = WriteLine (1,"                    <tr>" + $CRLF)
+ 	        $temp = WriteLine (1,"                        <td nowrap>" + $App + "</td>" + $CRLF)
+ 		$temp = WriteLine (1,"                    </tr>" + $CRLF)
+ 	    EndIf
+	    $Index = $Index + 1
+  	    Goto Loop1
+	EndIf
+	$temp = WriteLine (1,"                </table>" + $CRLF)
+	$temp = WriteLine (1,"            </td>" + $CRLF)
+	$temp = WriteLine (1,"        </tr>" + $CRLF)
+	
+    ;
+    ; List all applications found in the search path
+    ;
+    ? "Listing Corporate applications found in the search path"
+    ?
+    $temp = WriteLine (1,"        <tr>" + $CRLF)
+    $temp = WriteLine (1,"            <td>" + $nbsp + "</td>" + $CRLF)
+    $temp = WriteLine (1,"        </tr>" + $CRLF)
+    $temp = WriteLine (1,"        <tr>" + $CRLF)
+    $temp = WriteLine (1,"            <td><h2>Applications found in the search path</h2></td>" + $CRLF)
+    $temp = WriteLine (1,"        </tr>" + $CRLF)
+    $temp = WriteLine (1,"        <tr>" + $CRLF)
+    $temp = WriteLine (1,"            <td>" + $nbsp + "</td>" + $CRLF)
+    $temp = WriteLine (1,"        </tr>" + $CRLF)
+    $temp = WriteLine (1,"        <tr>" + $CRLF)
+    $temp = WriteLine (1,"            <td>" + $CRLF)
+    $temp = WriteLine (1,"                <table align='center'>" + $CRLF)
+    $temp = WriteLine (1,"                    <tr>" + $CRLF)
+    $temp = WriteLine (1,"                        <td nowrap><b>Filename</b></td>")
+    $temp = WriteLine (1,                        "<td nowrap><b>File Description</b></td>")
+    $temp = WriteLine (1,"                    </tr>" + $CRLF)
+Else
+    ; Open file for writing
+    $temp = Open (1,$outfile,5)
+    $original = "no"
+EndIf
+;
+; User feedback.. not required, but nice to have
+If Len($dirname) > 70
+    ? "Searching " + SubStr($dirname,1,10) + "..." + SubStr($dirname,Len($dirname)-56,Len($dirname))
+Else
+    ? "Searching " + $dirname 
+EndIf
+;
+; Build path to search
+$dirname = $dirname + $backslash
+;
+$filename = Dir($dirname + "*.*")
+;
+; *******************************************************
+; Real work starts here
+; *******************************************************
+While $filename <> ""                                      
+	; Is it a directory ?
+	If (GetFileAttr ($dirname + $filename) & $KIXDir) > 0 ; Binary AND
+		; YES, this is a directory
+		$d = $dirname + $filename
+		If $filename <> "." AND $filename <> ".." 
+			If SubStr(@CURDIR,Len(@CURDIR)-1,1) = $backslash
+				$cmdline = @CURDIR + "kix32.exe " + "%0\.." + "CInfo.kix $$dirname=" + $quote + $d + $quote
+			Else
+				$cmdline = @CURDIR + $backslash + "kix32.exe " + "%0\.." + $backslash + "CInfo.kix $$dirname=" + $quote + $d + $quote
+			EndIf
+			;
+			; Close file prior to shelling out
+			$temp = Close (1)
+			; re-entrant code instigated here
+			? "Stepping into subdirectory"
+			Shell $cmdline
+			; Reopen file
+			$temp = Open (1,$Outfile,5)
+		EndIf
+	Else
+		; NO, must be a file
+		; Is this one of the corporate apps?
+		$lp = 0
+		? "Checking " + $filename
+		While $lp < 255
+			$lp = $lp + 1
+			? $appexe[$lp] + "<-----"
+			If Ucase($appexe[$lp]) = Ucase($filename)
+				$appfound = 1
+				$appdescription = $appname[$lp]
+				? "!!Corporate application Found: " + $appdescription
+			EndIf
+		Loop
+		If $appfound = 1
+			$temp = WriteLine (1,"                    <tr>" + $CRLF)
+			$temp = WriteLine (1,"                        <td nowrap>")
+			$temp = WriteLine (1,                             $dirname + $filename)
+			$temp = WriteLine (1,                        "</td>" + $CRLF)
+			$temp = WriteLine (1,"                        <td nowrap>")
+		    $temp = WriteLine (1,                             $appdescription)
+			$temp = WriteLine (1,                        "</td>" + $CRLF)
+			$temp = WriteLine (1,"                    </tr>" + $CRLF)
+		EndIf
+		$appfound = 0
+	EndIf
+	$filename = Dir()
+Loop
+; If this is the starting script, then close the tables and html document
+If $original = "yes"
+    $temp = WriteLine (1,"                </table>" + $CRLF)
+    $temp = WriteLine (1,"            </td>" + $CRLF)
+	$temp = WriteLine (1,"       </tr>" + $CRLF)
+	$temp = WriteLine (1,"    </table>" + $CRLF)
+    $temp = WriteLine (1,"</div>" + $CRLF)
+    $temp = WriteLine (1,"</body>" + $CRLF)
+    $temp = WriteLine (1,"</html>" + $CRLF)
+EndIf 
+$temp = Close (1)
+Quit 0

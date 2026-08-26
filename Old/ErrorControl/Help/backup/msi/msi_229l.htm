@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetProductProperty</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetProductProperty">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetproductproperty"></A>MsiGetProductProperty</H1>
+
+<P>The <B>MsiGetProductProperty</B> function retrieves product properties. These properties are in the product database.</P>
+
+<PRE class=syntax><B>UINT MsiGetProductProperty(
+</B>  <B>MSIHANDLE</B> <I>hProduct</I><B>, </B>  // product handle obtained from <B>MsiOpenProduct</B>
+  <B>LPCTSTR</B> <I>szProperty</I><B>,  </B> // property name, case-sensitive
+  <B>LPTSTR</B> <I>lpValueBuf</I><B>,</B>    // returned value, NULL if not desired
+  <B>DWORD</B> <I>*pcchValueBuf</I>   // buffer character count
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hProduct</I></DT>
+
+<DD>Handle to the product obtained from <A HREF="msi_5f78.htm"><B>MsiOpenProduct</B></A>.</DD>
+
+<DT><I>szProperty</I></DT>
+
+<DD>Specifies the property to retrieve. This is case-sensitive.</DD>
+
+<DT><I>lpValueBuf</I></DT>
+
+<DD>Pointer to a buffer that receives the property value. The value is truncated and null-terminated if <I>lpValueBuf</I> is too small. This parameter can be NULL.</DD>
+
+<DT><I>pcchValueBuf</I></DT>
+
+<DD>[in/out] Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpValueBuf</I> parameter. The count does not include the terminating null. 
+
+<P>If <I>lpValueBuf</I> is NULL, <I>pcchValueBuf</I> can be NULL.
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_HANDLE</TD>
+<TD width=52%>An invalid handle was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_MORE_DATA</TD>
+<TD width=52%>A buffer is too small to hold the entire property value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>When the <B>MsiGetProductProperty</B> function returns, the <I>pcchValueBuf</I> parameter contains the length of the class string stored in the buffer. The count returned does not include the terminating NULL character. If the buffer is not big enough, <B>MsiGetProductProperty</B> returns ERROR_MORE_DATA, and <B>MsiGetProductProperty</B> contains the size of the string, in characters, without counting the NULL character.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_product_query_functions">Product Query Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

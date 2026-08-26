@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>_Validation Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="_Validation Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi__validation_table"></A>_Validation Table</H1>
+
+<P>The _Validation table is a system table that contains the column names and the column values for all of the tables in the database. It is used during the database validation process to ensure that all columns are accounted for and have the correct values. This table is not shipped with the installer database.</P>
+
+<P>The _Validation table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Column</TH>
+<TH align=left width=44%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=20%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Table</TD>
+<TD width=44%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Column</TD>
+<TD width=44%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Nullable</TD>
+<TD width=44%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>MinValue</TD>
+<TD width=44%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>MaxValue</TD>
+<TD width=44%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>KeyTable</TD>
+<TD width=44%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>KeyColumn</TD>
+<TD width=44%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Category</TD>
+<TD width=44%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Set</TD>
+<TD width=44%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Description</TD>
+<TD width=44%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Table</DT>
+
+<DD>Used to identify a particular table. This key and the Column key form the primary key of the _Validation table.</DD>
+
+<DT>Column</DT>
+
+<DD>Used to identify a particular column of the table. This key and the Table key form the primary key of the _Validation table.</DD>
+
+<DT>Nullable</DT>
+
+<DD>Identifies whether or not the column may contain a Null value.
+
+<P>This column may have one of the following values.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>String</TH>
+<TH align=left width=86%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Y</TD>
+<TD width=86%>Yes, the column may have a Null value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>N</TD>
+<TD width=86%>No, the column may not have a Null value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>@</TD>
+<TD width=86%>The column is a key column for the table, but it may have a Null value.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>MinValue</DT>
+
+<DD>This field applies to columns having numeric value. The field contains the minimum permissible value. This can be the minimum value for an integer or the minimum value for a date or version string. </DD>
+
+<DT>MaxValue</DT>
+
+<DD>This field applies to columns having numeric value. The field is the maximum permissible value. This may be the maximum value for an integer or the maximum value for a date or version string. </DD>
+
+<DT>KeyTable</DT>
+
+<DD>This field applies to columns that are external keys. The field identified in Column must link to the column number specified by KeyColumn in the table named in KeyTable. This can be a list of tables separated by semicolons.</DD>
+
+<DT>KeyColumn</DT>
+
+<DD>This field applies to table columns that are external keys. The field identified in Column must link to the column number specified by KeyColumn in the table named in KeyTable. The permissible range of the KeyColumn field is 1-32.</DD>
+
+<DT>Category</DT>
+
+<DD>This is the type of data contained by the database field specified by the Table and Column columns of the _Validation table. If this is a type having a numeric value, such as <A HREF="tref_8koi.htm">Integer</A>, <A HREF="tref_001e.htm">DoubleInteger</A> or <A HREF="tref_9jl1.htm">Time/Date</A>, then enter null into this field and specify the value's range using the MinValue and MaxValue columns. Use the Category column to specify the non-numeric data types described in <A HREF="tref_6b77.htm">Column Data Types</A>.</DD>
+
+<DT>Set</DT>
+
+<DD>This is a list of permissible values for this field separated by semicolons. This field is usually used for enums.</DD>
+
+<DT>Description</DT>
+
+<DD>A description of the data that is stored in the column.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The Category field of this table only applies to string data. If the Column field refers to a column with binary data, the binary data type must be specified in the Category field. Integer data Column types ignore the Category field during validation.</P>
+
+<P></P>
+
+<P></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20_Validation%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_8fl1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20_Validation%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_8fl1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

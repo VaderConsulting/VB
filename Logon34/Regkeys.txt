@@ -1,0 +1,268 @@
+
+item: Edit Registry
+  Total Keys=40
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Access
+    New Value=1
+    Value Name=UserData
+    Root=1
+    Data Type=3
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Common
+    New Value=1
+    Value Name=UserData
+    Root=1
+    Data Type=3
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Common\General
+    New Value=0
+    Value Name=FirstRun
+    Root=1
+    Data Type=3
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Common\UserInfo
+    New Value=50000000
+    Value Name=UserInitials
+    Root=1
+    Data Type=4
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Common\UserInfo
+    New Value=%USRINFO%
+    New Value=
+    Value Name=UserName
+    Root=1
+    Data Type=4
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Common\UserInfo
+    New Value=57004100200050006F006C00690063006500200053006500720076006900630065000000
+    Value Name=Company
+    Root=1
+    Data Type=4
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Excel
+    New Value=1
+    Value Name=UserData
+    Root=1
+    Data Type=3
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Outlook
+    New Value=1
+    Value Name=UserData
+    Root=1
+    Data Type=3
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Outlook
+    New Value=FB831FEDFAFFFFFF78F8080078F8080008000000000000000A000000
+    Value Name=Settings
+    Root=1
+    Data Type=4
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Outlook
+    New Value=%COMPUTERNAME%
+    New Value=
+    Value Name=Machine Name
+    Root=1
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Outlook\Journal
+    New Value=%WIN%\Profiles\pd70870\Application Data\Microsoft\Outlook\outitems.log
+    Value Name=Outlook Item Log File
+    Root=1
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Outlook\Journal
+    New Value=%WIN%\Profiles\pd70870\Application Data\Microsoft\Outlook\offitems.log
+    Value Name=Item Log File
+    Root=1
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Outlook\Setup
+    New Value=1
+    Value Name=MailSupport
+    Root=1
+    Data Type=3
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\PowerPoint
+    New Value=1
+    Value Name=UserData
+    Root=1
+    Data Type=3
+  end
+  item: Key
+    Key=Software\Microsoft\Office\9.0\Word
+    New Value=1
+    Value Name=UserData
+    Root=1
+    Data Type=3
+  end
+  item: Key
+    Key=Software\Microsoft\OfficeCustomizeWizard\1.0\RegKeyPaths\{00000409-78E1-11D2-B60F-006097C998E7}
+    New Value=1
+    Value Name=OCWUserDataWritten
+    Root=1
+    Data Type=3
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+    New Value=H:\
+    Value Name=Local AppData
+    Root=1
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Streams\19
+    New Value=1C000000030000000000000000001C000000000001000000FFFFFFFF
+    Value Name=ViewView
+    Root=1
+    Data Type=4
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Extensions
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\WINWORD.EXE ^.doc
+    Value Name=doc
+    Root=1
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Extensions
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\WINWORD.EXE ^.dot
+    Value Name=dot
+    Root=1
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Extensions
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\MSACCESS.EXE
+    Value Name=mda
+    Root=1
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Extensions
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\MSACCESS.EXE
+    Value Name=mdb
+    Root=1
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Extensions
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\WINWORD.EXE ^.rtf
+    Value Name=rtf
+    Root=1
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Extensions
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\EXCEL.EXE
+    Value Name=xls
+    Root=1
+  end
+  item: Key
+    Key=Software\Netscape\Netscape Navigator\Viewers
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\EXCEL.EXE
+    Value Name=application/msexcel
+    Root=1
+  end
+  item: Key
+    Key=Software\Netscape\Netscape Navigator\Viewers
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\WINWORD.EXE
+    Value Name=application/msword
+    Root=1
+  end
+  item: Key
+    Key=Software\Netscape\Netscape Navigator\Viewers
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\POWERPNT.EXE
+    Value Name=application/pot
+    Root=1
+  end
+  item: Key
+    Key=Software\Netscape\Netscape Navigator\Viewers
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\POWERPNT.EXE
+    Value Name=application/pps
+    Root=1
+  end
+  item: Key
+    Key=Software\Netscape\Netscape Navigator\Viewers
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\POWERPNT.EXE
+    Value Name=application/ppt
+    Root=1
+  end
+  item: Key
+    Key=Software\Netscape\Netscape Navigator\Viewers
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\WINWORD.EXE
+    Value Name=application/rtf
+    Root=1
+  end
+  item: Key
+    Key=Software\Netscape\Netscape Navigator\Viewers
+    New Value=%PROGRAM_FILES%\MICROS~2\Office\EXCEL.EXE
+    Value Name=application/xlc
+    Root=1
+  end
+  item: Key
+    Key=SOFTWARE\McAfee\VirusScan\McShield
+    New Value=56367
+    Value Name=dwFilesScanned
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=SOFTWARE\McAfee\VirusScan\McShield
+    New Value=3967
+    Value Name=dwLastModified
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=SOFTWARE\McAfee\VirusScan\McShield
+    New Value=%PROGRAM_FILES%\Microsoft Hardware\Mouse\msh_zwf.dll
+    Value Name=szLastScanned
+    Root=2
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\Products\904000001E872D116BF00006799C897E\OfficeUserData
+    New Value=721289233
+    Value Name=Usage
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\Products\904000001E872D116BF00006799C897E\OUTLOOKFiles
+    New Value=721289380
+    Value Name=Usage
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\Products\904000001E872D116BF00006799C897E\OutlookFolderPublishing
+    New Value=721289395
+    Value Name=Usage
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\Products\904000001E872D116BF00006799C897E\OUTLOOKNonBootFiles
+    New Value=721290907
+    Value Name=Usage
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\Products\904000001E872D116BF00006799C897E\ProductFiles
+    New Value=721289397
+    Value Name=Usage
+    Root=2
+    Data Type=3
+  end
+  item: Key
+    Key=Software\Microsoft\OfficeCustomizeWizard\1.0\RegKeyPaths\{00000409-78E1-11D2-B60F-006097C998E7}
+    New Value=1
+    Value Name=OCWOutlookSettingsWritten
+    Root=1
+    Data Type=3
+  end
+end

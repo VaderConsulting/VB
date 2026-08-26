@@ -1,0 +1,407 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Control Attributes</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_control_attributes"></A>Control Attributes</H2>
+
+<P>For information on control attributes, see the link to the particular control that you need to create in <A HREF="href_710z.htm">Controls</A> as well as the links to particular control attributes in the following lists.</P>
+
+<P>The following are the methods generally used for specifying the attributes of a control.
+
+<UL>
+	<LI>Use the <A HREF="tref_4vhh.htm">ControlCondition table</A> to disable, enable, hide, or show a control according to the value of a property or conditional statement. You can also use this table to override the default control specified in the <A HREF="tref_51wl.htm">Dialog table</A>.</LI>
+
+	<LI>Subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A>. Enter the attribute's identifier in the Attribute column and the ControlEvent's identifier in the Event column of this table.</LI>
+
+	<LI>Set the control attribute bit flags for the control in the Attribute column of the <A HREF="tref_6nad.htm">Control table</A>. This sets the attributes upon the creation of the control.</LI>
+</UL>
+
+<P>Some attributes cannot be set for every control or be specified by all of the above methods. See the particular control and attribute topics for details.</P>
+
+<P>The initial values of some control attributes can be set with bits in the <A HREF="tref_6nad.htm">Control table</A>. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Attribute</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=26%>Hexadecimal</TH>
+<TH align=left width=26%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_9t2d.htm">BiDi</A> </TD>
+<TD width=16%>224</TD>
+<TD width=26%>0x000000E0</TD>
+<TD width=26%><B>msidbControlAttributesBiDi </B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_2ig5.htm">Enabled</A> </TD>
+<TD width=16%>2</TD>
+<TD width=26%>0x00000002</TD>
+<TD width=26%><B>msidbControlAttributesEnabled</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_8m05.htm">Indirect</A> </TD>
+<TD width=16%>8</TD>
+<TD width=26%>0x00000008</TD>
+<TD width=26%><B>msidbControlAttributesIndirect</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_07ad.htm">Integer Control</A> </TD>
+<TD width=16%>16</TD>
+<TD width=26%>0x00000010</TD>
+<TD width=26%><B>msidbControlAttributesInteger</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_8icl.htm">LeftScroll</A> </TD>
+<TD width=16%>128</TD>
+<TD width=26%>0x00000080</TD>
+<TD width=26%><B>msidbControlAttributesLeftScroll</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_6kbp.htm">RightAligned</A> </TD>
+<TD width=16%>64</TD>
+<TD width=26%>0x00000040</TD>
+<TD width=26%><B>msidbControlAttributesRightAligned</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_761x.htm">RTLRO</A> </TD>
+<TD width=16%>32</TD>
+<TD width=26%>0x00000020</TD>
+<TD width=26%><B>msidbControlAttributesRTLRO</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_0vad.htm">Sunken</A> </TD>
+<TD width=16%>4</TD>
+<TD width=26%>0x00000004</TD>
+<TD width=26%><B>msidbControlAttributesSunken</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_8bqd.htm">Visible</A> </TD>
+<TD width=16%>1</TD>
+<TD width=26%>0x00000001</TD>
+<TD width=26%><B>msidbControlAttributesVisible</B></TD>
+</TR>
+</TABLE><BR>
+
+<P>These attributes of text controls are set with bits.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Attribute</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=26%>Hexadecimal</TH>
+<TH align=left width=26%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_06ed.htm">FormatSize</A> </TD>
+<TD width=16%>524288</TD>
+<TD width=26%>0x00080000</TD>
+<TD width=26%><B>msidbControlAttributesFormatSize</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_0b8l.htm">NoPrefix</A> </TD>
+<TD width=16%>131072</TD>
+<TD width=26%>0x00020000</TD>
+<TD width=26%><B>msidbControlAttributesNoPrefix</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_7srp.htm">NoWrap</A> </TD>
+<TD width=16%>262144</TD>
+<TD width=26%>0x00040000</TD>
+<TD width=26%><B>msidbControlAttributesNoWrap</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_082t.htm">Password</A></TD>
+<TD width=16%>2097152</TD>
+<TD width=26%>0x00200000</TD>
+<TD width=26%><B>msidbControlAttributesPasswordInput</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_6yxx.htm">Transparent</A> </TD>
+<TD width=16%>65536</TD>
+<TD width=26%>0x00010000</TD>
+<TD width=26%><B>msidbControlAttributesTransparent</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_2eed.htm">UsersLanguage</A></TD>
+<TD width=16%>1048576</TD>
+<TD width=26%>0x00100000</TD>
+<TD width=26%><B>msidbControlAttributesUsersLanguage</B></TD>
+</TR>
+</TABLE><BR>
+
+<P>This attribute of the progress bar control is set with a bit.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Attribute</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=26%>Hexadecimal</TH>
+<TH align=left width=26%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_5ihx.htm">Progress95</A> </TD>
+<TD width=16%>65536</TD>
+<TD width=26%>0x00010000</TD>
+<TD width=26%><B>msidbControlAttributesProgress95</B></TD>
+</TR>
+</TABLE><BR>
+
+<P>These attributes of volume and directory select combo controls are set with bits.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Attribute</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=26%>Hexadecimal</TH>
+<TH align=left width=26%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_7m91.htm">CDROMVolume</A> </TD>
+<TD width=16%>524288</TD>
+<TD width=26%>0x00080000</TD>
+<TD width=26%><B>msidbControlAttributesCDROMVolume</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_2qg5.htm">FixedVolume</A> </TD>
+<TD width=16%>131072</TD>
+<TD width=26%>0x00020000</TD>
+<TD width=26%><B>msidbControlAttributesFixedVolume</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_3sdh.htm">FloppyVolume</A> </TD>
+<TD width=16%>2097152</TD>
+<TD width=26%>0x00200000</TD>
+<TD width=26%><B>msidbControlAttributesFloppyVolume</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_3wth.htm">RAMDiskVolume</A> </TD>
+<TD width=16%>1048576</TD>
+<TD width=26%>0x00100000</TD>
+<TD width=26%><B>msidbControlAttributesRAMDiskVolume</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_5x0l.htm">RemoteVolume</A> </TD>
+<TD width=16%>262144</TD>
+<TD width=26%>0x00040000</TD>
+<TD width=26%><B>msidbControlAttributesRemoteVolume</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_7j6t.htm">RemovableVolume</A> </TD>
+<TD width=16%>65536</TD>
+<TD width=26%>0x00010000</TD>
+<TD width=26%><B>msidbControlAttributesRemovableVolume</B></TD>
+</TR>
+</TABLE><BR>
+
+<P>These attributes of list box and combo box controls are set with bits.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Attribute</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=26%>Hexadecimal</TH>
+<TH align=left width=26%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_6hd1.htm">ComboList Control</A> </TD>
+<TD width=16%>131072</TD>
+<TD width=26%>0x00020000</TD>
+<TD width=26%><B>msidbControlAttributesComboList</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_6b51.htm">Sorted Control</A> </TD>
+<TD width=16%>65536</TD>
+<TD width=26%>0x00010000</TD>
+<TD width=26%><B>msidbControlAttributesSorted</B></TD>
+</TR>
+</TABLE><BR>
+
+<P>This attribute of the edit control is set with a bit.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Attribute</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=26%>Hexadecimal</TH>
+<TH align=left width=26%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_3alh.htm">MultiLine</A> </TD>
+<TD width=16%>65536</TD>
+<TD width=26%>0x00010000</TD>
+<TD width=26%><B>msidbControlAttributesMultiline</B></TD>
+</TR>
+</TABLE><BR>
+
+<P>These attributes of picture button controls are set with bits:</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Attribute</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=26%>Hexadecimal</TH>
+<TH align=left width=26%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_0bxh.htm">Bitmap</A> </TD>
+<TD width=16%>262144</TD>
+<TD width=26%>0x00040000</TD>
+<TD width=26%><B>msidbControlAttributesBitmap</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_6qn9.htm">FixedSize</A> </TD>
+<TD width=16%>1048576</TD>
+<TD width=26%>0x00100000</TD>
+<TD width=26%><B>msidbControlAttributesFixedSize</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_9v8l.htm">Icon</A> </TD>
+<TD width=16%>524288</TD>
+<TD width=26%>0x00080000</TD>
+<TD width=26%><B>msidbControlAttributesIcon</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_0oo5.htm">IconSize16</A> </TD>
+<TD width=16%>2097152</TD>
+<TD width=26%>0x00200000</TD>
+<TD width=26%><B>msidbControlAttributesIconSize16</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_0oo5.htm">IconSize32</A> </TD>
+<TD width=16%>4194304</TD>
+<TD width=26%>0x00400000</TD>
+<TD width=26%><B>msidbControlAttributesIconSize32</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_0oo5.htm">IconSize48</A> </TD>
+<TD width=16%>6291456</TD>
+<TD width=26%>0x00600000</TD>
+<TD width=26%><B>msidbControlAttributesIconSize48</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_3tut.htm">ImageHandle</A> </TD>
+<TD width=16%>65536</TD>
+<TD width=26%>0x00010000</TD>
+<TD width=26%><B>msidbControlAttributesImageHandle</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_5hlx.htm">PushLike Control</A> </TD>
+<TD width=16%>131072</TD>
+<TD width=26%>0x00020000</TD>
+<TD width=26%><B>msidbControlAttributesPushLike</B></TD>
+</TR>
+</TABLE><BR>
+
+<P>This attribute of radio button controls is set with a bit.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Attribute</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=26%>Hexadecimal</TH>
+<TH align=left width=26%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_1dd1.htm">HasBorder</A> </TD>
+<TD width=16%>16777216</TD>
+<TD width=26%>0x01000000</TD>
+<TD width=26%><B>msidbControlAttributesHasBorder</B></TD>
+</TR>
+</TABLE><BR>
+
+<P>This attribute of VolumeCostList Control is set with a bit.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Attribute</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=26%>Hexadecimal</TH>
+<TH align=left width=26%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="href_2kf9.htm">ControlShowRollbackCost</A></TD>
+<TD width=16%>4194304</TD>
+<TD width=26%>0x00400000</TD>
+<TD width=26%><B>msidbControlShowRollbackCost</B></TD>
+</TR>
+</TABLE><BR>
+
+<P>The following control attributes are not set with bits. These attributes are authored into the user interface tables or are set using <A HREF="href_3q0j.htm">Control Events</A>.</P>
+
+<P><A HREF="href_21np.htm">BillboardName</A><BR>
+<A HREF="href_1i79.htm">IndirectPropertyName</A><BR>
+<A HREF="href_2w6d.htm">Position</A><BR>
+<A HREF="href_8hyd.htm">Progress Control</A><BR>
+<A HREF="href_1nc5.htm">PropertyName</A><BR>
+<A HREF="href_4twl.htm">PropertyValue</A><BR>
+<A HREF="href_2kmd.htm">Text Control</A><BR>
+<A HREF="href_9z39.htm">TimeRemaining</A> </P>
+
+<P>See <A HREF="hand_7bec.htm">Adding Controls and Text</A>. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Control%20Attributes;%20RELEASE:%20August%202001;%20URL:%20href_8uk3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Control%20Attributes;%20RELEASE:%20August%202001;%20URL:%20href_8uk3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

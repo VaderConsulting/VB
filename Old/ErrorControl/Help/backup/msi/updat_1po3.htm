@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Patching and Upgrades</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Patching and Upgrades">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_patching_and_upgrades"></A>Patching and Upgrades</H1>
+
+<P>This section describes the methods Microsoft® Windows® Installer uses for updating an application. Because an installation package contains all the information needed for an installation, as well as the files that make up the application, information can be updated within the following parts of the installation package: 
+
+<UL>
+	<LI>The .msi file. </LI>
+
+	<LI>The files of the application.</LI>
+
+	<LI>The Windows Installer registration information.</LI>
+</UL>
+
+<P>If the update changes the .msi file as well as application files, without changing the product code or product version, it is termed a <A HREF="updat_9m0j.htm">Small Update</A>. </P>
+
+<P>If the update changes the product version, but does not change the product code, it is termed a <A HREF="updat_50hf.htm">Minor Upgrade</A>. The product version is stored in the <A HREF="pref_120p.htm">ProductVersion property</A>. </P>
+
+<P>If the update changes the installation into an entirely different product the product code must change and the update is a <A HREF="updat_8do3.htm">Major Upgrade</A>. The product code is stored in the <A HREF="pref_4tfd.htm">ProductCode property</A>. </P>
+
+<P>The following table summarizes the different types of updates.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Type of update</TH>
+<TH align=left width=16%>ProductCode</TH>
+<TH align=left width=19%>ProductVersion</TH>
+<TH align=left width=47%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%><A HREF="updat_9m0j.htm">Small Update</A></TD>
+<TD width=16%>No change</TD>
+<TD width=19%>No change</TD>
+<TD width=47%>An update to one or two files that is too small to warrant changing the <A HREF="pref_120p.htm">ProductVersion</A>. The package code in the <A HREF="sref_1am1.htm">Revision Number Summary Property</A> does change. Can be shipped as a full installation package or as a <A HREF="updat_7dmb.htm">patch package</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%><A HREF="updat_50hf.htm">Minor Upgrade</A></TD>
+<TD width=16%>No change</TD>
+<TD width=19%>Changed</TD>
+<TD width=47%>A small update making changes large enough to warrant changing the <A HREF="pref_120p.htm">ProductVersion property</A>. Can be shipped as a full installation package or as a <A HREF="updat_7dmb.htm">patch package</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%><A HREF="updat_8do3.htm">Major Upgrades</A></TD>
+<TD width=16%>Changed</TD>
+<TD width=19%>Changed</TD>
+<TD width=47%>A comprehensive update of the product warranting a change in the <A HREF="pref_4tfd.htm">ProductCode property</A>. Shipped as a <A HREF="updat_7dmb.htm">patch package</A> or as a full product installation package.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The package code uniquely identifies an installation package and should change whenever an update or upgrade changes the installation package. See <A HREF="over_0joz.htm">Package and Product Codes</A>.</P>
+
+<P>When deciding whether to change the product version, you should consider if future versions of the application will need to differentiate between the updated, and non-updated versions of the current product. To ensure differentiation in the future a <A HREF="updat_50hf.htm">Minor Upgrade</A> should be used instead of a <A HREF="updat_9m0j.htm">Small Update</A>. </P>
+
+<P>A Windows Installer patch package is one means of providing users with an application update. A patch can contain an entire file or only the file bits necessary to update part of a file. This means that the user can download an upgrade patch that is much smaller than the entire product and that preserves user customizations through the upgrade. For more information about updating an application using a patch, see <A HREF="updat_7dmb.htm">Patch Packages</A> and <A HREF="updat_24yt.htm">Creating a Patch Package</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

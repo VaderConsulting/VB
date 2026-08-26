@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiDatabaseGetPrimaryKeys</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiDatabaseGetPrimaryKeys">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msidatabasegetprimarykeys"></A>MsiDatabaseGetPrimaryKeys</H1>
+
+<P>The <B>MsiDatabaseGetPrimaryKeys</B> function returns a record containing the names of all the primary key columns for a specified table.</P>
+
+<PRE class=syntax><B>UINT MsiDatabaseGetPrimaryKeys(
+</B>  <B>MSIHANDLE</B> <I>hDatabase</I><B>,</B>   // database handle
+  <B>LPCTSTR</B> <I>szTableName</I><B>,</B>   // name of table
+  <B>MSIHANDLE</B> <I>*phRecord</I>    // handle for record
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hDatabase</I></DT>
+
+<DD>Handle to the database. See <A HREF="novr_0hgl.htm">Obtaining a Database Handle</A>.</DD>
+
+<DT><I>szTableName</I></DT>
+
+<DD>Specifies the name of the table from which to obtain primary key names.</DD>
+
+<DT><I>phRecord</I></DT>
+
+<DD>Pointer to the handle of the record that holds the primary key names.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_INVALID_TABLE</DT>
+
+<DD>An invalid table was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The field count of the returned record is the count of primary key columns returned by the <B>MsiDatabaseGetPrimaryKeys</B> function. The returned record contains the table name in Field (0) and the column names that make up the primary key names in succeeding fields. These primary key names correspond to the column numbers for the fields.</P>
+
+<P>This function cannot be used with the <A HREF="tref_2fl1.htm">_Tables table</A> or the <A HREF="tref_4rj9.htm">_Columns table</A>.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_general_database_access_functions">General Database Access Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

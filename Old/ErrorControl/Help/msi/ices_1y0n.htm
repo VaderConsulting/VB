@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE57</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE57">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice57"></A>ICE57</H1>
+
+<P>ICE57 validates that individual components do not mix per-machine and per-user data. This ICE custom action checks registry entries, files, directory key paths, and non-advertised shortcuts.</P>
+
+<P>Mixing per-user and per-machine data in the same component could result in only partial installation of the component for some users in a multi-user environment.</P>
+
+<P>See the <A HREF="pref_6tx5.htm"><B>ALLUSERS</B> property</A>.</P>
+
+<H4>Result</H4>
+
+<P>ICE57 posts an error if it finds any component that contains both a per-machine and per-user registry entries, files, directory key paths, or non-advertised shortcuts.</P>
+
+<H4>Example</H4>
+
+<P>ICE57 reports the following errors for the example shown.</P>
+
+<PRE>Component 'Component1' has both per-user and per-machine 
+    data with a per-machine KeyPath. 
+ 
+WARNING: Component 'Component2' has both per-user and 
+    per-machine data with an HKCU Registry KeyPath. 
+ 
+Component 'Component3' has a registry entry that 
+    can be either per-user or per-machine and a per-machine KeyPath. 
+ 
+Component 'Component4' has both per-user data and 
+    a keypath that can be either per-user or per-machine. </PRE>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Component</TH>
+<TH align=left width=28%>Directory</TH>
+<TH align=left width=20%>Attributes</TH>
+<TH align=left width=24%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Component1</TD>
+<TD width=28%>DirectoryA</TD>
+<TD width=20%>0</TD>
+<TD width=24%>FileA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Component2</TD>
+<TD width=28%>DirectoryA</TD>
+<TD width=20%>4</TD>
+<TD width=24%>RegKeyB</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Component3</TD>
+<TD width=28%>DirectoryA</TD>
+<TD width=20%>0</TD>
+<TD width=24%>FileC</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Component4</TD>
+<TD width=28%>DirectoryA</TD>
+<TD width=20%>4</TD>
+<TD width=24%>RegKeyD</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_3obp.htm"><B>Registry Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Registry</TH>
+<TH align=left width=28%>Root</TH>
+<TH align=left width=44%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>RegKeyA</TD>
+<TD width=28%>1</TD>
+<TD width=44%>Component1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>RegKeyB</TD>
+<TD width=28%>1</TD>
+<TD width=44%>Component2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>RegKeyC</TD>
+<TD width=28%>-1</TD>
+<TD width=44%>Component3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>RegKeyD</TD>
+<TD width=28%>-1</TD>
+<TD width=44%>Component4</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>File</TH>
+<TH align=left width=72%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FileA</TD>
+<TD width=72%>Component1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FileB</TD>
+<TD width=72%>Component2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FileC</TD>
+<TD width=72%>Component3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FileD</TD>
+<TD width=72%>Component4</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_6an9.htm"><B>Directory Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Directory</TH>
+<TH align=left width=28%>Directory_Parent</TH>
+<TH align=left width=44%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>TARGETDIR</TD>
+<TD width=28%> </TD>
+<TD width=44%>SourceDir</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>DirectoryA</TD>
+<TD width=28%>TARGETDIR</TD>
+<TD width=44%>DirectoryA</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix the errors, reorganize the application such that each component contains only per-user or per-machine resources, and not both.</P>
+
+<P>The first error message is posted because Component1 contains FileA (per-machine) and the HKCU registry key RegKeyA (per user).</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE57;%20RELEASE:%20August%202001;%20URL:%20ices_1y0n.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE57;%20RELEASE:%20August%202001;%20URL:%20ices_1y0n.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,600 @@
+!Workspace
+!Version 650
+!Charset WindowsLatin1
+Open Table "\\server\dave\Documents and Settings\dave.HOME\Desktop\Scripts\Tenement\AusTenement" As AusTenement Interactive
+Open Table "\\server\dave\Documents and Settings\dave.HOME\Desktop\Scripts\Topography\Western Australia\250K Raster\Zone 49_50\Robinson Range.TAB" As Robinson_Range Interactive
+Open Table "\\server\dave\Documents and Settings\dave.HOME\Desktop\Scripts\Topography\Western Australia\100K Raster\Meekatharra\AU2446G.TAB" As AU2446G Interactive
+Open Table "\\server\dave\Documents and Settings\dave.HOME\Desktop\Scripts\Topography\Western Australia\100K Raster\Meekatharra\AU2446A.TAB" As AU2446A Interactive
+Open Table "\\Expfile01\techdata\55  Talc\Projects\Mt Seabrook\Database\SBRK_lease_Col" As SBRK_lease_Col Interactive
+Open Table "\\server\dave\Documents and Settings\dave.HOME\Desktop\Scripts\Documents and Settings\dave.HOME\My Documents\FinePrint files\55  Talc\Projects\Mt Seabrook\Tenement\Aboriginal exclusion zones" As Aboriginal_exclusion_zones Interactive
+Open Table "\\server\dave\Documents and Settings\dave.HOME\Desktop\Scripts\Program Files\MapInfo\Professional 6.5\Tmp\Autogrid" As Autogrid Interactive
+StatusBar Hide
+Map From SBRK_lease_Col,AusTenement,AU2446G,AU2446A,Robinson_Range 
+  Position (0.0520833,0.0520833) Units "in"
+  Width 7.40625 Units "in" Height 4.72917 Units "in" Min
+Set Window FrontWindow() ScrollBars Off Autoscroll On
+Set Map
+  CoordSys Earth Projection 8, 104, "m", 117, 0, 0.9996, 500000, 10000000
+  Center (577388.6185,7168942.292)
+  Zoom 12.00152852 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "m"
+Set Map
+  Layer 1
+    Display Global
+    Global   Symbol (34,0,6)   
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Hole_id
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 2
+    Display Global
+    Global Pen (2,2,16711680)  Brush (1,16777215,16777215)    
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 3
+    Display Graphic
+    Selectable Off
+    Zoom (0.3, 120) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+  Layer 4
+    Display Off
+    Selectable Off
+    Zoom (0.3, 120) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+  Layer 5
+    Display Off
+    Selectable Off
+    Zoom (1.1, 430) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+Set CoordSys Earth Projection 8, 13, "m", 117, 0, 0.9996, 500000, 10000000 Bounds (-7745874.38492, 1999.40969607) (8745874.38492, 19998000.5903)
+Set Map Layer 0 Editable
+Create Region  1
+  13
+(580427.55,7168324.49)
+(580279.2,7168439.02)
+(580271.32,7168613.93)
+(580386.21,7168814.47)
+(580503.63,7168950.88)
+(580717.47,7169086.69)
+(581305.47,7168721.84)
+(581957.56,7168333.22)
+(582167.15,7168203.79)
+(582034.27,7167907.13)
+(581752.91,7167681.27)
+(581524.59,7167557.19)
+(580427.55,7168324.49)
+    Pen (3,3,45056) 
+    Brush (1,0,16777215)
+    Center (581218.66,7168321.35)
+Create Region  1
+  12
+(573536.37,7170264.75)
+(574964.38,7170157.12)
+(574905.71,7169208.46)
+(573528.45,7169157.77)
+(573152.14,7168954.19)
+(573059.52,7169151.61)
+(572942.26,7169398.44)
+(572841.52,7169616.38)
+(572941.69,7169658.58)
+(573287.84,7169743.96)
+(573522.25,7169799.48)
+(573536.37,7170264.75)
+    Pen (3,3,45056) 
+    Brush (1,0,16777215)
+    Center (574240.61,7169736.57)
+Set CoordSys Earth
+Set Map Layer 0 Editable
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Map From AusTenement,Robinson_Range 
+  Position (2.92708,0.28125) Units "in"
+  Width 5.60417 Units "in" Height 3.48958 Units "in" Min
+Set Window FrontWindow() ScrollBars On Autoscroll On
+Set Map
+  CoordSys Earth Projection 8, 12, "m", 117, 0, 0.9996, 500000, 10000000
+  Center (587404.3603,7168393.442)
+  Zoom 33.87653384 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "degree"
+Set Map
+  Layer 1
+    Display Global
+    Global Pen (2,2,16711680)  Brush (1,16777215,16777215)    
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 2
+    Display Graphic
+    Selectable Off
+    Zoom (1.1, 430) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency on 
+  color 0 
+    grayscale off 
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Map From Autogrid,SBRK_lease_Col,Aboriginal_exclusion_zones,AusTenement,AU2446G,AU2446A,Robinson_Range 
+  Position (0.46875,0.53125) Units "in"
+  Width 7.40625 Units "in" Height 4.72917 Units "in" Min
+Set Window FrontWindow() ScrollBars Off Autoscroll On
+Set Map
+  CoordSys Earth Projection 8, 104, "m", 117, 0, 0.9996, 500000, 10000000
+  Center (577388.6185,7168942.292)
+  Zoom 12.00152852 Units "km"
+  Preserve Zoom Display Position
+  Distance Units "km" Area Units "sq km" XY Units "m"
+Set Map
+  Layer 1
+    Display Graphic
+    Selectable Off
+    Label Line Arrow Position Above Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Coord
+      Parallel On Auto Off Overlap Off Duplicates Off Offset 2
+      Visibility On
+  Layer 2
+    Display Global
+    Global   Symbol (34,0,6)   
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Hole_id
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 3
+    Display Graphic
+    Label Line Arrow Position Right Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Type
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 4
+    Display Global
+    Global Pen (2,2,16711680)  Brush (1,16777215,16777215)    
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Number
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+  Layer 5
+    Display Graphic
+    Selectable Off
+    Zoom (0.3, 120) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+  Layer 6
+    Display Off
+    Selectable Off
+    Zoom (0.3, 120) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+  Layer 7
+    Display Off
+    Selectable Off
+    Zoom (1.1, 430) Units "km" 
+  contrast 50 
+  brightness 50 
+  alpha 255 
+    transparency off 
+  color 0 
+    grayscale off 
+Set Map Layer 0 Editable
+Set Window FrontWindow() Printer
+ Name "\\expprt01\HPLJ4000b" Orientation Portrait Copies 1
+ Papersize 9
+Layout
+  Position (0.166667,0.4375) Units "in"
+  Width 7.8125 Units "in" Height 5.64583 Units "in" Min
+  Set CoordSys Layout Units "in"
+  Create Rect (0.6979,0.7965) (22.7451,15.7569)
+    Pen (2,2,0) 
+    Brush (1,16777215,16777215)
+  Create Frame (1.1396,0.9563) (20.0403,12.9104)
+    Pen (1,2,0) 
+    Brush (2,16777215,16777215)
+    Title "SBRK_lease_Col,...,Robinson_Range Map"
+    FillFrame On
+  Create Rect (18.8069,13.3993) (22.7444,15.7618)
+    Pen (2,2,0) 
+    Brush (1,16777215,16777215)
+  Create Line (18.8174,13.6465) (22.7333,13.6458)
+    Pen (2,2,0) 
+  Create Line (20.7771,15.0868) (20.7771,15.7563)
+    Pen (2,2,0) 
+  Create Text
+    "Author : G C Broadbent"
+    (18.8743,15.1062) (19.9979,15.2361)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Drawn : G C Broadbent"
+    (18.8743,15.2729) (19.991,15.4028)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Scale : 1:25 000"
+    (18.8743,15.6062) (19.6507,15.7361)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Date : May 2002"
+    (18.8743,15.4396) (19.6542,15.5694)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Report No :"
+    (20.8604,15.441) (21.4069,15.5708)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Plan No : Map 2"
+    (20.8604,15.6062) (21.6271,15.7361)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "RIO TINTO EXPLORATION PTY. LIMITED"
+    (19.5125,13.4438) (22.3458,13.6104)
+    Font ("Times New Roman",1,10,0)
+    Justify Center
+
+  Create Text
+    "Luzenac Talc - Mt Seabrook Project"
+    (19.6938,13.8438) (21.8701,14.0104)
+    Font ("Times New Roman",1,10,0)
+    Justify Center
+
+  Create Text
+    "ML's M52/0469 Trillbar, and \nM52/0471 Winja Well\nWork Area Locations for 2002"
+    (19.5104,14.1111) (22.0271,14.8014)
+    Font ("Times New Roman",1,14,0)
+    Justify Center
+
+  Create Line (18.8125,15.0889) (22.7285,15.0882)
+    Pen (2,2,0) 
+  Create Line (18.8125,15.4278) (22.7285,15.4271)
+    Pen (2,2,0) 
+  Create Line (18.8125,15.591) (22.7285,15.5903)
+    Pen (2,2,0) 
+  Create Line (18.8125,15.2625) (22.7285,15.2618)
+    Pen (2,2,0) 
+  Create Text
+    "File Name :"
+    (20.8604,15.2757) (21.4035,15.4056)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Ref :"
+    (20.8604,15.1104) (21.0903,15.2403)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Datum : AMG Zone 50  (AGD 66)"
+    (16.1535,14.575) (17.7535,14.7049)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "M52/0471 Winja Well"
+    (15.4771,5.8993) (17.9236,6.1993)
+    Font ("Arial",1,18,16711680)
+
+  Create Text
+    "M52/0469 Trillbar"
+    (3.716,4.2035) (5.759,4.5035)
+    Font ("Arial",1,18,16711680)
+
+  Create Rect (2.1375,13.2806) (3.2889,13.9382)
+    Pen (3,3,45056) 
+    Brush (1,0,16777215)
+  Create Text
+    "First Priority Target Areas\nProposed Work - Geological Mapping, Soil Sampling, possible geophysics,\nReverse Circulation and Diamond Drilling"
+    (3.7819,13.1486) (12.1188,13.9986)
+    Font ("Arial",0,18,0)
+
+  Create Text
+    "Second Priority Target Areas (remainder of ML areas)\nProposed Work - Mapping, soil sampling, possible geophysics, Rehabilitation of previous drilling"
+    (3.7826,14.5632) (14.4757,15.1299)
+    Font ("Arial",0,18,0)
+
+  Create Rect (2.1708,14.5299) (3.3549,15.1875)
+    Pen (2,2,16711680) 
+    Brush (1,0,16777215)
+  Create Text
+    "Mt Seabrook Mine \n(NOT a Rio Tinto operation \n- operated by Unimin/IMI Fabi)"
+    (2.8937,8.4785) (5.4736,9.1583)
+    Font ("Arial",0,14,16711680)
+
+  Create Text
+    "Trillbar Homestead"
+    (8.0243,3.8417) (9.6542,4.0681)
+    Font ("Arial",0,14,16711680)
+
+  Create Point (13.3528,13.5104)
+    Symbol (34,0,6) 
+  Create Text
+    "Previous Drillholes, to be rehabilitated"
+    (13.7146,13.3792) (16.9444,13.6056)
+    Font ("Arial",0,14,0)
+
+  Create Text
+    "Map 2"
+    (0.9896,13.9674) (1.5194,14.1938)
+    Font ("Arial",0,14,0)
+
+  Set Layout Ruler On Pagebreaks On Frame Contents Active
+  Zoom 31.6732 Center (11.6917,8.26493) Extents To Fit
+  Set Window FrontWindow() Autoscroll On
+  Set CoordSys Earth
+Set Window FrontWindow() Printer
+ Name "\\expprt01\DJ2500CPa" Orientation Landscape Copies 1
+ Papersize 270
+Layout
+  Position (1.58333,1.4375) Units "in"
+  Width 6.57292 Units "in" Height 4.82292 Units "in" Min
+  Set CoordSys Layout Units "in"
+  Create Rect (0.2194,0.3111) (15.9681,11.3354)
+    Pen (2,2,0) 
+    Brush (1,16777215,16777215)
+  Create Rect (12.0333,8.9736) (15.9708,11.3361)
+    Pen (2,2,0) 
+    Brush (1,16777215,16777215)
+  Create Line (12.0437,9.2208) (15.9597,9.2201)
+    Pen (2,2,0) 
+  Create Line (14.0035,10.6611) (14.0035,11.3306)
+    Pen (2,2,0) 
+  Create Text
+    "Author : G C BroadbentT"
+    (12.1007,10.6701) (13.2937,10.8)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Drawn : G C Broadbent"
+    (12.1007,10.8368) (13.2174,10.9667)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Scale : 1:100 000"
+    (12.1007,11.1701) (12.9375,11.3)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Date : May 2002"
+    (12.1007,11.0035) (12.8806,11.1333)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Report No :"
+    (14.0868,11.0049) (14.6333,11.1347)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Plan No : Map 1"
+    (14.0868,11.1701) (14.8535,11.3)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "RIO TINTO EXPLORATION PTY. LIMITED"
+    (12.6826,9.016) (15.516,9.1826)
+    Font ("Times New Roman",1,10,0)
+    Justify Center
+
+  Create Text
+    "Luzenac Talc - Mt Seabrook Project"
+    (13.0326,9.3931) (15.209,9.5597)
+    Font ("Times New Roman",1,10,0)
+    Justify Center
+
+  Create Text
+    "Location Map for \nML's M52/0469 Trillbar, and \nM52/0471 Winja Well\n"
+    (12.7694,9.7493) (15.2597,10.4396)
+    Font ("Times New Roman",1,14,0)
+    Justify Center
+
+  Create Line (12.0389,10.6632) (15.9549,10.6625)
+    Pen (2,2,0) 
+  Create Line (12.0389,11.0021) (15.9549,11.0014)
+    Pen (2,2,0) 
+  Create Line (12.0389,11.1653) (15.9549,11.1646)
+    Pen (2,2,0) 
+  Create Line (12.0389,10.8368) (15.9549,10.8361)
+    Pen (2,2,0) 
+  Create Text
+    "File Name :"
+    (14.0868,10.8396) (14.6299,10.9694)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Ref :"
+    (14.0868,10.6743) (14.3167,10.8042)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Datum : AMG Zone 50  (AGD 66)"
+    (9.5674,10.0431) (11.1674,10.1729)
+    Font ("Arial",0,8,0)
+
+  Create Frame (0.3694,0.4375) (13.7069,8.7944)
+    Pen (1,2,0) 
+    Brush (2,16777215,16777215)
+    Title "AusTenement,Robinson_Range Map"
+    FillFrame On
+  Create Text
+    "Map 1"
+    (1.2007,9.1681) (1.9139,9.4681)
+    Font ("Arial",1,18,0)
+
+  Create Text
+    "M52/0469 Trillbar"
+    (1.8167,4.5667) (3.3833,4.7965)
+    Font ("Arial",1,14,16711680)
+
+  Create Text
+    "M52/0471 Winja Well"
+    (4.3611,4.0007) (6.2347,4.2306)
+    Font ("Arial",1,14,16711680)
+
+  Set Layout Ruler On Pagebreaks On Frame Contents Active
+  Zoom 37.2984 Center (8.26667,5.92858) Extents To Fit
+  Set Window FrontWindow() Autoscroll On
+  Set CoordSys Earth
+Set Window FrontWindow() Printer
+ Name "\\Expprt01\DJ1120c" Orientation Landscape Copies 1
+ Papersize 8
+Layout
+  Position (0.0625,0.0520833) Units "in"
+  Width 9.14583 Units "in" Height 6.04167 Units "in" 
+  Set CoordSys Layout Units "in"
+  Create Frame (0.4076,0.3944) (9.8576,6.4306)
+    Pen (1,2,0) 
+    Brush (2,16777215,16777215)
+    Title "Autogrid,...,Robinson_Range Map"
+    FillFrame On
+  Create Pline 5
+(0.2326,0.2715)
+(0.2326,8.0326)
+(11.1028,8.0326)
+(11.1028,0.2715)
+(0.2326,0.2715)
+    Pen (2,2,0) 
+  Create Rect (7.1653,5.6701) (11.1028,8.0326)
+    Pen (2,2,0) 
+    Brush (2,16777215,16777215)
+  Create Line (7.1757,5.9174) (11.0917,5.9167)
+    Pen (2,2,0) 
+  Create Line (9.1354,7.3576) (9.1354,8.0271)
+    Pen (2,2,0) 
+  Create Text
+    "Author : GJ LILLEY"
+    (7.2326,7.3667) (8.166,7.4965)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Drawn : GJ LILLEY"
+    (7.2326,7.5333) (8.159,7.6632)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Scale : 1:50,000 AGD66 Zone 50"
+    (7.2326,7.8667) (8.8194,7.9965)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Date : 9 July 2002"
+    (7.2326,7.7) (8.0958,7.8299)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Report No :"
+    (9.2188,7.7014) (9.7653,7.8313)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Plan No :"
+    (9.2188,7.8667) (9.659,7.9965)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "RIO TINTO EXPLORATION PTY. LIMITED"
+    (7.8146,5.7125) (10.6479,5.8792)
+    Font ("Times New Roman",1,10,0)
+    Justify Center
+
+  Create Text
+    "Luzenac Talc - Mt Seabrook Project"
+    (8.1431,6.0896) (10.3201,6.2562)
+    Font ("Times New Roman",1,10,0)
+    Justify Center
+
+  Create Text
+    "Location Map for \nML's M52/0469 Trillbar, and \nM52/0471 Winja Well\n"
+    (7.9861,6.4646) (10.4764,7.1549)
+    Font ("Times New Roman",1,14,0)
+    Justify Center
+
+  Create Line (7.1708,7.3597) (11.0868,7.359)
+    Pen (2,2,0) 
+  Create Line (7.1708,7.6986) (11.0868,7.6979)
+    Pen (2,2,0) 
+  Create Line (7.1708,7.8618) (11.0868,7.8611)
+    Pen (2,2,0) 
+  Create Line (7.1708,7.5333) (11.0868,7.5326)
+    Pen (2,2,0) 
+  Create Text
+    "File Name :"
+    (9.2188,7.5361) (9.7618,7.666)
+    Font ("Arial",0,8,0)
+
+  Create Text
+    "Ref :"
+    (9.2188,7.3708) (9.4486,7.5007)
+    Font ("Arial",0,8,0)
+
+  Create Rect (1.0771,6.7458) (1.4896,6.9417)
+    Pen (2,2,16711680) 
+    Brush (1,16777215,16777215)
+  Create Ellipse (1.1854,7.0653) (1.3813,7.2604)
+    Pen (1,2,16711680) 
+    Brush (5,16711680,16777215)
+  Create Text
+    "RTE Mine Lease"
+    (1.7083,6.7611) (2.9549,6.9576)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "Heratige Exclusion Zone"
+    (1.7083,7.0278) (3.5382,7.2243)
+    Font ("Arial",0,12,0)
+
+  Create Text
+    "WMC Drill Hole"
+    (1.7083,7.2944) (2.8681,7.491)
+    Font ("Arial",0,12,0)
+
+  Create Point (1.2833,7.384)
+    Symbol (41,0,6,"MapInfo Cartographic",0,0) 
+  Set Layout Ruler On Pagebreaks On Frame Contents Active
+  Zoom 68.1704 Center (6.41016,4.13333) Extents To Fit
+  Set Window FrontWindow() Autoscroll On
+  Set CoordSys Earth
+Set Window FrontWindow() Printer
+ Name "\\expprt01\DJ1125a" Orientation Landscape Copies 2
+ Papersize 9
+Set Digitizer
+  (133,-23) (3483,10549) Label "Pt 1",
+  (133,-23.5) (3525,14916) Label "Pt 2",
+  (133.5,-23.5) (7546,14871) Label "Pt 3",
+  (133.5,-23) (7515,10499) Label "Pt 4"
+  CoordSys Earth Projection 1, 13
+  Units "degree"
+  Width 36000 Height 24000
+  Resolution 1000, 1000
+  Button 1, 2
+  Mode Off
+
+

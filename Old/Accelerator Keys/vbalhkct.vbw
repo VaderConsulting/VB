@@ -1,0 +1,3 @@
+vbalHookControl = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+mWindowsHook = 0, 0, 0, 0, C
+IWindowsHook = 0, 0, 0, 0, C

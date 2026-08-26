@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>SourceDir Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="SourceDir Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_sourcedir_property"></A>SourceDir Property</H1>
+
+<P>The SourceDir property is the root directory containing the source cabinet file or the source file tree of the installation package. This value is used for directory resolution.</P>
+
+<H4>Default Value</H4>
+
+<P>The directory containing the installation package.</P>
+
+<H4>Remarks</H4>
+
+<P>The <A HREF="aref_21im.htm">ResolveSource action</A> must be called before using the SourceDir property in any expression or attempting to retrieve the value of SourceDir with <A HREF="qref_7u2h.htm"><B>MsiGetProperty</B></A>. The ResolveSource action should not be run while the source is unavailable, such as when uninstalling an application, because this can cause an unintended prompt for the source media.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

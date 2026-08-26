@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiEnumPatches</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiEnumPatches">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msienumpatches"></A>MsiEnumPatches</H1>
+
+<P>The <B>MsiEnumPatches</B> function enumerates all of the patches that have been applied to a product. The function returns the patch code GUID for each patch that has been applied to the product and returns a list of transforms from each patch that apply to the product. Note that patches may have many transforms only some of which are applicable to a particular product. The list of transforms are returned in the same format as the value of the <A HREF="pref_8q2h.htm"><B>TRANSFORMS</B> property</A>. </P>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;<I>pcchTransformsBuf </I>is not set to the number of characters copied to <I>lpTransformsBuf</I> upon a successful return of <B>MsiEnumPatches</B>.</P>
+
+<PRE class=syntax><B>UINT MsiEnumPatches(
+</B>  <B>LPCTSTR</B> <I>szProduct</I><B>,      </B> // product code, string GUID
+  <B>DWORD</B> <I>iPatchIndex</I><B>,</B>       // 0-based index into patches
+  <B>LPTSTR</B> <I>lpPatchBuf</I><B>,</B>       // buffer for patch
+  <B>LPTSTR</B><I> lpTransformsBuf</I><B>,</B>  // buffer for transforms
+  <B>DWORD</B><I> </I><B>*</B><I>pcchTransformsBuf </I>// transforms buffer character count
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szProduct</I></DT>
+
+<DD>[in] Specifies the product for which patches are to be enumerated. </DD>
+
+<DT><I>iPatchIndex</I></DT>
+
+<DD>[in] Specifies the index of the patch to retrieve. This parameter should be zero for the first call to the <B>MsiEnumPatches</B> function and then incremented for subsequent calls.</DD>
+
+<DT><I>lpPatchBuf</I></DT>
+
+<DD>[out] Pointer to a buffer that receives the patch's GUID. This argument is required.</DD>
+
+<DT><I>lpTransformsBuf</I></DT>
+
+<DD>[out] Pointer to a buffer that receives the list of transforms in the patch that are applicable to the product. This argument is required and cannot be Null.</DD>
+
+<DT><I>pcchTransformsBuf</I></DT>
+
+<DD>[in, out] Set to the number of characters copied to <I>lpTransformsBuf </I>upon an unsuccessful return of the function. Not set for a successful return. On input, this is the full size of the buffer, including a space for a terminating NULL. If the buffer passed in is too small, the count returned does not include the terminating NULL. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_CONFIGURATION</TD>
+<TD width=52%>The configuration data is corrupt.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_NO_MORE_ITEMS </TD>
+<TD width=52%>There are no patches to return.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS </TD>
+<TD width=52%>A value was enumerated.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_MORE_DATA </TD>
+<TD width=52%>A buffer is too small to hold the requested data. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>To enumerate patches, an application should initially call the <B>MsiEnumPatches</B> function with the <I>iPatchIndex </I>parameter set to zero. The application should then increment the <I>iPatchIndex </I>parameter and call <B>MsiEnumPatches</B> until there are no more products (until the function returns ERROR_NO_MORE_ITEMS).</P>
+
+<P>If the buffer is too small to hold the requested data, <B>MsiEnumPatches </B>returns ERROR_MORE_DATA and <I>pcchTransformsBuf</I> contains the number of characters copied to <I>lpTransformsBuf</I>, without counting the Null character. </P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiEnumPatches;%20RELEASE:%20August%202001;%20URL:%20msi_36lv.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiEnumPatches;%20RELEASE:%20August%202001;%20URL:%20msi_36lv.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

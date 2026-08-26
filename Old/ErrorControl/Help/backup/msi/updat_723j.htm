@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>TargetFiles_OptionalData Table (PATCHWIZ.DLL)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="TargetFiles_OptionalData Table (PATCHWIZ.DLL)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_targetfiles_optionaldata_table_patchwiz.dll_"></A>TargetFiles_OptionalData Table (PATCHWIZ.DLL)</H1>
+
+<P>The TargetFiles_OptionalData table contains information about specific files in a target image. This table is optional in the patch creation database (.pcp file) and is used by <A HREF="updat_6yu7.htm"><B>UiCreatePatchPackage (PATCHWIZ.DLL)</B></A>.</P>
+
+<P>The TargetFiles_OptionalData table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Target</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>FTK</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>SymbolPaths</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>IgnoreOffsets</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>IgnoreLengths</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>RetainOffsets</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Target</DT>
+
+<DD>Foreign key to the Target column of the <A HREF="updat_8ov3.htm">TargetImages Table (PATCHWIZ.DLL)</A>.</DD>
+
+<DT>FTK</DT>
+
+<DD>Foreign key into the <A HREF="tref_4n6t.htm">File table</A> of target image.</DD>
+
+<DT>SymbolPaths</DT>
+
+<DD>The value in this field is added to the semicolon delimited list of folders in the SymbolPaths column of the <A HREF="updat_8ov3.htm">TargetImages Table (PATCHWIZ.DLL)</A> when the patch is generated, and can be used to add symbol files for a specific file.</DD>
+
+<DT>IgnoreOffsets</DT>
+
+<DD>The value in this field is a comma delimited list of range offset numbers for the ranges to be ignored in the Target file. The order and number of the ranges in the list must match the items in the IgnoreLengths column. This column is optional.</DD>
+
+<DT>IgnoreLengths</DT>
+
+<DD>The value in this field is a comma delimited list of range lengths for the ranges to be ignored in the Target file. The order and number of the ranges in the list must match the items in the IgnoreOffsets column. This column is optional.</DD>
+
+<DT>RetainOffsets</DT>
+
+<DD>The value in this field is a comma delimited list of range offset numbers for the ranges to be retained in the Target file. The order and number of the ranges in the list must match the items in the RetainOffsets column of the corresponding record in the <A HREF="updat_4ajj.htm">FamilyFileRanges Table (PATCHWIZ.DLL)</A>.  
+
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

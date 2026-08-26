@@ -1,0 +1,17 @@
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by D (.) -->
+<Substitutes>
+    <Printers>
+        <Printer>
+            <OldServer>TPERDC</OldServer>
+            <OldQueue>Printer1</OldQueue>
+            <NewServer>TPERDC</NewServer>
+            <NewQueue>Printer3</NewQueue>
+        </Printer>
+        <Printer>
+            <OldServer>TPERDC</OldServer>
+            <OldQueue>Printer2</OldQueue>
+            <NewServer>TPERDC</NewServer>
+            <NewQueue>HP laserjet</NewQueue>
+        </Printer>
+    </Printers>
+</Substitutes>

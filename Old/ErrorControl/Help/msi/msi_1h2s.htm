@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiAdvertiseProduct</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiAdvertiseProduct">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msiadvertiseproduct"></A>MsiAdvertiseProduct</H1>
+
+<P>The <B>MsiAdvertiseProduct</B> function generates an advertise script or advertises a product to the computer. The <B>MsiAdvertiseProduct</B> function enables the installer to write to a script the registry and shortcut information used to assign or publish a product. The script can be written to be consistent with a specified platform by using <A HREF="msi_954o.htm"><B>MsiAdvertiseProductEx</B></A>.</P>
+
+<PRE class=syntax><B>UINT MsiAdvertiseProduct(
+</B>  <B>LPCTSTR</B> <I>szPackagePath</I><B>,</B>    // location of package
+  <B>LPCTSTR</B> <I>szScriptfilePath</I><B>,</B> // if NULL, product is locally advertised
+  <B>LPCTSTR</B> <I>szTransforms</I><B>,</B>     // list of transforms to be applied
+ <B>LANGID</B> <I>lgidLanguage</I>        // install language
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szPackagePath</I></DT>
+
+<DD>[in] The full path to the package of the product being advertised.</DD>
+
+<DT><I>szScriptfilePath</I></DT>
+
+<DD>[in] The full path to script file that will be created with the advertise information. To advertise the product locally to the computer, set ADVERTISEFLAGS_MACHINEASSIGN or ADVERTISEFLAGS_USERASSIGN. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Flag</TH>
+<TH align=left width=19%>Value</TH>
+<TH align=left width=44%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ADVERTISEFLAGS_MACHINEASSIGN</TD>
+<TD width=19%>0</TD>
+<TD width=44%>Set to advertise a per-machine installation of the product available to all users.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ADVERTISEFLAGS_USERASSIGN</TD>
+<TD width=19%>1</TD>
+<TD width=44%>Set to advertise a per-user installation of the product available to a particular user.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>szTransforms</I></DT>
+
+<DD>[in] A semi-colon delimited list of transforms to be applied.</DD>
+
+<DT><I>lgidLanguage</I></DT>
+
+<DD>[in] The language to use if the source supports multiple languages.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value </TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>An error relating to an action</TD>
+<TD width=52%>See <A HREF="code_13ub.htm">Error Codes</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Any <A HREF="msi_5svn.htm">Initialization Error</A></TD>
+<TD width=52%>An error relating to initialization occurred.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_CALL_NOT_IMPLEMENTED</TD>
+<TD width=52%>This error is returned if an attempt is made to generate an advertise script on any platform other than Windows 2000 or Windows XP. Advertisement locally to the computer is supported on all platforms.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>Available with Windows Installer version 2.0 and later versions.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows XP and Windows .NET Server.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 2.0 on Windows NT 4.0 SP6; Windows 2000; and Windows Me.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiAdvertiseProduct;%20RELEASE:%20August%202001;%20URL:%20msi_1h2s.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiAdvertiseProduct;%20RELEASE:%20August%202001;%20URL:%20msi_1h2s.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE27</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE27 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice27"></A>ICE27</H1>
+
+<P>ICE27 validates the <A HREF="dglo_5nuh.htm#_msi_sequence_tables_gly">sequence tables</A> of an installation package for valid actions, action sequence restrictions, and organization in Search, Costing, Selection, and Execution sections.</P>
+
+<P>The ICE27 custom action validates the following: 
+
+<UL>
+	<LI>That the actions listed in the Action column of the sequence tables are a <A HREF="acts_4lmb.htm">standard actions</A>, a custom action listed in the <A HREF="tref_71b9.htm">CustomAction table</A>, or a dialog box listed in the <A HREF="tref_51wl.htm">Dialog table</A>.</LI>
+
+	<LI>That actions subject to sequencing restrictions are in the correct relative order to each other in the action sequence. Sequencing restrictions result when one action is dependent on another.</LI>
+
+	<LI>That actions restricted to a particular section of the sequence are located where they belong. ICE27 validates the following organization of the sequence tables. Note that not every sequence table has every section. See the suggested sequence tables in <A HREF="novr_3mqt.htm">Using a Sequence Table</A>.</LI>
+</UL>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Sequence table<BR>
+ section</TH>
+<TH align=left width=25%>Range in action<BR>
+ sequence</TH>
+<TH align=left width=53%>Actions belonging to section</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Search</TD>
+<TD width=25%>{start} to <A HREF="aref_4bam.htm">CostInitialize</A></TD>
+<TD width=53%>Actions that search for existing applications.
+<P><A HREF="aref_16zy.htm">AppSearch</A> </P>
+
+<P><A HREF="aref_77se.htm">CCPSearch</A> </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Costing</TD>
+<TD width=25%><A HREF="aref_4bam.htm">CostInitialize</A> to <A HREF="aref_22we.htm">CostFinalize action</A></TD>
+<TD width=53%>Actions that do <A HREF="acts_07s7.htm">file costing</A>.
+<P><A HREF="aref_4bam.htm">CostInitialize</A></P>
+
+<P><A HREF="aref_2f8u.htm">FileCost</A></P>
+
+<P><A HREF="aref_22we.htm">CostFinalize</A></P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Selection</TD>
+<TD width=25%><A HREF="aref_22we.htm">CostFinalize</A> to <A HREF="aref_9fzi.htm">InstallValidate</A></TD>
+<TD width=53%>Actions that set folders or feature states.
+<P><A HREF="aref_3xny.htm">SetODBCFolders action</A></P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Execution</TD>
+<TD width=25%><A HREF="aref_9fzi.htm">InstallValidate</A> to <A HREF="aref_8l9q.htm">InstallFinalize</A></TD>
+<TD width=53%>Script actions, such as Registration, Publication, Installation (where you copy files).
+<P>Note the <A HREF="aref_8l9q.htm">InstallFinalize action</A> must be in the table if and only if there are actions in the Execution section.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>PostExecution</TD>
+<TD width=25%><A HREF="aref_8l9q.htm">InstallFinalize</A> to {end}</TD>
+<TD width=53%><A HREF="aref_8r72.htm">RemoveExistingProducts</A></TD>
+</TR>
+</TABLE><BR>
+
+<P>ICE27 validates the following tables:
+
+<UL>
+	<LI><A HREF="tref_3rvp.htm">AdvtUISequence</A> </LI>
+
+	<LI><A HREF="tref_5mn9.htm">AdvtExecuteSequence</A> </LI>
+
+	<LI><A HREF="tref_5lnp.htm">AdminUISequence</A> </LI>
+
+	<LI><A HREF="tref_70f9.htm">AdminExecuteSequence</A> </LI>
+
+	<LI><A HREF="tref_1git.htm">InstallUISequence</A> </LI>
+
+	<LI><A HREF="tref_5pid.htm">InstallExecuteSequence</A> </LI>
+</UL>
+
+<H4>Result</H4>
+
+<P>ICE27 posts an error message if there are sequence tables in the package with invalid action sequencing or organization.</P>
+
+<H4>Example</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE27 error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Unknown action: 'Action1' of InstallExecuteSequnence table. Not a standard action and not found in CustomAction or Dialog tables</CODE></TD>
+<TD width=63%>There is an action listed in the sequence table indicated that is not a <A HREF="acts_4lmb.htm">standard actions</A>, a custom action listed in the <A HREF="tref_71b9.htm">CustomAction table</A>, or a dialog box listed in the <A HREF="tref_51wl.htm">Dialog table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>'Action2' in InstallExecute table in wrong place. Current: Search, Correct: Costing</CODE></TD>
+<TD width=63%>There is an action in a sequence table that is incorrectly placed with respect to the sequence number in the Sequence column.
+<P>"Current" indicates the current placement of the action in the Search, Costing, Selection, or Execution sections of the indicated sequence table.</P>
+
+<P>"Correct" indicates in which section the action belongs.</P>
+
+<P>To fix this error, change the sequence number of the action to inside the correct section. Note that some action can be located in more than one section. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>'InstallFinalize' Action in InstallExecuteSequence table can only be called when script operations exist to be executed</CODE> </TD>
+<TD width=63%>There is an <A HREF="aref_8l9q.htm">InstallFinalize action</A> in a sequence table that does not contain any script operations in the Execution section of the table.
+<P>Add actions to the Execution section or remove the InstallFinalize action from the table.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>InstallFinalize must be called in InstallExecuteSequence table as script operations exist to be executed</CODE> </TD>
+<TD width=63%>There is a sequence table containing actions in the Execution section that does not include the <A HREF="aref_8l9q.htm">InstallFinalize action</A>.
+<P>Add the InstallFinalize action to this sequence table and give it the greatest sequence number to place it last in the action sequence.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Action: 'Action3' in InstallExecuteSequence table must come before the 'Action5' action. Current seq#: 1200. Dependent seq#: 1100</CODE> </TD>
+<TD width=63%>There is an action in the indicated sequence table that is sequenced after a dependent action.
+<P>Change the sequence number on the dependent action so that it comes before the action.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Action: 'Action4' in InstallExecuteSequence table must come after the 'Action6' action.</CODE> </TD>
+<TD width=63%>There is an action in the indicated sequence table that is sequenced before an action that it is dependent upon.
+<P>Change the sequence number on the action so that it comes after its dependent action.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

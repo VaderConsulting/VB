@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CustomAction Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="CustomAction Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_customaction_table"></A>CustomAction Table</H1>
+
+<P>The CustomAction table provides the means of integrating custom code and data into the installation. The source of the code that is executed can be a stream contained within the database, a recently installed file, or an existing executable file.</P>
+
+<P>The CustomAction table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Column</TH>
+<TH align=left width=38%>Type</TH>
+<TH align=left width=16%>Key</TH>
+<TH align=left width=22%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Action</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=16%>Y</TD>
+<TD width=22%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Type</TD>
+<TD width=38%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=16%> </TD>
+<TD width=22%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Source</TD>
+<TD width=38%><A HREF="tref_3uzp.htm">CustomSource</A></TD>
+<TD width=16%> </TD>
+<TD width=22%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Target</TD>
+<TD width=38%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=16%> </TD>
+<TD width=22%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Action</DT>
+
+<DD>Name of the action. The action normally appears in a sequence table unless it is called by another custom action. If the name matches any built-in action, then the custom action is never called.
+
+<P>Primary table key.
+</DD>
+
+<DT>Type</DT>
+
+<DD>A field of flag bits specifying the basic type of custom action and options. See <A HREF="cact_09pv.htm">Summary List of All Custom Action Types</A> for a list of the basic types. See <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A>, <A HREF="cact_0dpv.htm">Custom Action Execution Scheduling Options</A>, <A HREF="cact_66ge.htm">Custom Action Hidden Target Option</A>, and <A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A>.</DD>
+
+<DT>Source</DT>
+
+<DD>A property name or external key into another table. For a discussion of the possible custom action sources, see <A HREF="cact_4mnn.htm">Custom Action Sources</A> and the <A HREF="cact_09pv.htm">Summary List of All Custom Action Types</A>. For example, the Source column may contain an external key into the first column of one of the following tables containing the source of the custom action code. 
+
+<P><A HREF="tref_6an9.htm">Directory table</A> for calling existing executables.
+
+
+<P><A HREF="tref_4n6t.htm">File table</A> for calling executables and DLLs that have just been installed.
+
+
+<P><A HREF="tref_04px.htm">Binary table</A> for calling executables, DLLs, and data stored in the database.
+
+
+<P><A HREF="tref_21d1.htm">Property table</A> for calling executables whose paths are held by a property.
+</DD>
+
+<DT>Target</DT>
+
+<DD>An execution parameter that depends on the basic type of custom action. See the <A HREF="cact_09pv.htm">Summary List of All Custom Action Types</A> for a description of what should be entered in this field for each type of custom action. For example, this field may contain the following depending on the custom action.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Target </TH>
+<TH align=left width=52%>Custom action</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Entry point (required)</TD>
+<TD width=52%>Calling a DLL.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Executable name with arguments (required)</TD>
+<TD width=52%>Calling an existing executable.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Command line arguments (optional)</TD>
+<TD width=52%>Calling an executable just installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Target file name (required)</TD>
+<TD width=52%>Creating a file from custom data.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>NULL</TD>
+<TD width=52%>Executing script code.</TD>
+</TR>
+</TABLE><BR>
+
+
+</DD>
+</DL>
+
+<P>See also all the topics under <A HREF="cact_5t2r.htm">Custom Actions</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20CustomAction%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_71b9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20CustomAction%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_71b9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

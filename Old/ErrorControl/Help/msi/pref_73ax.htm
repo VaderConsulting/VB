@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>TARGETDIR Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="TARGETDIR Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_targetdir_property"></A>TARGETDIR Property</H1>
+
+<P>The<B> TARGETDIR</B> property specifies the root destination directory for the installation. <B>TARGETDIR</B> must be the name of one root in the <A HREF="tref_6an9.htm">Directory</A> table. There may be only a single root destination directory. During an <A HREF="over_6jzi.htm">administrative installation</A> this property specifies  the location to copy the installation package. During a non-administrative installation this property specifies the root destination directory.  </P>
+
+<P>To specify the root destination directory, set the Directory column of the Directory table to the <B>TARGETDIR</B> property and the DefaultDir column to the <A HREF="pref_6uwp.htm"><B>SourceDir</B> property</A>. If the <A HREF="#_msi_targetdir_property"><B>TARGETDIR</B> property</A> is defined, the destination directory is resolved to the property's value. If the <A HREF="#_msi_targetdir_property"><B>TARGETDIR</B> property</A> is undefined, the <A HREF="pref_3zll.htm"><B>ROOTDRIVE</B> property</A> is used to resolve the path. For more information about using the TARGETDIR property, see <A HREF="novr_3wth.htm">Using the Directory Table</A>.</P>
+
+<P>Note that the value of the <B>TARGETDIR</B> property is typically set at the command line or through a user interface. Setting <B>TARGETDIR</B> by authoring a path into the <A HREF="tref_21d1.htm">Property table</A> is not recommended because computers differ in the set up of the local drive. </P>
+
+<P>For more information on how to change TARGETDIR during an installation see <A HREF="over_9fg9.htm">How do I change the target location for a directory?</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20TARGETDIR%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_73ax.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20TARGETDIR%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_73ax.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

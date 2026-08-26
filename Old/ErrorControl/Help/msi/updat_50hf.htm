@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Minor Upgrades</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_minor_upgrades"></A>Minor Upgrades</H1>
+
+<P>A minor upgrade and a <A HREF="updat_9m0j.htm">Small Update</A> differ in that a minor upgrade changes the package code and product version. As in the case of a small update, a minor upgrade does not change the product code. Minor upgrades provide product differentiation without actually defining a different product. See <A HREF="updat_9m0j.htm">Small Updates</A> for guidelines on the kinds of updates that can be handled by a small update or minor upgrade. Minor upgrades are shipped as a full product installation package or as a <A HREF="updat_7dmb.htm">patch package</A>. However, a minor upgrade cannot use a different volume label for the new version. </P>
+
+<P>Changing the product version indicates that there is an order to the different updates to the same product. For example, if a patch existed to update v9.0 to v9.1, and another patch existed to patch v9.1 to v9.2, the installer can enforce the correct order by checking the product version before applying the patch This also prevents the v9.1 to v9.2 patch from being applied to v9.0. For patches, this ordering is enforced through the product version validation bits set in the transforms included in the <A HREF="updat_7dmb.htm">patch package</A>.</P>
+
+<P>Note that Windows Installer uses only the first three fields of the product version. For more information, see <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>. If you include a fourth field in your product version, the installer ignores the fourth field.  </P>
+
+<P>For information on how to apply a Minor Upgrade, see the following sections:</P>
+
+<P><A HREF="updat_0q7o.htm">Small Updates by Patching the Local Installation of the Product</A> <BR>
+<A HREF="updat_50ac.htm">Small Updates by Reinstalling the Product</A> <BR>
+<A HREF="updat_51r9.htm">Small Updates by Patching an Administrative Image</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Minor%20Upgrades;%20RELEASE:%20August%202001;%20URL:%20updat_50hf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Minor%20Upgrades;%20RELEASE:%20August%202001;%20URL:%20updat_50hf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

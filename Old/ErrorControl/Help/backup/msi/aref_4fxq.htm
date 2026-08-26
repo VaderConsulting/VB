@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ProcessComponents Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ProcessComponents Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_processcomponents_action"></A>ProcessComponents Action</H1>
+
+<P>The ProcessComponents action registers and unregisters components, their key paths, and the component clients. The ProcessComponents action queries the KeyPath column of the <A HREF="tref_09np.htm">Component table</A> to determine keypaths. This registration is used by <A HREF="msi_3fxk.htm"><B>MsiGetComponentPath</B></A> to return the path of a component for a product client.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>None.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>For each component being registered.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>ProductId</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[2]</TD>
+<TD width=84%>ComponentId</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[3]</TD>
+<TD width=84%>The key path for the component.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For each component being unregistered.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>ProductId</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[2]</TD>
+<TD width=84%>ComponentId</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

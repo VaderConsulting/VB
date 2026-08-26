@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE70</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE70">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice70"></A>ICE70</H1>
+
+<P>ICE70 verifies that integer values for registry entries are specified correctly. Values of the form ##str, #%unexpanded str are not validated. Values of the form #xhex, #Xhex, #integer, and #[property] are validated. The following table provides a brief overview.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Value</TH>
+<TH align=left width=68%>Validation</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>##str</TD>
+<TD width=68%>valid</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>#%unexpanded str</TD>
+<TD width=68%>valid</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>#xHex,#XHex</TD>
+<TD width=68%>Validate for valid hex characters (0-9,a-f,A-F). Properties are allowed here.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>#+int, #-int, #int</TD>
+<TD width=68%>Validate for valid numeric characters (0-9). Properties are allowed here.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The syntax for an integer value to be entered into the registry is #integer where integer is numerical.</P>
+
+<H4>Result</H4>
+
+<P>ICE70 reports an error if integer values for registry entries are not specified correctly. </P>
+
+<H4>Example</H4>
+
+<P>ICE70 reports the following errors for the given example. </P>
+
+<PRE>The value #12xz34 is an invalid numeric value for registry entry Reg1. If you meant to use a string, then the string value entry must be preceded by ## not #.</PRE>
+
+<P>To fix this error: If you want the value to be numeric, change the value to use all numeric characters. If you want the value to be a string, it must be preceded by two '#' (##) instead of just one.</P>
+
+<PRE>The value #xz34 is an invalid hexadecimal value for registry entry Reg2.</PRE>
+
+<P>To fix this error: Valid hexadecimal characters are 0-9, A-F, and a-f. Only these characters can follow the #x (or #X).</P>
+
+<P><A HREF="tref_3obp.htm"><B>Registry table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>Registry</TH>
+<TH align=left width=49%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>Reg1</TD>
+<TD width=49%>#12xz34</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>Reg2</TD>
+<TD width=49%>#xz34</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<UL>
+	<LI>#[myproperty] is valid.</LI>
+
+	<LI>#[myproperty is not valid (missing ending bracket).</LI>
+
+	<LI>#[myprop1] [myprop2 is valid. (Even though the last one is missing the ending bracket, myprop1 could evaluate to #str so you would have ##str [myprop2, which is valid </LI>
+
+	<LI>#]myproperty[ is not valid </LI>
+
+	<LI>Any embedded property in a value string cannot be in [$compkey], [#filekey], or [!filekey] form because these are not numeric. However, there is one exception, #[myproperty] [$compkey] (or [#filekey] or [!filekey]) is valid because, as with the preceding, [myproperty] can evaluate to #str. </LI>
+</UL>
+
+<H4>See Also </H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE70;%20RELEASE:%20August%202001;%20URL:%20ices_1y40.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE70;%20RELEASE:%20August%202001;%20URL:%20ices_1y40.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

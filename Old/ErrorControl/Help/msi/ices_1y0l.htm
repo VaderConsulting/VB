@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE55</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE55">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice55"></A>ICE55</H1>
+
+<P>ICE55 validates that all LockPermission objects exist and have valid permission values. </P>
+
+<H4>Result</H4>
+
+<P>ICE55 post an error if a LockObject listed in the <A HREF="tref_00dh.htm">LockPermissions table</A> does not exist or if no privilege level is specified in the Permission column.</P>
+
+<H4>Example</H4>
+
+<P>ICE55 would report the following errors for the example.</P>
+
+<PRE>LockObject 'File1'.'File'.''.'guest' in the LockPermissions table 
+    has a null Permission value. 
+Could not find item 'File3' in table 'File' which is referenced 
+    in the LockPermissions table. </PRE>
+
+<P><A HREF="tref_00dh.htm"><B>LockPermissions Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>LockObject</TH>
+<TH align=left width=15%>Table</TH>
+<TH align=left width=17%>Domain</TH>
+<TH align=left width=20%>User</TH>
+<TH align=left width=24%>Permission</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>File1</TD>
+<TD width=15%>File</TD>
+<TD width=17%> </TD>
+<TD width=20%>guest</TD>
+<TD width=24%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>File3</TD>
+<TD width=15%>File</TD>
+<TD width=17%> </TD>
+<TD width=20%>guest</TD>
+<TD width=24%>1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>File</TH>
+<TH align=left width=32%>Version</TH>
+<TH align=left width=41%>Language</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>File1</TD>
+<TD width=32%>File2</TD>
+<TD width=41%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>File2</TD>
+<TD width=32%>1.0.0.0</TD>
+<TD width=41%>1033</TD>
+</TR>
+</TABLE><BR>
+
+<P>The object File1 has a null in the Permission column. Each row must have a value in the Permissions column. To fix this error specify a numeric value in this column. If no privileges are needed for this object then you should remove the row.</P>
+
+<P>The object File3 described in the LockPermissions table is not listed in the File table. To fix this error refer to a valid object. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE55;%20RELEASE:%20August%202001;%20URL:%20ices_1y0l.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE55;%20RELEASE:%20August%202001;%20URL:%20ices_1y0l.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

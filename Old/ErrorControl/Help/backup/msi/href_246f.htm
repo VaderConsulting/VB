@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Browse Dialog</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_browse_dialog"></A>Browse Dialog</H3>
+
+<P>A Browse dialog box enables the user to select a directory. The directory does not have to exist and may be created by using this control. </P>
+
+<P>This type of dialog box commonly contains the following three controls. These controls are connected to the same property. That property is the path being selected. 
+
+<UL>
+	<LI>A <A HREF="href_4pik.htm">PathEdit control</A> to select the tail section of the path. This control cannot lose focus if the entered tail is not valid on the present volume.</LI>
+
+	<LI>A <A HREF="href_5xkc.htm">DirectoryCombo control</A> to show the presently selected path that is displayed by the PathEdit control. This control does not show the last segment of the path.</LI>
+
+	<LI>A <A HREF="href_09f0.htm">DirectoryList control</A> to show the folders below the directory currently displayed by the DirectoryCombo. This can also show a folder that is not yet created.</LI>
+</UL>
+
+<P>A Browse dialog box also usually contains a <A HREF="href_5xkc.htm">DirectoryCombo control</A> that specifies the volume types to display. It is common for all volume types to be displayed on a Browse dialog box.</P>
+
+<P>Browse dialog boxes commonly contain three <A HREF="href_331o.htm">PushButton controls</A>. These buttons are linked to their respective ControlEvents in <A HREF="tref_6k11.htm">ControlEvent Table</A>. These buttons are used for activating the following control options. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Control option</TH>
+<TH align=left width=67%>ControlEvent</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Up One Level</TD>
+<TD width=67%><A HREF="href_7fqs.htm">DirectoryListUp</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>New Folder</TD>
+<TD width=67%><A HREF="href_7e2c.htm">DirectoryListNew</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Open</TD>
+<TD width=67%><A HREF="href_7ab8.htm">DirectoryListOpen</A></TD>
+</TR>
+</TABLE><BR>
+
+<P>For the New Folder option to work with a non-default folder name, the new folder's path must be specified in the <A HREF="tref_0vz9.htm">UIText Table</A>. The path string should use the "short file name|long file name" form for the file name. For example, use a file name such as "MyProd~1|My Fabulous Product". See the <A HREF="tref_0oit.htm">Filename</A> column data type for more information about the file name format. If the path is not present in the UIText table, or if it is set to an invalid value, then it is set to a value of "Fldr|New Folder" by default. The New Folder button can be omitted if the dialog box only need to search for existing folders.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

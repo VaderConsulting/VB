@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Compressed and Uncompressed Sources</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_compressed_and_uncompressed_sources"></A>Compressed and Uncompressed Sources</H2>
+
+<P>Package authors can reduce the size of their installation packages by compressing the source files and including them in <A HREF="over_8kkz.htm">cabinet files</A>. The source file image can be compressed, uncompressed, or a mixture of both types.</P>
+
+<P><B>Compressed Sources</B></P>
+
+<P>A source consisting entirely of compressed files should include the compressed flag bit in the <A HREF="sref_8ge1.htm"><B>Word Count Summary</B> Property</A>. The compressed source files must be stored in cabinet files located in a data stream inside the .msi file or in a separate cabinet file located at the root of the source tree. All the cabinets in the source must be listed in the <A HREF="tref_4mlh.htm">Media table</A>.</P>
+
+<P><B>Uncompressed Sources</B></P>
+
+<P>A source consisting entirely of uncompressed source files should omit the compressed flag bit from the <A HREF="sref_8ge1.htm"><B>Word Count Summary</B> Property</A>. All the uncompressed files in the source must exist in the source tree specified by the <A HREF="tref_6an9.htm">Directory Table</A>.</P>
+
+<P><B>Mixed Sources</B></P>
+
+<P>To mix compressed and uncompressed source files in the same package, override the <B>Word Count Summary</B> property default by setting the msidbFileAttributesCompressed or msidbFileAttributesNoncompressed bit flags on particular files. These bit flags are set in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A> if the compression state of the file does not match the default specified by the <B>Word Count Summary</B> property. </P>
+
+<P>For example, if the <B>Word Count Summary</B> property has the compressed flag bit set, all files are treated as compressed into a cabinet. Any uncompressed files in the source must include msidbFileAttributesNoncompressed in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>. The uncompressed files must be located at the root of the source tree.</P>
+
+<P>If the <B>Word Count Summary</B> property has the uncompressed flag set, files are treated as uncompressed by default and any compressed files must include msidbFileAttributesCompressed in the Attributes column of the File table. All the compressed files must be stored in cabinet files located in a data stream inside the .msi file or in a separate cabinet file located at the root of the source tree. </P>
+
+<P>For more information, see <A HREF="over_3nla.htm">Including a Cabinet File in an Installation</A> and <A HREF="over_8kkz.htm">Cabinet Files</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Compressed%20and%20Uncompressed%20Sources;%20RELEASE:%20August%202001;%20URL:%20over_44z7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Compressed%20and%20Uncompressed%20Sources;%20RELEASE:%20August%202001;%20URL:%20over_44z7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

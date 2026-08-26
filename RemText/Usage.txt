@@ -1,0 +1,19 @@
+' Remove all lines from the given file that contain the given text
+' Wildcards may be used.
+' For example,
+' remtext.exe "blah" "c:\temp\blah.txt"
+' remove all lines that are blah
+
+' remtext.exe "*blah" "c:\temp\blah.txt"
+' remove all lines that end in blah
+
+' remtext.exe "blah*" "c:\temp\blah.txt"
+' remove all lines that start with blah
+
+' remtext.exe "*blah*" "c:\temp\blah.txt"
+' remove all lines that contain blah
+
+' remtext.exe "blah?" "c:\temp\blah.txt"
+' remove all lines that contain blah and another character - eg blahs will be removed.
+
+' Usage:  remtext.exe "stringtosearchfor" "filename"

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleAdminExecuteSequence Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ModuleAdminExecuteSequence table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_moduleadminexecutesequence_table"></A>ModuleAdminExecuteSequence Table</H1>
+
+<P>A merge tool evaluates the ModuleAdminExecuteSequence table and then inserts the calculated actions into the <A HREF="tref_70f9.htm">AdminExecuteSequence table</A> with a correct sequence number.</P>
+
+<P>The ModuleAdminExecuteSequence table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Column</TH>
+<TH align=left width=36%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=18%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Action</TD>
+<TD width=36%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Sequence</TD>
+<TD width=36%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>BaseAction</TD>
+<TD width=36%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>After</TD>
+<TD width=36%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Condition</TD>
+<TD width=36%><A HREF="tref_735a.htm">Condition</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Action</DT>
+
+<DD>Action to insert into sequence. Refers to one of the installer <A HREF="acts_4lmb.htm">standard actions</A>, or an entry in the merge module's <A HREF="tref_71b9.htm">CustomAction table</A> or <A HREF="tref_51wl.htm">Dialog table</A>.
+
+<P>If a <A HREF="acts_4lmb.htm">standard action</A> is used in the Action column of a merge module sequence table, the BaseAction and After columns of that record must be Null.
+</DD>
+
+<DT>Sequence</DT>
+
+<DD>The sequence number of a standard action. If a custom action or dialog is entered into the Action column of this row, this field must be set to Null.
+
+<P>When using <A HREF="acts_4lmb.htm">standard actions</A> in merge module sequence tables, the value in the Sequence column should be the recommended action sequence number. If the sequence number in the merge module differs from that for the same action in the .msi file sequence table, the merge tool uses the sequence number from the .msi file. See the suggested sequences in <A HREF="novr_3mqt.htm">Using a Sequence Table</A> for the recommended sequence numbers of standard actions.
+</DD>
+
+<DT>BaseAction</DT>
+
+<DD>The BaseAction column can contain a standard action, a custom action specified in the merge module's custom action table, or a dialog specified in the module's dialog table. The BaseAction column is a key into the Action column of this table. It cannot be a foreign key into another merge table or table in the .msi file. This means that every standard action, custom action, or dialog listed in the BaseAction column must also be listed in the Action column of another record in this table.</DD>
+
+<DT>After</DT>
+
+<DD>Boolean for whether Action comes before or after BaseAction.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Value</TH>
+<TH align=left width=70%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>0</TD>
+<TD width=70%>Action to come before BaseAction</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>1</TD>
+<TD width=70%>Action to come after BaseAction</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Condition</DT>
+
+<DD>A conditional statement that indicates if the action is be executed. Null evaluates to true.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If this table is present the <A HREF="tref_70f9.htm">AdminExecuteSequence table</A> must also be present in the merge module.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleAdminExecuteSequence%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_6mzp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleAdminExecuteSequence%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_6mzp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

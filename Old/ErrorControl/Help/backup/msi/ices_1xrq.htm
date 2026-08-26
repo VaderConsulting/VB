@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE06</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE06 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice06"></A>ICE06</H1>
+
+<P>ICE06 checks every table to validate that all the columns listed in the <A HREF="tref_8fl1.htm">_Validation table</A> are present in the table. If a table does not exist, any _Validation entries for that table are ignored.</P>
+
+<P>The purpose of ICE06 is to detect instances in which an author tries to use a new _Validation table that reflects a schema change with an old database that has not been updated. ICE06 also detects the reverse case of an old _Validation table being used with an altered database.</P>
+
+<P>Note that the internal validation performed by <A HREF="ices_1xrn.htm">ICE03</A> catches the instance of a table column not defined in the _Validation table being listed in the columns catalog. The use of both ICE03 and ICE06 therefore ensures every column in the database is tested.</P>
+
+<H4>Result</H4>
+
+<P>ICE06 posts an error when there is a table column defined in the _Validation table that is not listed in the _Columns table.</P>
+
+<H4>Example</H4>
+
+<P>For the following example ICE06 posts the message </P>
+
+<P>Column: Version of Table: ModuleSignature is not defined in database.</P>
+
+<P><A HREF="tref_8fl1.htm"><B>_Validation Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Table</TH>
+<TH align=left width=50%>Column</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>ModuleSignature</TD>
+<TD width=50%>ModuleID</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>ModuleSignature</TD>
+<TD width=50%>Version</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4rj9.htm"><B>_Columns Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Table</TH>
+<TH align=left width=32%>Number</TH>
+<TH align=left width=38%>Name</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>ModuleSignature</TD>
+<TD width=32%>1</TD>
+<TD width=38%>ModuleID</TD>
+</TR>
+</TABLE><BR>
+
+<P>The Version column of the ModuleSignature table is not in the database or listed in the _Columns table.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

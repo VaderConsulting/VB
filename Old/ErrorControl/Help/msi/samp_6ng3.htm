@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Updating ProductLanguage and ProductCode Properties</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_updating_productlanguage_and_productcode_properties"></A>Updating ProductLanguage and ProductCode Properties</H2>
+
+<P>The <A HREF="pref_7aex.htm"><B>ProductLanguage</B> property</A> must be updated to the numeric language identifier (LANGID) for the new language. In the case of the localization example, the value of the <B>ProductLanguage</B> property must be changed from the LANGID for English (1033) to the LANGID for French (1036) in the <A HREF="tref_21d1.htm">Property Table</A>.</P>
+
+<P>The value of the <A HREF="pref_4tfd.htm"><B>ProductCode</B> property</A> in the <A HREF="tref_21d1.htm">Property Table</A> must be changed to a new, unique value when localizing a database because a localized product is considered a different product. For example, the German and English versions of an application are considered two different products and must have different product codes. See <A HREF="over_7bcj.htm">Product Codes</A>.</P>
+
+<P>Use your database table editor to update the values of the ProductCode and ProductLanguage properties in the Property table. Do not reuse the GUID shown if you copy this example.</P>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Property</TH>
+<TH align=left width=65%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>ProductCode</B></TD>
+<TD width=65%>{EE389960-E426-4EEA-B669-AD8129249881}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>ProductLanguage</B></TD>
+<TD width=65%>1036</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_9q5p.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Updating%20ProductLanguage%20and%20ProductCode%20Properties;%20RELEASE:%20August%202001;%20URL:%20samp_6ng3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Updating%20ProductLanguage%20and%20ProductCode%20Properties;%20RELEASE:%20August%202001;%20URL:%20samp_6ng3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

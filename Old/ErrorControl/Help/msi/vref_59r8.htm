@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FormatText Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="FormatText Method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_formattext_method"></A><A NAME="helpid_msirecord_formattext"></A>FormatText Method</H1>
+
+<P>The <B>FormatText</B> method of the <A HREF="vref_6kac.htm"><B>Record</B> object</A> formats fields according to the template in field 0.</P>
+
+<PRE class=syntax><I>object</I>.FormatText</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>Record</B> object 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>FormatText</B> method follows the functionality of the <A HREF="qref_3t2c.htm"><B>MsiFormatRecord</B></A> function if <B>MsiFormatRecord</B> was passed a NULL installer handle as its first parameter. As a result, only the record field parameters are processed and properties are not available for substitution.</P>
+
+<P>For example, a string such as "format this field: [1], format this property: [property]" is resolved to "format this field: value from field 1, format this property: [property]."</P>
+
+<P>Parameters that are to be <A HREF="tref_0qp0.htm">formatted</A> are enclosed in square brackets [...]. The square brackets can be iterated because the substitutions are resolved from the inside out.</P>
+
+<P>If a part of the string is enclosed in curly braces { } and contains no square brackets, it is left unchanged, including the curly braces.</P>
+
+<P>Note in the case of <A HREF="cact_10fn.htm">deferred execution custom actions</A>, <B>FormatText</B> only supports a limited set of properties: the CustomActionData and ProductCode properties. For more information, see <A HREF="cact_5fg3.htm">Obtaining Context Information for Deferred Execution Custom Actions</A>.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_3t2c.htm"><B>MsiFormatRecord</B></A>, <A HREF="tref_0qp0.htm">Formatted</A>, <A HREF="tref_6b77.htm">Column Data Types</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FormatText%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_59r8.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FormatText%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_59r8.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

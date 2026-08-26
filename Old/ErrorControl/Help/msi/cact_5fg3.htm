@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Obtaining Context Information for Deferred Execution Custom Actions</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_obtaining_context_information_for_deferred_execution_custom_actions"></A>Obtaining Context Information for Deferred Execution Custom Actions</H2>
+
+<P>Because the installation script can be executed outside of the installation session in which it was written, the session may no longer exist during execution of the installation script. This means that the session handle and property data set during the installation sequence are not available to a <A HREF="cact_10fn.htm">deferred execution custom action</A>. Functions that do not require a session handle can be accessed from a custom action. Functions that require a session handle, however, must use one of a few methods that can retrieve context information, or property values that are needed during script execution must be written into the installation script. </P>
+
+<P>A dynamic-link library (DLL) custom action requires a handle to the installation session. If this is also a deferred execution custom action, the custom action must use one of the following methods to retrieve its context. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Method name</TH>
+<TH align=left width=73%>Description </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_7u2h.htm"><B>MsiGetProperty</B></A></TD>
+<TD width=73%>Supports a limited set of properties when used with <A HREF="cact_10fn.htm">deferred execution custom actions</A>: the CustomActionData property,<A HREF="pref_4tfd.htm">ProductCode property</A>, and <A HREF="pref_5h15.htm">UserSID property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_3t2c.htm"><B>MsiFormatRecord</B></A></TD>
+<TD width=73%>Supports a limited set of properties when used with <A HREF="cact_10fn.htm">deferred execution custom actions</A>: the CustomActionData and ProductCode properties.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_8u05.htm"><B>MsiGetMode</B></A></TD>
+<TD width=73%>When called from <A HREF="cact_10fn.htm">deferred execution custom actions</A>, <A HREF="cact_45tf.htm">commit custom actions</A>, or <A HREF="cact_0k8j.htm">rollback custom actions</A>, <B>MsiGetMode</B> returns True or False when requested to check the mode parameters MSIRUNMODE_SCHEDULED, MSIRUNMODE_COMMIT, or MSIRUNMODE_ROLLBACK. Requests to check any other run mode parameters from a deferred, commit, or rollback custom action returns False.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_86xx.htm"><B>MsiGetLanguage</B></A></TD>
+<TD width=73%>The numeric language ID for the current product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A></TD>
+<TD width=73%>Processes error or progress messages from the custom action</TD>
+</TR>
+</TABLE><BR>
+
+<P>A custom action that is written in JScript or VBScript requires the install <B>Session </B>object. This is of the type <A HREF="vref_8xis.htm"><B>Session</B> Object</A> and the installer attaches it to the script with the name "Session". Because the <B>Session</B> object may not exist during an installation rollback, a deferred custom action written in script must use one of the following methods or properties of the <B>Session </B>object to retrieve its context. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Name</TH>
+<TH align=left width=68%>Description </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="vref_53i1.htm"><B>Mode </B>Property</A><B> </B></TD>
+<TD width=68%>Returns True for MSIRUNMODE_SCHEDULED only.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="vref_3hlr.htm"><B>Property </B>Property (<B>Session </B>Object)</A><B> </B></TD>
+<TD width=68%>Returns the CustomActionData property, <A HREF="pref_4tfd.htm">ProductCode property</A>, or <A HREF="pref_5h15.htm">UserSID property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="vref_4w67.htm"><B>Language </B>Property (<B>Session </B>Object)</A> </TD>
+<TD width=68%>Returns numeric language ID of the install session.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="vref_3mlg.htm"><B>Message Method</B></A> </TD>
+<TD width=68%>Can be called to handle errors and progress.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="vref_6tx5.htm"><B>Installer Property</B></A><B> </B> </TD>
+<TD width=68%>Returns the parent object, which is used for non-session functions such as registry access and installer configuration management.</TD>
+</TR>
+</TABLE><BR>
+
+<P>Property values that are set at the time the installation sequence are processed into script can be unavailable at the time of script execution. Only the following limited set of properties are always accessible to custom actions during script execution.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Property name</TH>
+<TH align=left width=73%>Description </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>CustomActionData</TD>
+<TD width=73%>Value at time custom action is processed in sequence table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="pref_4tfd.htm"><B>ProductCode</B></A></TD>
+<TD width=73%>Unique code for the product, a <A HREF="tref_7kf8.htm">GUID</A> string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="pref_5h15.htm"><B>UserSID property</B></A></TD>
+<TD width=73%>Set by the installer to the user's security identifier (SID).</TD>
+</TR>
+</TABLE><BR>
+
+<P>If other property data is required by the deferred execution custom action, then their values must be stored in the installation script. You can do this using a second custom action.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To write the value of a property into the installation script for use during the execution of a deferred execution custom action</B>
+
+<OL>
+	<LI>Insert a small custom action into the installation sequence that sets the property of interest to a property having the same name as the deferred execution custom action. For example, if the primary key for the deferred execution custom action is "MyAction" set a property named "MyAction" to the property X which you need to retrieve. You must set the "MyAction" property in the installation sequence before the "MyAction" custom action. Although any type of custom action can set the context data, the simplest method is to use a property assignment custom action (for example <A HREF="cact_07ox.htm">Custom Action Type 51</A>).</LI>
+
+	<LI>At the time when the installation sequence is processed, the installer will write the value of property X into the execution script as the value of the property CustomActionData.</LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Obtaining%20Context%20Information%20for%20Deferred%20Execution%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_5fg3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Obtaining%20Context%20Information%20for%20Deferred%20Execution%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_5fg3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Working with Features and Components</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_working_with_features_and_components"></A>Working with Features and Components</H2>
+
+<P>There are several functions that change the installation of product <A HREF="over_8p83.htm">components and features</A>. The following describes how to change features and components.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To change the installation of features and components</B>
+
+<OL>
+	<LI>Set the installation level for a component or feature by calling the <A HREF="qref_7yr0.htm"><B>MsiSetInstallLevel</B></A> function. 
+<P>Each feature in a package is assigned an installation level in the <A HREF="tref_0a91.htm">Feature table</A>. If the installation level of a feature is lower than the level set by <B>MsiSetInstallLevel</B>, the feature is selected for installation. After <B>MsiSetInstallLevel</B> is called, you can explicitly change whether a feature is installed. 
+</LI>
+
+	<LI>Determine which states are available for a specified feature by calling the <A HREF="qref_3k4z.htm"><B>MsiGetFeatureValidStates</B></A> function. </LI>
+
+	<LI>Obtain the disk space requirements for a specified feature and its child features by calling the <A HREF="qref_5ub8.htm"><B>MsiGetFeatureCost</B></A> function.</LI>
+
+	<LI>Obtain the current state of a feature or component by calling the <A HREF="qref_3wmd.htm"><B>MsiGetFeatureState</B></A> function or the <A HREF="qref_47l1.htm"><B>MsiGetComponentState</B></A> function. </LI>
+
+	<LI>Change the state of the feature or component with the <A HREF="qref_9ejp.htm"><B>MsiSetFeatureState</B></A> function or the <A HREF="qref_3s6d.htm"><B>MsiSetComponentState</B></A> function. </LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

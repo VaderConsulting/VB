@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href="C:\PROGRA~1\MICROS~3\VB98\Wizards\sample.xsl" ?>
+<Project>
+<Name>SwapServer</Name>
+<FileName>SwapServer.vbp</FileName>
+<PathFileName>C:\Documents and Settings\Dave.HOME\My Documents\Woodside\SwapServer\SwapServer.vbp</PathFileName>
+<BuildFileName>SwapServer.exe</BuildFileName>
+<BuildPathFileName>C:\Documents and Settings\Dave.HOME\My Documents\Woodside\SwapServer\SwapServer.exe</BuildPathFileName>
+<CompatibleOleServer></CompatibleOleServer>
+<Description></Description>
+<HelpContextID>0</HelpContextID>
+<HelpFile></HelpFile>
+<StartMode>0</StartMode>
+<Type>Standard Exe</Type>
+<References>
+<Reference>
+<Name>VBA</Name>
+<FileName>msvbvm60.dll</FileName>
+<PathFileName>c:\windows\system32\msvbvm60.dll</PathFileName>
+<Description>Visual Basic For Applications</Description>
+<BuiltIn>True</BuiltIn>
+<Guid>{000204EF-0000-0000-C000-000000000046}</Guid>
+<Major>6</Major>
+<Minor>0</Minor>
+<Type>TypeLib</Type>
+</Reference>
+<Reference>
+<Name>VBRUN</Name>
+<FileName>msvbvm60.dll\3</FileName>
+<PathFileName>c:\windows\system32\msvbvm60.dll\3</PathFileName>
+<Description>Visual Basic runtime objects and procedures</Description>
+<BuiltIn>True</BuiltIn>
+<Guid>{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}</Guid>
+<Major>6</Major>
+<Minor>0</Minor>
+<Type>TypeLib</Type>
+</Reference>
+<Reference>
+<Name>VB</Name>
+<FileName>vb6.olb</FileName>
+<PathFileName>c:\program files\microsoft visual studio\vb98\vb6.olb</PathFileName>
+<Description>Visual Basic objects and procedures</Description>
+<BuiltIn>True</BuiltIn>
+<Guid>{FCFB3D2E-A0FA-1068-A738-08002B3371B5}</Guid>
+<Major>6</Major>
+<Minor>0</Minor>
+<Type>TypeLib</Type>
+</Reference>
+<Reference>
+<Name>stdole</Name>
+<FileName>stdole2.tlb</FileName>
+<PathFileName>c:\windows\system32\stdole2.tlb</PathFileName>
+<Description>OLE Automation</Description>
+<BuiltIn>False</BuiltIn>
+<Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+<Major>2</Major>
+<Minor>0</Minor>
+<Type>TypeLib</Type>
+</Reference>
+<Reference>
+<Name>Scripting</Name>
+<FileName>scrrun.dll</FileName>
+<PathFileName>c:\windows\system32\scrrun.dll</PathFileName>
+<Description>Microsoft Scripting Runtime</Description>
+<BuiltIn>False</BuiltIn>
+<Guid>{420B2830-E718-11CF-893D-00A0C9054228}</Guid>
+<Major>1</Major>
+<Minor>0</Minor>
+<Type>TypeLib</Type>
+</Reference>
+<Reference>
+<Name>WbemScripting</Name>
+<FileName>wbemdisp.tlb</FileName>
+<PathFileName>c:\windows\system32\wbem\wbemdisp.tlb</PathFileName>
+<Description>Microsoft WMI Scripting V1.2 Library</Description>
+<BuiltIn>False</BuiltIn>
+<Guid>{565783C6-CB41-11D1-8B02-00600806D9B6}</Guid>
+<Major>1</Major>
+<Minor>2</Minor>
+<Type>TypeLib</Type>
+</Reference>
+</References>
+<Files>
+<File>
+<Name>modMain</Name>
+<FileName>modMain.bas</FileName>
+<PathFileName>C:\Documents and Settings\Dave.HOME\My Documents\Woodside\SwapServer\modMain.bas</PathFileName>
+<Type>StdModule</Type>
+<Description></Description>
+<HelpContextID>0</HelpContextID>
+<Properties>
+<Property>
+<Name>Name</Name>
+<Value>modMain</Value>
+</Property>
+</Properties>
+<CodeModule>
+<CountOfDeclarationLines>19</CountOfDeclarationLines>
+<CountOfLines>207</CountOfLines>
+<Interfaces>
+</Interfaces>
+<Events>
+</Events>
+<Procedures>
+<Procedure>
+<Name>Main</Name>
+<Scope></Scope>
+<Type>Subroutine</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>64</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : Main</CommentLine>
+<CommentLine> DateTime  : 01-04-2003 11:13</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date    Author      History</CommentLine>
+<CommentLine> 1.0   01-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Sub Main()</Declaration>
+<Parameters>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+<Procedure>
+<Name>ExpandPath</Name>
+<Scope></Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>16</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : ExpandPath</CommentLine>
+<CommentLine> DateTime  : 01-04-2003 11:14</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date    Author      History</CommentLine>
+<CommentLine> 1.0   01-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Function ExpandPath(strFullPath, strServer, strShare)</Declaration>
+<Parameters>
+<Parameter>
+<Name>strFullPath</Name>
+<Type></Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strServer</Name>
+<Type></Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strShare</Name>
+<Type></Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+<Procedure>
+<Name>GetReplacementServer</Name>
+<Scope></Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>92</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : GetReplacementServer</CommentLine>
+<CommentLine> DateTime  : 01-04-2003 11:14</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date    Author      History</CommentLine>
+<CommentLine> 1.0   01-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Function GetReplacementServer(strOldServer As String, strReplacementServer As String) As Boolean</Declaration>
+<Parameters>
+<Parameter>
+<Name>strOldServer</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>strReplacementServer</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>Boolean</ReturnType>
+</Procedure>
+<Procedure>
+<Name>LogEvent</Name>
+<Scope>Private</Scope>
+<Type>Subroutine</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>15</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : LogEvent</CommentLine>
+<CommentLine> DateTime  : 01-04-2003 11:14</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date    Author      History</CommentLine>
+<CommentLine> 1.0   01-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Private Sub LogEvent(strMessage As String)</Declaration>
+<Parameters>
+<Parameter>
+<Name>strMessage</Name>
+<Type>String</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType></ReturnType>
+</Procedure>
+</Procedures>
+<CommentLines>
+</CommentLines>
+</CodeModule>
+</File>
+<File>
+<Name>modAPI</Name>
+<FileName>modAPI.bas</FileName>
+<PathFileName>C:\Documents and Settings\Dave.HOME\My Documents\Woodside\SwapServer\modAPI.bas</PathFileName>
+<Type>StdModule</Type>
+<Description></Description>
+<HelpContextID>0</HelpContextID>
+<Properties>
+<Property>
+<Name>Name</Name>
+<Value>modAPI</Value>
+</Property>
+</Properties>
+<CodeModule>
+<CountOfDeclarationLines>81</CountOfDeclarationLines>
+<CountOfLines>203</CountOfLines>
+<Interfaces>
+</Interfaces>
+<Events>
+</Events>
+<Procedures>
+<Procedure>
+<Name>Connect2</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>40</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : Connect2</CommentLine>
+<CommentLine> DateTime  : 01-04-2003 11:14</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date    Author      History</CommentLine>
+<CommentLine> 1.0   01-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function Connect2(ByVal Localname As String, ByVal RemoteName As String, ByVal Username As String, ByVal Password As String) As Long</Declaration>
+<Parameters>
+<Parameter>
+<Name>Localname</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>RemoteName</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>Username</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>Password</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>Long</ReturnType>
+</Procedure>
+<Procedure>
+<Name>DisConnect2</Name>
+<Scope>Public</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>24</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : DisConnect2</CommentLine>
+<CommentLine> DateTime  : 01-04-2003 11:14</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date    Author      History</CommentLine>
+<CommentLine> 1.0   01-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Public Function DisConnect2(ByVal Name As String, ByVal ForceOff As Boolean) As Long</Declaration>
+<Parameters>
+<Parameter>
+<Name>Name</Name>
+<Type>String</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+<Parameter>
+<Name>ForceOff</Name>
+<Type>Boolean</Type>
+<IsByVal>True</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>Long</ReturnType>
+</Procedure>
+<Procedure>
+<Name>WnetError</Name>
+<Scope>Private</Scope>
+<Type>Function</Type>
+<CountOfDeclarationLines>1</CountOfDeclarationLines>
+<CountOfLines>57</CountOfLines>
+<CommentLines>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+<CommentLine> Procedure : WnetError</CommentLine>
+<CommentLine> DateTime  : 01-04-2003 11:14</CommentLine>
+<CommentLine> Author    : Dave Robinson</CommentLine>
+<CommentLine> Purpose   :</CommentLine>
+<CommentLine></CommentLine>
+<CommentLine>  V    Date    Author      History</CommentLine>
+<CommentLine> 1.0   01-04-2003  Dave Robinson   Initial Version</CommentLine>
+<CommentLine>---------------------------------------------------------------------------------------</CommentLine>
+</CommentLines>
+<Declaration>Private Function WnetError(Errcode As Long) As String</Declaration>
+<Parameters>
+<Parameter>
+<Name>Errcode</Name>
+<Type>Long</Type>
+<IsByVal>False</IsByVal>
+<IsOptional>False</IsOptional>
+<IsParamArray>False</IsParamArray>
+<DefaultValue></DefaultValue>
+</Parameter>
+</Parameters>
+<ReturnType>String</ReturnType>
+</Procedure>
+</Procedures>
+<CommentLines>
+</CommentLines>
+</CodeModule>
+</File>
+<File>
+<Name>frmIcon</Name>
+<FileName>frmIcon.frm</FileName>
+<PathFileName>C:\Documents and Settings\Dave.HOME\My Documents\Woodside\SwapServer\frmIcon.frm</PathFileName>
+<Type>VBForm</Type>
+<Description></Description>
+<HelpContextID>0</HelpContextID>
+<Properties>
+<Property>
+<Name>Name</Name>
+<Value>frmIcon</Value>
+</Property>
+<Property>
+<Name>Caption</Name>
+<Value>Swap Server</Value>
+</Property>
+<Property>
+<Name>BackColor</Name>
+<Value>-2147483633</Value>
+</Property>
+<Property>
+<Name>ForeColor</Name>
+<Value>-2147483630</Value>
+</Property>
+<Property>
+<Name>Left</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>Top</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>Width</Name>
+<Value>4770</Value>
+</Property>
+<Property>
+<Name>Height</Name>
+<Value>3570</Value>
+</Property>
+<Property>
+<Name>Enabled</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>WindowState</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>MousePointer</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>ScaleLeft</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>ScaleTop</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>ScaleWidth</Name>
+<Value>4680</Value>
+</Property>
+<Property>
+<Name>ScaleHeight</Name>
+<Value>3195</Value>
+</Property>
+<Property>
+<Name>ScaleMode</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>FontTransparent</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>DrawStyle</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>DrawWidth</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>FillStyle</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>FillColor</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>DrawMode</Name>
+<Value>13</Value>
+</Property>
+<Property>
+<Name>AutoRedraw</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>BorderStyle</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>LinkTopic</Name>
+<Value>Form1</Value>
+</Property>
+<Property>
+<Name>LinkMode</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>MaxButton</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>MinButton</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>ControlBox</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>HasDC</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>Visible</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>Tag</Name>
+<Value></Value>
+</Property>
+<Property>
+<Name>MDIChild</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>KeyPreview</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>ClipControls</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>HelpContextID</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>NegotiateMenus</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>Appearance</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>WhatsThisButton</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>WhatsThisHelp</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>ShowInTaskbar</Name>
+<Value>True</Value>
+</Property>
+<Property>
+<Name>RightToLeft</Name>
+<Value>False</Value>
+</Property>
+<Property>
+<Name>StartUpPosition</Name>
+<Value>1</Value>
+</Property>
+<Property>
+<Name>OLEDropMode</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>PaletteMode</Name>
+<Value>0</Value>
+</Property>
+<Property>
+<Name>Moveable</Name>
+<Value>True</Value>
+</Property>
+</Properties>
+<CodeModule>
+<CountOfDeclarationLines>2</CountOfDeclarationLines>
+<CountOfLines>2</CountOfLines>
+<Interfaces>
+</Interfaces>
+<Events>
+</Events>
+<Procedures>
+</Procedures>
+<CommentLines>
+</CommentLines>
+</CodeModule>
+<Controls>
+</Controls>
+</File>
+</Files>
+</Project>

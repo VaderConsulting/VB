@@ -1,0 +1,6 @@
+
+ Volume in drive D is EXTRA STUFF
+ Volume Serial Number is 2F04-1DE4
+ Directory of D:\DATA\Projects\Blank
+
+                       20,185,088 bytes free

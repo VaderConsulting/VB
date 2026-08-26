@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>TRANSFORMSSECURE Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="TRANSFORMSSECURE Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_transformssecure_property"></A>TRANSFORMSSECURE Property</H1>
+
+<P>Setting the TRANSFORMSECURE property to 1 informs the installer that transforms are to be cached locally on the user's computer in a location where the user does not have write access. Setting this property is like setting the <A HREF="over_9u91.htm">TransformsSecure</A> policy except that the scope is different. Setting TransformsSecure policy applies to all packages installed by a given user. Setting the TRANSFORMSSECURE property applies to the package regardless of the user. </P>
+
+<P>The purpose of this property is to provide for secure transform storage with traveling users of Windows 2000. When this property is set, a <A HREF="over_7mzy.htm">maintenance installation</A> can only use the transform from the specified path. If the path is not available the maintenance installation fails. A source for each secure transform must therefore reside at the location of the source of the installation package. Then if the installer finds that the transform is missing on the local computer, it can restore the transform from this source.</P>
+
+<H4>Remarks</H4>
+
+<P>The TRANSFORMSSECURE property is not available with Windows Installer version 1.0.</P>
+
+<P>Windows Installer version 1.1 interprets the <A HREF="pref_4xh5.htm">TRANSFORMSATSOURCE property</A> to be the same as the TRANSFORMSSECURE property.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="updat_5wab.htm">Transforms</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

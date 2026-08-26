@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AppId Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="AppId Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_appid_table"></A>AppId Table</H1>
+
+<P>The AppId table or the <A HREF="tref_3obp.htm">Registry table</A> specifies that the installer configure and register DCOM servers to do one of the following during an installation. 
+
+<UL>
+	<LI>Run the DCOM server under a different identity than the user activating the server. For example, to configure a DCOM server to always run as an interactive user or as a predefined user.</LI>
+
+	<LI>Run the DCOM server as a service.</LI>
+
+	<LI>Configure the default security access for the DCOM server.</LI>
+
+	<LI>Register the DCOM server such that it is activated on a different computer. </LI>
+</UL>
+
+<P>This table is processed at the installation of the component associated with the DCOM server in the _Component column of the <A HREF="tref_5n8l.htm">Class table</A>. An AppId is not advertised.</P>
+
+<P>The AppId table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Column</TH>
+<TH align=left width=36%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=18%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>AppId</TD>
+<TD width=36%><A HREF="tref_7kf8.htm">GUID</A></TD>
+<TD width=13%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>RemoteServerName</TD>
+<TD width=36%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>LocalService</TD>
+<TD width=36%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ServiceParameters</TD>
+<TD width=36%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>DllSurrogate</TD>
+<TD width=36%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ActivateAtStorage</TD>
+<TD width=36%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>RunAsInteractiveUser</TD>
+<TD width=36%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>AppId</DT>
+
+<DD>The AppId column of the <A HREF="tref_5n8l.htm">Class table</A> is a foreign key into this column of the AppId table. This column contains the AppId value that will be written under the CLSID and creates the AppId GUID key under HKCR\AppId. </DD>
+
+<DT>RemoteServerName</DT>
+
+<DD>This column contains the value of "RemoteServerName"=&lt;xxxx&gt; that will be written under HKCR\AppID\{AppID}\ .</DD>
+
+<DT>LocalService</DT>
+
+<DD>This column contains the value of LocalService that will be written under HKCR\AppID\{&lt;appid&gt;} "LocalService"=&lt;xxx&gt;.</DD>
+
+<DT>ServiceParameters</DT>
+
+<DD>This column contains the value of ServiceParameters that will be written under HKCR\AppID\{appid&gt;} "ServiceParameters".</DD>
+
+<DT>DllSurrogate</DT>
+
+<DD>This column contains the value of DllSurrogate that will be written under HKCR\AppId\{&lt;appid&gt;} "DllSurrogate"=&lt;xxx&gt;. If this column is present it will typically be an empty string.</DD>
+
+<DT>ActivateAtStorage</DT>
+
+<DD>This column contains the value of ActivateAtStorage that will be written under HKCR\AppID\{&lt;appid&gt;} "ActivateAtStorage"="Y". </DD>
+
+<DT>RunAsInteractiveUser</DT>
+
+<DD>This column contains the value of RunAsInteractiveUser that will be written under HKCR\AppID\{appid&gt;} "RunAs"="Interactive User".
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is used by the <A HREF="aref_04oe.htm">RegisterClassInfo action</A> and <A HREF="aref_8wby.htm">UnregisterClassInfo action</A>.</P>
+
+<P>Note that the AppId table does not have a column for registering a Default name. Therefore in cases where you need to write a user friendly name as the Default name value, you must register using the <A HREF="tref_3obp.htm">Registry table</A>.  </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

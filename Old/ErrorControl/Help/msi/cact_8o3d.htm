@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action Security</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_custom_action_security"></A>Custom Action Security</H2>
+
+<P>The installer runs custom actions with user privileges by default in order to limit the access of custom actions to the system. The installer may run custom actions with elevated privileges if a managed application is being installed or if the system policy has been specified for elevated privileges. </P>
+
+<P>Note that only <A HREF="cact_10fn.htm">deferred execution custom actions</A> can use the <B>msidbCustomActionTypeNoImpersonate</B> attribute. For more information see <A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A>.</P>
+
+<H4>Windows 2000</H4>
+
+<P>For Microsoft® Windows® 2000, if the <B>msidbCustomActionTypeNoImpersonate</B> bit is not set for a custom action, the installer runs the custom action with user-level privileges. For more information, see <A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A>. </P>
+
+<P>If the <B>msidbCustomActionTypeNoImpersonate</B> bit is set and a managed application is being installed with administrator permission, the installer may run the custom action with elevated privileges. However, if a user attempts to install the managed application without administrator permission, the installer runs the application with user level privileges regardless of whether <B>msidbCustomActionTypeNoImpersonate</B> is set.</P>
+
+<P>Note that a custom action may run with system privileges even when the <B>msidbCustomActionTypeNoImpersonate</B> bit is not set. This occurs if an administrator installs the application for all users on a computer using Windows 2000 Terminal Server. This also occurs if the installation is invoked when there is no user context. For example, if there is no currently logged-on user during an installation invoked by Windows 2000 Application Deployment. </P>
+
+<H4>Windows NT</H4>
+
+<P>For Microsoft Windows NT® 4.0, if the <B>msidbCustomActionTypeNoImpersonate</B> bit is not set for a custom action, the installer runs the custom action with user level privileges. For more information, see <A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A>. </P>
+
+<P>Note that a custom action may run with system privileges in cases where the installation is invoked without an associated user context, even when the <B>msidbCustomActionTypeNoImpersonate</B> bit is not set. </P>
+
+<P>If the <B>msidbCustomActionTypeNoImpersonate </B>bit is set, and the <A HREF="over_0wpw.htm">AlwaysInstallElevated</A> policies are set, the installer may run the custom action with elevated privileges. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Custom%20Action%20Security;%20RELEASE:%20August%202001;%20URL:%20cact_8o3d.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Custom%20Action%20Security;%20RELEASE:%20August%202001;%20URL:%20cact_8o3d.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

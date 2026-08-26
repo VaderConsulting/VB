@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Embedding Customization Transforms as Substorage</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_embedding_customization_transforms_as_substorage"></A>Embedding Customization Transforms as Substorage</H2>
+
+<P>You may store the customization transform in a storage of the Windows installer package to guarantee that the transform is always available when the installation package is available. See <A HREF="updat_3ub7.htm">Embedded Transforms</A>. An example of this is provided in the Windows Installer SDK as the utility WiSubStg.vbs. The following snippet, Emb.vbs, also illustrates the use of the <A HREF="tref_4did.htm">_Storages Table</A> to add an embedded transform and is for use with Windows Scripting Host. </P>
+
+<PRE>'Emb.vbs. Argument(0) is the original database. Argument(1) is the
+'    path to the transform file. Argument(2) is the name of the storage.
+'
+Option Explicit
+ 
+' Connect to Windows Installer object
+On Error Resume Next
+Dim installer : Set installer = Nothing
+Set installer = Wscript.CreateObject("WindowsInstaller.Installer")
+ 
+' Evaluate command-line arguments and set open and update modes
+Dim databasePath: databasePath = Wscript.Arguments(0)
+Dim importPath  : importPath = Wscript.Arguments(1)
+Dim storageName : storageName = Wscript.Arguments(2)
+ 
+' Open database and create a view on the _Storages table
+Dim sqlQuery : sqlQuery = "SELECT `Name`,`Data` FROM _Storages"
+Dim database : Set database = installer.OpenDatabase(databasePath, 1)
+Dim view     : Set view = database.OpenView(sqlQuery)
+ 
+'Create and Insert the row.
+Dim record   : Set record = installer.CreateRecord(2)
+record.StringData(1) = storageName
+view.Execute record
+ 
+'Insert storage - copy data into stream
+record.SetStream 2, importPath
+view.Modify 3, record
+database.Commit
+Set view = Nothing
+Set database = Nothing</PRE>
+
+<P>To add a storage named MNPtrans1 to MNP2000.msi, and containing the transform you created in <A HREF="samp_6o31.htm">Adding Summary Information to Customization Transform</A>, change directories to the folder containing Emb.vbs, the original database, and the transform file, then enter the following command line.</P>
+
+<PRE>Cscript.exe Emb.vbs MNP2000.msi MNPtrans.mst MNPtrans1</PRE>
+
+<P>This completes the customization transform example. After embedding the transform in MNPtrans.mst, the transform is always available with the installation package. The file MNPtrans.mst does not need to be located at the source to apply the transform.</P>
+
+<P>Remove MNPtrans.mst from the folder containing the sample installation package. Click on the MNP2000.msi icon to launch an install or use the following command line.</P>
+
+<PRE>msiexec /i MNP2000.msi</PRE>
+
+<P>Note that this installs the product without the customizations. To install with the customizations, enter the following command line. Use a colon to indicate that the value of the <A HREF="pref_8q2h.htm">TRANSFORMS Property</A> refers to an embedded transform.</P>
+
+<P>msiexec /i MNP2000.msi TRANSFORMS=:MNPtrans1</P>
+
+<P>Note that the Gate feature does not appear in the feature selection tree and that the components of the Gate feature are not installed even if a Complete type of installation is selected in the user interface.</P>
+
+<H4>Next example</H4>
+
+<P><A HREF="samp_6rxh.htm">A Small Update Patching Example</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

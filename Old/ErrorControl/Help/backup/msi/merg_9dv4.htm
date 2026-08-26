@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICEM10</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICEM10 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_icem10"></A>ICEM10</H1>
+
+<P>ICEM10 verifies that a merge module does not contain disallowed properties in the <A HREF="tref_21d1.htm">Property Table</A>. The disallowed properties are the <A HREF="pref_7aex.htm">ProductLanguage</A>, <A HREF="pref_4tfd.htm">ProductCode</A>, <A HREF="pref_120p.htm">ProductVersion</A>, <A HREF="pref_52m1.htm">ProductName</A>, and <A HREF="pref_9z09.htm">Manufacturer</A> properties, which are product specific.</P>
+
+<H4>Result</H4>
+
+<P>ICEM10 Posts an error when a merge module contains a disallowed property in the Property Table.</P>
+
+<H4>Example</H4>
+
+<P>ICEM10 posts the following error messages for a module containing the database entries shown below.</P>
+
+<PRE>The property 'ProductLanguage' is not allowed in a merge module.
+ 
+The property 'Manufacturer' is not allowed in a merge module.</PRE>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A> (partial)</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Property</TH>
+<TH align=left width=52%>Values</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Color</TD>
+<TD width=52%>Red</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Manufacturer</TD>
+<TD width=52%>Microsoft</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ProductLanguage</TD>
+<TD width=52%>1033</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix the errors, perform the following:
+
+<OL>
+	<LI>Remove the 'Manufacturer' property from the Property table.</LI>
+
+	<LI>Remove the 'ProductLangauge' property from the Property table.</LI>
+</OL>
+
+<H4>Table Used During Execution</H4>
+
+<P><A HREF="tref_21d1.htm">Property Table</A> </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_54md.htm">Merge Module ICE Reference</A> </P>
+
+<P></P>
+
+<P></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

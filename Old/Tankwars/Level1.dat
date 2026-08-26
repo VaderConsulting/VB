@@ -1,0 +1,103 @@
+"Totalunits" , 150
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 0
+ "Type" , 9
+ "Position.X" , 1000
+ "Position.Y" , -2000
+ "Position.Z" , 200
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 1
+ "Type" , 8
+ "Position.X" , 0
+ "Position.Y" , -50
+ "Position.Z" , -1000
+ "Health" , 15
+ "Player" , "You"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 2
+ "Type" , 4
+ "Position.X" , 1000
+ "Position.Y" , -50
+ "Position.Z" , 0
+ "Health" , 12
+ "Alert" , 1
+ "Target" , 6
+ "Player" , "the bad tank"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 3
+ "Type" , 11
+ "Position.X" , 5000
+ "Position.Y" , -500
+ "Position.Z" , 0
+ "Health" , 15
+ "Target" , 2
+ "Player" , "one of your planes"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 4
+ "Type" , 11
+ "Position.X" , 5000
+ "Position.Y" , -850
+ "Position.Z" , 500
+ "Health" , 15
+ "Target" , 6
+ "Player" , "one of your planes"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 5
+ "Type" , 1
+ "Position.X" , 0
+ "Position.Y" , -300
+ "Position.Z" , 0
+ "Health" , 15
+ "Player" , "the tower"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 6
+ "Type" , 2
+ "Position.X" , 0
+ "Position.Y" , -100
+ "Position.Z" , 0
+ "Health" , 25
+ "Player" , "the tower"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 7
+ "Type" , 1
+ "Position.X" , 0
+ "Position.Y" , -300
+ "Position.Z" , 4000
+ "Health" , 15
+ "Player" , "the other tower"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 8
+ "Type" , 2
+ "Position.X" , 0
+ "Position.Y" , -100
+ "Position.Z" , 4000
+ "Health" , 15
+ "Player" , "the other tower"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 10
+ "Type" , 11
+ "Position.X" , -10000
+ "Position.Y" , -750
+ "Position.Z" , 500
+ "Health" , 1
+ "Target" , 5
+ "Player" , "N-M-E planes"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 11
+ "Type" , 11
+ "Position.X" , -8000
+ "Position.Y" , -750
+ "Position.Z" , 500
+ "Health" , 1
+ "Target" , 5
+ "Player" , "N-M-E planes"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ "World" , 12
+ "Type" , 11
+ "Position.X" , -5000
+ "Position.Y" , -750
+ "Position.Z" , 500
+ "Health" , 1
+ "Target" , 5
+ "Player" , "N-M-E planes"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

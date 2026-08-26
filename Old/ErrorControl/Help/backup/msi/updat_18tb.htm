@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>UpgradedImages Table (PATCHWIZ.DLL)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="UpgradedImages Table (PATCHWIZ.DLL)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_upgradedimages_table_patchwiz.dll_"></A>UpgradedImages Table (PATCHWIZ.DLL)</H1>
+
+<P>The UpgradedImages table contains information about the upgraded images of the product. The upgraded image should be a fully uncompressed administrative image of the latest version of the product. A Windows Installer patch package updates a target image into an upgraded image. The UpgradedImages table is required in the patch creation database (.pcp file) and is used by <A HREF="updat_6yu7.htm"><B>UiCreatePatchPackage (PATCHWIZ.DLL)</B></A>.</P>
+
+<P>An UpgradedImages table containing at least one record is required in every patch creation database (.pcp file). This table is used by <A HREF="updat_6yu7.htm"><B>UiCreatePatchPackage</B></A>. </P>
+
+<P>The UpgradedImages table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Upgraded</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>MsiPath</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>PatchMsiPath</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>SymbolPaths</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Family</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Upgraded</DT>
+
+<DD>The Upgraded field is an arbitrary identifier to connect the target images with an upgraded image of the product.</DD>
+
+<DT>MsiPath</DT>
+
+<DD>This field specifies the full path, including the file name, to the location of the .msi file for the upgraded image. This is the location of the source files for the upgraded image. </DD>
+
+<DT>PatchMsiPath</DT>
+
+<DD>The optional patchMsiPath points to a modified copy of the upgraded installation database that contains additional authoring specific to the patch installation process. For example, additional dialogs or custom actions conditioned on the <A HREF="pref_3wc9.htm">PATCH property</A>. </DD>
+
+<DT>SymbolPaths</DT>
+
+<DD>A semicolon delimited list of folders that are to be searched for symbol files that may be used to optimize the generation of the binary patch. Note that the subdirectories of folders specified in this field are not searched. An optimized binary patch may be smaller. Visual C++ must be installed on the computer generating the patch and used to create the symbol files. This field is optional, and the installer creates a binary patch even if no symbol files are specified or if the symbol files become unavailable to PATCHWIZ.DLL.</DD>
+
+<DT>Family</DT>
+
+<DD>Foreign key into the <A HREF="updat_11pb.htm">ImageFamilies Table</A>. Each upgraded image must belong to only one family. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Although each upgraded image can be grouped into a separate image family, grouping upgraded images that share files together may make the .msp smaller.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

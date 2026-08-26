@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Registry Tables Group</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_registry_tables_group"></A>Registry Tables Group</H2>
+
+<P><IMG SRC="images/registry.gif" ALT="" BORDER=0></P>
+
+<P>For more information about this diagram, see the <A HREF="app_7q3o.htm">entity relationship diagram legend</A>.</P>
+
+<P>The installer has specific tables for the different types of registry entries. When populating the registry tables group it is important to try to minimize the number of entries put into the <A HREF="tref_3obp.htm">Registry table</A> and maximize the use of the other, specific, registry tables. This is because the installer cannot distinguish between different types of registry entries in the Registry table and cannot use the internal logic necessary to take full advantage of all of the installer features, such as <A HREF="dglo_2yyh.htm#_msi_advertising_gly">advertising</A>. Authoring COM and shell-related registry entries in this way also provides a more logical organization and can help minimize erroneous registration of COM server information. </P>
+
+<P>The figure shows the registry entry group of tables as well as the <A HREF="tref_09np.htm">Component table</A>, <A HREF="tref_0a91.htm">Feature table</A>, and <A HREF="tref_4n6t.htm">File table</A>. Although the latter are not directly involved with populating the registry, they are included in the figure because they are essential to the logic of the registry entry group.</P>
+
+<P>The registry entry group contain the following tables of specific registry entries.
+
+<UL>
+	<LI>The <A HREF="tref_219h.htm">Extension table</A> contains all of the filename extensions your application uses along with their associated features and components. </LI>
+
+	<LI>The <A HREF="tref_3kdh.htm">Verb table</A> associates command-verb information with the file extensions listed in the <A HREF="tref_219h.htm">Extension table</A>. This provides an indirect link between the Verb and Feature table that is needed for feature advertisement.</LI>
+
+	<LI>The <A HREF="tref_3085.htm">TypeLib table</A> provides information that the installer places in the registry for the registration of type libraries. Type library entries are not written at the time of advertisement. The installer writes the type library entries at the time the components associated with the library are installed.</LI>
+
+	<LI>The <A HREF="tref_3sh1.htm">MIME table</A> associates a MIME context type with a CLSID or a file extension. This provides a path between the MIME and Feature Table that is needed for feature advertisement. </LI>
+
+	<LI>The <A HREF="tref_0llx.htm">SelfReg table</A> provides information needed to self-register modules. Self-registration is provided by the installer only for backward compatibility and it is not recommended as a method for populating the registry, however if there are any modules in your application that must register themselves, use the SelfReg table.</LI>
+
+	<LI>The <A HREF="tref_5n8l.htm">Class table</A> is used to register Class IDs and other information for COM objects. This table contains COM server-related information that must be generated as a part of the product advertisement.</LI>
+
+	<LI>The <A HREF="tref_4x5x.htm">ProgId table</A> associates program IDs with class IDs.</LI>
+
+	<LI>The <A HREF="tref_6p2d.htm">AppId table</A> is used to register common security and configuration settings for DCOM objects.</LI>
+
+	<LI>The <A HREF="tref_025h.htm">Environment table</A> is used to set the values of environment variables, and in Windows NT/Windows 2000 the Environment table writes to registry as well.</LI>
+
+	<LI>The <A HREF="tref_3obp.htm">Registry table</A> holds any other information that the application needs to put into the system registry. This would include default settings, user information or data, or COM registration not supported by the above tables.</LI>
+
+	<LI>The <A HREF="tref_3wmd.htm">RemoveRegistry table</A> contains the registry information the application needs to delete from the system registry at installation time.</LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

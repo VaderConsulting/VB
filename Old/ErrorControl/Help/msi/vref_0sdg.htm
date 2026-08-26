@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DoAction Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="DoAction Method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_doaction_method"></A><A NAME="helpid_msiengine_doaction"></A>DoAction Method</H1>
+
+<P>The <B>DoAction</B> method of the <A HREF="vref_8xis.htm"><B>Session</B> object</A> executes the action function corresponding to the name supplied. If a Null action name is supplied, the engine uses the uppercase value of the <A HREF="pref_9njt.htm"><B>ACTION</B> property</A> as the action to perform. If no property value is defined, the default action is performed, currently defined as INSTALL. This method returns an integer enumeration.</P>
+
+<PRE class=syntax><I>object</I>.DoAction(<I>action</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>Session</B> object</DD>
+
+<DT><I>action</I></DT>
+
+<DD>Required string name of the action to execute. Case-sensitive.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=49%>Status</TH>
+<TH align=left width=14%>Value</TH>
+<TH align=left width=37%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiDoActionStatusNoAction</TD>
+<TD width=14%>0</TD>
+<TD width=37%>Action not invoked, most likely does not exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiDoActionStatusSuccess</TD>
+<TD width=14%>1</TD>
+<TD width=37%>IDOK, completed actions successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiDoActionStatusUserExit</TD>
+<TD width=14%>2</TD>
+<TD width=37%>IDCANCEL, user terminated prematurely.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiDoActionStatusFailure</TD>
+<TD width=14%>3</TD>
+<TD width=37%>IDABORT, unrecoverable error occurred.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiDoActionStatusSuspend</TD>
+<TD width=14%>4</TD>
+<TD width=37%>IDRETRY, sequence suspended, to be resumed later.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiDoActionStatusFinished</TD>
+<TD width=14%>5</TD>
+<TD width=37%>IDIGNORE, skip remaining actions, not an error.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiDoActionStatusWrongState</TD>
+<TD width=14%>6</TD>
+<TD width=37%>Calling sequence error, not in initialized state.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiDoActionStatusBadActionData</TD>
+<TD width=14%>7</TD>
+<TD width=37%>Invalid action table condition or missing custom action.</TD>
+</TR>
+</TABLE><BR>
+
+<P>Actions that update the system, such as the <A HREF="aref_3hym.htm">InstallFiles</A> and <A HREF="aref_1cmm.htm">WriteRegistryValues</A> actions, cannot be run by calling the <B>DoAction</B> method. The exception to this rule is if the <B>DoAction</B> method is called from a custom action that is scheduled in the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> between the <A HREF="aref_0gby.htm">InstallInitialize</A> and <A HREF="aref_8l9q.htm">InstallFinalize actions</A>. Actions that do not update the system, such as <A HREF="aref_16zy.htm">AppSearch</A> or <A HREF="aref_4bam.htm">CostInitialize</A>, can be called.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20DoAction%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_0sdg.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20DoAction%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_0sdg.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

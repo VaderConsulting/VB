@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSequence</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiSequence">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msisequence"></A>MsiSequence</H1>
+
+<P>The <B>MsiSequence</B> function executes another action sequence, as described in the specified table.</P>
+
+<PRE class=syntax><B>UINT MsiSequence(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>    // installer handle
+  <B>LPCTSTR</B> <I>szTable</I><B>,</B>       // table name
+  <B>INT</B> <I>iSequenceMode</I>      // processing option
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>[in] Handle to the installation.</DD>
+
+<DT><I>szTable</I></DT>
+
+<DD>[in] Specifies the name of the table containing the action sequence.</DD>
+
+<DT><I>iSequenceMode</I></DT>
+
+<DD>[in] This parameter is currently unimplemented. It is reserved for future use and must be 0.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.</DD>
+
+<DT>ERROR_FUNCTION_NOT_CALLED</DT>
+
+<DD>The function was not called.</DD>
+
+<DT>ERROR_INSTALL_FAILURE</DT>
+
+<DD>An installation failure occurred.</DD>
+
+<DT>ERROR_INSTALL_SUSPEND</DT>
+
+<DD>The installation was suspended.</DD>
+
+<DT>ERROR_INSTALL_USEREXIT</DT>
+
+<DD>The user exited the installation.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_HANDLE_STATE</DT>
+
+<DD>An invalid handle state occurred.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiSequence</B> function queries the specified table, ordering the actions by the numbers in the Sequence column. For each row retrieved, an action is executed, provided that any supplied condition expression does not evaluate to FALSE.</P>
+
+<P>An action sequence containing any actions that update the system, such as the <A HREF="aref_3hym.htm">InstallFiles</A> and <A HREF="aref_1cmm.htm">WriteRegistryValues</A> actions, cannot be run by calling <B>MsiSequence</B>. The exception to this rule is if <B>MsiSequence</B> is called from a custom action that is scheduled in the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> between the <A HREF="aref_0gby.htm">InstallInitialize</A> and <A HREF="aref_8l9q.htm">InstallFinalize actions</A>. Actions that do not update the system, such as <A HREF="aref_16zy.htm">AppSearch</A> or <A HREF="aref_4bam.htm">CostInitialize</A>, can be called.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_action_functions">Installer Action Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiSequence;%20RELEASE:%20August%202001;%20URL:%20qref_6zad.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiSequence;%20RELEASE:%20August%202001;%20URL:%20qref_6zad.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

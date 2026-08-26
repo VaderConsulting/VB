@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>About the User Interface</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_about_the_user_interface"></A>About the User Interface</H1>
+
+<P>The Microsoft® Windows® Installer contains functionality which enables installation package developers to author a graphical user interface (GUI) that is displayed to the end user during installation. This user interface can exhibit <A HREF="hand_17w2.htm">User Interface Wizard Behavior</A>, display dialog boxes and billboards, and present interactive controls to users during the installation.</P>
+
+<P>The Windows Installer internal user interface is managed and controlled through a set of database tables within Windows Installer itself. The installer provides only a small set of default dialog boxes which are intended to handle error and information messages. All custom dialog boxes must be created by the package author.</P>
+
+<P>There is no specific Windows Installer API to allow a package author to create a user interface programmatically. It is possible to use the Microsoft Windows API to create a user interface programmatically; however, it is recommended that package authors use the internal user interface provided.</P>
+
+<P>Installer package authors create custom dialog boxes by entering the name of their custom dialog into the "_Dialog" column of the dialog table and specifying the size, position, and other attributes using the remaining columns.</P>
+
+<P>Windows Installer also implements a number of standard controls that a package author can place onto Dialog Boxes. Not all standard Microsoft Windows controls are available, and custom controls cannot be created for use with the Windows Installer user interface.</P>
+
+<P>Controls are created on a specific dialog box by entering the name of the dialog box, which is the primary key to the dialog box's entry in the dialog table, into the second field of the control table and specifying the control's size, position and other attributes using the remaining columns.</P>
+
+<P>Active controls must be linked to a ControlEvent in the <A HREF="tref_6k11.htm">ControlEvent table</A> to allow user interaction with the installation. Passive controls that receive and display information must be subscribed to an appropriate ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A>.</P>
+
+<P>For more information about ControlEvents, see <A HREF="hand_5fhz.htm">ControlEvent Overview</A>. Note that a control publishes a ControlEvent if listed in the ControlEvent table and subscribes to an event if listed in the EventMapping table.</P>
+
+<P>The Windows Installer user interface display during installation is managed through the user interface sequence tables: <A HREF="tref_1git.htm">InstallUISequence Table</A>, and <A HREF="tref_5lnp.htm">AdminUISequence Table</A>. One of these three sequence tables is executed depending on the top level action that initiated the installation: <A HREF="aref_986m.htm">INSTALL</A>, <A HREF="aref_4hbi.htm">ADMIN</A>, or <A HREF="aref_2o8e.htm">ADVERTISE</A>. </P>
+
+<P>For more information about implementing a user interface in Microsoft Windows Installer, please see <A HREF="hand_1nvp.htm">Using the User Interface</A>, <A HREF="hand_04kh.htm">User Interface Schema</A>, as well as the individual topics for Dialog boxes and Controls.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20About%20the%20User%20Interface;%20RELEASE:%20August%202001;%20URL:%20hand_6iw5.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20About%20the%20User%20Interface;%20RELEASE:%20August%202001;%20URL:%20hand_6iw5.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

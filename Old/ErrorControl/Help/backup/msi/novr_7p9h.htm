@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Suggested AdminUISequence</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_suggested_adminuisequence"></A>Suggested AdminUISequence</H3>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Action</TH>
+<TH align=left width=25%>Condition</TH>
+<TH align=left width=44%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>FatalErrorDlg</TD>
+<TD width=25%> </TD>
+<TD width=44%>-3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>UserExitDlg</TD>
+<TD width=25%> </TD>
+<TD width=44%>-2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>ExitDlg</TD>
+<TD width=25%> </TD>
+<TD width=44%>-1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>PrepareDlg</TD>
+<TD width=25%> </TD>
+<TD width=44%>140</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_4bam.htm">CostInitialize</A></TD>
+<TD width=25%> </TD>
+<TD width=44%>800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_2f8u.htm">FileCost</A></TD>
+<TD width=25%> </TD>
+<TD width=44%>900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_22we.htm">CostFinalize</A></TD>
+<TD width=25%> </TD>
+<TD width=44%>1000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>AdminWelcomeDlg</TD>
+<TD width=25%> </TD>
+<TD width=44%>1230</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>ProgressDlg</TD>
+<TD width=25%> </TD>
+<TD width=44%>1280</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_3b1q.htm">ExecuteAction</A></TD>
+<TD width=25%> </TD>
+<TD width=44%>1300</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Building an ICE Database</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_building_an_ice_database"></A>Building an ICE Database</H3>
+
+<P>After selecting the appropriate <A HREF="ices_55f7.htm">ICEs</A> for validation, a developer must collect the custom actions together into an ICE database. A .cub file is a standard .msi database that contains only ICEs and their required tables. A .cub file cannot be installed and is used only to store and provide access to ICE custom actions.</P>
+
+<P>A .cub file contains the following database tables.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=38%>Table</TH>
+<TH align=left width=62%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%><A HREF="tref_04px.htm">Binary</A></TD>
+<TD width=62%>The script files, DLLs, and EXEs of the ICE customs actions that are referenced in the CustomAction table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%><A HREF="tref_71b9.htm">CustomAction</A></TD>
+<TD width=62%>Each record in this table corresponds to an ICE custom action included in the .cub file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>_ICESequence</TD>
+<TD width=62%>This table lists the ICE customs actions included in the .cub file in their execution sequence. The ICE custom actions listed in this table are executed by calling <A HREF="qref_6zad.htm"><B>MsiSequence</B></A><B>,</B> or individually executed using <A HREF="qref_9woe.htm"><B>MsiDoAction</B></A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%><A HREF="tref_8fl1.htm">_Validation</A></TD>
+<TD width=62%>This table contains the .cub file entries that are to be merged into the _Validation table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>_Special</TD>
+<TD width=62%>Any special processing tables required by particular ICE custom actions must be included in the .cub file. The name of these tables must have a leading underscore.</TD>
+</TR>
+</TABLE><BR>
+
+<P>See <A HREF="ices_5xwl.htm">Sample .cub File</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Building%20an%20ICE%20Database;%20RELEASE:%20August%202001;%20URL:%20ices_5hyd.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Building%20an%20ICE%20Database;%20RELEASE:%20August%202001;%20URL:%20ices_5hyd.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

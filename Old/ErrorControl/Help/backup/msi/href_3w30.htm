@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>SelectionTree Control</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="SelectionTree Control">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_selectiontree_control"></A>SelectionTree Control</H1>
+
+<P>This control enables a user to change the selection state of features listed in the <A HREF="tref_0a91.htm">Feature Table</A>. The control is associated with a string valued property that the user can set by a <A HREF="href_246f.htm">Browse Dialog</A>. You can associate the control with a property by entering the property's name in the Property column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+
+<P>The SelectionTree control publishes the following ControlEvents.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Control event</TH>
+<TH align=left width=65%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="href_66lw.htm">SelectionAction</A></TD>
+<TD width=65%>Publish string from the <A HREF="tref_0vz9.htm">UIText table</A> describing highlighted item.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="href_01dg.htm">SelectionBrowse</A></TD>
+<TD width=65%>Spawn a browse dialog used to modify path of highlighted item.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="href_2qno.htm">SelectionDescription</A></TD>
+<TD width=65%>Publish string from the <A HREF="tref_0a91.htm">Feature table</A> describing highlighted item.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="href_0778.htm">SelectionIcon</A></TD>
+<TD width=65%>Publish the handle to the icon for the highlighted item. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="href_4jn8.htm">SelectionNoItems</A></TD>
+<TD width=65%>Delete the descriptive text or disable the buttons of an obsolete item.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="href_1d6c.htm">SelectionPath</A></TD>
+<TD width=65%>Publish the path for the highlighted item.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="href_6tf8.htm">SelectionPathOn</A></TD>
+<TD width=65%>Publishes whether or not there is a selection path associated with the currently selected feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="href_94z8.htm">SelectionSize</A></TD>
+<TD width=65%>Publish the size of the highlighted item.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The contents of the Text field of the <A HREF="tref_6nad.htm">Control table</A> is never displayed by the SelectionTree control. Instead this field specifes the style of text to be displayed by the control and contains a description of the control used by screen review utilities. To set the font and font style of the text displayed by the control, begin the Text column of the Control table with {\style}, where style is an identifier listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. Use {&amp;style} to apply the base font and font style. The information following this is  read by screen review utilities as the description of the control. See <A HREF="hand_1tvd.htm">Accessibility</A>.</P>
+
+<H4>Control Attributes</H4>
+
+<P>You can use the following attributes with this control. To change the value of an attribute using an event, subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A> and list the attribute's identifier in the Attribute column. Enter the Identifier of the ControlEvent in the Event column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Attribute identifier</TH>
+<TH align=left width=17%>Hexadecimal bit</TH>
+<TH align=left width=64%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_1i79.htm">IndirectPropertyName</A> </TD>
+<TD width=17%> </TD>
+<TD width=64%>This is the name of an indirect property associated with the control. If the Indirect attribute bit is set, the control displays or changes the value of the property having this name. If the Indirect attribute bit is set, this name is also the value of the property listed in the Property column of the <A HREF="tref_6nad.htm">Control table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2w6d.htm">Position</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Position of control in the dialog box.
+<P>Enter the control's width, height, and coordinates of the control's left corner into the Width, Height, X, and Y columns of the <A HREF="tref_6nad.htm">Control table</A>. Use pixels for units of length and distance.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_1nc5.htm">PropertyName</A> </TD>
+<TD width=17%> </TD>
+<TD width=64%>This is the name of the property associated with this control. If the Indirect attribute bit is not set, the control displays or changes the value of the property having this name. This attribute is specified in the Property column of the <A HREF="tref_6nad.htm">Control table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_4twl.htm">PropertyValue</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Current value of the property displayed or changed by this control. If the Indirect attribute bit is not set, this is the value of PropertyName. If the Indirect attribute bit is set, this is the value of IndirectPropertyName. If the attribute changes, the control reflects the new value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2kmd.htm">Text</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>To display text in screen readers, enter the text into the Text column of the <A HREF="tref_6nad.htm">Control table</A>. See <A HREF="hand_1tvd.htm">Accessibility</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8bqd.htm">Visible</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000001</P>
+</TD>
+<TD width=64%>Hidden control.
+<P>Visible control.</P>
+
+<P>Include this bit in the bit word of the Attributes column in the <A HREF="tref_6nad.htm">Control table</A> to make the control visible or hidden upon its creation. </P>
+
+<P>You can also hide or show a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2ig5.htm">Enabled</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000002</P>
+</TD>
+<TD width=64%>Control in a disabled state.
+<P>Control in an enabled state. </P>
+
+<P>Include this bit in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> to enable the control on creation.</P>
+
+<P>You can also enable or disable a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0vad.htm">Sunken</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000004</P>
+</TD>
+<TD width=64%>Display the default visual style.
+<P>Display the control with a sunken, 3D, look.</P>
+
+<P>Include these bits in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8m05.htm">Indirect</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000008</P>
+</TD>
+<TD width=64%>The control displays or changes the value of the property in the Property column of the <A HREF="tref_6nad.htm">Control table</A>. 
+<P>The control displays or changes the value of the property that has the Identifier listed in the Property column of the Control table.</P>
+
+<P>Determines if the property associated with this control is referenced indirectly.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_761x.htm">RTLRO</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000020</P>
+</TD>
+<TD width=64%>Text in the control is displayed in a Left-To-Right-Reading-Order.
+<P>Text in the control is displayed in a Right-To-Left-Reading-Order.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_6kbp.htm">RightAligned</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000040</P>
+</TD>
+<TD width=64%>Text in the control is aligned on the left.
+<P>Text in the control is aligned on the right.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8icl.htm">LeftScroll</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000080</P>
+</TD>
+<TD width=64%>The scroll bar is located on the right side of the control. 
+<P>The scroll bar is located on the left side of the control. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_9t2d.htm">BiDi</A></TD>
+<TD width=17%>0x000000E0</TD>
+<TD width=64%>Set this value for a combination of the <A HREF="href_761x.htm">RTLRO</A>, <A HREF="href_6kbp.htm">RightAligned</A>, and <A HREF="href_8icl.htm">LeftScroll</A> attributes.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This control is created with the WC_TREEVIEW class and the WS_BORDER, TVS_HASLINES, TVS_HASBUTTONS, TVS_LINESATROOT, TVS_DISABLEDRAGDROP, TVS_SHOWSELALWAYS, WS_CHILD, WS_TABSTOP, WS_GROUP styles.</P>
+
+<P>The selection tree is only populated if the <A HREF="aref_4bam.htm">CostInitialize action</A> and <A HREF="aref_22we.htm">CostFinalize action</A> have been called.</P>
+
+<P>The following strings in the <A HREF="tref_0vz9.htm">UIText table</A> are related to this control.
+
+<DL>
+<DT><B>AbsentPath</B> </DT>
+
+<DD>The path displayed for an item in the absent state.
+</DD>
+</DL>
+
+<P>The following six strings are used to display the number of children selected and the size associated with the highlighted item.</P>
+
+<P><B>SelChildCostPos</B><BR>
+<B>SelChildCostNeg</B><BR>
+<B>SelParentCostPosPos</B><BR>
+<B>SelParentCostPosNeg</B><BR>
+<B>SelParentCostNegPos</B><BR>
+<B>SelParentCostNegNeg</B></P>
+
+<P>The following strings are used to display the available selection options for an item in a popup menu.</P>
+
+<P><B>MenuAbsent</B><BR>
+<B>MenuLocal</B><BR>
+<B>MenuCD</B><BR>
+<B>MenuNetwork</B><BR>
+<B>MenuAllLocal<BR>
+MenuAllCD<BR>
+MenuAllNetwork</B></P>
+
+<P>The following strings are used to explain the present selection in the <A HREF="href_2qno.htm">SelectionDescription</A> control event.</P>
+
+<P><B>SelAbsentAbsent</B><BR>
+<B>SelAbsentLocal</B><BR>
+<B>SelAbsentCD</B><BR>
+<B>SelAbsentNetwork</B><BR>
+<B>SelLocalAbsent</B><BR>
+<B>SelLocalLocal</B><BR>
+<B>SelLocalCD</B><BR>
+<B>SelLocalNetwork</B><BR>
+<B>SelCDAbsent</B><BR>
+<B>SelNetworkAbsent</B><BR>
+<B>SelCDLocal</B><BR>
+<B>SelNetworkLocal</B><BR>
+<B>SelCDCD</B><BR>
+<B>SelNetworkNetwork</B></P>
+
+<P>The following four localized strings are used in formatting the size of a file.</P>
+
+<P><B>Bytes</B><BR>
+<B>KB</B><BR>
+<B>MB</B><BR>
+<B>GB</B></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

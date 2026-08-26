@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using the User Interface</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_using_the_user_interface"></A>Using the User Interface</H1>
+
+<P>This section is concerned primarily with how developers of install packages author an installation user interface using the installer's database and internal UI. For more information about the difference between an internal and external UI see <A HREF="hand_6iw5.htm">About the User Interface</A>.</P>
+
+<P>To display a dialog box sequence or billboard during the installation the name of the dialog box must be entered into the Action column of the appropriate action sequence table. The name of the dialog box must appear in the <A HREF="tref_1git.htm">InstallUISequence</A>, <A HREF="tref_3rvp.htm">AdvtUISequence</A>, or <A HREF="tref_5lnp.htm">AdminUISequence table</A> depending on whether the UI is scheduled to run under the <A HREF="aref_986m.htm">INSTALL</A>, <A HREF="aref_2o8e.htm">ADVERTISE</A>, or <A HREF="aref_4hbi.htm">ADMIN action</A>.</P>
+
+<P>Although the installer supports the authoring of custom dialog boxes and billboards, there are also a number of reserved names for certain dialog box sequences. Because the installer uses these names when executing certain actions, these names must only be used with the types of dialog boxes for which they are reserved. A list of these reserved names, and a description of each of the special dialog box sequences, is given in <A HREF="href_2y0j.htm">Dialog Boxes</A>. </P>
+
+<P>The properties of each dialog box or billboard in the UI must be specified in the <A HREF="tref_51wl.htm">Dialog</A> and <A HREF="tref_0c4l.htm">BillBoard</A> tables respectively. The style of each dialog box must also be specified in the Dialog table by setting the <A HREF="href_8b5f.htm">dialog's style bit</A> flag.</P>
+
+<P>Controls and text must be added to the dialog box, and these must be tied to <A HREF="hand_5fhz.htm">ControlEvents</A>, to enable the user to interact with the installation process. See <A HREF="hand_7bec.htm">Adding Controls and Text</A> for more information on how to add controls to a dialog box.</P>
+
+<P>The Windows Installer internal user interface handler can selectively show or hide dialog boxes to control the level of end-user interactivity during the installation. These levels of end-user interactivity are referred to as full, reduced, basic, and none. See <A HREF="hand_9vn7.htm">User Interface Levels</A>. for a full description of these user interface levels.</P>
+
+<P>There are two methods that can be used to set the user interface level. The user interface level can be set programmatically with a call to <A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A>. The first parameter of <B>MsiSetInternalUI</B> specifies the user interface level. The <A HREF="app_73eb.htm">command line option</A> "/q" can also be used to set the user interface level. </P>
+
+<P>The behavior of each of the user interface levels is determined by the authoring of the .msi file by the package developer. The author of an internal UI has flexibility in how these levels behave for his package.</P>
+
+<P>A full UI typically exhibits <A HREF="hand_17w2.htm">User Interface Wizard Behavior</A>, such as each dialog box in a sequence containing a <B>Next&gt;&gt; </B>button. This form of UI is familiar to many users and is the most common simple type of UI for an author to create. The installer presents a logical sequence of dialog boxes and prompts the user to interact with controls located in each dialog box. A reduced UI typically suppresses the display of wizard behavior. A basic UI typically only displays progress messages to the user. A user interface level of None means a silent installation. The availability of these levels depends on the authoring of the installation package. The author must specify every dialog box and control in the user interface in the Dialog and Control tables. </P>
+
+<P>The Windows Installer provides a unique progress bar indicator in the <A HREF="href_0tkc.htm">ProgressBar control</A> that displays to the user an estimate of the total time remaining until the installation is complete. For more information about the progress bar, see <A HREF="hand_3agc.htm">Authoring a Progress Bar Control</A>.</P>
+
+<P>UI authors should facilitate the accessibility of their application or product to all users. To learn more about Active Accessibility® and the Windows Installer, see <A HREF="hand_1tvd.htm">Accessibility</A>.</P>
+
+<P>For more information about authoring a user interface, see <A HREF="hand_7bec.htm">Adding Controls and Text</A>, <A HREF="hand_3agc.htm">Authoring a Progress Bar Control</A>, <A HREF="hand_7po3.htm">Authoring Disk Prompt Messages</A>, <A HREF="hand_6at4.htm">Authoring a Conditional "Please Wait . . ." Message Box</A>, and <A HREF="hand_7uw5.htm">Previewing the User Interface</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

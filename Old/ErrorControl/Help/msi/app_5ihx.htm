@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Msiinfo.exe</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Msiinfo.exe [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_msiinfo.exe"></A>Msiinfo.exe</H2>
+
+<P>Msiinfo.exe is a command line utility that uses <A HREF="qref_778z.htm">Database Functions</A> and <A HREF="func_26sz.htm">Installer Functions</A> to edit or display the <A HREF="sovr_99yl.htm">summary information stream</A> of a database.</P>
+
+<H4>Syntax</H4>
+
+<PRE>MsiInfo {database} [[/B] /D] {option} {data}</PRE>
+
+<UL>
+	<LI>The database cannot be a read-only database. </LI>
+
+	<LI>If no data follows an option, the corresponding property is removed.</LI>
+
+	<LI>A maximum of 20 options may be specified on the command line. The same properties can be specified multiple times.</LI>
+
+	<LI>If the data contains a space, enclose the data with quote marks. For example, such as /T "MY TITLE".</LI>
+</UL>
+
+<H4>Command Line Options</H4>
+
+<P>Msiinfo.exe uses the following case-insensitive command line options. A slash delimiter may also be used in place of a dash. For more information see <A HREF="sovr_43w4.htm">Summary Information Stream Property Set</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=11%>Option</TH>
+<TH align=left width=55%>Description</TH>
+<TH align=left width=24%>Property ID</TH>
+<TH align=left width=10%>PID</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%><I>none</I></TD>
+<TD width=55%>If no options are specified, the utility displays the current values of the Summary Information properties.</TD>
+<TD width=24%>&nbsp;</TD>
+<TD width=10%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-b</TD>
+<TD width=55%>Display information about every string in the string pool. The -b option is only valid if -d is also used and -b must come before the -d option.</TD>
+<TD width=24%>&nbsp;</TD>
+<TD width=10%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-d</TD>
+<TD width=55%>Display information about the string pool. Validates the string pool and provides information about the codepage of the database. Note that the codepage of the database is different than the codepage of the Summary Information stream (PID_CODEPAGE). This option also checks every string for characters that are invalid in the codepage of the database. </TD>
+<TD width=24%>&nbsp;</TD>
+<TD width=10%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-i</TD>
+<TD width=55%>Not applicable. Reserved.</TD>
+<TD width=24%>PID_DICTIONARY</TD>
+<TD width=10%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-c</TD>
+<TD width=55%>Sets the <A HREF="sref_4r5l.htm"><B>Codepage Summary</B> Property</A>.</TD>
+<TD width=24%>PID_CODEPAGE </TD>
+<TD width=10%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-t</TD>
+<TD width=55%>Sets the <A HREF="sref_82rd.htm"><B>Title Summary</B> Property</A>.</TD>
+<TD width=24%>PID_TITLE</TD>
+<TD width=10%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-j</TD>
+<TD width=55%>Sets the <A HREF="sref_0b5l.htm"><B>Subject Summary</B> Property</A>.</TD>
+<TD width=24%>ID PID_SUBJECT</TD>
+<TD width=10%>3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-a</TD>
+<TD width=55%>Sets the <A HREF="sref_76k9.htm"><B>Author Summary</B> Property</A>.</TD>
+<TD width=24%>PID_AUTHOR</TD>
+<TD width=10%>4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-k</TD>
+<TD width=55%>Sets the <A HREF="sref_7xfd.htm"><B>Keywords Summary</B> Property</A>.</TD>
+<TD width=24%>PID_KEYWORDS</TD>
+<TD width=10%>5</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-o</TD>
+<TD width=55%>Sets the <A HREF="sref_4lfd.htm"><B>Comments Summary</B> Property</A>.</TD>
+<TD width=24%>PID_COMMENTS</TD>
+<TD width=10%>6</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-p</TD>
+<TD width=55%>Sets the <A HREF="sref_80hl.htm"><B>Template Summary</B> Property</A>.</TD>
+<TD width=24%>PID_TEMPLATE</TD>
+<TD width=10%>7</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-l</TD>
+<TD width=55%>Sets the <A HREF="sref_7dyx.htm"><B>Last Saved By Summary</B> Property</A>.</TD>
+<TD width=24%>PID_LASTAUTHOR</TD>
+<TD width=10%>8</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-v</TD>
+<TD width=55%>Sets the <A HREF="sref_1am1.htm"><B>Revision Number Summary</B> Property</A>.</TD>
+<TD width=24%>PID_REVNUMBER</TD>
+<TD width=10%>9</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-e</TD>
+<TD width=55%>Not applicable. Reserved.</TD>
+<TD width=24%>PID_EDITTIME</TD>
+<TD width=10%>10</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-s</TD>
+<TD width=55%>Sets the <A HREF="sref_1cs9.htm"><B>Last Printed Summary</B> Property</A>. To specify the year, month, day, hour, minute, and second, use the format "yyyy/mm/dd hh:mm:ss." For example, "1997/06/20 03:25:59".</TD>
+<TD width=24%>PID_LASTPRINTED</TD>
+<TD width=10%>11</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-r</TD>
+<TD width=55%>Sets the <A HREF="sref_2ut5.htm"><B>Create Time/Date Summary</B> Property</A>. To specify the year, month, day, hour, minute, and second, use the format "yyyy/mm/dd hh:mm:ss." For example, "1997/06/20 03:25:59".</TD>
+<TD width=24%>PID_CREATE_DTM</TD>
+<TD width=10%>12</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-q</TD>
+<TD width=55%>Sets the <A HREF="sref_0hkp.htm"><B>Last Saved Time/Date Summary</B> Property</A>. To specify the year, month, day, hour, minute, and second, use the format "yyyy/mm/dd hh:mm:ss." For example, "1997/06/20 03:25:59".</TD>
+<TD width=24%>PID_LASTSAVE_DTM</TD>
+<TD width=10%>13</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-g</TD>
+<TD width=55%>Sets the <A HREF="sref_8eex.htm"><B>Page Count Summary</B> Property</A>.</TD>
+<TD width=24%>PID_PAGECOUNT</TD>
+<TD width=10%>14</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-w</TD>
+<TD width=55%>Sets the <A HREF="sref_8ge1.htm"><B>Word Count Summary</B> Property</A>.</TD>
+<TD width=24%>PID_WORDCOUNT</TD>
+<TD width=10%>15</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-h</TD>
+<TD width=55%>Sets the <A HREF="sref_6r5l.htm"><B>Character Count Summary</B> Property</A>.</TD>
+<TD width=24%>PID_CHARCOUNT</TD>
+<TD width=10%>16</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>&nbsp;</TD>
+<TD width=55%>Not applicable. Reserved.</TD>
+<TD width=24%>PID_THUMBNAIL </TD>
+<TD width=10%>17</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-n</TD>
+<TD width=55%>Sets the <A HREF="sref_4qrd.htm"><B>Creating Application Summary</B> Property</A>. </TD>
+<TD width=24%>PID_APPNAME</TD>
+<TD width=10%>18</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>-u</TD>
+<TD width=55%>Sets the <A HREF="sref_2mbd.htm"><B>Security Summary</B> Property</A>.</TD>
+<TD width=24%>PID_SECURITY</TD>
+<TD width=10%>19</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="app_9303.htm">Windows Installer Development Tools</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Msiinfo.exe;%20RELEASE:%20August%202001;%20URL:%20app_5ihx.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Msiinfo.exe;%20RELEASE:%20August%202001;%20URL:%20app_5ihx.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

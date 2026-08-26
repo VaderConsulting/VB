@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Semantic Types</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="semantic types">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_semantic_types"></A>Semantic Types</H1>
+
+<P>The following entries in the Format, Type, and ContextData columns of the <A HREF="merg_96cl.htm">ModuleConfiguration table</A> specify the semantic type of information being substituted into the configurable item specified in the Name column of this table. </P>
+
+<P><A HREF="merg_1lir.htm"><B>Text Format Types</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>Format</TH>
+<TH align=left width=10%>Type</TH>
+<TH align=left width=18%>ContextData</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Text</TD>
+<TD width=10%>&nbsp;</TD>
+<TD width=18%>&nbsp;</TD>
+<TD width=63%>Arbitrary text. See <A HREF="merg_0545.htm">Arbitrary Text Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Text</TD>
+<TD width=10%>Enum</TD>
+<TD width=18%>&lt;A&gt;=&lt;a&gt;;&lt;B&gt;=&lt;b&gt;;&lt;C&gt;=&lt;c&gt;</TD>
+<TD width=63%>Value selected from a set. See <A HREF="merg_0ijp.htm">Enum Type</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Text</TD>
+<TD width=10%>Formatted</TD>
+<TD width=18%>&nbsp;</TD>
+<TD width=63%>Value meeting the definition of Formatted Text in the installer. See <A HREF="merg_2jc5.htm">Formatted Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Text</TD>
+<TD width=10%>RTF</TD>
+<TD width=18%>&nbsp;</TD>
+<TD width=63%>An RTF text string. See <A HREF="merg_2r51.htm">RTF Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Text</TD>
+<TD width=10%>Identifier</TD>
+<TD width=18%>&nbsp;</TD>
+<TD width=63%>A text string conforming to a Windows Installer <A HREF="tref_5elu.htm">Identifier</A>. </TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="merg_9w6r.htm"><B>Integer Format Types</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>Format</TH>
+<TH align=left width=10%>Type</TH>
+<TH align=left width=18%>ContextData</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Integer</TD>
+<TD width=10%>&nbsp;</TD>
+<TD width=18%>&nbsp;</TD>
+<TD width=63%>Any integer value. See <A HREF="merg_13s5.htm">Arbitrary Integer Type</A>.</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="merg_5iyb.htm"><B>Key Format Types</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>Format</TH>
+<TH align=left width=10%>Type</TH>
+<TH align=left width=18%>ContextData</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>File</TD>
+<TD width=18%>AssemblyContext</TD>
+<TD width=63%>Enable users to configure foreign keys to Win32 or common language runtime assemblies. See <A HREF="merg_7ied.htm">File Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Binary</TD>
+<TD width=18%>Bitmap</TD>
+<TD width=63%>Foreign key to a Binary table row holding a bitmap for use in UI. See <A HREF="merg_53hh.htm">Binary Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Binary</TD>
+<TD width=18%>Icon</TD>
+<TD width=63%>Foreign key to a Binary table row holding an Icon for use in UI. See <A HREF="merg_53hh.htm">Binary Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Binary</TD>
+<TD width=18%>EXE</TD>
+<TD width=63%>Foreign key to a Binary table row holding a 32bit EXE. See <A HREF="merg_53hh.htm">Binary Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Binary</TD>
+<TD width=18%>EXE64</TD>
+<TD width=63%>Foreign key to a Binary table row holding a 32 or 64bit EXE. See <A HREF="merg_53hh.htm">Binary Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Icon</TD>
+<TD width=18%>ShortcutIcon</TD>
+<TD width=63%>Foreign key to an Icon table row holding an Icon for use by a shortcut. See <A HREF="merg_8yud.htm">Icon Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Dialog</TD>
+<TD width=18%>DialogNext</TD>
+<TD width=63%>Foreign key to a Dialog table row. See <A HREF="merg_8m05.htm">Dialog Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Dialog</TD>
+<TD width=18%>DialogPrev</TD>
+<TD width=63%>Foreign key to a Dialog table row. See <A HREF="merg_8m05.htm">Dialog Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Directory</TD>
+<TD width=18%>IsolationDir</TD>
+<TD width=63%>Foreign key to a Directory table row where isolated files belong. See <A HREF="merg_282t.htm">Directory Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Directory</TD>
+<TD width=18%>ShortcutLocation</TD>
+<TD width=63%>Foreign key to a Directory table row where a shortcut should be installed. See <A HREF="merg_282t.htm">Directory Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Property</TD>
+<TD width=18%>&nbsp;</TD>
+<TD width=63%>Foreign key to a property row. See <A HREF="merg_4nol.htm">Property Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Property</TD>
+<TD width=18%>Public</TD>
+<TD width=63%>Foreign key to a property row. See <A HREF="merg_4nol.htm">Property Type</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Key</TD>
+<TD width=10%>Property</TD>
+<TD width=18%>Private</TD>
+<TD width=63%>Foreign key to a property row. See <A HREF="merg_4nol.htm">Property Type</A>.</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="merg_1wdv.htm"><B>Bitfield Format Types</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>Format</TH>
+<TH align=left width=10%>Type</TH>
+<TH align=left width=18%>ContextData</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Bitfield </TD>
+<TD width=10%>&nbsp;</TD>
+<TD width=18%>&lt;mask&gt;;&lt;A&gt;=&lt;a&gt;;&lt;B&gt;=b</TD>
+<TD width=63%>Changes a subset of bits in a column. See <A HREF="merg_1of9.htm">Arbitrary Bitfield Type</A>.</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Semantic%20Types;%20RELEASE:%20August%202001;%20URL:%20merg_8e9f.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Semantic%20Types;%20RELEASE:%20August%202001;%20URL:%20merg_8e9f.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

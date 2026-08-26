@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CostInitialize Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="CostInitialize Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_costinitialize_action"></A>CostInitialize Action</H1>
+
+<P>The CostInitialize action initiates the installation <A HREF="dglo_25q1.htm#_msi_costing_gly">costing</A> process. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The <A HREF="aref_2f8u.htm">FileCost</A> action is called immediately following the CostInitialize action. The <A HREF="aref_22we.htm">CostFinalize</A> action is then called, which finalizes all cost calculations and makes them available to the installer through the <A HREF="tref_09np.htm">Component table</A>.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Remarks</H4>
+
+<P>The CostInitialize action loads the Component table and <A HREF="tref_0a91.htm">Feature table</A> into memory.</P>
+
+<P>For more information on the <A HREF="dglo_25q1.htm#_msi_costing_gly">costing</A> process in the installer, see <A HREF="acts_07s7.htm">File Costing</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

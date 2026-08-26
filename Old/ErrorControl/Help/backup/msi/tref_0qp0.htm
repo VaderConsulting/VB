@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Formatted</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Formatted [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_formatted"></A>Formatted</H1>
+
+<P>The Formatted data type is a text string that is processed to resolve embedded property names, table keys, environment variable references, and other special substrings. The following conventions are recognized to resolve the string:
+
+<UL>
+	<LI>Square brackets ([ ]) or curly braces ({ }) with no matching pair are left in the text.</LI>
+
+	<LI>If a substring of the form [<I>propertyname</I>] is encountered, it is replaced by the value of the property. If <I>propertyname</I> is not a valid property, then the substring is left unchanged.
+<P>The square brackets may be iterated and the property names are resolved from inside out. For example, suppose the substring [[PropertyA]] appears in the text. First, the value of property PropertyA is retrieved. If the value is a valid property name, such as PropertyB, then the value of PropertyB is retrieved, and the entire substring [[PropertyA]] is substituted with the value of PropertyB. If PropertyA is not a valid property name, or if the value of PropertyA is not a valid property name, then the substring is blank.
+</LI>
+
+	<LI>If a substring of the form [%<I>environmentvariable</I>] is found, the value of the environment variable is substituted for the substring.</LI>
+
+	<LI>If a substring of the form <CODE>[</CODE>\<I>x</I><CODE>]</CODE> is found, it is replaced by the character <I>x</I> , where <I>x</I> is one character, without any further processing. Only the first character after the backslash is kept; everything else is removed. </LI>
+
+	<LI>If a substring is enclosed in curly braces (<CODE>{ }</CODE>), and it contains no property names enclosed in square brackets (<CODE>[ ]</CODE>), the substring is left unchanged, including the curly braces.</LI>
+
+	<LI>If a substring is enclosed in curly braces (<CODE>{ }</CODE>) and it contains one or more property names enclosed in square brackets (<CODE>[ ]</CODE>) then, if all the property names are valid, the text (with the resolved substitutions) is displayed without the curly braces.</LI>
+
+	<LI>If a substring of the form [~] is found, it is replaced with the null character. This is used to author REG_MULTI_SZ character strings in the <A HREF="tref_3obp.htm">Registry table</A>. Note that [~] is also used to append or prefix values to environment variables using the <A HREF="tref_025h.htm">Environment table</A>.</LI>
+
+	<LI>If a substring of the form [#<I>filekey</I>] is found, it is replaced by the full path of the file, with the value <I>filekey</I> used as a key into the <A HREF="tref_4n6t.htm">File table</A>. </LI>
+
+	<LI>If a substring of the form [$<I>componentkey</I>] is found, it is replaced by the install directory of the component, with the value <I>componentkey</I> used as a key into the <A HREF="tref_09np.htm">Component table</A>.
+<P>The install directory used to replace the substring depends on the installation options for the component. If the component is selected to be installed locally, the target directory is used. If the component is selected to run from source, the source directory is used. If the component is not selected or missing, the substring is removed.
+
+<P>If no properties are found, all the text in the braces, including the braces themselves, is removed.
+</LI>
+
+	<LI>If a substring of the form [<I>!filekey</I>] is found, it is replaced by the full short path of the file, with the value <I>filekey</I> used as a key into the <A HREF="tref_4n6t.htm">File table</A>.
+<P>This syntax is valid only when used in the Value column of the Registry or the IniFile tables. When used in other columns this syntax is treated the same as [#<I>filekey</I>] .
+</LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Sample ICE in VBScript</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="sample ICE VBScript [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="Windows Installer, sample ICE VBScript">
+<META NAME="MS-HKWD" CONTENT="ICEs [Windows Installer], sample VBScript">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_sample_ice_in_vbscript"></A>Sample ICE in VBScript</H3>
+
+<P>This sample code is from an ICE custom action (<A HREF="ices_1xrs.htm">ICE08</A>). The ICE validates that every component in the <A HREF="tref_09np.htm">Component table</A> has a unique <A HREF="tref_7kf8.htm">GUID</A>. No validation is done if the Component table does not exist.</P>
+
+<PRE>Function ICE08()
+
+'Give creation data
+Set recInfo=Installer.CreateRecord(1)
+recInfo.StringData(0)="ICE08" &amp; Chr(9) &amp; "3" 
+    &amp; Chr(9) &amp; "Created 05/21/98 by &lt;insert 
+    author's name here&gt;"
+Message &amp;h03000000, recInfo
+
+'Give last modification date
+recInfo.StringData(0)="ICE08" &amp; Chr(9) &amp; "3" 
+    &amp; Chr(9) &amp; "Modified 05/21/98 by &lt;insert 
+    author's name here&gt;"
+Message &amp;h03000000, recInfo
+
+'Give description of test
+recInfo.StringData(0)="ICE08" &amp; Chr(9) &amp; "3" 
+    &amp; Chr(9) &amp; "Checks for duplicate GUIDs 
+    in Component table"
+Message &amp;h03000000, recInfo
+
+'Is there a Component table in the database?
+iStat = Database.TablePersistent("Component")
+If 1 &lt;&gt; iStat Then
+recInfo.StringData(0)="ICE08" &amp; Chr(9) &amp; "2" 
+    &amp; Chr(9) &amp; "Table: 'Component' missing. 
+    ICE08 cannot continue its validation." 
+    &amp; Chr(9) &amp; "http://mypage2"
+Message &amp;h03000000, recInfo
+ICE08 = 1
+Exit Function
+End If
+
+'process component table
+Set view=Database.OpenView("SELECT 
+    `Component`,`ComponentId` FROM 
+    `Component` ORDER BY `ComponentId`")
+view.Execute
+Do
+Set rec=view.Fetch
+If rec Is Nothing Then Exit Do
+
+'compare for duplicate 
+If lastGuid=rec.StringData(2) Then
+rec.StringData(0)="ICE08" &amp; Chr(9) 
+    &amp; "1" &amp; Chr(9) &amp; "Component: [1] 
+    has a duplicate GUID: [2]" &amp; Chr(9) 
+    &amp; "http://mypage2" &amp; Chr(9) &amp; 
+    "Component" &amp; Chr(9) &amp; "ComponentId" &amp; Chr(9) &amp; "[1]"
+Message &amp;h03000000,rec
+End If
+
+'set for next compare
+lastGuid=rec.StringData(2)
+Loop
+
+'Return iesSuccess 
+ICE08 = 1
+
+End Function</PRE>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Sample%20ICE%20in%20VBScript;%20RELEASE:%20August%202001;%20URL:%20ices_6838.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Sample%20ICE%20in%20VBScript;%20RELEASE:%20August%202001;%20URL:%20ices_6838.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Parsing Windows Installer Messages</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="parsing messages [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="using MsiSetExternalUI [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="using MsiSetExternalUI [Windows Installer],parsing messages">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_parsing_windows_installer_messages"></A>Parsing Windows Installer Messages</H3>
+
+<P>When <A HREF="msi_5dm1.htm"><B>MsiSetExternalUI</B></A> is called, the second parameter contains a list of installer messages that the external user interface handler will process. In many cases, the external UI handler filters for certain messages but will not handle them. Using this method, an external user interface handler can monitor the installation without affecting the installation in any way.</P>
+
+<P>Windows Installer messages contain a string that in certain cases must be parsed before it is useful.</P>
+
+<P>The following list of Windows Installer messages contain simple string messages that can be displayed directly using a dialog box. As discussed in <A HREF="hand_9tbm.htm">Returning Values from an External User Interface Handler</A>, Windows Installer messages also contain a list of buttons and icons that should be displayed by the dialog box. The MB_ICONMASK, MB_DEFMASK, and MB_TYPEMASK values can be used to determine the icons and default buttons.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Windows installer message</TH>
+<TH align=left width=52%>Meaning of string data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLMESSAGE_FATALEXIT</TD>
+<TD width=52%>Premature termination of installation has occurred. No processing of string required, it can be displayed directly.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLMESSAGE_ERROR</TD>
+<TD width=52%>Formatted error message. No processing of string required, it can be displayed directly.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLMESSAGE_WARNING</TD>
+<TD width=52%>Formatted warning message. No processing of string required, it can be displayed directly.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLMESSAGE_INFO</TD>
+<TD width=52%>Formatted log message. No processing of string required, it can be displayed directly.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLMESSAGE_USER</TD>
+<TD width=52%>Formatted user message. No processing of string required, it can be displayed directly.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%> INSTALLMESSAGE_OUTOFDISKSPACE</TD>
+<TD width=52%>Formatted message indicating an out of disk space condition. No processing of string required, it can be displayed directly</TD>
+</TR>
+</TABLE><BR>
+
+<DL>
+<DT><B>INSTALLMESSAGE_RESOLVESOURCE</B></DT>
+
+<DD>An external user interface handler may filter the INSTALLMESSAGE_RESOLVESOURCE message, but it should not act upon it. Instead, the external user interface handler must return 0 and allow Windows Installer to handle the message.</DD>
+
+<DT><B>INSTALLMESSAGE_FILESINUSE</B></DT>
+
+<DD>An external user interface should display a <A HREF="href_73mv.htm">FilesInUse dialog</A> in response to the INSTALLMESSAGE_FILESINUSE message.</DD>
+
+<DT><B>INSTALLMESSAGE_ACTIONSTART</B></DT>
+
+<DD>The format of this string is Action [1]: [2]. [3] where:
+
+<P class=indent1>[1] is the TIME the action started</P>
+
+
+<P class=indent1>[2] is the name of the action (from the particular Sequence table)</P>
+
+
+<P class=indent1>[3] is the description of the action (as described in the Description column of the <A HREF="tref_7het.htm">ActionText table</A> or established via a <A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A> call)</P>
+
+
+<P class=indent1>For example:</P>
+
+
+<P class=indent1>Action 16:31:56: RemoveRegistryValues. Removing system registry values</P>
+</DD>
+
+<DT><B>INSTALLMESSAGE_ACTIONDATA</B></DT>
+
+<DD>The format follows the ActionTemplate provided in the template column of the <A HREF="tref_7het.htm">ActionText table</A> for the particular action or as established by a <A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A> call. After an ACTIONSTART message, any number of ACTIONDATA messages, from 0 and up, can be received.</DD>
+
+<DT><B>INSTALLMESSAGE_COMMONDATA</B></DT>
+
+<DD>There are three types of CommonData messages: Language, Caption, and CancelShow.
+
+<P>CommonData messages can have up to three fields. A field is designated by a number followed by a colon. Field 1 is "1:&lt;data&gt;". Field 2 is "2:&lt;data&gt;". Not all fields are required to be present and at times a CommonData message may be a NULL or blank ("") string.
+
+
+<DL>
+<DT><U>Language</U><BR>
+For example:&nbsp;&nbsp;&nbsp;&nbsp;1:0&nbsp;&nbsp;&nbsp;&nbsp;2:1033&nbsp;&nbsp;&nbsp;&nbsp;3:1252</DT>
+
+<DD>Field 1:  0  // The '0' in this field indicates that common data message is of type Language.
+
+<P>Field 2: LANGID  // In the above example, the LANGID is 1033 for English.
+
+
+<P>Field 3: CodePage // In the above example, the CodePage is 1252, a US ANSI codepage.
+</DD>
+
+<DT><U>Caption</U><BR>
+For example:&nbsp;&nbsp;&nbsp;&nbsp;1:1&nbsp;&nbsp;&nbsp;&nbsp;2:TestDb&nbsp;&nbsp;&nbsp;&nbsp;3:NULL</DT>
+
+<DD>Field 1: 1 // The '1' in this field indicates that common data message is of type Caption.
+
+<P>Field 2: TestDb // In the above example, the Caption is TestDb. The external UI handler might use this string as the Caption/Title for Dialogs and MessageBoxes.
+
+
+<P>Field 3: NULL // Field 3 may or may not always be a part of the string.
+</DD>
+
+<DT><U>CancelShow</U><BR>
+For example:&nbsp;&nbsp;&nbsp;&nbsp;1:2&nbsp;&nbsp;&nbsp;&nbsp;2:1</DT>
+
+<DD>Field 1: 2 // The '2' in this field indicates that common data message is of type CancelShow.
+
+<P>Field 2: 1 // A value of '0' indicates the cancel button should be hidden. A value of '1' indicates the cancel button should be visible. In the above example, this value literally means "Show/Enable the cancel button".
+</DD>
+</DL>
+</DD>
+
+<DT><B>INSTALLMESSAGE_PROGRESS</B></DT>
+
+<DD>There are four types of Progress messages: Reset, ActionInfo, ProgressReport, and ProgressAddition. Depending upon the previous execution state, the progress bar may either need to be reset or completed. Any external handler code should not act upon any initial progress messages until the first "Reset" progress message has been received and established the total number of ticks for the progress bar.
+
+<DL>
+<DT><U>Reset</U></DT>
+
+<DD>Field 1: 0 // A '0' indicates that the progress bar should be reset
+
+<P>Field 2: // Contains the expected total number of ticks in progress bar.
+
+
+<P>Field 3: // Indicates direction of progress bar movement. '0' = forward, '1' = backward.
+
+
+<P>Field 4: // Indicates execution state. '0' = in progress, time remaining calculation can be made, '1' = begin of script, a "Please wait ..." message can be displayed.
+</DD>
+
+<DT><U>ActionInfo</U></DT>
+
+<DD>Field 1: 1 // A '1' indicates the string contains action information.
+
+<P>Field 2: // Contains the number of ticks the progress bar moves for each ActionData message received.
+
+
+<P>Field 3: // If this field is '0', field 2 should be ignored. If this field is '1', increment the progress bar by the number of ticks specified in field 2 for each ActionData message received.
+
+
+<P>Field 4: // Unused.
+</DD>
+
+<DT><U>ProgressReport</U></DT>
+
+<DD>Field 1: 2 // A '2' indicates the string contains progress information.
+
+<P>Field 2: // Contains the number of ticks the progress bar has moved.
+
+
+<P>Field 3: // Unused.
+
+
+<P>Field 4: // Unused.
+</DD>
+
+<DT><U>ProgressAddition</U></DT>
+
+<DD>Field 1: 3 // A '3' indicates that an action can add ticks to the progress bar.
+
+<P>Field 2: // Contains the number of ticks to add to total expected progress ticks.
+
+
+<P>Field 3: // Unused.
+
+
+<P>Field 4: //Unused.
+
+</DD>
+</DL>
+</DD>
+</DL>
+
+<P>The following Windows Installer messages refer to the Windows Installer user interface and provide a way for an external user interface handler to monitor a Windows Installer sequence. The external user handler is notified by the installer at the start of user interface sequence, as each dialog is presented, and at the end of user interface sequence.
+
+<DL>
+<DT><B>INSTALLMESSAGE_TERMINATE</B></DT>
+
+<DD>The string is a NULL string. No processing is required. This message indicates the end of the user interface sequence.</DD>
+
+<DT><B>INSTALLMESSAGE_INITIALIZE</B></DT>
+
+<DD>The string is a NULL string. No processing is required. This message indicates that the user interface sequence has started.</DD>
+
+<DT><B>INSTALLMESSAGE_SHOWDIALOG</B></DT>
+
+<DD>The string contains the name of the current dialog. No processing is required.
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

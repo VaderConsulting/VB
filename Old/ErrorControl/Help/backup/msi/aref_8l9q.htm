@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>InstallFinalize Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="InstallFinalize Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_installfinalize_action"></A>InstallFinalize Action</H1>
+
+<P>The InstallFinalize action runs a script containing all operations spooled since either the start of the installation or the last InstallFinalize action. This action marks the end of a transaction that begins with the <A HREF="aref_0gby.htm">InstallInitialize action</A>. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The InstallInitialize action must come before the InstallFinalize action.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Remarks</H4>
+
+<P>If it is detected that the product is marked for complete removal, operations are automatically added to the script to remove the Add/Remove Control Panel information for the product, to unregister and unpublish the product, and to remove the cached local database from %WINDOWS%, if it exists.</P>
+
+<P>System changes made before the action may not be restored after the InstallFinalize action is executed. The InstallFinalize action updates the system with all operations determined to that point and then ends the transaction.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

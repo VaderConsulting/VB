@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>get_DatabaseKeys Function</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="get_DatabaseKeys Function">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_get_databasekeys_function"></A>get_DatabaseKeys Function</H1>
+
+<P>The function <B>get_DatabaseKeys</B> implements the DatabaseKeys property. This function returns a pointer to a string collection containing the primary keys of the row in the database causing the error, one key per entry in the collection. </P>
+
+<P><B>IMsmError::get_DatabaseKeys</B> </P>
+
+<PRE class=syntax><B>HRESULT get_DatabaseKeys(
+  IMsmStrings </B>**<I>ErrorKeys  </I> //[out, retval]
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>ErrorKeys </I></DT>
+
+<DD>A pointer to a location in memory that is filled with a pointer to a string collection. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>E_INVALIDARG</TD>
+<TD width=52%>ErrorKeys is NULL. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>S_OK </TD>
+<TD width=52%>The function succeeded.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The client is responsible for releasing the string collection when it is no longer needed.</P>
+
+<P>The collection is empty if the error is of type msmErrorLanguageUnsupported or msmErrorLanguageFailed. You can determine the type of error using <A HREF="merg_8vll.htm"><B>IMsmError::Type</B></A>.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_29f2.htm">Merge Module Automation</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

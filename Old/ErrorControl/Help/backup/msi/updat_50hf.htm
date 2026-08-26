@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Minor Upgrades</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_minor_upgrades"></A>Minor Upgrades</H1>
+
+<P>A minor upgrade and a <A HREF="updat_9m0j.htm">Small Update</A> differ in that a minor upgrade changes the package code and product version. As in the case of a small update, a minor upgrade does not change the product code. Minor upgrades provide product differentiation without actually defining a different product. See <A HREF="updat_9m0j.htm">Small Updates</A> for guidelines on the kinds of updates that can be handled by a small update or minor upgrade. Minor upgrades are shipped as a full product installation package or as a <A HREF="updat_7dmb.htm">patch package</A>.</P>
+
+<P>Changing the product version indicates that there is an order to the different updates to the same product. For example, if a patch existed to update v9.0 to v9.1, and another patch existed to patch v9.1 to v9.2, the installer can enforce the correct order by checking the product version before applying the patch This also prevents the v9.1 to v9.2 patch from being applied to v9.0. For patches, this ordering is enforced through the product version validation bits set in the transforms included in the <A HREF="updat_7dmb.htm">patch package</A>.</P>
+
+<P>Note that Windows Installer uses only the first three fields of the product version. For more information, see <A HREF="pref_120p.htm">ProductVersion property</A>. If you include a fourth field in your product version, the installer ignores the fourth field. </P>
+
+<P>For information on how to apply a Minor Upgrade, see the following sections:</P>
+
+<P><A HREF="updat_0q7o.htm">Small Updates by Patching the Local Installation of the Product</A> <BR>
+<A HREF="updat_50ac.htm">Small Updates by Reinstalling the Product</A> <BR>
+<A HREF="updat_51r9.htm">Small Updates by Patching an Administrative Image</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

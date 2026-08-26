@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Platform Support of Advertisement</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_platform_support_of_advertisement"></A>Platform Support of Advertisement</H1>
+
+<P>Microsoft® Windows® Installer supports advertisement of applications and features according to operating system. The following outlines advertisement support on different platforms.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=40%>Platform</TH>
+<TH align=left width=60%>Advertisement support</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>Microsoft® Windows® 2000</TD>
+<TD width=60%>Shortcuts and their icons. Extensions and their icons specified in the <A HREF="tref_4x5x.htm">ProgId Table</A>. Shell and command Verbs registered underneath the ProgId key. CLSID contexts and InProcHandler. Install-On-Demand through OLE is only available programmatically through <B>CoCreateInstance</B> (C/C++) and <B>CreateObject</B> or <B>GetObject</B> (Visual Basic).
+<P>NOTE: AppId and Typelib information is only written when an advertised component is installed.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>Microsoft Windows® 98</TD>
+<TD width=60%>Shell and MIME support. All of the above except CLSID, which is only written when installing an advertised component.  </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>Microsoft Windows® 95 and Windows NT® 4.0
+<P>+ IE4.01 sp1</P>
+
+<P>+ Windows Desktop Update</P>
+
+<P>(shell32.DLL &gt;= 4.72.3110.0)</P>
+</TD>
+<TD width=60%>Shell and MIME support. All of the above except CLSID, which is only written when installing an advertised component.  </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>Windows 95 and Windows NT 4.0
+<P>(shell32.DLL &lt; 4.72.3110.0)</P>
+</TD>
+<TD width=60%>Advertisement is not supported by this platform.</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

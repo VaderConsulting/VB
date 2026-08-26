@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action In-Script Execution Options</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_custom_action_in_script_execution_options"></A>Custom Action In-Script Execution Options</H2>
+
+<P>You can use the following option flags to specify the in-script execution of custom actions. These options copy the action code into the execution, rollback, or commit script. To set an option add the value in this table to the value in the Type field of the <A HREF="tref_71b9.htm">CustomAction table</A>.</P>
+
+<P>Note that the <B>msidbCustomActionTypeInScript</B> must be included with each of these options.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Constant</TH>
+<TH align=left width=20%>Hexadecimal</TH>
+<TH align=left width=12%>Decimal</TH>
+<TH align=left width=35%>Description </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>(none)</TD>
+<TD width=20%>0x00000000</TD>
+<TD width=12%>0</TD>
+<TD width=35%>Immediate execution.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><B>msidbCustomAction<BR>
+TypeInScript</B></TD>
+<TD width=20%>0x00000400</TD>
+<TD width=12%>1024</TD>
+<TD width=35%>Queue for execution at scheduled point within script. This flag designates that this is a <A HREF="cact_10fn.htm">deferred execution custom action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><B>msidbCustomAction<BR>
+TypeInScript <BR>
++ <BR>
+msidbCustomAction<BR>
+TypeRollback</B></TD>
+<TD width=20%>0x00000400 + 0x00000100</TD>
+<TD width=12%>1280</TD>
+<TD width=35%>Queue for execution at scheduled point within script. Execute only upon an installation rollback. This flag designates that this is a <A HREF="cact_0k8j.htm">rollback custom action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><B>msidbCustomAction<BR>
+TypeInScript <BR>
++ <BR>
+msidbCustomAction<BR>
+TypeCommit</B></TD>
+<TD width=20%>0x00000400 + 0x00000200</TD>
+<TD width=12%>1536</TD>
+<TD width=35%>Queue for execution at scheduled point within script. Execute only upon install commit. This flag designates that this is a <A HREF="cact_45tf.htm">commit custom action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><B>msidbCustomAction<BR>
+TypeInScript<BR>
++ <BR>
+msidbCustomAction<BR>
+TypeNoImpersonate</B></TD>
+<TD width=20%>0x00000400 + 0x00000800</TD>
+<TD width=12%>3072</TD>
+<TD width=35%>Queue for execution at scheduled point within script. Execute with no user impersonation. Run in system context.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_6a05.htm">Custom Action Reference</A>, <A HREF="cact_1zhv.htm">About Custom Actions</A>, <A HREF="cact_93lf.htm">Using Custom Actions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

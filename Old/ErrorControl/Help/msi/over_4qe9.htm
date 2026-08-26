@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AllowLockdownMedia</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="AllowLockdownMedia [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_allowlockdownmedia"></A>AllowLockdownMedia</H3>
+
+<P>Setting the value of this per-machine <A HREF="over_37ll.htm">system policy</A> to "1", enables non-administrative users to install <A HREF="dglo_83jt.htm#_msi_managed_application_gly">managed applications</A> from sources stored on media, such as a CD-ROM. See <A HREF="over_1lq1.htm">Source Resiliency</A>. The default on Windows Installer version 2.0 and later versions is that non-administrative users cannot install managed applications from a source located on media. For example, if this policy is set, a non-administrative user may use a media source to install assigned or published applications or applications being installed for all users. Setting this policy also enables non-administrative users to run programs at LocalSystem privileges during an elevated installation. </P>
+
+<P>This policy is only available with Windows Installer versions later than version 1.0. AllowLockdownMedia is not available with Windows Installer version 1.0.</P>
+
+<H4>Registry Key</H4>
+
+<P><B>HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer</B></P>
+
+<H4>Data Type</H4>
+
+<P><B>REG_DWORD</B></P>
+
+<H4>Remarks</H4>
+
+<P>Setting this policy also enables non-administrative users to run arbitrary programs at LocalSystem privileges if they have a Windows Installer package that installs or launches those programs. Note this policy is not available with Windows Installer version 1.0. Systems using version 1.0 of the installer should therefore be secured as described in <A HREF="over_9f74.htm">Source Resiliency Policy - Windows Installer Version 1.0</A>. With Windows NT version 4.0 using Windows Installer version 1.0, the possible security threat only applies to products that have been installed for all users of the computer.</P>
+
+<P>On Windows Installer version 1.1, a non-administrative user is still capable of installing managed applications from sources located on a correctly labeled media. Systems using version 1.1 of the installer should therefore be secured as described in <A HREF="over_9f75.htm">Source Resiliency Policy - Windows Installer Version 1.1</A>. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_1lq1.htm">Source Resiliency</A>, <A HREF="over_6k2t.htm">AllowLockdownBrowse</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20AllowLockdownMedia;%20RELEASE:%20August%202001;%20URL:%20over_4qe9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20AllowLockdownMedia;%20RELEASE:%20August%202001;%20URL:%20over_4qe9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

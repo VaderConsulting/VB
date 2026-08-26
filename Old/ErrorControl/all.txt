@@ -1,0 +1,433 @@
+KeyPath for Component: 'msi1' is Directory: 'msi1'. The Directory/Component pair must be listed in the CreateFolders table.	http://dartools/iceman/ice18.html	Component	Directory_	msi1
+Evaluation: ICE18
+Reg key primarykey307 is used in an unsupported way. Typelib should be registered via the Typelib table -- this key is automatically written during typelib registration.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey307
+Evaluation: ICE33
+Reg key primarykey313 is used in an unsupported way. Typelib should be registered via the Typelib table -- this key is automatically written during typelib registration.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey313
+Evaluation: ICE33
+Reg key primarykey318 is used in an unsupported way. Typelib should be registered via the Typelib table -- this key is automatically written during typelib registration.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey318
+Evaluation: ICE33
+Reg key primarykey303 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey303
+Evaluation: ICE33
+Reg key primarykey304 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey304
+Evaluation: ICE33
+Reg key primarykey306 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey306
+Evaluation: ICE33
+Reg key primarykey310 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey310
+Evaluation: ICE33
+Reg key primarykey312 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey312
+Evaluation: ICE33
+Reg key primarykey315 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey315
+Evaluation: ICE33
+Reg key primarykey317 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey317
+Evaluation: ICE33
+Reg key primarykey311 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey311
+Evaluation: ICE33
+Reg key primarykey309 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey309
+Evaluation: ICE33
+Reg key primarykey316 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey316
+Evaluation: ICE33
+Reg key primarykey145 is used in an unsupported way. CLSID - ProgId associations should be registered via the Class and ProgId tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey145
+Evaluation: ICE33
+Reg key primarykey180 is used in an unsupported way. CLSID - ProgId associations should be registered via the Class and ProgId tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey180
+Evaluation: ICE33
+Reg key primarykey229 is used in an unsupported way. CLSID - ProgId associations should be registered via the Class and ProgId tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey229
+Evaluation: ICE33
+Reg key primarykey123 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey123
+Evaluation: ICE33
+Reg key primarykey126 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey126
+Evaluation: ICE33
+Reg key primarykey129 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey129
+Evaluation: ICE33
+Reg key primarykey133 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey133
+Evaluation: ICE33
+Reg key primarykey131 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey131
+Evaluation: ICE33
+Reg key primarykey141 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey141
+Evaluation: ICE33
+Reg key primarykey152 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey152
+Evaluation: ICE33
+Reg key primarykey154 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey154
+Evaluation: ICE33
+Reg key primarykey156 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey156
+Evaluation: ICE33
+Reg key primarykey159 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey159
+Evaluation: ICE33
+Reg key primarykey161 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey161
+Evaluation: ICE33
+Reg key primarykey163 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey163
+Evaluation: ICE33
+Reg key primarykey165 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey165
+Evaluation: ICE33
+Reg key primarykey212 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey212
+Evaluation: ICE33
+Reg key primarykey176 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey176
+Evaluation: ICE33
+Reg key primarykey190 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey190
+Evaluation: ICE33
+Reg key primarykey188 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey188
+Evaluation: ICE33
+Reg key primarykey191 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey191
+Evaluation: ICE33
+Reg key primarykey192 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey192
+Evaluation: ICE33
+Reg key primarykey193 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey193
+Evaluation: ICE33
+Reg key primarykey194 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey194
+Evaluation: ICE33
+Reg key primarykey195 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey195
+Evaluation: ICE33
+Reg key primarykey196 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey196
+Evaluation: ICE33
+Reg key primarykey197 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey197
+Evaluation: ICE33
+Reg key primarykey198 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey198
+Evaluation: ICE33
+Reg key primarykey208 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey208
+Evaluation: ICE33
+Reg key primarykey199 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey199
+Evaluation: ICE33
+Reg key primarykey200 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey200
+Evaluation: ICE33
+Reg key primarykey201 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey201
+Evaluation: ICE33
+Reg key primarykey202 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey202
+Evaluation: ICE33
+Reg key primarykey203 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey203
+Evaluation: ICE33
+Reg key primarykey204 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey204
+Evaluation: ICE33
+Reg key primarykey205 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey205
+Evaluation: ICE33
+Reg key primarykey206 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey206
+Evaluation: ICE33
+Reg key primarykey215 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey215
+Evaluation: ICE33
+Reg key primarykey225 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey225
+Evaluation: ICE33
+Reg key primarykey120 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey120
+Evaluation: ICE33
+Reg key primarykey119 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey119
+Evaluation: ICE33
+Reg key primarykey122 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey122
+Evaluation: ICE33
+Reg key primarykey125 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey125
+Evaluation: ICE33
+Reg key primarykey128 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey128
+Evaluation: ICE33
+Reg key primarykey130 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey130
+Evaluation: ICE33
+Reg key primarykey132 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey132
+Evaluation: ICE33
+Reg key primarykey153 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey153
+Evaluation: ICE33
+Reg key primarykey155 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey155
+Evaluation: ICE33
+Reg key primarykey160 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey160
+Evaluation: ICE33
+Reg key primarykey158 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey158
+Evaluation: ICE33
+Reg key primarykey162 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey162
+Evaluation: ICE33
+Reg key primarykey164 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey164
+Evaluation: ICE33
+Reg key primarykey167 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey167
+Evaluation: ICE33
+Reg key primarykey187 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey187
+Evaluation: ICE33
+Reg key primarykey207 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey207
+Evaluation: ICE33
+Reg key primarykey211 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey211
+Evaluation: ICE33
+Reg key primarykey214 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey214
+Evaluation: ICE33
+Reg key primarykey217 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey217
+Evaluation: ICE33
+Reg key primarykey237 is used in an unsupported way. Version Independent ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey237
+Evaluation: ICE33
+Reg key primarykey295 is used in an unsupported way. Version Independent ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey295
+Evaluation: ICE33
+Reg key primarykey300 is used in an unsupported way. Version Independent ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey300
+Evaluation: ICE33
+Reg key primarykey236 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey236
+Evaluation: ICE33
+Reg key primarykey239 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey239
+Evaluation: ICE33
+Reg key primarykey294 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey294
+Evaluation: ICE33
+Reg key primarykey297 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey297
+Evaluation: ICE33
+Reg key primarykey299 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey299
+Evaluation: ICE33
+Reg key primarykey302 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey302
+Evaluation: ICE33
+Reg key primarykey275 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey275
+Evaluation: ICE33
+Reg key primarykey276 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey276
+Evaluation: ICE33
+Reg key primarykey277 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey277
+Evaluation: ICE33
+Reg key primarykey278 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey278
+Evaluation: ICE33
+Reg key primarykey279 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey279
+Evaluation: ICE33
+Reg key primarykey280 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey280
+Evaluation: ICE33
+Reg key primarykey281 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey281
+Evaluation: ICE33
+Reg key primarykey283 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey283
+Evaluation: ICE33
+Reg key primarykey282 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey282
+Evaluation: ICE33
+Reg key primarykey284 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey284
+Evaluation: ICE33
+Reg key primarykey285 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey285
+Evaluation: ICE33
+Reg key primarykey287 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey287
+Evaluation: ICE33
+Reg key primarykey288 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey288
+Evaluation: ICE33
+Reg key primarykey291 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey291
+Evaluation: ICE33
+Reg key primarykey292 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey292
+Evaluation: ICE33
+Reg key primarykey290 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey290
+Evaluation: ICE33
+Reg key primarykey293 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey293
+Evaluation: ICE33
+Reg key primarykey286 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey286
+Evaluation: ICE33
+Reg key primarykey298 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey298
+Evaluation: ICE33
+Reg key primarykey296 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey296
+Evaluation: ICE33
+Reg key primarykey301 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey301
+Evaluation: ICE33
+Reg key primarykey289 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey289
+Evaluation: ICE33
+KeyPath for Component: 'msi1' is Directory: 'msi1'. The Directory/Component pair must be listed in the CreateFolders table.	http://dartools/iceman/ice18.html	Component	Directory_	msi1
+Evaluation: ICE18
+Reg key primarykey307 is used in an unsupported way. Typelib should be registered via the Typelib table -- this key is automatically written during typelib registration.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey307
+Evaluation: ICE33
+Reg key primarykey313 is used in an unsupported way. Typelib should be registered via the Typelib table -- this key is automatically written during typelib registration.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey313
+Evaluation: ICE33
+Reg key primarykey318 is used in an unsupported way. Typelib should be registered via the Typelib table -- this key is automatically written during typelib registration.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey318
+Evaluation: ICE33
+Reg key primarykey303 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey303
+Evaluation: ICE33
+Reg key primarykey304 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey304
+Evaluation: ICE33
+Reg key primarykey306 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey306
+Evaluation: ICE33
+Reg key primarykey310 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey310
+Evaluation: ICE33
+Reg key primarykey312 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey312
+Evaluation: ICE33
+Reg key primarykey315 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey315
+Evaluation: ICE33
+Reg key primarykey317 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey317
+Evaluation: ICE33
+Reg key primarykey311 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey311
+Evaluation: ICE33
+Reg key primarykey309 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey309
+Evaluation: ICE33
+Reg key primarykey316 is used in an unsupported way. Typelib should be registered via the Typelib table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey316
+Evaluation: ICE33
+Reg key primarykey145 is used in an unsupported way. CLSID - ProgId associations should be registered via the Class and ProgId tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey145
+Evaluation: ICE33
+Reg key primarykey180 is used in an unsupported way. CLSID - ProgId associations should be registered via the Class and ProgId tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey180
+Evaluation: ICE33
+Reg key primarykey229 is used in an unsupported way. CLSID - ProgId associations should be registered via the Class and ProgId tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey229
+Evaluation: ICE33
+Reg key primarykey123 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey123
+Evaluation: ICE33
+Reg key primarykey126 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey126
+Evaluation: ICE33
+Reg key primarykey129 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey129
+Evaluation: ICE33
+Reg key primarykey133 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey133
+Evaluation: ICE33
+Reg key primarykey131 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey131
+Evaluation: ICE33
+Reg key primarykey141 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey141
+Evaluation: ICE33
+Reg key primarykey152 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey152
+Evaluation: ICE33
+Reg key primarykey154 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey154
+Evaluation: ICE33
+Reg key primarykey156 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey156
+Evaluation: ICE33
+Reg key primarykey159 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey159
+Evaluation: ICE33
+Reg key primarykey161 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey161
+Evaluation: ICE33
+Reg key primarykey163 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey163
+Evaluation: ICE33
+Reg key primarykey165 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey165
+Evaluation: ICE33
+Reg key primarykey212 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey212
+Evaluation: ICE33
+Reg key primarykey176 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey176
+Evaluation: ICE33
+Reg key primarykey190 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey190
+Evaluation: ICE33
+Reg key primarykey188 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey188
+Evaluation: ICE33
+Reg key primarykey191 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey191
+Evaluation: ICE33
+Reg key primarykey192 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey192
+Evaluation: ICE33
+Reg key primarykey193 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey193
+Evaluation: ICE33
+Reg key primarykey194 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey194
+Evaluation: ICE33
+Reg key primarykey195 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey195
+Evaluation: ICE33
+Reg key primarykey196 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey196
+Evaluation: ICE33
+Reg key primarykey197 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey197
+Evaluation: ICE33
+Reg key primarykey198 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey198
+Evaluation: ICE33
+Reg key primarykey208 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey208
+Evaluation: ICE33
+Reg key primarykey199 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey199
+Evaluation: ICE33
+Reg key primarykey200 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey200
+Evaluation: ICE33
+Reg key primarykey201 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey201
+Evaluation: ICE33
+Reg key primarykey202 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey202
+Evaluation: ICE33
+Reg key primarykey203 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey203
+Evaluation: ICE33
+Reg key primarykey204 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey204
+Evaluation: ICE33
+Reg key primarykey205 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey205
+Evaluation: ICE33
+Reg key primarykey206 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey206
+Evaluation: ICE33
+Reg key primarykey215 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey215
+Evaluation: ICE33
+Reg key primarykey225 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey225
+Evaluation: ICE33
+Reg key primarykey120 is used in an unsupported way. CLSID contexts should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey120
+Evaluation: ICE33
+Reg key primarykey119 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey119
+Evaluation: ICE33
+Reg key primarykey122 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey122
+Evaluation: ICE33
+Reg key primarykey125 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey125
+Evaluation: ICE33
+Reg key primarykey128 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey128
+Evaluation: ICE33
+Reg key primarykey130 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey130
+Evaluation: ICE33
+Reg key primarykey132 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey132
+Evaluation: ICE33
+Reg key primarykey153 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey153
+Evaluation: ICE33
+Reg key primarykey155 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey155
+Evaluation: ICE33
+Reg key primarykey160 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey160
+Evaluation: ICE33
+Reg key primarykey158 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey158
+Evaluation: ICE33
+Reg key primarykey162 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey162
+Evaluation: ICE33
+Reg key primarykey164 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey164
+Evaluation: ICE33
+Reg key primarykey167 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey167
+Evaluation: ICE33
+Reg key primarykey187 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey187
+Evaluation: ICE33
+Reg key primarykey207 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey207
+Evaluation: ICE33
+Reg key primarykey211 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey211
+Evaluation: ICE33
+Reg key primarykey214 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey214
+Evaluation: ICE33
+Reg key primarykey217 is used in an unsupported way. CLSIDs should be registered via the Class table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey217
+Evaluation: ICE33
+Reg key primarykey237 is used in an unsupported way. Version Independent ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey237
+Evaluation: ICE33
+Reg key primarykey295 is used in an unsupported way. Version Independent ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey295
+Evaluation: ICE33
+Reg key primarykey300 is used in an unsupported way. Version Independent ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey300
+Evaluation: ICE33
+Reg key primarykey236 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey236
+Evaluation: ICE33
+Reg key primarykey239 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey239
+Evaluation: ICE33
+Reg key primarykey294 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey294
+Evaluation: ICE33
+Reg key primarykey297 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey297
+Evaluation: ICE33
+Reg key primarykey299 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey299
+Evaluation: ICE33
+Reg key primarykey302 is used in an unsupported way. ProgId - CLSID associations should be registered via the ProgId and Class tables. This entry may overwrite a value created through those tables.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey302
+Evaluation: ICE33
+Reg key primarykey275 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey275
+Evaluation: ICE33
+Reg key primarykey276 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey276
+Evaluation: ICE33
+Reg key primarykey277 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey277
+Evaluation: ICE33
+Reg key primarykey278 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey278
+Evaluation: ICE33
+Reg key primarykey279 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey279
+Evaluation: ICE33
+Reg key primarykey280 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey280
+Evaluation: ICE33
+Reg key primarykey281 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey281
+Evaluation: ICE33
+Reg key primarykey283 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey283
+Evaluation: ICE33
+Reg key primarykey282 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey282
+Evaluation: ICE33
+Reg key primarykey284 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey284
+Evaluation: ICE33
+Reg key primarykey285 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey285
+Evaluation: ICE33
+Reg key primarykey287 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey287
+Evaluation: ICE33
+Reg key primarykey288 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey288
+Evaluation: ICE33
+Reg key primarykey291 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey291
+Evaluation: ICE33
+Reg key primarykey292 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey292
+Evaluation: ICE33
+Reg key primarykey290 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey290
+Evaluation: ICE33
+Reg key primarykey293 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey293
+Evaluation: ICE33
+Reg key primarykey286 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey286
+Evaluation: ICE33
+Reg key primarykey298 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey298
+Evaluation: ICE33
+Reg key primarykey296 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey296
+Evaluation: ICE33
+Reg key primarykey301 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey301
+Evaluation: ICE33
+Reg key primarykey289 is used in an unsupported way. ProgId should be registered via the ProgId table. This entry may overwrite a value created through that table.	http://dartools/iceman/ice33.html	Registry	Registry	primarykey289
+Evaluation: ICE33
+The shared file MSINET.OCX should be placed in the application folder.
+File Key: MSINET.OCX
+The shared file MSCOMCTL.OCX should be placed in the application folder.
+File Key: MSCOMCTL.OCX
+The shared file TABCTL32.OCX should be placed in the application folder.
+File Key: TABCTL32.OCX
+The shared file VB6STKIT.DLL should be placed in the application folder.
+File Key: VB6STKIT.DLL
+The shared file ST6UNST.EXE should be placed in the application folder.
+File Key: ST6UNST.EXE
+The shared file Setup1.exe should be placed in the application folder.
+File Key: Setup1.exe
+The shared file COMDLG32.OCX should be placed in the application folder.
+File Key: COMDLG32.OCX
+No files have been flagged as hidden or read-only. You should protect files that the user does not interact with.
+Microsoft's component guidelines indicate that the icon ERRORC~1|Error Control should be placed directly in the Programs menu if there is only one advertised icon.
+Icon Key: ERRORC1.EXEErrorControl.exe
+The file ST6UNST.EXE is installed into a directory other than Program Files.
+File Key: ST6UNST.EXE
+The file Setup1.exe is installed into a directory other than Program Files.
+File Key: Setup1.exe

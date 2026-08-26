@@ -1,0 +1,67 @@
+' begin SchTest.wsf
+<job>
+<reference object="Scheduler.SchAgent" version="1.0"/>
+<script language="VBScript">
+Option Explicit
+'
+'
+'   Script : SchTest.wsf
+' Object : Win 95/98 Task Scheduler Wrapper  (mstask.exe)
+'  Code Base : http://home.sprintmail.com/~mpryor  *Custom Objects page*
+' Description : Script uses custom object written in VB5 and based on MsTask.idl
+'   keywords : Schedule, Task, Job, mstask, Internet Explorer, Shell Extension
+'
+'On error resume next
+dim oSch, oTrig, tsk, sOut, i
+dim oNew ' as Job
+dim jbStatus
+
+'
+'  test out reference to constants -- 192
+'WScript.Echo(tfDontStartIfOnBatteries Or tfKillIfGoingOnBatteries)
+'WScript.quit
+'
+set oSch = CreateObject("Scheduler.SchAgent")
+if err then
+msgbox "Failed to create custom object -- " & err.description
+WScript.quit
+end if
+
+oSch.TargetComputer = "\\SprintMail"
+if err then WScript.echo hex(err.number- vbObjectError), err.description
+Call oSch.Refresh
+
+'set tsk = oSch.job("RunDUN")  'activate job by Name
+'WScript.echo tsk.creator, oSch.Count, tsk.Status
+'jbStatus = tsk.Status
+'tsk.flags = tsk.flags XOR tfDisabled   'en/dis able the job
+'tsk.save
+'WScript.quit
+
+Set oNew = oSch.CreateTask("nOnce")  ' return Job Object
+oNew.ApplicationName = "c:\windows\command\Cscript.exe"
+oNew.CommandLine = "ExtHS.vbs"
+oNew.Comment = "Extend Homesite Eval"
+oNew.WorkingDirectory = "c:\Wsh\vbscript"
+oNew.Creator = "Mark Pryor"
+oNew.Flags = tfDontStartIfOnBatteries Or tfKillIfGoingOnBatteries or tfDeleteWhenDone
+'oNew.SetAccountInformation "admin", "admin" 
+
+Set oTrig = oNew.Triggers.Add
+With oTrig
+  .TriggerType = ttOnce
+    .BeginDay = Date
+'    .Flags = 0
+    ' run 45 sec. later
+wscript.echo time
+    .StartTime = timeserial( Hour(time), minute( time)+2, second(time) )
+    .Update
+End With
+oNew.Save
+WScript.sleep 200
+oNew.run
+'wscript.echo oNew.maxruntime
+'oSch.Refresh
+WScript.echo("Check your MS Scheduler Interface - Job *nRestart* has been created")
+</script>
+</job>

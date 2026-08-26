@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CollectUserInfo Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="CollectUserInfo Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_collectuserinfo_method"></A>CollectUserInfo Method</H1>
+
+<P>The <B>CollectUserInfo </B>method invokes a user interface wizard sequence which collects and stores both user information and the product code.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.CollectUserInfo(<I>Product</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </DD>
+
+<DT><I>Product</I> </DT>
+
+<DD>Specifies the <A HREF="pref_4tfd.htm">product code</A> of the product. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>An application should call the <B>CollectUserInfo</B> method the first time it is run. The <B>CollectUserInfo</B> method opens the product's installation package and invokes an authored user interface wizard sequence which collects user information. Upon completion of the wizard sequence, the collected user information is registered. The <A HREF="vref_6ean.htm">UILevel</A> property should be set to msiUILevelFull because this API requires an authored user interface.</P>
+
+<P>The <B>CollectUserInfo</B> method invokes the <A HREF="href_6g87.htm">FirstRun Dialog</A>. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_9crz.htm"><B>MsiCollectUserInfo</B></A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

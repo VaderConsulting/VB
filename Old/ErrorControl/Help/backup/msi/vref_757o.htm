@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ReadStream Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ReadStream Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_readstream_method"></A><A NAME="helpid_msirecord_readstream"></A>ReadStream Method</H1>
+
+<P>The <B>ReadStream</B> method of the <A HREF="vref_6kac.htm"><B>Record</B> object</A> reads a specified number of bytes from a record field holding stream data.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.ReadStream(<I>field, length, format</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6kac.htm"><B>Record</B> object</A></DD>
+
+<DT><I>field</I></DT>
+
+<DD>Required field number of the value within the record, 1-based.</DD>
+
+<DT><I>length</I></DT>
+
+<DD>Required number of bytes to read from the stream.</DD>
+
+<DT><I>format</I></DT>
+
+<DD>Required interpretation and return of the data bytes, one of the following:
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Parameter name</TH>
+<TH align=left width=12%>Value</TH>
+<TH align=left width=55%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>msiReadStreamInteger</TD>
+<TD width=12%>0</TD>
+<TD width=55%>As a long integer, length must be 1 to 4.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>msiReadStreamBytes</TD>
+<TD width=12%>1</TD>
+<TD width=55%>Data as a BSTR; one byte per character. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>msiReadStreamAnsi</TD>
+<TD width=12%>2</TD>
+<TD width=55%>ANSI bytes translated to a Unicode BSTR. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>msiReadStreamDirect</TD>
+<TD width=12%>3</TD>
+<TD width=55%>Byte pairs returned directly as a BSTR.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The returned value of a non-existent field is an Empty value. If the stream has fewer bytes that the count requested, the returned string is shortened appropriately.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

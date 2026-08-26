@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleIgnoreTable Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ModuleIgnoreTable Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_moduleignoretable_table"></A>ModuleIgnoreTable Table</H3>
+
+<P>If a table in the merge module is listed in the ModuleIgnoreTable table, it is not merged into the .msi file. If the table already exists in the .msi file, it is not modified by the merge. The tables in the ModuleIgnoreTable can therefore contain data that is unneeded after the merge.</P>
+
+<P>The ModuleIgnoreTable table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Column</TH>
+<TH align=left width=42%>Type</TH>
+<TH align=left width=16%>Key</TH>
+<TH align=left width=21%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Table</TD>
+<TD width=42%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=16%>Y</TD>
+<TD width=21%>No</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Table</DT>
+
+<DD>Name of the table in the merge module that is not to be merged into the .msi file. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To minimize the size of the .msm file, it is recommended that developers remove unused tables from modules intended for redistribution rather than listing these tables in the ModuleIgnoreTable table.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

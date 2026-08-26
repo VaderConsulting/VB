@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MergeEx Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MergeEx method">
+<META NAME="MS-HKWD" CONTENT="Merge object, MergeEx method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_mergeex_method"></A>MergeEx Method</H1>
+
+<P>The <B>MergeEx</B> method of the <B>Merge</B> object is equivalent to the <B>Merge</B> function, except that it takes an extra argument. The <I>pConfiguration</I> argument is an interface implemented by the client. The argument may be NULL. The presence of this argument indicates that the client is capable of supporting the configuration functionality, but does not obligate the client to provide configuration data for any specific configurable item. </P>
+
+<P>The <B>Merge</B> method executes a merge of the current database and current module. The merge attaches the components in the module to the feature identified by <I>Feature</I>. The root of the module's directory tree is redirected to the location given by <I>RedirectDir</I>.</P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax>object.MergeEx(Feature, RedirectDir, pConfiguration)</PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="merg_4th0.htm"><B>Merge</B> object</A> </DD>
+
+<DT><I>Feature</I></DT>
+
+<DD>The name of a feature in the database.</DD>
+
+<DT><I>RedirectDir</I></DT>
+
+<DD>The key of an entry in the <A HREF="tref_6an9.htm">Directory table</A> of the database. This parameter may be NULL or an empty string. </DD>
+
+<DT><I>pConfiguration</I></DT>
+
+<DD>The <I>pConfiguration</I> argument is an interface implemented by the client. The argument may be NULL. The presence of this argument indicates that the client is capable of supporting the configuration functionality, but does not obligate the client to provide configuration data for any specific configurable item. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Once the merge is complete, components in the module are attached to the feature identified by <I>Feature</I>. This feature is not created and must be an existing feature. The module may be attached to additional features using the <A HREF="merg_28mc.htm"><B>Connect</B> method</A>.</P>
+
+<P>Changes made to the database are saved if and only if the <A HREF="merg_2750.htm"><B>CloseDatabase</B> method</A> is called with <I>bCommit</I> set to TRUE.</P>
+
+<P>If any merge conflicts occur, including exclusions, they are placed in the error enumerator for later retrieval, but does not cause the merge to fail. Errors may be retrieved through the <A HREF="merg_4tix.htm"><B>Errors</B> property</A>. Errors and informational messages are posted to the current log file. </P>
+
+<P>When the merge fails because of an incorrect module configuration the <A HREF="merg_6n5a.htm"><B>MergeEx function</B></A> returns E_FAIL. This includes these msmErrorType errors: <B>msmErrorBadNullSubstitution</B>, <B>msmErrorBadSubstitutionType</B>, <B>msmErrorBadNullResponse</B>, <B>msmErrorMissingConfigItem</B>, and <B>msmErrorDataRequestFailed</B>. These errors cause the merge to stop immediately when the error is encountered. The error object is still added to the enumerator when<B> MergeEx</B> returns E_FAIL. For more information about msmErrorType errors, see <A HREF="merg_9cv3.htm">get_Type Function (Error Object)</A>. All other errors cause <B>MergeEx</B> to return S_FALSE and cause the merge to continue. </P>
+
+<H4>C++</H4>
+
+<P>See <A HREF="merg_6n5a.htm"><B>MergeEx </B>function</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MergeEx%20Method;%20RELEASE:%20August%202001;%20URL:%20merg_6mjo.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MergeEx%20Method;%20RELEASE:%20August%202001;%20URL:%20merg_6mjo.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

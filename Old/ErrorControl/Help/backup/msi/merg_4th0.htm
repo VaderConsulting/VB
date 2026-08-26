@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Merge Object</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Merge Object">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_merge_object"></A>Merge Object</H3>
+
+<P>The <B>Merge</B> object provides access to other top-level objects. A <B>Merge</B> object must be created before loading the automation support required by COM to access the functions in MergeMod.dll.</P>
+
+<H4>Interface ID:</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Constant</TH>
+<TH align=left width=67%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>IID_ImsmMerge</TD>
+<TD width=67%>{0ADDA82E-2C26-11D2-AD65-00A0C9AF11A6}</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Properties</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=40%>Property</TH>
+<TH align=left width=60%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%><A HREF="merg_308p.htm">Dependencies</A></TD>
+<TD width=60%>Returns a collection of all unsatisfied dependencies in the database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%><A HREF="merg_4tix.htm">Errors</A></TD>
+<TD width=60%>Returns a collection of all errors from the most recent merge operation.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Methods</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=41%>Method</TH>
+<TH align=left width=59%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_3r33.htm"><B>OpenDatabase</B></A></TD>
+<TD width=59%>Opens a database to use as the merge target.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_2rs4.htm"><B>OpenModule</B></A></TD>
+<TD width=59%>Open a merge module for use as the merge source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_2750.htm"><B>CloseDatabase</B> method</A></TD>
+<TD width=59%>Close the current database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_0m1w.htm"><B>CloseModule</B></A></TD>
+<TD width=59%>Close the current module</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_9484.htm"><B>OpenLog</B></A></TD>
+<TD width=59%>Open a log file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_9p5w.htm"><B>CloseLog</B></A></TD>
+<TD width=59%>Close the current log file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_8h0k.htm"><B>Log</B></A></TD>
+<TD width=59%>Log a string to the current log file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_8gyn.htm"><B>Merge</B></A></TD>
+<TD width=59%>Merge the current module into the current database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_28mc.htm"><B>Connect</B></A></TD>
+<TD width=59%>Connects the components in a module to the specified feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_7ov8.htm"><B>ExtractCAB</B></A></TD>
+<TD width=59%>Extracts the embedded CAB of a Merge Module to a disk file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_1r8k.htm"><B>ExtractFiles</B></A></TD>
+<TD width=59%>Creates a source image of the Merge Module beneath the specified path.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>C++ Language</H4>
+
+<P>interface <B>IMsmMerge : IDispatch</B></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

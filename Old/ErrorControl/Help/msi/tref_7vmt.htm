@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Icon Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Icon Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_icon_table"></A>Icon Table</H1>
+
+<P>This table contains the icon files. Each icon from the table is copied to a file as a part of product advertisement to be used for advertised shortcuts and OLE servers. See <A HREF="app_3q9f.htm">OLE Limitations on Streams</A>.</P>
+
+<P>The Icon table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Column</TH>
+<TH align=left width=39%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Name</TD>
+<TD width=39%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Data</TD>
+<TD width=39%><A HREF="tref_8ghl.htm">Binary</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Name</DT>
+
+<DD>Name of the icon file.</DD>
+
+<DT>Data</DT>
+
+<DD>The binary icon data in PE (.dll or .exe) or icon (.ico) format.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is referred to when the <A HREF="aref_10dq.htm">PublishProduct action</A> is executed.</P>
+
+<P>The icons for shortcuts, file extensions, and CLSIDs must be stored in files that are separate from the target file itself. This is required because the installer should copy only the small icon files to the user's machine when advertising the resource. A developer of an installation package therefore needs to author separate files containing only the icons. These icon files are then stored as binary data in the Icon table.</P>
+
+<P>Icon files that are associated strictly with file extensions or CLSIDs can have any extension, such as .ico. However, Icon files that are associated with shortcuts must be in the EXE binary format and must be named such that their extension matches the extension of the target. The shortcut will not work if this rule is not followed. For example, if a shortcut is to point to a resource having the key file Red.bar, then the icon file must also have the extension .bar. Multiple icons can be stuffed into the same icon file as long as all of the target files have the same extension.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Icon%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_7vmt.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Icon%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_7vmt.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

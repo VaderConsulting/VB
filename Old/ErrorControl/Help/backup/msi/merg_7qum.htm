@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>get_Dependencies Function</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="get_Dependencies Function">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_get_dependencies_function"></A>get_Dependencies Function</H1>
+
+<P>The function <B>get_Dependencies</B> implements the <A HREF="merg_308p.htm">Dependencies property</A> of the <A HREF="merg_4th0.htm"><B>Merge</B> Object</A>.</P>
+
+<P><B>IMsmMerge::Dependencies </B></P>
+
+<PRE class=syntax><B>HRESULT get_Dependencies(
+</B>  <B>IMsmDependencies</B> **<I>Dependencies</I>  //[out, retval] 
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>Dependencies</I> </DT>
+
+<DD>Pointer to a memory location to be filled with a pointer to an IMsmDependencies interface which provides access to a collection of unsatisfied dependencies for the current database. If there is an error, the memory location pointed to by <I>Dependencies</I> will be set to NULL.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Value</TH>
+<TH align=left width=67%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>E_INVALIDARG </TD>
+<TD width=67%>The <I>Dependencies</I> pointer is NULL </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>E_FAIL </TD>
+<TD width=67%>There was no database open. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>E_UNEXPECTED </TD>
+<TD width=67%>Unable to verify dependencies due to internal error.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>E_OUTOFMEMORY </TD>
+<TD width=67%>The system ran out of memory. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>S_OK </TD>
+<TD width=67%>The function succeeded. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>There does not need to be a module open to retrieve dependency information. </P>
+
+<P>The client is responsible for releasing the interface returned by this function.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_29f2.htm">Merge Module Automation</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

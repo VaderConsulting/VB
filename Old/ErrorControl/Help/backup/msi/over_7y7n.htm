@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>System Reboots</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="system reboots [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_system_reboots"></A>System Reboots</H1>
+
+<P>The Microsoft® Windows® Installer can determine when a reboot of the system is necessary and automatically prompt the user to reboot at the end of the installation. For example, the installer automatically prompts for a reboot if it needs to replace any files that are in use during the installation.</P>
+
+<P>Installation package authors can schedule and suppress reboots by using standard actions in the sequence tables and by setting properties. The following actions and properties are used to handle system reboots.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Action, dialog, or property</TH>
+<TH align=left width=69%>Brief description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_69bi.htm">ForceReboot Action</A></TD>
+<TD width=69%>Prompts the user for a reboot during the installation. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_96su.htm">ScheduleReboot Action</A></TD>
+<TD width=69%>Prompts the user for a reboot at the end of the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="pref_7qex.htm">REBOOT Property</A></TD>
+<TD width=69%>Forces or suppresses certain automatic prompts for a system reboot. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="pref_4yd5.htm">REBOOTPROMPT Property</A></TD>
+<TD width=69%>Suppresses the display of prompts for reboots to the user. Any needed reboots happen automatically. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="pref_5lh5.htm">AFTERREBOOT Property</A></TD>
+<TD width=69%>Commonly used in a condition imposed on the ForceReboot Action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_9fzi.htm">InstallValidate Action</A></TD>
+<TD width=69%>Displays the FilesInUse Dialog, if necessary, giving users the opportunity to shut down processes and avoid some system reboots.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="href_73mv.htm">FilesInUse Dialog</A></TD>
+<TD width=69%>Gives users the opportunity to shut down processes to avoid some system reboots.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="pref_0p2x.htm">ReplacedInUseFiles Property</A></TD>
+<TD width=69%>Set if the installer installs over a file in use. This property is used by custom actions to detect that a reboot is required.</TD>
+</TR>
+</TABLE><BR>
+
+<P>With Windows Installer version 1.0, ERROR_INSTALL_SUSPEND is returned when the <A HREF="aref_69bi.htm">ForceReboot action</A> is run and ERROR_SUCCESS is returned in other cases requiring a reboot to complete the installation.</P>
+
+<P>With Windows Installer version 1.1, the installer returns the error code ERROR_INSTALL_SUSPEND whenever the <A HREF="aref_69bi.htm">ForceReboot action</A> is run. It returns ERROR_SUCCESS_REBOOT_REQUIRED if a reboot is required before running the application, and it returns ERROR_SUCCESS_REBOOT_INITIATED if the installer has actually started a reboot. Note that because reboots are asynchronous, the reboot may actually occur before the error code is returned. ERROR_SUCCESS_REBOOT_INITIATED was not defined in the msi.h for installer version 1.0; it has a numeric value of 1641. For more information, see <A HREF="code_13ub.htm">Error Codes</A>. </P>
+
+<P>Custom actions can force a prompt for reboot at the end of an installation by calling <A HREF="qref_1d9h.htm"><B>MsiSetMode</B></A>. Custom actions can also check for a pending reboot prompt by calling <A HREF="qref_8u05.htm"><B>MsiGetMode</B></A>. </P>
+
+<H4>FilesInUse Dialog</H4>
+
+<P>The installer can determine when a reboot of the system is necessary and prompt the user with a request to reboot. Commonly, a system reboot is required because the installer is attempting to install a file that is currently being used. If the <A HREF="aref_9fzi.htm">InstallValidate action</A> detects the installation of a file in use it displays the <A HREF="href_73mv.htm">FilesInUse Dialog</A>.</P>
+
+<P>If you expect the installer to display a FilesInUseDialog, but it does not, this may be due to one of the following reasons:
+
+<UL>
+	<LI>The files in use are not executables.</LI>
+
+	<LI>The installer is not actually trying to install those files.</LI>
+
+	<LI>The process holding those files is the process invoking the installation.</LI>
+
+	<LI>The process holding those files is one that does not have a window with a title associated with it.</LI>
+</UL>
+
+<H4>Verbose Logging of Reboot Requests</H4>
+
+<P>If the <A HREF="aref_9fzi.htm">InstallValidate action</A> detects the installation of a file in use it displays the <A HREF="href_73mv.htm">FilesInUse Dialog</A> and logs the following information.</P>
+
+<PRE>Info 1603. The file E:\testdb\Test\CustAct1.dll is being held in use
+by the following process: Name: test, Id: 137, Window Title: 'Test'.</PRE>
+
+<P>If the installer detects that it is about to overwrite a file that is in use, it logs the following information.</P>
+
+<PRE>Info 1603. The file E:\testdb\Test\CustAct2.dll is being held in use.</PRE>
+
+<P>To obtain more information about why the installer is attempting to overwrite this particular file, you can use the verbose logging option. Use the INSTALLLOGMODE_VERBOSE value in a call to <A HREF="msi_2ch3.htm"><B>MsiEnableLog</B></A> or use the verbose output option of the <A HREF="app_73eb.htm">Command Line Options</A>. This logs the following information.</P>
+
+<PRE>MSI (s) (D0:F0): File: E:\testdb\Test\CustAct2.dll;  Overwrite;  
+REINSTALLMODE specifies all files to be overwritten
+The log will include a message such as "Existing file is a lower 
+version" or "Existing file is corrupt (invalid checksum)" </PRE>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

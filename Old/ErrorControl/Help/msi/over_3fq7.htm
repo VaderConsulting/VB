@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Code Page Handling (Windows Installer)</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_code_page_handling_windows_installer_"></A>Code Page Handling (Windows Installer)</H2>
+
+<P>The Windows Installer stores all database strings in a single shared string pool to reduce the size of the database and to improve performance. The database has a single ANSI code page for the string pool appropriate for the product's localization. For list of numeric code pages, see <A HREF="over_9h6b.htm">Localizing the Error and ActionText Tables</A>. See also <A HREF="over_2j6t.htm">Determining an installation database's code page</A>.</P>
+
+<P>Localizing a Windows installer package may involve modifying information in database tables, exporting these tables to ANSI text archive files, and then importing the archive files into the database being localized. Authors may also add localization changes to a database using a database table editor or the <A HREF="qref_778z.htm">Database Functions</A>. It is important to set the code page of the database being localized prior to making any localization changes to the database. Attempting to set the code page of the database after localizing the database is not recommended because this can corrupt extended characters. For details, see <A HREF="over_5tb9.htm">Setting the code page of a database</A>.</P>
+
+<P>The recommended approach for handling code pages is to author a neutral database that only contains characters that can be translated into any code page. For more information, see <A HREF="over_9zxh.htm">Creating a database with a neutral code page</A>.</P>
+
+<P>Authors adding localization information with database archive files may use <A HREF="qref_4qyc.htm"><B>MsiDatabaseExport</B></A> to export tables from a database containing localization changes to ANSI text archive files and then import these into the database being localized with <A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A>. The code page of an exported archive file is always the same as its parent database. The code pages of an imported file and the database receiving the file must be identical, or at least one of the two code pages must be neutral. See <A HREF="over_1u0j.htm">Code Page Handling of Imported and Exported Tables</A>.</P>
+
+<P>Authors adding localization information with a text editor or the <A HREF="qref_778z.htm">Database Functions</A> must be careful to only pass string parameters to the Windows Installer API that use the code page of the database being localized. If a string parameter contains characters not represented by the code page of the database is passed, an error occurs when calling <A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A>. See <A HREF="over_6p0z.htm">Code Page Handling of Parameter Strings</A>.</P>
+
+<P>In cases where one package is used for the installation of multiple language versions of a product, the transform used to localize strings can also change the code page of the database.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Code%20Page%20Handling%20(Windows%20Installer);%20RELEASE:%20August%202001;%20URL:%20over_3fq7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Code%20Page%20Handling%20(Windows%20Installer);%20RELEASE:%20August%202001;%20URL:%20over_3fq7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

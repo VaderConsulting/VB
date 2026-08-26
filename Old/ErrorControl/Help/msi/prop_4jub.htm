@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using Properties in Conditional Statements</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_using_properties_in_conditional_statements"></A>Using Properties in Conditional Statements</H2>
+
+<P>The logical value of a property that has been set is True. To determine whether a property is set without actually getting its value, test the logical expression "MyProperty" or "Not MyProperty". When the property MyProperty is set, the former evaluates as True and the latter as False.</P>
+
+<P>One or more properties can be combined with operators to form logical expressions used in a conditional statements. For more information about the operators that can be used in conditional statements, see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>. </P>
+
+<P>A conditional statement using properties can be entered into the Condition column of the <A HREF="tref_83qd.htm">Condition table</A> to modify the selection state of any entry in the <A HREF="tref_0a91.htm">Feature table</A>.</P>
+
+<P>Conditional statements with one or more properties are commonly used in the Condition column of database tables.</P>
+
+<P>The following tables each have a column for conditional expressions:</P>
+
+<P><A HREF="tref_83qd.htm">Condition table</A> <BR>
+<A HREF="tref_6k11.htm">ControlEvent table</A> <BR>
+<A HREF="tref_90f9.htm">LaunchCondition table</A> <BR>
+<A HREF="tref_1git.htm">InstallUISequence table</A> <BR>
+<A HREF="tref_5pid.htm">InstallExecuteSequence table</A> <BR>
+<A HREF="tref_4vhh.htm">ControlCondition table</A> <BR>
+<A HREF="tref_70f9.htm">AdminExecuteSequence table</A> <BR>
+<A HREF="tref_70f9.htm">AdminExecuteSequence table</A> <BR>
+<A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A> <BR>
+<A HREF="tref_5lnp.htm">AdminUISequence table</A> </P>
+
+<P>Note that the six action sequence tables have fields for a condition. If the conditional expression in this field evaluates to False, the installer skips that action. </P>
+
+<P>If you set a <A HREF="prop_2bw3.htm">private property</A> in the UI sequence by authoring a custom action in one of the user interface sequence tables, that property is not set in the execution sequence. To set the property in the execution sequence you must also put a custom action in an execution sequence table. Alternatively, you can make the property a <A HREF="prop_0gfn.htm">public property</A> and include it in the <A HREF="pref_1eux.htm">SecureCustomProperties property</A>. </P>
+
+<P>For more information, see <A HREF="novr_3mqt.htm">Using a Sequence Table</A> or <A HREF="prop_29tf.htm">Using Properties</A>. </P>
+
+<P></P>
+
+<P></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%20Properties%20in%20Conditional%20Statements;%20RELEASE:%20August%202001;%20URL:%20prop_4jub.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%20Properties%20in%20Conditional%20Statements;%20RELEASE:%20August%202001;%20URL:%20prop_4jub.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

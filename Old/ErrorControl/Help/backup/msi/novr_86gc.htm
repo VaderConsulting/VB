@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Conditioning Actions to Run During Removal</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_conditioning_actions_to_run_during_removal"></A>Conditioning Actions to Run During Removal</H2>
+
+<P>There are two ways to author the installation database such that an action is only called when the package in uninstalled: 
+
+<UL>
+	<LI>If the action is sequenced after the <A HREF="aref_9fzi.htm">InstallValidate action</A> in the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>, the package author may specify "REMOVE = ALL" for the action in the Condition column. Note that the <A HREF="pref_8ho9.htm">REMOVE property</A> is not guaranteed to be set to "ALL" during an uninstall before the installer executes the InstallValidate action.</LI>
+
+	<LI>If the action is sequenced after the <A HREF="aref_22we.htm">CostFinalize action</A> and any actions that could change the feature state, such as <A HREF="aref_61wu.htm">MigrateFeatureStates action</A>, the action can be conditioned on the state of a particular feature or component. See <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>. Use this option to call an action during the removal of a particular feature or component, which may occur outside of the complete removal of the application.</LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ApplyPatch Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ApplyPatch Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_applypatch_method"></A>ApplyPatch Method</H1>
+
+<P>For each product listed by the patch package as eligible to receive the patch, the <B>ApplyPatch</B> method of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> invokes an installation and sets the <A HREF="pref_3wc9.htm">PATCH property</A> to the path of the patch package.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.ApplyPatch(<I>PatchPackage, InstallPackage, InstallType, CommandLine</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A></DD>
+
+<DT><I>PatchPackage</I></DT>
+
+<DD>Specifies a path to the patch package.</DD>
+
+<DT><I>InstallPackage</I></DT>
+
+<DD>If <I>InstallType</I> is set to msiInstallTypeNetworkImage, <I>InstallPackage</I> specifies the path to the product that is to be patched. If <I>InstallType</I> is set to msiInstallTypeDefault and <I>InstallPackage</I> is set to 0, the installer applies the patch to every eligible product listed in the patch package. </DD>
+
+<DT><I>InstallType</I></DT>
+
+<DD>This parameter specifies the type of installation to patch. The <I>InstallType</I> parameter is ignored if <I>InstallPackage</I> is omitted. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Value</TH>
+<TH align=left width=55%>Type of installation</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>msiInstallTypeNetworkImage</TD>
+<TD width=55%>Indicates a administrative installation. In this case, <I>InstallPackage</I> must be set to a package path. A value of 1 for msiInstallTypeNetworkImage specifies a administrative installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>msiInstallTypeDefault</TD>
+<TD width=55%>Searches system for products to patch. In this case, <I>InstallPackage</I> must be an empty string.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>CommandLine</I></DT>
+
+<DD>Specifies property settings being set on the command line.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Because the list delimiter for transforms, sources, and patches is a semicolon, this character should not be used for file names or paths.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_5fe0.htm"><B>MsiApplyPatch</B></A>, <A HREF="prop_0ylv.htm">About Properties</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

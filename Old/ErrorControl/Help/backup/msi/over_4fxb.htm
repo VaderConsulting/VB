@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Logging Policy (Per Machine)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="logging policy (per machine) [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_logging_policy_per_machine_"></A>Logging Policy (Per Machine)</H3>
+
+<P>This per-machine <A HREF="over_37ll.htm">system policy</A> is used only if logging has not been enabled by the "/L" command line option or by <A HREF="msi_2ch3.htm"><B>MsiEnableLog</B></A>. If the policy is set in this case, the installer creates a log file in the temp directory with the random name: MSI*.LOG. Specify the logging mode by setting the policy value to a string of characters. Use the same characters to specify logging mode policy as used by the "/L" <A HREF="app_73eb.htm">command line option</A>. Note that you cannot use "+" and "*" for the policy.</P>
+
+<H4>Registry Key</H4>
+
+<P><B>HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer</B></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

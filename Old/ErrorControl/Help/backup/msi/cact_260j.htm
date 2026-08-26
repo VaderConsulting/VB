@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Nested Installation Actions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="nested installation actions [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_nested_installation_actions"></A>Nested Installation Actions</H2>
+
+<P>Nested installations are not available with Windows Installer version 1.0.</P>
+
+<P>A nested installation action installs another Windows Installer package during a currently running installation. A nested installation is added to a package by authoring a nested installation action into the <A HREF="tref_71b9.htm">CustomAction table</A> and scheduling this custom action into the sequence tables. The Target field of the CustomAction table contains a string of public property settings used by the nested installation. The Source field of the CustomAction table identifies the nested package. </P>
+
+<P>The type of nested installation action is specified in the Type field of the CustomAction table. Depending upon the custom action type, the package for the nested application can reside in a sub-storage of the main package, as a file at a location specified by a property, or as an advertised application on the user's machine. The following types of custom actions perform a nested installation.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Custom action type</TH>
+<TH align=left width=68%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_7nqv.htm">Custom Action Type 7</A></TD>
+<TD width=68%>Nested installation of a product residing in the installation package.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_07jn.htm">Custom Action Type 23</A></TD>
+<TD width=68%>Nested installation of an installer package within the current source tree.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%><A HREF="cact_07ll.htm">Custom Action Type 39</A></TD>
+<TD width=68%>Nested installation of an advertised installer package.</TD>
+</TR>
+</TABLE><BR>
+
+<P>A nested installation shares the same user interface and logging settings as the main installation.</P>
+
+<P>The use of <A HREF="cact_10fn.htm">deferred execution</A> with nested installation actions is unnecessary because the installer combines rollback information from the nested and main installations. This means that all changes are reversed upon a rollback installation.</P>
+
+<P>The return values for nested installation actions are the same as for other custom actions. See <A HREF="cact_8h0z.htm">Custom Action Return Values</A>.</P>
+
+<P>Standard or custom actions that specify an automatic reboot of the system, or request the user to reboot, can also perform reboot or request from within a nested installation.</P>
+
+<P>Once the installer begins a nested installation, it locks out all other all other installations until the nested installation is complete and before continuing the main installation. The installer can only execute nested installations as synchronous custom actions. See <A HREF="cact_4qyb.htm">Synchronous and Asynchronous Custom Actions</A>. The option flags described in <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A> must be set to none (+0) or <B>msidbCustomActionTypeContinue</B> (+64). </P>
+
+<P>A nested installation action can install an application to be run locally, to run from source, to be reinstalled, or to be removed in the same manner as when using <A HREF="msi_75x0.htm"><B>MsiInstallProduct</B></A> for a regular installation. To specify the type of installation, pass either the <A HREF="pref_3dvd.htm">ADDLOCAL</A>, <A HREF="pref_7g1l.htm">ADDSOURCE</A>, <A HREF="pref_19x5.htm">REINSTALL</A>, or <A HREF="pref_8ho9.htm">REMOVE</A> property to the nested installation action. </P>
+
+<P>There is no method for querying a package for its cost. This makes the costing of a nested installations difficult. Rows must be added to the <A HREF="tref_9u5h.htm">ReserveCost table</A> to indicate the folders and worst-case costs of the component associated with the nested install.</P>
+
+<P>The only <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A> available with nested installation actions are none (+0) or <B>msidbCustomActionTypeContinue</B> (+64).</P>
+
+<P>Note that a parent installation cannot call its own package as a nested installation action.</P>
+
+<P>Note that if a per-machine installation attempts to run a per-user nested installation, the installer registers the parent installation as per-user by default. This can cause the installer to incorrectly remove the application because the installer attempts to uninstall the application per-machine when it is actually registered as per-user. To force the state of a nested installation to track the state of its parent installation, enter ALLUSERS=[ALLUSERS] in the Target column of the <A HREF="tref_71b9.htm">CustomAction table</A>. In this case, the nested installation is per-machine if the parent is per-machine, and the nested installation is per-user if the parent is per-user. </P>
+
+<P>Developers should note the following warnings when authoring nested installations. 
+
+<UL>
+	<LI>Parent and child installations of nested installations cannot share components:</LI>
+
+	<LI>An administrative installation cannot also contain a nested installation.</LI>
+
+	<LI>Patching and upgrading may not work with nested installations.</LI>
+
+	<LI>The installer may not properly cost a nested installation.</LI>
+
+	<LI>Integrated progress bars cannot be used with nested installations.</LI>
+
+	<LI>Resources that are to be advertised cannot be installed by the child of a nested installation. </LI>
+</UL>
+
+<H4>See Also</H4>
+
+<P><A HREF="pref_6tx5.htm">ALLUSERS</A>, <A HREF="over_2vn2.htm">How do I specify a per-user or per-machine installation?</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

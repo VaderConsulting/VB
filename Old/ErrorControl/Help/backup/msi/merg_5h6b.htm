@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring Merge Module Registry Tables</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_merge_module_registry_tables"></A>Authoring Merge Module Registry Tables</H3>
+
+<P>Use Merge Module Registry tables according to the type of registry information. </P>
+
+<H4>TypeLib, Class, AppId, ProgId, Extension, Verb, or MIME Tables </H4>
+
+<P>For type libraries, classes, extensions, and verbs, author registry information into the merge module's <A HREF="tref_3085.htm">TypeLib</A>, <A HREF="tref_5n8l.htm">Class</A>, <A HREF="tref_6p2d.htm">AppId</A>, <A HREF="tref_4x5x.htm">ProgId</A>, <A HREF="tref_219h.htm">Extension</A>, <A HREF="tref_3kdh.htm">Verb</A>, or <A HREF="tref_3sh1.htm">MIME</A> tables. If you use the <A HREF="tref_3obp.htm">Registry table</A> to add this information, Windows 2000 cannot provide system-wide advertisement for these components. </P>
+
+<P>Merge module authors may decide not to register using the Class table for the following reasons:
+
+<UL>
+	<LI>To be registered by the Class table, the file has to be the KeyPath of its component. This may require an unacceptable change in the organization of components.</LI>
+
+	<LI>A COM call may trigger an installer attempt to reinstall an advertised class. Authors may decide not to register a class using the Class table in order to avoid triggering a reinstallation when the client computer does not support a user interface.</LI>
+</UL>
+
+<H4>Registry Table</H4>
+
+<P>Use the Registry table to add registry information that cannot be authored into the TypeLib, Class, AppId, ProgId, Extension, Verb, or MIME tables. Windows 2000 cannot provide system-wide advertisement for components that use the Registry table. </P>
+
+<P>When authoring the Registry Table, refer to file paths using the [#File] or [!File] format rather than as [Directory]Filename. The latter format does not support run-from-source installation. The former format also makes missing files and faulty components easier to detect. </P>
+
+<P>Care is needed when using formatted text in the Key column of the Registry table. Because Windows Installer does not reinstall components that are already installed, using formatted text in this field may cause registry keys to be left behind on application removal.</P>
+
+<H4>SelfReg Table</H4>
+
+<P>Using the SelfReg table is not recommended. For a list of reasons for not using self-registration, see <A HREF="tref_0llx.htm">SelfReg table</A>. You should use the TypeLib, Class, AppId, ProgId, Extension, Verb, and MIME tables where possible instead and the Registry table in all other cases.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

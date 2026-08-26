@@ -1,0 +1,428 @@
+VERSION 5.00
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
+Begin VB.UserDocument docMain 
+   ClientHeight    =   6315
+   ClientLeft      =   60
+   ClientTop       =   345
+   ClientWidth     =   8505
+   HScrollSmallChange=   225
+   ScaleHeight     =   6315
+   ScaleWidth      =   8505
+   VScrollSmallChange=   225
+   Begin VB.TextBox txtUserName 
+      Height          =   375
+      Left            =   3600
+      TabIndex        =   14
+      Top             =   360
+      Width           =   1695
+   End
+   Begin VB.CommandButton cmdDisconnect 
+      Caption         =   "Disconnect"
+      Enabled         =   0   'False
+      Height          =   375
+      Left            =   6960
+      TabIndex        =   13
+      Top             =   360
+      Width           =   1215
+   End
+   Begin VB.TextBox txtPort 
+      Height          =   375
+      Left            =   2040
+      TabIndex        =   12
+      Text            =   "6123"
+      Top             =   360
+      Width           =   1455
+   End
+   Begin VB.CommandButton cmdConnect 
+      Caption         =   "Connect"
+      Enabled         =   0   'False
+      Height          =   375
+      Left            =   5520
+      TabIndex        =   11
+      Top             =   360
+      Width           =   1215
+   End
+   Begin VB.TextBox txtServerName 
+      Height          =   375
+      Left            =   240
+      TabIndex        =   9
+      Text            =   "chadk2k"
+      Top             =   360
+      Width           =   1695
+   End
+   Begin VB.TextBox txtSend 
+      Height          =   375
+      Left            =   240
+      TabIndex        =   4
+      Top             =   5640
+      Width           =   5055
+   End
+   Begin VB.CommandButton cmdSend 
+      Caption         =   "Send"
+      Default         =   -1  'True
+      Enabled         =   0   'False
+      Height          =   375
+      Left            =   5520
+      TabIndex        =   3
+      Top             =   5640
+      Width           =   1575
+   End
+   Begin VB.ComboBox cmbChatRooms 
+      Height          =   315
+      Left            =   5520
+      Sorted          =   -1  'True
+      Style           =   2  'Dropdown List
+      TabIndex        =   2
+      Top             =   1080
+      Width           =   2655
+   End
+   Begin VB.ListBox lstUsers 
+      Height          =   3375
+      Left            =   5520
+      TabIndex        =   1
+      Top             =   1800
+      Width           =   2655
+   End
+   Begin VB.TextBox txtMain 
+      Height          =   4095
+      Left            =   240
+      Locked          =   -1  'True
+      MultiLine       =   -1  'True
+      ScrollBars      =   2  'Vertical
+      TabIndex        =   0
+      Top             =   1080
+      Width           =   5055
+   End
+   Begin MSWinsockLib.Winsock ConnSocket 
+      Left            =   7800
+      Top             =   5640
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
+   Begin VB.Label lblUserName 
+      Caption         =   "Your User Name"
+      Height          =   375
+      Left            =   3600
+      TabIndex        =   16
+      Top             =   120
+      Width           =   1575
+   End
+   Begin VB.Label lblPort 
+      Caption         =   "Port"
+      Height          =   375
+      Left            =   2040
+      TabIndex        =   15
+      Top             =   120
+      Width           =   1455
+   End
+   Begin VB.Label lblServerName 
+      Caption         =   "Server"
+      Height          =   495
+      Left            =   240
+      TabIndex        =   10
+      Top             =   120
+      Width           =   735
+   End
+   Begin VB.Label lblMessages 
+      Caption         =   "Messages"
+      Height          =   375
+      Left            =   240
+      TabIndex        =   8
+      Top             =   840
+      Width           =   3135
+   End
+   Begin VB.Label lblChatRooms 
+      Caption         =   "Chat Rooms"
+      Height          =   375
+      Left            =   5520
+      TabIndex        =   7
+      Top             =   840
+      Width           =   2535
+   End
+   Begin VB.Label lblData 
+      Caption         =   "Type Your Message and Click ""Send,"" or Hit Enter"
+      Height          =   375
+      Left            =   240
+      TabIndex        =   6
+      Top             =   5400
+      Width           =   3975
+   End
+   Begin VB.Label lblUserList 
+      Caption         =   "People in this Room"
+      Height          =   375
+      Left            =   5520
+      TabIndex        =   5
+      Top             =   1560
+      Width           =   2415
+   End
+End
+Attribute VB_Name = "docMain"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Dim UserName As String
+Dim Port As Integer
+Dim CurrentChatRoom As String
+Dim ServerName As String
+Dim WSAStartupData As WSADataType
+
+'Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
+
+Option Explicit
+Private Sub UserDocument_Initialize()
+    Call Form_Load
+End Sub
+
+
+
+Private Sub cmbChatRooms_Click()
+    Dim strSend As String
+    strSend = "#" & CHATROOM_CHANGE & COMMAND_SEPARATOR & cmbChatRooms.Text
+    'ConnSocket.SendData strSend
+    send ConnSocket.SocketHandle, ByVal strSend, Len(strSend), 0
+    
+    CurrentChatRoom = cmbChatRooms.Text
+End Sub
+
+Private Sub cmdConnect_Click()
+    'Dim retVal As Long
+    Dim strSend As String
+    UserName = txtUserName.Text
+    Port = txtPort.Text
+    ServerName = txtServerName.Text
+    
+    Debug.Print "About to Connect"
+
+    ConnSocket.connect ServerName, Port
+    
+    Debug.Print ConnSocket.State
+    
+    txtServerName.Locked = True
+    txtPort.Locked = True
+    txtUserName.Locked = True
+    cmdConnect.Enabled = False
+    cmdDisconnect.Enabled = True
+    cmdSend.Enabled = True
+
+End Sub
+
+Private Sub cmdDisconnect_Click()
+    ConnSocket.Close
+    
+    lstUsers.Clear
+    cmbChatRooms.Clear
+    
+    txtServerName.Locked = False
+    txtPort.Locked = False
+    txtUserName.Locked = False
+    cmdDisconnect.Enabled = False
+    cmdSend.Enabled = False
+    cmdConnect.Enabled = True
+End Sub
+
+Private Sub cmdSend_Click()
+    Dim strSend As String
+    
+    If Len(txtSend.Text) = 0 Then
+        Exit Sub
+    End If
+    
+    strSend = "#" & INCOMING_MESSAGE & COMMAND_SEPARATOR & txtSend.Text
+    'ConnSocket.SendData strSend
+    send ConnSocket.SocketHandle, ByVal strSend, Len(strSend), 0
+
+    txtSend.Text = ""
+End Sub
+
+Private Function FindRequestType(Data As String) As Integer
+    Dim comp As Integer
+    
+    comp = InStr(1, Data, INIT_MESSAGE, vbTextCompare)
+    
+    If comp = 1 Then
+        FindRequestType = iINIT_MESSAGE
+        Exit Function
+    End If
+    
+    comp = InStr(1, Data, UPDATE_USERLIST, vbTextCompare)
+    
+    If comp = 1 Then
+        FindRequestType = iUPDATE_USERLIST
+        Exit Function
+    End If
+    
+    comp = InStr(1, Data, UPDATE_CHATROOM_LIST, vbTextCompare)
+    
+    If comp = 1 Then
+        FindRequestType = iUPDATE_CHATROOM_LIST
+        Exit Function
+    End If
+
+    comp = InStr(1, Data, INCOMING_MESSAGE, vbTextCompare)
+    
+    If comp = 1 Then
+        FindRequestType = iINCOMING_MESSAGE
+        Exit Function
+    End If
+
+End Function
+
+Private Function ParseCommand(ByRef Data As String) As String
+    Dim strSubString() As String
+        
+    ' Find a substring from "#" to "#" or the end of the string
+    
+End Function
+
+Private Sub ConnSocket_DataArrival(ByVal bytesTotal As Long)
+    Dim CommandElement As Variant
+    Dim tempString As String
+    Dim strCommand() As String
+    Dim strValue() As String
+    Dim RequestType As Integer
+    Dim strChatList() As String
+    Dim strCount() As String
+    Dim Count As Double
+    Dim Counter As Double
+    Dim strUserName As String
+    Dim strUserList() As String
+    Dim strNameAndMessage() As String
+    Dim strMessage As String
+    Dim strOutput As String
+    Dim strSend As String
+
+    
+    ' Receive the data.
+    ConnSocket.GetData tempString, bytesTotal
+    
+    Debug.Print tempString
+    
+    strCommand = Split(Right(tempString, (Len(tempString) - 1)), "#")
+
+    For Each CommandElement In strCommand
+        
+        ' Split the string into all of it glorious values,
+        ' using, of course, the value separator as a
+        ' value separator
+        strValue = Split(CommandElement, COMMAND_SEPARATOR)
+    
+        ' Check to see if we have a data change, such as
+        ' chat room change or user name change, or if we
+        ' have data to display.
+        RequestType = FindRequestType(strValue(0))
+        
+        If RequestType = iUPDATE_USERLIST Then
+            Debug.Print "Processing Update Userlist: " & strValue(1)
+            lstUsers.Clear
+            
+            strCount = Split(strValue(1), COUNT_SEPARATOR)
+            Count = Val(strCount(0))
+            
+            strUserList = Split(strCount(1), VALUE_SEPARATOR)
+            
+            For Counter = 0 To Count - 1
+                lstUsers.AddItem strUserList(Counter)
+            Next
+        ElseIf RequestType = iINIT_MESSAGE Then
+            Debug.Print "Processing InitMessage"
+            strSend = "#" & USER_CHANGE & COMMAND_SEPARATOR & UserName
+        
+            'ConnSocket.SendData strSend
+            send ConnSocket.SocketHandle, ByVal strSend, Len(strSend), 0
+        
+            CurrentChatRoom = DEFAULT_CHATROOM
+        
+            cmbChatRooms.AddItem DEFAULT_CHATROOM
+            cmbChatRooms.Text = DEFAULT_CHATROOM
+    
+        ElseIf RequestType = iUPDATE_CHATROOM_LIST Then
+            Debug.Print "Processing UpdateChatroomList: " & strValue(1)
+            cmbChatRooms.Clear
+            
+            strCount = Split(strValue(1), COUNT_SEPARATOR)
+            Count = Val(strCount(0))
+            
+            strChatList = Split(strCount(1), VALUE_SEPARATOR)
+            
+            For Counter = 0 To Count - 1
+                cmbChatRooms.AddItem strChatList(Counter)
+            Next
+             
+            cmbChatRooms.Text = CurrentChatRoom
+            
+       ElseIf RequestType = iINCOMING_MESSAGE Then
+            Debug.Print "Processing Incoming Message: " & strValue(1)
+            strNameAndMessage = Split(strValue(1), VALUE_SEPARATOR)
+            strUserName = strNameAndMessage(0)
+            strMessage = strNameAndMessage(1)
+            
+            strOutput = "[" & strUserName & "] " & strMessage
+            
+            txtMain.Text = txtMain.Text & vbCrLf & strOutput
+            
+        End If
+    Next CommandElement
+        
+End Sub
+
+Private Sub txtMain_Change()
+    txtMain.SelStart = Len(txtMain.Text)
+End Sub
+
+Private Sub Form_Load()
+    VALUE_SEPARATOR = Chr(161)
+    COMMAND_SEPARATOR = Chr(162)
+    COUNT_SEPARATOR = Chr(163)
+    
+    WSAStartup &H101, WSAStartupData
+    
+End Sub
+
+
+Private Sub txtPort_Change()
+    If txtServerName.Text = "" _
+        Or txtPort.Text = "" _
+        Or txtUserName = "" _
+        Or ConnSocket.State = sckConnected Then
+        cmdConnect.Enabled = False
+    Else
+        cmdConnect.Enabled = True
+    End If
+    
+End Sub
+
+Private Sub txtServerName_Change()
+    If txtServerName.Text = "" _
+        Or txtPort.Text = "" _
+        Or txtUserName = "" _
+        Or ConnSocket.State = sckConnected Then
+        cmdConnect.Enabled = False
+    Else
+        cmdConnect.Enabled = True
+    End If
+    
+End Sub
+
+Private Sub txtUserName_Change()
+    If txtServerName.Text = "" _
+        Or txtPort.Text = "" _
+        Or txtUserName = "" _
+        Or ConnSocket.State = sckConnected Then
+        cmdConnect.Enabled = False
+    Else
+        cmdConnect.Enabled = True
+    End If
+
+End Sub
+
+Private Sub ConnSocket_SendComplete()
+    'If you sent a command, or data, this wi
+    '     ll tell you when it is done
+    'sending
+    'MsgBox "Send Complete", vbOKOnly
+    Debug.Print "Send Complete"
+End Sub
+
+

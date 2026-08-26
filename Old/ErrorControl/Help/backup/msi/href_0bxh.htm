@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Bitmap Control Attribute</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Bitmap Control Attribute">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_bitmap_control_attribute"></A>Bitmap Control Attribute</H1>
+
+<P>If the Bitmap Control bit is set, the text in the control is replaced by a bitmap image. The Text column in the <A HREF="tref_6nad.htm">Control table</A> is a foreign key into the <A HREF="tref_04px.htm">Binary table</A>. </P>
+
+<P>If this bit is not set, the text in the control is specified in the Text column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+
+<H4>Valid Controls</H4>
+
+<P><A HREF="href_7dt8.htm">CheckBox</A><BR>
+<A HREF="href_331o.htm">PushButton</A><BR>
+<A HREF="href_6iwc.htm">RadioButtonGroup</A></P>
+
+<H4>Value</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Decimal</TH>
+<TH align=left width=29%>Hexadecimal </TH>
+<TH align=left width=48%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>262144</TD>
+<TD width=29%>0x00040000</TD>
+<TD width=48%><B>msidbControlAttributesBitmap</B></TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>To set this attribute on a control, include the Bitmap bit in the Attributes column of the control's record in the <A HREF="tref_6nad.htm">Control table</A>.</P>
+
+<P>The Text column in the Control table is used as a foreign key to the <A HREF="tref_04px.htm">Binary table</A>, therefore the control cannot contain both an icon image and text.</P>
+
+<P>Do not set both the <A HREF="href_9v8l.htm">Icon</A> and Bitmap bits.</P>
+
+<P>See <A HREF="href_8uk3.htm">Control Attributes</A> and the control you need to create under <A HREF="href_710z.htm">Controls</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

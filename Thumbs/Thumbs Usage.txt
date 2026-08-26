@@ -1,0 +1,41 @@
+    ' Usage...
+    
+    1.  Place  Thumbs.DLL into %WINDIR%
+    2.  Place the Intel Graphics DLL (ijl11.dll) into %WINDIR%
+    3.  Register the Thumbs DLL (ie REGSVR32 %WINDIR%\SYSTEM32\Thumbs.DLL /i)
+    
+    
+    Code usage.....
+    
+    
+    ' In VB you have to set a reference to this object.  This is because we are using Early Bound Object Creation.
+    
+    ' Visual basic is a typed language, so you can declare the object type
+    Dim objThumbnails As Thumbs.cNew
+    ' NOTE.. If you didn't create a reference to this object, you must declare as follows:
+    'Dim objThumbnails As Object
+    
+    ' If this was VB Script or ASP, you must only do the following:
+    'Dim objThumbnails
+    
+    
+    ' Create the object (VB and VBScript Syntax)
+    Set objThumbnails = CreateObject("Thumbs")
+    
+    ' For ASP you could use the same syntax as VB, but more correctly you should specify the following:
+    'Set objThumbnails = Server.CreateObject("Thumbs")
+    
+    ' ---------------------------------------------------------------------------------------------------------------------------
+    ' create thumbnails for c:\downloads\wallpaper\62.jpg.
+    ' Destinations file goes into c:\downloads\wallpaper\thumbs
+    ' The output thumbnail will be a JPG, max width 100, max height 100 (NOT forced).  The background will be white.
+    objThumbnails.Thumbnail "62.jpg", "c:\downloads\wallpaper", "c:\downloads\wallpaper\thumbs", JPG, 100, 100, False, H00FFFFFF&
+    ' ---------------------------------------------------------------------------------------------------------------------------
+    
+    
+    ' ---------------------------------------------------------------------------------------------------------------------------
+    ' create thumbnails for all files in c:\downloads\wallpaper.
+    ' Destinations files go into c:\downloads\wallpaper\thumbs
+    ' Each output thumbnail will be a JPG, max width 50, max height 50 (NOT forced).  The background will be white.
+    objThumbnails.Thumbnails "c:\downloads\wallpaper", "c:\downloads\wallpaper\thumbs", JPG, 50, 50, False, &HFFFFFF
+    ' ---------------------------------------------------------------------------------------------------------------------------

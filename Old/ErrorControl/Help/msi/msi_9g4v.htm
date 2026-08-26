@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetFeatureInfo</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiGetFeatureInfo">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msigetfeatureinfo"></A>MsiGetFeatureInfo</H1>
+
+<P>The <B>MsiGetFeatureInfo</B> function returns descriptive information for a feature.</P>
+
+<PRE class=syntax><B>UINT MsiGetFeatureInfo(
+  MSIHANDLE</B> <I>hProduct</I><B>,</B>  // product handle obtained from <B>MsiOpenProduct</B>
+<B>  LPCTSTR</B> <I>szFeature</I><B>,</B>   // feature name
+<B>  DWORD</B> <B>*</B><I>lpAttributes</I><B>,</B> // attribute flags
+<B>  LPTSTR</B> <I>lpTitleBuf</I><B>,</B>   // localized name
+<B>  DWORD</B> <B>*</B><I>pcchTitleBuf</I><B>,</B> // buffer character count
+<B>  LPTSTR</B> <I>lpHelpBuf</I><B>,</B>    // description
+<B>  DWORD</B> <B>*</B><I>pcchHelpBuf   </I>// buffer character count
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hProduct</I></DT>
+
+<DD>[in] Handle to the product that owns the feature. This handle is obtained from <A HREF="msi_5f78.htm"><B>MsiOpenProduct</B></A>.</DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>[in] Specifies the feature code for the feature about which information should be returned.</DD>
+
+<DT><I>lpAttributes</I></DT>
+
+<DD>[in] Specifies the attribute flags. Must be one or more of the following.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=74%>Flag</TH>
+<TH align=left width=26%>Returned value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=74%>INSTALLFEATUREATTRIBUTE_FAVORLOCAL</TD>
+<TD width=26%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=74%>INSTALLFEATUREATTRIBUTE_FAVORSOURCE</TD>
+<TD width=26%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=74%>INSTALLFEATUREATTRIBUTE_FOLLOWPARENT</TD>
+<TD width=26%>4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=74%>INSTALLFEATUREATTRIBUTE_FAVORADVERTISE</TD>
+<TD width=26%>8</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=74%>INSTALLFEATUREATTRIBUTE_DISALLOWADVERTISE</TD>
+<TD width=26%>16</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=74%>INSTALLFEATUREATTRIBUTE_NOUNSUPPORTEDADVERTISE</TD>
+<TD width=26%>32</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>For information on how these flags work together, see the <A HREF="tref_0a91.htm">Feature table</A>. Note however that the values returned by <B>MsiGetFeatureInfo </B>are double the values in the Attributes column of the Feature Table. 
+</DD>
+
+<DT><I>lpTitleBuf</I></DT>
+
+<DD>[out] Pointer to a buffer to receive the localized descriptive name of the feature.</DD>
+
+<DT><I>pcchTitleBuf</I></DT>
+
+<DD>[in, out] As input, the size of <I>lpTitleBuf</I>. As output, the number of characters returned in <I>lpTitleBuf. </I>On input, this is the full size of the buffer, including a space for a terminating NULL. If the buffer passed in is too small, the count returned does not include the terminating NULL. </DD>
+
+<DT><I>lpHelpBuf</I></DT>
+
+<DD>[out] Pointer to a buffer to receive the localized descriptive name of the feature.</DD>
+
+<DT><I>pcchHelpBuf</I></DT>
+
+<DD>[in, out] As input, the size of <I>lpHelpBuf</I>. As output, the number of characters returned in <I>lpHelpBuf.</I> On input, this is the full size of the buffer, including a space for a terminating NULL. If the buffer passed in is too small, the count returned does not include the terminating NULL. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_HANDLE</TD>
+<TD width=52%>The product handle is invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>One of the parameters is invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_MORE_DATA</TD>
+<TD width=52%>A buffer is too small to hold the requested data.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function returned successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_UNKNOWN_FEATURE</TD>
+<TD width=52%>The feature is not known.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The buffer sizes for the <B>MsiGetFeatureInfo </B>function should include an extra character for the terminating NULL character upon input. If a buffer is too small, the returned string will be truncated with NULL, and the buffer size will contain the number of characters in the whole string, not including the terminating NULL. For more information, see <A HREF="novr_9vw3.htm">Calling Database Functions From Programs</A>.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_product_query_functions">Product Query Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetFeatureInfo;%20RELEASE:%20August%202001;%20URL:%20msi_9g4v.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetFeatureInfo;%20RELEASE:%20August%202001;%20URL:%20msi_9g4v.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

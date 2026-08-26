@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using Properties</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_using_properties"></A>Using Properties</H1>
+
+<P>The following sections describe using the built-in installer properties and additional properties defined by the package author. Properties can be either <A HREF="prop_0gfn.htm">public properties</A> or <A HREF="prop_2bw3.htm">private properties</A>. Every property that needs to be defined upon initialization of the installer must have its name and initial value listed in the <A HREF="tref_21d1.htm">Property table</A>. Properties having a Null value are not listed in the Property table. You can get or set properties from programs and custom actions and set public properties from the command line. The installation process can be modified by using properties in conditional statements.</P>
+
+<P><A HREF="prop_6xwz.htm">Restrictions on Property Names</A> </P>
+
+<P><A HREF="prop_5dir.htm">Initialization of Property Values</A> </P>
+
+<P><A HREF="prop_75tf.htm">Getting and Setting Properties</A> </P>
+
+<P><A HREF="prop_4jub.htm">Using Properties in Conditional Statements</A> </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="prop_0ylv.htm">About Properties</A>, <A HREF="pref_3mp1.htm">Property Reference</A> </P>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;Do not use properties for passwords or other information that must remain secure. The installer may write the value of a property authored into the Property table, or created at runtime, into a log or the system registry.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

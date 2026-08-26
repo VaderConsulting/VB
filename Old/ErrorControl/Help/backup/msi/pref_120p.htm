@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ProductVersion Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ProductVersion Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_productversion_property"></A>ProductVersion Property</H1>
+
+<P>The value of the ProductVersion property is the version of the product in string format. This property is REQUIRED.</P>
+
+<P>The format of the string is as follows.</P>
+
+<P>AA.BB.CCCC </P>
+
+<P>The first field is the major version and is in the range AA &lt; 0xFF. The second field is the minor version and is in the range BB &lt; 0xFF. The third field is called the build version or the update version and is in the range CCCC &lt; 0xFFFF.</P>
+
+<H4>Remarks</H4>
+
+<P>At least one of the three fields of ProductVersion must change for an upgrade using the <A HREF="tref_4qxx.htm">Upgrade table</A>. Any update that changes only the package code, but leaves ProductVersion and ProductCode unchanged is called a <A HREF="updat_9m0j.htm">small update</A>. The three versions fields are provided primarily for convenience. For example, if you want to change ProductVersion, but don't want to change either the major or minor versions, you can change the build version. </P>
+
+<P>Note that Windows Installer uses only the first three fields of the product version. If you include a fourth field in your product version, the installer ignores the fourth field. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="updat_1po3.htm">Patching and Upgrades</A>, <A HREF="updat_9m0j.htm">small update</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

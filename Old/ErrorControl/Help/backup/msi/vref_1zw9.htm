@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Patches Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Patches Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_patches_property"></A>Patches Property</H1>
+
+<P>The read-only <B>Patches </B>property of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> returns a <A HREF="vref_1wac.htm">StringList </A> that contains all the patches applied to the product.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.Patches(<I>Product</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A></DD>
+
+<DT><I>Product</I></DT>
+
+<DD>Specifies the product code.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To enumerate the patches, an application iterates through the <B>StringList</B> object using a For Each construct. Because patches are not ordered, any new patch has an arbitrary index. This means that the function can return patches in any order. </P>
+
+<P>This property is not available with Windows Installer version 1.0.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_36lv.htm"><B>MsiEnumPatches</B></A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

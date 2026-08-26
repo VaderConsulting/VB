@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Specifying Files and File Attributes</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_specifying_files_and_file_attributes"></A>Specifying Files and File Attributes</H2>
+
+<P>The installation and removal of each file is determined by the <A HREF="over_28oj.htm">Windows Installer Component</A> that controls the file. Once the grouping of resources into components has been specified, file attribute information can be added to the installation database.In this section, you add file information to the installation database for the Notepad sample. See the <A HREF="novr_3gz4.htm">File Tables Group</A>. </P>
+
+<P>The files in the Notepad sample are uncompressed. See <A HREF="over_44z7.htm">Compressed and Uncompressed Sources</A> for information on how to add cabinet files to packages. This sample does not contain file versioning information. For more information about file versioning, see <A HREF="over_1tir.htm">File Versioning Rules</A> and <A HREF="over_5qef.htm">Default File Versioning</A>.</P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the empty File Table.</P>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=10%>File</TH>
+<TH align=left width=16%>Component_</TH>
+<TH align=left width=14%>FileName</TH>
+<TH align=left width=10%>FileSize</TH>
+<TH align=left width=11%>Version</TH>
+<TH align=left width=12%>Language</TH>
+<TH align=left width=13%>Attributes</TH>
+<TH align=left width=14%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>Baseball.txt</TD>
+<TD width=16%>Baseball</TD>
+<TD width=14%>Baseball.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=12%> </TD>
+<TD width=13%>0</TD>
+<TD width=14%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>Concert.txt</TD>
+<TD width=16%>Concert</TD>
+<TD width=14%>Concert.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=12%> </TD>
+<TD width=13%>0</TD>
+<TD width=14%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>Dance.txt</TD>
+<TD width=16%>Dance</TD>
+<TD width=14%>Dance.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=12%> </TD>
+<TD width=13%>0</TD>
+<TD width=14%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>Football.txt</TD>
+<TD width=16%>Football</TD>
+<TD width=14%>Football.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=12%> </TD>
+<TD width=13%>0</TD>
+<TD width=14%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>Help.txt</TD>
+<TD width=16%>Help</TD>
+<TD width=14%>Help.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=12%> </TD>
+<TD width=13%>0</TD>
+<TD width=14%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>January.txt</TD>
+<TD width=16%>January</TD>
+<TD width=14%>January.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=12%> </TD>
+<TD width=13%>0</TD>
+<TD width=14%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>NewYears.txt</TD>
+<TD width=16%>NewYears</TD>
+<TD width=14%>NewYears.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=12%> </TD>
+<TD width=13%>0</TD>
+<TD width=14%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>Redpark.exe</TD>
+<TD width=16%>Notepad</TD>
+<TD width=14%>Redpark.exe</TD>
+<TD width=10%>45328</TD>
+<TD width=11%> </TD>
+<TD width=12%> </TD>
+<TD width=13%>0</TD>
+<TD width=14%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>Readme.txt</TD>
+<TD width=16%>Notepad</TD>
+<TD width=14%>Readme.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=12%> </TD>
+<TD width=13%>0</TD>
+<TD width=14%>1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_44kh.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Specifying%20Files%20and%20File%20Attributes;%20RELEASE:%20August%202001;%20URL:%20samp_2x4j.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Specifying%20Files%20and%20File%20Attributes;%20RELEASE:%20August%202001;%20URL:%20samp_2x4j.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

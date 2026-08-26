@@ -1,0 +1,5 @@
+frmHotKeyDemo = 120, 12, 1190, 885, , 22, 29, 1092, 666, C
+HotKey = 0, 0, 0, 0, C, 44, 58, 1114, 695, C
+cRegHotKey = 22, 29, 1182, 882, C
+mWindowPlay = 0, 0, 0, 0, C
+frmOptions = 0, 0, 0, 0, C, 0, 0, 0, 0, C

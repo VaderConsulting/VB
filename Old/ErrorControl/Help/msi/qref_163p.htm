@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiProcessMessage</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiProcessMessage">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msiprocessmessage"></A>MsiProcessMessage</H1>
+
+<P>The <B>MsiProcessMessage</B> function sends an error record to the installer for processing.</P>
+
+<PRE class=syntax><B>int MsiProcessMessage(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>           // installer handle
+  <B>INSTALLMESSAGE</B> <I>eMessageType</I><B>,</B>  // type of message
+  <B>MSIHANDLE</B> <I>hRecord</I>             // record handle
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>[in] Handle to the installation.</DD>
+
+<DT><I>eMessageType</I></DT>
+
+<DD>[in] Specifies the message type. This must be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=36%>Value</TH>
+<TH align=left width=64%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_FATALEXIT</TD>
+<TD width=64%>Premature termination, possibly fatal out of memory.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_ERROR</TD>
+<TD width=64%>Formatted error message,<BR>
+[1] is message number in <A HREF="tref_5dk5.htm">Error table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_WARNING</TD>
+<TD width=64%>Formatted warning message,<BR>
+[1] is message number in Error table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_USER</TD>
+<TD width=64%>User request message,<BR>
+[1] is message number in Error table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_INFO</TD>
+<TD width=64%>Informative message for log, <BR>
+not to be displayed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_FILESINUSE</TD>
+<TD width=64%>List of files in use that need to be replaced.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_RESOLVESOURCE</TD>
+<TD width=64%>Request to determine a valid source location.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_OUTOFDISKSPACE</TD>
+<TD width=64%>Insufficient disk space message.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_ACTIONSTART</TD>
+<TD width=64%>Progress: start of action, <BR>
+[1] action name,<BR>
+[2] description,<BR>
+[3] template for ACTIONDATA messages.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_ACTIONDATA</TD>
+<TD width=64%>Action data. Record fields correspond to the template of ACTIONSTART message.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_PROGRESS</TD>
+<TD width=64%>Progress bar information. See the description of record fields below.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>INSTALLMESSAGE_COMMONDATA</TD>
+<TD width=64%>To enable the Cancel button set [1] to 2 and [2] to 1.
+<P>To disable the Cancel button set [1] to 2 and [2] to 0 </P>
+</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>hRecord</I></DT>
+
+<DD>[in] Handle to a record containing message format and data.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>-1</DT>
+
+<DD>An invalid parameter or handle was supplied.</DD>
+
+<DT>0</DT>
+
+<DD>No action was taken.</DD>
+
+<DT>IDABORT</DT>
+
+<DD>The process was stopped.</DD>
+
+<DT>IDCANCEL</DT>
+
+<DD>The process was canceled.</DD>
+
+<DT>IDIGNORE</DT>
+
+<DD>The process was ignored.</DD>
+
+<DT>IDOK</DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>IDNO</DT>
+
+<DD>No.</DD>
+
+<DT>IDRETRY</DT>
+
+<DD>Retry.</DD>
+
+<DT>IDYES</DT>
+
+<DD>Yes.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiProcessMessage</B> function performs any enabled logging operations and defers execution. You can selectively enable logging for various message types.</P>
+
+<P>For INSTALLMESSAGE_FATALEXIT, INSTALLMESSAGE_ERROR, INSTALLMESSAGE_WARNING, and INSTALLMESSAGE_USER messages, if field 0 is not set field 1 must be set to the error code corresponding to the error message in the <A HREF="tref_5dk5.htm">Error table</A>. Then, the message is formatted using the template from the Error table before passing it to the user-interface handler for display. </P>
+
+<P><B>Record Fields for Progress Bar Messages</B></P>
+
+<P>The following describes the record fields when eMessageType is set to INSTALLMESSAGE_PROGRESS. Field 1 specifies the type of the progress message. The meaning of the other fields depend upon the value in this field. The possible values that can be set into Field 1 are as follows.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Field 1 value</TH>
+<TH align=left width=79%>Field 1 description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>0</TD>
+<TD width=79%>Resets progress bar and sets the expected total number of ticks in the bar.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>1</TD>
+<TD width=79%>Provides information related to progress messages to be sent by the current action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>2</TD>
+<TD width=79%>Increments the progress bar.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>3</TD>
+<TD width=79%>Enables an action (such as CustomAction) to add ticks to the expected total number of progress of the progress bar.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The meaning of Field 2 depends upon the value in Field 1 as follows.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Field 1 value</TH>
+<TH align=left width=79%>Field 2 description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>0</TD>
+<TD width=79%>Expected total number of ticks in the progress bar.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>1</TD>
+<TD width=79%>Number of ticks the progress bar moves for each ActionData message. This field is ignored if Field 3 is 0.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>2</TD>
+<TD width=79%>Number of ticks the progress bar has moved.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>3</TD>
+<TD width=79%>Number of ticks to add to total expected progress.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The meaning of Field 3 depends upon the value in Field 1 as follows.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Field 1 value</TH>
+<TH align=left width=23%>Field 3 value</TH>
+<TH align=left width=56%>Field 3 description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>0</TD>
+<TD width=23%>0</TD>
+<TD width=56%>Forward progress bar (left to right)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>&nbsp;</TD>
+<TD width=23%>1</TD>
+<TD width=56%>Backward progress bar (right to left)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>1</TD>
+<TD width=23%>0</TD>
+<TD width=56%>The current action will send explicit ProgressReport messages.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>&nbsp;</TD>
+<TD width=23%>1</TD>
+<TD width=56%>Increment the progress bar by the number of ticks specified in Field 2 each time an ActionData message is sent.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>2</TD>
+<TD width=23%>Unused</TD>
+<TD width=56%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>3</TD>
+<TD width=23%>Unused</TD>
+<TD width=56%>&nbsp;</TD>
+</TR>
+</TABLE><BR>
+
+<P>The meaning of Field 4 depends upon the value in Field 1 as follows.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Field 1 value</TH>
+<TH align=left width=23%>Field 4 value</TH>
+<TH align=left width=56%>Field 4 description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>0</TD>
+<TD width=23%>0</TD>
+<TD width=56%>Execution is in progress. In this case, the UI could calculate and display the time remaining.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>&nbsp;</TD>
+<TD width=23%>1</TD>
+<TD width=56%>Creating the execution script. In this case, the UI could display a message to please wait while the installer finishes preparing the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>1</TD>
+<TD width=23%>Unused</TD>
+<TD width=56%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>2</TD>
+<TD width=23%>Unused</TD>
+<TD width=56%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>3</TD>
+<TD width=23%>Unused</TD>
+<TD width=56%>&nbsp;</TD>
+</TR>
+</TABLE><BR>
+
+<P>For more information and a code sample, see <A HREF="cact_516a.htm">Adding Custom Actions to the ProgressBar</A>.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_action_functions">Installer Action Functions</A>, <A HREF="hand_3f39.htm">Sending Messages to Windows Installer Using MsiProcessMessage</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiProcessMessage;%20RELEASE:%20August%202001;%20URL:%20qref_163p.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiProcessMessage;%20RELEASE:%20August%202001;%20URL:%20qref_163p.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

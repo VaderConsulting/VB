@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Specifying Components</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_specifying_components"></A>Specifying Components</H2>
+
+<P>The installer installs and removes blocks of resources referred to as <A HREF="over_28oj.htm">Windows Installer Components</A>. See the <A HREF="novr_29f4.htm">Core Tables Group</A> and <A HREF="over_8p83.htm">Components and Features</A> in the Windows Installer overview. In this section you add information about the components used by the Notepad example to the <A HREF="tref_09np.htm">Component Table</A> you created in <A HREF="samp_4885.htm">Importing a Blank Database</A>. See <A HREF="over_286r.htm">Organizing Applications into Components</A> and <A HREF="over_7hpv.htm">Defining Installer Components</A> for a discussion of the rules that control the definition of new components.</P>
+
+<P>The Notepad sample uses eight components to control resources.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Component</TH>
+<TH align=left width=76%>Resources</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Baseball</TD>
+<TD width=76%>Baseball.txt, sBaseball</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Concert</TD>
+<TD width=76%>Concert.txt, sConcert</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Dance</TD>
+<TD width=76%>Dance.txt, sDance</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Football</TD>
+<TD width=76%>Football.txt, sFootball</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Help</TD>
+<TD width=76%>Help.txt, sHelp</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>January</TD>
+<TD width=76%>January.txt, sJanuary</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>NewYears</TD>
+<TD width=76%>NewYears.txt, sNotepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Notepad</TD>
+<TD width=76%>Redpark.exe, Readme.txt, sReadme, sNotepad, <B>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Notepad Sample</B></TD>
+</TR>
+</TABLE><BR>
+
+<P>Every component should be identified with a unique component ID <A HREF="tref_7kf8.htm">GUID</A>. If you are reproducing the sample, do not reuse the same component ID GUIDs in the following table. Instead use a utility such as Guidgen.exe to generate new GUIDs for your components. Be sure that you use a GUID string consistent with the Windows Installer GUID data type. For a discussion of when to define a new component by specifying a new component code, see the following topics:
+
+<UL>
+	<LI><A HREF="over_9crp.htm">Changing the Component Code</A> </LI>
+
+	<LI><A HREF="over_0xim.htm">What happens if the component rules are broken?</A></LI>
+</UL>
+
+<P>Use Orca or another database editor to enter the following data into the blank Component table of MNP2000.msi. Do not reuse the GUIDs shown below in the ComponentId column in your sample.</P>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>Component</TH>
+<TH align=left width=28%>ComponentId</TH>
+<TH align=left width=13%>Directory_</TH>
+<TH align=left width=14%>Attributes</TH>
+<TH align=left width=14%>Condition</TH>
+<TH align=left width=17%>Keypath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Baseball</TD>
+<TD width=28%>{F54ABAC0-33F2-11D3-91D7-00C04FD70856}</TD>
+<TD width=13%>SPORTDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Baseball.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Concert</TD>
+<TD width=28%>{76FA7A80-33F6-11D3-91D8-00C04FD70856}</TD>
+<TD width=13%>ARTSDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Concert.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Dance</TD>
+<TD width=28%>{CCF834A1-33F8-11D3-91D8-00C04FD70856}</TD>
+<TD width=13%>ARTSDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Dance.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Football</TD>
+<TD width=28%>{CCF834A0-33F8-11D3-91D8-00C04FD70856}</TD>
+<TD width=13%>SPORTDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Football.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Help</TD>
+<TD width=28%>{AD10EB50-33C1-11D3-91D6-00C04FD70856}</TD>
+<TD width=13%>NOTEPADDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Help.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>January</TD>
+<TD width=28%>{CF0BC690-33C9-11D3-91D6-00C04FD70856}</TD>
+<TD width=13%>MONDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>January.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>NewYears</TD>
+<TD width=28%>{A42D9140-33D8-11D3-91D6-00C04FD70856}</TD>
+<TD width=13%>HOLDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>NewYears.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Notepad</TD>
+<TD width=28%>{19BED232-30AB-11D3-91D3-00C04FD70856}</TD>
+<TD width=13%>NOTEPADDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Redpark.exe</TD>
+</TR>
+</TABLE><BR>
+
+<P>The source and target directories for each component is specified by the value entered into the Directory_ column. The installer resolves the location of this directory using the information in the Directory Table. The installer uses the key path files specified in the KeyPath column to detect each component. The remote execution attributes are set in the sample so that the components can be run-from-source or run-locally.</P>
+
+<P><A HREF="samp_2x4j.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

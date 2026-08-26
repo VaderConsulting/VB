@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSetInternalUI</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiSetInternalUI">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msisetinternalui"></A>MsiSetInternalUI</H1>
+
+<P>The <B>MsiSetInternalUI</B> function enables the installer's internal user interface. This user interface is then used for all subsequent calls to user-interface-generating installer functions in this process. For more information, see <A HREF="hand_9vn7.htm">User Interface Levels</A>.</P>
+
+<PRE class=syntax><B>INSTALLUILEVEL MsiSetInternalUI(
+</B>  <B>INSTALLUILEVEL</B> <I>dwUILevel</I><B>,</B>  // UI level
+  <B>HWND</B> <I>*phWnd</I>                // handle of owner window
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>dwUILevel</I></DT>
+
+<DD>Specifies the level of complexity of the user interface. This parameter can be one of the following values. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Value</TH>
+<TH align=left width=55%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLUILEVEL_FULL</TD>
+<TD width=55%>Authored user interface with wizards, progress, and errors.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLUILEVEL_REDUCED</TD>
+<TD width=55%>Authored user interface with wizard dialog boxes suppressed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLUILEVEL_BASIC</TD>
+<TD width=55%>Simple progress and error handling.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLUILEVEL_DEFAULT</TD>
+<TD width=55%>The installer chooses an appropriate user interface level.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLUILEVEL_NONE</TD>
+<TD width=55%>Completely silent installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLUILEVEL_ENDDIALOG</TD>
+<TD width=55%>If combined with any above value, the installer displays a modal dialog box at the end of a successful installation or if there has been an error. No dialog box is displayed if the user cancels. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLUILEVEL_PROGRESSONLY</TD>
+<TD width=55%>If combined with the INSTALLUILEVEL_BASIC value, the installer shows simple progress dialog boxes but does not display any modal dialog boxes or error dialog boxes.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>phWnd</I></DT>
+
+<DD>Pointer to a window. This window becomes the owner of any user interface created. A pointer to the previous owner of the user interface is returned. If this parameter is NULL, the owner of the user interface does not change.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<P>The previous user interface level is returned. If an invalid <I>dwUILevel</I> is passed, then INSTALLUILEVEL_NOCHANGE<I> </I>is returned.</P>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiSetInternalUI</B> function is useful when the installer must display a user interface. For example, if a feature is installed, but the source is a compact disc that must be inserted, the installer prompts the user for the compact disc. Depending on the nature of the installation, the application might also display progress indicators or query the user for information. </P>
+
+<P>When Msi.dll is loaded, the user interface level is set to DEFAULT and the user interface owner is set to 0 (that is, the initial user interface owner is the desktop).</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_user_interface_and_logging_functions">Interface and Logging Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

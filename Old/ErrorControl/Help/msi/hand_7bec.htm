@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Adding Controls and Text</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_adding_controls_and_text"></A>Adding Controls and Text</H2>
+
+<P>Controls and text placed on dialog boxes and billboards enable the user to interact with the installation process. Add a dialog box to the user interface by including it in the <A HREF="tref_51wl.htm">Dialog table</A> as described in <A HREF="hand_1nvp.htm">Using The User Interface</A>. You can fill dialog boxes and billboards with controls by populating the <A HREF="tref_6nad.htm">Control table</A> and <A HREF="tref_78it.htm">BBControl table</A>, respectively.</P>
+
+<P>The initial attributes of control can be specified in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>. See <A HREF="href_8uk3.htm">Control Attributes</A>.</P>
+
+<P>To make control attributes dependent upon a condition, use the <A HREF="tref_4vhh.htm">ControlCondition table</A> to disable, enable, hide, or show a control according to the value of a property or conditional statement. For example, you can present a control if the operating system is Microsoft® Windows&nbsp;NT®/Windows®&nbsp;2000 but not if it is Microsoft® Windows® 95 or later. You can also use this table to override the specification of the default control entered into the <A HREF="tref_51wl.htm">Dialog table</A>. </P>
+
+<P>To have an event change a control attribute, subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A>. A ControlEvent specifies an action to be taken by the installer or a change in the attributes of one or more controls in the dialog box. See <A HREF="hand_5fhz.htm">ControlEvent Overview</A>. Enter the attribute's identifier in the Attribute column and the ControlEvent's identifier in the Event column of the <A HREF="tref_6m3p.htm">EventMapping table</A>.</P>
+
+<P>Some controls facilitates the collection of information from the user. For example, a check box enables the user to set the value of a property. See the <A HREF="tref_3fmt.htm">CheckBox table</A>, the <A HREF="tref_9wit.htm">ComboBox table</A>, the <A HREF="tref_5f1h.htm">ListBox table</A>, the <A HREF="tref_4t7p.htm">RadioButton table</A>, and the <A HREF="tref_0vs5.htm">ListView table</A>.</P>
+
+<P>Note that for security reasons, private properties cannot be changed by the user interacting with the user interface. If a property is to be set by the user interface it needs to be a public property and have a name in all upper case. See <A HREF="prop_0ylv.htm">About Properties</A>.</P>
+
+<P>You can either make your dialog box present information to the user or write it to a log in response to installation actions by filling in the <A HREF="tref_7het.htm">ActionText table</A>.</P>
+
+<P>Controls can have a predefined font style. Set the font style by putting the name of a style in the form {\<I>style</I>} at the start of the text string which is to appear in the control. Where <I>style</I> is a style name listed in the TextStyle field of the <A HREF="tref_30px.htm">TextStyle table</A>. A base text style can be assigned to any control by supplying {&amp;<I>style</I>} at the start of the text string. This style is used if no other style is set by the text string. A text string may contain both style and base style specifications.</P>
+
+<P>It is recommended that the <A HREF="pref_4ku1.htm"><B>DefaultUIFont</B> property</A> of every installation package with a UI be set in the <A HREF="tref_21d1.htm">Property table</A> to one of the predefined styles listed in the <A HREF="tref_30px.htm">TextStyle table</A>. If this property is not specified, the installer uses the System font. This can cause the installer to improperly display text strings if the package's code page is different from the user's default UI code page.</P>
+
+<P>For most controls, text is displayed using the character set that is specified by the code page of the database. This ensures that the correct character set is used with the information contained in the database. The exceptions to this are the <A HREF="href_9yjw.htm">Edit</A>, <A HREF="href_09f0.htm">DirectoryList</A>, <A HREF="href_4pik.htm">PathEdit</A>, and <A HREF="href_5xkc.htm">DirectoryCombo</A> controls which always display text using the user's default UI character set. The <A HREF="href_4s30.htm">Text</A>, <A HREF="href_1yjw.htm">ListBox</A>, and <A HREF="href_4yp8.htm">ComboBox</A> controls use the user's default UI character set if the <A HREF="href_2eed.htm">UsersLanguage Control Attribute</A> is set. </P>
+
+<P>In some cases a control may be redrawn incorrectly when canceling out of a dialog. This has to do with the order in which the controls receive WM_PAINT messages after the Cancel dialog is removed. To fix this, try changing the order of the controls in the Control table.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Adding%20Controls%20and%20Text;%20RELEASE:%20August%202001;%20URL:%20hand_7bec.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Adding%20Controls%20and%20Text;%20RELEASE:%20August%202001;%20URL:%20hand_7bec.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

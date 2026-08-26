@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Instmsi.exe</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_instmsi.exe"></A>Instmsi.exe</H2>
+
+<P>InstMsi is the redistributable package for installing the Windows Installer. For more information about which version of the Windows Installer was shipped with your operating system, see <A HREF="app_7waa.htm">Released Versions of Windows Installer</A>. Some redistributables should not be run on certain versions of the operating system. The following table describes which Instmsi is compatible on which operating system.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>If The Instmsi Installs This Version of the Windows Installer</TH>
+<TH align=left width=36%>This Instmsi Can Be Run On These Operating Systems</TH>
+<TH align=left width=32%>This Instmsi Must Not Be Run On These Operating Systems</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>Windows Installer version 1.0</TD>
+<TD width=36%>Windows 95, Windows 98, Windows NT 4.0+SP3</TD>
+<TD width=32%>Windows Me, Windows 2000, Windows XP</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>Windows Installer version 1.1</TD>
+<TD width=36%>Windows 95, Windows 98, Windows NT 4.0+SP3 </TD>
+<TD width=32%>Windows Me, Windows 2000, Windows XP</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>Windows Installer version 1.2</TD>
+<TD width=36%>Windows 95, Windows 98, Windows Me, Windows NT 4.0+SP3</TD>
+<TD width=32%>Windows 2000, Windows XP</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>Windows Installer version 2.0</TD>
+<TD width=36%>Windows 95, Windows 98, Windows Me, Windows NT 4.0+SP6, Windows 2000</TD>
+<TD width=32%>Windows XP</TD>
+</TR>
+</TABLE><BR>
+
+<P>For example, an application that redistributes Windows Installer version 1.1 should check that the operating system is Windows NT 4.0 SP3 or Windows 95/98 before running the redistributable package. Applications using the redistributable package should also ensure that the ANSI version of the Windows Installer is installed on Windows 95/98, and that the Unicode version is installed on Windows NT or Windows 2000. Note that some applications rename the Unicode version to InstMsiW.  </P>
+
+<H4>Syntax</H4>
+
+<PRE>instmsi <I>options</I>
+</PRE>
+
+<H4>Command Line Options</H4>
+
+<P>The command line options are case-insensitive. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=32%>Option</TH>
+<TH align=left width=68%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>/q</TD>
+<TD width=68%>For use by applications that redistribute the Windows Installer as part of a bootstrapping application. No UI is presented to the user. The bootstrapping application should check the return code to determine whether a reboot is needed to complete the installation  of the Windows Installer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>/t</TD>
+<TD width=68%>Used for debugging purposes only.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>/c:"msiinst /delayreboot"</TD>
+<TD width=68%>The delayed reboot option. Prevents Instmsi from prompting the user for a reboot even if it had to replace files that were in use during the installation. If Instmsi is invoked with this option, it returns ERROR_SUCCESS_REBOOT_REQUIRED if it had to replace files that were in use. If it did not have to replace files that were in use, it returns ERROR_SUCCESS. Available with Instmsi for Windows Installer version 2.0 or later. 
+<P>See the remarks section for additional information on delayed reboots.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>/c:"msiinst /delayrebootq"</TD>
+<TD width=68%>The quiet version of the delayed reboot option. It does not present any UI to the user. Otherwise the behavior is identical to the previous option. Available with Instmsi for Windows Installer version 2.0 or later. 
+<P>See the remarks section for additional information on delayed reboots.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=32%>/?</TD>
+<TD width=68%>Displays help.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P><A HREF="app_4puv.htm">Bootstrapping</A> applications that use Instmsi.exe to install the Windows Installer with another application may require an extra system reboot. This is potentially an extra reboot in addition to any reboots needed to install the application.</P>
+
+<P>The delayed reboot option is only recommended for setup developers who want to eliminate an extra reboot caused by using Instmsi with a setup application that installs files that are in use.</P>
+
+<P>Developers should do the following in their setup application to use the delayed reboot option. This option is not available with Instmsi.exe versions that install Window Installer versions earlier than version 2.0. 
+
+<OL>
+	<LI>Call Instmsi with one of the delayed reboot command line options.</LI>
+
+	<LI>Treat the return of either ERROR_SUCCESS or ERROR_SUCCESS_REBOOT_REQUIRED as meaning success.</LI>
+
+	<LI>Get the path to the folder containing the newly installed Windows Installer binaries from the InstallerLocation value under <B>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Installer</B>. This value is of type REG_SZ.</LI>
+
+	<LI>Set the current directory to the path obtained in step 3.</LI>
+
+	<LI>Invoke Msiexec on the application's package and run other setup code specific to the application. If the setup application uses <A HREF="msi_75x0.htm"><B>MsiInstallProduct</B></A>, then the application must load msi.dll from the location obtained in step 3.</LI>
+
+	<LI>If step (5) does not require a reboot and if Instmsi had returned ERROR_SUCCESS_REBOOT_REQUIRED in step (1), prompt the user for a reboot to complete the setup of the Windows Installer binaries on the system. However, if a reboot occurs in step (5), no additional steps are required.</LI>
+</OL>
+
+<H4>See Also</H4>
+
+<P><A HREF="app_9303.htm">Windows Installer Development Tools</A>, <A HREF="app_4puv.htm">Bootstrapping</A>, <A HREF="app_0kmf.htm">Internet Download Bootstrapping</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Instmsi.exe;%20RELEASE:%20August%202001;%20URL:%20app_4w9x.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Instmsi.exe;%20RELEASE:%20August%202001;%20URL:%20app_4w9x.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

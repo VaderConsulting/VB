@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FeatureComponents Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FeatureComponents Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_featurecomponents_table"></A>FeatureComponents Table</H1>
+
+<P>The FeatureComponents table defines the relationship between features and components. For each feature, this table lists all the components that make up that feature. </P>
+
+<P>The FeatureComponents table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Feature_</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Component_</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Feature_</DT>
+
+<DD>An external key into the first column of the Feature<A HREF="tref_0a91.htm"> table</A>.</DD>
+
+<DT>Component_</DT>
+
+<DD>An external key into the first column of the <A HREF="tref_09np.htm">Component table</A>.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>There is a maximum limit of 1600 components per feature using Windows NT/Windows 2000 and a maximum limit of 800 components per feature using Windows 95 and Windows 98.</P>
+
+<P>Components can be shared by two or more features, that is, the same component can be referred to by more than one feature.</P>
+
+<P>This table is referred to when the <A HREF="aref_8bou.htm">PublishFeatures action</A> or the <A HREF="aref_6ywe.htm">UnpublishFeatures action</A> is executed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

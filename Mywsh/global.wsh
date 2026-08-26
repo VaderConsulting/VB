@@ -1,0 +1,3 @@
+[Globals]
+FileSystem=Scripting.FileSystemObject
+Msg=ScriptToys.MsgBox

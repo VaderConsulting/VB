@@ -1,0 +1,79 @@
+20011106 09:27:15 (0) ---------------------------
+20011106 09:27:15 (0) Marshall Log Opened
+20011106 09:27:15 (1) Starting Agent...
+20011106 09:27:15 (1) TCP Server Online
+20011106 09:27:15 (1) Agent Started
+20011106 09:27:15 (2) Agent going active...
+20011106 09:27:19 (2) Agent is active
+20011106 09:27:24 (3) Task Spawned.  Task ID (1) PID (23712)
+20011106 09:27:42 (2) Agent stopping...
+20011106 09:27:42 (2) Agent still stopping (1 Task/s Outstanding)
+20011106 09:27:44 (3) Process Stopped.  Task ID (1) PID (23712)
+20011106 09:27:44 (1) Agent has stopped
+20011106 09:27:47 (2) Agent going active...
+20011106 09:27:47 (1) Agent has stopped
+20011106 09:27:47 (2) Agent is active
+20011106 09:28:06 (2) Agent stopping...
+20011106 09:28:06 (1) Agent has stopped
+20011106 09:28:07 (2) Agent stopping...
+20011106 09:28:07 (1) Agent has stopped
+20011106 09:28:07 (2) Agent stopping...
+20011106 09:28:07 (1) Agent has stopped
+20011106 09:28:07 (0) Marshall Log Closed
+20011106 09:28:08 (0) ---------------------------
+20011106 09:28:08 (0) Marshall Log Opened
+20011106 09:28:08 (1) Starting Agent...
+20011106 09:28:08 (1) TCP Server Online
+20011106 09:28:08 (1) Agent Started
+20011106 09:28:08 (2) Agent going active...
+20011106 09:28:08 (2) Agent is active
+20011106 09:28:28 (2) Agent stopping...
+20011106 09:28:28 (1) Agent has stopped
+20011106 09:28:28 (1) Agent has stopped
+20011106 09:28:28 (2) Agent stopping...
+20011106 09:28:28 (1) Agent has stopped
+20011106 09:28:28 (2) Agent stopping...
+20011106 09:28:28 (1) Agent has stopped
+20011106 09:28:28 (0) Marshall Log Closed
+20011116 07:06:43 (0) ---------------------------
+20011116 07:06:43 (0) Marshall Log Opened
+20011116 07:06:43 (1) Starting Agent...
+20011116 07:06:43 (1) TCP Server Online
+20011116 07:06:43 (1) Agent Started
+20011116 07:06:43 (2) Agent going active...
+20011116 07:06:44 (2) Agent is active
+20011116 07:06:49 (3) Task Spawned.  Task ID (1) PID (3972)
+20011116 07:06:54 (3) Task Spawned.  Task ID (1) PID (2908)
+20011116 07:06:54 (3) Process Stopped.  Task ID (1) PID (3972)
+20011116 07:06:59 (3) Task Spawned.  Task ID (1) PID (1664)
+20011116 07:06:59 (3) Process Stopped.  Task ID (1) PID (2908)
+20011116 07:07:04 (3) Task Spawned.  Task ID (1) PID (4472)
+20011116 07:07:09 (3) Task Spawned.  Task ID (1) PID (4124)
+20011116 07:07:09 (3) Process Stopped.  Task ID (1) PID (1664)
+20011116 07:07:09 (3) Process Stopped.  Task ID (1) PID (4472)
+20011116 07:07:14 (1) Agent has paused
+20011116 07:07:18 (2) Agent stopping...
+20011116 07:07:18 (0) Error in KillProcess : 0
+20011116 07:07:18 (2) Agent still stopping (1 Task/s Outstanding)
+20011116 07:07:19 (2) Agent still stopping (1 Task/s Outstanding)
+20011116 07:07:24 (2) Agent still stopping (1 Task/s Outstanding)
+20011116 07:07:29 (3) Process Stopped.  Task ID (1) PID (4124)
+20011116 07:07:29 (1) Agent has stopped
+20011116 07:07:33 (2) Agent stopping...
+20011116 07:07:33 (1) Agent has stopped
+20011116 07:07:33 (2) Agent stopping...
+20011116 07:07:33 (1) Agent has stopped
+20011116 07:07:33 (0) Marshall Log Closed
+20100303 20:43:59 (0) ---------------------------
+20100303 20:43:59 (0) Marshall Log Opened
+20100303 20:43:59 (1) Starting Agent...
+20100303 20:43:59 (1) TCP Server Online
+20100303 20:43:59 (1) Agent Started
+20100303 20:43:59 (2) Agent going active...
+20100303 20:44:17 (0) Error opening database!
+20100303 20:44:17 (2) Invalid AgentID
+20100303 20:44:22 (2) Agent stopping...
+20100303 20:44:22 (1) Agent has stopped
+20100303 20:44:22 (2) Agent stopping...
+20100303 20:44:22 (1) Agent has stopped
+20100303 20:44:22 (0) Marshall Log Closed

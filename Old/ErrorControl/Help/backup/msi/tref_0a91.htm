@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Feature Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Feature Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_feature_table"></A>Feature Table</H1>
+
+<P>The Feature table defines the logical tree structure of features and has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Column</TH>
+<TH align=left width=39%>Type</TH>
+<TH align=left width=15%>Key</TH>
+<TH align=left width=21%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Feature</TD>
+<TD width=39%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Feature_Parent</TD>
+<TD width=39%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Title</TD>
+<TD width=39%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Description</TD>
+<TD width=39%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Display</TD>
+<TD width=39%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Level</TD>
+<TD width=39%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Directory_</TD>
+<TD width=39%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Attributes</TD>
+<TD width=39%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Feature</DT>
+
+<DD>Primary key used to identify a particular feature record.</DD>
+
+<DT>Feature_Parent</DT>
+
+<DD>This is an optional key of a parent record in the same table. The key points to the Feature column. If the parent feature is not selected, then this feature is not installed. A Null in this field indicates that this feature has no parent and is a root item. The Feature_Parent column must not equal the Feature column of the same record.</DD>
+
+<DT>Title</DT>
+
+<DD>Short string of text identifying the feature. This string is listed as an item by the <A HREF="href_3w30.htm">SelectionTree control</A> of the <A HREF="href_9llz.htm">Selection Dialog</A>.</DD>
+
+<DT>Description</DT>
+
+<DD>Longer string of text describing the feature. This localizable string is displayed by the <A HREF="href_4s30.htm">Text control</A> of the <A HREF="href_9llz.htm">Selection Dialog</A>.</DD>
+
+<DT>Display</DT>
+
+<DD>The number in this field specifies the order in which the feature is to be displayed in the user interface. The value also determines if the feature is initially displayed expanded or collapsed. 
+
+<P>If the value is Null or zero, then the record is not displayed. If the value is odd, then the feature node is expanded initially. If the value is even, then the feature node is collapsed initially.
+</DD>
+
+<DT>Level</DT>
+
+<DD>The initial install level of this feature. Processing the <A HREF="tref_83qd.htm">Condition table</A> can modify the Level value. For more details, see Install Level in the Remarks section that follows.
+
+<P>An install level of zero disables the item and prevents it from being displayed.
+</DD>
+
+<DT>Directory_</DT>
+
+<DD>The Directory_ column contains the name of a directory that can be configured by a <A HREF="href_9llz.htm">Selection Dialog</A>. If a <A HREF="prop_1xyr.htm">property</A> is used in this column it must be a <A HREF="prop_0gfn.htm">public property</A>. Because this column is a key into the <A HREF="tref_6an9.htm">Directory table</A>, the directories listed in this column must also be listed in that table. </DD>
+
+<DT>Attributes</DT>
+
+<DD>This field specifies the remote execution option for features that have not yet been installed and for which no feature state request has been made using any of the following properties. 
+
+<P><A HREF="pref_3dvd.htm">ADDLOCAL</A> 
+
+
+<P><A HREF="pref_7g1l.htm">ADDSOURCE</A> 
+
+
+<P><A HREF="pref_7yex.htm">ADDDEFAULT</A> 
+
+
+<P><A HREF="pref_3htl.htm">COMPADDLOCAL</A> 
+
+
+<P><A HREF="pref_4gvt.htm">COMPADDSOURCE</A> 
+
+
+<P><A HREF="pref_89yx.htm">FILEADDLOCAL</A> 
+
+
+<P><A HREF="pref_0id5.htm">FILEADDSOURCE</A> 
+
+
+<P><A HREF="pref_8ho9.htm">REMOVE</A> 
+
+
+<P><A HREF="pref_19x5.htm">REINSTALL</A> 
+
+
+<P><A HREF="pref_6k8p.htm">ADVERTISE</A>
+
+
+<P>Add the indicated bits to the total value of this column to include a remote execution option. If this field is left blank, the value defaults to 0, <B>msidbFeatureAttributesFavorLocal</B>. If the feature's install level is 0 or is greater than or equal to the current install level, no change is made in the feature's state. 
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=20%>Bit flag name</TH>
+<TH align=left width=11%>Decimal</TH>
+<TH align=left width=13%>Hexadecimal</TH>
+<TH align=left width=56%>Feature state</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><B>msidbFeatureAttributesFavorLocal</B></TD>
+<TD width=11%>0</TD>
+<TD width=13%>0x0000</TD>
+<TD width=56%>Components of this feature that are not marked for installation from source are installed locally. A component shared by two or more features, some of which are set to <B>msidbFeatureAttributesFavorLocal</B> and some to  <B>msidbFeatureAttributesFavorSource</B>, is installed locally. Components marked irsSourceOnly in the <A HREF="tref_09np.htm">Component table</A> are always run from the source CD/server. The bits <B>msidbFeatureAttributesFavorLocal</B> and  <B>msidbFeatureAttributesFavorSource</B> work with features not listed by the <A HREF="pref_6k8p.htm">ADVERTISE property</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><B>msidbFeatureAttributesFavorSource</B></TD>
+<TD width=11%>1</TD>
+<TD width=13%>0x0001</TD>
+<TD width=56%>Components of this feature not marked for local installation are installed to run from the source CD-ROM or server. A component shared by two or more features, some of which are set to <B>msidbFeatureAttributesFavorLocal </B>and some to <B>msidbFeatureAttributesFavorSource</B>, is installed to run locally. Components marked irsLocalOnly in the <A HREF="tref_09np.htm">Component table</A> are always installed locally. The bits <B>msidbFeatureAttributesFavorLocal</B> and <B>msidbFeatureAttributesFavorSource</B> work with features not listed by the ADVERTISE property. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><B>msidbFeatureAttributesFollowParent</B></TD>
+<TD width=11%>2</TD>
+<TD width=13%>0x0002</TD>
+<TD width=56%>Set this attribute and the state of the feature is the same as the state of the feature's parent. You cannot use this option with a feature that is a parent.
+<P>Omit this attribute and the feature state is determined according to <B>msidbFeatureAttributesDisallowAdvertise </B>and <B>msidbFeatureAttributesFavorLocal</B> and <B>msidbFeatureAttributesFavorSource</B>.</P>
+
+<P>To guarantee that the child feature's state always follows the state of its parent, even when the child and parent are initially set to absent in the <A HREF="href_3w30.htm">SelectionTree control</A>, you must include both <B>msidbFeatureAttributesFollowParent</B> and <B>msidbFeatureAttributesUIDisallowAbsent</B> in the attributes of the child feature.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><B>msidbFeatureAttributesFavorAdvertise</B></TD>
+<TD width=11%>4</TD>
+<TD width=13%>0x0004</TD>
+<TD width=56%>Set this attribute and the feature state is Advertise. If the feature is listed by the <A HREF="pref_7yex.htm">ADDDEFAULT property</A> this bit is ignored and the feature state is determined according to <B>msidbFeatureAttributesFavorLocal </B>and <B>msidbFeatureAttributesFavorSource</B>.
+<P>Omit this attribute and the feature state is determined according to <B>msidbFeatureAttributesDisallowAdvertise</B> and <B>msidbFeatureAttributesFavorLocal</B> and <B>msidbFeatureAttributesFavorSource</B>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><B>msidbFeatureAttributesDisallowAdvertise</B></TD>
+<TD width=11%>8</TD>
+<TD width=13%>0x0008</TD>
+<TD width=56%>Note that this bit works only with features that are listed by the <A HREF="pref_6k8p.htm">ADVERTISE property</A>.
+<P>Set this attribute and if the listed feature is not a parent or child, the feature is installed according to <B>msidbFeatureAttributesFavorLocal</B> and <B>msidbFeatureAttributesFavorSource</B>.</P>
+
+<P>Set this attribute for the parent of a listed feature and the parent is installed.</P>
+
+<P>Set this attribute for the child of a listed feature and the state of the child is Absent. </P>
+
+<P>Omit this attribute and if the listed feature is not a parent or child, the feature state is Advertise.</P>
+
+<P>Omit this attribute and if the listed feature is a parent or child, the state of both features is Advertise.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><B>msidbFeatureAttributesUIDisallowAbsent</B></TD>
+<TD width=11%>16</TD>
+<TD width=13%>0x0010</TD>
+<TD width=56%>Set this attribute and the user interface does not display an option to change the feature state to Absent.
+<P>Omit this attribute and the user interface displays an option to change the feature state to Absent.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%><B>msidbFeatureAttributesNoUnsupportedAdvertise</B></TD>
+<TD width=11%>32</TD>
+<TD width=13%>0x0020</TD>
+<TD width=56%>Set this attribute and advertising is disabled for the feature if the operating system shell does not support Windows Installer descriptors.
+<P>Omit this attribute and advertising is not disabled.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Some attributes are exclusive of each other. Attempting to set these attributes together on the same feature causes the installation package to fail <A HREF="ices_16su.htm">package validation</A>. 
+
+
+<UL>
+	<LI>Do not use <B>msidbFeatureAttributesFavorAdvertise</B> with <B>msidbFeatureAttributesDisallowAdvertise</B>. </LI>
+
+	<LI>Do not use <B>msidbFeatureAttributesNoUnsupportedAdvertise</B> with <B>msidbFeatureAttributesDisallowAdvertise</B> together. </LI>
+
+	<LI>Do not use <B>msidbFeatureAttributesFollowParent</B> with <B>msidbFeatureAttributesFavorSource</B>. </LI>
+
+	<LI>Note that the <B>msidbFeatureAttributesFollowParent</B> and <B>msidbFeatureAttributesFavorLocal values</B> are mutually exclusive. If the <B>msidbFeatureAttributesFollowParent</B> value is used, the <B>msidbFeatureAttributesFavorLocal</B> value is assumed to not exist.</LI>
+</UL>
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Several additional temporary columns are added to this table when it is loaded into memory for computations used by costing and user interface selection.</P>
+
+<P>A component can be shared between two or more features or applications. If two or more features refer to the same component, then that component is selected for installation if any of the associated features are selected. This can also be the reason child features are not uninstalled when a parent feature is removed. If the child feature consists of components needed by other features or applications, the installer does not remove the child feature.</P>
+
+<P><B>Install Level</B></P>
+
+<P>For any installation, there is a defined Install Level, which is an integral value from 1 to 32,767. The initial value is determined by the <A HREF="pref_9bzt.htm">InstallLevel property</A>, which is set in the <A HREF="tref_21d1.htm">Property table</A>.</P>
+
+<P>A feature is installed only if the feature Level value is less than or equal to the current Install Level. The user interface can be authored such that once the installation is initialized, the installer allows the user to modify the Install Level of any feature in the <A HREF="#_msi_feature_table">Feature table</A>. For example, an author can define Install Level values that represent specific installation options, such as Complete, Typical, or Minimum, and then create a dialog box that uses <A HREF="href_3oms.htm">SetInstallLevel ControlEvents</A> to enable the user to select one of these states. Depending on the state the user selects, the dialog box sets the InstallLevel property to the corresponding value. If the author assigns Typical a level of 100 and the user selects Typical, only those features with a Level of 100 or less are installed. In addition, the Custom option could lead to another dialog box containing a Selection Tree control. The Selection Tree would then allow the user to individually change whether each feature is installed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

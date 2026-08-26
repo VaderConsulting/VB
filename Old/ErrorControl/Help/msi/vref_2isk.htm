@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>OpenPackage Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="OpenPackage Method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_openpackage_method"></A><A NAME="helpid_msiinstall_openpackage"></A>OpenPackage Method</H1>
+
+<P>The <B>OpenPackage</B> method of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> opens an installer package for use with function that access the product database and install engine, returning an <A HREF="vref_8xis.htm"><B>Session</B> object</A>.</P>
+
+<PRE class=syntax><I>object</I>.OpenPackage <I>packagePath, options</I></PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>Installer</B> object </DD>
+
+<DT><I>packagePath</I></DT>
+
+<DD>Required string containing the path name of the package.</DD>
+
+<DT><I>options</I></DT>
+
+<DD>Optional integer value that specifies whether or not the create a Session object that ignores the computer state and that is incapable of changing the current computer state. No value or a value of 0 defaults to the original behavior. A value of 1 creates a "safe" Session object that cannot change of the current machine state. When <I>options</I> is 1, the OpenPackage Method ignores the current computer state when opening the package.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>OpenPackage</B> method can accept the database handle directly instead of the string for the package path.</P>
+
+<P>Note that only one Session object can be opened by a single process. <B>OpenPackage</B> cannot be used in a custom action because the active installation is the only session allowed.</P>
+
+<P>A "safe" Session object ignores the current computer state when opening the package and prevents changes to the current computer state. For more information, see <A HREF="msi_1auw.htm"><B>MsiOpenPackageEx</B></A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20OpenPackage%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_2isk.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20OpenPackage%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_2isk.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

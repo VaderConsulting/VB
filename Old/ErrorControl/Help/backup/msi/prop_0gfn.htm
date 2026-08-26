@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Public Properties</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_public_properties"></A>Public Properties</H2>
+
+<P>Public properties can be authored into the installation database in the same way as <A HREF="prop_2bw3.htm">private properties</A>. In addition, the values of public properties can be changed by a user or system administrator by setting the property on the command line, by applying a transform, or by interacting with an authored user interface. Public property names cannot contain lowercase letters. See <A HREF="prop_6xwz.htm">Restrictions on Property Names</A>.</P>
+
+<P>Public properties are commonly set by users during the installation. For example, the public property <A HREF="pref_9bzt.htm">INSTALLLEVEL property</A> can be specified at the command line used to launch the installation or chosen by using an authored user interface. </P>
+
+<P>Public property values can be overridden either at a command line, by using a <A HREF="acts_4lmb.htm">standard</A> or <A HREF="cact_5t2r.htm">custom</A> action, by applying a transform, or by having the user interact with an authored user interface. To clear a public property in the property table, leave it out of the table. Properties that are to be set by the user interface during the installation and then passed to the execution phase of the installation must be public.</P>
+
+<P>For a list of the standard public properties used by the installer see <A HREF="pref_3mp1.htm">Property Reference</A>. An author can also define a custom public property by entering the property's name and an initial value into the <A HREF="tref_21d1.htm">Property table</A>. All public properties can be overridden by all users if any of the following conditions are true.
+
+<UL>
+	<LI>The system is Windows 95 or Windows 98.</LI>
+
+	<LI>The user is a system administrator.</LI>
+
+	<LI>The per-machine EnableUserControl policy is set to 1. See <A HREF="over_37ll.htm">System Policy</A>.</LI>
+
+	<LI>The <A HREF="pref_594p.htm">EnableUserControl property</A> is set to 1.</LI>
+
+	<LI>This is an unmanaged installation that is not being done with elevated privileges. </LI>
+</UL>
+
+<P>If none of the above conditions are true, the installer defaults to limiting which public properties can be overridden by a user that is not a system administrator. See <A HREF="prop_316b.htm">Restricted Public Properties</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

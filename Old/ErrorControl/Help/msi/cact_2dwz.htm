@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Functions Not for Use in Custom Actions</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_functions_not_for_use_in_custom_actions"></A>Functions Not for Use in Custom Actions</H2>
+
+<P>The following <A HREF="qref_778z.htm">Database Functions</A> must never be called from a custom action.</P>
+
+<P><A HREF="msi_3p9w.htm"><B>MsiConfigureProduct</B></A> </P>
+
+<P><A HREF="msi_3u7s.htm"><B>MsiConfigureProductEx</B></A> </P>
+
+<P><A HREF="qref_5zlb.htm"><B>MsiCreateTransformSummaryInfo</B></A> </P>
+
+<P><A HREF="qref_5tyl.htm"><B>MsiDatabaseApplyTransform</B></A> </P>
+
+<P><A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A> </P>
+
+<P><A HREF="qref_4qyc.htm"><B>MsiDatabaseExport</B></A> </P>
+
+<P><A HREF="qref_29rh.htm"><B>MsiDatabaseGenerateTransform</B></A> </P>
+
+<P><A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A> </P>
+
+<P><A HREF="qref_5pd1.htm"><B>MsiDatabaseMerge</B></A> </P>
+
+<P><A HREF="msi_2ch3.htm"><B>MsiEnableLog</B></A> </P>
+
+<P><A HREF="qref_4ek7.htm"><B>MsiEnableUIPreview</B></A> </P>
+
+<P><A HREF="qref_3iw5.htm"><B>MsiGetDatabaseState</B></A> </P>
+
+<P><A HREF="qref_27tx.htm"><B>MsiOpenDatabase</B></A> </P>
+
+<P><A HREF="qref_9s2s.htm"><B>MsiPreviewBillboard</B></A> </P>
+
+<P><A HREF="qref_1tpj.htm"><B>MsiPreviewDialog</B></A> </P>
+
+<P><A HREF="msi_9n78.htm"><B>MsiReinstallProduct</B></A> </P>
+
+<P><A HREF="msi_5dm1.htm"><B>MsiSetExternalUI</B></A> </P>
+
+<P><A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> </P>
+
+<P>The following <A HREF="msi_8vqd.htm">Installer Functions</A> must never be called from a custom action.</P>
+
+<P><A HREF="msi_5fe0.htm"><B>MsiApplyPatch</B></A> </P>
+
+<P><A HREF="msi_9crz.htm"><B>MsiCollectUserInfo</B></A> </P>
+
+<P><A HREF="msi_8cit.htm"><B>MsiConfigureFeature</B></A> </P>
+
+<P><A HREF="msi_3p9w.htm"><B>MsiConfigureProduct</B></A> </P>
+
+<P><A HREF="msi_3u7s.htm"><B>MsiConfigureProductEx</B></A> </P>
+
+<P><A HREF="msi_2ch3.htm"><B>MsiEnableLog</B></A> </P>
+
+<P><A HREF="msi_9g4v.htm"><B>MsiGetFeatureInfo</B></A> </P>
+
+<P><A HREF="msi_85pr.htm"><B>MsiGetPatchInfo</B></A> </P>
+
+<P><A HREF="msi_59ph.htm"><B>MsiGetProductCode</B></A> </P>
+
+<P><A HREF="msi_229l.htm"><B>MsiGetProductProperty</B></A> </P>
+
+<P><A HREF="msi_4k50.htm"><B>MsiInstallMissingComponent</B></A> </P>
+
+<P><A HREF="msi_6vad.htm"><B>MsiInstallMissingFile</B></A> </P>
+
+<P><A HREF="msi_75x0.htm"><B>MsiInstallProduct</B></A> </P>
+
+<P><A HREF="msi_9n39.htm"><B>MsiOpenPackage</B></A> </P>
+
+<P><A HREF="msi_5f78.htm"><B>MsiOpenProduct</B></A> </P>
+
+<P><A HREF="msi_4ag5.htm"><B>MsiReinstallFeature</B></A> </P>
+
+<P><A HREF="msi_9n78.htm"><B>MsiReinstallProduct</B></A> </P>
+
+<P><A HREF="msi_5dm1.htm"><B>MsiSetExternalUI</B></A> </P>
+
+<P><A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> </P>
+
+<P><A HREF="msi_3ckl.htm"><B>MsiUseFeature</B></A> </P>
+
+<P><A HREF="msi_8j08.htm"><B>MsiUseFeatureEx</B></A> </P>
+
+<P><A HREF="msi_1o2t.htm"><B>MsiVerifyPackage</B></A> </P>
+
+<P>The following <A HREF="msi_8vqd.htm">Installer Functions</A> must never be called from a custom action if doing so starts another installation. They may be called from a custom action that does not start another installation.</P>
+
+<P><A HREF="msi_9otw.htm"><B>MsiProvideComponent</B></A> </P>
+
+<P><A HREF="msi_3vn8.htm"><B>MsiProvideQualifiedComponent</B></A></P>
+
+<P><A HREF="msi_8n94.htm"><B>MsiProvideQualifiedComponentEx</B></A> </P>
+
+<P>Note that a custom action should never spawn a new thread that uses Windows Installer functions to change the feature state, component state, or to send messages from a Control Event. Attempting to do this causes the installation to fail.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Functions%20Not%20for%20Use%20in%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_2dwz.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Functions%20Not%20for%20Use%20in%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_2dwz.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

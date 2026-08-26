@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Working with Queries</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_working_with_queries"></A>Working with Queries</H2>
+
+<P>Because the installer uses a relational database, there are functions for making Structured Query Language (SQL) queries to the database. The following procedure describes how to use SQL to query a database.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To query a database with SQL</B>
+
+<OL>
+	<LI>Open the <B>View</B> object, with the appropriate SQL statement, by calling the <A HREF="qref_5h9z.htm"><B>MsiDatabaseOpenView</B></A> function. 
+<P>A <B>View </B>object is the logical table created by applying a query to a set of tables. SQL queries must adhere to the <A HREF="qref_5j20.htm">SQL syntax</A> provided by the installer. This SQL statement can contain parameter markers that are not specified until the <B>View </B>object runs. 
+</LI>
+
+	<LI>Run the <B>View</B> object by calling the <A HREF="qref_8hgl.htm"><B>MsiViewExecute</B></A> function.</LI>
+
+	<LI>Retrieve the next record from a <B>View</B> object by calling the <A HREF="qref_9b54.htm"><B>MsiViewFetch</B></A> function.</LI>
+
+	<LI>Modify the <B>View</B> object by calling the <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A> function.
+<P>You can also validate data with <B>MsiViewModify</B> by passing the appropriate flags. If <B>MsiViewModify</B> returns ERROR_INVALID_DATA from a validation request, the underlying data is corrupt. 
+</LI>
+
+	<LI>Obtain detailed error information on the <B>View</B> object by calling the <A HREF="qref_541e.htm"><B>MsiViewGetError</B></A> function.</LI>
+
+	<LI>Close the <B>View </B>object by calling the <A HREF="qref_9fvp.htm"><B>MsiViewClose</B></A> function.</LI>
+</OL>
+
+<P>For more information, see <A HREF="novr_8yk4.htm">Examples of Database Queries Using SQL and Script</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Working%20with%20Queries;%20RELEASE:%20August%202001;%20URL:%20novr_9cxf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Working%20with%20Queries;%20RELEASE:%20August%202001;%20URL:%20novr_9cxf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

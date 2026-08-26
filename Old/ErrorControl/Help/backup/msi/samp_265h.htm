@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Importing the AdvtExecuteSequence</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_importing_the_advtexecutesequence"></A>Importing the AdvtExecuteSequence</H2>
+
+<P>The <A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A> lists actions the installer calls when it executes the top-level <A HREF="aref_2o8e.htm">ADVERTISE action</A>. See <A HREF="novr_6zao.htm">Installation Procedure Tables Group</A>, <A HREF="novr_3mqt.htm">Using a Sequence Table</A>, and the <A HREF="novr_9nqd.htm">Sequence Table Detailed Example</A>. </P>
+
+<P>If in the section <A HREF="samp_4885.htm">Importing a Blank Database</A> you used uisample.msi from the Windows Installer SDK, the sequence tables in your copy of MNP2000.msi already contains the suggested action sequences described in <A HREF="novr_3mqt.htm">Using a Sequence table</A>. No changes to these sequences should be necessary to author the Notepad sample installation package.</P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the AdminExecuteSequence table.</P>
+
+<P><A HREF="tref_5mn9.htm"><B>AdvtExecuteSequence Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Action</TH>
+<TH align=left width=27%>Condition</TH>
+<TH align=left width=28%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>CostFinalize</TD>
+<TD width=27%> </TD>
+<TD width=28%>1000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>CostInitialize</TD>
+<TD width=27%> </TD>
+<TD width=28%>800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>CreateShortcuts</TD>
+<TD width=27%> </TD>
+<TD width=28%>4500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>InstallFinalize</TD>
+<TD width=27%> </TD>
+<TD width=28%>6600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>InstallInitialize</TD>
+<TD width=27%> </TD>
+<TD width=28%>1500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>InstallValidate</TD>
+<TD width=27%> </TD>
+<TD width=28%>1400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>PublishComponents</TD>
+<TD width=27%> </TD>
+<TD width=28%>6200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>PublishFeatures</TD>
+<TD width=27%> </TD>
+<TD width=28%>6300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>PublishProduct</TD>
+<TD width=27%> </TD>
+<TD width=28%>6400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>RegisterClassInfo</TD>
+<TD width=27%> </TD>
+<TD width=28%>4600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>RegisterExtensionInfo</TD>
+<TD width=27%> </TD>
+<TD width=28%>4700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>RegisterMIMEInfo</TD>
+<TD width=27%> </TD>
+<TD width=28%>4900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>RegisterProgIdInfo</TD>
+<TD width=27%> </TD>
+<TD width=28%>4800</TD>
+</TR>
+</TABLE><BR>
+
+<P>The <A HREF="tref_3rvp.htm">AdvtUISequence table</A> lists actions that the installer calls when it executes the top-level <A HREF="aref_2o8e.htm">ADVERTISE action</A> and the internal user interface level is set to full UI or reduced UI. See <A HREF="hand_0alh.htm">User Interface</A> and <A HREF="hand_9vn7.htm">User Interface Levels</A>. The installer skips the actions in this table if the user interface level is set to basic UI or no UI. AdvtUISequence table may be left blank in the MNP2000.msi example.</P>
+
+<P><A HREF="samp_2s32.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

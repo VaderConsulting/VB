@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Edit Control</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Edit Control">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_edit_control"></A>Edit Control</H1>
+
+<P>This control is an edit field that is associated with a string or integer value property. Enter the property's name into the Property column of the <A HREF="tref_6nad.htm">Control table</A>. </P>
+
+<H4>Control Attributes</H4>
+
+<P>You can use the following attributes with this control. To change the value of an attribute using an event, subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A> and list the attribute's identifier in the Attribute column. Enter the Identifier of the ControlEvent in the Event column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Attribute identifier</TH>
+<TH align=left width=17%>Hexadecimal bit</TH>
+<TH align=left width=64%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_1i79.htm">IndirectPropertyName</A> </TD>
+<TD width=17%> </TD>
+<TD width=64%>This is the name of an indirect property associated with the control. If the Indirect attribute bit is set, the control displays or changes the value of the property having this name. If the Indirect attribute bit is set, this name is also the value of the property listed in the Property column of the <A HREF="tref_6nad.htm">Control table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2w6d.htm">Position</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Position of control in the dialog box.
+<P>Enter the control's width, height, and coordinates of the control's left corner into the Width, Height, X, and Y columns of the <A HREF="tref_6nad.htm">Control table</A>. Use pixels for units of length and distance.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_1nc5.htm">PropertyName</A> </TD>
+<TD width=17%> </TD>
+<TD width=64%>This is the name of the property associated with this control. If the Indirect attribute bit is not set, the control displays or changes the value of the property having this name. This attribute is specified in the Property column of the <A HREF="tref_6nad.htm">Control table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_4twl.htm">PropertyValue</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Current value of the property displayed or changed by this control. If the Indirect attribute bit is not set, this is the value of PropertyName. If the Indirect attribute bit is set, this is the value of IndirectPropertyName. If the attribute changes, the control reflects the new value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2kmd.htm">Text</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>To set the font and font style of the property contents displayed in the edit field, enter {\<I>style</I>} into the Text column of the <A HREF="tref_6nad.htm">Control table</A>. Where <I>style</I> is an identifier listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. Use {&amp;<I>style</I>} to apply the base font and font style.
+<P>To specify the number of characters the user can enter, append {n} after any font specifications. Where n is a positive integer.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8bqd.htm">Visible</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000001</P>
+</TD>
+<TD width=64%>Hidden control.
+<P>Visible control.</P>
+
+<P>Include this bit in the bit word of the Attributes column in the <A HREF="tref_6nad.htm">Control table</A> to make the control visible or hidden upon its creation. </P>
+
+<P>You can also hide or show a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2ig5.htm">Enabled</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000002</P>
+</TD>
+<TD width=64%>Control in a disabled state.
+<P>Control in an enabled state. </P>
+
+<P>Include this bit in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> to enable the control on creation.</P>
+
+<P>You can also enable or disable a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0vad.htm">Sunken</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000004</P>
+</TD>
+<TD width=64%>Display the default visual style.
+<P>Display the control with a sunken, 3D, look.</P>
+
+<P>Include these bits in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8m05.htm">Indirect</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000008</P>
+</TD>
+<TD width=64%>The control displays or changes the value of the property in the Property column of the <A HREF="tref_6nad.htm">Control table</A>. 
+<P>The control displays or changes the value of the property that has the Identifier listed in the Property column of the Control table.</P>
+
+<P>Determines if the property associated with this control is referenced indirectly.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_07ad.htm">Integer</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000010</P>
+</TD>
+<TD width=64%>Property associated with the control is a string value.
+<P>Property associated with the control is an integer value.</P>
+
+<P>Include this bit in the bit word of the Attributes column of the <A HREF="tref_6nad.htm">Control table</A> to set this attribute on creation of the control.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_761x.htm">RTLRO</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000020</P>
+</TD>
+<TD width=64%>Text in the control is displayed in a Left-To-Right-Reading-Order.
+<P>Text in the control is displayed in a Right-To-Left-Reading-Order.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_6kbp.htm">RightAligned</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000040</P>
+</TD>
+<TD width=64%>Text in the control is aligned on the left.
+<P>Text in the control is aligned on the right.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8icl.htm">LeftScroll</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000080</P>
+</TD>
+<TD width=64%>The scroll bar is located on the right side of the control. 
+<P>The scroll bar is located on the left side of the control. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_9t2d.htm">BiDi</A></TD>
+<TD width=17%>0x000000E0</TD>
+<TD width=64%>Set this value for a combination of the <A HREF="href_761x.htm">RTLRO</A>, <A HREF="href_6kbp.htm">RightAligned</A>, and <A HREF="href_8icl.htm">LeftScroll</A> attributes.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_3alh.htm">MultiLine</A></TD>
+<TD width=17%>0x00010000</TD>
+<TD width=64%>Creates a multiple line edit control with a vertical scroll bar.
+<P>Include 65536 in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> to create a multiple line edit control with a vertical scroll bar.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_082t.htm">Password</A></TD>
+<TD width=17%>0x00200000</TD>
+<TD width=64%>Creates an edit control for entering passwords. Add 2097152 to the value in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A> to create an edit control that displays each character as an asterisk (*) as theyare typed into the control. This attribute is not available with Windows Installer version 1.0.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The control is created with the "EDIT" class with the WS_BORDER, WS_CHILD, WS_TABSTOP, WS_GROUP styles.</P>
+
+<P>The length of the text that can be entered can be limited by putting a number from 0 to 2147483646 in curly braces at the beginning of the Text field in the <A HREF="tref_6nad.htm">Control Table</A>. For example if the text field starts with {80}, the length of the string is limited at 80 characters. If no such limit is supplied in the table, or if 0 is specified, the length is set to the maximum possible (2147483646 characters). A negative or non-numeric value will generate an error.</P>
+
+<P>For compatibility with screenreaders, when authoring a dialog with an Edit control as the first active control, you must make the text field belonging to the edit field the first active control in the <A HREF="tref_51wl.htm">Dialog Table</A>. Since the static text cannot take focus, when the dialog is created the edit field will have the focus initially as intended, but doing this ensures that screenreaders show the correct information.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

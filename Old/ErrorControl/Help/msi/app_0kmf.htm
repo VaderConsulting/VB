@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Internet Download Bootstrapping</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Internet download bootstrapping [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="Windows Installer, bootstrapping, Internet download bootstrapping">
+<META NAME="MS-HKWD" CONTENT="bootstrapping [Windows Installer],Internet download bootstrapping">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_dllgetversion">
+</OBJECT>
+<OBJECT ID="hhobj_2" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_winverifytrust">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_internet_download_bootstrapping"></A>Internet Download Bootstrapping</H1>
+
+<P>Starting with Microsoft® Windows® Installer version 2.0, a configurable bootstrap executable (Setup.exe) and configuration tool (<A HREF="app_71id.htm">Msistuff.exe</A>) is included in the <A HREF="app_5qwj.htm">Platform SDK Components for Windows Installer Developers</A>. By using Msistuff.exe to configure the resources in Setup.exe, developers can easily create a web installation of a Windows Installer package.</P>
+
+<P>The minimum installer version required by the bootstrap executable is Windows Installer version 2.0. Applications can get the installer version by using <A HREF="JavaScript:hhobj_1.Click()"><B>DllGetVersion</B></A>. For more information see, <A HREF="over_8h4e.htm">How do I determine the Windows Installer Version?</A></P>
+
+<P>The bootstrap executable provided with the Windows Installer 2.0 SDK does the following:
+
+<UL>
+	<LI>Calls <A HREF="JavaScript:hhobj_2.Click()"><B>WinVerifyTrust</B></A> to verify the digital signature of the .msi file. Windows Installer version 2.0 and later versions provides a Subject Interface Package (SIP) to enable signing of Windows Installer packages.</LI>
+
+	<LI>If necessary upgrades the version of the Windows Installer on the machine. </LI>
+</UL>
+
+<P>The following resources of Setup.exe can be displayed or configured using <A HREF="app_71id.htm">Msistuff.exe</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Resource ID</TH>
+<TH align=left width=79%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ISETUPPROPNAME_BASEURL </TD>
+<TD width=79%>The base URL location of Setup.exe. If no value is specified the location of Setup.exe defaults to removable media. Only URL-based installs are subject to a check with <B>WinVerifyTrust</B>. The trailing forward slash on the URL is optional. This resource is optional.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ISETUPPROPNAME_DATABASE </TD>
+<TD width=79%>The name of the .msi file. This is a relative path to the .msi file specified relative to the location of the Setup.exe program. This resource is required if the resource ISETUPPROPNAME_PATCH is not specified. ISETUPPROPNAME_DATABASE and ISETUPPROPNAME_PATCH cannot both be specified. Only one of the two can be specified.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ISETUPPROPNAME_OPERATION </TD>
+<TD width=79%>The type of operation to perform. Possible values are INSTALL, MINPATCH, MAJPATCH and INSTALLUPD.  The INSTALL value equates to the first time installation of the package. The MINPATCH value indicates that the patch specified in the PATCH property is a small or minor update patch. The MAJPATCH value indicates that the patch specified in the PATCH property is a major update patch. INSTALLUPD indicates that the installation could be a first time installation or an update. Use of INSTALLUPD has the bootstrap check for the presence of the product. If the product is present, then the recache package flag is set and a reinstall is performed; otherwise, a regular installation is performed. Note that INSTALLUPD should only be used for small and minor update packages where the product code is not changing. In a major upgrade, REINSTALL is not required because the product code changes, in essence creating a brand new product. The Upgrade table authoring in addition to the FindRelatedProducts, MigrateFeatureStates, and RemoveExistingProducts actions handle upgrading of the original product. Thus, the INSTALL option is sufficient. If this resource is missing, the INSTALL operation is assumed if the ISETUPPROPNAME_DATABASE property is authored. Otherwise, MINPATCH is assumed if the ISETUPPROPNAME_PATCH property is authored. This is an optional value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ISETUPPROPNAME_PRODUCTNAME </TD>
+<TD width=79%>The name of the product. This is the name used in the banner text in the downloaded user interface. This resource is optional. If omitted, the name defaults to "the product".</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ISETUPPROPNAME_MINIMUM_MSI </TD>
+<TD width=79%>The minimum version of the Windows Installer required. If the minimum version of the Windows Installer is not installed on the computer, the appropriate <A HREF="app_4w9x.htm">Instmsi.exe</A> is called to upgrade the Windows Installer. The value of this property has the same format as the PID_PAGECOUNT value. For more information, see the <A HREF="sref_8eex.htm"><B>Page Count Summary</B> Property</A>. This value must be at least 200, the value that identifies the Windows Installer version 2.0. This resource is required.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ISETUPPROPNAME_INSTLOCATION </TD>
+<TD width=79%>The base URL location of the Windows Installer upgrade executables. This resource may be omitted. If this value is omitted, the default location of the upgrade executables is the location of Setup.exe. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ISETUPPROPNAME_INSTMSIA </TD>
+<TD width=79%>The name of the ANSI version of the Windows Installer upgrade executable. This is a relative path to the ANSI version of Instmsi.exe relative to the location specified by ISETUPPROPNAME_INSTLOCATION. This resource is required.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ISETUPPROPNAME_INSTMSIW </TD>
+<TD width=79%>The name of the Unicode version of the Windows Installer upgrade executable. This is a relative path to the Unicode version of Instmsi.exe relative to the location specified by ISETUPPROPNAME_INSTLOCATION. This resource is required.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ISETUPPROPNAME_PATCH </TD>
+<TD width=79%>The name of the .msp file. This is a relative path to the .msp file specified relative to the location of the Setup.exe program. This resource is required if the resource ISETUPPROPNAME_DATABASE is not specified. ISETUPPROPNAME_DATABASE and ISETUPPROPNAME_PATCH cannot both be specified. Only one of the two can be specified.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ISETUPPROPNAME_PROPERTIES </TD>
+<TD width=79%>The PROPERTY=VALUE strings. These are the PROPERTY=VALUE pairs to include on the command line. This option is optional.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For example, the following ISETUPPROPNAME_BASEURL and ISETUPPROPNAME_DATABASE values would be used for the following hypothetical package locations. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Actual Package Location </TH>
+<TH align=left width=73%>Resource Values</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>http://www.example.com/Products/Product1/product1.msi</TD>
+<TD width=73%>ISETUPPROPNAME_BASEURL = http://www.example.com/Products/Product1
+<P>ISETUPPROPNAME_DATABASE = product1.msi</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>http://www.example.com/Products/Product1/product1.msi</TD>
+<TD width=73%>ISETUPPROPNAME_BASEURL = http://www.example.com/Products/Product1
+<P>ISETUPPROPNAME_DATABASE = ../Products1/product1.msi</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>e:\product1.msi</TD>
+<TD width=73%>Omit ISETUPPROPNAME_BASEURL.
+<P>ISETUPPROPNAME_DATABASE = product1.msi</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>e:\setup\product1.msi
+<P>(The currently running location of Setup.exe is e:\setup.exe.)</P>
+</TD>
+<TD width=73%>Omit ISETUPPROPNAME_BASEURL.
+<P>ISETUPPROPNAME_DATABASE = Setup\product1.msi</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Setup.exe Command Line Parameters</H4>
+
+<P>The following table lists the command options that can be used with the Setup.exe that is shipped with the <A HREF="app_5qwj.htm">Platform SDK Components for Windows Installer Developers</A>. When invoked without any command line options, Setup.exe defaults to the behavior specified via the configured resources. The command line options are mutually exclusive--only one of them can be used at a time.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Option</TH>
+<TH align=left width=31%>Usage</TH>
+<TH align=left width=42%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><I>/a</I></TD>
+<TD width=31%>setup.exe /a</TD>
+<TD width=42%>Initiates an administrative installation.
+<P>If the ISETUPPROPNAME_DATABASE property is configured in Setup.exe, then this option can be used to perform an administrative installation of the product. This command line option is not supported if the ISETUPPROPNAME_PATCH resource is configured.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><I>/a</I></TD>
+<TD width=31%>setup.exe /a &lt;<I>full-path to an existing administrative install</I>&gt;</TD>
+<TD width=42%>If the ISETUPPROPNAME_PATCH property is configured in Setup.exe, then this option can be used to patch an existing administrative installation of the product. This command line option is not supported if the ISETUPPROPNAME_DATABASE resource is configured.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>/v</TD>
+<TD width=31%>setup.exe /v &lt;full path to a file&gt;</TD>
+<TD width=42%>Verifies the signature on the file using WinVerifyTrust. No UI is displayed when this option is used. In this case, the result of the trust check is the return value obtained from the execution of Setup.exe.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><I>/?</I></TD>
+<TD width=31%>&nbsp;</TD>
+<TD width=42%>Displays a help dialog indicating the valid arguments. Note: The help dialog is also displayed if invalid arguments are supplied.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For more information, see <A HREF="samp_8wkl.htm">A URL Based Windows Installer Installation Example</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Internet%20Download%20Bootstrapping;%20RELEASE:%20August%202001;%20URL:%20app_0kmf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Internet%20Download%20Bootstrapping;%20RELEASE:%20August%202001;%20URL:%20app_0kmf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

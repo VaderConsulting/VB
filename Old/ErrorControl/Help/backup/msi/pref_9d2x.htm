@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>SOURCELIST Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="SOURCELIST Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_sourcelist_property"></A>SOURCELIST Property</H1>
+
+<P>The SOURCELIST property is a semicolon delimited list of network or URL source paths to the application's installation package. This list is appended to the end of each user's existing source list for the application. The installer tries to locate a source by enumerating the list of source paths and uses the first accessible location it finds. Only this source can be used for the remainder of the installation. Each path specified in the source list must therefore be to a location having a complete source for the application. The entire directory tree at each source location must be the same and must include all of the required source files, including any cabinets. Each location must have an .msi file with the same file name and product code.  </P>
+
+<H4>Default Value</H4>
+
+<P>The installer only checks the SOURCELIST property if the product has not already been advertised or installed. In all other cases the installer uses the existing source list that is in the registry.</P>
+
+<H4>Remarks</H4>
+
+<P>Sources added using the SOURCELIST property are added directly to the end of the list for each type of source and always come after the default source specified by the <A HREF="pref_6uwp.htm">SourceDir property</A>.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_1lq1.htm">Source Resiliency</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

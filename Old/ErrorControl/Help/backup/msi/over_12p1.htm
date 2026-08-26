@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I reduce the size of my .msi file?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_how_do_i_reduce_the_size_of_my_.msi_file"></A>How do I reduce the size of my .msi file?</H1>
+
+<P>Developers of Windows Installer packages may notice their .msi files getting larger than expected after repeated edits and saves. Windows Installer .msi files are compound files containing storages and streams and have some of the same storage limitations as OLE document files. If you edit and save the same .msi file over and over, it creates wasted storage space in the file. This only affects authors of .msi files and has no effect on Windows Installer users. Developers may want to remove this wasted storage space before shipping their final .msi file. </P>
+
+<P>To remove wasted storage space and reduce the final size of .msi files, authors have two options. 
+
+<UL>
+	<LI>Export all the tables in the database to .idt files and then import these into a new database. This produces the most compact storage possible.</LI>
+
+	<LI>Use a software utility for compacting the storage space of OLE document files. </LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

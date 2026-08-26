@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Initializing an Application</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_initializing_an_application"></A>Initializing an Application</H2>
+
+<P>To enable installer functionality, an application must call a number of functions when it is initializing. For more information, see <A HREF="over_9jjh.htm">Installation Mechanism</A>. The following steps describe how to use the installer to initialize an application:</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To initialize an application</B>
+
+<OL>
+	<LI>Call the <A HREF="msi_59ph.htm"><B>MsiGetProductCode</B></A> function so the application can identify itself to the installer.
+<P>The product code is a required parameter for many installer functions.
+</LI>
+
+	<LI>Call the <A HREF="msi_6str.htm"><B>MsiGetUserInfo</B></A> function to collect user information the first time the application starts.
+<P>If the call to MsiGetUserInfo fails, call the <A HREF="msi_9crz.htm"><B>MsiCollectUserInfo</B></A> function to collect user information. 
+</LI>
+
+	<LI>Display a default user interface, if necessary, by calling the <A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> function. 
+<P>To author your own user interface, register it with the installer by calling the <A HREF="msi_5dm1.htm"><B>MsiSetExternalUI</B></A> function.
+</LI>
+
+	<LI>Call the <A HREF="msi_2ch3.htm"><B>MsiEnableLog</B></A> function to set the logging level. </LI>
+
+	<LI>Present the user with available features by enumerating the features of your application. You can enumerate features in the following ways:
+<UL>
+	<LI>Query the installer feature-by-feature. For example, before the application draws a button or a menu item, the application calls the <A HREF="msi_4e3p.htm"><B>MsiQueryFeatureState</B></A> function so the installer can check that the feature is available. </LI>
+
+	<LI>Enumerate all of the available features at once by calling the <A HREF="msi_0e9f.htm"><B>MsiEnumFeatures</B></A> function. To use this function, the application must call <B>MsiEnumFeatures</B> repeatedly while incrementing an index. </LI>
+</UL>
+</LI>
+
+	<LI>Get detailed information about the current installation by calling the following enumeration functions repeatedly, incrementing an index variable for each call:
+<UL>
+	<LI>Call the <A HREF="msi_32er.htm"><B>MsiEnumProducts</B></A> function to enumerate products registered with the installer.</LI>
+
+	<LI>Call the <A HREF="msi_1mk3.htm"><B>MsiEnumComponents</B></A> function to enumerate components. </LI>
+
+	<LI>Call the <A HREF="msi_2veb.htm"><B>MsiEnumComponentQualifiers</B></A> function to enumerate component qualifiers. </LI>
+
+	<LI>Call the <A HREF="msi_467n.htm"><B>MsiEnumClients</B></A> function to enumerate the products for a particular component.</LI>
+</UL>
+
+<P>If the return value on an enumeration function is ERROR_SUCCESS, there are still more items to be enumerated and the function should be called again with an incremented index variable. If the return value is ERROR_NO_MORE_ITEMS, then all of the items have been enumerated, and the function should not be called again. 
+</LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Initializing%20an%20Application;%20RELEASE:%20August%202001;%20URL:%20func_392m.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Initializing%20an%20Application;%20RELEASE:%20August%202001;%20URL:%20func_392m.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

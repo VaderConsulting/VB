@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FormatRecord Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="FormatRecord Method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_formatrecord_method"></A><A NAME="helpid_msiengine_formatrecord"></A>FormatRecord Method</H1>
+
+<P>The <B>FormatRecord</B> method of the <A HREF="vref_8xis.htm"><B>Session</B> object</A> returns a formatted string from a template and record data.</P>
+
+<PRE class=syntax><I>object</I>.FormatRecord(<I>record</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>Session</B> object</DD>
+
+<DT><I>record</I></DT>
+
+<DD>Required <B>Record</B> object containing a template and data to be formatted. The template string must be set in field 0 followed by any referenced data parameters.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>FormatRecord</B> method uses the following format process.</P>
+
+<P class=indent1>Parameters to be <A HREF="tref_0qp0.htm">formatted</A> are enclosed in square brackets [..]. The square brackets can be iterated because the substitutions are resolved from inside out.</P>
+
+<P class=indent1>If a part of the string is enclosed in curly braces { } and contains no square brackets, the part is left unchanged, including the curly braces.</P>
+
+<P class=indent1>If a part of the string is enclosed in curly braces and contains one or more property names, and if all the properties are found, the text (with the resolved substitutions) is displayed without the curly braces. If any of the properties are not found, all the text in the curly braces and the braces themselves are removed.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To format strings using the FormatRecord method</B>
+
+<OL>
+	<LI>The numeric parameters are substituted by replacing the marker with the value of the corresponding record field, with missing or Null values producing no text.</LI>
+
+	<LI>The string that results is processed by replacing the non-record parameters with the corresponding values, as noted in the following descriptions.
+<UL>
+	<LI>If a substring of the form "[propertyname]" is encountered, it is replaced by the value of the property.</LI>
+
+	<LI>If a substring of the form "[%environmentvariable]" is found, the value of the environment variable is substituted. </LI>
+
+	<LI>If a substring of the form [#<I>filekey</I>] is found, it is replaced by the full path of the file, with the value <I>filekey</I> used as a key into the <A HREF="tref_4n6t.htm">File table</A>. The value of [#<I>filekey</I>] remains blank and is not replaced by a path until the installer runs the <A HREF="aref_4bam.htm">CostInitialize action</A>, <A HREF="aref_2f8u.htm">FileCost action</A>, and <A HREF="aref_22we.htm">CostFinalize action</A>. The value of [<I>#filekey</I>] depends upon the installation state of the component to which the file belongs. If the component is being run from source, the value is the path to the source location of the file. If the component is being run locally, the value is the path to the target location of the file after installation. If the component is absent, the path is blank. For more information about checking the installation state of components, see <A HREF="over_1yur.htm">Checking the Installation of Features, Components, Files</A>. </LI>
+
+	<LI>If a substring of the form [$<I>componentkey</I>] is found, it is replaced by the install directory of the component, with the value <I>componentkey</I> used as a key into the <A HREF="tref_09np.htm">Component table</A>. The value of [$<I>componentkey</I>]<I> </I>remains blank and is not replaced by a directory until the installer runs the <A HREF="aref_4bam.htm">CostInitialize action</A>, <A HREF="aref_2f8u.htm">FileCost action</A>, and <A HREF="aref_22we.htm">CostFinalize action</A>. The value of [$<I>componentkey</I>] depends upon the installation state of the component. If the component is being run from source, the value is the source directory of the file. If the component is being run locally, the value is the target directory after installation. If the component is absent, the value is left blank. For more information about checking the installation state of components, see <A HREF="over_1yur.htm">Checking the Installation of Features, Components, Files</A>. </LI>
+
+	<LI>If a substring of the form "[\c]" is found, it is replaced by the character without any further processing. Only the first character after the backslash is kept; everything else is removed. </LI>
+</UL>
+</LI>
+</OL>
+
+<H4>See Also</H4>
+
+<P><A HREF="tref_0qp0.htm">Formatted</A>, <A HREF="tref_6b77.htm">Column Data Types</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FormatRecord%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_3tlw.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FormatRecord%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_3tlw.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

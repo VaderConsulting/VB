@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Localizing a Windows Installer Package</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_localizing_a_windows_installer_package"></A>Localizing a Windows Installer Package</H1>
+
+<P>For general information about localization, see National Language Support in the Platform SDK documentation. Localizing a Microsoft® Windows® Installer package requires modifying the strings displayed by the user interface and may also require adding or modifying product resources. For example, localization may include the addition of international DLLs and localized files to the product.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To localize a Windows Installer package</B>
+
+<OL>
+	<LI>Prepare for localization when authoring the original installation package. Design the layout of localized files such that different language versions can safely coexist when installed on the user's computer. Organize files requiring localization into separate components and install these files into separate directories. Author a base installation database that has a neutral control page. See <A HREF="over_8tv2.htm">Preparing a Windows Installer package for localization</A>. </LI>
+
+	<LI>Always set the code page of the database being localized prior to adding any localized data. If the code page of the database being localized is neutral, see <A HREF="over_5tb9.htm">Setting the code page of a database</A>. To determine the code page see <A HREF="over_2j6t.htm">Determining an installation database's code page</A>.</LI>
+
+	<LI>Import a localized <A HREF="tref_5dk5.htm">Error table</A> and <A HREF="tref_7het.htm">ActionText table</A> into the database. For more information, see <A HREF="over_9h6b.htm">Localizing the Error and ActionText Tables</A> for a list of languages supported by the Platform SDK. You may import these tables using Msidb.exe or <A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A>. </LI>
+
+	<LI>Modify any of the other localizable columns in the database using a table editor or SQL queries. For the SQL access functions, see <A HREF="novr_9cxf.htm">Working With Queries</A>. The topics for the database tables identify which database columns can be localized. For more information, see the list of tables in <A HREF="tref_29ir.htm">Database Tables</A>. </LI>
+
+	<LI>Set the <A HREF="pref_7aex.htm">ProductLanguage property</A> in the <A HREF="tref_21d1.htm">Property table</A> to the LANGID of the database. </LI>
+
+	<LI>Set the language field of the <A HREF="sref_80hl.htm">Template Summary Property</A> to reflect the LANGID of the database. </LI>
+
+	<LI>If the text strings in the <A HREF="sovr_99yl.htm">summary information stream</A> are localized, set the <A HREF="sref_4r5l.htm">Codepage Summary Property</A> to the code page.</LI>
+
+	<LI>Set the <A HREF="pref_4tfd.htm">ProductCode property</A> in the <A HREF="tref_21d1.htm">Property table</A> and set the package code in the <A HREF="sref_1am1.htm">Revision Number Summary Property</A> to a new package code. A localized product is considered a different product. For example, the German and English versions of an application are considered two different products and must have different product codes.</LI>
+
+	<LI>Localization may require modifying resources that already exist or the addition of new resources such as files or registry keys. Check to be sure that the component code is changed for every existing component that has had a new resource added. Other modifications may also require changes to a component's code. For more information see <A HREF="over_9crp.htm">Changing the Component Code</A>.</LI>
+
+	<LI>Be sure to save localization and other changes to the database by saving the package with the editing tool or by calling <A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A>.</LI>
+</OL>
+
+<P>For more information, see <A HREF="samp_2nhh.htm">A Localization Example</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

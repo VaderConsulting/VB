@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action Execution Scheduling Options</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_custom_action_execution_scheduling_options"></A>Custom Action Execution Scheduling Options</H2>
+
+<P>Because a custom action can be scheduled in both the UI and execute sequence tables, and can be executed either in the service or client process, a custom action can potentially execute multiple times. </P>
+
+<P>Note that the installer:
+
+<UL>
+	<LI>Executes actions in a sequence table immediately by default.</LI>
+
+	<LI>Does not execute an action if the conditional expression field of the sequence table evaluates to False.</LI>
+
+	<LI>Processes the UI sequence table in the client process if the internal user's interface level is set to the full UI mode (see <A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> for a description of UI levels).</LI>
+
+	<LI>Is a service registered by default when using Windows&nbsp;NT/Windows&nbsp;2000 and, in this case, the execute sequence table is processed in the installer service.</LI>
+
+	<LI>Processes the execution sequence table in the client process by default when using Windows 95 or Windows 98. </LI>
+</UL>
+
+<P>You can use the following option flags to control multiple immediate execution of custom actions. To set an option add the value in this table to the value in the Type field of the <A HREF="tref_71b9.htm">CustomAction table</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Constant</TH>
+<TH align=left width=20%>Hexadecimal</TH>
+<TH align=left width=11%>Decimal</TH>
+<TH align=left width=36%>Description </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>(default)</TD>
+<TD width=20%>0x00000000</TD>
+<TD width=11%>0</TD>
+<TD width=36%>Always execute. Action may run twice if present in both sequence tables.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><B>msidbCustomAction<BR>
+TypeFirstSequence</B></TD>
+<TD width=20%>0x00000100</TD>
+<TD width=11%>256</TD>
+<TD width=36%>Execute once if present in both sequence tables. Skips action in execute sequence if UI sequence has run. No effect in UI sequence. Not affected by install service registration.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><B>msidbCustomAction<BR>
+TypeOncePerProcess</B></TD>
+<TD width=20%>0x00000200</TD>
+<TD width=11%>512</TD>
+<TD width=36%>Execute once per process if in both sequence tables. Skips action in execute sequence if UI sequence has been run in same process, for example both run in the client process. Used to prevent actions that modify the session state, such as property and database data, from running twice.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><B>msidbCustomAction<BR>
+TypeClientRepeat</B></TD>
+<TD width=20%>0x00000300</TD>
+<TD width=11%>768</TD>
+<TD width=36%>Execute only if running on client after UI sequence has run. The action runs only if the execute sequence is run on the client following UI sequence. May be used to provide either/or logic, or to suppress the UI related processing if already done for client session.</TD>
+</TR>
+</TABLE><BR>
+
+<P>Note that to run a custom action during two different run modes, author two entries into the <A HREF="tref_71b9.htm">CustomAction table</A> . For example, to have a custom action that calls a C/C++ dynamic link library (DLL) (<A HREF="cact_7nqp.htm">Custom Action Type 1</A>) both when the mode is MSIRUNMODE_SCHEDULED and MSIRUNMODE_ROLLBACK put two entries in the CustomAction table that call the same DLL but that have different numeric types. Include code that calls <A HREF="qref_8u05.htm"><B>MsiGetMode</B></A> to determine when to run which custom action.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_6a05.htm">Custom Action Reference</A>, <A HREF="cact_1zhv.htm">About Custom Actions</A>, <A HREF="cact_93lf.htm">Using Custom Actions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

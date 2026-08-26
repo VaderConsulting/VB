@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>An Upgrade Example</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_an_upgrade_example"></A>An Upgrade Example</H1>
+
+<P>The following sections present an example of authoring an upgrade package for the application described in <A HREF="samp_2k11.htm">An Installation Example</A>. An example of a minimal user interface for this sample is provided in the <A HREF="app_5qwj.htm">Platform SDK Components for Windows Installer Developers</A> as the file Uisample.msi. If you have the SDK, you have access to all the tools and data necessary to reproduce the sample installation package, user interface, and sample upgrade package.</P>
+
+<P>This example illustrates how to create a Windows Installer package that upgrades the hypothetical product MNP2000 to a new product called MNP2001. The example upgrade package applies a major upgrade to the product which requires changing the product code. For more information about major upgrades, see the topic on <A HREF="updat_8do3.htm">Major Upgrades</A> in the <A HREF="updat_1po3.htm">Patching and Upgrades</A> section.</P>
+
+<P>The sample upgrade package has the following specifications:
+
+<UL>
+	<LI>To qualify to receive this upgrade to MNP2001, a user must have previously installed the 1.0 to 1.4 (inclusive) versions of English language MNP2000 using the Windows Installer. </LI>
+
+	<LI>When a user attempts to install the upgrade package, the upgrade functionality of Windows Installer searches the user's computer for any products that qualify for the upgrade.</LI>
+
+	<LI>The Windows Installer migrates all the of the original product's feature settings to the upgraded product. </LI>
+
+	<LI>The installer removes all obsolete features from the user's computer.</LI>
+
+	<LI>The installer installs all new features belonging to the upgrade. </LI>
+
+	<LI>An uninstall of the upgrade package removes the product from the user's computer, and does not restore the earlier version of the product. </LI>
+
+	<LI>The sample upgrade updates shortcuts to new files and features. 
+<P><A HREF="samp_8bqd.htm">Planning a Major Upgrade</A> 
+
+<P><A HREF="samp_6b39.htm">Importing Original Installation Database</A> 
+
+<P><A HREF="samp_0i91.htm">Updating Directory Structure for an Upgrade</A> 
+
+<P><A HREF="samp_4r51.htm">Updating Files and File Attributes for an Upgrade</A> 
+
+<P><A HREF="samp_6nz9.htm">Updating Components for an Upgrade</A> 
+
+<P><A HREF="samp_33ol.htm">Updating Features for an Upgrade</A> 
+
+<P><A HREF="samp_32sl.htm">Updating Shortcuts for an Upgrade</A> 
+
+<P><A HREF="samp_0x2d.htm">Updating Upgrade Table for an Upgrade</A> 
+
+<P><A HREF="samp_3rvp.htm">Updating Properties for an Upgrade</A> 
+
+<P><A HREF="samp_0bfp.htm">Updating Sequence Tables for an Upgrade</A> 
+
+<P><A HREF="samp_9g11.htm">Updating Summary Information for an Upgrade</A> 
+
+<P><A HREF="samp_2elh.htm">Validating an Installation Upgrade</A> 
+</LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetPatchInfo</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetPatchInfo">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetpatchinfo"></A>MsiGetPatchInfo</H1>
+
+<P>The <B>MsiGetPatchInfo</B> function returns information about a patch. </P>
+
+<PRE class=syntax><B>UINT MsiGetPatchInfo(
+</B>  <B>LPCTSTR</B> <I>szPatch</I><B>,</B>      // patch code
+  <B>LPCTSTR</B><I> szAttribute</I><B>,</B><I>  </I>// attribute name, case-sensitive
+  <B>LPTSTR</B> <I>lpValueBuf</I><B>,</B>    // returned value, NULL if not desired
+  <B>DWORD</B> <I>*pcchValueBuf</I>   // buffer character count, 
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szPatch</I></DT>
+
+<DD>Specifies the patch code for the patch package.</DD>
+
+<DT><I>szAttribute</I></DT>
+
+<DD>Specifies the attribute to be retrieved. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=63%>Attribute</TH>
+<TH align=left width=37%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=63%>INSTALLPROPERTY_LOCALPACKAGE</TD>
+<TD width=37%>Local cached package</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>lpValueBuf</I></DT>
+
+<DD>Pointer to a buffer that receives the property value. This parameter can be NULL.</DD>
+
+<DT><I>pcchValueBuf</I></DT>
+
+<DD>[in/out] Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpValueBuf</I> parameter.  The count does not include the terminating null. 
+
+<P>If <I>lpValueBuf</I> is NULL, <I>pcchValueBuf</I> can be NULL.
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_CONFIGURATION</TD>
+<TD width=52%>The configuration data is corrupt.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_MORE_DATA</TD>
+<TD width=52%>A buffer is too small to hold the requested data.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_UNKNOWN_PRODUCT</TD>
+<TD width=52%>The patch package is not installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_UNKNOWN_PROPERTY</TD>
+<TD width=52%>The property is unrecognized.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>When the <B>MsiGetPatchInfo </B>function returns, the <I>pcchValueBuf</I> parameter contains the length of the class string stored in the buffer. The count returned does not include the terminating NULL character.</P>
+
+<P>If the buffer is too small to hold the requested data, <B>MsiGetPatchInfo</B> returns ERROR_MORE_DATA, and <I>pcchValueBuf</I> contains the number of characters copied to <I>lpValueBuf</I>, without counting the NULL character.</P>
+
+<P>This function is not available with version 1.0 of the Windows Installer.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

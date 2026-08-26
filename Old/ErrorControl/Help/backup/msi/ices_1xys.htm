@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE44</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE44 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice44"></A>ICE44</H1>
+
+<P>ICE44 validates that the <A HREF="href_9myc.htm">NewDialog</A>, <A HREF="href_0qus.htm">SpawnDialog</A>, and <A HREF="href_95ro.htm">SpawnWaitDialog</A> ControlEvents reference valid dialog boxes in the <A HREF="tref_51wl.htm">Dialog table</A>.</P>
+
+<H4>Result</H4>
+
+<P>ICE44 posts an error message if there is a dialog control event that does not reference a dialog box listed in the Dialog table.</P>
+
+<H4>Example</H4>
+
+<P>ICE44 would report the following errors for the example shown. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE44 error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Control Event for Control 'Dialog1'.'Control1' is of type SpawnDialog, but its argument Dialog2 is not a valid entry in the Dialog Table.</CODE> </TD>
+<TD width=63%>There is a SpawnDialog, SpawnWaitDialog, or NewDialog actions that has an argument that does not refer to a dialog box in the Dialog table.
+<P>To fix this error, add an argument that is a key in the Dialog Table.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_51wl.htm"><B>Dialog Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=20%>Dialog</TH>
+<TH align=left width=80%>Title</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Dialog1</TD>
+<TD width=80%>&nbsp;</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_6k11.htm"><B>ControlEvent Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=20%>Dialog_</TH>
+<TH align=left width=24%>Control_</TH>
+<TH align=left width=32%>Type</TH>
+<TH align=left width=24%>Argument</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Dialog1</TD>
+<TD width=24%>Control1</TD>
+<TD width=32%>SpawnDialog</TD>
+<TD width=24%>Dialog2</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

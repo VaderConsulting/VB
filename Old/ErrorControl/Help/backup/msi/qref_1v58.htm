@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiRecordIsNull</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiRecordIsNull">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msirecordisnull"></A>MsiRecordIsNull</H1>
+
+<P>The <B>MsiRecordIsNull</B> function reports whether a record field is NULL.</P>
+
+<PRE class=syntax><B>BOOL MsiRecordIsNull(
+</B>  <B>MSIHANDLE</B> <I>hRecord</I><B>,</B>    // record handle
+  <B>unsigned int</B> <I>iField</I>   // field of record
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hRecord</I></DT>
+
+<DD>Handle to the record.</DD>
+
+<DT><I>iField</I></DT>
+
+<DD>Specifies the field to check.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>FALSE</DT>
+
+<DD>The function succeeded and the field is not null or the record handle is invalid.</DD>
+
+<DT>TRUE</DT>
+
+<DD>The function succeeded and the field is null or the field does not exist.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <I>iField</I> parameter is based on 1.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_record_processing_functions">Record Processing Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

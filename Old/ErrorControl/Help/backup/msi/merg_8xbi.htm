@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>get_Type Function</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="get_Type Function">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_get_type_function"></A>get_Type Function</H1>
+
+<P>The function <B>get_Type</B> implements the <A HREF="merg_8vll.htm">Type property</A> of the <A HREF="merg_7yr8.htm"><B>Error</B> Object</A>. This function returns a msmErrorType value indicating the type of error represented by this object.</P>
+
+<P><B>IMsmError::get_Type</B> </P>
+
+<PRE class=syntax><B>HRESULT get_Type(
+  msmErrorType</B> *<I>ErrorType  </I> //[out, retval]
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>ErrorType</I> </DT>
+
+<DD>A pointer to a location in memory that is filled with the type of error.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=47%>msmErrorType</TH>
+<TH align=left width=53%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>msmErrorLanguageUnsupported</TD>
+<TD width=53%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>msmErrorLanguageFailed</TD>
+<TD width=53%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>msmErrorExclusion</TD>
+<TD width=53%>3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>msmErrorTableMerge</TD>
+<TD width=53%>4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>msmErrorResequenceMerge</TD>
+<TD width=53%>5</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>msmErrorFileCreate</TD>
+<TD width=53%>6</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>msmErrorDirCreate</TD>
+<TD width=53%>7</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>msmErrorFeatureRequired</TD>
+<TD width=53%>8</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>E_INVALIDARG </TD>
+<TD width=52%>ErrorType is Null.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>S_OK </TD>
+<TD width=52%>The function succeeded. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_29f2.htm">Merge Module Automation</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

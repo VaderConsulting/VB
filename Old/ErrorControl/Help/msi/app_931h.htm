@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Windows Installer Registry Limitations on Windows 95/98/Me</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_windows_installer_registry_limitations_on_windows_95_98_me"></A>Windows Installer Registry Limitations on Windows 95/98/Me</H1>
+
+<P>Microsoft® Windows® Installer has the following registry limitations on Microsoft Windows 95, Windows 98, and Windows Millennium Edition (Windows Me). The stated limits for the maximum number of features or components are approximate. The actual limits can depend upon the installation.
+
+<UL>
+	<LI>Registry values are limited to 16382 on Windows 98 and Windows Me, and limited to 16371 on Windows 95. This effectively limits the number of components per feature to 817. The limit varies depending upon any additional space needed to accommodate optional parent features, which should placed in the same value. </LI>
+
+	<LI>The total size of a registry key and all its values is limited to 64 KB on Windows 95 only. This can limit the maximum total number of features and components in a product. </LI>
+
+	<LI>Windows Installer version 1.2 saves in-progress information as a registry value. This can limit the maximum number of features on Windows 95, Windows 98, and Windows Me. This limitation no longer exists with Windows Installer version 2.0 or later.</LI>
+</UL>
+
+<P>Note that some of these limitations may be checked by <A HREF="ices_1xyv.htm">ICE47</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Windows%20Installer%20Registry%20Limitations%20on%20Windows%2095%2F98%2FMe;%20RELEASE:%20August%202001;%20URL:%20app_931h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Windows%20Installer%20Registry%20Limitations%20on%20Windows%2095%2F98%2FMe;%20RELEASE:%20August%202001;%20URL:%20app_931h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

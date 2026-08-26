@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>GenerateTransform Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="GenerateTransform Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_generatetransform_method"></A><A NAME="helpid_msidatabase_generatetransform"></A>GenerateTransform Method</H1>
+
+<P>The <B>GenerateTransform</B> method of the <A HREF="vref_64dw.htm"><B>Database</B> object</A> creates a <A HREF="dglo_5989.htm#_msi_transform_gly">transform</A> that, when applied to the <I>object</I> database, results in the <I>reference</I> database. The transform is stored in the <I>storage</I> object.</P>
+
+<P>If the transform is to be applied during an installation you must use the <A HREF="vref_1mw4.htm"><B>CreateTransformSummaryInfo</B> method</A> to populate the summary information stream.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.GenerateTransform(<I>reference, storage</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD>Database that includes the changes.</DD>
+
+<DT><I>reference</I></DT>
+
+<DD>Required database that does not include the changes.</DD>
+
+<DT><I>storage</I></DT>
+
+<DD>The name of the generated transform file. This is optional. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>A transform can add non-primary key columns to the end of a table. A transform cannot be created that adds primary key columns to a table. A transform cannot be created that changes the order, names, or definitions of columns.</P>
+
+<P>This method returns a Boolean value. It returns TRUE if a transform is generated. It returns FALSE if a transform is not generated because there are no differences between the two databases. If the method fails, it generates an error.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="updat_5wab.htm">Transforms</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

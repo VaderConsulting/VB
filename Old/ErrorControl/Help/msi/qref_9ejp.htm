@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSetFeatureState</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiSetFeatureState">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msisetfeaturestate"></A>MsiSetFeatureState</H1>
+
+<P>The <B>MsiSetFeatureState</B> function sets a feature to a specified state.</P>
+
+<PRE class=syntax><B>UINT MsiSetFeatureState(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>     // installer handle
+  <B>LPCTSTR</B> <I>szFeature</I><B>,</B>      // name of feature
+  <B>INSTALLSTATE</B> <I>iState</I>     // install state
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>[in] Handle to the installation.</DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>[in] Specifies the name of the feature.</DD>
+
+<DT><I>iState</I></DT>
+
+<DD>[in] Specifies the state to set. This parameter can be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_ABSENT</TD>
+<TD width=52%>The feature is not installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_LOCAL</TD>
+<TD width=52%>The feature is installed on the local drive.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_SOURCE</TD>
+<TD width=52%>The feature is run from source, CD, or network.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_ADVERTISED</TD>
+<TD width=52%>The feature is advertised.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>One of the parameters was invalid.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>ERROR_UNKNOWN_FEATURE</DT>
+
+<DD>An unknown feature was requested.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiSetFeatureState</B> function requests a change in the select state of a feature in the <A HREF="tref_0a91.htm">Feature table</A> and its children. In turn, the Action state of all the components linked to the changed Feature records are also updated appropriately, based on the new feature Select state.</P>
+
+<P>The <A HREF="qref_7yr0.htm"><B>MsiSetInstallLevel</B></A> function must be called before calling <B>MsiSetFeatureState</B>.</P>
+
+<P>When <B>MsiSetFeatureState</B> is called, the installer attempts to set the Action state of each component tied to the specified feature to the specified state. However, there are common situations when the request cannot be fully implemented. For example, suppose a feature is tied to two components, component A and component B, through the <A HREF="tref_52hx.htm">FeatureComponents table</A>. Also suppose that component A is authored with a RunFromSource option of IRSLOCALONLY and component B is authored with a RunFromSource option of IRSSOURCEONLY. In this case, if <B>MsiSetFeatureState</B> is called with a requested state of either INSTALLSTATE_LOCAL or INSTALLSTATE_SOURCE, the request cannot be fully implemented for both components. However, both components are turned ON, with component A set to Local and component B set to Source.</P>
+
+<P>If more than one feature is linked to a single component (a common scenario), the final Action state of that component is determined as follows.
+
+<UL>
+	<LI>If at least one feature requires the component to be installed locally, the feature is installed with a state of Local.</LI>
+
+	<LI>If at least one feature requires the component to be run from source , the feature is installed with a state of Source.</LI>
+
+	<LI>If at least one feature requires the removal of the component, the action state is Absent.</LI>
+</UL>
+
+<P>See <A HREF="novr_9vw3.htm">Calling Database Functions From Programs</A>.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_selection_functions">Installer Selection Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiSetFeatureState;%20RELEASE:%20August%202001;%20URL:%20qref_9ejp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiSetFeatureState;%20RELEASE:%20August%202001;%20URL:%20qref_9ejp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

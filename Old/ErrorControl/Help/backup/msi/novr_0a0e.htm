@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Specifying the Order of Self Registration</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_specifying_the_order_of_self_registration"></A>Specifying the Order of Self Registration</H2>
+
+<P>Note that you cannot specify the order in which the installer registers or unregisters self-registering DLLs by using the <A HREF="aref_1gku.htm">SelfRegModules</A> and <A HREF="aref_9jce.htm">SelfUnRegModules</A> actions. These actions register all the modules listed in the <A HREF="tref_0llx.htm">SelfReg table</A>. The installer does not self-register .exe files.</P>
+
+<P>To specify the order in which the installer registers or unregisters modules, you must use two <A HREF="cact_5t2r.htm">custom actions</A> for each module. One custom action for DllRegisterServer and a second for DllUnregisterServer. These custom actions must then be authored in the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> at the point in the sequence wherever the DLL is to be registered or unregistered.</P>
+
+<P>The following example illustrates how to author the database to schedule the self-registration of a DLL at a particular point in the action sequence. </P>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>File</TH>
+<TH align=left width=26%>Component_</TH>
+<TH align=left width=26%>FileName</TH>
+<TH align=left width=26%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>mydll</TD>
+<TD width=26%>myComponent</TD>
+<TD width=26%>mydll.dll</TD>
+<TD width=26%>13</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Component</TH>
+<TH align=left width=26%>ComponentId</TH>
+<TH align=left width=26%>Directory_</TH>
+<TH align=left width=26%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>myComponent</TD>
+<TD width=26%>{<I>a GUID</I>}</TD>
+<TD width=26%>myFolder</TD>
+<TD width=26%>mydll</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_6an9.htm"><B>Directory Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Directory</TH>
+<TH align=left width=34%>Directory_Parent</TH>
+<TH align=left width=35%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>TARGETDIR</TD>
+<TD width=34%> </TD>
+<TD width=35%>SourceDir</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>myFolder</TD>
+<TD width=34%>TARGETDIR</TD>
+<TD width=35%>myFolder|My Folder</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_71b9.htm"><B>CustomAction Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Action</TH>
+<TH align=left width=26%>Type</TH>
+<TH align=left width=26%>Source</TH>
+<TH align=left width=26%>Target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>mydllREG</TD>
+<TD width=26%>3170</TD>
+<TD width=26%>myFolder</TD>
+<TD width=26%>"[SystemFolder]msiexec" /y "[#mydll]"</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>mydllUNREG</TD>
+<TD width=26%>3170</TD>
+<TD width=26%>myFolder</TD>
+<TD width=26%>"[SystemFolder]msiexec" /z "[#mydll]"</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_5pid.htm"><B>InstallExecuteSequence Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Action</TH>
+<TH align=left width=34%>Condition</TH>
+<TH align=left width=35%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>SelfUnregModules</TD>
+<TD width=34%> </TD>
+<TD width=35%>2200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>mydllUNREG</TD>
+<TD width=34%>$myComponent=2</TD>
+<TD width=35%>2201</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>RemoveFiles</TD>
+<TD width=34%> </TD>
+<TD width=35%>3500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>InstallFiles</TD>
+<TD width=34%> </TD>
+<TD width=35%>4000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>SelfRegModules</TD>
+<TD width=34%> </TD>
+<TD width=35%>6500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>mydllREG</TD>
+<TD width=34%>$myComponent&gt;2</TD>
+<TD width=35%>6501</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

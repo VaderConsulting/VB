@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiAssemblyName Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiAssemblyName Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_about_isolated_applications_and_side_by_side_assemblies">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msiassemblyname_table"></A>MsiAssemblyName Table</H1>
+
+<P>The <A HREF="tref_4u05.htm">MsiAssembly table</A> and MsiAssemblyName table specify Windows Installer settings for common language runtime assemblies and Win32® assemblies. For information see, <A HREF="assm_4m05.htm">Installation of Assemblies to the Global Assembly Cache</A> and <A HREF="assm_6lv7.htm">Installation of Win32 Assemblies</A>.</P>
+
+<P>The MsiAssemblyName table specifies the schema for the elements of a strong assembly cache name for a .NET Framework or Win32 assembly. The name is constructed by appending all elements with the same Component_ key. See the following example.</P>
+
+<P>On Windows XP and later systems, Windows Installer version 2.0 and later can install Win32 assemblies as <A HREF="assm_5i5v.htm">side-by-side assemblies</A>. For more information, see <A HREF="JavaScript:hhobj_1.Click()">About Isolated Applications and Side-by-side Assemblies</A>.</P>
+
+<P>The MsiAssemblyName table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Column</TH>
+<TH align=left width=35%>Type</TH>
+<TH align=left width=12%>Key</TH>
+<TH align=left width=18%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Component_</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=12%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Name</TD>
+<TD width=35%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=12%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Value</TD>
+<TD width=35%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=12%>&nbsp;</TD>
+<TD width=18%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Component_</DT>
+
+<DD>Key into the <A HREF="tref_09np.htm">Component table</A> specifying the Windows Installer component that contains this assembly.</DD>
+
+<DT>Name</DT>
+
+<DD>Name of the attribute associated with the value specified in the Value column.</DD>
+
+<DT>Value</DT>
+
+<DD>Value associated with the name specified in the Name column.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Add a row to the MsiAssemblyName table for each name and value pair in the assemblyIdentity section of the manifest. For example, the assembly manifest for ComponentA might have an assemblyIdentity section as follows.</P>
+
+<PRE>&lt;assemblyIdentity type="win32" name="ms-sxstest-simple" version="1.0.0.0" language="en" publicKeyToken="1111111111222222" processorArchitecture="x86"/&gt;</PRE>
+
+<P>In this case, populate the MsiAssemblyName table as follows.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Component</TH>
+<TH align=left width=35%>Name</TH>
+<TH align=left width=37%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>ComponentA</TD>
+<TD width=35%>type</TD>
+<TD width=37%>win32</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>ComponentA</TD>
+<TD width=35%>name</TD>
+<TD width=37%>ms-sxstest-simple </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>ComponentA</TD>
+<TD width=35%>version</TD>
+<TD width=37%>1.0.0.0 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>ComponentA</TD>
+<TD width=35%>language</TD>
+<TD width=37%>en </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>ComponentA</TD>
+<TD width=35%>publicKeyToken</TD>
+<TD width=37%>1111111111222222</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>ComponentA</TD>
+<TD width=35%>processorArchitecture</TD>
+<TD width=37%>x86</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiAssemblyName%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_8vhh.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiAssemblyName%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_8vhh.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiLocateComponent</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiLocateComponent">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msilocatecomponent"></A>MsiLocateComponent</H1>
+
+<P>The <B>MsiLocateComponent</B> function returns the full path to an installed component without a product code. This function attempts to determine the product using <A HREF="msi_59ph.htm"><B>MsiGetProductCode</B></A>, but is not guaranteed to find the correct product for the caller. <A HREF="msi_3fxk.htm"><B>MsiGetComponentPath</B></A> should always be called when possible.</P>
+
+<PRE class=syntax><B>INSTALLSTATE MsiLocateComponent(
+  LPCTSTR</B> <I>szComponent</I><B>,</B>  // component Id, string GUID
+<B>  LPTSTR</B> <I>lpPathBuf</I><B>,</B>     // returned path
+<B>  DWORD</B> <I>*pcchBuf</I>        // in/out buffer character count
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szComponent</I></DT>
+
+<DD>Specifies the component ID of the component to be located.</DD>
+
+<DT><I>lpPathBuf</I></DT>
+
+<DD>Pointer to a variable that receives the path to the component. This parameter can be NULL.</DD>
+
+<DT><I>pcchBuf</I></DT>
+
+<DD>Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpPathBuf</I> parameter.  The count does not include the terminating null. 
+
+<P>If <I>lpPathBuf</I> is NULL, <I>pcchBuf</I> can be NULL. 
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_NOTUSED</TD>
+<TD width=52%>The component being requested is disabled on the computer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_ABSENT</TD>
+<TD width=52%>The component is not installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_BAD_CONFIGURATION</TD>
+<TD width=52%>The configuration data is corrupt.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_INVALIDARG</TD>
+<TD width=52%>One of the function parameters is invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_LOCAL</TD>
+<TD width=52%>The component is installed locally.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_SOURCE</TD>
+<TD width=52%>The component is installed to run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_SOURCEABSENT</TD>
+<TD width=52%>The component source is inaccessible.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>INSTALLSTATE_UNKNOWN</TD>
+<TD width=52%>The product code or component ID is unknown.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>Upon success of the <B>MsiLocateComponent</B> function, the <I>pcchBuf</I> parameter contains the length of the string in <I>lpPathBuf</I>.</P>
+
+<P>The <B>MsiLocateComponent</B> function might return INSTALLSTATE_ABSENT or INSTALL_STATE_UNKNOWN, for the following reasons:
+
+<UL>
+	<LI>INSTALLSTATE_ABSENT
+<P>The application did not properly ensure that the feature was installed by calling <A HREF="msi_3ckl.htm"><B>MsiUseFeature</B></A> and, if necessary, <A HREF="msi_8cit.htm"><B>MsiConfigureFeature</B></A>. 
+</LI>
+
+	<LI>INSTALLSTATE_UNKNOWN 
+<P>The feature is not published. The application should have determined this earlier by calling <A HREF="msi_4e3p.htm"><B>MsiQueryFeatureState</B></A> or <A HREF="msi_0e9f.htm"><B>MsiEnumFeatures</B></A>.<B> </B>The application makes these calls while it initializes. An application should only use features that are known to be published. Since INSTALLSTATE_UNKNOWN should have been returned by <B>MsiUseFeature</B> as well, either <B>MsiUseFeature</B> was not called, or its return value was not properly checked.
+</LI>
+</UL>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_component_specific_functions">Component-Specific Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

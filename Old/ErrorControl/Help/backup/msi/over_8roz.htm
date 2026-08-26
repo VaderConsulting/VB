@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Machine Policies</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="machine policies [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="system policy [Windows Installer], machine policies">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_machine_policies"></A>Machine Policies</H2>
+
+<P>The following machine policies can be configured under</P>
+
+<P><B>HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Value</TH>
+<TH align=left width=26%>Value data type</TH>
+<TH align=left width=43%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_3xnj.htm">AlwaysInstallElevated (Per-Machine)</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this value is set to "1" and the corresponding user value is also set, the installer always installs with elevated privileges.
+<P>Otherwise, the installer uses elevated privileges to install managed applications and uses the current user's privilege level for non-managed applications.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_6k2t.htm">AllowLockdownBrowse</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this policy value is set to "1", non-admin users can browse for new sources while running an installation at elevated privileges. The default is that only administrators can browse for sources during an elevated installation. Setting this policy also enables non-admin users to run programs at LocalSystem privileges during an elevated installation. 
+<P>This policy not available with Windows Installer version 1.0.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_4qe9.htm">AllowLockdownMedia</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this policy value is set to "1", non-admin users can use media sources, such as a CD-ROM, while running an installation at elevated privileges. The default is that only administrators can use media sources during an elevated installation. Setting this policy also enables non-admin users to run programs at LocalSystem privileges during an elevated installation. 
+<P>This policy not available with Windows Installer version 1.0.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_2fqg.htm">AllowLockdownPatch</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this policy value is set to "1", non-admin users can apply Windows Installer patches to existing products while running an installation at elevated privileges. The default is that only administrators can patch existing products that were installed at elevated privileges. Setting this policy also enables non-admin users to run programs at LocalSystem privileges during an elevated installation. 
+<P>This policy not available with Windows Installer version 1.0.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_51d3.htm">Debug</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this value exists and is set to "1", the installer writes common debugging messages to the debugger using the OutputDebugString function. If this value exists and is set to "2", the installer writes all valid debugging messages to the debugger using the OutputDebugString function. This policy is for debugging purposes only and may not be supported in future versions of Windows Installer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_5rmt.htm">DisableBrowse</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this value exists and is set to "1", users are prevented from browsing to locate installer sources. The "Use feature from:" combo box for direct input is locked and the "Browse..." button is disabled. See the <A HREF="over_1lq1.htm">source resiliency</A> topic for more details on source browsing.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_8wix.htm">DisableMSI</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this value exists and is set to "2", the installer is always disabled for all applications.
+<P>If this value is set to "1", the installer is disabled for non-managed applications but is still enabled for managed applications.</P>
+
+<P>If this value is set to "0", any other number, or is absent, the installer is always enabled.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_7fag.htm">DisablePatch</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this value is set to "1" the installer does not apply patches. This policy can be used to provide security in environments where patching must be restricted. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_43of.htm">DisableRollback Policy (Per-Machine)</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this value is set to "1", the installer does not store rollback files during installation, disabling installation rollback. By default, rollback is enabled. Administrators are advised to not use this policy unless it is absolutely essential.
+<P>This policy is not available with Windows Installer version 1.0. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_47z9.htm">EnableAdminTSRemote</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>Setting this policy enables administrators to perform installations from Terminal Server client sessions. 
+<P>This policy is not available with Windows Installer version 1.0. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_8pws.htm">EnableUserControl</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this value is set to 1, then the installer can pass all <A HREF="prop_0gfn.htm">public properties</A> to the server side during a managed installation using elevated privileges. Setting this policy has the same effect as setting the <A HREF="pref_594p.htm">EnableUserControl property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_9xbb.htm">Logging</A></TD>
+<TD width=26%>REG_SZ</TD>
+<TD width=43%>This policy is used only if logging has not been enabled by the "/L" command line option or <A HREF="msi_2ch3.htm">MsiEnableLog</A>. If policy is set in this case, a log file is created in the temp directory with the random name: MSI*.LOG. Specify the logging mode by setting the policy value to a string of characters. Use the same characters to specify logging mode policy as used by the '/L' command line option. See <A HREF="app_73eb.htm">Command Line Options</A>. Note that you cannot use "+" and "*" for the policy.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_38pz.htm">SafeForScripting</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>If this value is set to "1", users are not prompted when scripts use installer automation within a web page. This may be useful for web based tools but can allow silent installations of applications without user knowledge or consent.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="over_9u91.htm">TransformsSecure</A></TD>
+<TD width=26%>REG_DWORD</TD>
+<TD width=43%>Setting the TransformsSecure policy to 1 informs the installer that transforms are to be cached locally on the user's computer in a location where the user does not have write access. 
+<P>This policy is not available with Windows Installer version 1.0.</P>
+</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

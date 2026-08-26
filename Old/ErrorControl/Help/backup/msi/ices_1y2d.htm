@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE65</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE65 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice65"></A>ICE65</H1>
+
+<P>ICE65 checks that the <A HREF="tref_025h.htm">Environment table</A> does not have invalid prefix or append values. </P>
+
+<P>Failure to fix a warning or error reported by ICE65 generally leads to problems in install, uninstall, or repair of the environment variable. For example, only some values of a particular variable may be removed if one or more of the values for that variable have a trailing separator. </P>
+
+<H4>Result</H4>
+
+<P>ICE65 posts a warning or an error if the environment table has invalid prefix or append values.</P>
+
+<H4>Example</H4>
+
+<P>ICE65 reports the following error and warning for the example shown.</P>
+
+<PRE>The environment variable 'Var3' has a separator beginning or ending its value.</PRE>
+
+<P>The trailing null at the end of the value ([~]) marks this value to be prepended to any existing value. The character immediately before the NULL (a semicolon) becomes the separator for this value. This value has a semicolon at the beginning of the string as well.</P>
+
+<P>To fix this error, simply delete the leading semicolon.</P>
+
+<PRE>WARNING: The environment variable 'Var2' has an alphanumeric separator </PRE>
+
+<P>The leading null in the value ([~]) marks this value to be appended to any existing value. The character immediately after the NULL becomes the separator for this value. In this case, that character is the letter "e", which also occurs in the middle of the string to be appended. This condition (having a separator that is the same as a character within the string to be appended) can cause unpredictable results.</P>
+
+<P>The letter "e", being a common letter, is likely to be found in the value. A better choice would be ";" or some other non-alphanumeric character. (However, if the value is a path, then ":" and "\" and "." are risky choices.)</P>
+
+<P>To fix this warning, use a different separator character.</P>
+
+<P><A HREF="tref_025h.htm">Environment Table</A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=20%>Component</TH>
+<TH align=left width=23%>Directory</TH>
+<TH align=left width=30%>Attributes</TH>
+<TH align=left width=27%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Var1</TD>
+<TD width=23%>TestVar</TD>
+<TD width=30%>[~];AppendThis</TD>
+<TD width=27%>TestComponent</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Var2</TD>
+<TD width=23%>TestVar</TD>
+<TD width=30%>[~]eAppendThis</TD>
+<TD width=27%>TestComponent</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Var3</TD>
+<TD width=23%>TestVar</TD>
+<TD width=30%>;PrependThis;[~]</TD>
+<TD width=27%>TestComponent</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

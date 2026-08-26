@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleComponents Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ModuleComponents Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_modulecomponents_table"></A>ModuleComponents Table</H3>
+
+<P>The ModuleComponents table contains a list of the components found in the merge module. </P>
+
+<P>The ModuleComponents table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Column</TH>
+<TH align=left width=30%>Type</TH>
+<TH align=left width=21%>Key</TH>
+<TH align=left width=28%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Component</TD>
+<TD width=30%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=21%>Y</TD>
+<TD width=28%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ModuleID</TD>
+<TD width=30%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=21%>Y</TD>
+<TD width=28%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Language</TD>
+<TD width=30%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=21%>Y</TD>
+<TD width=28%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Component</DT>
+
+<DD>An identifier referring to a component in the merge module. The Component column is a foreign key to the <A HREF="tref_09np.htm">Component table</A>. The entry in the Component column must follow the naming convention in <A HREF="merg_0ucz.htm">Naming Primary Keys in Merge Module Databases</A>.</DD>
+
+<DT>ModuleID</DT>
+
+<DD>The identifier for the merge module. This is a foreign key to the <A HREF="merg_4nad.htm">ModuleSignature table</A>.</DD>
+
+<DT>Language</DT>
+
+<DD>The Language identifier describes the default language for the merge module. The language identifier is in decimal format, for example, U.S. English is 1033. Foreign key to the <A HREF="merg_4nad.htm">ModuleSignature table</A>.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Language transforms must be able to update this table if the merge module supports multiple languages.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

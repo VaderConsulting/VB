@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE55</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE55 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice55"></A>ICE55</H1>
+
+<P>ICE55 validates that all LockPermission objects exist and have valid permission values. </P>
+
+<H4>Result</H4>
+
+<P>ICE55 post an error if a LockObject listed in the <A HREF="tref_00dh.htm">LockPermissions table</A> does not exist or if no privilege level is specified in the Permission column.</P>
+
+<H4>Example</H4>
+
+<P>ICE55 would report the following errors for the example.</P>
+
+<PRE>LockObject 'File1'.'File'.''.'guest' in the LockPermissions table 
+    has a null Permission value. 
+Could not find item 'File3' in table 'File' which is referenced 
+    in the LockPermissions table. </PRE>
+
+<P><A HREF="tref_00dh.htm"><B>LockPermissions Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>LockObject</TH>
+<TH align=left width=15%>Table</TH>
+<TH align=left width=17%>Domain</TH>
+<TH align=left width=20%>User</TH>
+<TH align=left width=24%>Permission</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>File1</TD>
+<TD width=15%>File</TD>
+<TD width=17%> </TD>
+<TD width=20%>guest</TD>
+<TD width=24%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>File3</TD>
+<TD width=15%>File</TD>
+<TD width=17%> </TD>
+<TD width=20%>guest</TD>
+<TD width=24%>1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>File</TH>
+<TH align=left width=32%>Version</TH>
+<TH align=left width=41%>Language</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>File1</TD>
+<TD width=32%>File2</TD>
+<TD width=41%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>File2</TD>
+<TD width=32%>1.0.0.0</TD>
+<TD width=41%>1033</TD>
+</TR>
+</TABLE><BR>
+
+<P>The object File1 has a null in the Permission column. Each row must have a value in the Permissions column. To fix this error specify a numeric value in this column. If no privileges are needed for this object then you should remove the row.</P>
+
+<P>The object File3 described in the LockPermissions table is not listed in the File table. To fix this error refer to a valid object. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

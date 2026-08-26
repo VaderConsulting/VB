@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ControlCondition Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ControlCondition Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_controlcondition_table"></A>ControlCondition Table</H1>
+
+<P>The ControlCondition table enables an author to specify special actions to be applied to controls based on the result of a conditional statement. For example, using this table the author could choose to hide a control based on the <A HREF="pref_37nd.htm"><B>VersionNT</B> property</A>.</P>
+
+<P>The ControlCondition table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Column</TH>
+<TH align=left width=41%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Dialog_</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Control_</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Action</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Condition</TD>
+<TD width=41%><A HREF="tref_735a.htm">Condition</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Dialog_</DT>
+
+<DD>An external key to the first column of the <A HREF="tref_51wl.htm">Dialog table</A>.  Combining this field with the Control_ field identifies a unique control.</DD>
+
+<DT>Control_</DT>
+
+<DD>An external key to the second column of the <A HREF="tref_6nad.htm">Control table</A>. Combining this field the Dialog_ field identifies a unique control.</DD>
+
+<DT>Action</DT>
+
+<DD>The action that is to be taken on the control. The possible actions are shown in the following table.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Value</TH>
+<TH align=left width=72%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Default</TD>
+<TD width=72%>Set control as the default.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Disable</TD>
+<TD width=72%>Disable the control.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Enable</TD>
+<TD width=72%>Enable the control.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Hide</TD>
+<TD width=72%>Hide the control.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Show</TD>
+<TD width=72%>Display the control.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Condition</DT>
+
+<DD>A conditional statement that specifies under which conditions the action should be triggered. This column may not be left blank. If this statement does not evaluate to TRUE, the action does not take place. If it is set to 1, the action is always applied. For information on the syntax of conditional statements, see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ControlCondition%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_4vhh.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ControlCondition%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_4vhh.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

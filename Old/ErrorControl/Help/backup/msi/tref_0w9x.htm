@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AppSearch Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="AppSearch Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_appsearch_table"></A>AppSearch Table</H1>
+
+<P>The AppSearch table contains properties needed to search for a file having a particular file signature. The AppSearch table can also be used to set a property to the existing value of an registry or .ini file entry.</P>
+
+<P>The AppSearch table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Column</TH>
+<TH align=left width=37%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Property</TD>
+<TD width=37%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Signature_</TD>
+<TD width=37%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Property</DT>
+
+<DD>Running the <A HREF="aref_16zy.htm">AppSearch action</A> sets this property to the location of the file indicated by the Signature_ column. This property is set if the file signature exists on the user's computer. The <A HREF="prop_1xyr.htm">properties</A> used in this column must be <A HREF="prop_0gfn.htm">public properties</A> and have an identifier that contains no lowercase letters.
+
+<P>The property listed in the Property field may be initialized in the <A HREF="tref_21d1.htm">Property table</A> or from a command line. If the property is initialized in the Property table, the AppSearch action searches the user's computer for the file's signature. If the AppSearch action locates the signature, the installer sets the property to the found value and overrides the initial value specified in the Property table. If the AppSearch action does not locate the signature, the installer sets the property to the initial value entered in the Property table. If the property is initialized from a command line, the AppSearch action does not search for the signature and the installer always uses the value entered from the command line.
+</DD>
+
+<DT>Signature_</DT>
+
+<DD>The Signature_ column contains a unique identifier called a signature and is also an external key into the <A HREF="tref_91wl.htm">RegLocator</A>, <A HREF="tref_00o5.htm">IniLocator</A>, <A HREF="tref_771h.htm">CompLocator</A>, and <A HREF="tref_3azp.htm">DrLocator</A> tables. When searching for a file the value in this column must also be a foreign key into the <A HREF="tref_149x.htm">Signature table</A>. If value in this column is not listed in the Signature table, the installer determines that the search is for a directory.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is used by the <A HREF="aref_16zy.htm">AppSearch action</A>. The AppSearch action searches for signatures using the CompLocator table first, the RegLocator table next, then the IniLocator table, and finally the DrLocator table. File signatures are listed in the Signature table. A signature that is not in the Signature table denotes a directory and the action sets the property to the directory path for that signature. </P>
+
+<P>See <A HREF="over_84oj.htm">Searching for Existing Applications, Files, Registry Entries or .ini File Entries</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

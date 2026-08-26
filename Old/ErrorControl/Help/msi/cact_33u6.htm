@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I access another database or session from inside a custom action?</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_how_do_i_access_another_database_or_session_from_inside_a_custom_action"></A>How do I access another database or session from inside a custom action?</H2>
+
+<P>You cannot access an installer session from a custom action that is not the current installation session. Custom actions are limited to working with only the active database of the session and no other databases. The following Windows Installer <A HREF="qref_778z.htm">Database Functions</A> must not be called from a custom action because they require a handle to a database that is not the database of the current installation session:</P>
+
+<P><A HREF="qref_5pd1.htm"><B>MsiDatabaseMerge</B></A><BR>
+<A HREF="qref_5zlb.htm"><B>MsiCreateTransformSummaryInfo</B></A><BR>
+<A HREF="qref_5tyl.htm"><B>MsiDatabaseApplyTransform</B></A><BR>
+<A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A><BR>
+<A HREF="qref_4qyc.htm"><B>MsiDatabaseExport</B></A><BR>
+<A HREF="qref_29rh.htm"><B>MsiDatabaseGenerateTransform</B></A><BR>
+<A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A><BR>
+<A HREF="qref_4ek7.htm"><B>MsiEnableUIPreview</B></A><BR>
+<A HREF="qref_3iw5.htm"><B>MsiGetDatabaseState</B></A> </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_99gu.htm">How do I access the current installer session from inside a custom action?</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20access%20another%20database%20or%20session%20from%20inside%20a%20custom%20action%3F;%20RELEASE:%20August%202001;%20URL:%20cact_33u6.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20access%20another%20database%20or%20session%20from%20inside%20a%20custom%20action%3F;%20RELEASE:%20August%202001;%20URL:%20cact_33u6.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

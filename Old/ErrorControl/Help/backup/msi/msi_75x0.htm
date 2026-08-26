@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiInstallProduct</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiInstallProduct">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiinstallproduct"></A>MsiInstallProduct</H1>
+
+<P>The <B>MsiInstallProduct</B> function installs or uninstalls a product.</P>
+
+<PRE class=syntax><B>UINT MsiInstallProduct(
+</B>  <B>LPCTSTR</B> <I>szPackagePath</I><B>,</B>    // path to package
+  <B>LPCTSTR</B> <I>szCommandLine  </I>   // package command line
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szPackagePath</I></DT>
+
+<DD>Specifies the path to the package.</DD>
+
+<DT><I>szCommandLine</I></DT>
+
+<DD>Specifies the command line property settings. This should be a list of the format <I>Property=Setting Property=Setting</I>. See <A HREF="prop_0ylv.htm">About Properties</A>.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>An error relating to an action</TD>
+<TD width=52%>See <A HREF="code_13ub.htm">Error Codes</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>Any <A HREF="msi_5svn.htm">Initialization Error</A></TD>
+<TD width=52%>An error relating to initialization occurred.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For more information about error messages, see <A HREF="msi_1tir.htm">Displayed Error Messages</A>.</P>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiInstallProduct</B> function displays the user interface with the current settings and log mode. You can change user interface settings with the <A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> and <A HREF="msi_5dm1.htm"><B>MsiSetExternalUI</B></A> functions. You can set the log mode with the <A HREF="msi_2ch3.htm"><B>MsiEnableLog</B></A> function.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_installation_and_configuration_functions">Installation and Configuration Functions</A>, <A HREF="code_13ub.htm">Error Codes</A>, <A HREF="msi_1tir.htm">Displayed Error Messages</A>, <A HREF="msi_5svn.htm">Initialization Error</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

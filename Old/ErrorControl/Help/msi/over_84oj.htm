@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Searching for Existing Applications, Files, Registry Entries or .ini File Entries</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_searching_for_existing_applications_files_registry_entries_or_.ini_file_entries"></A>Searching for Existing Applications, Files, Registry Entries or .ini File Entries</H1>
+
+<P>Microsoft® Windows® Installer can search for a particular file or directory during an installation. File or directory searches are used to determine whether the user has already installed a version of an application.</P>
+
+<P><A HREF="aref_16zy.htm">AppSearch Action</A> searches the user's system for file signatures specified in the <A HREF="tref_0w9x.htm">AppSearch table</A>. If the AppSearch action finds an installed file or directory with the specified signature, it sets a corresponding property, also specified in the AppSearch table, to the location of the file or directory. When searching for a file, the file signature must also be listed in the <A HREF="tref_149x.htm">Signature table</A>. If a file signature is listed in the AppSearch table and is not listed in the Signature table, the search looks for a directory, registry entry, or .ini file entry.</P>
+
+<P>To expedite the search of the user's computer, the installer queries the following locator database tables in the order listed for a suggested search location. </P>
+
+<P>If the file signature is listed in the <A HREF="tref_771h.htm">CompLocator table</A>, the suggested search location is the key path of a component. If the signature is not listed in this table or not installed at the suggested location, the installer queries the <A HREF="tref_91wl.htm">RegLocator table</A> for a suggested location.</P>
+
+<P>If the file signature is listed in the RegLocator table, the suggested search location is a key path written in the user's registry. If the signature is not listed in this table or not installed at the suggested location, the installer queries the <A HREF="tref_00o5.htm">IniLocator table</A> for a suggested location.</P>
+
+<P>If the file signature is listed in the IniLocator table, the suggested search location is a key path written in an .ini file present in the default Windows directory of the user's system. If the signature is not listed in this table or not installed at the suggested location, the installer queries the <A HREF="tref_3azp.htm">DrLocator table</A> for a suggested location.</P>
+
+<P>If the file signature is listed in the DrLocator table, the suggested search location is a path in the user's directory tree. The depth of subdirectory levels to search below this location is also specified in this table.</P>
+
+<P>The first time the installer finds the file signature at a suggested location, it stops searching for this file or directory and sets the corresponding property in the AppSearch table.</P>
+
+<P>For more information about searching for files and directories, see:</P>
+
+<P><A HREF="over_9uqt.htm">How do I search all fixed drives for a file?</A> </P>
+
+<P><A HREF="over_9ory.htm">How do I search for a file in a specific location?</A> </P>
+
+<P><A HREF="over_6fsp.htm">How do I search for a directory and a file in that directory?</A> </P>
+
+<P><A HREF="over_3u20.htm">How do I search for a file and create a property holding the file's path?</A> </P>
+
+<P><A HREF="over_42ux.htm">How do I search for a registry entry and create a property holding the value of the Registry?</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Searching%20for%20Existing%20Applications,%20Files,%20Registry%20Entries%20or%20.ini%20File%20Entries;%20RELEASE:%20August%202001;%20URL:%20over_84oj.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Searching%20for%20Existing%20Applications,%20Files,%20Registry%20Entries%20or%20.ini%20File%20Entries;%20RELEASE:%20August%202001;%20URL:%20over_84oj.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

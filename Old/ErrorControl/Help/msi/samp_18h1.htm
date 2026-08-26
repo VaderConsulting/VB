@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Importing the User Interface</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_importing_the_user_interface"></A>Importing the User Interface</H2>
+
+<P>In addition to information discussed in previous sections, uisample.msi also contains data for a sample user interface. If you merged uisample.msi into MNP2000.msi in the section <A HREF="samp_4885.htm">Importing a Blank Database</A>, then this information is present in MNP2000.msi as well. The information for the sample user interface is in the following tables.</P>
+
+<P><A HREF="tref_7het.htm">ActionText table</A> </P>
+
+<P><A HREF="tref_04px.htm">Binary table</A> </P>
+
+<P><A HREF="tref_6nad.htm">Control table</A> </P>
+
+<P><A HREF="tref_6k11.htm">ControlEvent table</A> </P>
+
+<P><A HREF="tref_51wl.htm">Dialog table</A> </P>
+
+<P><A HREF="tref_5dk5.htm">Error table</A> </P>
+
+<P><A HREF="tref_6m3p.htm">EventMapping table</A> </P>
+
+<P><A HREF="tref_4t7p.htm">RadioButton table</A> </P>
+
+<P><A HREF="tref_30px.htm">TextStyle table</A> </P>
+
+<P><A HREF="tref_0vz9.htm">UIText table</A> </P>
+
+<P>The database editor Orca provided with the Windows installer includes a dialog preview option that you can use to preview the dialogs of the user interface that is specified by the data in the above tables.</P>
+
+<P>The sample installation package MNP2000.msi is now ready for package validation. Always run validation on a new package before attempting to install the package for the first time. This is discussed in Validating the Installation Sample.</P>
+
+<P>If you do not want to include the user interface in the sample package, omit or remove the all information in the tables shown above except for the <A HREF="tref_30px.htm">TextStyle table</A> (which is needed to define the <A HREF="pref_4ku1.htm"><B>DefaultUIFont</B> property</A>). You should also remove user interface properties from the <A HREF="tref_21d1.htm">Property Table</A>. An example Property table for the Notepad sample, without a UI, is shown below. Do not reuse the GUIDs shown in the table if you copy this example.</P>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Property</TH>
+<TH align=left width=65%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>DefaultUIFont</B></TD>
+<TD width=65%>DlgFont8</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>INSTALLLEVEL</B></TD>
+<TD width=65%>3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>LIMITUI</B></TD>
+<TD width=65%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>Manufacturer</B></TD>
+<TD width=65%>Microsoft</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>ProductCode</B></TD>
+<TD width=65%>{18A9233C-0B34-4127-A966-C257386270BC}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>ProductLanguage</B></TD>
+<TD width=65%>1033</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>ProductName</B></TD>
+<TD width=65%>MNP2000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>ProductVersion</B></TD>
+<TD width=65%>01.40.0000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><B>UpgradeCode</B></TD>
+<TD width=65%>{908E378A-9551-4772-BF1D-5CFAF6FD9CB4}</TD>
+</TR>
+</TABLE><BR>
+
+<P>A package without a user interface can be installed from the command line or from a program. To install a package from the command line use the methods described in <A HREF="app_73eb.htm">Command Line Options</A>. To install a package from a program use the methods described in <A HREF="func_96nn.htm">Using Installer Functions</A>. Always run validation on a new package before attempting to install a new package for the first time. </P>
+
+<P><A HREF="samp_22ed.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Importing%20the%20User%20Interface;%20RELEASE:%20August%202001;%20URL:%20samp_18h1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Importing%20the%20User%20Interface;%20RELEASE:%20August%202001;%20URL:%20samp_18h1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

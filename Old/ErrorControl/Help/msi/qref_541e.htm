@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiViewGetError</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiViewGetError">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msiviewgeterror"></A>MsiViewGetError</H1>
+
+<P>The <B>MsiViewGetError</B> function returns the error that occurred in the <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A> function. </P>
+
+<PRE class=syntax><B>MSIDBERROR MsiViewGetError(
+</B>  <B>MSIHANDLE</B> <I>hView</I><B>,</B>            // view handle
+  <B>LPTSTR</B> <I>szColumnNameBuffer</I><B>,</B>  // buffer to hold column name string
+  <B>DWORD *</B><I>pcchBuf</I>              // size of buffer
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hView</I></DT>
+
+<DD>[in] Handle to the view.</DD>
+
+<DT><I>szColumnNameBuffer</I></DT>
+
+<DD>[out] Specifies the buffer to hold the column name string. This parameter is NULL if there are no errors or if the size of the buffer is too small. </DD>
+
+<DT><I>pcchBuf</I></DT>
+
+<DD>[in, out] Specifies the size of the buffer. This parameter returns the size required for the buffer if an error occurs. On input, this is the full size of the buffer, including a space for a terminating NULL. If the buffer passed in is too small, the count returned does not include the terminating NULL. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<P>This function returns one of the following values.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=64%>Error code</TH>
+<TH align=left width=36%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_INVALIDARG</TD>
+<TD width=36%>An argument was invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_MOREDATA</TD>
+<TD width=36%>The buffer was too small to receive data.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_FUNCTIONERROR</TD>
+<TD width=36%>The function failed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_NOERROR</TD>
+<TD width=36%>The function completed successfully with no errors.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_DUPLICATEKEY</TD>
+<TD width=36%>The new record duplicates primary keys of the existing record in a table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_REQUIRED</TD>
+<TD width=36%>There are no NULL values allowed, or the column is about to be deleted but is referenced by another row. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADLINK</TD>
+<TD width=36%>The corresponding record in a foreign table was not found.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_OVERFLOW</TD>
+<TD width=36%>The data is greater than the maximum value allowed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_UNDERFLOW</TD>
+<TD width=36%>The data is less than the minimum value allowed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_NOTINSET</TD>
+<TD width=36%>The data is not a member of the values permitted in the set.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADVERSION</TD>
+<TD width=36%>An invalid version string was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADCASE</TD>
+<TD width=36%>The case was invalid. The case must be all uppercase or all lowercase.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADGUID </TD>
+<TD width=36%>An invalid GUID was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADWILDCARD </TD>
+<TD width=36%>An invalid wildcard file name was supplied, or the use of wildcards was invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADIDENTIFIER </TD>
+<TD width=36%>An invalid identifier was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADLANGUAGE </TD>
+<TD width=36%>Invalid language IDs were supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADFILENAME </TD>
+<TD width=36%>An invalid file name was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADPATH </TD>
+<TD width=36%>An invalid path was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADCONDITION </TD>
+<TD width=36%>An invalid conditional statement was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADFORMATTED </TD>
+<TD width=36%>An invalid format string was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADTEMPLATE </TD>
+<TD width=36%>An invalid template string was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADDEFAULTDIR </TD>
+<TD width=36%>An invalid string was supplied in the DefaultDir column of the <A HREF="tref_6an9.htm">Directory table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADREGPATH </TD>
+<TD width=36%>An invalid registry path string was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADCUSTOMSOURCE</TD>
+<TD width=36%>An invalid string was supplied in the CustomSource column of the <A HREF="tref_71b9.htm">CustomAction table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADPROPERTY </TD>
+<TD width=36%>An invalid property string was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_MISSINGDATA </TD>
+<TD width=36%>The <A HREF="tref_8fl1.htm">_Validation table</A> is missing a reference to a column.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADCATEGORY </TD>
+<TD width=36%>The category column of the _Validation table for the column is invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADCABINET</TD>
+<TD width=36%>An invalid cabinet name was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADKEYTABLE </TD>
+<TD width=36%>The table in the Keytable column of the _Validation table was not found or loaded.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADMAXMINVALUES </TD>
+<TD width=36%>The value in the MaxValue column of the _Validation table is less than the value in the MinValue column.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADSHORTCUT</TD>
+<TD width=36%>An invalid shortcut target name was supplied.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_STRINGOVERFLOW</TD>
+<TD width=36%>The string is too long for the length specified by the column definition.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=64%>MSIDBERROR_BADLOCALIZEATTRIB</TD>
+<TD width=36%>An invalid localization attribute was supplied. (Primary keys cannot be localized.)</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>You should only call the <B>MsiViewGetError</B> function when <B>MsiViewModify</B> returns ERROR_INVALID_DATA, indicating that the data is invalid. Errors are only recorded for MSIMODIFY_VALIDATE, MSIMODIFY_VALIDATE_NEW, and MSIMODIFY_VALIDATEFIELD.</P>
+
+<P>If ERROR_MORE_DATA is returned, the parameter which is a pointer gives the size of the buffer required to hold the string. Upon success, it gives the number of characters written to the string buffer. Therefore you can get the size of the buffer by passing in an empty string (for example "") for the parameter that specifies the buffer. Do not attempt to determine the size of the buffer by passing in a Null (value=0).</P>
+
+<P>Once MSIDBERROR_NOERROR is returned, no more validation errors remain. The MSIDBERROR return value indicates the type of validation error that occurred for the value located in the column identified by the <I>szColumnNameBuffer</I>.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_general_database_access_functions">General Database Access Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiViewGetError;%20RELEASE:%20August%202001;%20URL:%20qref_541e.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiViewGetError;%20RELEASE:%20August%202001;%20URL:%20qref_541e.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

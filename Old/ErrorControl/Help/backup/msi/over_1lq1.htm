@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Source Resiliency</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="source resiliency [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_source_resiliency"></A>Source Resiliency</H1>
+
+<P>Applications that rely on network resources for <A HREF="over_3kys.htm">installation-on-demand</A> are susceptible to source failures if the source location should change for any reason or become damaged. The Microsoft® Windows® Installer provides source resiliency for features that are installed on-demand by using a source list. The source list contains the locations searched by the installer for installation packages. The entries in this list can be network locations, Uniform Resource Locators (URLs), or compact discs. If one of these sources fails, the installer can quickly and seamlessly try the next.</P>
+
+<P>The application developer does not need to incorporate any special information into the installer package to ensure source resiliency. Once the application is installed, the installer has the behavior of adding the last successfully used source as an entry in the source list. By default, this source is the location from which the installer package is initially installed, and is the same as the <A HREF="pref_6uwp.htm">SourceDir property</A>. </P>
+
+<P>A system administrator can change the source list by applying a<A HREF="over_2ysz.htm"> transform</A> or by changing the <A HREF="pref_9d2x.htm">SOURCELIST property</A> from the command line or in the <A HREF="tref_21d1.htm">Property table</A>.</P>
+
+<P>The installer begins searching for a source by checking the most recently used source location in the source list. If this search fails, the installer searches the list of network sources, then media sources, and finally URL sources. System administrators can change this search order using the <A HREF="over_6r76.htm">SearchOrder</A> system policy. If these searches fail, the installer may present a browse dialog to the user to manually search for the source. A browse dialog is only presented if the current user is an administrator or if the installation will not be installed with elevated privileges. The machine administrator can change this default behavior through the use of the <A HREF="over_5rmt.htm">DisableBrowse</A> policy or <A HREF="over_6k2t.htm">AllowLockDownBrowse</A> policy. The browse dialog is not displayed if the user interface level is set to None. See <A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> for a description of the user interface levels. System administrators can prevent users from browsing to locate installer sources by setting the <A HREF="over_5rmt.htm">DisableBrowse</A> system policy.</P>
+
+<P>By default, Windows Installer version 1.0 includes removable media drives on all application source lists. Administrators can secure a managed installation with Windows Installer version 1.0 by setting the <A HREF="pref_8iux.htm">DISABLEMEDIA property</A> and the <A HREF="over_5rmt.htm">DisableBrowse</A> policy. This will prevent non-administrator users from installing with elevated privileges from a CD-ROM. </P>
+
+<P>With Windows Installer version 1.1 and later, non-administrator users by default cannot install with elevated privileges from media. If the user is an administrator, or if the installation is not elevated, media is still included on the source list. An administrator can change this by using the <A HREF="over_4qe9.htm">AllowLockdownMedia</A> or <A HREF="over_9py9.htm">DisableMedia</A> policies.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

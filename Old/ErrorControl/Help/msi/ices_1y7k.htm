@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE90</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE90">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice90"></A>ICE90</H1>
+
+<P>ICE90 posts a warning if it finds that a shortcut's directory has been specified as a public property. The names of <A HREF="prop_0gfn.htm">Public Properties</A> are written in uppercase letters. A shortcut specified by a public property may not work if the value of the <A HREF="pref_6tx5.htm"><B>ALLUSERS</B> property</A> changes.</P>
+
+<P>This ICE custom action validates the Shortcut table and uses the Directory table. If the Directory table is not present, it returns without validating the Shortcut table and posts no errors or warnings.</P>
+
+<H4>Result</H4>
+
+<P>ICE90 posts the following warning.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>ICE90 error</TH>
+<TH align=left width=49%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>The shortcut '[1]' has a directory that is a public property (ALL CAPS) and is under user profile directory. This results in a problem if the value of the <B>ALLUSERS</B> property changes in the UI sequence.</TD>
+<TD width=49%>A shortcut's directory has been specified as a public property.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Example</H4>
+
+<P>ICE90 reports the following warning for the example:</P>
+
+<PRE>The shortcut 'Shortcut1' has a directory that is a public property (ALL CAPS) 
+and is under user profile directory. This results in a problem if the value 
+of the ALLUSERS property changes in the UI sequence.
+</PRE>
+
+<P>In this example, MYDIR is under a users profile. ICE90 posts a warning because the location of the target directory is specified by a public property, MYDIR. A user may change MYDIR or <A HREF="pref_6tx5.htm"><B>ALLUSERS</B> property</A>. If <B>ALLUSERS</B> is set for a <A HREF="over_1tdf.htm">per-machine installation</A>, and MYDIR is under a users profile, the shortcut file in MYDIR are copied under the "All Users" profile and not a particular user's profile. If <B>ALLUSERS</B> is set for a <A HREF="over_2tf7.htm">per-user installation</A>, the shortcut file in MYDIR is copied into a particular user's profile and is not available to other users. </P>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Shortcut</TH>
+<TH align=left width=67%>Directory_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Shortcut1</TD>
+<TD width=67%>MYDIR</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_6an9.htm"><B>Directory Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Directory</TH>
+<TH align=left width=67%>Directory_Parent</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>MYDIR</TD>
+<TD width=67%>ProgramMenuFolder</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE90;%20RELEASE:%20August%202001;%20URL:%20ices_1y7k.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE90;%20RELEASE:%20August%202001;%20URL:%20ices_1y7k.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Wilogutl.exe</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_wilogutl.exe"></A>Wilogutl.exe</H2>
+
+<P>Wilogutl.exe assists the analysis of log files from a Windows Installer installation, and it displays suggested solutions to errors found in the log file. Non-critical errors are not displayed. Wilogutl.exe may be run in quiet mode or with a user interface. The tool generates reports as text files in both the UI and quiet modes. It works best with verbose Windows Installer log files but also works with non-verbose logs. For information about on how to generate a log file, see <A HREF="over_9xbb.htm">Logging</A>. </P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax>wilogutl.exe [&lt;options&gt;][&lt;source file&gt;][&lt;options&gt;][&lt;report file directory&gt;]</PRE>
+
+<P>For example, the following command lines can be used to run in quiet mode.</P>
+
+<P>WILogUtil /q /l c:\mymsilog.log /o c\outputdir\ </P>
+
+<P>WILogUtil /q /l c:\mymsilog.log</P>
+
+<H4>Command Line Options</H4>
+
+<P>Wilogutl.exe uses the following case-insensitive command line options. A dash delimiter may be used in place of a slash. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Option</TH>
+<TH align=left width=84%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>none</TD>
+<TD width=84%>With no command line options, Wilogutl.exe runs in UI mode. See the following for a explanation of the UI dialog boxes.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>/q</TD>
+<TD width=84%>Specifies the quiet mode. Wilogutl.exe generates report files and displays no user interface. See below for an explanation of the report files.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>/l</TD>
+<TD width=84%>Specifies the name of the log file to be analyzed. This option is required when using the quiet mode.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>/o</TD>
+<TD width=84%>Specifies the output directory for report files. This is optional and may be used when running in quiet mode. If the <B>/</B>o option is not specified, the output directory location is specified in the Options dialog box. When in UI mode, the directory set with the /o option has no effect on the directory selected in the user interface. </TD>
+</TR>
+</TABLE><BR>
+
+<P>When run in UI mode, Wilogutl.exe displays the following dialog boxes.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=38%>Dialog Box Name</TH>
+<TH align=left width=62%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>Windows Installer Verbose Log Analyzer</TD>
+<TD width=62%>The first dialog box displayed. Enables users to select a log file for analysis. <B>Open</B> button opens the file in Notepad. The preview area can be used to verify that the correct log file has been selected. The <B>Analyze</B> button begins log file analysis and displays the Detailed Log File View dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>Detailed Log File View</TD>
+<TD width=62%>Displays logged error information. Use the <B>Back</B> and <B>Next</B> buttons to navigate through multiple errors. To display non-critical errors select the <B>Show Ignored Debug Errors </B>checkbox. The installer version on the computer used to run the logged installation is displayed. If the logged installation was run with elevated permissions, the <B>Elevated install </B>checkbox is selected and information is provided in the <B>Client Side Privilege Details</B> and <B>Server Side Privilege Details </B>text boxes. The Detailed Log File View dialog box contains the following buttons:
+<P><B>States</B> - Show the Feature and Component States dialog box.</P>
+
+<P><B>Properties</B> - Show the Properties dialog box.</P>
+
+<P><B>Policies</B> - Show the Policies dialog box.</P>
+
+<P><B>HTML Annotated Log</B> - Show log as annotated HTML file.</P>
+
+<P><B>Save Results</B> - Save report files to specified directory.</P>
+
+<P><B>Error Message Help</B> - Show installer error message help.</P>
+
+<P><B>Help</B> - Show help for Windows Installer Setup Log Analyzer.</P>
+
+<P><B>How to Read a Log File</B> - Show the log file help document.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>Options</TD>
+<TD width=62%>The Options dialog box is available from the Operations menu on the Detailed Log File View dialog. The options dialog allows you to edit the HTML colors used by the HTML annotated log. The output directory is the current directory for the report files. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>Feature and Component States</TD>
+<TD width=62%>The Feature and Component States dialog box displays the states of features and components. The <B>Feature</B> column shows the name for the feature in the installation package. The <B>Component</B> column shows the name of the component in the installation package. The <B>Installed</B> column shows the feature or component's state at the end of the installation. The <B>Request</B> column shows the user's selection during the installation for the feature or component's state. The <B>Action</B> column shows the action taken by the installer for the feature or component. For more information, see <A HREF="qref_47l1.htm"><B>MsiGetComponentState</B></A> and <A HREF="qref_3wmd.htm"><B>MsiGetFeatureState</B></A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>Properties</TD>
+<TD width=62%>The <B>Properties</B> dialog box shows Windows Installer <A HREF="prop_1xyr.htm">properties</A> and their values at the end of the installation. You can sort the properties by <B>name</B> or by <B>value</B>. The <B>Client</B> tab shows properties and values during the client side portion of the installation. The <B>Server</B> tab shows properties and values during the server portion of the installation. The <B>Nested</B> tab shows the properties and values of any nested installations.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>Policies</TD>
+<TD width=62%>The <B>Policies</B> dialog box displays the <A HREF="over_37ll.htm">system policy</A> set after the installation. A value of <B>0</B> set for the policy means the policy is not enabled. A value of <B>1 </B>means the policy was enabled. A value of <B>?</B> means the policy value was not recorded in the log. If you need a policy value that is not in the log, try using <B>Regedit.exe</B> to check the registry keys on the computer failing the installation. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Report Files</H4>
+
+<P>When performing a quiet mode analysis or clicking the <B>Save Results</B> button on the <B>Detailed Log File View</B> dialog, the Windows Installer Setup Analyzer tool generates three text files and an HTML annotated log file. The names and contents in these report files are as follows. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Filename</TH>
+<TH align=left width=77%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>logfilename_summary.txt</TD>
+<TD width=77%>Summarizes the log file. Lists the information displayed by the Detailed Log File View dialog box and the first error.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>logfilename_errors.txt</TD>
+<TD width=77%>The number of errors, the errors, and recommended solutions. This file lists both critical and non-critical errors.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>logfilename_policies.txt</TD>
+<TD width=77%>Policy names and values set at the end of the installation as in the Policies dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>details_logfilename.htm</TD>
+<TD width=77%>An HTML annotated log with a legend for the color coding.  </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Return Values</H4>
+
+<P>If invalid command line arguments are passed for quiet mode operations, Wilogutl.exe takes no action and the WILogUtil.exe process returns one of the values in the following table. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=15%>Value</TH>
+<TH align=left width=85%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>1</TD>
+<TD width=85%>Bad output directory specified</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>2</TD>
+<TD width=85%>Bad log file name specified</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>3</TD>
+<TD width=85%>Passed /q, but missing required switch /l for the log file name</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>4</TD>
+<TD width=85%>Passed /l, but missing required switch /q for quiet mode</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="app_9303.htm">Windows Installer Development Tools</A> </P>
+
+<P></P>
+
+<P></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Wilogutl.exe;%20RELEASE:%20August%202001;%20URL:%20app_3w11.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Wilogutl.exe;%20RELEASE:%20August%202001;%20URL:%20app_3w11.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

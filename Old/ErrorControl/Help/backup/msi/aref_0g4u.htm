@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>RegisterUser Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="RegisterUser Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_registeruser_action"></A>RegisterUser Action</H1>
+
+<P>The RegisterUser action registers the user information with the installer to identify the user of a product.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>None.</P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Registered user information</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The RegisterUser action is not performed during an administrative installation. If the product identifier entered by the user has not been validated by the <A HREF="aref_0cdq.htm">ValidateProductID action</A>, the <A HREF="pref_6et5.htm">ProductID property</A> is not set and this action does nothing.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="pref_9shl.htm">USERNAME property</A>, <A HREF="pref_5oc9.htm">COMPANYNAME property</A>, <A HREF="pref_6et5.htm">ProductID property</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

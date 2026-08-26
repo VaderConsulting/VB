@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE52</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE52 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice52"></A>ICE52</H1>
+
+<P>ICE52 checks for private properties in the <A HREF="tref_0w9x.htm">AppSearch table</A>. See <A HREF="prop_0ylv.htm">About Properties</A>.</P>
+
+<P>When using Windows 2000 all properties set in the Property column of the AppSearch table must be public properties.</P>
+
+<H4>Result</H4>
+
+<P>ICE52 posts a warning if there is a private property in the AppSearch table.</P>
+
+<H4>Example</H4>
+
+<P>ICE52 posts the following warning for the example shown.</P>
+
+<PRE>Property 'Property2' in AppSearch row 'Property2'.'Signature2' 
+    is not public. It should be all uppercase. </PRE>
+
+<P><A HREF="tref_0w9x.htm"><B>AppSearch Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>Property</TH>
+<TH align=left width=49%>Signature</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>PROPERTY1</TD>
+<TD width=49%>Signature1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>Property2</TD>
+<TD width=49%>Signature2</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix this warning change to the custom public property: PROPERTY2.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

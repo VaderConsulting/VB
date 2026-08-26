@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>InstallODBC Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="InstallODBC Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_installodbc_action"></A>InstallODBC Action</H1>
+
+<P>The InstallODBC action installs the drivers, translators, and data sources in the <A HREF="tref_457p.htm">ODBCDriver table</A>, <A HREF="tref_6msl.htm">ODBCTranslator table</A>, and <A HREF="tref_359h.htm">ODBCDataSource table</A>. If a driver or translator already exists, the InstallODBC action makes SQL calls necessary to carry out the installation.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The InstallODBC action does not copy or remove files and therefore must come after actions that copy or remove files.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>For each driver installed.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Driver description. The ODBC driver key.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[2]</TD>
+<TD width=84%>ComponentId</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[3]</TD>
+<TD width=84%>Folder</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[4, 5, …]</TD>
+<TD width=84%>Attribute and Value pairs from <A HREF="tref_0mat.htm">ODBCAttribute</A>.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For each translator installed.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Driver description. The ODBC driver key.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[2]</TD>
+<TD width=84%>ComponentId</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[3]</TD>
+<TD width=84%>Folder</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[4, 5, …]</TD>
+<TD width=84%>Attribute and Value pairs from <A HREF="tref_0mat.htm">ODBCAttribute</A>.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For each data source installed.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Driver description. The ODBC driver key.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[2]</TD>
+<TD width=84%>ComponentId</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[3]</TD>
+<TD width=84%>Registration: ODBC_ADD_DSN or ODBC_ADD_SYS_DSN</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[4, 5, …]</TD>
+<TD width=84%>Attribute and Value pairs from <A HREF="tref_0mat.htm">ODBCAttribute</A>.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The ODBC Driver Manager must be authored in the installer package and a component named ODBCDriverManager must be included. The manager will be installed if necessary. To rename the component set a property named ODBCDriverManager to the new name of the component.</P>
+
+<P>The InstallODBC action queries the <A HREF="tref_359h.htm">ODBCDataSource table</A> and the <A HREF="tref_3yat.htm">ODBCSourceAttribute table</A> for each data source to be installed and the attributes of the data source. The InstallODBC action queries the <A HREF="tref_457p.htm">ODBCDriver table</A> and the <A HREF="tref_6msl.htm">ODBCTranslator table</A> for each driver and translator selected for installation. The InstallODBC action queries the <A HREF="tref_0mat.htm">ODBCAttribute table</A> for the attributes of the drivers and translators.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

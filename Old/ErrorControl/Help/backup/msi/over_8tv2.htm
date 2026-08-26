@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Preparing a Windows Installer Package for Localization</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_preparing_a_windows_installer_package_for_localization"></A>Preparing a Windows Installer Package for Localization</H2>
+
+<P>Localization of a Windows Installer package into multiple languages can be greatly facilitated by doing the following:
+
+<UL>
+	<LI>Author a base installation database that is code page neutral. See <A HREF="over_9zxh.htm">Creating a database with a neutral code page</A>. The code page of the localized database can then be set by importing a text archive table with a non-neutral code page into the base database. See <A HREF="over_5tb9.htm">Setting the code page of a database</A>.</LI>
+
+	<LI>Organize files requiring localization into separate components and install these files into separate directories. This ensures that two localized packages never install identically named files into the same directory. </LI>
+</UL>
+
+<P>For example, a worldwide application using the following resources may have three components.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Component</TH>
+<TH align=left width=63%>Resource</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>WORLD</TD>
+<TD width=63%>worldwide.exe</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>WORLD</TD>
+<TD width=63%>worldwide registry entries</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>WORLD</TD>
+<TD width=63%>worldwide shortcut</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ENG</TD>
+<TD width=63%>engui.dll</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>ENG</TD>
+<TD width=63%>readme.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>FRA</TD>
+<TD width=63%>fraui.dll</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>FRA</TD>
+<TD width=63%>readme.txt</TD>
+</TR>
+</TABLE><BR>
+
+<P>The files that need to be localized may be installed into the following directories.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Location</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>[ProgramFilesFolder]\World\worldwide.exe</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>[ProgramFilesFolder]\World\English\engui.dll</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>[ProgramFilesFolder]\World\English\readme.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>[ProgramFilesFolder]\World\French\fraui.dll</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>[ProgramFilesFolder]\World\French\readme.txt</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

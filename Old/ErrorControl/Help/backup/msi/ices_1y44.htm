@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE74</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE74">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice74"></A>ICE74</H1>
+
+<P>ICE74 verifies that the <A HREF="pref_81kp.htm">FASTOEM property</A> has not been authored into the <A HREF="tref_21d1.htm">Property table</A>. </P>
+
+<P>The FASTOEM property enables OEMs to reduce the time required to install Windows Installer applications for the first time. It cannot be used after the first install. The FASTOEM property must not be authored in the Property table because this interferes with subsequent installations for the maintenance, removal, or repair of the application.</P>
+
+<H4>Result</H4>
+
+<P>ICE74 posts an error if the FASTOEM property has been set in the Property table.</P>
+
+<H4>Example</H4>
+
+<P>ICE74 reports the following error if the FASTOEM property is set:</P>
+
+<PRE>The FASTOEM property cannot be authored in the Property table.
+</PRE>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Property</TH>
+<TH align=left width=71%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>FASTOEM</TD>
+<TD width=71%>1</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix this error remove the FASTOEM property from the Property Table. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="pref_81kp.htm">FASTOEM property</A>, <A HREF="tref_21d1.htm">Property table</A>, <A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

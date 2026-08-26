@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Returning Values from an External User Interface Handler</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="using MsiSetExternalUI [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="using MsiSetExternalUI [Windows Installer],returning values">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_returning_values_from_an_external_user_interface_handler"></A>Returning Values from an External User Interface Handler</H3>
+
+<P>An external user interface handler can return any number of values to Windows Installer depending on the button type provided in the message type parameter Windows Installer passes to the handler.</P>
+
+<P>The external user interface handler can return the values -1 and 0 at any time because these are not related to the button types. A return value of -1 indicates that an internal error occurred in the external user interface handler. A return value of 0 indicates that the external user interface handler has not handled the Windows Installer message and the installer must handle the message instead.</P>
+
+<P>For messages that do not include a button type, such as  INSTALLMESSAGE_ACTIONDATA and INSTALLMESSAGE_PROGRESS, returning IDCANCEL cancels the installation. Returning IDOK notifies the installer that the message was handled by the external user interface handler.</P>
+
+<P>The remaining return values, as described below, are directly related to the button types that are included with the message type.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>External User Interface Return Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>IDOK</TD>
+<TD width=52%><B>OK</B> button was pressed by the user. The message information was understood.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>IDCANCEL</TD>
+<TD width=52%><B>CANCEL</B> button was pressed. Cancel the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>IDABORT</TD>
+<TD width=52%><B>ABORT</B> button was pressed. Abort the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>IDRETRY</TD>
+<TD width=52%><B>RETRY</B> button was pressed. Try action again.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>IDIGNORE</TD>
+<TD width=52%><B>IGNORE</B> button was pressed. Ignore the error and continue.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>IDYES</TD>
+<TD width=52%><B>YES</B> button was pressed. The affirmative response, continue with current sequence of events..</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>IDNO</TD>
+<TD width=52%><B>NO</B> button was pressed. The negative response, do not continue with current sequence of events. </TD>
+</TR>
+</TABLE><BR>
+
+<P>For example, if the external user interface handler is sent a message with the MB_ABORTRETRYIGNORE message box styles flag, the external UI handler can return one of the following values:
+
+<UL>
+	<LI>-1 (error in external UI handler)</LI>
+
+	<LI>0 (no action taken in external UI handler, let Windows Installer handle it)</LI>
+
+	<LI>IDABORT (abort button pressed)</LI>
+
+	<LI>IDRETRY (retry button pressed)</LI>
+
+	<LI>IDIGNORE (ignore button pressed)</LI>
+</UL>
+
+<PRE>int   WINAPI  MyMessageHandler(LPVOID pvContext, UINT iMessageType, LPCTSTR szMessage)
+{
+    INSTALLMESSAGE mt = (INSTALLMESSAGE)(0xFF000000&amp;(UINT)iMessageType);
+    UINT uiButtons_Icons = (0x00FFFFFF&amp;(UINT)iMessageType);
+    switch (mt)
+    {
+        case INSTALLMESSAGE_ERROR:
+            // Since the data passed to the external UI handler
+            // consists of the message and the message box styles,
+            // call the Win32 API MessageBox with the provided
+            // string.
+            return MessageBox(NULL, szMessage, TEXT("ERROR"),  uiButtons_Icons);
+        case INSTALLMESSAGE_FATALEXIT:
+            return MessageBox(NULL, szMessage, TEXT("FATALEXIT"),  uiButtons_Icons);
+        default:
+            return 0; // do not handle the message, let Windows Installer handle it
+    }
+}</PRE>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Returning%20Values%20from%20an%20External%20User%20Interface%20Handler;%20RELEASE:%20August%202001;%20URL:%20hand_9tbm.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Returning%20Values%20from%20an%20External%20User%20Interface%20Handler;%20RELEASE:%20August%202001;%20URL:%20hand_9tbm.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

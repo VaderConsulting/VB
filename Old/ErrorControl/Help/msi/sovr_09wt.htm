@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using the Summary Information Stream</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_using_the_summary_information_stream"></A>Using the Summary Information Stream</H1>
+
+<P>This section describes which functions in the Microsoft® Windows® installer API can call the summary information stream properties. For more information on the summary information stream and how it works with databases, see <A HREF="sovr_7q99.htm">About the Summary Information Stream</A>. 
+
+<UL>
+	<LI>It is important to remember that the installer contains different types of databases, and some properties of the summary information stream have different meanings with different databases. For more information, see <A HREF="sovr_6cfn.htm">Summary Property Descriptions</A>.</LI>
+
+	<LI>When a database is opened as the output of another database, the summary information stream of the output database is actually a read-only mirror of the original database and thus cannot be changed. Additionally, it will not be persisted with the database. To create or modify the summary information for the output database it must be closed and re-opened.</LI>
+</UL>
+
+<P>The following steps describe how to use the summary information stream functions:</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To use the summary information stream properties</B>
+
+<OL>
+	<LI>Obtain a handle to the summary information stream database by calling the <A HREF="qref_5dpq.htm"><B>MsiGetSummaryInformation</B></A> function.</LI>
+
+	<LI>Call the <A HREF="qref_4z5g.htm"><B>MsiSummaryInfoGetPropertyCount</B></A> function to obtain the number of existing properties.</LI>
+
+	<LI>Call the <A HREF="qref_1ypl.htm"><B>MsiSummaryInfoGetProperty</B></A> function to view a single summary information property.</LI>
+
+	<LI>Call the <A HREF="qref_9bax.htm"><B>MsiSummaryInfoSetProperty</B></A> function to set a single property</LI>
+
+	<LI>Call the <A HREF="qref_65ys.htm"><B>MsiSummaryInfoPersist</B></A> function to save the summary information property. </LI>
+</OL>
+
+<P></P>
+
+<P></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%20the%20Summary%20Information%20Stream;%20RELEASE:%20August%202001;%20URL:%20sovr_09wt.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%20the%20Summary%20Information%20Stream;%20RELEASE:%20August%202001;%20URL:%20sovr_09wt.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

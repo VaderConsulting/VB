@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Generating a Transform</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_generating_a_transform"></A>Generating a Transform</H2>
+
+<P>The following procedure describes a scenario to generate a transform that permanently hides a feature.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To permanently hide a product feature</B>
+
+<OL>
+	<LI>Copy the original installation package. </LI>
+
+	<LI>Alter the copy by setting the value of the Display column in the <A HREF="tref_0a91.htm">Feature table</A> to zero. This specifies hiding the feature. </LI>
+
+	<LI>Create a transform from the original installation package to the new installation packages by calling <A HREF="qref_29rh.htm"><B>MsiDatabaseGenerateTransform</B></A>.</LI>
+
+	<LI>Create the summary information in the transform by calling <A HREF="qref_5zlb.htm"><B>MsiCreateTransformSummaryInfo</B></A>.</LI>
+</OL>
+
+<P>The transform is then ready to be applied during installation. For more information, see <A HREF="updat_22ib.htm">Applying Transforms</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

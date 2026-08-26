@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiDigitalCertificate Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiDigitalCertificate table">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_crypto2_digital_certificates">
+</OBJECT>
+<OBJECT ID="hhobj_2" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_security_security">
+</OBJECT>
+<OBJECT ID="hhobj_3" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_crypto2_cert_context">
+</OBJECT>
+<OBJECT ID="hhobj_4" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_winverifytrust">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msidigitalcertificate_table"></A>MsiDigitalCertificate Table</H1>
+
+<P>The MsiDigitalCertificate table stores certificates in binary stream format and associates each certificate with a primary key. The primary key is used to share certificates among multiple digitally signed objects. A digital certificate is a credential that provides a means to verify identity. For more information, see <A HREF="JavaScript:hhobj_1.Click()">Digital Certificates</A> in the <A HREF="JavaScript:hhobj_2.Click()">Security</A> section of the Microsoft® Platform Software Development Kit (SDK). </P>
+
+<P>Windows Installer version 2.0 can only verify the digital signatures of external cabinets, and only by the use of <A HREF="tref_7h7p.htm">MsiDigitalSignature table</A> and MsiDigitalCertificate table. The MsiDigitalSignature and MsiDigitalCertificate tables are available with Windows Installer 2.0 and later versions. </P>
+
+<P>Windows Installer version 2.0 uses digital signatures as a means to detect corrupted resources. A signer certificate may be compared to the signer certificate of an external resource to be installed by the package. </P>
+
+<P>The MsiDigitalCertificate table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Column</TH>
+<TH align=left width=35%>Type</TH>
+<TH align=left width=12%>Key</TH>
+<TH align=left width=18%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>DigitalCertificate</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=12%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>CertData</TD>
+<TD width=35%><A HREF="tref_8ghl.htm">Binary</A></TD>
+<TD width=12%>&nbsp;</TD>
+<TD width=18%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>DigitalCertificate</DT>
+
+<DD>Identifies the digital signature certificate. Primary key of table</DD>
+
+<DT>CertData</DT>
+
+<DD>The binary representation of the digital certificate. The CertData column contains the encoded byte array of a certificate context. This is the <B>pbCertEncoded</B> member of the <A HREF="JavaScript:hhobj_3.Click()"><B>CERT_CONTEXT</B></A> structure. The certificate context can be obtained by calling <A HREF="JavaScript:hhobj_4.Click()"><B>WinVerifyTrust</B></A><B>,</B> <B>MsiGetFileSignatureInformation</B>, or by importing a .cer file.
+</DD>
+</DL>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_9gdq.htm"><B>MsiGetFileSignatureInformation</B></A>, <A HREF="tref_7h7p.htm">MsiDigitalSignature table</A>, <A HREF="over_6boy.htm">Digital Signatures and Windows Installer</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiDigitalCertificate%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_1t2d.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiDigitalCertificate%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_1t2d.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

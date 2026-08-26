@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Error Codes</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Windows Installer, error codes">
+<META NAME="MS-HKWD" CONTENT="error codes [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_error_codes"></A>Error Codes</H1>
+
+<P>These error codes are returned by the Windows Installer API, MsiExec.exe, and InstMsi.exe. Note that any error in Winerror.h (such as ERROR_INVALID_DATA, included here) can be returned as well.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=36%>Error Code</TH>
+<TH align=left width=16%>Value</TH>
+<TH align=left width=48%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_SUCCESS</TD>
+<TD width=16%>0</TD>
+<TD width=48%>Action completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INVALID_DATA</TD>
+<TD width=16%>13</TD>
+<TD width=48%>The data is invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INVALID_PARAMETER</TD>
+<TD width=16%>87</TD>
+<TD width=48%>One of the parameters was invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_SERVICE_FAILURE</TD>
+<TD width=16%>1601</TD>
+<TD width=48%>The Windows Installer service could not be accessed. Contact your support personnel to verify that the Windows Installer service is properly registered.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_USEREXIT</TD>
+<TD width=16%>1602</TD>
+<TD width=48%>User cancel installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_FAILURE</TD>
+<TD width=16%>1603</TD>
+<TD width=48%>Fatal error during installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_SUSPEND</TD>
+<TD width=16%>1604</TD>
+<TD width=48%>Installation suspended, incomplete.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_UNKNOWN_PRODUCT</TD>
+<TD width=16%>1605</TD>
+<TD width=48%>This action is only valid for products that are currently installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_UNKNOWN_FEATURE</TD>
+<TD width=16%>1606</TD>
+<TD width=48%>Feature ID not registered.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_UNKNOWN_COMPONENT</TD>
+<TD width=16%>1607</TD>
+<TD width=48%>Component ID not registered.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_UNKNOWN_PROPERTY</TD>
+<TD width=16%>1608</TD>
+<TD width=48%>Unknown property.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INVALID_HANDLE_STATE</TD>
+<TD width=16%>1609</TD>
+<TD width=48%>Handle is in an invalid state.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_BAD_CONFIGURATION</TD>
+<TD width=16%>1610</TD>
+<TD width=48%>The configuration data for this product is corrupt. Contact your support personnel.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INDEX_ABSENT</TD>
+<TD width=16%>1611</TD>
+<TD width=48%>Component qualifier not present.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_SOURCE_ABSENT </TD>
+<TD width=16%>1612</TD>
+<TD width=48%>The installation source for this product is not available.  Verify that the source exists and that you can access it.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_PACKAGE_VERSION</TD>
+<TD width=16%>1613</TD>
+<TD width=48%>This installation package cannot be installed by the Windows Installer service. You must install a Windows service pack that contains a newer version of the Windows Installer service.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_PRODUCT_UNINSTALLED</TD>
+<TD width=16%>1614</TD>
+<TD width=48%>Product is uninstalled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_BAD_QUERY_SYNTAX</TD>
+<TD width=16%>1615</TD>
+<TD width=48%>SQL query syntax invalid or unsupported.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INVALID_FIELD</TD>
+<TD width=16%>1616</TD>
+<TD width=48%>Record field does not exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_ALREADY_RUNNING</TD>
+<TD width=16%>1618</TD>
+<TD width=48%>Another installation is already in progress. Complete that installation before proceeding with this install.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_PACKAGE_OPEN_FAILED</TD>
+<TD width=16%>1619</TD>
+<TD width=48%>This installation package could not be opened. Verify that the package exists and that you can access it, or contact the application vendor to verify that this is a valid Windows Installer package.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_PACKAGE_INVALID</TD>
+<TD width=16%>1620</TD>
+<TD width=48%>This installation package could not be opened. Contact the application vendor to verify that this is a valid Windows Installer package.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_UI_FAILURE</TD>
+<TD width=16%>1621</TD>
+<TD width=48%>There was an error starting the Windows Installer service user interface. Contact your support personnel.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_LOG_FAILURE</TD>
+<TD width=16%>1622</TD>
+<TD width=48%>Error opening installation log file.  Verify that the specified log file location exists and is writable.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_LANGUAGE_UNSUPPORTED</TD>
+<TD width=16%>1623</TD>
+<TD width=48%>This language of this installation package is not supported by your system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_TRANSFORM_FAILURE</TD>
+<TD width=16%>1624</TD>
+<TD width=48%>Error applying transforms. Verify that the specified transform paths are valid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_PACKAGE_REJECTED</TD>
+<TD width=16%>1625</TD>
+<TD width=48%>This installation is forbidden by system policy. Contact your system administrator.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_FUNCTION_NOT_CALLED</TD>
+<TD width=16%>1626</TD>
+<TD width=48%>Function could not be executed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_FUNCTION_FAILED</TD>
+<TD width=16%>1627</TD>
+<TD width=48%>Function failed during execution.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INVALID_TABLE</TD>
+<TD width=16%>1628</TD>
+<TD width=48%>Invalid or unknown table specified.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_DATATYPE_MISMATCH</TD>
+<TD width=16%>1629</TD>
+<TD width=48%>Data supplied is of wrong type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_UNSUPPORTED_TYPE</TD>
+<TD width=16%>1630</TD>
+<TD width=48%>Data of this type is not supported.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_CREATE_FAILED</TD>
+<TD width=16%>1631</TD>
+<TD width=48%>The Windows Installer service failed to start. Contact your support personnel.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_TEMP_UNWRITABLE</TD>
+<TD width=16%>1632</TD>
+<TD width=48%>The temp folder is either full or inaccessible. Verify that the temp folder exists and that you can write to it.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_PLATFORM_UNSUPPORTED</TD>
+<TD width=16%>1633</TD>
+<TD width=48%>This installation package is not supported on this platform. Contact your application vendor.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_NOTUSED</TD>
+<TD width=16%>1634</TD>
+<TD width=48%>Component not used on this machine</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_PATCH_PACKAGE_OPEN_FAILED</TD>
+<TD width=16%>1635</TD>
+<TD width=48%>This patch package could not be opened. Verify that the patch package exists and that you can access it, or contact the application vendor to verify that this is a valid Windows Installer patch package.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_PATCH_PACKAGE_INVALID</TD>
+<TD width=16%>1636</TD>
+<TD width=48%>This patch package could not be opened. Contact the application vendor to verify that this is a valid Windows Installer patch package.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_PATCH_PACKAGE_UNSUPPORTED</TD>
+<TD width=16%>1637</TD>
+<TD width=48%>This patch package cannot be processed by the Windows Installer service. You must install a Windows service pack that contains a newer version of the Windows Installer service.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_PRODUCT_VERSION</TD>
+<TD width=16%>1638</TD>
+<TD width=48%>Another version of this product is already installed. Installation of this version cannot continue. To configure or remove the existing version of this product, use Add/Remove Programs on the Control Panel.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INVALID_COMMAND_LINE</TD>
+<TD width=16%>1639</TD>
+<TD width=48%>Invalid command line argument. Consult the Windows Installer SDK for detailed command line help.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_INSTALL_REMOTE_DISALLOWED</TD>
+<TD width=16%>1640</TD>
+<TD width=48%>Installation from a Terminal Server client session not permitted for current user.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_SUCCESS_REBOOT_INITIATED</TD>
+<TD width=16%>1641</TD>
+<TD width=48%>The installer has started a reboot. This error code not available on Windows Installer version 1.0.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_PATCH_TARGET_NOT_FOUND</TD>
+<TD width=16%>1642</TD>
+<TD width=48%>The installer cannot install the upgrade patch because the program being upgraded may be missing or the upgrade patch updates a different version of the program. Verify that the program to be upgraded exists on your computer and that you have the correct upgrade patch. 
+<P>This error code is not available on Windows Installer version 1.0.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=36%>ERROR_SUCCESS_REBOOT_REQUIRED</TD>
+<TD width=16%>3010</TD>
+<TD width=48%>A reboot is required to complete the install. This does not include installs where the ForceReboot action is run. This error code not available on Windows Installer version 1.0.</TD>
+</TR>
+</TABLE><BR>
+
+<P></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

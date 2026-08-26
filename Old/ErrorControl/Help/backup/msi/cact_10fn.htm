@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Deferred Execution Custom Actions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_deferred_execution_custom_actions"></A>Deferred Execution Custom Actions</H2>
+
+<P>The purpose of a deferred execution custom action is to delay the execution of a system change to the time when the installation script is executed. This differs from a regular custom action, or a standard action, in which the installer executes the action immediately upon encountering it in a sequence table or in a call to <A HREF="qref_9woe.htm"><B>MsiDoAction</B></A>. A deferred execution custom action enables a package author to specify system operations at a particular point within the execution of the installation script.</P>
+
+<P>The installer does not execute a deferred execution custom action at the time the installation sequence is processed. Instead the installer writes the custom action into the installation script. The only mode parameter the installer sets in this case is MSIRUNMODE_SCHEDULED. See <A HREF="qref_8u05.htm"><B>MsiGetMode</B></A> for a description of the run mode parameters. </P>
+
+<P>A deferred execution custom action must be scheduled in the execute sequence table within the section that performs script generation. Deferred execution custom actions must come after <A HREF="aref_0gby.htm">InstallInitialize</A> and come before <A HREF="aref_8l9q.htm">InstallFinalize</A> in the action sequence.</P>
+
+<P>Custom actions that set properties, feature states, component states, or target directories, or that schedule system operations by inserting rows into sequence tables, can in many cases use immediate execution safely. However, custom actions that change the system directly, or call another system service, must be deferred to the time when the installation script is executed. See <A HREF="cact_4qyb.htm">Synchronous and Asynchronous Custom Actions</A> for more information about potential clashes between their custom actions and the main installation thread.</P>
+
+<P>Because the installation script can be executed outside of the installation session in which it was written, the session may no longer exist during execution of the installation script. This means that the session handle and property data set during the installation sequence is not available to a deferred execution custom action. A custom action that calls a dynamic-link library (DLL) requires a handle to the installation session. Therefore if this is also a deferred execution custom action, the action must obtain its context information as described in <A HREF="cact_5fg3.htm">Obtaining Context Information for Deferred Execution Custom Actions</A>.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A>, <A HREF="cact_6a05.htm">Custom Action Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

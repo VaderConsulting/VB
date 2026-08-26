@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE64</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE64 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice64"></A>ICE64</H1>
+
+<P>ICE64 checks that new directories in the user profile are removed correctly in roaming scenarios. </P>
+
+<P>Failure to fix a warning or error reported by ICE64 generally leads to problems in completely cleaning the machine during an uninstallation. When a roaming user who has installed the application logs on to a computer for the first time, all of the profile is copied down onto the computer. On advertisement (which takes place after the roaming profile download), the Installer verifies that the directory is already there and therefore does not delete it on uninstallation. This leaves the directory on the user's computer permanently.</P>
+
+<H4>Result</H4>
+
+<P>ICE64 posts a warning or an error in a roaming situation if a new directory in the user profile that should be removed is not removed.</P>
+
+<H4>Example</H4>
+
+<P>ICE64 reports the following error for the example shown.</P>
+
+<PRE>The directory 'MyOtherFolder' is in the user profile but is not listed in the RemoveFile table.</PRE>
+
+<P>The folder 'MyOtherFolder' is a custom profile folder. Because it is not listed in the RemoveFile table, it is not removed in some scenarios.</P>
+
+<P>To fix this error, create a row for the folder in the RemoveFile table.</P>
+
+<P><A HREF="tref_6an9.htm"><B>Directory Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=41%>Directory</TH>
+<TH align=left width=32%>Directory_Parent</TH>
+<TH align=left width=27%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>AppDataFolder</TD>
+<TD width=32%>TARGETDIR </TD>
+<TD width=27%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>MyFolder</TD>
+<TD width=32%>AppDataFolder</TD>
+<TD width=27%>DataFolder</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%>MyOtherFolder</TD>
+<TD width=32%>AppDataFolder</TD>
+<TD width=27%>DataFolder2</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_7gth.htm"><B>RemoveFile Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>FileKey</TH>
+<TH align=left width=25%>Component_</TH>
+<TH align=left width=18%>FileName</TH>
+<TH align=left width=21%>DirProperty</TH>
+<TH align=left width=20%>InstallMode</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Key1</TD>
+<TD width=25%>Component1</TD>
+<TD width=18%> </TD>
+<TD width=21%>MyFolder</TD>
+<TD width=20%>2</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

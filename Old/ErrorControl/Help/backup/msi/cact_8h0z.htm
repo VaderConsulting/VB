@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action Return Values</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_custom_action_return_values"></A>Custom Action Return Values</H2>
+
+<P>If the <B>msidbCustomActionTypeContinue</B> return processing option is not set, the custom action must return an integer status code from the following table.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=44%>Return value</TH>
+<TH align=left width=56%>Description </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>ERROR_FUNCTION_NOT_CALLED</TD>
+<TD width=56%>Action not executed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>ERROR_SUCCESS</TD>
+<TD width=56%>Completed actions successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>ERROR_INSTALL_USEREXIT</TD>
+<TD width=56%>User terminated prematurely.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>ERROR_INSTALL_FAILURE</TD>
+<TD width=56%>Unrecoverable error occurred.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>ERROR_NO_MORE_ITEMS</TD>
+<TD width=56%>Skip remaining actions, not an error.</TD>
+</TR>
+</TABLE><BR>
+
+<P>See <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A> for more information about the <B>msidbCustomActionTypeContinue</B> option and other return processing options.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

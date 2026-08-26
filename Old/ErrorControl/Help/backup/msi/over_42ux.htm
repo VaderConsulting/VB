@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I search for a registry entry and create a property holding the value of the registry?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_how_do_i_search_for_a_registry_entry_and_create_a_property_holding_the_value_of_the_registry"></A>How do I search for a registry entry and create a property holding the value of the registry?</H2>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To search for a registry entry and create a property holding the value of that file</B>
+
+<OL>
+	<LI>Do not add the signature to the <A HREF="tref_149x.htm">Signature table</A> or the <A HREF="tref_771h.htm">CompLocator table</A>. If a file signature is listed in the AppSearch table and is not listed in the Signature or CompLocator tables, the installer looks in the RegLocator table.</LI>
+
+	<LI>Specify the registry entry to be searched for in the RegLocator table. If the signature is absent from the Signature table and the value of the Type column is msidbLocatorTypeRawValue then the search is assumed to be for the particular registry key name pointed to by the RegLocator table.
+<P><A HREF="tref_91wl.htm"><B>RegLocator Table</B></A><B> (partial)</B>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>Signature_</TH>
+<TH align=left width=8%>Root</TH>
+<TH align=left width=33%>Key</TH>
+<TH align=left width=12%>Name</TH>
+<TH align=left width=33%>Type</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>AppValue</TD>
+<TD width=8%>2</TD>
+<TD width=33%>SOFTWARE\Microsoft\MyApp</TD>
+<TD width=12%>Myname</TD>
+<TD width=33%>msidbLocatorTypeRawValue</TD>
+</TR>
+</TABLE><BR>
+</LI>
+
+	<LI>Finally, populate the AppSearch Table so that the <A HREF="aref_16zy.htm">AppSearch Action</A> returns the value of AppValue. After the installer executes the AppSearch action, the value of MYREGVAL is the value of AppValue.
+<P><A HREF="tref_0w9x.htm"><B>AppSearch Table</B></A><B> (partial)</B>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Property</TH>
+<TH align=left width=79%>Signature</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>MYREGVAL</TD>
+<TD width=79%>AppValue</TD>
+</TR>
+</TABLE><BR>
+</LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

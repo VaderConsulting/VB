@@ -1,0 +1,167 @@
+Attribute VB_Name = "modDatabase"
+Option Explicit
+
+Public DBConn As ADODB.Connection
+Public LogConn As ADODB.Connection
+
+Public Function AssertAgentKeepAlive() As Boolean
+  On Error GoTo AssertAgentKeepAliveError
+  AssertAgentKeepAlive = False
+  
+  If (AgentID < 0) Then Exit Function
+  
+  LogConn.Execute "UPDATE tblDistroAgentReg SET LastRegistration = GETDATE() WHERE AgentID = " & AgentID
+  
+  AssertAgentKeepAlive = True
+  Exit Function
+AssertAgentKeepAliveError:
+  Exit Function
+End Function
+
+Public Function FetchAgentConfiguration(ByRef TmrInt As Integer, _
+                                        ByRef MaxProc As Integer, _
+                                        ByRef ExMode As Boolean) As Boolean
+                                      
+  On Error GoTo FetchAgentConfigurationError
+  FetchAgentConfiguration = False
+  Dim CSCDB1 As Recordset
+  Set CSCDB1 = New ADODB.Recordset
+  
+  FetchAgentConfiguration = True
+  Exit Function
+FetchAgentConfigurationError:
+  Exit Function
+End Function
+
+Public Function RegisterAgent() As Integer
+  Dim MiscD As Double
+  Dim CSCDB1 As Recordset
+  Dim RowsAffected As Integer
+  Dim MiscI As Integer
+  Dim isFound As Boolean
+  
+  On Error GoTo RegisterAgentError
+  RegisterAgent = -1
+  CloseDatabase
+  If Not OpenDatabase(True) Then Exit Function
+  
+  Set CSCDB1 = New ADODB.Recordset
+  CSCDB1.Open "SELECT * FROM tblDistroAgentReg WHERE Hostname = '" & UCase(Environ("ComputerName")) & "'", DBConn, 3
+  
+  If (CSCDB1.RecordCount > 1) Then ' Multiple Records Found
+    CSCDB1.Close
+    CloseDatabase
+    Exit Function
+  End If
+  If (CSCDB1.RecordCount = 1) Then ' Existing Config Found
+    MiscI = CInt(CSCDB1("AgentID"))
+    If (MiscI > 0) Then
+      MiscD = (Log(MiscI) / Log(2))
+    Else
+      MiscD = 0.5
+    End If
+    If (MiscD = Int(MiscD)) Then RegisterAgent = MiscI ' Valid AgentID
+    CSCDB1.Close
+    CloseDatabase
+    Exit Function
+  End If
+  
+  ' No Previous Record Found
+  ' Parse tblDistroAgentReg searching for a new AgentID number
+  
+  CSCDB1.Close
+  CSCDB1.Open "SELECT * FROM tblDistroAgentReg ORDER BY AgentID", DBConn
+  
+  MiscI = 1
+  isFound = False
+  Do While Not CSCDB1.EOF And Not isFound
+    If (Int(CSCDB1("AgentID")) <> MiscI) Then
+      isFound = True
+    Else
+      MiscI = MiscI * 2
+    End If
+    CSCDB1.MoveNext
+  Loop
+  CSCDB1.Close
+  DBConn.Execute "INSERT INTO tblDistroAgentReg (AgentID,Hostname) VALUES(" & MiscI & ",'" & UCase(Environ("ComputerName")) & "')"
+  RegisterAgent = MiscI
+  
+  CloseDatabase
+  Exit Function
+RegisterAgentError:
+  RegisterAgent = -1
+  Exit Function
+End Function
+  End If
+  SQL = SQL + " WHERE TaskID = " & TaskID
+  DBConn.Execute SQL
+  
+  Set CSCDB1 = Nothing
+  
+  ProcessSchedule = True
+  Exit Function
+ProcessScheduleError:
+  ProcessSchedule = False
+  Exit Function
+End Function
+
+Public Function FindATask(isTakeControl As Boolean) As Integer
+  Dim CSCDB1 As Recordset
+  Dim SQL As String
+  
+  On Error GoTo FindATaskError
+  FindATask = 0
+  Set CSCDB1 = New ADODB.Recordset
+  
+  CloseDatabase
+  OpenDatabase False
+  SQL = "SELECT TOP 1 * FROM tblDistroTasks WHERE"
+  SQL = SQL + " Status = 0 AND (NextDateTime <= GETDATE())"
+  If (ExclusiveMode) Then
+    SQL = SQL + " AND (AgentAllow = " & AgentID & ")"
+  Else
+    SQL = SQL + " AND (AgentAllow & " & AgentID & " <> 0)"
+  End If
+  SQL = SQL + " AND (AgentRunning & " & AgentID & " = 0)"
+  SQL = SQL + " AND (NumInstance < MaxInstance)"
+  SQL = SQL + " ORDER BY NextDateTime DESC"
+  CSCDB1.Open SQL, DBConn, adOpenForwardOnly
+  
+  If (CSCDB1.EOF) Then
+    CSCDB1.Close
+    CloseDatabase
+    Exit Function
+  End If
+  If isTakeControl Then SetStatus CSCDB1("TaskID"), 1
+  FindATask = CSCDB1("TaskID")
+  CSCDB1.Close
+  
+  CloseDatabase
+  Exit Function
+FindATaskError:
+  FindATask = 0
+  Exit Function
+End Function
+
+'Public Function cSQLDateTime(ByVal Dte As Date) As String
+'  Dim s As String
+'  If Not IsDate(Dte) Then
+'    cSQLDateTime = ""
+'    Exit Function
+'  End If
+'  s = CStr(Month(Dte))
+'  If (Len(s) < 2) Then s = "0" + s
+'  If (Day(Dte) < 10) Then s = s + "0"
+'  s = s + CStr(Day(Dte))
+'  cSQLDateTime = CStr(Year(Dte)) + s + " " + CStr(DoubleDigit(Hour(Dte))) + ":" + CStr(DoubleDigit(Minute(Dte))) + ":" + CStr(DoubleDigit(Second(Dte)))
+'End Function
+
+'Function DoubleDigit(i)
+'  Dim s As String
+'  s = CStr(i)
+'  While (Len(s) < 2)
+'    s = "0" + s
+'  Wend
+'  DoubleDigit = s
+'End Function
+

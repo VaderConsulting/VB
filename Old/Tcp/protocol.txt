@@ -1,0 +1,67 @@
+                                     Distrotasks protocol
+                                  --------------------------
+Commands in following format:
+  Xxxx:parm,info
+X may be either S, R, or A
+
+S=Server initiated
+R=Client initiated
+A=Authorisation request (usually from client)
+
+xxx = Hexadecimal number referring to an internal command, represented below
+parm = string representing optional information
+info = string representing extra client info
+
+Note - Left hand columns are (S)erver and (C)lient.  These indicate of the respective application
+supports this command yet.  Legend as follows; "X" is Fully Supported, "-" is Not Needed, " " is Not Supported Yet
+
+
+                                      C O M M A N D S
+                                   ---------------------
+S C  COMMAND          DIRECTION    EXPLANATION
+- -  -----------------------------------------------------------------------------------------
+X X  A001:parm        S <-  C      Authorisation request, parm = password [required]
+X X  A001:OK          S  -> C      Authorisation success
+X X  A001:NAK         S  -> C      Authorisation failure
+X X  R101:parm        S <-  C      Client sending computername (for configuration)
+X X  S101:OK,ID       S  -> C      Configuration response (success), ID = AgentID
+X X  S101:NAK         S  -> C      Configuration response (failure)
+X X  R102:            S <-  C      Client ready to receive tasks 
+X X  S102:OK          S  -> C      Server response to R102:, Success
+X X  S102:ERR         S  -> C      Server response to R102:, Failure
+- X  R103:parm        S <-  C      Client sending username
+- -  S103:OK          S  -> C      Server response to R103:
+  X  S104:            S  -> C      Start Client
+  X  R104:OK          S <-  C      Client started
+  X  S105:            S  -> C      Stop Client
+  X  R105:OK          S <-  C      Client stopped
+X    S106:ID,PATH     S  -> C      Create process, ID = Task ID, PATH = full path to .exe|.bat|.com
+     R106:ID,PID      S <-  C      Process running, ID = Task ID, PID = Process ID
+     R106:ID,ERR      S <-  C      Create Process Error, ID = Task ID
+     S107:ID          S  -> C      Stop process, ID = Task ID to kill (NOT PID!)
+     R107:ID          S <-  C      Process stopped, ID = Task ID
+     S108:            S  -> C      Stop all processes Agent has created (response is R107:)
+     S109:            S  -> C      Server requesting list of processes (response is R106:)
+     R109:ID,PID      S <-  C      List of all processes, ID = Task ID, PID = Process ID.  "0,0" Means no More Processes
+     S10A:parm        S  -> C      Change MasterHost, parm = new Hostname
+     R10A:OK          S <-  C      Client response to S10A:
+     S10B:parm        S  -> C      Change MasterPort, parm = new port number
+     R10B:OK          S <-  C      Client response to S10B:
+     S10C:ID          S  -> C      Server requesting CPU utilisation, ID = CPU Number
+     R10C:parm        S <-  C      Client response to S10C:, parm = CPU x percentage utilisation
+     S10D:            S  -> C      Server requesting local time from client
+     R10D:parm        S <-  C      Client response to S10D:, parm = time
+     S10E:parm        S  -> C      Server requesting client change local time, parm = time
+     R10E:OK          S <-  C      Client response to S10E:
+     S10F:PATH1,PATH2 S  -> C      Server requesting client copy file, PATH1 = Source, PATH2 = Destination
+     R10F:OK          S <-  C      Client response to S10F:
+     S110:PATH        S  -> C      Server requesting client register file, PATH = full path to .dll|.ocx
+     R110:OK          S <-  C      Client response to S110:
+
+     S1FC:parm        S  -> C      Server sending Alerts, parm = alerter fields separated by CHR(7).
+     S1FD:parm        S >>> C      Server broadcast to all clients master shutdown in progress
+     R1FD:parm        S <<< C      Client broadcasting general messages, parm = message
+     S1FE:            S  -> C      Repeat last string
+     R1FE:            S <-  C      Repeat last string
+     S1FF:            S  -> C      Shutdown client
+

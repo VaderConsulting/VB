@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Updating Summary Information for an Upgrade</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_updating_summary_information_for_an_upgrade"></A>Updating Summary Information for an Upgrade</H2>
+
+<P>The package code of the upgrade package must be changed from that of the original product. The package code is stored in the <A HREF="sref_1am1.htm"><B>Revision Number Summary</B> Property</A>. For details, see <A HREF="over_7zub.htm">Package Codes</A>. Use Msiinfo.exe, or another editor, to change the summary information of MNP2001.msi as described in <A HREF="samp_2s32.htm">Adding Summary Information</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Summary information property</TH>
+<TH align=left width=24%>Data</TH>
+<TH align=left width=50%>Notes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_80hl.htm"><B>Template</B></A> 
+<P>(Platform and Language)</P>
+</TD>
+<TD width=24%> ;1033</TD>
+<TD width=50%>Platform and language used by the database. Leaving the platform field empty indicates the package is platform independent. The <A HREF="pref_7aex.htm"><B>ProductLanguage</B> property</A> from the database is typically used for this summary property. The sample's Language ID indicates that the package uses U.S. English.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_1am1.htm"><B>Revision Number</B></A>
+<P>(Package Code)</P>
+</TD>
+<TD width=24%>{A0EC5348-1D02-4FF6-93F5-61BD7AC1772E}</TD>
+<TD width=50%>This is the package code <A HREF="tref_7kf8.htm">GUID</A> that uniquely identifies the sample package. If you reproduce this sample, use a utility such as GUIDGEN to generate a different GUID for your package. The results of GUIDGEN contain lowercase characters, note that you must change all lowercase characters to uppercase for a valid package code. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_8eex.htm"><B>Page Count</B></A>
+<P>(Minimum Installer Version)</P>
+</TD>
+<TD width=24%>110</TD>
+<TD width=50%>For Windows Installer version 1.0, this property should be set to the integer 100. For Windows Installer version 1.1, this property should be set to the integer 110.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_8ge1.htm"><B>Word Count</B></A>
+<P>(Type of Source)</P>
+</TD>
+<TD width=24%>0</TD>
+<TD width=50%>The global source type for the package is long file names and uncompressed. For more information, see <A HREF="over_44z7.htm">Compressed and Uncompressed Sources</A> and the description of the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_82rd.htm"><B>Title</B></A></TD>
+<TD width=24%>Installation Database</TD>
+<TD width=50%>Informs users that this database is for an installation rather than a transform or a patch.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_0b5l.htm"><B>Subject</B></A></TD>
+<TD width=24%>MNP2001</TD>
+<TD width=50%>File browsers can display this as the product to be installed with this database. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_7xfd.htm"><B>Keywords</B></A></TD>
+<TD width=24%>Installer, MSI, Database</TD>
+<TD width=50%>File browsers that are capable of keyword searching can search for these words.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_76k9.htm"><B>Author</B></A></TD>
+<TD width=24%>Microsoft Corporation</TD>
+<TD width=50%>Name of the product's manufacturer. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_4lfd.htm"><B>Comments</B></A></TD>
+<TD width=24%>This installer database contains the logic and data required to install Notepad.</TD>
+<TD width=50%>Informs users about the purpose of this database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_4qrd.htm"><B>Creating Application</B></A></TD>
+<TD width=24%>Orca</TD>
+<TD width=50%>Application used to create the installation database. The sample specifies the Orca database editor as an example.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><A HREF="sref_2mbd.htm"><B>Security</B></A></TD>
+<TD width=24%>0</TD>
+<TD width=50%>The sample database is unrestricted read-write.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_7zub.htm">Package Codes</A> </P>
+
+<P><A HREF="samp_2elh.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Updating%20Summary%20Information%20for%20an%20Upgrade;%20RELEASE:%20August%202001;%20URL:%20samp_9g11.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Updating%20Summary%20Information%20for%20an%20Upgrade;%20RELEASE:%20August%202001;%20URL:%20samp_9g11.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FeatureCost property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FeatureCost property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_featurecost_property"></A><A NAME="helpid_msiengine_featurecost"></A>FeatureCost Property</H1>
+
+<P>The FeatureCost property of the <A HREF="vref_8xis.htm"><B>Session</B> object</A> returns the total amount of disk space (in units of 512 bytes) required by the specified feature and its parent features (up to the root of the Feature table). For each feature, the total cost is made up of the disk costs attributed to every component linked to the feature.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.FeatureCost(<I>feature, costTree, state</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_8xis.htm"><B>Session</B> object</A></DD>
+
+<DT><I>feature</I></DT>
+
+<DD>Required string name of the feature item whose cost is to be retrieved.</DD>
+
+<DT><I>costTree</I></DT>
+
+<DD>Required portion of the feature tree branch to cost, one of the following:
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Part to cost</TH>
+<TH align=left width=13%>Value</TH>
+<TH align=left width=53%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiCostTreeSelfOnly</TD>
+<TD width=13%>0</TD>
+<TD width=53%>Cost feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiCostTreeChildren</TD>
+<TD width=13%>1</TD>
+<TD width=53%>Cost children features.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiCostTreeParents</TD>
+<TD width=13%>2</TD>
+<TD width=53%>Cost parent features.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>state</I></DT>
+
+<DD>Required element that specifies the action state to use when determining the feature cost. For example, if msiInstallStateLocal is specified, FeatureCost returns the disk space required if the specified feature and all its parent features were to be installed locally.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Action state name</TH>
+<TH align=left width=14%>Value</TH>
+<TH align=left width=52%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiInstallStateLocal</TD>
+<TD width=14%>3</TD>
+<TD width=52%>Disk space required if the specified feature and all its parent features were to be installed locally</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiInstallStateSource</TD>
+<TD width=14%>4</TD>
+<TD width=52%>Disk space required if the specified feature and all its parent features were to be installed to run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiInstallStateDefault</TD>
+<TD width=14%>5</TD>
+<TD width=52%>If installed, the item is to be reinstalled in the same state.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

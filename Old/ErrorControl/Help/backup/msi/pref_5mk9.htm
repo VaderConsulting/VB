@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>OutOfNoRbDiskSpace Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="OutOfNoRbDiskSpace Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_outofnorbdiskspace_property"></A>OutOfNoRbDiskSpace Property</H1>
+
+<P>The installer sets the OutOfNoRbDiskSpace property to True if any volume that is a target of the installation has insufficient disk space to accommodate the installation. In this case, the OutOfNoRbDiskSpace property is set to True even if rollback has been disabled. If all volumes have sufficient space, the value is False.</P>
+
+<P>A developer of an installation package can handle the situation when the <A HREF="pref_5m2h.htm">OutOfDiskSpace property</A> is True and the OutOfNoRbDiskSpace property is False by authoring a user interface that presents the user with an option to disable rollback and continue the installation. For information about conditionally displaying a dialog box, see <A HREF="hand_5fhz.htm">ControlEvent Overview</A>. For information about disabling rollback, see <A HREF="href_7awk.htm">EnableRollback ControlEvent</A>.</P>
+
+<P>The OutOfNoRbDiskSpace property is valid at any time after the <A HREF="aref_22we.htm">CostFinalize action</A> has been executed. The OutOfNoRbDiskSpace property status is dynamically updated any time the total install cost is recalculated (for example, any time the install state of any feature is changed via the <A HREF="href_9llz.htm">Selection dialog</A>). Selection resolution actions use this value to cancel an installation and generate a dialog box.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="hand_5fhz.htm">ControlEvent Overview</A>, <A HREF="pref_5m2h.htm">OutOfDiskSpace property</A>, <A HREF="href_7awk.htm">EnableRollback ControlEvent</A>, <A HREF="aref_22we.htm">CostFinalize action</A>, <A HREF="href_9llz.htm">Selection dialog</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

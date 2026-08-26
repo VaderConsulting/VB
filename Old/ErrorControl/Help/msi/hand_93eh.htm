@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Adding Text Stored in a Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_adding_text_stored_in_a_property"></A>Adding Text Stored in a Property</H2>
+
+<P>The example described in the section titled <A HREF="hand_6at4.htm">Authoring a Conditional "Please Wait . . . " Message Box</A> displays a dialog box with text that reads: "Please wait while disk space costing is completed." This could be done simply by putting a <A HREF="href_4s30.htm">Text Control</A> on the dialog box and entering the text string into the Text column of the <A HREF="tref_6nad.htm">Control table</A>. In this case, the information about the font style must be embedded in the string. The author must set the font and font style by prefixing the character string with {\<I>style</I>}. Where <I>style</I> is a font style identifier listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. This method of adding text is illustrated several times in <A HREF="samp_2k11.htm">An Installation Example</A>. </P>
+
+<P>An author of a user interface can also store text in a property. The following example illustrates this and shows how ControlEvents can be used to display alternative text strings.</P>
+
+<P>The objective in this example is again to put up a WaitForCosting dialog box while a background task is running. The difference with the new scenario is that if the user cancels the WaitForCosting dialog box and then tries to activate the control before the background task has finished a second time, the WaitForCosting box reappears displaying an alternative message: "Disk space costing is still running. You can continue to wait or return to the main selection box to exit this sequence." </P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To display a "Please Wait" dialog box that displays alternative messages</B>
+
+<OL>
+	<LI>Begin by adding a conditional WaitForCosting dialog box to a Selection dialog box as described in <A HREF="hand_6at4.htm">Authoring a Conditional "Please Wait . . . " Message Box</A>. </LI>
+
+	<LI>Put a <A HREF="href_4s30.htm">Text Control</A> on the WaitForCosting dialog box by authoring a record in the <A HREF="tref_6nad.htm">Control table</A>. Enter the identifier of the WaitForCosting dialog box into the Dialog_ column. Enter the identifier of the Text control into the Control column. Specify the type of control as Text in the Type column. </LI>
+
+	<LI>Specify the <A HREF="href_2w6d.htm">Position control attribute</A> for the text control by entering the horizontal and vertical coordinates of the control's upper left corner in the X and Y columns of the <A HREF="tref_6nad.htm">Control table</A>. Use pixels as distance units. </LI>
+
+	<LI>Specify the width and height of the text control by entering these dimensions into the Width and Height columns of the <A HREF="tref_6nad.htm">Control table</A>. Use pixels as length units. </LI>
+
+	<LI>The Property and Control_Next columns of the Control table do not affect Text controls and can be left blank in this case. </LI>
+
+	<LI>Specify the control attributes for the text control that are associated with bit flags. Add the individual bit values together and enter the total into the Attributes column of the Control table. These are the <A HREF="href_8bqd.htm">Visible</A>, <A HREF="href_0vad.htm">Sunken</A>, <A HREF="href_2ig5.htm">Enabled</A>, <A HREF="href_6yxx.htm">Transparent</A>, <A HREF="href_7srp.htm">NoWrap</A>, and <A HREF="href_0b8l.htm">NoPrefix</A> control attributes. The combination of bits that display a text control on an opaque background, with wrapping text is 0, therefore enter 0 or leave the Attributes column blank.</LI>
+
+	<LI>The Text column of the Control table can be left blank. The Text control displays the text string that is the value of the <A HREF="href_2kmd.htm">Text</A> control attribute. The method for setting this attribute is described in subsequent steps of this procedure. </LI>
+
+	<LI>Add a record in the <A HREF="tref_21d1.htm">Property table</A> to define the FirstMessage message property. This property is a string containing the font style and text for the first message. Enter the name FirstMessage in the Property column. In the Value column, enter the string: "{\WaitStyle}Please wait while disk space costing is completed." Where WaitStyle<I> </I>is an identifier for one of the font styles listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. </LI>
+
+	<LI>Add a record in the <A HREF="tref_21d1.htm">Property table</A> to define the SecondMessage message property. This property is a string containing the font style and text for the second message. Enter the name SecondMessage in the Property column. In the Value column enter the string: "{\WaitStyle}Disk space costing is still running. You can continue to wait or return to the main selection box to exit this sequence." </LI>
+
+	<LI>Add a record in the <A HREF="tref_21d1.htm">Property table</A> to define the WaitMessage message property. This property is a string containing the font style and text for the message displayed in the WaitForCosting dialog box if the user tries to activate a pushbutton before costing is completed. Enter the name WaitMessage in the Property column. In the Value column of the Property table enter: FirstMessage.</LI>
+
+	<LI>Add a <A HREF="href_7nuc.htm">SetProperty ControlEvent</A> to the <A HREF="tref_6k11.htm">ControlEvent table</A> that initializes Waitmessage to FirstMessage each time a new Selection Dialog box opens. Enter the identifier for the dialog box that comes just before the Selection Dialog in the dialog box sequence into the Dialog_ column. Enter the identifier for the control on this dialog box used to open the Selection Dialog box into the Control_ column. Enter [WaitMessage] into the Event column. Enter [FirstMessage] into the Argument column. Enter 1 into the Condition column and leave the Ordering column blank.</LI>
+
+	<LI>Add a <A HREF="href_7nuc.htm">SetProperty ControlEvent</A> to the <A HREF="tref_6k11.htm">ControlEvent table</A> that sets Waitmessage to SecondMessage if the user closes the WaitForCosting dialog box before disk space costing has completed. Enter the identifier for the WaitForCosting dialog box into the Dialog_ column. Enter the identifier for the Text control into the Control_ column. Enter [WaitMessage] into the Event column. Enter [SecondMessage] into the Argument column. Enter NOT <A HREF="pref_7kah.htm"><B>CostingComplete</B></A> into the Condition column and leave the Ordering column blank.</LI>
+
+	<LI>The following step links the Text control attribute to the ControlEvent that spawns the WaitForCosting dialog box. This causes the installer to pass the value of the WaitMessage property to the Text control attribute each time the user opens a WaitForCosting dialog box. </LI>
+
+	<LI>Subscribe the Text control attribute of the Text control to the <A HREF="href_95ro.htm">SpawnWaitDialog ControlEvent</A> that opens the WaitForCosting dialog box by adding a record to the <A HREF="tref_6m3p.htm">EventMapping table</A>. Enter the identifier for the WaitForCosting dialog box in the Dialog_ column. Enter the identifier for the Text control into the Control_ column. Enter SpawnWaitDialog into the Event column. Enter Text, the identifier for the Text control attribute, into the Attribute column of the EventMapping table.</LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Adding%20Text%20Stored%20in%20a%20Property;%20RELEASE:%20August%202001;%20URL:%20hand_93eh.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Adding%20Text%20Stored%20in%20a%20Property;%20RELEASE:%20August%202001;%20URL:%20hand_93eh.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

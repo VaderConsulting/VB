@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>REINSTALLMODE Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="REINSTALLMODE Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_reinstallmode_property"></A>REINSTALLMODE Property</H1>
+
+<P>The <B>REINSTALLMODE</B> property is a string containing letters specifying the type of reinstall to perform. Options are case-insensitive and order-independent. This property should normally always be used in conjunction with the <A HREF="pref_19x5.htm"><B>REINSTALL</B></A> property. However, this property can also be used during install, not just reinstall.</P>
+
+<H4>Default Value</H4>
+
+<P>By default the <B>REINSTALLMODE</B> is "omus".</P>
+
+<P><B>Reinstall Option Codes</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Code</TH>
+<TH align=left width=79%>Option</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>p</TD>
+<TD width=79%>Reinstall only if file is missing (i.e., verify that the file is present).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>o</TD>
+<TD width=79%>Reinstall if file is missing, or an older version is present.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>e</TD>
+<TD width=79%>Reinstall if file is missing, or an equal or older version is present</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>d</TD>
+<TD width=79%>Reinstall if file is missing, or a different version is present</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>c</TD>
+<TD width=79%>Reinstall if file is missing, or corrupt. This option only repairs files that have <B>msidbFileAttributesChecksum</B> in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>a</TD>
+<TD width=79%>Force all files to be reinstalled, regardless of checksum or version.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>u</TD>
+<TD width=79%>Rewrite all required registry entries from the <A HREF="tref_3obp.htm">Registry table</A> that go to the<BR>
+ <B>HKEY_CURRENT_USER or HKEY_USERS <BR>
+</B>registry hive.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>m</TD>
+<TD width=79%>Rewrite all required registry entries from the <A HREF="tref_3obp.htm">Registry table</A> that go to the <BR>
+<B>HKEY_LOCAL_MACHINE or HKEY_CLASSES_ROOT <BR>
+</B>registry hive. Rewrite all information from the <A HREF="tref_5n8l.htm">Class table</A>, <A HREF="tref_3kdh.htm">Verb table</A>, <A HREF="tref_7xt1.htm">PublishComponent table</A>, <A HREF="tref_4x5x.htm">ProgID table</A>, <A HREF="tref_3sh1.htm">MIME table</A>, <A HREF="tref_7vmt.htm">Icon table</A>, <A HREF="tref_219h.htm">Extension table</A>, and <A HREF="tref_6p2d.htm">AppID table</A>  regardless of machine or user assignment. Reinstall all <A HREF="msi_3vn8.htm">qualified components.</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>s</TD>
+<TD width=79%>Reinstall all shortcuts and re-cache all icons overwriting any existing shortcuts and icons.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>v</TD>
+<TD width=79%>Use to run from the source package and re-cache the local package. Do not use the v reinstall option code for the first installation of an application or feature.</TD>
+</TR>
+</TABLE><BR>
+
+<P>If the <B>REINSTALLMODE</B> property is defined without the <B>REINSTALL</B> property defined, then the specified "detection" modes still apply; however, only those features that are selected normally for install are actually "reinstalled". Thus, in this case, <B>REINSTALLMODE</B> actually specifies the "overwrite" mode for a normal install.</P>
+
+<P>The option codes for this property correspond to the <A HREF="app_73eb.htm">command line option</A> '/f'. The command line option has a default value of 'pecms'.</P>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;Only those files containing checksum information are ever verified and repaired. The REINSTALLMODE_FILEVERIFY flag (c option above) only repairs files that have <B>msidbFileAttributesChecksum</B> in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20REINSTALLMODE%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_7bll.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20REINSTALLMODE%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_7bll.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

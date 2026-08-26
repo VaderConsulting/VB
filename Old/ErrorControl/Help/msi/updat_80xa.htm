@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I prevent an old package from installing over a newer version?</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_how_do_i_prevent_an_old_package_from_installing_over_a_newer_version"></A>How do I prevent an old package from installing over a newer version?</H1>
+
+<P>Windows Installer upgrade packages can be authored such that they will not install if the user has a newer version already installed. See also <A HREF="updat_2cs3.htm">Preparing an Application for Future Major Upgrades</A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To prevent an old package from installing over a newer version.</B>
+
+<OL>
+	<LI>Enter the <A HREF="pref_7mux.htm"><B>UpgradeCode</B> property</A> for the group of related products that may be eligible to receive this upgrade into the UpgradeCode column of the <A HREF="tref_4qxx.htm">Upgrade Table</A>.</LI>
+
+	<LI>Enter the <B>msidbUpgradeAttributesOnlyDetect</B> bit flag in the Attributes column of the Upgrade Table.</LI>
+
+	<LI>Enter the version of the upgrade provided by this package into the VersionMin column of the Upgrade Table. Leave the VersionMax column blank.</LI>
+
+	<LI>Enter the name of the property that is to be set by the <A HREF="aref_4rse.htm">FindRelatedProducts action</A> into the ActionProperty column of the Upgrade table.</LI>
+
+	<LI>Add the <A HREF="pref_1eux.htm"><B>SecureCustomProperties</B> Property</A> and the property named in the ActionProperty column of the <A HREF="tref_4qxx.htm">Upgrade Table</A> to the <A HREF="tref_21d1.htm">Property Table</A>. </LI>
+
+	<LI>Add a <A HREF="cact_07i1.htm">Custom Action Type 19</A> after the FindRelatedProducts action in the <A HREF="tref_5pid.htm">InstallExecuteSequence Table</A>. Include a record in the <A HREF="tref_71b9.htm">CustomAction table</A> for this action and enter the text to be displayed in the Target column. The type 19 custom action is built into the installer and there's no code you need to write.</LI>
+
+	<LI>Enter the name of the ActionProperty into the Condition column of the record in InstallExecuteSequence table containing the Custom Action Type 19. This conditions the custom action such that it will only be executed when the Upgrade table detects that a newer version is already installed. 
+<P>For example, a Windows Installer package that upgrades a group of related products to version 3.0 may include the following records in its Upgrade, CustomAction, InstallExecuteSequence, and Property tables. All the related products in the group have the same UpgradeCode, but the installer does not install this upgrade package if a version later than 3.0 is already installed on the computer. In this case, the installer presents an error message and the installation fails. The version 3.0 upgrade package will install over versions 1.0 and 2.0.
+
+<P><A HREF="tref_4qxx.htm"><B>Upgrade Table</B></A>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>UpgradeCode</TH>
+<TH align=left width=13%>VersionMin</TH>
+<TH align=left width=13%>VersionMax</TH>
+<TH align=left width=11%>Language</TH>
+<TH align=left width=19%>Attributes</TH>
+<TH align=left width=10%>Remove</TH>
+<TH align=left width=20%>ActionProperty</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>{E7BE6D45-49FF-4701-A17E-BDCC98CE180D}</TD>
+<TD width=13%>3.0</TD>
+<TD width=13%>&nbsp;</TD>
+<TD width=11%> </TD>
+<TD width=19%><B>msidbUpgradeAttributesOnlyDetect</B></TD>
+<TD width=10%> </TD>
+<TD width=20%>NEWPRODUCTFOUND</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>{E7BE6D45-49FF-4701-A17E-BDCC98CE180D}</TD>
+<TD width=13%>1.0</TD>
+<TD width=13%>3.0</TD>
+<TD width=11%> </TD>
+<TD width=19%><B>msidbUpgradeAttributesVersionMinInclusive</B></TD>
+<TD width=10%> </TD>
+<TD width=20%>UPGRADEFOUND</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_71b9.htm"><B>CustomAction Table</B></A>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Action</TH>
+<TH align=left width=17%>Type</TH>
+<TH align=left width=15%>Source</TH>
+<TH align=left width=43%>Target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>CA1</TD>
+<TD width=17%>19</TD>
+<TD width=15%> </TD>
+<TD width=43%>A higher upgrade is already installed. </TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_5pid.htm"><B>InstallExecuteSequence Table</B></A>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Action</TH>
+<TH align=left width=37%>Condition</TH>
+<TH align=left width=21%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>FindRelatedProducts</TD>
+<TD width=37%> </TD>
+<TD width=21%>200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>CA1</TD>
+<TD width=37%>NEWPRODUCTFOUND</TD>
+<TD width=21%>201</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Property</TH>
+<TH align=left width=58%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%><B>SecureCustomProperties</B></TD>
+<TD width=58%>NEWPRODUCTFOUND;UPGRADEFOUND</TD>
+</TR>
+</TABLE><BR>
+</LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20prevent%20an%20old%20package%20from%20installing%20over%20a%20newer%20version%3F;%20RELEASE:%20August%202001;%20URL:%20updat_80xa.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20prevent%20an%20old%20package%20from%20installing%20over%20a%20newer%20version%3F;%20RELEASE:%20August%202001;%20URL:%20updat_80xa.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

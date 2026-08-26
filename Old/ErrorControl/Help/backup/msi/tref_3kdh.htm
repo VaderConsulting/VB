@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Verb Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Verb Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_verb_table"></A>Verb Table</H1>
+
+<P>The Verb table contains command-verb information associated with file extensions that must be generated as a part of product advertisement. Each row generates a set of registry keys and values. </P>
+
+<P>The Verb table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Column</TH>
+<TH align=left width=41%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Extension_</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Verb</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Sequence</TD>
+<TD width=41%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Command</TD>
+<TD width=41%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Argument</TD>
+<TD width=41%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Extension_</DT>
+
+<DD>The extension associated with the table row. This column is an external key to the first column of the <A HREF="tref_219h.htm">Extension table</A>.</DD>
+
+<DT>Verb</DT>
+
+<DD>The verb for the command.</DD>
+
+<DT>Sequence</DT>
+
+<DD>The sequence of the commands. Only verbs for which the Sequence column is non-Null are used to prepare an ordered list for the default value of the shell key. The Verb with the lowest value in this column becomes the default verb.</DD>
+
+<DT>Command</DT>
+
+<DD>The localizable text displayed on the context menu.</DD>
+
+<DT>Argument</DT>
+
+<DD>Value for the command arguments.
+
+<P>Note that the resolution of properties in the Argument field is limited. A property formatted as [<I>Property</I>] in this field can only be resolved if the property already has the intended value when the component owning the verb is installed. For example, for the argument "[#MyDoc.doc]" to resolve to the correct value, the same process must be installing the file MyDoc.doc and the component that owns the verb. 
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is referred to when the <A HREF="aref_1epa.htm">RegisterExtensionInfo action</A> or the <A HREF="aref_738u.htm">UnregisterExtensionInfo action</A> is executed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

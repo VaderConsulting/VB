@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Commit Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Commit Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_commit_method"></A><A NAME="helpid_msidatabase_commit"></A>Commit Method</H1>
+
+<P>The <B>Commit</B> method of the <A HREF="vref_64dw.htm"><B>Database</B> object</A> finalizes the persistent form of the database. All persistent data is written to the writeable database, and no temporary columns or rows are written. This method has no effect on a database opened as read-only. This method can be called multiple times to save the current state of tables loaded into memory. When the database is finally closed, any changes made subsequent to the last <B>Commit</B> are rolled back. This method is normally called prior to shutdown when all database changes have been finalized.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.Commit</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_64dw.htm"><B>Database</B> object</A>
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

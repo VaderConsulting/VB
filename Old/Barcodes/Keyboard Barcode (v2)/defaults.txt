@@ -1,0 +1,9 @@
+## This file describes the default settings
+##
+Database=
+DefaultMode=1
+modes=modes.txt
+partNumbers=partnumbers.txt
+Serials=serials.txt
+Types=types.txt
+UnlockPassword=123456

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I prevent an old package from installing over a newer version?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_how_do_i_prevent_an_old_package_from_installing_over_a_newer_version"></A>How do I prevent an old package from installing over a newer version?</H1>
+
+<P>Windows Installer upgrade packages can be authored such that they will not install if the user has a newer version already installed. See also <A HREF="updat_2cs3.htm">Preparing an Application for Future Major Upgrades</A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To prevent an old package from installing over a newer version.</B>
+
+<OL>
+	<LI>Enter the <A HREF="pref_7mux.htm">UpgradeCode property</A> for the group of related products that may be eligible to receive this upgrade into the UpgradeCode column of the <A HREF="tref_4qxx.htm">Upgrade Table</A>.</LI>
+
+	<LI>Enter the msidbUpgradeAttributesOnlyDetect bit flag in the Attributes column of the Upgrade Table.</LI>
+
+	<LI>Enter the version of the upgrade provided by this package into the VersionMin column of the Upgrade Table. Leave the VersionMax column blank.</LI>
+
+	<LI>Enter the name of the property that is to be set by the <A HREF="aref_4rse.htm">FindRelatedProducts action</A> into the ActionProperty column of the Upgrade table.</LI>
+
+	<LI>Add the <A HREF="pref_1eux.htm">SecureCustomProperties Property</A> and the property named in the ActionProperty column of the <A HREF="tref_4qxx.htm">Upgrade Table</A> to the <A HREF="tref_21d1.htm">Property Table</A>. </LI>
+
+	<LI>Add a <A HREF="cact_07i1.htm">Custom Action Type 19</A> after the FindRelatedProducts action in the <A HREF="tref_5pid.htm">InstallExecuteSequence Table</A>. Include a record in the <A HREF="tref_71b9.htm">CustomAction table</A> for this action and enter the text to be displayed in the Target column. The type 19 custom action is built into the installer and there's no code you need to write.</LI>
+
+	<LI>Enter the name of the ActionProperty into the Condition column of the record in InstallExecuteSequence table containing the Custom Action Type 19. This conditions the custom action such that it will only be executed when the Upgrade table detects that a newer version is already installed. 
+<P>For example, a Windows Installer package that upgrades a group of related products to version 3.0 may include the following records in its Upgrade, CustomAction, InstallExecuteSequence, and Property tables. All the related products in the group have the same UpgradeCode, but the installer does not install this upgrade package if a version later than 3.0 is already installed on the computer. In this case, the installer presents an error message and the installation fails. The version 3.0 upgrade package will install over versions 1.0 and 2.0.
+
+<P><A HREF="tref_4qxx.htm"><B>Upgrade Table</B></A>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>UpgradeCode</TH>
+<TH align=left width=13%>VersionMin</TH>
+<TH align=left width=13%>VersionMax</TH>
+<TH align=left width=11%>Language</TH>
+<TH align=left width=19%>Attributes</TH>
+<TH align=left width=10%>Remove</TH>
+<TH align=left width=20%>ActionProperty</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>{E7BE6D45-49FF-4701-A17E-BDCC98CE180D}</TD>
+<TD width=13%>3.0</TD>
+<TD width=13%>&nbsp;</TD>
+<TD width=11%> </TD>
+<TD width=19%>msidbUpgradeAttributesOnlyDetect</TD>
+<TD width=10%> </TD>
+<TD width=20%>NEWPRODUCTFOUND</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>{E7BE6D45-49FF-4701-A17E-BDCC98CE180D}</TD>
+<TD width=13%>1.0</TD>
+<TD width=13%>3.0</TD>
+<TD width=11%> </TD>
+<TD width=19%>msidbUpgradeAttributesVersionMinInclusive</TD>
+<TD width=10%> </TD>
+<TD width=20%>UPGRADEFOUND</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_71b9.htm"><B>CustomAction Table</B></A>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Action</TH>
+<TH align=left width=16%>Type</TH>
+<TH align=left width=11%>Source</TH>
+<TH align=left width=49%>Target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>CA1</TD>
+<TD width=16%>19</TD>
+<TD width=11%> </TD>
+<TD width=49%>A higher upgrade is already installed. </TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_5pid.htm"><B>InstallExecuteSequence Table</B></A>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Action</TH>
+<TH align=left width=40%>Condition</TH>
+<TH align=left width=26%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>FindRelatedProducts</TD>
+<TD width=40%> </TD>
+<TD width=26%>200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>CA1</TD>
+<TD width=40%>NEWPRODUCTFOUND</TD>
+<TD width=26%>201</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A>
+</LI>
+</OL>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=47%>Property</TH>
+<TH align=left width=53%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>SecureCustomProperties</TD>
+<TD width=53%>NEWPRODUCTFOUND;UPGRADEFOUND</TD>
+</TR>
+</TABLE><BR>
+
+<P></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

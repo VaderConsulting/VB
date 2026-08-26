@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Standard Actions Reference</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_standard_actions_reference"></A>Standard Actions Reference</H1>
+
+<P>The Microsoft® Windows® Installer has the following standard actions. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Action name</TH>
+<TH align=left width=70%>Brief description of action</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_4hbi.htm">ADMIN</A></TD>
+<TD width=70%>A top-level action used for an administrative installation. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_2o8e.htm">ADVERTISE</A></TD>
+<TD width=70%>A top-level action called to install or remove advertised components.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_8sha.htm">AllocateRegistrySpace</A> </TD>
+<TD width=70%>Validates that the free space specified by <A HREF="pref_8upl.htm">AVAILABLEFREEREG</A> exists in the registry.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_16zy.htm">AppSearch</A></TD>
+<TD width=70%>Searches for previous versions of products and determines upgrades are installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_3ar2.htm">BindImage</A></TD>
+<TD width=70%>Binds executables to imported DLLs.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_77se.htm">CCPSearch</A></TD>
+<TD width=70%>Uses file signatures to validate that qualifying products are installed on a system before an upgrade installation is performed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_22we.htm">CostFinalize</A></TD>
+<TD width=70%>Ends the internal installation costing process begun by the <A HREF="aref_4bam.htm">CostInitialize action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_4bam.htm">CostInitialize</A></TD>
+<TD width=70%>Starts the installation costing process. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_6p0u.htm">CreateFolders</A></TD>
+<TD width=70%>Creates empty folders for components.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_7uzy.htm">CreateShortcuts</A></TD>
+<TD width=70%>Creates shortcuts. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_8qb2.htm">DeleteServices</A></TD>
+<TD width=70%>Removes system services.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_6bla.htm">DisableRollback </A></TD>
+<TD width=70%>Disables rollback for the remainder of the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_7yr2.htm">DuplicateFiles</A></TD>
+<TD width=70%>Duplicates files installed by the InstallFiles action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_3b1q.htm">ExecuteAction</A></TD>
+<TD width=70%>Checks the EXECUTEACTION property to determine which top-level action begins the execution sequence, then runs that action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_2f8u.htm">FileCost</A></TD>
+<TD width=70%>Initializes disk cost calculation with the Installer. Disk costing is not finalized until the CostFinalize action is executed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_4rse.htm">FindRelatedProducts</A></TD>
+<TD width=70%>Detects correspondence between the <A HREF="tref_4qxx.htm">Upgrade table</A> and installed products.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_69bi.htm">ForceReboot</A></TD>
+<TD width=70%>Used in the action sequence to prompt the user for a reboot of the system during the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_986m.htm">INSTALL</A></TD>
+<TD width=70%>A top-level action called to install or remove components.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_9tpq.htm">InstallAdminPackage</A></TD>
+<TD width=70%>Copies the installer database to the administrative installation point. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_2sku.htm">InstallExecute</A></TD>
+<TD width=70%>Runs a script containing all operations spooled since either the start of the installation or the last InstallFinalize action. Does not end the transaction.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_3hym.htm">InstallFiles</A></TD>
+<TD width=70%>Copies files from the source to the destination directory.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_8l9q.htm">InstallFinalize</A></TD>
+<TD width=70%>Runs a script containing all operations spooled since either the start of the installation or the last InstallFinalize action. Marks the end of a transaction. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_0gby.htm">InstallInitialize</A></TD>
+<TD width=70%>Marks the beginning of a transaction. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_3eem.htm">InstallSFPCatalogFile</A> </TD>
+<TD width=70%>The InstallSFPCatalogFile action installs the catalogs used by Microsoft® Windows® Millennium Edition for Windows File Protection. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_9fzi.htm">InstallValidate</A></TD>
+<TD width=70%>Verifies all volumes with attributed costs have sufficient space for the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_71gu.htm">IsolateComponents</A></TD>
+<TD width=70%>Processes the <A HREF="tref_6jc5.htm">IsolatedComponent table</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_6jhq.htm">LaunchConditions</A></TD>
+<TD width=70%>Evaluates a set of conditional statements contained in the LaunchCondition table that must all evaluate to True before the installation will proceed. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_61wu.htm">MigrateFeatureStates</A></TD>
+<TD width=70%>Migrates current feature states to the pending installation. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_15pq.htm">MoveFiles</A></TD>
+<TD width=70%>Locates existing files and moves or copies those files to a new location.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_1zfy.htm">InstallODBC</A></TD>
+<TD width=70%>Installs the ODBC drivers, translators, and data sources.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_3vhq.htm">InstallServices</A></TD>
+<TD width=70%>Registers a service with the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_49ta.htm">RemoveODBC</A></TD>
+<TD width=70%>Removes ODBC data sources, translators, and drivers.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_9cby.htm">PatchFiles</A></TD>
+<TD width=70%>Queries the Patch table to determine which patches are applied to specific files and then performs the byte-wise patching of the files.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_4kz2.htm">PreventInstall</A></TD>
+<TD width=70%>Blocks the pending installation. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_4fxq.htm">ProcessComponents</A></TD>
+<TD width=70%>Registers components, their key paths, and component clients.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_2r3i.htm">PublishComponents</A></TD>
+<TD width=70%>Advertises the components specified in the  PublishComponent table. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_8bou.htm">PublishFeatures</A></TD>
+<TD width=70%>Writes the feature state of each feature into the system registry</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_10dq.htm">PublishProduct</A></TD>
+<TD width=70%>Publishes product information with the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_04oe.htm">RegisterClassInfo</A></TD>
+<TD width=70%>Manages the registration of COM class information with the system. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_1epa.htm">RegisterExtensionInfo</A></TD>
+<TD width=70%>Registers extension related information with the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_2tv2.htm">RegisterFonts</A></TD>
+<TD width=70%>Registers installed fonts with the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_9r8u.htm">RegisterMIMEInfo</A></TD>
+<TD width=70%>Registers MIME information with the system. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_529a.htm">RegisterProduct</A></TD>
+<TD width=70%>Registers product information with the installer and stores the installer database on the local computer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_08tq.htm">RegisterProgIdInfo</A></TD>
+<TD width=70%>Registers OLE ProgId information with the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_31ri.htm">RegisterTypeLibraries</A></TD>
+<TD width=70%>Registers type libraries with the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_0g4u.htm">RegisterUser</A></TD>
+<TD width=70%>Registers user information to identify the user of a product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_45da.htm">RemoveEnvironmentStrings</A> </TD>
+<TD width=70%>Modifies the values of environment variables. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_9xny.htm">RemoveFiles</A></TD>
+<TD width=70%>Removes files previously installed by the InstallFiles action. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_3tpq.htm">RemoveDuplicateFiles</A></TD>
+<TD width=70%>Deletes files installed by the DuplicateFiles action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_8r72.htm">RemoveExistingProducts</A></TD>
+<TD width=70%>Removes installed versions of a product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_0pf2.htm">RemoveFolders</A></TD>
+<TD width=70%>Removes empty folders linked to components set to be removed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_4tv2.htm">RemoveIniValues</A></TD>
+<TD width=70%>Deletes .ini file information associated with a component specified in the IniFile table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_5mem.htm">RemoveRegistryValues</A></TD>
+<TD width=70%>Removes an application's registry keys that were created from the Registry table..</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_6t66.htm">RemoveShortcuts</A></TD>
+<TD width=70%>Manages the removal of an advertised shortcut whose feature is selected for uninstall.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_21im.htm">ResolveSource</A></TD>
+<TD width=70%>Determines the source location and sets the SourceDir property.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_5pgu.htm">RMCCPSearch</A></TD>
+<TD width=70%>Uses file signatures to validate that qualifying products are installed on a system before an upgrade installation is performed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_96su.htm">ScheduleReboot</A></TD>
+<TD width=70%>Prompts the user for a system reboot at the end of the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_1gku.htm">SelfRegModules</A></TD>
+<TD width=70%>Processes modules in the SelfReg table and registers them if they are installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_9jce.htm">SelfUnregModules</A></TD>
+<TD width=70%>Unregisters the modules in the SelfReg table that are set to be uninstalled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_2n8u.htm">SEQUENCE</A></TD>
+<TD width=70%>Runs the actions in a table specified by the SEQUENCE property.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_3xny.htm">SetODBCFolders Action</A></TD>
+<TD width=70%>Checks the system for existing ODBC drivers and sets target directory for new ODBC drivers.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_4x4e.htm">StartServices</A></TD>
+<TD width=70%>Starts system services.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_83zi.htm">StopServices</A></TD>
+<TD width=70%>Stops system services.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_1ir2.htm">UnpublishComponents</A></TD>
+<TD width=70%>Manages the unadvertisement of components from the PublishComponent table and removes information about published components.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_6ywe.htm">UnpublishFeatures</A></TD>
+<TD width=70%>Removes the selection-state and feature-component mapping information from the system registry.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_8wby.htm">UnregisterClassInfo</A></TD>
+<TD width=70%>Manages the removal of COM classes from the system registry.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_738u.htm">UnregisterExtensionInfo</A></TD>
+<TD width=70%>Manages the removal of extension-related information from the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_6wmm.htm">UnregisterFonts</A></TD>
+<TD width=70%>Removes registration information about installed fonts from the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_30oe.htm">UnregisterMIMEInfo</A></TD>
+<TD width=70%>Unregisters MIME-related information from the system registry.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_1epb.htm">UnregisterProgIdInfo</A></TD>
+<TD width=70%>Manages the unregistration of OLE ProgId information with the system. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_8qb3.htm">UnregisterTypeLibraries</A></TD>
+<TD width=70%>Unregisters type libraries with the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_0cdq.htm">ValidateProductID</A></TD>
+<TD width=70%>Sets ProductID property to the full product identifier. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_5fla.htm">WriteEnvironmentStrings</A> </TD>
+<TD width=70%>Modifies the values of environment variables. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_8432.htm">WriteIniValues</A></TD>
+<TD width=70%>Writes .ini file information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_1cmm.htm">WriteRegistryValues</A> </TD>
+<TD width=70%>Sets up registry information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_25gu.htm">RegisterComPlus</A></TD>
+<TD width=70%>The RegisterComPlus action registers COM+ applications.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="aref_0soe.htm">UnregisterComPlus</A></TD>
+<TD width=70%>The UnregisterComPlus action removes COM+ applications from the registry.</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

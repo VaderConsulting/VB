@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>OpenDatabase Method (Installer Object)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="OpenDatabase Method (Installer Object)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_opendatabase_method_installer_object_"></A>OpenDatabase Method (Installer Object)</H1>
+
+<P>The <B>OpenDatabase</B> method of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> opens an existing database or creates a new one, returning a <A HREF="vref_64dw.htm"><B>Database</B> object</A>. It generates an error if the <B>Database </B>object cannot be successfully created and opened.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.OpenDatabase(<I>name</I>,<I> openMode</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A></DD>
+
+<DT><I>name</I></DT>
+
+<DD>Required string containing the path name of the database. If an empty string is supplied, a temporary database is created that is not persisted.</DD>
+
+<DT><I>openMode</I></DT>
+
+<DD>A parameter from the following list or a string containing the path name of the new output database file that is to be written to upon commit.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=53%>Parameter name</TH>
+<TH align=left width=13%>Value</TH>
+<TH align=left width=34%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=53%>msiOpenDatabaseModeReadOnly</TD>
+<TD width=13%>0</TD>
+<TD width=34%>Open a database read-only, no persistent changes. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=53%>msiOpenDatabaseModeTransact</TD>
+<TD width=13%>1</TD>
+<TD width=34%>Open a database read/write in transaction mode. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=53%>msiOpenDatabaseModeDirect</TD>
+<TD width=13%>2</TD>
+<TD width=34%>Open a database direct read/write without transaction. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=53%>msiOpenDatabaseModeCreate</TD>
+<TD width=13%>3</TD>
+<TD width=34%>Create a new database, transact mode read/write. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=53%>msiOpenDatabaseModeCreateDirect</TD>
+<TD width=13%>4</TD>
+<TD width=34%>Create a new database, direct mode read/write. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=53%>msiOpenDatabaseModePatchFile</TD>
+<TD width=13%>32&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+<TD width=34%>Add this flag to indicate a patch file.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>When a database is opened as the output of another database, the summary information stream of the output database is actually a read-only mirror of the original database and thus cannot be changed. Additionally, it is not persisted with the database. To create or modify the summary information for the output database it must be closed and re-opened.</P>
+
+<P>To make and save changes to a database first open the database in transaction (msiOpenDatabaseModeTransact), create (msiOpenDatabaseModeCreate or msiOpenDatabaseModeCreateDirect), or direct (msiOpenDatabaseModeDirect) mode. After making the changes, always call the <B>Commit</B> method before closing the database handle. The <B>Commit </B>method flushes all buffers. </P>
+
+<P>Always call the <B>Commit</B> method on a database that has been opened in direct mode (msiOpenDatabaseModeDirect or msiOpenDatabaseModeCreateDirect) before closing the database. Failure to do this may corrupt the database.</P>
+
+<P>Because the <B>OpenDatabase</B> Method initiates database access, it cannot be used with a running installation</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ExternalFiles Table (Patchwiz.dll)</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ExternalFiles table (Patchwiz.dll) [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_externalfiles_table_patchwiz.dll_"></A>ExternalFiles Table (Patchwiz.dll)</H1>
+
+<P>The ExternalFiles table contains information about specific files that are not part of a regular target image. These files may exist in products that have been updated by another product, upgrade, or patch. This table is optional in the patch creation database (.pcp file) and is used by <A HREF="app_6yu7.htm"><B>UiCreatePatchPackage</B></A>.</P>
+
+<P>The ExternalFiles table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Family</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>FTK</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>FilePath</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>SymbolPaths</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Order</TD>
+<TD width=40%>integer</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>IgnoreOffsets</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>IgnoreLengths</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>RetainOffsets</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Family</DT>
+
+<DD>Foreign key to the Family column of the <A HREF="app_11pb.htm">ImageFamilies Table (Patchwiz.dll)</A>.</DD>
+
+<DT>FTK</DT>
+
+<DD>Foreign key into <A HREF="tref_4n6t.htm">File table</A> of the .msi file of the upgraded image.</DD>
+
+<DT>FilePath</DT>
+
+<DD>Full path of the external file including the filename. FilePath field is used to locate the file specified in the FTK column. </DD>
+
+<DT>SymbolPaths</DT>
+
+<DD>Full path searched for symbol files of the file specified in the FTK column. </DD>
+
+<DT>Order</DT>
+
+<DD>If two or more versions are specified for the same external file, the table may contain multiple records with matching values in the FTK and Family fields. In this case, the Order field may specify the order of external files to use when creating the patch. The order is from the oldest to the most recent version. </DD>
+
+<DT>IgnoreOffsets</DT>
+
+<DD>The value in this field is a comma delimited list of range offset numbers for the ranges to be ignored in the external file. The order and number of the ranges in the list must match the items in the IgnoreLengths column. This column is optional.</DD>
+
+<DT>IgnoreLengths</DT>
+
+<DD>The value in this field is a comma delimited list of range lengths for the ranges to be ignored in the External file. The order and number of the ranges in the list must match the items in the IgnoreOffsets column. This column is optional.</DD>
+
+<DT>RetainOffsets</DT>
+
+<DD>The value in this field is a comma delimited list of range offset numbers for the ranges to be retained in the External file. The order and number of the ranges in the list must match the items in the RetainOffsets column of the corresponding record in the <A HREF="app_4ajj.htm">FamilyFileRanges Table (Patchwiz.dll)</A>.  
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ExternalFiles%20Table%20(Patchwiz.dll);%20RELEASE:%20August%202001;%20URL:%20app_4p27.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ExternalFiles%20Table%20(Patchwiz.dll);%20RELEASE:%20August%202001;%20URL:%20app_4p27.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

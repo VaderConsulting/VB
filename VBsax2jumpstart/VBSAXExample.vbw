@@ -1,0 +1,6 @@
+Form1 = 50, 50, 955, 677, C, 22, 22, 462, 472, C
+ContentHandlerImpl = 0, 0, 0, 0, C
+ErrorHandlerImpl = 0, 0, 0, 0, C
+DTDHandlerImpl = 0, 0, 0, 0, C
+DeclHandlerImpl = 0, 0, 0, 0, C
+LexicalHandlerImpl = 0, 0, 0, 0, C

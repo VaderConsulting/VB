@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring the Launch Custom Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_the_launch_custom_action"></A>Authoring the Launch Custom Action</H3>
+
+<P>The source code for a sample custom action named Launch, which meets the sample specifications, is provided by the  Windows Installer SDK as the file tutorial.cpp. This custom action makes use of <A HREF="qref_3t2c.htm"><B>MsiFormatRecord</B></A> to format a string containing properties. The property [#FileKey] resolves to the full path of the HTML file. Use the source file to create the file Launch.dll. The entry point to this DLL is LaunchTutorial. </P>
+
+<P>The sample custom action Launch calls a DLL written in C++ and is generated from a temporary binary stream. Custom actions of this type include the base type constants msidbCustomActionTypeDll and msidbCustomActionTypeBinaryData, which give a base numeric type equal to 1. See <A HREF="cact_7nqp.htm">Custom Action Type 1</A>. Because the specifications require that the installation continue if the custom action fails, Launch also includes the optional constant <B>msidbCustomActionTypeContinue</B>, which is 64. See <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A>. The total numeric type of Launch is 65.</P>
+
+<P>Continue to <A HREF="cact_929f.htm">Adding Launch to the CustomAction and Binary Tables</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

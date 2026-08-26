@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FixedSize Control Attribute</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FixedSize Control Attribute">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_fixedsize_control_attribute"></A>FixedSize Control Attribute</H1>
+
+<P>If the FixedSize Control bit is set, the picture is cropped or centered in the control without changing its shape or size. </P>
+
+<P>If this bit is not set the picture is stretched to fit the control.</P>
+
+<H4>Valid Controls</H4>
+
+<P><A HREF="href_2ey4.htm">Bitmap</A><BR>
+<A HREF="href_7dt8.htm">CheckBox</A><BR>
+<A HREF="href_1tt8.htm">Icon</A><BR>
+<A HREF="href_331o.htm">PushButton</A><BR>
+<A HREF="href_6iwc.htm">RadioButtonGroup</A></P>
+
+<H4>Value</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Decimal</TH>
+<TH align=left width=24%>Hexadecimal </TH>
+<TH align=left width=53%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>1048576</TD>
+<TD width=24%>0x00100000</TD>
+<TD width=53%><B>msidbControlAttributesFixedSize</B></TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>To set this attribute on a control, include the FixedSize bit in the Attributes column of the control's record in the <A HREF="tref_6nad.htm">Control table</A>.</P>
+
+<P>Setting the FixedSize bit has no effect on a <A HREF="href_7dt8.htm">CheckBox</A>, <A HREF="href_331o.htm">PushButton</A>, or <A HREF="href_6iwc.htm">RadioButtonGroup</A> if neither the <A HREF="href_0bxh.htm">Bitmap</A> or the <A HREF="href_9v8l.htm">Icon</A> have been set.</P>
+
+<P>Setting the FixedSize bit has no effect on an Icon control, or a PushButton associated with an icon, if the <A HREF="href_0oo5.htm">IconSize</A> bits is not set.</P>
+
+<P>See <A HREF="href_8uk3.htm">Control Attributes</A> and the control you need to create under <A HREF="href_710z.htm">Controls</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

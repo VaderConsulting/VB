@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Determining an Installation Database's Code Page</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_determining_an_installation_database_s_code_page"></A>Determining an Installation Database's Code Page</H2>
+
+<P>To determine the code page of a database, call <A HREF="qref_4qyc.htm"><B>MsiDatabaseExport</B></A> with <I>hDatabase</I> set to the handle of the database and <I>szTableName</I> set to _ForceCodepage. This exports a text file with an .idt extension. The first two lines of this file are blank. The third line is the ANSI code page number, followed by a tab, followed by the name _ForceCodepage. See also <A HREF="over_1u0j.htm">Code Page Handling of Imported and Exported Tables</A>.</P>
+
+<P>An example of determining the code page by using the <A HREF="vref_06uc.htm"><B>Export</B> method</A> is provided in the Windows Installer SDK as a part of the utility WiLangId.vbs. The following snippet, GetCP.vbs, also illustrates the <B>Export</B> method and is for use with Windows Script Host. </P>
+
+<PRE>' GetCP.vbs . Argument(0) is the path to the database.Windows Installer utility to report the code page for a package
+ 
+Option Explicit
+ 
+' Connect to Windows Installer object
+On Error Resume Next
+Dim installer : Set installer = Nothing
+Set installer = Wscript.CreateObject("WindowsInstaller.Installer")
+ 
+' Open database
+Dim databasePath:databasePath = Wscript.Arguments(0)
+Dim database : Set database = installer.OpenDatabase(databasePath, 0)
+ 
+' Extract compose report message
+Dim message:message = "Database codepage = "         &amp; DatabaseCodepage(database) 
+Set database = nothing
+Wscript.Echo message
+Wscript.Quit 0
+ 
+' Get ANSI codepage of database text data
+Function DatabaseCodepage(database)
+    On Error Resume Next
+    Dim WshShell : Set WshShell = Wscript.CreateObject("Wscript.Shell") 
+    Dim tempPath:tempPath = WshShell.ExpandEnvironmentStrings("%TEMP%") 
+    database.Export "_ForceCodepage", tempPath, "codepage.idt" 
+    Dim fileSys:Set fileSys = CreateObject("Scripting.FileSystemObject") 
+    Dim file:Set file = fileSys.OpenTextFile(tempPath &amp; "\codepage.idt", 1, False, 0) 
+    file.ReadLine ' skip column name record
+    file.ReadLine ' skip column defn record
+    DatabaseCodepage = file.ReadLine
+    Dim iDelim:iDelim = InStr(1, DatabaseCodepage, vbTab, vbTextCompare)
+    If iDelim = 0 Then Fail "Failure in codepage export file"
+    DatabaseCodepage = Left(DatabaseCodepage, iDelim - 1)
+End Function</PRE>
+
+<P>Use the following command line to get the code page of a database named MNPFren.msi.</P>
+
+<PRE>Cscript GetCP.vbs MNPFren.msi</PRE>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Determining%20an%20Installation%20Database's%20Code%20Page;%20RELEASE:%20August%202001;%20URL:%20over_2j6t.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Determining%20an%20Installation%20Database's%20Code%20Page;%20RELEASE:%20August%202001;%20URL:%20over_2j6t.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>RelatedProducts Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="RelatedProducts Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_relatedproducts_property"></A>RelatedProducts Property</H1>
+
+<P>The read-only RelatedProducts property returns a <A HREF="vref_1wac.htm"><B>StringList</B> object</A> enumerating the set of all products installed or advertised for the current user and machine with a specified <A HREF="pref_7mux.htm">UpgradeCode property</A> in their <A HREF="tref_21d1.htm">Property table</A>.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.RelatedProducts(<I>UpgradeCode</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A></DD>
+
+<DT><I>UpgradeCode</I></DT>
+
+<DD>The upgrade code of related products that the installer enumerates.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To enumerate the related products, an application iterates through the <B>StringList</B> using a For Each construct. Because related products are not ordered, any new related product has an arbitrary index. This means that the function can return related products in any order.</P>
+
+<P>This property is not available with Windows Installer version 1.0.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_5pwz.htm"><B>MsiEnumRelatedProducts</B></A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

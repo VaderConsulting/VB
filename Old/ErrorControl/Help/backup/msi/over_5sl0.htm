@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Component Management</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="component management [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_component_management"></A>Component Management</H2>
+
+<P>The Microsoft® Windows® Installer reduces the total cost of ownership (TCO) of your applications by increasing the ability of your customers to manage and maintain application components during setup and runtime. Because the installation database tracks which applications require a particular component, which files comprise each component, where each file is installed on the system, and where component sources are located, developers can author packages providing the following benefits.
+
+<UL>
+	<LI>Increased resiliency of applications. Use the installer to detect and reinstall damaged components without having to rerun setup. You can also use the installer to check the path of a component at runtime. This frees applications from dependency on static file paths which commonly differ between machines and can point to missing components. For more information, see <A HREF="over_5id5.htm">Resiliency</A>.</LI>
+
+	<LI>Install-On-Demand features. These features are not installed during the initial setup but are specified in the database to be installed just-in-time for use if required by the application in the future. Users do not need to rerun setup. For more information, see <A HREF="over_3kys.htm">Installation-On-Demand</A>.</LI>
+
+	<LI>Advertise shortcuts to features, applications, or entire products in the user interface without actually installing these. Users can install these on-demand by using the shortcuts. Users can also remove features, applications, or entire products on-demand. For more information, see <A HREF="over_1v1w.htm">Advertisement</A>.</LI>
+
+	<LI>Customize installations to user's needs. An administrator can apply transforms to the database that tailor the installation for a particular group of users. For more information, see <A HREF="over_2d9q.htm">Customization</A>.</LI>
+
+	<LI>Easier deployment of application updates. Use the installer to update your products. For more information, see <A HREF="updat_1po3.htm">Patching and Upgrades</A>.</LI>
+
+	<LI>Display shortcuts to features that are run locally together with shortcuts to features run from a remote source. Because the installation database specifies the run context of each feature, visibly equivalent entry points can be presented to users if desire.</LI>
+
+	<LI>Keep usage metrics on features. Developers can provide an installation package that keeps a usage count of a feature by all client applications and removes components that are not being used.</LI>
+
+	<LI>Incorporate installations into applications. Developers can incorporate the component management capabilities of the installer into their applications by authoring an installation package and by using the <A HREF="func_26sz.htm">Installer Functions</A> in their application code. The following figure illustrates an application requesting the installation of a feature.</LI>
+</UL>
+
+<P><IMG SRC="images/over1.gif" ALT="" BORDER=0></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

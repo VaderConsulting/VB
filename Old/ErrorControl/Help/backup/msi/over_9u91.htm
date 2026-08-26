@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>TransformsSecure</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="TransformsSecure [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_transformssecure"></A>TransformsSecure</H3>
+
+<P>Setting the TransformsSecure policy to 1 informs the installer that transforms are to be cached locally on the user's computer in a location where the user does not have write access. Setting this property is the same as setting the <A HREF="pref_0uwp.htm">TRANSFORMSSECURE property</A> except the scope is different. Setting TransformsSecure policy applies to all packages installed to a given machine. Setting the TRANSFORMSSECURE property applies to the package regardless of the machine.</P>
+
+<P>The purpose of this policy is to provide for secure transform storage with traveling users of Windows NT or Windows 2000. When this policy is set, a <A HREF="over_7mzy.htm">maintenance installation</A> can only use the transform from the secured cache. In the event that the installer finds that the transform is missing on the local computer, the installer attempts to restore the transform. In order for the installer to restore the transform, the secure transform must reside at an authorized source in the installation package's source list. For more information, see <A HREF="over_1lq1.htm">Source Resiliency</A>. The maintenance installation fails if the transform is unavailable or cannot be loaded.</P>
+
+<H4>Registry Key</H4>
+
+<P><B>HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer</B></P>
+
+<H4>Remarks</H4>
+
+<P>The TransformsSecure policy is not available with Windows Installer version 1.0.</P>
+
+<P>Windows Installer version 1.1 interprets the <A HREF="over_0gth.htm">TransformsAtSource</A> policy to be the same as the TransformsSecure policy.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

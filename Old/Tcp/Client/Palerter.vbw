@@ -1,0 +1,10 @@
+frmMain = 3, 5, 815, 549, C, 16, 7, 554, 446, C
+modGlobal = 3, 3, 839, 622, 
+RegistryGrip = 44, 44, 832, 621, C
+modWIN32API = 10, 18, 842, 610, C
+clsProcess = 5, 3, 739, 526, C
+modTCP = 6, 9, 837, 613, 
+modAgent = 6, 2, 836, 620, C
+frmOptions = 37, 133, 830, 617, C, 7, 12, 557, 428, C
+frmFirstRun = 12, 15, 825, 622, C, 9, 6, 207, 249, C
+frmFilter = 8, 80, 822, 621, C, 520, 14, 840, 311, C

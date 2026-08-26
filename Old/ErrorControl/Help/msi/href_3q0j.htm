@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Control Events</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_control_events"></A>Control Events</H2>
+
+<P>A ControlEvent specifies an action to be taken by the installer or a change in the attributes of one or more controls in a dialog box. For more information about ControlEvents, see <A HREF="hand_5fhz.htm">ControlEvent Overview</A>.</P>
+
+<P>The following list provides links to more information about particular ControlEvents:</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Control event </TH>
+<TH align=left width=70%>Brief description of control event</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_33lg.htm">ActionData</A></TD>
+<TD width=70%>Publishes data on the latest action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_0dpw.htm">ActionText</A></TD>
+<TD width=70%>Publishes the name of the present action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_1jw4.htm">AddLocal</A></TD>
+<TD width=70%>Notifies the installer to run features locally.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_25mc.htm">AddSource</A></TD>
+<TD width=70%>Notifies the installer to run features from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_1w1g.htm">CheckExistingTargetPath</A></TD>
+<TD width=70%>Notifies installer to verify that path can be written.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_171w.htm">CheckTargetPath</A></TD>
+<TD width=70%>Notifies installer to verify that path is valid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_7e2c.htm">DirectoryListNew</A></TD>
+<TD width=70%>Notifies DirectoryList control to create new folder.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_7ab8.htm">DirectoryListOpen ControlEvent</A></TD>
+<TD width=70%>Selects directory in the DirectoryList control.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_7fqs.htm">DirectoryListUp</A></TD>
+<TD width=70%>Notifies DirectoryList control to select parent of the present directory.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_2zjo.htm">DoAction</A></TD>
+<TD width=70%>Dialog box notifies installer to execute custom action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_7awk.htm">EnableRollback ControlEvent</A></TD>
+<TD width=70%>Used to turn rollback capabilities off and on.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_9a0k.htm">EndDialog</A></TD>
+<TD width=70%>Notifies installer to remove a modal dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_18ms.htm">IgnoreChange</A></TD>
+<TD width=70%>Published by the DirectoryList control when a folder is highlighted but not opened.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_9myc.htm">NewDialog</A></TD>
+<TD width=70%>Notifies installer to change a modal dialog box into another dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_8gdw.htm">Reinstall</A></TD>
+<TD width=70%>Initiates a reinstall of features.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_0x6c.htm">ReinstallMode</A></TD>
+<TD width=70%>Specifies the validation mode during a reinstall.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_0lx0.htm">Remove</A></TD>
+<TD width=70%>Notifies installer when features are selected for removal.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_7d2s.htm">Reset</A></TD>
+<TD width=70%>Resets all the property values to when the dialog was created. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_4gl0.htm">ScriptInProgress</A></TD>
+<TD width=70%>Displays a string while execution script is compiled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_66lw.htm">SelectionAction</A></TD>
+<TD width=70%>Published by SelectionTree to describe an item.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_01dg.htm">SelectionBrowse</A></TD>
+<TD width=70%>Published by SelectionTree to spawn browse dialog.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_2qno.htm">SelectionDescription</A></TD>
+<TD width=70%>Publish by SelectionTree to provide string in Description field of Feature Table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_0778.htm">SelectionIcon</A></TD>
+<TD width=70%>Published by SelectionTree to provide icon handle. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_4jn8.htm">SelectionNoItems ControlEvent</A></TD>
+<TD width=70%>Used by SelectionTree to delete text or disable buttons.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_1d6c.htm">SelectionPath</A></TD>
+<TD width=70%>Published by SelectionTree to provide path of item. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_6tf8.htm">SelectionPathOn</A></TD>
+<TD width=70%>Published by SelectionTree to indicate whether there is a path associated with a feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_94z8.htm">SelectionSize</A></TD>
+<TD width=70%>Published by SelectionTree control to provide size of the item.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_3oms.htm">SetInstallLevel</A></TD>
+<TD width=70%>Installer changes installation level to specified value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_771w.htm">SetProgress</A></TD>
+<TD width=70%>Published by installer to provide installation progress.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_7nuc.htm">SetProperty</A></TD>
+<TD width=70%>Sets a specified property.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_7khg.htm">SetTargetPath</A></TD>
+<TD width=70%>Notifies installer to check and set a path. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_0qus.htm">SpawnDialog</A></TD>
+<TD width=70%>Notifies installer to create a child of a modal box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_95ro.htm">SpawnWaitDialog</A></TD>
+<TD width=70%>Triggers a specified dialog.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_1egk.htm">TimeRemaining</A></TD>
+<TD width=70%>Published by installer to provide time remaining in the progress sequence.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_0jqs.htm">ValidateProductID</A> </TD>
+<TD width=70%>Sets ProductID to the full Product ID. </TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Control%20Events;%20RELEASE:%20August%202001;%20URL:%20href_3q0j.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Control%20Events;%20RELEASE:%20August%202001;%20URL:%20href_3q0j.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

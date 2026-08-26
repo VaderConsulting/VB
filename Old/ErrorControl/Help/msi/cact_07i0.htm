@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action Type 18</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_createprocessasuser">
+</OBJECT>
+<OBJECT ID="hhobj_2" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_createprocess">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_custom_action_type_18"></A>Custom Action Type 18</H2>
+
+<P>This custom action calls an executable launched with a command line.</P>
+
+<H4>Source</H4>
+
+<P>The executable is generated from a file installed with the application. The Source field of the <A HREF="tref_71b9.htm">CustomAction table</A> contains a key to the <A HREF="tref_4n6t.htm">File table</A>. The location of the custom action code is determined by the resolution of the target path for this file; therefore this custom action must be called after the file has been installed and before it is removed.</P>
+
+<H4>Type Value</H4>
+
+<P>Include the following value in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify the basic numeric type. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Constants</TH>
+<TH align=left width=25%>Hexadecimal</TH>
+<TH align=left width=25%>Decimal</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%><B>msidbCustomActionTypeExe + msidbCustomActionTypeSourceFile</B></TD>
+<TD width=25%>0x012</TD>
+<TD width=25%>18</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Target</H4>
+
+<P>The Target column of the <A HREF="tref_71b9.htm">CustomAction table</A> contains the command line string for the executable identified in the Source column. </P>
+
+<H4>Return Processing Options</H4>
+
+<P>Include optional flag bits in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify return processing options. For a description of the options and the values, see <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A>.</P>
+
+<H4>Execution Scheduling Options</H4>
+
+<P>Include optional flag bits in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify execution scheduling options. These options control the multiple execution of custom actions. For a description of the options, see <A HREF="cact_0dpv.htm">Custom Action Execution Scheduling Options</A>.</P>
+
+<H4>In-Script Execution Options</H4>
+
+<P>Include optional flag bits in the Type column of the <A HREF="tref_71b9.htm">CustomAction table</A> to specify an in-script execution option. These options copy the action code into the execution, rollback, or commit script. For a description of the options, see <A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A>. </P>
+
+<H4>Return Values</H4>
+
+<P>Custom actions that are <A HREF="cact_0b77.htm">executable files</A> must return a value of 0 for success. The installer interprets any other return value as failure. To ignore return values set the <B>msidbCustomActionTypeContinue</B> bit flag in the Type field of the CustomAction table. </P>
+
+<H4>Remarks</H4>
+
+<P>A custom action that launches an executable takes a command line, which commonly contains properties that are designated dynamically. If this is also a <A HREF="cact_10fn.htm">deferred execution custom action</A>, the installer uses <A HREF="JavaScript:hhobj_1.Click()"><B>CreateProcessAsUser</B></A> or <A HREF="JavaScript:hhobj_2.Click()"><B>CreateProcess</B></A> to create the process when the custom action is invoked from the installation script.</P>
+
+<P>Custom actions that reference an installed file as their source, such as Custom Action Type 18 (EXE), must adhere to the following sequencing restrictions. 
+
+<UL>
+	<LI>The custom action must be sequenced after the <A HREF="aref_22we.htm">CostFinalize action</A>. This is so that the custom action can resolve the path needed to locate the EXE. </LI>
+
+	<LI>If the source file is not already installed on the computer, deferred (in-script) custom actions of this type must be sequenced after the <A HREF="aref_3hym.htm">InstallFiles action</A>.</LI>
+
+	<LI>If the source file is not already installed on the computer, non-deferred custom actions of this type must be sequenced after the <A HREF="aref_8l9q.htm">InstallFinalize action</A>.</LI>
+</UL>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_0b77.htm">Executable Files</A>, <A HREF="cact_6a05.htm">Custom Action Reference List</A>, <A HREF="cact_0z8z.htm">Sequencing Custom Actions</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Custom%20Action%20Type%2018;%20RELEASE:%20August%202001;%20URL:%20cact_07i0.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Custom%20Action%20Type%2018;%20RELEASE:%20August%202001;%20URL:%20cact_07i0.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

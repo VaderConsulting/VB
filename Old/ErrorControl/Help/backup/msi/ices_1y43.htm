@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE73</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE73 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice73"></A>ICE73</H1>
+
+<P>ICE73 verifies that your package does not reuse package codes, upgrade codes, or product codes of the Windows Installer SDK samples. Packages should never reuse the package, upgrade, or product codes of another product.</P>
+
+<H4>Result</H4>
+
+<P>ICE73 outputs a warning if  your product's package reuses a package or product code of a Windows Installer SDK sample.</P>
+
+<H4>Example</H4>
+
+<P>ICE73 reports the following errors for the example shown:</P>
+
+<PRE>This package reuses the '{80F7E030-A751-11D2-A7D4-006097C99860}' ProductCode of the orca.msi 1.0 Windows Installer SDK package.
+This package reuses the '{000C1101-0000-0000-C000-000000000047}' Package Code of the msispy.msi 1.0 Windows Installer SDK package.
+This package reuses the '{8FC7****-88A0-4b41-82B8-8905D4AA904C}' Upgrade Code of a 1.1 Windows Installer SDK package. </PRE>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;The asterisks (****) in the GUID represent the range of GUIDs reserved for subsequent Windows Installer SDK packages.</P>
+
+<P>To fix the errors, generate a new unique GUID for your package's product and package codes. You will also need a new unique GUID for your package's upgrade code.</P>
+
+<P><A HREF="sovr_99yl.htm"><B>Summary Information Stream</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Property</TH>
+<TH align=left width=71%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>PID_REVNUMBER</TD>
+<TD width=71%>{000C1101-0000-0000-C000-000000000047}</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Property</TH>
+<TH align=left width=71%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>ProductCode</TD>
+<TD width=71%>{80F7E030-A751-11D2-A7D4-006097C99860}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>UpgradeCode</TD>
+<TD width=71%>{8FC70000-88A0-4b41-82B8-8905D4AA904C}</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_0joz.htm">Package and Product Codes</A>, <A HREF="sref_1am1.htm">Revision Number Summary Property</A>, <A HREF="pref_7mux.htm">UpgradeCode Property</A>, <A HREF="pref_4tfd.htm">ProductCode Property</A>, <A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

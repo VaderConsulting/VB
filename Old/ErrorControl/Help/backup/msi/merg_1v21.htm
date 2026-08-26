@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleFiles Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ModuleFiles Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_modulefiles_property"></A>ModuleFiles Property</H1>
+
+<P>ModuleFiles Property returns all the primary keys of the <A HREF="tref_4n6t.htm">File table</A> for the currently open module. The primary keys are returned as a collection of strings. The module must be opened by a call to the <A HREF="merg_2rs4.htm">OpenModule method</A> of the <A HREF="merg_4th0.htm"><B>Merge</B> Object</A> before calling ModuleFiles.</P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax><I>object</I>.ModuleFiles</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="merg_2qb8.htm"><B>GetFiles</B> Object</A> 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Note that order of the files listed in the collection may not be in the same sequence as listed in the File table.</P>
+
+<P>If the module has no File table, or contains no files in the particular language, ModuleFiles returns an empty collection of strings.</P>
+
+<H4>C++</H4>
+
+<P>See <A HREF="merg_1yjy.htm"><B>get_ModuleFiles Function</B></A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE10</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE10">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice10"></A>ICE10</H1>
+
+<P>ICE10 validates that the advertise state of child features matches that of its parent feature. A child feature may not disallow advertise while its parent feature allows advertisement.</P>
+
+<P>The ICE10 custom action determines the state of parent and child features from the Attributes column of the <A HREF="tref_0a91.htm">Feature table</A>. Note that it is valid to set the state of a feature to 0 and have its parent or child set to favor or disallow advertisement.</P>
+
+<H4>Result</H4>
+
+<P>ICE10 posts an error if the Attributes column of the Feature table contains a mismatch in the advertise state.</P>
+
+<H4>Example</H4>
+
+<P>ICE10 posts the following error message for the example shown.</P>
+
+<PRE>Conflicting states, one favors, one disallows. Child: Word differs in advertise state 
+from Parent: Office. </PRE>
+
+<P>Note for this example that Microsoft Excel and Microsoft Word are child features of Microsoft Office.</P>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Feature</TH>
+<TH align=left width=28%>Feature_Parent</TH>
+<TH align=left width=48%>Attributes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Office</TD>
+<TD width=28%>NULL</TD>
+<TD width=48%>4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Excel</TD>
+<TD width=28%>Office</TD>
+<TD width=48%>4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Word</TD>
+<TD width=28%>Office</TD>
+<TD width=48%>8</TD>
+</TR>
+</TABLE><BR>
+
+<P>In the example Word is set to disallow advertisement, which conflicts with the allow advertisement state of its parent Office."</P>
+
+<P>In some cases ICE10 posts the following error: </P>
+
+<PRE>Parent feature: 'Parent' not found for child feature: 'Child'. This error means 
+that for the child feature 'Child', the feature 'Parent' is not listed in the 
+Feature table.</PRE>
+
+<P>This refers to an invalid foreign key reference. The fix is to have 'Child' point to its correct parent feature, or add an entry for the parent feature 'Parent' to the feature table. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE10;%20RELEASE:%20August%202001;%20URL:%20ices_1xtc.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE10;%20RELEASE:%20August%202001;%20URL:%20ices_1xtc.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

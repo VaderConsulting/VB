@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE92</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE92">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice92"></A>ICE92</H1>
+
+<P>ICE92 verifies that a component without a Component Id GUID is not also specified as a permanent component. This ICE custom action checks the <A HREF="tref_09np.htm">Component Table</A> for components without a <A HREF="tref_7kf8.htm">GUID</A> specified in the ComponentId field and verifies that the <B>msidbComponentAttributesPermanent</B> flag has not been set in the Attributes field.</P>
+
+<P>If the ComponentId column is null, the installer does not register the component and the component cannot be removed or repaired by the installer. </P>
+
+<H4>Result</H4>
+
+<P>ICE92 posts the following errors.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>ICE92 error</TH>
+<TH align=left width=49%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>The Component '[1]' has no ComponentId and is marked as permanent.</TD>
+<TD width=49%>The entry for this component in the Component table has null in the ComponentId column and has <B>msidbComponentAttributesPermanent</B> in the Attributes column.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Example</H4>
+
+<P>ICE92 reports the following error for the example:</P>
+
+<PRE>The Component 'Component1' has no ComponentId and is marked as permanent.
+</PRE>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Component</TH>
+<TH align=left width=19%>ComponentId</TH>
+<TH align=left width=19%>Directory_</TH>
+<TH align=left width=20%>Attributes</TH>
+<TH align=left width=26%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Component1</TD>
+<TD width=19%>&nbsp;</TD>
+<TD width=19%>DirectoryA</TD>
+<TD width=20%>16</TD>
+<TD width=26%>FileA</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE92;%20RELEASE:%20August%202001;%20URL:%20ices_1y7m.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE92;%20RELEASE:%20August%202001;%20URL:%20ices_1y7m.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

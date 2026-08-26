@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICEM11</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICEM11">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_icem11"></A>ICEM11</H1>
+
+<P>ICEM11 verifies that a Configurable Merge Module lists the <A HREF="merg_96cl.htm">ModuleConfiguration table</A> and <A HREF="merg_9zvp.htm">ModuleSubstitution table</A> in the <A HREF="merg_5f51.htm">ModuleIgnoreTable table</A> of the module. This ensures that merge tools that do not recognize configurable merge modules(less than version 2.0) do not copy these tables into the target database.</P>
+
+<P>This ICEM is available in the Mergemod.cub file provided in the Windows Installer 2.0 SDK and later. For details, see <A HREF="app_5qwj.htm">Platform SDK Components for Windows Installer Developers</A>.</P>
+
+<H4>Result</H4>
+
+<P>ICEM11 posts an error if the module contains a ModuleConfiguration or ModuleSubstitution table not listed in the ModuleIgnoreTable table.</P>
+
+<H4>Example</H4>
+
+<P>ICEM11 posts the following error messages for a module containing the database entries shown below.</P>
+
+<PRE>Error The module contains a ModuleConfiguration or ModuleSubstitution 
+table. These tables must be listed in the ModuleIgnoreTable table.</PRE>
+
+<P><A HREF="merg_96cl.htm"><B>ModuleConfiguration</B></A> (partial)</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Name</TH>
+<TH align=left width=17%>Format</TH>
+<TH align=left width=13%>Type</TH>
+<TH align=left width=25%>ContextData</TH>
+<TH align=left width=29%>DefaultValue</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>IconKey1</TD>
+<TD width=17%>1</TD>
+<TD width=13%>Binary</TD>
+<TD width=25%>Icon</TD>
+<TD width=29%>DefaultIcon</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="merg_9zvp.htm"><B>ModuleSubstitution</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Table</TH>
+<TH align=left width=27%>Row</TH>
+<TH align=left width=20%>Column</TH>
+<TH align=left width=37%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Control</TD>
+<TD width=27%>Dialog1;Control1</TD>
+<TD width=20%>Text</TD>
+<TD width=37%>[IconKey1]</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="merg_5f51.htm"><B>ModuleIgnoreTable</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Table</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>ModuleConfiguration</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix this error include both the ModuleSubstitution and ModuleConfiguration tables in the ModuleIgnoreTable table.</P>
+
+<H4>Table Used During Execution</H4>
+
+<P><A HREF="merg_9zvp.htm">ModuleSubstitution</A> </P>
+
+<P><A HREF="merg_96cl.htm">ModuleConfiguration</A> </P>
+
+<P><A HREF="merg_5f51.htm">ModuleIgnoreTable</A> </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_54md.htm">Merge Module ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICEM11;%20RELEASE:%20August%202001;%20URL:%20merg_9dv5.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICEM11;%20RELEASE:%20August%202001;%20URL:%20merg_9dv5.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

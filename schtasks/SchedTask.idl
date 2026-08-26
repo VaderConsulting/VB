@@ -1,0 +1,124 @@
+// SchedTask.idl : IDL source for SchedTask.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SchedTask.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(656ED66F-20F1-11D4-A450-0004AC9B6CD1),
+		dual,
+		helpstring("IetScheduledTask Interface"),
+		pointer_default(unique)
+	]
+	interface IetScheduledTask : IDispatch
+	{
+		[propget, id(1), helpstring("property Program")] HRESULT Program([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("property Program")] HRESULT Program([in] BSTR newVal);
+		[propget, id(2), helpstring("property Parameters")] HRESULT Parameters([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property Parameters")] HRESULT Parameters([in] BSTR newVal);
+		[propget, id(3), helpstring("property StartingDir")] HRESULT StartingDir([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("property StartingDir")] HRESULT StartingDir([in] BSTR newVal);
+		[propget, id(4), helpstring("property Comment")] HRESULT Comment([out, retval] BSTR *pVal);
+		[propput, id(4), helpstring("property Comment")] HRESULT Comment([in] BSTR newVal);
+		[propget, id(5), helpstring("property StartYear")] HRESULT StartYear([out, retval] short *pVal);
+		[propput, id(5), helpstring("property StartYear")] HRESULT StartYear([in] short newVal);
+		[propget, id(6), helpstring("property StartMonth")] HRESULT StartMonth([out, retval] short *pVal);
+		[propput, id(6), helpstring("property StartMonth")] HRESULT StartMonth([in] short newVal);
+		[propget, id(7), helpstring("property StartDay")] HRESULT StartDay([out, retval] short *pVal);
+		[propput, id(7), helpstring("property StartDay")] HRESULT StartDay([in] short newVal);
+		[propget, id(8), helpstring("property StartHour")] HRESULT StartHour([out, retval] short *pVal);
+		[propput, id(8), helpstring("property StartHour")] HRESULT StartHour([in] short newVal);
+		[propget, id(9), helpstring("property StartMinute")] HRESULT StartMinute([out, retval] short *pVal);
+		[propput, id(9), helpstring("property StartMinute")] HRESULT StartMinute([in] short newVal);
+		[propget, id(10), helpstring("property TriggerType")] HRESULT TriggerType([out, retval] short *pVal);
+		[propput, id(10), helpstring("property TriggerType")] HRESULT TriggerType([in] short newVal);
+		[id(11), helpstring("method CreateTask")] HRESULT CreateTask(BSTR bstrTaskName, BOOL bFailifExists);
+		[id(12), helpstring("method AddTrigger")] HRESULT AddTrigger();
+		[id(13), helpstring("method RemoveTask")] HRESULT RemoveTask(BSTR bstrTaskName);
+		[id(14), helpstring("method Reset")] HRESULT Reset();
+		[propget, id(15), helpstring("property EndYear")] HRESULT EndYear([out, retval] short *pVal);
+		[propput, id(15), helpstring("property EndYear")] HRESULT EndYear([in] short newVal);
+		[propget, id(16), helpstring("property EndMonth")] HRESULT EndMonth([out, retval] short *pVal);
+		[propput, id(16), helpstring("property EndMonth")] HRESULT EndMonth([in] short newVal);
+		[propget, id(17), helpstring("property EndDay")] HRESULT EndDay([out, retval] short *pVal);
+		[propput, id(17), helpstring("property EndDay")] HRESULT EndDay([in] short newVal);
+		[propget, id(18), helpstring("property MinutesInterval")] HRESULT MinutesInterval([out, retval] short *pVal);
+		[propput, id(18), helpstring("property MinutesInterval")] HRESULT MinutesInterval([in] short newVal);
+		[propget, id(19), helpstring("property TargetComputer")] HRESULT TargetComputer([out, retval] BSTR *pVal);
+		[propput, id(19), helpstring("property TargetComputer")] HRESULT TargetComputer([in] BSTR newVal);
+		[propget, id(20), helpstring("property MinutesDuration")] HRESULT MinutesDuration([out, retval] short *pVal);
+		[propput, id(20), helpstring("property MinutesDuration")] HRESULT MinutesDuration([in] short newVal);
+		[propget, id(21), helpstring("property DayOfTheWeek")] HRESULT DayOfTheWeek([out, retval] short *pVal);
+		[propput, id(21), helpstring("property DayOfTheWeek")] HRESULT DayOfTheWeek([in] short newVal);
+		[propget, id(22), helpstring("property DayOfTheMonth")] HRESULT DayOfTheMonth([out, retval] short *pVal);
+		[propput, id(22), helpstring("property DayOfTheMonth")] HRESULT DayOfTheMonth([in] short newVal);
+		[id(23), helpstring("method Enum")] HRESULT Enum();
+		[propget, id(24), helpstring("property TaskCount")] HRESULT TaskCount([out, retval] short *pVal);
+		[propput, id(25), helpstring("property TaskItem")] HRESULT TaskItem([in] short newVal);
+		[propget, id(26), helpstring("property TaskName")] HRESULT TaskName([out, retval] BSTR *pVal);
+		[propget, id(27), helpstring("property DontStartIfOnBatteries")] HRESULT DontStartIfOnBatteries([out, retval] BOOL *pVal);
+		[propput, id(27), helpstring("property DontStartIfOnBatteries")] HRESULT DontStartIfOnBatteries([in] BOOL newVal);
+		[propget, id(28), helpstring("property KillIfOnBatteries")] HRESULT KillIfOnBatteries([out, retval] BOOL *pVal);
+		[propput, id(28), helpstring("property KillIfOnBatteries")] HRESULT KillIfOnBatteries([in] BOOL newVal);
+		[propget, id(29), helpstring("property Username")] HRESULT Username([out, retval] BSTR *pVal);
+		[propput, id(29), helpstring("property Username")] HRESULT Username([in] BSTR newVal);
+		[propget, id(30), helpstring("property Password")] HRESULT Password([out, retval] BSTR *pVal);
+		[propput, id(30), helpstring("property Password")] HRESULT Password([in] BSTR newVal);
+		[propget, id(31), helpstring("property Creator")] HRESULT Creator([out, retval] BSTR *pVal);
+		[propput, id(31), helpstring("property Creator")] HRESULT Creator([in] BSTR newVal);
+		[propget, id(32), helpstring("property LocalAccount")] HRESULT LocalAccount([out, retval] BOOL *pVal);
+		[propput, id(32), helpstring("property LocalAccount")] HRESULT LocalAccount([in] BOOL newVal);
+		[id(33), helpstring("method EditTask")] HRESULT EditTask(BSTR bstrTaskName);
+		[propget, id(34), helpstring("property WhichWeek")] HRESULT WhichWeek([out, retval] short *pVal);
+		[propput, id(34), helpstring("property WhichWeek")] HRESULT WhichWeek([in] short newVal);
+		[id(35), helpstring("method AddMonth")] HRESULT AddMonth(short nMonth);
+		[id(36), helpstring("method ActivateTask")] HRESULT ActivateTask(BSTR bstrTaskName);
+		[propget, id(37), helpstring("property ExitCode")] HRESULT ExitCode([out, retval] long *pVal);
+		[propget, id(38), helpstring("property DeleteWhenDone")] HRESULT DeleteWhenDone([out, retval] BOOL *pVal);
+		[propput, id(38), helpstring("property DeleteWhenDone")] HRESULT DeleteWhenDone([in] BOOL newVal);
+		[propget, id(39), helpstring("property RunOnlyIfLogged")] HRESULT RunOnlyIfLogged([out, retval] BOOL *pVal);
+		[propput, id(39), helpstring("property RunOnlyIfLogged")] HRESULT RunOnlyIfLogged([in] BOOL newVal);
+		[propget, id(40), helpstring("property StartOnlyIfIdle")] HRESULT StartOnlyIfIdle([out, retval] BOOL *pVal);
+		[propput, id(40), helpstring("property StartOnlyIfIdle")] HRESULT StartOnlyIfIdle([in] BOOL newVal);
+		[propget, id(41), helpstring("property RunIfConnectedInternet")] HRESULT RunIfConnectedInternet([out, retval] BOOL *pVal);
+		[propput, id(41), helpstring("property RunIfConnectedInternet")] HRESULT RunIfConnectedInternet([in] BOOL newVal);
+		[id(42), helpstring("method GetTrigger")] HRESULT GetTrigger(short nIndex);
+		[propget, id(43), helpstring("property RestartOnIdleResume")] HRESULT RestartOnIdleResume([out, retval] BOOL *pVal);
+		[propput, id(43), helpstring("property RestartOnIdleResume")] HRESULT RestartOnIdleResume([in] BOOL newVal);
+		[id(44), helpstring("method Run")] HRESULT Run();
+		[id(45), helpstring("method Terminate")] HRESULT Terminate();
+		[id(46), helpstring("method GetStatus")] HRESULT GetStatus([out, retval] short *pVal);
+		[propget, id(47), helpstring("property DaysInterval")] HRESULT DaysInterval([out, retval] short *pVal);
+		[propput, id(47), helpstring("property DaysInterval")] HRESULT DaysInterval([in] short newVal);
+		[propget, id(48), helpstring("property WeeksInterval")] HRESULT WeeksInterval([out, retval] short *pVal);
+		[propput, id(48), helpstring("property WeeksInterval")] HRESULT WeeksInterval([in] short newVal);
+		[propget, id(49), helpstring("property LastTimeRun")] HRESULT LastTimeRun([out, retval] BSTR *pVal);
+		[propget, id(50), helpstring("property NextTimeRun")] HRESULT NextTimeRun([out, retval] BSTR *pVal);
+		[id(51), helpstring("method RemoveTrigger")] HRESULT RemoveTrigger(short nIndex);
+		[propget, id(52), helpstring("property TriggerString")] HRESULT TriggerString([out, retval] BSTR *pVal);
+		[propget, id(53), helpstring("property Disabled")] HRESULT Disabled([out, retval] BOOL *pVal);
+		[propput, id(53), helpstring("property Disabled")] HRESULT Disabled([in] BOOL newVal);
+	};
+
+[
+	uuid(656ED663-20F1-11D4-A450-0004AC9B6CD1),
+	version(1.0),
+	helpstring("SchedTask 1.0 Type Library")
+]
+library SCHEDTASKLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(656ED670-20F1-11D4-A450-0004AC9B6CD1),
+		helpstring("etScheduledTask Class")
+	]
+	coclass etScheduledTask
+	{
+		[default] interface IetScheduledTask;
+	};
+};

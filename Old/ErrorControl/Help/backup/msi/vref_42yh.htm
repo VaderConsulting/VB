@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>TargetPath Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="TargetPath Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_targetpath_property"></A><A NAME="helpid_msiengine_targetpath"></A>TargetPath Property</H1>
+
+<P>The TargetPath property of the <A HREF="vref_8xis.htm"><B>Session</B> object</A> is a read-write property that provides the full path to the designated folder on the installation target drive.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.TargetPath(<I>folder</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_8xis.htm"><B>Session</B> object</A></DD>
+
+<DT><I>folder</I></DT>
+
+<DD>Required case-sensitive name of a folder property as specified by a primary key of the <A HREF="tref_6an9.htm">Directory table</A>. An error is generated if the folder does not exist.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Do not attempt to configure the target path if the components using those paths are already installed for the current user or for a different user. Check the <A HREF="pref_5qpl.htm">ProductState property</A> to determine if the product containing the component is installed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

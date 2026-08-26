@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Localizing Database Columns</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_localizing_database_columns"></A>Localizing Database Columns</H2>
+
+<P>Modify any of the other localizable columns in the MNPFren.msi database using a table editor such as Orca or SQL queries. To determine which columns of a particular table may be localized to another language, see the reference topic for that database table. See <A HREF="tref_29ir.htm">Database Tables</A> for a list of all database tables.</P>
+
+<P>For example, the Text field of some records in the <A HREF="tref_6nad.htm">Control Table</A> may need to be localized into French. The string "Are you sure you want to cancel [ProductName] installation?" in the <A HREF="href_4fc7.htm">Cancel Dialog</A> may be modified in this table to be displayed in French. The original record in .msi file appears as follows.</P>
+
+<P><A HREF="tref_6nad.htm"><B>Control Table</B></A><B> (partial) of the original .msi file</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>Dialog_</TH>
+<TH align=left width=9%>Control</TH>
+<TH align=left width=6%>Type</TH>
+<TH align=left width=5%>X</TH>
+<TH align=left width=4%>Y</TH>
+<TH align=left width=7%>Width</TH>
+<TH align=left width=8%>Height</TH>
+<TH align=left width=10%>Attributes</TH>
+<TH align=left width=9%>Property</TH>
+<TH align=left width=14%>Text</TH>
+<TH align=left width=13%>Control_Next</TH>
+<TH align=left width=6%>Help</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>CancelDlg</TD>
+<TD width=9%>Text</TD>
+<TD width=6%>Text</TD>
+<TD width=5%>48</TD>
+<TD width=4%>15</TD>
+<TD width=7%>194</TD>
+<TD width=8%>30</TD>
+<TD width=10%>3</TD>
+<TD width=9%>&nbsp;</TD>
+<TD width=14%>Are you sure you want to cancel [ProductName] installation?</TD>
+<TD width=13%>&nbsp;</TD>
+<TD width=6%>&nbsp;</TD>
+</TR>
+</TABLE><BR>
+
+<P>You may use a table editor to modify the Text field, such as the Orca table editor provided with the SDK or another table editor, or use a SQL query to change the Text field of the Control table record. An example demonstrating script-driven database queries is provided in the Windows Installer SDK as the utility WiRunSQL.vbs. Use the following command line to modify the field with WiRunSQL.vbs and the Windows Scripting Host. See also <A HREF="novr_8yk4.htm">Examples of Database Queries Using SQL and Script</A>.</P>
+
+<PRE>Cscript WiRunSQL.vbs MNPFren.msi "UPDATE Control SET Control.Text='Êtes-vous sûr de vouloir annuler l'installation de [ProductName]?' WHERE Control.Dialog_='CancelDlg' AND Control.Control='Text'"</PRE>
+
+<P><A HREF="tref_6nad.htm"><B>Control Table</B></A><B> (partial) in MNPFren.msi</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>Dialog_</TH>
+<TH align=left width=9%>Control</TH>
+<TH align=left width=6%>Type</TH>
+<TH align=left width=5%>X</TH>
+<TH align=left width=4%>Y</TH>
+<TH align=left width=7%>Width</TH>
+<TH align=left width=8%>Height</TH>
+<TH align=left width=10%>Attributes</TH>
+<TH align=left width=9%>Property</TH>
+<TH align=left width=14%>Text</TH>
+<TH align=left width=13%>Control_Next</TH>
+<TH align=left width=6%>Help</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>CancelDlg</TD>
+<TD width=9%>Text</TD>
+<TD width=6%>Text</TD>
+<TD width=5%>48</TD>
+<TD width=4%>15</TD>
+<TD width=7%>194</TD>
+<TD width=8%>30</TD>
+<TD width=10%>3</TD>
+<TD width=9%>&nbsp;</TD>
+<TD width=14%>Êtes-vous sûr de vouloir annuler l'installation de [ProductName]?</TD>
+<TD width=13%>&nbsp;</TD>
+<TD width=6%>&nbsp;</TD>
+</TR>
+</TABLE><BR>
+
+<P>If the installation of MNPFren.msi is canceled by the user, the Cancel Dialog appears displaying the text: <I>"Êtes-vous sûr de vouloir annuler l'installation de MNP2000?"</I></P>
+
+<P><A HREF="samp_6ng3.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

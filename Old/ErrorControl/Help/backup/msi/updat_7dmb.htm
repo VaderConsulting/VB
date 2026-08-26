@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Patch Packages</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_patch_packages"></A>Patch Packages</H2>
+
+<P>Microsoft® Windows® Installer uses a patch package to patch local or administrative installations. A patch package is a storage file, similar to a descriptor file, and has a .msp file name extension and its own CLSID. Patch packages are comprised of a summary information stream, transform sub-storages, and cabinet file streams.</P>
+
+<P>A patch package does not include a database like a regular installation package. Instead it contains at minimum one database transform that adds patching information to the database of its target installation package. The installer uses this information to apply the patch files that are stored in the cabinet file stream of the patch package. For more information, see <A HREF="updat_24yt.htm">Creating a Patch Package</A>.</P>
+
+<P>Windows Installer version 1.0 allowed users who were not administrators to apply patches to applications being installed with elevated privileges. This has changed for Windows Installer version 1.1 so that only an administrator can apply a patch to an installation with elevated privileges. Non-administrator users can still apply a patch to applications not being installed with elevated privilege. If the <A HREF="over_2fqg.htm">AllowLockdownPatch</A> policy has been set, non-administrator users can apply a patch to an existing product while running an installation at elevated privileges.</P>
+
+<P>Patch packages are comprised of the following parts.</P>
+
+<H4>Summary Information Stream</H4>
+
+<P>The summary information stream holds a minimum of the following:
+
+<UL>
+	<LI>A GUID that uniquely identifies the patch. The GUID for this patch is appended with a list of GUIDs for earlier patches that are replaced by this patch.</LI>
+
+	<LI>A semicolon-delimited list of product codes for valid targets for this patch.</LI>
+
+	<LI>A semicolon-delimited list of transform sub-storage names in the order they are to be applied.</LI>
+
+	<LI>A semicolon-delimited list of sources for this patch.</LI>
+</UL>
+
+<H4>Transform Sub-Storage</H4>
+
+<P><A HREF="dglo_5989.htm#_msi_transform_gly">Transforms</A> are used to update an application's database. Transforms can add or remove new files, registry entries, user interfaces, or customizations. Transforms are included in a patch package as sub-storages. Each sub-storage has its own summary information stream.</P>
+
+<P>Two transforms are stored in the patch for each target database, and more than one pair of transforms can be in a patch if there are multiple targets. The first transform modifies the target to the new version. The second transform adds entries to the <A HREF="tref_0h5x.htm">Patch</A>, <A HREF="tref_8put.htm">PatchPackage</A>, <A HREF="tref_4mlh.htm">Media</A>, <A HREF="tref_5pid.htm">InstallExecuteSequence</A>, and <A HREF="tref_70f9.htm">AdminExecuteSequence tables</A> that provide file patching instructions to the installer. </P>
+
+<P>The installer applies the transforms during a network administrative installation, and the changes then persist in the administrative image of the application's installer package. If the target is a local installation, however, the installer reapplies the transforms each time a maintenance mode or uninstall installation is invoked. </P>
+
+<H4>Cabinet File Stream</H4>
+
+<P>The cabinet file stream included in a patch can contain three types of files: 
+
+<UL>
+	<LI>Patch files containing the information required to change the old version of the file into the new version. A single patch file can be used to update one or more old versions of a file.</LI>
+
+	<LI>Additional files being added to the application that are not present in the old version.</LI>
+
+	<LI>A entire replacement file. In the rare case where the new version of a file is smaller than the patch required to update the old version of that file, the new file can be included in its entirety. These are new files that are installed over their old versions.</LI>
+</UL>
+
+<H4>See Also</H4>
+
+<P><A HREF="updat_24yt.htm">Creating a Patch Package</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

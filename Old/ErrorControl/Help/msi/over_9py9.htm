@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DisableMedia</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="DisableMedia [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_disablemedia"></A>DisableMedia</H3>
+
+<P>If this per-user <A HREF="over_37ll.htm">system policy</A> is set to "1", users and administrators running a maintenance installation of one product are prevented from using the Browse Dialog to browse media sources, such as CD-ROM, for the sources of other installable products. Browsing for other products is prevented regardless of whether the installation is done with elevated privileges. It is still possible for the user to reinstall the product from media if the user has a correctly labeled media source.</P>
+
+<P>This policy not available with Windows Installer version 1.0.</P>
+
+<H4>Registry Key</H4>
+
+<P><B>HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Installer</B></P>
+
+<H4>Data Type</H4>
+
+<P><B>REG_DWORD</B></P>
+
+<H4>Remarks</H4>
+
+<P>Note that the <A HREF="pref_8iux.htm"><B>DISABLEMEDIA</B> property</A> has a different effect than the DisableMedia policy. Setting the DisableMedia system policy, with Windows Installer version 1.1 or later, only disables browsing to media sources. Installations using Windows Installer version 1.1 should be secured by using the DisableMedia and <A HREF="over_5rmt.htm">DisableBrowse</A> policies. Setting the <B>DISABLEMEDIA</B> property prevents the installer from registering any media source, such as a CD-ROM, as a valid source for the product. If browsing is enabled however, a user may still browse to a media source. </P>
+
+<P>Administrators can secure a managed installation with Windows Installer version 1.0 by setting both the <B>DISABLEMEDIA</B> property and the DisableBrowse policy. This stops users from browsing to a media source. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_1lq1.htm">Source Resiliency</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20DisableMedia;%20RELEASE:%20August%202001;%20URL:%20over_9py9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20DisableMedia;%20RELEASE:%20August%202001;%20URL:%20over_9py9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

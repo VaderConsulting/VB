@@ -1,0 +1,18 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Schedule]
+"Type"=dword:00000010
+"Start"=dword:00000002
+"ErrorControl"=dword:00000001
+"ImagePath"=hex(2):25,53,79,73,74,65,6d,52,6f,6f,74,25,5c,53,79,73,74,65,6d,33,\
+  32,5c,41,74,53,76,63,2e,45,78,65,00
+"ObjectName"="LocalSystem"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Schedule\48C626FE]
+"Schedule"=hex:80,cb,a4,00,00,00,00,00,7f,11,00,00
+"Command"="e:\\csc-exchange\\tracking.log.transfer\\copylogs.cmd"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Schedule\5E338CBB]
+"Schedule"=hex:40,3c,f8,03,00,00,00,00,7f,11,00,00
+"Command"="e:\\csc-exchange\\galupdates\\lets_go.cmd"
+

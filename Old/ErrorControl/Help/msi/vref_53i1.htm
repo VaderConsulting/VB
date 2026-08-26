@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Mode Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Mode Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_mode_property"></A><A NAME="helpid_msiengine_mode"></A>Mode Property</H1>
+
+<P>This is the <B>Mode</B> property of the <A HREF="vref_8xis.htm"><B>Session</B> object</A>. This property is a value representing the designated mode flag for the current install session. Most of the mode flags are read-only externally, but a few specified flags may be set as well.</P>
+
+<P>The <A HREF="qref_8u05.htm">MsiGetMode</A> function returns a Boolean TRUE or FALSE, indicating whether the specific property passed into the function is currently set (TRUE) or not set (FALSE). </P>
+
+<P>Note that not all the run mode values of <I>flag</I> are available when calling the <B>Mode</B> property from a deferred custom action. For more information, see <A HREF="cact_5fg3.htm">Obtaining Context Information for Deferred Execution Custom Actions</A>.</P>
+
+<PRE class=syntax><I>object</I>.Mode(<I>flag</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>Session</B> object</DD>
+
+<DT><I>flag</I></DT>
+
+<DD>Required integer value for the flag. Must be one of the following:
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=46%>Flag name</TH>
+<TH align=left width=12%>Value</TH>
+<TH align=left width=42%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeAdmin</TD>
+<TD width=12%>0</TD>
+<TD width=42%>Admininstrative mode install, else product install.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeAdvertise</TD>
+<TD width=12%>1</TD>
+<TD width=42%>Advertise mode of install.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeMaintenance</TD>
+<TD width=12%>2</TD>
+<TD width=42%>Maintenance mode database loaded.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeRollbackEnabled</TD>
+<TD width=12%>3</TD>
+<TD width=42%>Rollback is enabled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeLogEnabled</TD>
+<TD width=12%>4</TD>
+<TD width=42%>Log file is active.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeOperations</TD>
+<TD width=12%>5</TD>
+<TD width=42%>Executing or spooling operations.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeRebootAtEnd</TD>
+<TD width=12%>6</TD>
+<TD width=42%>Reboot is needed (settable).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeRebootNow</TD>
+<TD width=12%>7</TD>
+<TD width=42%>Reboot is needed to continue installation (settable).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeCabinet</TD>
+<TD width=12%>8</TD>
+<TD width=42%>Installing files from cabinets and files using Media table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeSourceShortNames</TD>
+<TD width=12%>9</TD>
+<TD width=42%>Source files use only short file names.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeTargetShortNames</TD>
+<TD width=12%>10</TD>
+<TD width=42%>Target files are to use only short file names.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeWindows9x</TD>
+<TD width=12%>12</TD>
+<TD width=42%>Operating system is Windows 95/98, but not Windows NT/Windows 2000.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeZawEnabled</TD>
+<TD width=12%>13</TD>
+<TD width=42%>Operating system supports advertising of products.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeScheduled</TD>
+<TD width=12%>16</TD>
+<TD width=42%>Deferred <A HREF="cact_5t2r.htm">custom action</A> called from install script execution.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeRollback</TD>
+<TD width=12%>17</TD>
+<TD width=42%>Deferred <A HREF="cact_5t2r.htm">custom action</A> called from rollback execution script.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%>msiRunModeCommit </TD>
+<TD width=12%>18</TD>
+<TD width=42%>Deferred <A HREF="cact_5t2r.htm">custom action</A> called from commit execution script.</TD>
+</TR>
+</TABLE><BR>
+
+
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Mode%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_53i1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Mode%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_53i1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>SQL Syntax</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="SQL Syntax">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_sql_syntax"></A>SQL Syntax</H1>
+
+<P>The SQL query strings are restricted to the following format.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To select a group of records.</B></P>
+
+<P>SELECT [DISTINCT]{column-list} FROM {table-list} [WHERE {operation-list}] [ORDER BY {column-list}] </P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To delete records from a table.</B></P>
+
+<P>DELETE FROM {table} [WHERE {operation-list}]</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To modify existing records in a table.</B></P>
+
+<P>UPDATE {table-list} SET {column}= {constant} [, {column}= {constant}][, ...] [WHERE {operation-list}]</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To add records to a table.</B></P>
+
+<P>INSERT INTO {table} ({column-list}) VALUES ({constant-list}) [TEMPORARY]</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To add a table.</B></P>
+
+<P>CREATE TABLE {table} ( {column} [CHAR [( {size} )] | CHARACTER [( {size} )] | LONGCHAR  | SHORT | INT | INTEGER | LONG | OBJECT ] [NOT NULL] [TEMPORARY][LOCALIZABLE] [, column...][, ...] PRIMARY KEY column [, column][, ...] )[HOLD]</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To remove a table.</B></P>
+
+<P>DROP TABLE {table}</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To add a column.</B></P>
+
+<P>ALTER TABLE {table} ADD  {column} [CHAR [( {size} )] | CHARACTER [( {size} )] | LONGCHAR  | SHORT | INT | INTEGER | LONG | OBJECT ] [NOT NULL] [TEMPORARY][LOCALIZABLE][HOLD]</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To hold and free temporary tables.</B></P>
+
+<P>ALTER TABLE {table name} HOLD</P>
+
+<P>ALTER TABLE {table name} FREE</P>
+
+<P>The user can use the commands HOLD and FREE to control the life span of a temporary table or a temporary column. The hold count on a table is incremented for every SQL HOLD operation on that table and decremented for every SQL FREE operation on the table. When the last hold count is released on a table, all temporary columns become inaccessible. If all columns are temporary, the table becomes inaccessible.</P>
+
+<P>Optional parameters are shown enclosed in brackets [ ]. When several choices are listed, the optional parameters are separated by a vertical bar.</P>
+
+<P>A {constant} is either a string or an integer. A string must be enclosed in single quote marks 'example'. A {constant-list} is a comma-delimited list of one or more constants. </P>
+
+<P>The LOCALIZABLE option sets a column attribute that indicates the column needs to be localized.</P>
+
+<P>A {column} is a columnar reference to a value in a field of a table. </P>
+
+<P>A {marker} is a parameter reference to a value supplied by a record submitted with the query. It is represented in the SQL statement by a question mark ?. For information regarding the use of parameters, see either the <A HREF="qref_8hgl.htm"><B>MsiViewExecute</B></A> function or the <A HREF="vref_2k6c.htm">Execute method</A>. </P>
+
+<P>Note that the Windows Installer SQL syntax does not support the escaping of single-quotes (ASCII value 39) in a string literal. You may instead fetch or create the record, set the field with the <A HREF="vref_2ol5.htm">StringData</A> or <A HREF="vref_6nzt.htm">IntegerData</A> property, and then call the <A HREF="vref_6204.htm"><B>Modify</B> method</A>. Alternatively, you can create a record and use the parameter markers (?) described in <A HREF="vref_2k6c.htm"><B>Execute</B> method</A>. You may also do this using the <A HREF="qref_778z.htm">Database Functions</A> <A HREF="qref_8hgl.htm"><B>MsiViewExecute</B></A>, <A HREF="qref_10vm.htm"><B>MsiRecordSetInteger</B></A>, and <A HREF="qref_5a07.htm"><B>MsiRecordSetString</B></A>.</P>
+
+<P>A WHERE {operation-list} clause is optional and is a grouping of operations to be used to filter the selection. The operations must be of the following types:
+
+<UL>
+	<LI>{column} = {column}</LI>
+
+	<LI>{column} = | &lt;&gt; | &gt; | &lt; | &gt;= | &lt;=  {constant} </LI>
+
+	<LI>{column} = | &lt;&gt; | &gt; | &lt; | &gt;= | &lt;=  {marker} </LI>
+
+	<LI>{column} is null</LI>
+
+	<LI>{column} is not null</LI>
+</UL>
+
+<P>For string values, only the = or &lt;&gt; operations are possible. Object value comparisons are limited to IS NULL and IS NOT NULL.</P>
+
+<P>Individual operations can be grouped by AND or OR operators. Ordering can be imposed by use of parentheses ( ).</P>
+
+<P>The ORDER BY clause is optional and causes an initial delay during sorting. Ordering by strings will group identical strings together, but it will not alphabetize the strings.</P>
+
+<P>The DISTINCT clause is optional and does not repeat identical records in the returned result set.</P>
+
+<P>A {table-list} is a comma-delimited list of one or more table names referred to as {table} in the join.</P>
+
+<P>A {column-list} is a comma-delimited list of one or more table columns referred to as {column} selected. Ambiguous columns may be further qualified as {tablename.column}. An asterisk may be used as a column-list in a SELECT query to represent all columns in the referenced tables. When referencing fields by column position, select the columns by name instead of using the asterisk. An asterisk cannot be used as a column-list in an INSERT INTO query. </P>
+
+<P>To escape table names and column names that clash with SQL keywords, enclose the name between two grave accent marks `` (ASCII value 96). If a column name must be escaped and is qualified as {tablename.column}, then the table and the column must be escaped individually as {`tablename`.`column`}. It is recommended that all table names and column names be escaped in this fashion to avoid clashes with reserved words and gain significant performance.</P>
+
+<P>Table names are limited to 31 characters. See <A HREF="app_948j.htm">Table Names</A>. Table and column names are case-sensitive. SQL keywords are not case-sensitive.</P>
+
+<P>Only inner joins are supported and are specified by a comparison of columns from different tables. Circular joins are not supported. A circular join is a SQL query that links three or more tables together into a circuit. For example, the following is a circular join: </P>
+
+<P>WHERE Table1.Field1=Table2.Field1 AND Table2.Field2=Table3.Field1 AND Table3.Field2=Table1.Field2.</P>
+
+<P>Columns that are part of the primary key(s) for a table must be defined first in priority order, followed by any non-primary key columns. Persistent columns must be defined before temporary columns. The sort sequence of a text column is undefined; however, identical text values always group together.</P>
+
+<P>Tables may not contain more than one column of type 'object'.</P>
+
+<P>The maximum size that can be explicitly specified for a string column in a SQL query is 255. A string column of infinite length is represented as having size 0. See <A HREF="novr_2dv8.htm">Column Definition Format</A>.</P>
+
+<P>To execute any SQL statement, a view must be created. However, a view that does not create a result set, such as CREATE TABLE, or INSERT INTO, cannot be used with <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A> or the <A HREF="vref_6204.htm"><B>Modify Method</B></A> to update tables though the view.</P>
+
+<P>Note that you cannot fetch a record containing binary data from one database and then use that record to insert the data into a completely different database. To move binary data from one database to another, you should export the data to a file and then import it into the new database via a query and the <A HREF="qref_4wq5.htm"><B>MsiRecordSetStream</B></A>. This ensures that each database has its own copy of the binary data.</P>
+
+<P>See also <A HREF="novr_8yk4.htm">Examples of Database Queries Using SQL and Script</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

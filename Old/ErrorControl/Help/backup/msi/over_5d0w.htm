@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Windows File Protection on Windows 2000</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_windows_file_protection_on_windows_2000"></A>Windows File Protection on Windows 2000</H1>
+
+<P>The Windows Installer adheres to Windows File Protection (WFP) when installing essential system files on Microsoft® Windows® 2000. If a protected system file is modified by an unattended installation of an application, WFP restores the file to the verified file version. For more information, see Windows File Protection in the Platform SDK. </P>
+
+<P>The Windows Installer never attempts to install or replace a protected file. When the <A HREF="aref_3hym.htm">InstallFiles action</A> or any other action scheduled before InstallFiles attempts to install a file protected on Windows 2000, the installer calls WFP with a request to install or replace the protected file. The installer requests the file installation from WFP immediately after executing the InstallFiles action. Windows File Protection installs or replaces the file on the user's system with a cached version of the protected file. Note that this does not guarantee that the version of the file installed from the cache is the version required by the application. After WFP has installed the file, the installer determines whether this version matches the version in the package. If the file version in the package is greater than the installed version, the installer informs the user that it cannot update the system and that an update of the operating system may be required for the application. </P>
+
+<P>If any action sequenced after InstallFiles attempts to install or replace a protected file not already installed on the system, the installer cannot call WFP to install the file. In this case, the installer informs the user that it cannot update the system and that an update of the operating system may be required for the application. </P>
+
+<P>The installer also checks with Windows File Protection when removing files and never attempts to remove protected system files.</P>
+
+<P><B>Component Key Files Protected by Windows File Protection</B></P>
+
+<P>When the installer attempts to install a component's key file on Windows 2000, it first calls Windows File Protection to determine if the key file is protected. When the key file of a component is protected by WFP, and that key file is already installed, the installer updates the component only if the version of the key file in the package is greater than the installed version. If the installation package specifies that a component be installed, and the key file of the is not currently installed, then regardless of whether the key file is protected the installer installs the component. Once any component having a key file protected by WFP is installed, it is permanently installed, and the installer never removes or replaces the component.</P>
+
+<P>For information on Windows File Protection with Microsoft® Windows® Millennium Edition, see <A HREF="over_1h9q.htm">Windows File Protection on Windows Millennium Edition</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

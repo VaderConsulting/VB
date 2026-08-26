@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>LockPermissions Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="LockPermissions Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_lockpermissions_table"></A>LockPermissions Table</H1>
+
+<P>The LockPermissions table is used to secure individual portions of your application in a locked down environment. It can be used with the installation of files, registry keys, and created folders. If the folder, file, or registry key already exists, any access control lists (ACLs) are replaced by the entries in this table.</P>
+
+<P>The LockPermissions table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Column</TH>
+<TH align=left width=44%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=20%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>LockObject</TD>
+<TD width=44%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Table</TD>
+<TD width=44%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Domain</TD>
+<TD width=44%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>User</TD>
+<TD width=44%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Permission </TD>
+<TD width=44%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>LockObject</DT>
+
+<DD>This column and the Table column together specify the file, directory, or registry key that is to be secured. The LockObject column is a foreign key pointing into the primary key of the table specified by the Table column.</DD>
+
+<DT>Table</DT>
+
+<DD>This column and the LockObject column specify the file, directory, or registry key that is to be secured. In the Table column, enter either File, Registry, or CreateFolder to specify a LockObject listed in the <A HREF="tref_4n6t.htm">File table</A>, <A HREF="tref_3obp.htm">Registry table</A>, or the <A HREF="tref_152d.htm">CreateFolder table</A>. </DD>
+
+<DT>Domain</DT>
+
+<DD>Specifies the domain of the user for which permissions are to be set. This is the name of a stand-alone machine or a domain name.</DD>
+
+<DT>User</DT>
+
+<DD>Specifies the localized name of the user for which permissions are to be set. This name must be located on the machine or domain. No permission is granted if the machine or domain controller does not recognize the domain and user combination or if the user's SID cannot be retrieved. Multiple users can be specified for a single LockObject. Examples of common user names are "Everyone," "Users," and "Administrators." LocalSystem is given full control in all security descriptors created through the LockPermissions table.
+
+<P>Note that you can use multiple records with identical LockObject and Table entries (but different User entries) to specify access control lists for multiple users. 
+</DD>
+
+<DT>Permission</DT>
+
+<DD>An integer description of system privileges. The following gives the most commonly used values and a complete list exists in WINNT.H. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Privilege constant</TH>
+<TH align=left width=32%>Hexadecimal</TH>
+<TH align=left width=26%>Decimal</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>GENERIC_ALL</TD>
+<TD width=32%>0X10000000</TD>
+<TD width=26%>268435456</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>GENERIC_EXECUTE</TD>
+<TD width=32%>0X20000000</TD>
+<TD width=26%>536870912</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>GENERIC_WRITE</TD>
+<TD width=32%>0X40000000</TD>
+<TD width=26%>1073741824</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Note that you cannot specify GENERIC_READ in the Permission column. Attempting to do so will fail. Instead, you must specify a value such as KEY_READ or FILE_GENERIC_READ.
+
+
+<P>Null entered in this column is reserved for future use. 
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>It is recommended that the system administrator's local group be included in all access control lists. This ensures that the system administrator will be able to access and maintain objects. </P>
+
+<P>If a file, registry key, or directory is not listed in the LockPermissions table it receives no explicit security descriptor. </P>
+
+<P>Every file, registry key, or directory listed in the LockPermissions table receives an explicit security descriptor. The installer also attempts to preserve the security on objects that already exist on the system. If a file, registry key, or directory replaces a secured object, it receives the security descriptor of the object it replaces. If the object is new, or if the object it replaces had no explicit security descriptor, access to the new object is based on the attributes of its parent or container object. The security settings of child registry keys are determined by the parent registry key and the security settings of files are determined by their directory. In general, it is not recommended to secure individual files and registry keys. Instead secure the directories or top level registry keys for your product or user. Access to a file is then automatically determined by the directory that contains it and access to a registry key is determined by the parent key.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

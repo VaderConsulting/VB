@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetFeatureState</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetFeatureState">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetfeaturestate"></A>MsiGetFeatureState</H1>
+
+<P>The <B>MsiGetFeatureState</B> function gets the requested state of a feature.</P>
+
+<PRE class=syntax><B>UINT MsiGetFeatureState(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>         // installer handle
+  <B>LPCTSTR</B> <I>szFeature</I><B>,</B>          // feature name within product
+  <B>INSTALLSTATE</B> <I>*piInstalled</I><B>,</B>  // returned current install state
+  <B>INSTALLSTATE</B> <I>*piAction</I>      // action taken during install session
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>Handle to the installation.</DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>Specifies the feature name within the product.</DD>
+
+<DT><I>piInstalled</I></DT>
+
+<DD>Specifies the returned current installed state. This parameter can be one of the following values. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=49%>Value</TH>
+<TH align=left width=51%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_BADCONFIG</TD>
+<TD width=51%>The configuration data is corrupt.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_INCOMPLETE</TD>
+<TD width=51%>The installation is suspended or in progress.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_SOURCEABSENT</TD>
+<TD width=51%>The feature must run from source, and the source is unavailable.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_MOREDATA</TD>
+<TD width=51%>The return buffer is full.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_INVALIDARG</TD>
+<TD width=51%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_UNKNOWN</TD>
+<TD width=51%>An unrecognized product or feature was specified.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_BROKEN</TD>
+<TD width=51%>The feature is broken.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_ADVERTISED</TD>
+<TD width=51%>advertised feature</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_REMOVED</TD>
+<TD width=51%>The feature is being removed. It is in the action state and is not settable.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_ABSENT</TD>
+<TD width=51%>The feature was uninstalled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_LOCAL</TD>
+<TD width=51%>The feature was installed on the local drive.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_SOURCE</TD>
+<TD width=51%>The feature must run from source, CD, or network.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>INSTALLSTATE_DEFAULT</TD>
+<TD width=51%>The feature will be installed in the default location: local or source.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>piAction</I></DT>
+
+<DD>Specifies the action taken during the installation session. For return values, see <I>piInstalled</I>.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>ERROR_UNKNOWN_FEATURE</DT>
+
+<DD>An unknown feature was requested.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>See <A HREF="novr_9vw3.htm">Calling Database Functions From Programs</A>.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_selection_functions">Installer Selection Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

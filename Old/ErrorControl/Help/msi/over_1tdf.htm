@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Per-Machine Installations</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_per_machine_installations"></A>Per-Machine Installations</H1>
+
+<P>Per-Machine installation of an application means the application is available for all users of a computer. It also means:
+
+<UL>
+	<LI>Shortcuts are installed to the All Users profile.</LI>
+
+	<LI>COM registration is always written to <B>HKLM\Software\Classes</B>.</LI>
+
+	<LI>On Microsoft® Windows® 2000 and Microsoft® Windows NT®, always run at elevated privileges.</LI>
+
+	<LI>Icons and transforms are stored in %WINDOWS%\Installer\{ProductCode}.</LI>
+
+	<LI>The installer sets the following properties to the following values during per-machine installations. </LI>
+</UL>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Property</TH>
+<TH align=left width=50%>Description</TH>
+<TH align=left width=26%>CSIDL</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_4g6x.htm"><B>DesktopFolder</B> property</A></TD>
+<TD width=50%>Full path to the Desktop Folder for All Users. Exists on Windows 2000 and Windows NT.</TD>
+<TD width=26%>CSIDL_COMMON_DESKTOPDIRECTORY</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_5bw9.htm"><B>ProgramMenuFolder</B> property</A></TD>
+<TD width=50%>Full path to the Program Menu Folder for All Users. Exists on Windows 2000 and Windows NT.</TD>
+<TD width=26%>CSIDL_COMMON_PROGRAMS</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_0mt5.htm"><B>StartMenuFolder</B> property</A></TD>
+<TD width=50%>Full path to Start Menu Folder for All Users. Exists on Windows 2000 and Windows NT.</TD>
+<TD width=26%>CSIDL_COMMON_STARTMENU</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_3vnd.htm"><B>StartUpFolder</B> property</A></TD>
+<TD width=50%>Full path to Start Up Folder for All Users. Exists on Windows 2000 and Windows NT.</TD>
+<TD width=26%>CSIDL_COMMON_STARTUP</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_5at5.htm"><B>TemplateFolder</B> property</A></TD>
+<TD width=50%>Full path to the Template Folder for All Users. Exists on Windows 2000.</TD>
+<TD width=26%>CSIDL_COMMON_TEMPLATES</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_7z3t.htm"><B>AdminToolsFolder</B> property</A></TD>
+<TD width=50%>Full path to the file system directory that stores administrative tools for All Users. Exists on Windows 2000.</TD>
+<TD width=26%>CSIDL_COMMON_ADMINTOOLS</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_7a7t.htm"><B>AppDataFolder</B> property</A></TD>
+<TD width=50%>Full path to the Application Data folder for the current user. Exists on Windows 2000, Windows NT, Microsoft Windows 98, and Microsoft Windows 95.</TD>
+<TD width=26%>CSIDL_APPDATA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_6dtl.htm"><B>CommonAppDataFolder</B></A></TD>
+<TD width=50%>Full path to the file directory containing application data for All Users. Exists on Windows 2000.</TD>
+<TD width=26%>CSIDL_COMMON_APPDATA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_048p.htm"><B>FavoritesFolder</B> property</A></TD>
+<TD width=50%>Full path of the Favorites folder for the current user. Exists on Windows 2000, Windows NT, Windows 98, and Windows 95.</TD>
+<TD width=26%>CSIDL_FAVORITES</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_5xfd.htm"><B>PersonalFolder</B> property</A></TD>
+<TD width=50%>Full path to the Personal folder for the current user. Exists on Windows 2000, Windows NT, Windows 98, and Windows 95.</TD>
+<TD width=26%>CSIDL_PERSONAL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_5dh5.htm"><B>SendToFolder</B> property</A></TD>
+<TD width=50%>Full path to the SendTo folder for the current user. Exists on Windows 2000, Windows NT, Windows 98, and Windows 95.</TD>
+<TD width=26%>CSIDL_SENDTO</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_1115.htm"><B>FontsFolder</B> property</A></TD>
+<TD width=50%>Full path to the system Fonts folder. Exists on Windows 2000, Windows NT, Windows 98, and Windows 95.</TD>
+<TD width=26%>CSIDL_FONTS</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_3xfd.htm"><B>ProgramFilesFolder</B> property</A></TD>
+<TD width=50%>Full path to the Program Files folder for the current user. Exists on Windows 2000, Windows NT, Windows 98, and Windows 95.</TD>
+<TD width=26%>CSIDL_PROGRAM_FILES</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_3xfd.htm"><B>ProgramFilesFolder</B></A></TD>
+<TD width=50%>Full path to the Program Files folder for the current user. Exists on Windows NT and Windows 2000.</TD>
+<TD width=26%>CSIDL_PROGRAM_FILESX86</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_4ge1.htm"><B>CommonFilesFolder</B> property</A></TD>
+<TD width=50%>Full path to the Common Files folder for the current user. Exists on Windows 2000 and Windows NT.</TD>
+<TD width=26%>CSIDL_PROGRAM_FILES_COMMON</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_4ge1.htm"><B>CommonFilesFolder</B> property</A></TD>
+<TD width=50%>Full path to the Common Files folder for the current user. Exists on Windows NT and Windows 2000.</TD>
+<TD width=26%>CSIDL_PROGRAM_FILES_COMMONX86</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_88l5.htm"><B>WindowsFolder</B> property</A></TD>
+<TD width=50%>Full path to the Windows folder for the current user. Exists on Windows 2000, Windows NT, Windows 98, and Windows 95.</TD>
+<TD width=26%>CSIDL_WINDOWS</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_4sft.htm"><B>SystemFolder</B> property</A></TD>
+<TD width=50%>Full path to the System folder for the current user. Exists on Windows NT and Windows 2000.</TD>
+<TD width=26%>CSIDL_SYSTEMX86</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_6dtl.htm"><B>CommonAppDataFolder</B> property</A></TD>
+<TD width=50%>Full path to the file directory containing application data for all users. Exists on Windows 2000, Windows NT, Windows 98, and Windows 95.</TD>
+<TD width=26%>CSIDL_COMMONAPPDATA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_8whl.htm"><B>LocalAppDataFolder</B> property</A></TD>
+<TD width=50%>Full path to the file system directory that serves as the data repository for local (non-roaming) applications. Exists on Windows 2000, Windows NT, Windows 98, and Windows 95.</TD>
+<TD width=26%>CSIDL_LOCAL_APPDATA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%><A HREF="pref_8e7t.htm"><B>MyPicturesFolder</B> property</A></TD>
+<TD width=50%>Full path to the MyPictures folder. Exists on Windows 2000, Windows NT, Windows 98, and Windows 95.</TD>
+<TD width=26%>CSIDL_MYPICTURES</TD>
+</TR>
+</TABLE><BR>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;The Alpha platform is not supported by Windows Installer version 1.1 and later.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_2vn2.htm">How do I specify a per-user or per-machine installation?</A>, <A HREF="over_2tf7.htm">Per-User Installations</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Per-Machine%20Installations;%20RELEASE:%20August%202001;%20URL:%20over_1tdf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Per-Machine%20Installations;%20RELEASE:%20August%202001;%20URL:%20over_1tdf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

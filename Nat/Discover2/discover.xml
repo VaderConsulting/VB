@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+    <NAT_Discover Version="2.0" Description="WMI Classes queried by NAT Discover">
+        <Class>Win32_PhysicalMemory</Class>
+        <Class>Win32_PhysicalMemoryArray</Class>
+        <Class>Win32_OperatingSystem</Class>
+        <Class>Win32_ComputerSystem</Class>
+        <Class>Win32_SystemEnclosure</Class>
+        <Class>Win32_Keyboard</Class>
+        <Class>Win32_PointingDevice</Class>
+        <Class>Win32_DesktopMonitor</Class>
+        <Class>Win32_VideoController</Class>
+        <Class>Win32_FloppyDrive</Class>
+        <Class>Win32_CDROMDrive</Class>
+        <Class>Win32_TapeDrive</Class>
+        <Class>Win32_BaseBoard</Class>
+        <Class>Win32_Processor</Class>
+        <Class>Win32_BIOS</Class>
+        <Class>Win32_SystemSlot</Class>
+        <Class>Win32_DiskDrive</Class>
+        <Class>Win32_Product</Class>
+        <Class>Win32_Service</Class>
+        <Class>Win32_SystemDriver</Class>
+	<Class>Win32_LogicalDisk</Class>
+        <Class>Win32_SoundDevice</Class>
+        <Class>Win32_POTSModem</Class>
+        <Class>Win32_Share</Class>
+        <Class>Win32_Printer</Class>
+	<Class>Win32_NetworkAdapterConfiguration</Class>
+    </NAT_Discover>
+    

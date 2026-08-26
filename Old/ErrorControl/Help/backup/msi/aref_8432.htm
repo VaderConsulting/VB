@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>WriteIniValues Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="WriteIniValues Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_writeinivalues_action"></A>WriteIniValues Action</H1>
+
+<P>The WriteIniValues action writes the .ini file information that the application needs written to its .ini files. The writing of this information is gated by the <A HREF="tref_09np.htm">Component table</A>. An .ini value is written if the corresponding component has been set to be installed either locally or run from source. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The InstallValidate action must come before the WriteIniValues action. If there is a <A HREF="aref_4tv2.htm">RemoveIniValues action</A> in the sequence, then it must come before the WriteIniValues action. </P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Identifier of .ini file </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[2]</TD>
+<TD width=84%>.ini file key below section</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[3]</TD>
+<TD width=84%>Item removed form .ini file</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[4]</TD>
+<TD width=84%>Value removed from .ini file</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="tref_56jp.htm">IniFile table</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

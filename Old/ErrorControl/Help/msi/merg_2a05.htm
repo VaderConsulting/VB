@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>IMsmMerge Interface</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="IMsmMerge interface">
+<META NAME="MS-HKWD" CONTENT="Merge object, IMsmMerge interface">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_imsmmerge_interface"></A>IMsmMerge Interface</H1>
+
+<P>The <B>IMsmMerge</B> interface and the <A HREF="merg_2kh1.htm"><B>IMsmMerge2</B> interface</A> provide interfaces to the <B>Merge</B> object. The <A HREF="merg_4th0.htm"><B>Merge</B> object</A> provides access to other top-level objects. A <B>Merge</B> object must be created before loading the automation support required by COM to access the functions in Mergemod.dll.</P>
+
+<H4>Interface ID</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Constant</TH>
+<TH align=left width=67%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%><B>IID_ImsmMerge</B></TD>
+<TD width=67%>{0ADDA82E-2C26-11D2-AD65-00A0C9AF11A6}</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Properties</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=40%>Property</TH>
+<TH align=left width=60%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%><A HREF="merg_0ctb.htm"><B>Dependencies</B></A></TD>
+<TD width=60%>Returns a collection of all unsatisfied dependencies in the database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%><A HREF="merg_4tix.htm"><B>Errors</B></A></TD>
+<TD width=60%>Returns a collection of all errors from the most recent merge operation.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Methods</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=41%>Method</TH>
+<TH align=left width=59%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_3r33.htm"><B>OpenDatabase</B></A></TD>
+<TD width=59%>Opens a database to use as the merge target.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_2rs4.htm"><B>OpenModule</B></A></TD>
+<TD width=59%>Opens a merge module for use as the merge source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_2750.htm"><B>CloseDatabase</B> method</A></TD>
+<TD width=59%>Closes the current database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_0m1w.htm"><B>CloseModule</B></A></TD>
+<TD width=59%>Closes the current module</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_9484.htm"><B>OpenLog</B></A></TD>
+<TD width=59%>Opens a log file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_9p5w.htm"><B>CloseLog</B></A></TD>
+<TD width=59%>Closes the current log file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_8h0k.htm"><B>Log</B></A></TD>
+<TD width=59%>Logs a string to the current log file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_8gyn.htm"><B>Merge</B></A></TD>
+<TD width=59%>Merges the current module into the current database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_28mc.htm"><B>Connect</B></A></TD>
+<TD width=59%>Connects the components in a module to the specified feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_7ov8.htm"><B>ExtractCAB</B></A></TD>
+<TD width=59%>Extracts the embedded CAB of a Merge Module to a disk file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=41%><A HREF="merg_1r8k.htm"><B>ExtractFiles</B></A></TD>
+<TD width=59%>Creates a source image of the Merge Module beneath the specified path.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>C++ Language</H4>
+
+<P>interface <B>IMsmMerge : IDispatch</B></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20IMsmMerge%20Interface;%20RELEASE:%20August%202001;%20URL:%20merg_2a05.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20IMsmMerge%20Interface;%20RELEASE:%20August%202001;%20URL:%20merg_2a05.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

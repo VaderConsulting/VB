@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Component Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Component Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_component_table"></A>Component Table</H1>
+
+<P>The Component table lists components. </P>
+
+<P>The Component table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Column</TH>
+<TH align=left width=37%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=18%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Component</TD>
+<TD width=37%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>ComponentId</TD>
+<TD width=37%><A HREF="tref_7kf8.htm">GUID</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Directory_</TD>
+<TD width=37%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Attributes</TD>
+<TD width=37%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Condition</TD>
+<TD width=37%><A HREF="tref_735a.htm">Condition</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>KeyPath</TD>
+<TD width=37%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Component</DT>
+
+<DD>Identifies the component record.
+
+<P>Primary table key.
+</DD>
+
+<DT>ComponentId</DT>
+
+<DD>A string GUID unique to this component, version, and language. 
+
+<P>Note that the letters of these GUIDs must be uppercase. Utilities such as GUIDGEN can generate GUIDs containing lowercase letters. The lowercase letters must be changed to uppercase to make these valid component code GUIDs.
+
+
+<P>If this column is null the installer does not register the component and the component cannot be removed or repaired by the installer. This might be intentionally done if the component is only needed during the installation, such as a custom action that cleans up temporary files or removes an old product. It may also be useful when copying data files to a user's computer that do not need to be registered.
+</DD>
+
+<DT>Directory_</DT>
+
+<DD>External key of an entry in the <A HREF="tref_6an9.htm">Directory table</A>. This is a property name whose value contains the actual path, which can be set either by the <A HREF="aref_16zy.htm">AppSearch action</A> or with the default setting obtained from the Directory table.
+
+<P>Developers must avoid authoring components that place files into one of the User Profile folders. These files would not be available to all users in multi-user situations and could cause the installer to permanently view the component as requiring repair.
+
+
+<P>External key to column one of the Directory table.
+</DD>
+
+<DT>Attributes</DT>
+
+<DD>This column contains a bit flag that specifies options for remote execution. Add the indicated bit to the total value in the column to include an option.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Bit flag name</TH>
+<TH align=left width=12%>Decimal</TH>
+<TH align=left width=12%>Hexadecimal</TH>
+<TH align=left width=55%>Remote execution option </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbComponentAttributesLocalOnly</B></TD>
+<TD width=12%>0</TD>
+<TD width=12%>0x0000</TD>
+<TD width=55%>Component cannot be run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbComponentAttributesSourceOnly</B></TD>
+<TD width=12%>1</TD>
+<TD width=12%>0x0001</TD>
+<TD width=55%>Component can only be run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbComponentAttributesOptional</B></TD>
+<TD width=12%>2</TD>
+<TD width=12%>0x0002</TD>
+<TD width=55%>Component can run locally or from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbComponentAttributesRegistryKeyPath</B></TD>
+<TD width=12%>4</TD>
+<TD width=12%>0x0004</TD>
+<TD width=55%>If this bit is set, the value in the KeyPath column is used as a key into the <A HREF="tref_3obp.htm">Registry table</A>. 
+<P>In this case, the Value and Name fields of the corresponding Registry table record cannot be left blank. They must either specify a registry value and registry value name, or if Null, contain "+", "-", or "*". See the <A HREF="tref_3obp.htm">Registry table</A>.</P>
+
+<P>Setting this bit is recommended for registry entries written to the HKCU hive. This ensures the installer writes the necessary HKCU registry entries when there are multiple users on the same machine.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbComponentAttributesSharedDllRefCount</B></TD>
+<TD width=12%>8</TD>
+<TD width=12%>0x0008</TD>
+<TD width=55%>If this bit is set, the installer increments the reference count in the shared DLL registry of the component's key file. If this bit is not set, the installer increments the reference count only if the reference count already exists.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbComponentAttributesPermanent</B></TD>
+<TD width=12%>16</TD>
+<TD width=12%>0x0010</TD>
+<TD width=55%>If this bit is set, the installer does not remove the component during an uninstall. The installer registers an extra system client for the component in the Windows Installer registry settings.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbComponentAttributesODBCDataSource</B></TD>
+<TD width=12%>32</TD>
+<TD width=12%>0x0020</TD>
+<TD width=55%>If this bit is set, the value in the KeyPath column is a key into the <A HREF="tref_359h.htm">ODBCDataSource table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbComponentAttributesTransitive</B></TD>
+<TD width=12%>64</TD>
+<TD width=12%>0x0040</TD>
+<TD width=55%>If this bit is set, the installer reevaluates the value of the statement in the Condition column upon a reinstall. If the value was previously False and has changed to True, the installer installs the component. If the value was previously True and has changed to False the installer removes the component even if the component has other products as clients.
+<P>This bit should only be set for transitive components. See <A HREF="over_0ws3.htm">Using Transitive Components</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbComponentAttributesNeverOverwrite</B></TD>
+<TD width=12%>128</TD>
+<TD width=12%>0x0080</TD>
+<TD width=55%>If this bit is set, the installer does not install or reinstall the component if a key path file or a key path registry entry for the component already exists. The application does register itself as a client of the component.
+<P>Use this flag only for components that are being registered by the Registry table. Do not use this flag for components registered by the <A HREF="tref_6p2d.htm">AppId</A>, <A HREF="tref_5n8l.htm">Class</A>, <A HREF="tref_219h.htm">Extension</A>, <A HREF="tref_4x5x.htm">ProgId</A>, <A HREF="tref_3sh1.htm">MIME</A>, and <A HREF="tref_3kdh.htm">Verb tables</A>.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Condition</DT>
+
+<DD>This column contains a conditional statement that can control whether or not a component is installed. If the condition is null or evaluates to true, then the component is enabled. If the condition evaluates to False, then the component is disabled and is not installed.
+
+<P>The Condition field enables or disables a component only during the <A HREF="aref_22we.htm">CostFinalize action</A>. To enable or disable a component after CostFinalize, you must use a custom action or the <A HREF="href_2zjo.htm">DoAction ControlEvent</A> to call <A HREF="qref_3s6d.htm"><B>MsiSetComponentState</B></A>.
+
+
+<P>Note that unless the Transitive bit in the Attributes column is set for a component, the component remains enabled once installed even if the conditional statement in the Condition column later evaluates to False on a subsequent maintenance installation of the product.
+
+
+<P>The Condition column in the Component table accepts conditional expressions containing references to the installed states of features and components. For information on the syntax of conditional statements, see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.
+</DD>
+
+<DT>KeyPath</DT>
+
+<DD>This value points to a file or folder belonging to the component that the installer uses to detect the component. Two components can not share the same key path value. The value in this column is also the path returned by the <A HREF="msi_3fxk.htm"><B>MsiGetComponentPath</B></A> function. 
+
+<P>If the value is not NULL, then KeyPath is either a primary key into the <A HREF="tref_3obp.htm">Registry</A>, <A HREF="tref_359h.htm">ODBCDataSource</A>, or <A HREF="tref_4n6t.htm">File tables</A> depending upon the Attribute value. If KeyPath is null, then the folder of the Directory_ column is used as the key path.
+
+
+<P>Because folders created by the installer are deleted when they become empty, you must author an entry into the <A HREF="tref_152d.htm">CreateFolder table</A> to install a component that consists of an empty folder. 
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>For a discussion of the relationship between components and features, see <A HREF="tref_0a91.htm">Feature Table</A>.</P>
+
+<P>The installer keeps track of shared DLLs independently of the shared DLL reference count in the registry. If a reference count for a shared DLL exists in the registry, the installer always increments the count when it is installing the file and decrements it when it is uninstalling. If <B>msidbComponentAttributesSharedDllRefCount</B>, is not set, and the reference count does not already exist, the installer will not create one. Note that the SharedDLLs reference count in the registry is incremented for any files installed to the System folder (System32 on Windows NT/Windows 2000). </P>
+
+<P>If <B>msidbComponentAttributesSharedDllRefCount</B> is not set, then another application can remove the component even if it is still needed. To see how this could happen consider the following scenario:
+
+<UL>
+	<LI>An application that uses the installer installs a shared component.</LI>
+
+	<LI>The <B>msidbComponentAttributesSharedDllRefCount</B> bit is not set and there is no reference count. Thus the installer does not begin a reference count.</LI>
+
+	<LI>A legacy application that shares this component and does not use the installer is installed.</LI>
+
+	<LI>The legacy application creates and increments a reference count for the shared component.</LI>
+
+	<LI>The legacy application is uninstalled.</LI>
+
+	<LI>The reference count for the shared component is decremented to zero and the component is removed.</LI>
+
+	<LI>The application using the installer no longer has access to the component.</LI>
+</UL>
+
+<P>To avoid this behavior, set <B>msidbComponentAttributesSharedDllRefCount</B>.</P>
+
+<P>Note that system services components should not be specified as run-from-source' without being specifically designed for such use. See the <A HREF="tref_81r9.htm">ServiceInstall table</A> for more details.</P>
+
+<P>Note that attributes enabling run-from-source installation should never be set for components containing dynamic-link libraries that are going into the system folder. The reason is that if the installation state of the component becomes set to run-from-source by following a feature or by being set in the UI, subsequent calls to <B>LoadLibrary</B> on the DLL would fail. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

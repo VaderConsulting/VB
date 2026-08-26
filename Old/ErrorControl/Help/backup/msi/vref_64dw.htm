@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Database Object</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Database Object">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_database_object"></A>Database Object</H1>
+
+<P>The <B>Database</B> object accesses an installer database.</P>
+
+<P>The <B>Database</B> object is released when it is either taken out of scope or when the object variable associated with it is set to null. The <A HREF="vref_6jdw.htm"><B>Commit</B> method</A> must be called before the <B>Database </B>object is released to write out all persistent changes. If the <B>Commit</B> method is not called, the installer performs an implicit rollback upon object destruction.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To Query API Sequencing</B></P>
+
+<P>The client can use the following procedure for data access:
+
+<OL>
+	<LI>Obtain a <B>Database </B>object by calling the <A HREF="vref_1w7z.htm"><B>OpenDatabase</B></A> of the <A HREF="vref_6fxw.htm"><B>Installer </B>object</A>.</LI>
+
+	<LI>Initiate a query using a SQL string by calling the <A HREF="vref_5tb8.htm"><B>OpenView</B> method</A> of the <B>Database</B> object.</LI>
+
+	<LI>Set query parameters in a <A HREF="vref_6kac.htm"><B>Record</B> Object</A> and execute the database query by calling the <A HREF="vref_2k6c.htm"><B>Execute </B>method</A> of the <A HREF="vref_7bxw.htm"><B>View</B> object</A>. This produces a result that can be fetched or updated.</LI>
+
+	<LI>Call the <A HREF="vref_2204.htm"><B>Fetch</B> method</A> of the <B>View</B> object repeatedly to return <B>Record</B> objects.</LI>
+
+	<LI>Update database rows of a <B>Record</B> object obtained by the <B>Fetch</B> method using the <A HREF="vref_6204.htm"><B>Modify</B> method</A> of the <B>View</B> object.</LI>
+
+	<LI>Release the query and any unfetched records by calling the <A HREF="vref_7p9g.htm"><B>Close</B> method</A> of the <B>View</B> object.</LI>
+
+	<LI>Persist any database updates by calling the <A HREF="vref_6jdw.htm"><B>Commit</B> method</A> of the <B>Database</B> object.</LI>
+</OL>
+
+<H4>Properties</H4>
+
+<P><A HREF="vref_40e1.htm">DatabaseState</A></P>
+
+<P><A HREF="vref_1lvd.htm">PrimaryKeys</A></P>
+
+<P><A HREF="vref_1kgv.htm">SummaryInformation Property (<B>Database</B> Object)</A></P>
+
+<P><A HREF="vref_0sqh.htm">TablePersistent</A></P>
+
+<H4>Methods</H4>
+
+<P><A HREF="vref_9h2c.htm"><B>ApplyTransform</B></A></P>
+
+<P><A HREF="vref_6jdw.htm"><B>Commit</B></A></P>
+
+<P><A HREF="vref_1mw4.htm"><B>CreateTransformSummaryInfo</B></A></P>
+
+<P><A HREF="vref_45d0.htm"><B>EnableUIPreview</B></A></P>
+
+<P><A HREF="vref_06uc.htm"><B>Export</B></A></P>
+
+<P><A HREF="vref_2of8.htm"><B>GenerateTransform</B></A></P>
+
+<P><A HREF="vref_795w.htm"><B>Import</B></A></P>
+
+<P><A HREF="vref_21es.htm"><B>Merge</B></A></P>
+
+<P><A HREF="vref_5tb8.htm"><B>OpenView</B></A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

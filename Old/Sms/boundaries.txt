@@ -1,0 +1,137 @@
+ABA
+IP Subnets,89.107.0.0
+
+ALB
+IP Subnets,89.95.0.0
+
+BAK
+IP Subnets,89.40.0.0
+
+BAN
+IP Subnets,89.35.0.0
+
+BEN
+IP Subnets,89.20.68.0
+
+BRO
+IP Subnets,89.70.0.0
+
+BRP
+IP Subnets,89.108.0.0
+
+BUN
+IP Subnets,89.86.0.0
+
+BUP
+IP Subnets,89.109.0.0
+IP Subnets,89.85.0.0
+IP Subnets,89.93.0.0
+IP Subnets,89.20.162.0
+
+CAN
+IP Subnets,89.110.0.0
+
+CAS
+IP Subnets,89.111.0.0
+
+CLC
+IP Subnets,89.1.0.0
+IP Subnets,89.11.0.0
+IP Subnets,89.27.0.0
+IP Subnets,89.9.0.0
+IP Subnets,89.32.0.0
+IP Subnets,89.20.45.0
+IP Subnets,89.20.47.0
+IP Subnets,89.20.54.0
+IP Subnets,89.20.58.0
+IP Subnets,89.20.67.0
+IP Subnets,89.20.70.0
+IP Subnets,89.20.75.0
+IP Subnets,89.20.29.0
+IP Subnets,89.15.3.0
+
+COS
+IP Subnets,89.8.0.0
+
+EAG
+IP Subnets,89.115.0.0
+
+FRC
+IP Subnets,89.20.44.0
+
+GER
+IP Subnets,89.96.0.0
+
+GRE
+IP Subnets,89.78.0.0
+IP Subnets,89.73.0.0
+IP Subnets,89.75.0.0
+IP Subnets,89.94.0.0
+IP Subnets,89.98.0.0
+IP Subnets,89.99.0.0
+
+INV
+IP Subnets,89.112.0.0
+
+KAL
+IP Subnets,89.30.0.0
+
+KAR
+IP Subnets,89.20.64.0
+
+KIL
+IP Subnets,89.37.0.0
+
+MAN
+IP Subnets,89.101.0.0
+
+MIC
+IP Subnets,89.20.48.0
+
+MIR
+IP Subnets,89.26.0.0
+
+MTL
+IP Subnets,89.21.0.0
+
+NOR
+IP Subnets,89.80.0.0
+
+PAB
+IP Subnets,89.20.72.0
+
+PAR
+IP Subnets,89.117.0.0
+
+PER
+IP Subnets,89.104.0.0
+IP Subnets,89.39.0.0
+
+POR
+IP Subnets,89.71.0.0
+
+RAN
+IP Subnets,89.24.0.0
+
+RIV
+IP Subnets,89.25.0.0
+
+ROC
+IP Subnets,89.20.65.0
+
+ROP
+IP Subnets,89.119.0.0
+IP Subnets,89.72.0.0
+
+WOO
+IP Subnets,89.36.0.0
+
+WSS
+IP Subnets,89.3.0.0
+IP Subnets,89.20.40.0
+IP Subnets,89.20.33.0
+IP Subnets,89.7.0.0
+IP Subnets,89.20.52.0
+IP Subnets,89.90.2.0
+
+

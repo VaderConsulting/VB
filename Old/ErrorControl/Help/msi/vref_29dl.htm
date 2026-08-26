@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ProductInfo Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ProductInfo Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_productinfo_property"></A>ProductInfo Property</H1>
+
+<P>The <B>ProductInfo</B> property is a read-only property that returns the value of the specified attribute for an installed or published product.</P>
+
+<PRE class=syntax><I>object</I>.ProductInfo(<I>Product, Attribute</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </DD>
+
+<DT><I>Product</I></DT>
+
+<DD>Specifies the product code of the installed product that contains the attribute of interest.</DD>
+
+<DT><I>Attribute</I></DT>
+
+<DD>Identifies the attribute to be retrieved. The properties in the following list can only be retrieved from applications that are installed. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Property name</TH>
+<TH align=left width=72%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>HelpLink</B></TD>
+<TD width=72%>Support link. See <A HREF="pref_067t.htm"><B>ARPHELPLINK</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>HelpTelephone</B></TD>
+<TD width=72%>Support telephone. See <A HREF="pref_8vp5.htm"><B>ARPHELPTELEPHONE</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>InstallDate</B></TD>
+<TD width=72%>Installation date.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>InstallLocation</B></TD>
+<TD width=72%>Installation location. See <A HREF="pref_8d4p.htm"><B>ARPINSTALLLOCATION</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>InstalledProductName</B></TD>
+<TD width=72%>Installed product name. See <A HREF="pref_52m1.htm"><B>ProductName</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>InstallSource</B></TD>
+<TD width=72%>Installation source. See <A HREF="pref_6uwp.htm"><B>SourceDir</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>LocalPackage</B></TD>
+<TD width=72%>Local cached package</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>ProductID</B></TD>
+<TD width=72%>The product identifier for the product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>Publisher</B></TD>
+<TD width=72%>Publisher. See <A HREF="pref_9z09.htm"><B>Manufacturer</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>PackageName </B></TD>
+<TD width=72%>Name of the original installation package.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>RegCompany</B></TD>
+<TD width=72%>Company registered to use this product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>RegOwner</B></TD>
+<TD width=72%>Individual registered to use this product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>URLInfoAbout</B></TD>
+<TD width=72%>URL information. See <A HREF="pref_2upl.htm"><B>ARPURLINFOABOUT</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>URLUpdateInfo</B></TD>
+<TD width=72%>URL update information. See <A HREF="pref_7hmh.htm"><B>ARPURLUPDATEINFO</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>VersionMinor</B></TD>
+<TD width=72%>Minor product version derived from <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>VersionMajor</B></TD>
+<TD width=72%>Major product version derived from <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>VersionString</B></TD>
+<TD width=72%>Product version. See <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>The attributes in the following list can be retrieved from applications that are advertised.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Property Name</TH>
+<TH align=left width=72%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>Transforms</B></TD>
+<TD width=72%>Transforms</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>Language</B></TD>
+<TD width=72%>Product language</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>AssignmentType</B></TD>
+<TD width=72%>Equals 0 if product is advertised or installed per-user.
+<P>Equals 1 if product is advertised or installed per-machine for all users.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>PackageCode</B></TD>
+<TD width=72%>Identifier of package product was installed from. See <A HREF="over_7zub.htm">Package Codes</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>PackageName</B></TD>
+<TD width=72%>Name of the original installation package.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>ProductIcon</B></TD>
+<TD width=72%>Primary Icon for the package. See <A HREF="pref_8x6h.htm"><B>ARPPRODUCTICON</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>ProductName</B></TD>
+<TD width=72%>Human readable product name. See <A HREF="pref_52m1.htm"><B>ProductName</B> property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>Version</B></TD>
+<TD width=72%>Product 
+<P>version derived from <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P><B>ProductInfo</B>("<B>LocalPackage</B>") does not necessarily return a path to the cached package. Maintenance mode installations should be not be invoked from the <B>LocalPackage</B>. The cached package is for internal uses only. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8wa7.htm"><B>MsiGetProductInfo</B></A>, <A HREF="msi_6str.htm"><B>MsiGetUserInfo</B></A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ProductInfo%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_29dl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ProductInfo%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_29dl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

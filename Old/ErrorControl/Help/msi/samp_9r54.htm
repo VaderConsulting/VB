@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Planning a Small Update Patch</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_planning_a_small_update_patch"></A>Planning a Small Update Patch</H2>
+
+<P>The Concert feature file of the original product, MNP2000, contains an error in the Concert.txt file. Because the Windows Installer was used for the installation and setup of the application, minor fixes to the application may be handled by installing a small update patch package. A <A HREF="updat_9m0j.htm">small update</A> makes changes to one or more application files that are judged to be too minor to warrant changing the product code. The following example describes how to create a Windows Installer patch package that can apply the small update and provide a quick fix to the MNP2000 product.</P>
+
+<P>To create the small update first obtain a fully uncompressed image of the MNP2000 product that includes the error in Concert.txt. The image must include MNP2000.msi and all the source files described in <A HREF="samp_0u26.htm">Planning the Installation</A>. In the following discussion this is called the Target image. The Target image must be fully uncompressed because the patch creation process is unable to generate binary patches for files compressed in cabinets. Put the .msi file and all the source files of the Target image into a folder named Target.</P>
+
+<P>Next, obtain a fully uncompressed image of the MNP2000 product with a Concert.txt file that has been fixed. This is called the Upgraded image in the following discussion. Use an installation database editing tool, such as Orca, to update the .msi file. For example, if the size of the corrected Concert.txt is smaller than the original, be sure to enter the new size in the FileSize field of the File table of the upgraded image. Note that because the package has changed you must assign a new package code in the <A HREF="sref_1am1.htm"><B>Revision Number Summary</B> Property</A>. Put the .msi file and all the source files of the Upgraded image into a folder named Upgraded. </P>
+
+<P>Note that Windows Installer version 1.2 cannot create a patch between two identical .msi files because creating the transform fails, which causes the patch creation process to fail. The information in the two databases must be different, not merely the summary information stream. For the purposes of this example, assume that the size of the Concert.txt file changes. This means that FileSize fields in the File tables of the Target and Upgraded database contain different data.</P>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (record from Target Image)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>File</TH>
+<TH align=left width=15%>Component_</TH>
+<TH align=left width=14%>FileName</TH>
+<TH align=left width=10%>FileSize</TH>
+<TH align=left width=11%>Version</TH>
+<TH align=left width=10%>Language</TH>
+<TH align=left width=10%>Attributes</TH>
+<TH align=left width=16%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Concert.txt</TD>
+<TD width=15%>Concert</TD>
+<TD width=14%>Concert.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>File Table (record from Upgraded Image) </B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>File</TH>
+<TH align=left width=15%>Component_</TH>
+<TH align=left width=14%>FileName</TH>
+<TH align=left width=10%>FileSize</TH>
+<TH align=left width=11%>Version</TH>
+<TH align=left width=10%>Language</TH>
+<TH align=left width=10%>Attributes</TH>
+<TH align=left width=16%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Concert.txt</TD>
+<TD width=15%>Concert</TD>
+<TD width=14%>Concert.txt</TD>
+<TD width=10%>900</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_0351.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Planning%20a%20Small%20Update%20Patch;%20RELEASE:%20August%202001;%20URL:%20samp_9r54.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Planning%20a%20Small%20Update%20Patch;%20RELEASE:%20August%202001;%20URL:%20samp_9r54.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

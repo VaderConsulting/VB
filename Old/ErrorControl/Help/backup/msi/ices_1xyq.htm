@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE42</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE42 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice42"></A>ICE42</H1>
+
+<P>ICE42 validates that InProc servers are not linked to EXE files in the <A HREF="tref_5n8l.htm">Class table</A>. It also validates that only LocalServer and LocalServer32 classes have arguments and DefInProc values.</P>
+
+<H4>Result</H4>
+
+<P>ICE42 posts an error if there are InProc servers linked to EXE files in the Class table.</P>
+
+<H4>Example</H4>
+
+<P>ICE42 would report the following errors for the example shown.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE42 error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>CLSID '{GUID1}' is an InProc server, but the implementing component 'Component1' has an EXE ('test.exe') as its KeyFile. </TD>
+<TD width=63%>There is an executable file specified as an InProc server. EXE files cannot be InProc servers.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>CLSID '{GUID1}' in context 'InProcServer32' has an argument. Only LocalServer contexts can have arguments. </TD>
+<TD width=63%>To fix this error, remove the argument.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>CLSID '{GUID1}' in context 'InProcServer32' species a default InProc value. Only LocalServer contexts can have default InProc values. </TD>
+<TD width=63%>There is an object with a default InProc value that is not an object operating in the LocalServer or LocalServer32 contexts.
+<P>To fix this error, remove the DeflnProc value or change the context of the class.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_5n8l.htm"><B>Class Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>CLSID</TH>
+<TH align=left width=17%>Context</TH>
+<TH align=left width=23%>Component_</TH>
+<TH align=left width=25%>DefInProcHandler</TH>
+<TH align=left width=21%>Argument</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>{GUID1}</TD>
+<TD width=17%>InProcServer32</TD>
+<TD width=23%>Component1</TD>
+<TD width=25%>InProcServer</TD>
+<TD width=21%>Arg</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Component</TH>
+<TH align=left width=69%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Component1</TD>
+<TD width=69%>File1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>File</TH>
+<TH align=left width=69%>Filename</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>File1</TD>
+<TD width=69%>test.exe</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

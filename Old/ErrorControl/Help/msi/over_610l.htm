@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring a Large Package</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_authoring_a_large_package"></A>Authoring a Large Package</H1>
+
+<P>If your Windows Installer package contains more than 32767 files, you must change the schema of the database to increase the limit of the following columns: 
+
+<UL>
+	<LI>The Sequence column of the <A HREF="tref_4n6t.htm">File table</A>.</LI>
+
+	<LI>The LastSequence column of the <A HREF="tref_4mlh.htm">Media table</A>.</LI>
+
+	<LI>The Sequence column of the <A HREF="tref_0h5x.htm">Patch table</A>. </LI>
+</UL>
+
+<P>For more information, see <A HREF="novr_2dv8.htm">Column Definition Format</A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To increase the limit of a database column</B>
+
+<OL>
+	<LI>Export the table to an .idt file. For details, see <A HREF="app_21d1.htm">Msidb.exe</A>, <A HREF="samp_1ygj.htm">Export Files</A>, and <A HREF="novr_4msn.htm">Importing and Exporting</A>.</LI>
+
+	<LI>Edit the .idt file to change the column type from i2 to i4, or from I2 to I4. </LI>
+
+	<LI>Import the .idt file back into the database. </LI>
+</OL>
+
+<P>Note that transforms and patches cannot be created between two packages with different column types. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Authoring%20a%20Large%20Package;%20RELEASE:%20August%202001;%20URL:%20over_610l.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Authoring%20a%20Large%20Package;%20RELEASE:%20August%202001;%20URL:%20over_610l.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

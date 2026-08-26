@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Updating Components for an Upgrade</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_updating_components_for_an_upgrade"></A>Updating Components for an Upgrade</H2>
+
+<P>By design, users of the fictitious MNP2000 product should never use upgraded files such as Baseba01.txt. Therefore the updated files are by definition incompatible with the original product and Windows Installer components, such as Baseball, containing these files must be assigned new component codes. New files, such as Opera01.txt, are introduced as a part of a new component with a unique component code. Because the original product and upgrade use the same Notepad component, the component code of this component is unchanged. For more information about when component code must be changed, see <A HREF="over_9crp.htm">Changing the Component Code</A>.</P>
+
+<P>Use Orca or another database editor to enter the following data into the <A HREF="tref_09np.htm">Component table</A> of MNP2001.msi. Do not reuse the GUIDs shown below in the ComponentId column in your sample.</P>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>Component</TH>
+<TH align=left width=28%>ComponentId</TH>
+<TH align=left width=13%>Directory_</TH>
+<TH align=left width=14%>Attributes</TH>
+<TH align=left width=14%>Condition</TH>
+<TH align=left width=17%>Keypath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Baseball</TD>
+<TD width=28%>{2951190A-6AF8-4D7F-AA16-D256405C277A}</TD>
+<TD width=13%>SPORTDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Baseba01.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Basketball</TD>
+<TD width=28%>{E1AAB6B0-FEC6-4F18-B765-3B05A81CEACB}</TD>
+<TD width=13%>SPORTDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=17%>Basket01.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Concert</TD>
+<TD width=28%>{C28C5064-AA84-4431-AC69-FC1321DF18AF}</TD>
+<TD width=13%>ARTSDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Concer01.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Dance</TD>
+<TD width=28%>{1AC2B14D-D5F4-4642-9F7A-EE81BF59B3E2}</TD>
+<TD width=13%>ARTSDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Dance01.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Opera</TD>
+<TD width=28%>{C2DABF7E-1EF6-458D-84B1-AAC1127CED26}</TD>
+<TD width=13%>ARTSDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=17%>Opera01.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Football</TD>
+<TD width=28%>{92AA30F4-7AC5-4DFA-801E-988CF3DAA4DC}</TD>
+<TD width=13%>SPORTDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Footba01.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Help</TD>
+<TD width=28%>{AD10EB50-33C1-11D3-91D6-00C04FD70856}</TD>
+<TD width=13%>NOTEPADDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Help.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>January</TD>
+<TD width=28%>{E90CD0E6-ED8D-4F88-B000-27BD2B482C6C}</TD>
+<TD width=13%>MONDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Janua01.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>NewYears</TD>
+<TD width=28%>{1EEF8C53-F7C0-405C-8FE3-2B0FE54B0114}</TD>
+<TD width=13%>HOLDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>NewYea01.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Memorial</TD>
+<TD width=28%>{BA81ACF7-4D43-424F-93B0-8845A2DF1C02}</TD>
+<TD width=13%>HOLDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=17%>Memori01.txt</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Notepad</TD>
+<TD width=28%>{19BED232-30AB-11D3-91D3-00C04FD70856}</TD>
+<TD width=13%>NOTEPADDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Redpark.exe</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_33ol.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE52</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE52">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice52"></A>ICE52</H1>
+
+<P>ICE52 checks for private properties in the <A HREF="tref_0w9x.htm">AppSearch table</A>. See <A HREF="prop_0ylv.htm">About Properties</A>.</P>
+
+<P>When using Windows 2000 all properties set in the Property column of the AppSearch table must be public properties.</P>
+
+<H4>Result</H4>
+
+<P>ICE52 posts a warning if there is a private property in the AppSearch table.</P>
+
+<H4>Example</H4>
+
+<P>ICE52 posts the following warning for the example shown.</P>
+
+<PRE>Property 'Property2' in AppSearch row 'Property2'.'Signature2' 
+    is not public. It should be all uppercase. </PRE>
+
+<P><A HREF="tref_0w9x.htm"><B>AppSearch Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>Property</TH>
+<TH align=left width=49%>Signature</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>PROPERTY1</TD>
+<TD width=49%>Signature1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>Property2</TD>
+<TD width=49%>Signature2</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix this warning change to the custom public property: PROPERTY2.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE52;%20RELEASE:%20August%202001;%20URL:%20ices_1y0i.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE52;%20RELEASE:%20August%202001;%20URL:%20ices_1y0i.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

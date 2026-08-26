@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Core Tables Group</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_core_tables_group"></A>Core Tables Group</H2>
+
+<P><IMG SRC="images/core.gif" ALT="" BORDER=0></P>
+
+<P>See the <A HREF="app_7q3o.htm">entity relationship diagram legend</A> for more information about this diagram.</P>
+
+<P>The core group consists of tables describing the fundamental features and components of the application and the installer package. Developers of install packages should therefore consider how to populate these tables first because the organization of much of the database will become apparent from the content of this group.
+
+<UL>
+	<LI>The <A HREF="tref_0a91.htm">Feature table</A> lists all features belonging to the application.</LI>
+
+	<LI>The <A HREF="tref_83qd.htm">Condition table</A> contains the conditional expressions that determine whether or not a particular feature will be installed.</LI>
+
+	<LI>The <A HREF="tref_52hx.htm">FeatureComponents table</A> describes which components belong to each feature.</LI>
+
+	<LI>The <A HREF="tref_09np.htm">Component table</A> lists all components belonging to the installation.</LI>
+
+	<LI>The <A HREF="tref_6an9.htm">Directory table</A> lists the directories that are needed during the installation. Because each component must be associated with one and only one directory, the Component table is closely related to this table and has an external key to the Directory table.</LI>
+
+	<LI>The <A HREF="tref_7xt1.htm">PublishComponent table</A> lists the features and components that are published for use by other applications. <A HREF="over_8p83.htm">Components and Features</A> are the two types of feature advertisement.</LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

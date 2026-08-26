@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Sequence Table Detailed Example</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_sequence_table_detailed_example"></A>Sequence Table Detailed Example</H3>
+
+<P>Here is an example of a sequence table.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Action</TH>
+<TH align=left width=39%>Condition</TH>
+<TH align=left width=27%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><A HREF="aref_6jhq.htm">LaunchConditions</A></TD>
+<TD width=39%> </TD>
+<TD width=27%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><A HREF="aref_16zy.htm">AppSearch</A></TD>
+<TD width=39%> </TD>
+<TD width=27%>200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><A HREF="aref_77se.htm">CCPSearch</A></TD>
+<TD width=39%>CCP_TEST</TD>
+<TD width=27%>300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>CCPDialog</TD>
+<TD width=39%>NOT_CCP_SUCCESS</TD>
+<TD width=27%>400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>MyCustomConfig</TD>
+<TD width=39%>NOT <A HREF="pref_8ws9.htm">Installed</A></TD>
+<TD width=27%>500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><A HREF="aref_4bam.htm">CostInitialize</A></TD>
+<TD width=39%> </TD>
+<TD width=27%>600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><A HREF="aref_2f8u.htm">FileCost</A></TD>
+<TD width=39%> </TD>
+<TD width=27%>700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><A HREF="aref_22we.htm">CostFinalize</A></TD>
+<TD width=39%> </TD>
+<TD width=27%>800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>InstallDialog</TD>
+<TD width=39%>NOT <A HREF="pref_8ws9.htm">Installed</A></TD>
+<TD width=27%>900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>MaintenanceDialog</TD>
+<TD width=39%><A HREF="pref_8ws9.htm">Installed</A> AND NOT <A HREF="pref_31tl.htm">Resume</A></TD>
+<TD width=27%>1000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>ActionDialog</TD>
+<TD width=39%> </TD>
+<TD width=27%>1100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><A HREF="aref_529a.htm">RegisterProduct</A></TD>
+<TD width=39%> </TD>
+<TD width=27%>1200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><A HREF="aref_9fzi.htm">InstallValidate</A></TD>
+<TD width=39%> </TD>
+<TD width=27%>1300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><A HREF="aref_3hym.htm">InstallFiles</A></TD>
+<TD width=39%> </TD>
+<TD width=27%>1400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>MyCustomAction</TD>
+<TD width=39%>$MyComponent &gt; 2</TD>
+<TD width=27%>1500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><A HREF="aref_8l9q.htm">InstallFinalize</A></TD>
+<TD width=39%> </TD>
+<TD width=27%>1600</TD>
+</TR>
+</TABLE><BR>
+
+<P>The following actions in this sequence table are defined by the installer and are examples of standard actions: </P>
+
+<P><A HREF="aref_6jhq.htm">LaunchConditions</A> <BR>
+<A HREF="aref_16zy.htm">AppSearch</A> <BR>
+<A HREF="aref_77se.htm">CCPSearch</A> <BR>
+<A HREF="aref_4bam.htm">CostInitialize</A> <BR>
+<A HREF="aref_2f8u.htm">FileCost</A> <BR>
+<A HREF="aref_22we.htm">CostFinalize</A> <BR>
+<A HREF="aref_529a.htm">RegisterProduct</A> <BR>
+<A HREF="aref_3hym.htm">InstallFiles</A> <BR>
+<A HREF="aref_8l9q.htm">InstallFinalize</A></P>
+
+<P>The following actions were defined by the table's author and are examples of <A HREF="cact_5t2r.htm">custom actions</A> and must be listed in the <A HREF="tref_71b9.htm">CustomAction table</A>:</P>
+
+<P>MyCustomConfig <BR>
+MyCustomAction</P>
+
+<P>The remaining entries in the Action field are foreign keys into the <A HREF="tref_51wl.htm">Dialog table</A>. They specify the names of dialog boxes that will displayed if the condition field evaluates to True.</P>
+
+<P>CCPDialog <BR>
+InstallDialog <BR>
+MaintenanceDialog <BR>
+ActionDialog</P>
+
+<P>The Condition column causes the installer to skip the action if the property or expression in this field is False. The <A HREF="pref_8ws9.htm">Installed property</A> and the <A HREF="pref_31tl.htm">RESUME property</A> are example of properties that are set by the installer. The Installed property is set to true if the product is already installed and the RESUME property is set if resuming a suspended installation. The CCP_TEST and the NOT_CCP_SUCCESS properties are examples of properties that can be set at the command line by the user installing the application. </P>
+
+<P>All actions run in sequence with the following conditional steps:  
+
+<UL>
+	<LI>The CPPSearch is run only if CCP_TEST is set.</LI>
+
+	<LI>CCPDialog is run only if NOT_CCP_SUCCESS is set.</LI>
+
+	<LI>MaintenanceDialog is run only if this product is already installed and if this is not an installation that is being resume after being suspended.</LI>
+
+	<LI>MyCustomAction is run only if the expression in the Condition column is True. The expression $MyComponent &gt; 2 refers to the action state of the component called MyComponent. This condition indicates that MyCustomAction should only be run if MyComponent is set to be installed. For more information on Action states and Selection states, see the <A HREF="vref_84xl.htm"><B>FeatureRequestState</B> property</A>, the <A HREF="tref_0a91.htm">Feature table</A>, and the <A HREF="aref_3hym.htm">InstallFiles action</A>.</LI>
+</UL>
+
+<H4>See also</H4>
+
+<P><A HREF="prop_29tf.htm">Using Properties</A>, <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

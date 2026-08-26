@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE62</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE62 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice62"></A>ICE62</H1>
+
+<P>ICE62 performs extensive checks on the <A HREF="tref_6jc5.htm">IsolatedComponent table</A> for data that may cause unexpected behavior. </P>
+
+<P>Failure to fix an error reported by ICE62 can result in a failure of the isolated component system in a wide variety of ways. For example, if the SharedDllRefCount bit is not set for a shared component, the registration for the component could be removed when another application uses that ComponentId and is uninstalled.</P>
+
+<H4>Result</H4>
+
+<P>ICE62 posts a warning or error when it finds data in the IsolatedComponent table that may produce unexpected behavior.</P>
+
+<H4>Example</H4>
+
+<P>ICE62 reports the following errors and warning for the examples shown.</P>
+
+<PRE>The component 'Component2' is listed as an isolated application 
+component in the IsolatedComponent table, but the key path is not a file.</PRE>
+
+<P>Component2 is listed as the application component for the isolation of component1. However, Component2 has a registry key path, and does not provide a valid executable path to use to isolate the component.</P>
+
+<P>To fix this error, use a different component as the application for the isolated component Component1.</P>
+
+<PRE>The component 'Component1' is listed as an isolated shared component in the 
+IsolatedComponent table, but is not marked with the SharedDllRefCount component attribute.</PRE>
+
+<P>Component1 is listed as an isolated shared component, but does not have the SharedDllRefCount bit set. This could result in the lifetime of the component being incorrect. If another application uses this component (isolated or not) and is uninstalled, the registration for the component is removed but this application's isolated copy remains. This causes repair and uninstall problems.</P>
+
+<P>To fix this error, set the SharedDllRefCount bit for the component.</P>
+
+<PRE>The isolated shared component 'Component1' is not installed by the same feature as 
+(or a parent feature of) its isolated application component 'Component2' (which is installed by feature 'Feature2').</PRE>
+
+<P>Component1 and Component2 are installed by different features. Component1 is installed by Feature1, and Component2 is installed by Feature2. Feature1 is not a parent of Feature2, hence it is possible for the application to be installed but not the isolated component, breaking the isolation.</P>
+
+<P>To fix this error, add an entry to the FeatureComponents table linking Component1 to the same feature as (or a parent feature of) the feature that installs Component2.</P>
+
+<PRE>WARNING: The isolated shared component 'Component1' (referenced in the IsolatedComponent table) 
+is conditionalized. Isolated shared component conditions should never change from TRUE to FALSE after the first install of the product.</PRE>
+
+<P>Component1 has a condition in the Component table. If this condition ever changes from TRUE to FALSE during the lifetime of an installation on a computer, the isolated component could be orphaned without registration information.</P>
+
+<P>To fix this warning, remove the condition, or author the condition so that it can never change from TRUE to FALSE.</P>
+
+<PRE>WARNING: The isolated shared component 'Component1' is shared by multiple applications 
+(including 'Component2') that are installed to the directory 'TARGETDIR'.
+WARNING: The isolated shared component 'Component1' is shared by multiple applications 
+(including 'Component3') that are installed to the directory 'TARGETDIR'.</PRE>
+
+<P>Component1 is isolated for both Component2 and Component3, and the two components are also installed to the same directory. The applications share an isolated component, but if one application is removed the shared component is removed as well causing the other applications to lose the isolated component. </P>
+
+<P>To fix this warning, install the applications to different directories or check whether some of the applications truly require an isolated component.</P>
+
+<P><A HREF="tref_6jc5.htm"><B>IsolatedComponent Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Component_Shared</TH>
+<TH align=left width=63%>Component_Application</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Component1</TD>
+<TD width=63%>Component2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Component1</TD>
+<TD width=63%>Component3</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Component</TH>
+<TH align=left width=18%>ComponentId</TH>
+<TH align=left width=16%>Directory_</TH>
+<TH align=left width=15%>Attributes</TH>
+<TH align=left width=21%>Conditiion</TH>
+<TH align=left width=14%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Component1</TD>
+<TD width=18%> </TD>
+<TD width=16%>Dir1</TD>
+<TD width=15%>0</TD>
+<TD width=21%>MYCONDITION</TD>
+<TD width=14%>File1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Component2</TD>
+<TD width=18%> </TD>
+<TD width=16%>TARGETDIR</TD>
+<TD width=15%>4</TD>
+<TD width=21%> </TD>
+<TD width=14%>Registry2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Component3</TD>
+<TD width=18%> </TD>
+<TD width=16%>TARGETDIR</TD>
+<TD width=15%>0</TD>
+<TD width=21%> </TD>
+<TD width=14%>File3</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_52hx.htm"><B>FeatureComponents</B> <B>Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Feature_</TH>
+<TH align=left width=63%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Feature1</TD>
+<TD width=63%>Component1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Feature2</TD>
+<TD width=63%>Component2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Feature1</TD>
+<TD width=63%>Component3</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Feature</TH>
+<TH align=left width=63%>Feature_Parent</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Feature1</TD>
+<TD width=63%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Feature2</TD>
+<TD width=63%> </TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

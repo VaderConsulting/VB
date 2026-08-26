@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Guidelines for Authoring Secure Installations</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="security [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="authoring secure installations">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_guidelines_for_authoring_secure_installations"></A>Guidelines for Authoring Secure Installations</H1>
+
+<P>Adherence to the following guidelines when authoring a Windows Installer package helps maintain a secure environment during installation:
+
+<UL>
+	<LI>Make any property set by the user a public property. Private properties cannot be changed by the user interacting with the user interface. For information, see <A HREF="prop_0ylv.htm">About Properties</A>.</LI>
+
+	<LI>Do not use properties for passwords or other information that must remain secure. The installer may write the value of a property authored into the <A HREF="tref_21d1.htm">Property table</A>, or created at runtime, into a log or the system registry.</LI>
+
+	<LI>When the installation requires the installer to use elevated privileges, use <A HREF="prop_316b.htm">Restricted Public Properties</A> to restrict the public properties a user can change. Some restrictions are commonly necessary to maintain a secure environment when the installation requires the installer to use elevated privileges. </LI>
+
+	<LI>Avoid installing services that impersonate the privileges of a particular user because this may write security data into a log or the system registry. This creates potential for a security problem, password conflict, or the loss of configuration data when the system is restarted. For details, see <A HREF="tref_81r9.htm">ServiceInstall table</A>.</LI>
+
+	<LI>Use the <A HREF="tref_00dh.htm">LockPermissions table</A> to secure files, registry keys, and created folders in a locked-down environment.</LI>
+
+	<LI>Add a digital signatures to the installation to ensure the integrity of the files. For details, see <A HREF="over_6boy.htm">Digital Signatures and Windows Installer</A> and <A HREF="over_0sz2.htm">Authoring a Fully Verified Signed Installation</A>.</LI>
+
+	<LI>Author your Windows Installer package such that if the user is denied access to resources, the setup fails in a manner that maintains a secure environment. Check the user's access privileges and determine whether there is sufficient disk space before installation begins. Commonly, the installer should only display a browse dialog box if the current user is an administrator or if the installation does not require elevated privileges. For details, see <A HREF="over_1lq1.htm">Source Resiliency</A>.</LI>
+
+	<LI>Use <A HREF="updat_4oj7.htm">Secured Transforms</A> to store transforms in a secure file system locally on the user's computer. This prevents the user from having write access to the transform.</LI>
+
+	<LI>For information on how to secure media sources of managed applications, see <A HREF="over_1lq1.htm">Source Resiliency</A>. </LI>
+
+	<LI>Use the <A HREF="sref_2mbd.htm">Security Summary Property</A> to indicate whether the package should be opened as read-only. This property should be set to read-only recommended for an installation database and to read-only enforced for a transform or patch. </LI>
+
+	<LI>The installer runs custom actions with user privileges by default in order to limit the access of custom actions to the system. The installer may run custom actions with elevated privileges if a managed application is being installed or if the system policy has been specified for elevated privileges. For details, see <A HREF="cact_8o3d.htm">Custom Action Security</A>.</LI>
+
+	<LI>Use the <A HREF="over_7fag.htm">DisablePatch</A> policy to provide security in environments where patching must be restricted. </LI>
+
+	<LI>Use the <A HREF="tref_6p2d.htm">AppId table</A> to register common security and configuration settings for DCOM objects.</LI>
+
+	<LI>See also, <A HREF="over_3ek3.htm">Guidelines for Securing Custom Actions</A>.</LI>
+
+	<LI>See also, <A HREF="over_9ier.htm">Guidelines for Securing Packages on Locked-Down Computers</A>.</LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Guidelines%20for%20Authoring%20Secure%20Installations;%20RELEASE:%20August%202001;%20URL:%20over_0kmr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Guidelines%20for%20Authoring%20Secure%20Installations;%20RELEASE:%20August%202001;%20URL:%20over_0kmr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

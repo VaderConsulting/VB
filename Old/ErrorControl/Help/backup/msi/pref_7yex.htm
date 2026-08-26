@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ADDDEFAULT Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ADDDEFAULT Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_adddefault_property"></A>ADDDEFAULT Property</H1>
+
+<P>The value of the ADDDEFAULT property is a list of features delimited by commas that are to be installed in their default configuration. The features must be present in the Feature column of the <A HREF="tref_0a91.htm">Feature</A> table. To install all features in their default configurations, use ADDDEFAULT=All on the command line.</P>
+
+<P>A feature listed in the ADDDEFAULT property is installed in the same installation state as if the user had requested an installation-on-demand of the feature. The state is determined by which bits are set for the feature in the Attributes column of the <A HREF="tref_0a91.htm">Feature table</A>, and which bits are set for the feature's components in the Attributes column of the <A HREF="tref_09np.htm">Component table</A>.</P>
+
+<H4>Remarks</H4>
+
+<P>Note that the feature names are case-sensitive.</P>
+
+<P>The installer always evaluates the following properties in the following order.
+
+<OL>
+	<LI><A HREF="pref_3dvd.htm">ADDLOCAL</A> </LI>
+
+	<LI><A HREF="pref_8ho9.htm">REMOVE</A> </LI>
+
+	<LI><A HREF="pref_7g1l.htm">ADDSOURCE</A> </LI>
+
+	<LI><A HREF="#_msi_adddefault_property">ADDDEFAULT</A> </LI>
+
+	<LI><A HREF="pref_19x5.htm">REINSTALL</A> </LI>
+
+	<LI><A HREF="pref_6k8p.htm">ADVERTISE</A> </LI>
+
+	<LI><A HREF="pref_3htl.htm">COMPADDLOCAL</A> </LI>
+
+	<LI><A HREF="pref_4gvt.htm">COMPADDSOURCE</A> </LI>
+
+	<LI><A HREF="pref_89yx.htm">FILEADDLOCAL</A> </LI>
+
+	<LI><A HREF="pref_0id5.htm">FILEADDSOURCE</A> </LI>
+
+	<LI><A HREF="pref_42yh.htm">FILEADDDEFAULT</A> </LI>
+</OL>
+
+<P>For example, if the command line specifies: ADDLOCAL=ALL, ADDSOURCE = MyFeature, all the features are first set to run-local and then MyFeature is set to run-from-source. If the command line is: ADDSOURCE=ALL, ADDLOCAL=MyFeature, first MyFeature is set to run-local, and then when ADDSOURCE=ALL is evaluated, all features (including MyFeature) are reset to run-from-source.</P>
+
+<P>The installer sets the <A HREF="pref_84u1.htm">Preselected property</A> to a value of "1" during the resumption of a suspended install or when any of the above properties are specified on the command line.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

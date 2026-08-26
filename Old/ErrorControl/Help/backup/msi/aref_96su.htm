@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ScheduleReboot Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ScheduleReboot Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_schedulereboot_action"></A>ScheduleReboot Action</H1>
+
+<P>Insert the ScheduleReboot action into the action sequence to prompt the user for a reboot of the system at the end of the installation. Use the <A HREF="aref_69bi.htm">ForceReboot action</A> to prompt for a reboot during the installation. </P>
+
+<P>If the installation has a user interface, the installer displays a message box and button at the end of the installation asking whether the user wants to reboot the system. The user must respond to this prompt before completing the installation. If the installation has no user interface, the system automatically reboots at the end.</P>
+
+<P>If the installer determines that a reboot is necessary it automatically prompts the user to reboot at the end of the installation, whether or not there are any ForceReboot or ScheduleReboot actions in the sequence. For example, the installer automatically prompts for a reboot if it needs to replace any files that are in use during the installation. </P>
+
+<P>You can suppress certain prompts for reboots by setting the <A HREF="pref_7qex.htm">REBOOT property</A>.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_7y7n.htm">System Reboots</A> </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>None. </P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Remarks</H4>
+
+<P>For example, this action can be used to force the installer to prompt for a reboot after installing drivers that require a reboot. If the installer attempts to replace files that are in use, it automatically prompts the user to reboot even if ScheduleReboot has not been used.</P>
+
+<P>The ScheduleReboot action is typically placed at the end of the sequence, but it can be inserted at any point in the sequence. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

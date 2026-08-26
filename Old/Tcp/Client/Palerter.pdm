@@ -1,0 +1,300 @@
+[Root]
+Most Recent Package=Standard Setup Package 1
+
+[Package|Standard Setup Package 1|NTSS]
+Icon1=PAlerter.exe
+Title1=Personal Alerter
+StartIn1=$(AppPath)
+Key1=Icon1
+
+
+[Package|Standard Setup Package 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=\\perthxsss\c$\TCP\Alerter\Client\Package
+
+[Package|Standard Setup Package 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 1|Files Found]
+
+[Package|Standard Setup Package 1|Files Released]
+
+[Package|Standard Setup Package 1|Missing Dependency Information]
+C:\WINNT\system32\SysTray.ocx=
+C:\WINNT\speech\vtxtauto.tlb=
+C:\WINNT\Msagent\AgentCtl.dll=
+C:\Program Files\Microsoft Visual Studio\Common\Tools\UNSUPPRT\SYSTRAY\SysTray.ocx=
+
+[Package|Standard Setup Package 1|Out-of-Date Dependency Information]
+
+[Package|Standard Setup Package 1|Files Added]
+\\perthxsss\c$\tcp\alerter\client\1.wav=
+\\perthxsss\c$\tcp\alerter\client\10.wav=
+\\perthxsss\c$\tcp\alerter\client\4.wav=
+\\perthxsss\c$\tcp\alerter\client\3.wav=
+\\perthxsss\c$\tcp\alerter\client\2.wav=
+\\perthxsss\c$\tcp\alerter\client\belch.wav=
+\\perthxsss\c$\tcp\alerter\client\6.wav=
+\\perthxsss\c$\tcp\alerter\client\7.wav=
+\\perthxsss\c$\tcp\alerter\client\8.wav=
+\\perthxsss\c$\tcp\alerter\client\9.wav=
+\\perthxsss\c$\tcp\alerter\client\5.wav=
+\\perthxsss\c$\tcp\alerter\client\work complete.wav=
+\\perthxsss\c$\tcp\alerter\client\drinking.wav=
+\\perthxsss\c$\tcp\alerter\client\im not listening.wav=
+\\perthxsss\c$\tcp\alerter\client\jobs done.wav=
+\\perthxsss\c$\tcp\alerter\client\more work.wav=
+\\perthxsss\c$\tcp\alerter\client\ok.wav=
+\\perthxsss\c$\tcp\alerter\client\palerter.mdb=
+\\perthxsss\c$\tcp\alerter\client\bombs are great.wav=
+\\perthxsss\c$\winnt\msagent\chars\al.acs=
+\\perthxsss\c$\winnt\msagent\chars\joe.acs=
+\\perthxsss\c$\winnt\msagent\chars\check.acs=
+\\perthxsss\c$\winnt\msagent\chars\claude.acs=
+\\perthxsss\c$\winnt\msagent\chars\clippit.acs=
+\\perthxsss\c$\winnt\msagent\chars\cyber.acs=
+\\perthxsss\c$\winnt\msagent\chars\dot.acs=
+\\perthxsss\c$\winnt\msagent\chars\f1.acs=
+\\perthxsss\c$\winnt\msagent\chars\genie.acs=
+\\perthxsss\c$\winnt\msagent\chars\genius.acs=
+\\perthxsss\c$\winnt\msagent\chars\gourdy.acs=
+\\perthxsss\c$\winnt\msagent\chars\birdie.acs=
+\\perthxsss\c$\winnt\msagent\chars\robby.acs=
+\\perthxsss\c$\winnt\msagent\chars\max.acs=
+\\perthxsss\c$\winnt\msagent\chars\merlin.acs=
+\\perthxsss\c$\winnt\msagent\chars\milton.acs=
+\\perthxsss\c$\winnt\msagent\chars\mnature.acs=
+\\perthxsss\c$\winnt\msagent\chars\offcat.acs=
+\\perthxsss\c$\winnt\msagent\chars\oscar.acs=
+\\perthxsss\c$\winnt\msagent\chars\palerter.txt=
+\\perthxsss\c$\winnt\msagent\chars\peedy.acs=
+\\perthxsss\c$\winnt\msagent\chars\pepe.acs=
+\\perthxsss\c$\winnt\msagent\chars\plany.acs=
+\\perthxsss\c$\winnt\msagent\chars\logo.acs=
+\\perthxsss\c$\winnt\msagent\chars\stillogo.acs=
+\\perthxsss\c$\winnt\msagent\chars\sharky.acs=
+\\perthxsss\c$\winnt\msagent\chars\rocky.acs=
+
+[Package|Standard Setup Package 1|Files Removed]
+
+[Package|Standard Setup Package 1|Files In Project]
+C:\WINNT\system32\MSVBVM60.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINNT\Msagent\AgentCtl.dll=Yes
+C:\WINNT\speech\vtxtauto.tlb=Yes
+C:\WINNT\system32\MSWINSCK.OCX=Yes
+C:\WINNT\system32\comdlg32.ocx=Yes
+C:\WINNT\system32\tabctl32.ocx=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINNT\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+\\perthxsss\c$\TCP\Alerter\Client\1.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\10.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\4.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\3.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\2.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\Belch.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\6.WAV=Yes
+\\perthxsss\c$\TCP\Alerter\Client\7.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\8.WAV=Yes
+\\perthxsss\c$\TCP\Alerter\Client\9.WAV=Yes
+\\perthxsss\c$\TCP\Alerter\Client\5.WAV=Yes
+\\perthxsss\c$\TCP\Alerter\Client\work complete.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\Drinking.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\Im not listening.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\jobs done.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\more work.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\ok.wav=Yes
+\\perthxsss\c$\TCP\Alerter\Client\PAlerter.mdb=Yes
+\\perthxsss\c$\TCP\Alerter\Client\bombs are great.wav=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Al.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Joe.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Check.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Claude.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\CLIPPIT.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\cyber.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\DOT.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\F1.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Genie.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\GENIUS.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Gourdy.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Birdie.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Robby.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Max.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\merlin.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Milton.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\MNATURE.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\OFFCAT.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Oscar.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\PAlerter.txt=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Peedy.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Pepe.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Plany.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\LOGO.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\STILLOGO.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Sharky.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\ROCKY.ACS=Yes
+C:\TCP\Alerter\Client\PAlerter.exe=Yes
+C:\Program Files\Microsoft Visual Studio\Common\Tools\UNSUPPRT\SYSTRAY\SysTray.ocx=Yes
+
+[Package|Standard Setup Package 1|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 1|Install Locations]
+\\perthxsss\c$\TCP\Alerter\Client\PAlerter.exe=$(AppPath)
+C:\WINNT\system32\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINNT\Msagent\AgentCtl.dll=$(WinSysPath)
+C:\WINNT\speech\vtxtauto.tlb=$(WinSysPath)
+C:\WINNT\system32\MSWINSCK.OCX=$(WinSysPath)
+C:\WINNT\system32\comdlg32.ocx=$(WinSysPath)
+C:\WINNT\system32\tabctl32.ocx=$(WinSysPath)
+C:\WINNT\system32\SysTray.ocx=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINNT\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+\\perthxsss\c$\TCP\Alerter\Client\1.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\10.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\4.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\3.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\2.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\Belch.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\6.WAV=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\7.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\8.WAV=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\9.WAV=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\5.WAV=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\work complete.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\Drinking.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\Im not listening.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\jobs done.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\more work.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\ok.wav=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\PAlerter.mdb=$(AppPath)
+\\perthxsss\c$\TCP\Alerter\Client\bombs are great.wav=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Al.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Joe.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Check.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Claude.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\CLIPPIT.ACS=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\cyber.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\DOT.ACS=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\F1.ACS=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Genie.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\GENIUS.ACS=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Gourdy.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Birdie.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Robby.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Max.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\merlin.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Milton.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\MNATURE.ACS=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\OFFCAT.ACS=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Oscar.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\PAlerter.txt=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Peedy.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Pepe.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Plany.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\LOGO.ACS=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\STILLOGO.ACS=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\Sharky.acs=$(AppPath)
+\\perthxsss\c$\WINNT\MSAgent\Chars\ROCKY.ACS=$(AppPath)
+C:\TCP\Alerter\Client\PAlerter.exe=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\Common\Tools\UNSUPPRT\SYSTRAY\SysTray.ocx=$(WinSysPath)
+
+[Package|Standard Setup Package 1|Configure Shared Files]
+Applicable=Yes
+\\perthxsss\c$\TCP\Alerter\Client\PAlerter.exe=No
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+\\perthxsss\c$\TCP\Alerter\Client\1.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\10.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\4.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\3.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\2.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\Belch.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\6.WAV=No
+\\perthxsss\c$\TCP\Alerter\Client\7.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\8.WAV=No
+\\perthxsss\c$\TCP\Alerter\Client\9.WAV=No
+\\perthxsss\c$\TCP\Alerter\Client\5.WAV=No
+\\perthxsss\c$\TCP\Alerter\Client\work complete.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\Drinking.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\Im not listening.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\jobs done.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\more work.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\ok.wav=No
+\\perthxsss\c$\TCP\Alerter\Client\PAlerter.mdb=No
+\\perthxsss\c$\TCP\Alerter\Client\bombs are great.wav=No
+\\perthxsss\c$\WINNT\MSAgent\Chars\Al.acs=No
+\\perthxsss\c$\WINNT\MSAgent\Chars\Joe.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Check.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Claude.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\CLIPPIT.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\cyber.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\DOT.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\F1.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Genie.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\GENIUS.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Gourdy.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Birdie.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Robby.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Max.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\merlin.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Milton.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\MNATURE.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\OFFCAT.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Oscar.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\PAlerter.txt=No
+\\perthxsss\c$\WINNT\MSAgent\Chars\Peedy.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Pepe.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Plany.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\LOGO.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\STILLOGO.ACS=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\Sharky.acs=Yes
+\\perthxsss\c$\WINNT\MSAgent\Chars\ROCKY.ACS=Yes
+C:\TCP\Alerter\Client\PAlerter.exe=No
+
+[Package|Standard Setup Package 1|Distribution]
+Type=single
+Size=
+Title=Personal Alerter
+
+[Package|Standard Setup Package 1|IconGroups]
+Group0=NTSS Applications
+PrivateGroup0=0
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 1|NTSS Applications]
+Icon1=PAlerter.exe
+Title1=Personal Alerter
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Standard Setup Package 1|Package]
+PackageFolder=\\perthxsss\c$\TCP\Alerter\Client\Package
+ProjectFolder=C:\TCP\Alerter\Client
+ServerSideCab=
+File1=\\perthxsss\c$\TCP\Alerter\Client\Package\setup.exe
+File2=\\perthxsss\c$\TCP\Alerter\Client\Package\Setup.Lst
+File3=\\perthxsss\c$\TCP\Alerter\Client\Package\PAlerter.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

@@ -1,0 +1,3 @@
+This application (Printers.exe) maps printers from one server to another automagically.
+
+Used when a server takes over from another.

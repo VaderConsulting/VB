@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Upgrade Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Upgrade Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_upgrade_table"></A>Upgrade Table</H1>
+
+<P>The Upgrade table contains information required during <A HREF="updat_8do3.htm">major upgrades</A>. To fully enable the installer's upgrade capabilities, every package should have an <A HREF="pref_7mux.htm"><B>UpgradeCode</B> property</A> and an Upgrade table. Each record in the Upgrade table gives a characteristic combination of upgrade code, product version, and language information used to identify a set of products affected by the upgrade. When the <A HREF="aref_4rse.htm">FindRelatedProducts action</A> detects that an affected product is installed on the system, it appends the product code to a property specified in the ActionProperty column. The <A HREF="aref_8r72.htm">RemoveExistingProducts action</A> and the <A HREF="aref_61wu.htm">MigrateFeatureStates action</A> only removes or migrates products listed in the ActionProperty list.</P>
+
+<P>The Upgrade table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Column</TH>
+<TH align=left width=42%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>UpgradeCode</TD>
+<TD width=42%><A HREF="tref_7kf8.htm">GUID</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>VersionMin</TD>
+<TD width=42%><A HREF="tref_1iy6.htm">Version</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>VersionMax</TD>
+<TD width=42%><A HREF="tref_1iy6.htm">Version</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Language</TD>
+<TD width=42%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Attributes</TD>
+<TD width=42%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Remove</TD>
+<TD width=42%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>ActionProperty</TD>
+<TD width=42%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>UpgradeCode</DT>
+
+<DD>The <A HREF="pref_7mux.htm"><B>UpgradeCode</B> property</A> in this column specifies the upgrade code of all products that are to be detected by the <A HREF="aref_4rse.htm">FindRelatedProducts Action</A>. </DD>
+
+<DT>VersionMin</DT>
+
+<DD>Specifies the lower bound on the range of product versions to be detected by FindRelatedProducts. The format of VersionMin is the same as the <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>. A bit flag in the Attributes column specifies whether the range includes the value in VersionMin. A null VersionMin means there is no lower bound on the version. VersionMin and VersionMax must not both be null. 
+
+<P>Note that Windows Installer uses only the first three fields of the product version. If you include a fourth field in your product version, the installer ignores the fourth field. 
+</DD>
+
+<DT>VersionMax</DT>
+
+<DD>Specifies the upper boundary of the range of product versions detected by FindRelatedProducts. The format of VersionMax is the same as the <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>. A bit flag in the Attributes column specifies whether the range includes the value in VersionMax. A null VersionMax means there is no upper bound on the version. VersionMin and VersionMax must not both be null. 
+
+<P>Note that Windows Installer uses only the first three fields of the product version. If you include a fourth field in your product version, the installer ignores the fourth field. 
+</DD>
+
+<DT>Language</DT>
+
+<DD>Specifies the set of languages detected by FindRelatedProducts. Enter a list of numeric language identifiers (LANGID) separated by commas (,). A bit flag in the Attributes field specifies whether FindRelatedProducts should detect all languages exclusive of the set in Language. Enter a null value in this field to specify all languages.</DD>
+
+<DT>Attributes</DT>
+
+<DD>This column contains bit flags specifying attributes of the Upgrade table.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Bit Flag Name</TH>
+<TH align=left width=13%>Decimal</TH>
+<TH align=left width=16%>Hexadecimal</TH>
+<TH align=left width=45%>Attribute</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><B>msidbUpgradeAttributesMigrateFeatures</B></TD>
+<TD width=13%>1</TD>
+<TD width=16%>0x001</TD>
+<TD width=45%>Migrate feature states by enabling the logic in the <A HREF="aref_61wu.htm">MigrateFeatureStates action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><B>msidbUpgradeAttributesOnlyDetect</B></TD>
+<TD width=13%>2</TD>
+<TD width=16%>0x002</TD>
+<TD width=45%>Detect products and applications but do not install.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><B>msidbUpgradeAttributesIgnoreRemoveFailure</B></TD>
+<TD width=13%>4</TD>
+<TD width=16%>0x004</TD>
+<TD width=45%>Continue installation upon failure to remove a product or application. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><B>msidbUpgradeAttributesVersionMinInclusive</B></TD>
+<TD width=13%>256</TD>
+<TD width=16%>0x100</TD>
+<TD width=45%>The range of versions detected includes the value in VersionMin.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><B>msidbUpgradeAttributesVersionMaxInclusive</B></TD>
+<TD width=13%>512</TD>
+<TD width=16%>0x200</TD>
+<TD width=45%>The range of versions detected includes the value in VersionMax.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%><B>msidbUpgradeAttributesLanguagesExclusive</B></TD>
+<TD width=13%>1024</TD>
+<TD width=16%>0x400</TD>
+<TD width=45%>Detect all languages, excluding the languages listed in the Language column.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Remove</DT>
+
+<DD>The installer sets the <A HREF="pref_8ho9.htm"><B>REMOVE</B> property</A> to features specified in this column. The features to be removed can be determined at run time. The <A HREF="tref_0qp0.htm">Formatted</A> string entered in this field must evaluate to a comma-delimited list of feature names. For example: [Feature1],[Feature2],[Feature3]. No features are removed if the field contains formatted text that evaluates to an empty string. The installer sets REMOVE=ALL only if the Remove field is empty. </DD>
+
+<DT>ActionProperty</DT>
+
+<DD>When the <A HREF="aref_4rse.htm">FindRelatedProducts action</A> detects a related product installed on the system, it appends the product code to the property specified in this field. The property specified in this column must be a public property and the package author must add the property to the <A HREF="pref_1eux.htm"><B>SecureCustomProperties</B> Property</A>. Each row in the ActionProperty table must have a unique ActionProperty value. After FindRelatedProducts the value of this property is a list product codes, separated by semicolons (;), detected on the system. 
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Upgrade%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_4qxx.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Upgrade%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_4qxx.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

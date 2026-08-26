@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring Merge Module File Tables</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_merge_module_file_tables"></A>Authoring Merge Module File Tables</H3>
+
+<P>A <A HREF="tref_4n6t.htm">File table</A> is required in every merge module. The File table should have a record for each file being delivered to the target installation package by the merge module. When the merge module is merged into a .msi file, every file in the merge module File table is stored inside of a <A HREF="dglo_25q1.htm#_msi_cabinet_file_using_windows_installer_gly">cabinet file</A> in the .msm file. The name of this cabinet in a merge module is always: MergeModule.CABinet. For more information, see also <A HREF="merg_0tyr.htm">Generating MergeModule.CABinet Cabinet Files</A>. 
+
+<UL>
+	<LI>Because the files of a merge module are always stored inside a cabinet file, it is not necessary to set the <B>msidbFileAttributesNoncompressed</B> or <B>msidbFileAttributesCompressed</B> bit flags in the Attributes column of the File table.</LI>
+
+	<LI>The names of files in MergeModule.CABinet must match the primary key in the merge module's File table. Note that the File column is the primary key of the <A HREF="tref_4n6t.htm">File Table</A> and that the entries in this field must follow the convention described in <A HREF="merg_0ucz.htm">Naming Primary Keys in Merge Module Databases</A>. </LI>
+
+	<LI>File sequence numbers are specified in the Sequence column of the File table. Files must be listed in the merge module's File table in the same sequence as they are stored in MergeModule.CABinet. The sequence numbers of files do not need to be consecutive, but they must follow the same sequence of the files stored inside the cabinet. For example, the first, second, and third files stored in the cabinet can have the sequence numbers 100, 200, and 300.</LI>
+
+	<LI>The installer skips extra files included in MergeModule.CABinet that are not listed in the File table. This means that a single cabinet file can contain all the files necessary for a merge module supporting multiple languages using transforms. All the language files can be given a unique sequence number in the cabinet and then a transform can add or remove files from the File table as needed for a particular language. For more information, see <A HREF="merg_5lwz.htm">Authoring Multiple Language Merge Modules</A>.</LI>
+</UL>
+
+<P>For information on how to populate the remaining fields in this table, see column descriptions in <A HREF="tref_4n6t.htm">File table</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

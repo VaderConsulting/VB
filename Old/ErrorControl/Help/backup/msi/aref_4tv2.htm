@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>RemoveIniValues Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="RemoveIniValues Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_removeinivalues_action"></A>RemoveIniValues Action</H1>
+
+<P>The RemoveIniValues action removes .ini file information specified for removal in the <A HREF="tref_9k6d.htm">RemoveIniFile table</A> if the component is set to be installed locally or run-from-source. The RemoveIniValues action removes .ini file information that has been associated with a component in the <A HREF="tref_56jp.htm">IniFile table</A>. This action also removes .ini file information if the information was written by the <A HREF="aref_8432.htm">WriteIniValues action</A> and the component is scheduled to be uninstalled. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The <A HREF="aref_9fzi.htm">InstallValidate</A> action must be called before the RemoveIniValues action. If a <A HREF="aref_8432.htm">WriteIniValues</A> action is used in the sequence, it must appear after RemoveIniValues. </P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Identifier of .ini file </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[2]</TD>
+<TD width=84%>.ini file key below section</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[3]</TD>
+<TD width=84%>Item removed form .ini file</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[4]</TD>
+<TD width=84%>Value removed from .ini file</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="tref_9k6d.htm">RemoveIniFile table</A>, <A HREF="tref_56jp.htm">IniFile table</A>, <A HREF="aref_8432.htm">WriteIniValues action</A>, <A HREF="aref_9fzi.htm">InstallValidate</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

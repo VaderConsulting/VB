@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ADDSOURCE Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ADDSOURCE Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_addsource_property"></A>ADDSOURCE Property</H1>
+
+<P>The value of the ADDSOURCE property is a list of features delimited by commas that are to be installed to run from source. The features must be present in the Feature<B> </B>column of the <A HREF="tref_0a91.htm">Feature</A> table. To install all features as run from source, use ADDSOURCE=All<B> </B>on the command line. Do not enter ADDSOURCE=All into the <A HREF="tref_21d1.htm">Property table</A> because this generates a run-from-source package that cannot be correctly removed.</P>
+
+<H4>Remarks</H4>
+
+<P>Note that the feature names are case-sensitive. If the LocalOnly bit flag is set in the Attributes<B><I> </I></B>column of the <A HREF="tref_09np.htm">Component</A> table for a component of a feature in the list, that component is installed to run locally.</P>
+
+<P>The installer always evaluates the following properties in the following order.
+
+<OL>
+	<LI><A HREF="pref_3dvd.htm">ADDLOCAL</A> </LI>
+
+	<LI><A HREF="pref_8ho9.htm">REMOVE</A> </LI>
+
+	<LI><A HREF="#_msi_addsource_property">ADDSOURCE</A> </LI>
+
+	<LI><A HREF="pref_7yex.htm">ADDDEFAULT</A> </LI>
+
+	<LI><A HREF="pref_19x5.htm">REINSTALL</A> </LI>
+
+	<LI><A HREF="pref_6k8p.htm">ADVERTISE</A> </LI>
+
+	<LI><A HREF="pref_3htl.htm">COMPADDLOCAL</A> </LI>
+
+	<LI><A HREF="pref_4gvt.htm">COMPADDSOURCE</A> </LI>
+
+	<LI><A HREF="pref_89yx.htm">FILEADDLOCAL</A> </LI>
+
+	<LI><A HREF="pref_0id5.htm">FILEADDSOURCE</A> </LI>
+
+	<LI><A HREF="pref_42yh.htm">FILEADDDEFAULT</A> </LI>
+</OL>
+
+<P>For example, if the command line specifies: ADDLOCAL=ALL, ADDSOURCE = MyFeature, all the features are first set to run-local and then MyFeature is set to run-from-source. If the command line is: ADDSOURCE=ALL, ADDLOCAL=MyFeature, first MyFeature is set to run-local, and then when ADDSOURCE=ALL is evaluated, all features (including MyFeature) are reset to run-from-source.</P>
+
+<P>The installer sets the <A HREF="pref_84u1.htm">Preselected property</A> to a value of "1" during the resumption of a suspended install or when any of the above properties are specified on the command line.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

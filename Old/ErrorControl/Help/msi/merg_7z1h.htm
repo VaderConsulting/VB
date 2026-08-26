@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I open a multiple-language merge module in a specific language?</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_how_do_i_open_a_multiple_language_merge_module_in_a_specific_language"></A>How do I open a multiple-language merge module in a specific language?</H3>
+
+<P>When merging a module into an installation database, there are two languages of interest. The first is the language of the target installation package specified by <A HREF="pref_7aex.htm"><B>ProductLanguage</B></A> in the <A HREF="tref_21d1.htm">Property table</A>. The second is the language of the merge module, which appears in the Language column of the <A HREF="merg_4nad.htm">ModuleSignature table</A>. </P>
+
+<P>The language of the installation package may be passed to the module by the merge tool when the package is opened for the merge. However, in some cases it may be necessary to disregard the language of the target and request that the module be opened in another language. For example, in the case of an English package installing both the English and German resources from the module.</P>
+
+<P>When opening a module with a language request, the merge tool checks the requested language against the languages specified in the Language column of the <A HREF="merg_4nad.htm">ModuleSignature table</A>. The following process is used to determine which language to use: 
+
+<OL>
+	<LI>If the language in the ModuleSignature table is equal or more general than the requested language, the module opens.</LI>
+
+	<LI>If the module supports the exact language requested, that language is used.</LI>
+
+	<LI>If the module supports the language group of the language requested that language group is used. For example, check 9 if 1033 was requested but not found in step 2. </LI>
+
+	<LI>Check if there is a language transform that changes the module to neutral. </LI>
+
+	<LI>If none of the above succeed, the module does not support the requested language and so the merge fails.</LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20open%20a%20multiple-language%20merge%20module%20in%20a%20specific%20language%3F;%20RELEASE:%20August%202001;%20URL:%20merg_7z1h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20open%20a%20multiple-language%20merge%20module%20in%20a%20specific%20language%3F;%20RELEASE:%20August%202001;%20URL:%20merg_7z1h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

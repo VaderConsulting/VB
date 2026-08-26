@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I add and remove an application and leave no trace in the registry?</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_how_do_i_add_and_remove_an_application_and_leave_no_trace_in_the_registry"></A>How do I add and remove an application and leave no trace in the registry?</H1>
+
+<P>If an application needs to be registered, author the installation package as described in the section <A HREF="over_83g3.htm">How do I add or remove registry keys on the installation or removal of components?</A> Registration is used by the installer for advertisement and by the Add/Remove in the control panel. If an application is not registered, it cannot be advertised and is not listed in the Add/Remove control panel. </P>
+
+<P>You may omit registering an application by removing the <A HREF="aref_529a.htm">RegisterProduct action</A>, <A HREF="aref_0g4u.htm">RegisterUser action</A>, <A HREF="aref_10dq.htm">PublishProduct action</A>, and <A HREF="aref_8bou.htm">PublishFeatures action</A> from the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> and <A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A>. All these actions must be removed or some trace of the application may remain in the registry. Removing all of these actions prevents the application from being listed in Add/Remove in the control panel and prevents the advertisement of the application. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20add%20and%20remove%20an%20application%20and%20leave%20no%20trace%20in%20the%20registry%3F;%20RELEASE:%20August%202001;%20URL:%20over_0l15.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20add%20and%20remove%20an%20application%20and%20leave%20no%20trace%20in%20the%20registry%3F;%20RELEASE:%20August%202001;%20URL:%20over_0l15.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

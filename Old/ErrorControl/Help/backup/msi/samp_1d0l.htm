@@ -1,0 +1,415 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Importing the InstallExecuteSequence</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_importing_the_installexecutesequence"></A>Importing the InstallExecuteSequence</H2>
+
+<P>The <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> lists the actions that are executed when the installer executes the top-level <A HREF="aref_986m.htm">INSTALL action</A>. See <A HREF="novr_6zao.htm">Installation Procedure Tables Group</A>, <A HREF="novr_3mqt.htm">Using a Sequence Table</A>, and the <A HREF="novr_9nqd.htm">Sequence Table Detailed Example</A>. </P>
+
+<P>If in the section <A HREF="samp_4885.htm">Importing a Blank Database</A> you used uisample.msi from the Windows Installer SDK, the sequence tables in your copy of MNP2000.msi already contains the suggested action sequences described in <A HREF="novr_3mqt.htm">Using a Sequence Table</A>. No changes to these sequences are necessary to author the Notepad installation package.</P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the InstallExecuteSequence table.</P>
+
+<P><A HREF="tref_5pid.htm"><B>InstallExecuteSequence Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=38%>Action</TH>
+<TH align=left width=38%>Condition</TH>
+<TH align=left width=24%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>AllocateRegistrySpace</TD>
+<TD width=38%>NOT Installed</TD>
+<TD width=24%>1550</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>AppSearch</TD>
+<TD width=38%>&nbsp;</TD>
+<TD width=24%>400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>BindImage</TD>
+<TD width=38%> </TD>
+<TD width=24%>4300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>CCPSearch</TD>
+<TD width=38%>NOT Installed</TD>
+<TD width=24%>500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>CostFinalize</TD>
+<TD width=38%> </TD>
+<TD width=24%>1000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>CostInitialize</TD>
+<TD width=38%> </TD>
+<TD width=24%>800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>CreateFolders</TD>
+<TD width=38%> </TD>
+<TD width=24%>3700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>CreateShortcuts</TD>
+<TD width=38%> </TD>
+<TD width=24%>4500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>DeleteServices</TD>
+<TD width=38%>VersionNT</TD>
+<TD width=24%>2000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>DuplicateFiles</TD>
+<TD width=38%> </TD>
+<TD width=24%>4210</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>FileCost</TD>
+<TD width=38%> </TD>
+<TD width=24%>900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>InstallFiles</TD>
+<TD width=38%> </TD>
+<TD width=24%>4000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>InstallFinalize</TD>
+<TD width=38%> </TD>
+<TD width=24%>6600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>InstallInitialize</TD>
+<TD width=38%> </TD>
+<TD width=24%>1500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>InstallODBC</TD>
+<TD width=38%> </TD>
+<TD width=24%>5400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>InstallServices</TD>
+<TD width=38%>VersionNT</TD>
+<TD width=24%>5800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>InstallValidate</TD>
+<TD width=38%> </TD>
+<TD width=24%>1400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>LaunchConditions</TD>
+<TD width=38%> </TD>
+<TD width=24%>100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MoveFiles</TD>
+<TD width=38%> </TD>
+<TD width=24%>3800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>PatchFiles</TD>
+<TD width=38%> </TD>
+<TD width=24%>4090</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>ProcessComponents</TD>
+<TD width=38%> </TD>
+<TD width=24%>1600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>PublishComponents</TD>
+<TD width=38%> </TD>
+<TD width=24%>6200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>PublishFeatures</TD>
+<TD width=38%> </TD>
+<TD width=24%>6300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>PublishProduct</TD>
+<TD width=38%> </TD>
+<TD width=24%>6400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RegisterClassInfo</TD>
+<TD width=38%> </TD>
+<TD width=24%>4600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RegisterComPlus</TD>
+<TD width=38%> </TD>
+<TD width=24%>5700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RegisterExtensionInfo</TD>
+<TD width=38%> </TD>
+<TD width=24%>4700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RegisterFonts</TD>
+<TD width=38%> </TD>
+<TD width=24%>5300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RegisterMIMEInfo</TD>
+<TD width=38%> </TD>
+<TD width=24%>4900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RegisterProduct</TD>
+<TD width=38%> </TD>
+<TD width=24%>6100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RegisterProgIdInfo</TD>
+<TD width=38%> </TD>
+<TD width=24%>4800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RegisterTypeLibraries</TD>
+<TD width=38%> </TD>
+<TD width=24%>5500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RegisterUser</TD>
+<TD width=38%> </TD>
+<TD width=24%>6000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RemoveDuplicateFiles</TD>
+<TD width=38%> </TD>
+<TD width=24%>3400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RemoveEnvironmentStrings</TD>
+<TD width=38%> </TD>
+<TD width=24%>3300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RemoveFiles</TD>
+<TD width=38%> </TD>
+<TD width=24%>3500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RemoveFolders</TD>
+<TD width=38%> </TD>
+<TD width=24%>3600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RemoveIniValues</TD>
+<TD width=38%> </TD>
+<TD width=24%>3100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RemoveODBC</TD>
+<TD width=38%> </TD>
+<TD width=24%>2400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RemoveRegistryValues</TD>
+<TD width=38%> </TD>
+<TD width=24%>2600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RemoveShortcuts</TD>
+<TD width=38%> </TD>
+<TD width=24%>3200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RMCCPSearch</TD>
+<TD width=38%>NOT Installed</TD>
+<TD width=24%>600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>SelfRegModules</TD>
+<TD width=38%> </TD>
+<TD width=24%>5600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>SelfUnregModules</TD>
+<TD width=38%> </TD>
+<TD width=24%>2200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>SetODBCFolders</TD>
+<TD width=38%> </TD>
+<TD width=24%>1100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>StartServices</TD>
+<TD width=38%>VersionNT</TD>
+<TD width=24%>5900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>StopServices</TD>
+<TD width=38%>VersionNT</TD>
+<TD width=24%>1900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>UnpublishComponents</TD>
+<TD width=38%> </TD>
+<TD width=24%>1700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>UnpublishFeatures</TD>
+<TD width=38%> </TD>
+<TD width=24%>1800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>UnregisterClassInfo</TD>
+<TD width=38%> </TD>
+<TD width=24%>2700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>UnregisterComPlus</TD>
+<TD width=38%> </TD>
+<TD width=24%>2100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>UnregisterExtensionInfo</TD>
+<TD width=38%> </TD>
+<TD width=24%>2800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>UnregisterFonts</TD>
+<TD width=38%> </TD>
+<TD width=24%>2500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>UnregisterMIMEInfo</TD>
+<TD width=38%> </TD>
+<TD width=24%>3000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>UnregisterProgIdInfo</TD>
+<TD width=38%> </TD>
+<TD width=24%>2900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>UnregisterTypeLibraries</TD>
+<TD width=38%> </TD>
+<TD width=24%>2300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>ValidateProductID</TD>
+<TD width=38%> </TD>
+<TD width=24%>700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>WriteEnvironmentStrings</TD>
+<TD width=38%> </TD>
+<TD width=24%>5200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>WriteIniValues</TD>
+<TD width=38%> </TD>
+<TD width=24%>5100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>WriteRegistryValues</TD>
+<TD width=38%> </TD>
+<TD width=24%>5000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>RemoveExistingProducts</TD>
+<TD width=38%> </TD>
+<TD width=24%>6700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MigrateFeatureStates</TD>
+<TD width=38%> </TD>
+<TD width=24%>1200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>FindRelatedProducts</TD>
+<TD width=38%> </TD>
+<TD width=24%>200</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_4691.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

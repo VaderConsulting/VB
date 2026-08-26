@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CreateTransformSummaryInfo Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="CreateTransformSummaryInfo Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_createtransformsummaryinfo_method"></A><A NAME="helpid_msidatabase_createtransformsummaryinfo"></A>CreateTransformSummaryInfo Method</H1>
+
+<P>The <B>CreateTransformSummaryInfo</B> method of the <A HREF="vref_64dw.htm"><B>Database</B> object</A> creates and populates the summary information stream of an existing transform file. This method fills in the properties with the base and reference <A HREF="pref_4tfd.htm">ProductCode</A> and <A HREF="pref_120p.htm">ProductVersion</A>.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.CreateTransformSummaryInfo(<I>reference, storage, errorConditions<B>,</B> validation </I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD>Database that includes the changes.</DD>
+
+<DT><I>reference</I></DT>
+
+<DD>Required database that does not include the changes.</DD>
+
+<DT><I>storage</I></DT>
+
+<DD>The name of the generated transform file. This is optional. </DD>
+
+<DT><I>errorConditions</I></DT>
+
+<DD>Required error conditions that should be suppressed when the transform is applied. Combine one or more of the following error condition values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>Error condition name</TH>
+<TH align=left width=14%>Value</TH>
+<TH align=left width=35%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>msiTransformErrorNone</TD>
+<TD width=14%>0</TD>
+<TD width=35%>None of the following conditions.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>msiTransformErrorAddExistingRow</TD>
+<TD width=14%>1</TD>
+<TD width=35%>Adding a row that already exists.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>msiTransformErrorDeleteNonExistingRow</TD>
+<TD width=14%>2</TD>
+<TD width=35%>Deleting a row that doesn't exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>msiTransformErrorAddExistingTable</TD>
+<TD width=14%>4</TD>
+<TD width=35%>Adding a table that already exists.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>msiTransformErrorDeleteNonExistingTable</TD>
+<TD width=14%>8</TD>
+<TD width=35%>Deleting a table that doesn't exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>msiTransformErrorUpdateNonExistingRow</TD>
+<TD width=14%>16</TD>
+<TD width=35%>Updating a row that doesn't exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>msiTransformErrorChangeCodepage</TD>
+<TD width=14%>32</TD>
+<TD width=35%>Transform and database code pages do not match and neither code page is neutral.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>validation</I></DT>
+
+<DD>Required when the transform is applied to a database; shows which properties should be validated to verify that this transform can be applied to the database. The properties are all contained in the <A HREF="sovr_43w4.htm">Summary Information Stream Property Set</A>.
+
+<P>Combine one or more of the following values.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Validation flag</TH>
+<TH align=left width=14%>Value</TH>
+<TH align=left width=36%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>msiTransformValidationNone</TD>
+<TD width=14%>0</TD>
+<TD width=36%>No validation done.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>msiTransformValidationLanguage</TD>
+<TD width=14%>1</TD>
+<TD width=36%>Default language must match base database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>msiTransformValidationProduct</TD>
+<TD width=14%>2</TD>
+<TD width=36%>Product must match base database.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>To validate product version, first choose one or more of these three flags to indicate how much of the version is to be verified.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Validation flag</TH>
+<TH align=left width=14%>Value</TH>
+<TH align=left width=36%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>msiTransformValidationMajorVer</TD>
+<TD width=14%>8</TD>
+<TD width=36%>Check major version only.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>msiTransformValidationMinorVer</TD>
+<TD width=14%>16</TD>
+<TD width=36%>Check major and minor version only.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>msiTransformValidationUpdateVer</TD>
+<TD width=14%>32</TD>
+<TD width=36%>Check major, minor, and update versions.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Then choose one of the following to indicate the required relationship between the product version of the database the transform is being applied to and that of the base database.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=49%>Validation flag</TH>
+<TH align=left width=14%>Value</TH>
+<TH align=left width=37%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiTransformValidationLess</TD>
+<TD width=14%>64</TD>
+<TD width=37%>Applied version &lt; base version</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiTransformValidationLessOrEqual</TD>
+<TD width=14%>128</TD>
+<TD width=37%>Applied version &lt;= base version</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiTransformValidationEqual</TD>
+<TD width=14%>256</TD>
+<TD width=37%>Applied version = base version</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiTransformValidationGreaterOrEqual</TD>
+<TD width=14%>512</TD>
+<TD width=37%>Applied version &gt;= base version</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiTransformValidationGreater</TD>
+<TD width=14%>1024</TD>
+<TD width=37%>Applied version &gt; base version</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>To validate that the transform is being applied to a package having the appropriate <A HREF="pref_7mux.htm">UpgradeCode</A>, set the following flag.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=49%>Validation flag</TH>
+<TH align=left width=15%>Value</TH>
+<TH align=left width=36%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>msiTransformValidationUpgradeCode</TD>
+<TD width=15%>2048</TD>
+<TD width=36%>Validates that the transform is the appropriate UpgradeCode.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To create a summary information stream for a transform, the <A HREF="pref_4tfd.htm">ProductCode</A> and <A HREF="pref_120p.htm">ProductVersion</A> properties must be defined in the <A HREF="tref_21d1.htm">Property</A> tables of both the base and reference databases. If msiTransformValidationUpgradeCode is used, the <A HREF="pref_7mux.htm">UpgradeCode property</A> must be defined in both databases. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="updat_5wab.htm">Transforms</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

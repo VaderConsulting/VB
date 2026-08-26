@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Word Count Summary Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Word Count Summary Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_word_count_summary_property"></A>Word Count Summary Property</H1>
+
+<P>The <B>Word Count Summary</B> property indicates the type of source file image. If this property is not present, it defaults to 0. Note that this property is stored in place of the standard <B>Count</B> property.</P>
+
+<P>This property is a bit field. New bits may be added in the future. At present the following bits are available.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=11%>Bit</TH>
+<TH align=left width=13%>Value</TH>
+<TH align=left width=76%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>Bit 0</TD>
+<TD width=13%>0
+<P>1</P>
+</TD>
+<TD width=76%>Long file names.
+<P>Short file names.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>Bit 1</TD>
+<TD width=13%>0
+<P>2</P>
+</TD>
+<TD width=76%>Source is uncompressed.
+<P>Source is compressed.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>Bit 2</TD>
+<TD width=13%>0
+<P>4</P>
+</TD>
+<TD width=76%>Source is original media.
+<P>Source is a administrative image created by an administrative installation.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P>These are combined to give the <B>Word Count Summary</B> property one of the following values indicating a type of source file image.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Property value</TH>
+<TH align=left width=76%>Type of source file image </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>0</TD>
+<TD width=76%>Original source using long file names. Matches tree in <A HREF="tref_6an9.htm">Directory table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>1</TD>
+<TD width=76%>Original source using short file names. Matches tree in Directory table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>2</TD>
+<TD width=76%>Compressed source files using long file names. Matches cabinets and files in the Media table. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>3</TD>
+<TD width=76%>Compressed source files using short file names. Matches cabinets and files in the Media table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>4</TD>
+<TD width=76%>Administrative image using long file names. Matches tree in Directory table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>5</TD>
+<TD width=76%>Administrative image using short file names. Matches tree in Directory table.</TD>
+</TR>
+</TABLE><BR>
+
+<P>Note that if the package is marked as compressed (Bit 1 is set), the installer only installs files located at the root of the source. In this case, even files marked as uncompressed in the <A HREF="tref_4n6t.htm">File Table</A> must be located at the root to be installed. To specify a source image that has both a cabinet file (compressed files) and uncompressed files that match the tree in the <A HREF="tref_6an9.htm">Directory table</A>, mark the package as uncompressed by leaving Bit 1 unset (value=0) in the <B>Word Count Summary</B> property and set msidbFileAttributesCompressed (value=16384) in the Attributes column of the <A HREF="tref_4n6t.htm">File table</A> for each file in the cabinet.</P>
+
+<P>For a patch package, the <B>Word Count Summary</B> property specifies the patch engine that was used to create the patch files. The default value is 1 and indicates that MSPATCH was used to create the patch. A value of "2" means that the patch is using smaller, optimized, files available only with Windows Installer version 1.2 or later. A patch with a Word Count of "2" fails immediately if used with a Windows Installer version earlier than 1.2. A patch with a Word Count of "3" fails immediately if used with a Windows Installer version earlier than 2.0.</P>
+
+<P>This summary property is REQUIRED.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Word%20Count%20Summary%20Property;%20RELEASE:%20August%202001;%20URL:%20sref_8ge1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Word%20Count%20Summary%20Property;%20RELEASE:%20August%202001;%20URL:%20sref_8ge1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

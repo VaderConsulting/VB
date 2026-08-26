@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using Qualified Components</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_using_qualified_components"></A>Using Qualified Components</H1>
+
+<P>Qualified components are a method of indirection and can be used to group components with parallel functionality into categories. </P>
+
+<P>To return the full path and install a <A HREF="over_0hkj.htm">qualified component</A>, call <A HREF="msi_3vn8.htm"><B>MsiProvideQualifiedComponent</B></A> or <A HREF="msi_8n94.htm"><B>MsiProvideQualifiedComponentEx</B></A>. </P>
+
+<P>To enumerate all the qualified component qualifiers and descriptive strings, call <A HREF="msi_2veb.htm"><B>MsiEnumComponentQualifiers</B></A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To group components together into a qualified-component category</B>
+
+<OL>
+	<LI>There must be a record in the <A HREF="tref_09np.htm">Component table</A> for each component that is included in the new category of qualified components. Author the fields in the Component table the same as for ordinary components. Note that each qualified component must have a unique component ID GUID entered in the ComponentId column of the Component table. </LI>
+
+	<LI>Generate a qualifier text string for each qualified component. The qualifier must be unique text string that can be easily generated when searching for a qualified component. For example, if the components in the category are being qualified by language, the numeric locale identifier (LCID) is a reasonable qualifier string.</LI>
+
+	<LI>Add a record in the <A HREF="tref_7xt1.htm">PublishComponent table</A> for each qualified component. Enter the qualified-component identifiers from the Component column of the Component table into the Component_ column of the PublishComponent table. Enter the qualifier strings for each qualified component into the Qualifier column. Enter a localized string to be displayed to the user and describing the qualified component into the optional AppData column. An explanatory string should be put in the AppData field, such as "French Dictionary," rather than just the numeric LCID. Enter the name of the feature that uses this component into the Feature_ column. The feature identifier in this field must also be listed in the Feature column of the <A HREF="tref_0a91.htm">Feature table</A>. </LI>
+
+	<LI>Generate a category GUID for this category of qualified components. This must be a valid <A HREF="tref_7kf8.htm">GUID</A>. If you use a utility such as GUIDGEN to generate the GUID be sure that it contains only uppercase letters. For every qualified component in this category, enter the category GUID into the ComponentId field of the <A HREF="tref_7xt1.htm">PublishComponent table</A>. </LI>
+</OL>
+
+<P>The following example illustrates how the "FAX Templates" category of qualified components are authored into the Component, Feature, and PublishComponent tables. </P>
+
+<P><B>PublishComponent Table</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>ComponentId</TH>
+<TH align=left width=16%>Qualifier</TH>
+<TH align=left width=18%>AppData</TH>
+<TH align=left width=19%>Feature_</TH>
+<TH align=left width=24%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>{<I>FAX Template</I> <I>Category GUID</I>}</TD>
+<TD width=16%>1033</TD>
+<TD width=18%>US English template</TD>
+<TD width=19%>FAXTemplate</TD>
+<TD width=24%>FAXTemplateENU</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>&nbsp;</TD>
+<TD width=16%>1041</TD>
+<TD width=18%>Japanese template</TD>
+<TD width=19%>FAXTemplate</TD>
+<TD width=24%>FAXTemplateJPN</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>&nbsp;</TD>
+<TD width=16%>1054</TD>
+<TD width=18%>Thai template</TD>
+<TD width=19%>FAXTemplate</TD>
+<TD width=24%>FAXTemplateTHA</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>&nbsp;</TD>
+<TD width=16%>1031</TD>
+<TD width=18%>German template</TD>
+<TD width=19%>FAXTemplate</TD>
+<TD width=24%>FAXTemplateDEU</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>Component Table (partial table)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Component</TH>
+<TH align=left width=72%>ComponentId</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FAXTemplateENU</TD>
+<TD width=72%>{<I>FAX Template (US English) component GUID</I>}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FAXTemplateJPN</TD>
+<TD width=72%>{<I>FAX Template (Japanese) component GUID</I>}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FAXTemplateTHA</TD>
+<TD width=72%>{<I>FAX Template (Thai) component GUID</I>}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>FAXTemplateDEU</TD>
+<TD width=72%>{<I>FAX Template (German) component GUID</I>}</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>Feature Table (partial table)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Feature</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>FAXTemplate</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>FAXTemplate</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>FAXTemplate</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>FAXTemplate</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

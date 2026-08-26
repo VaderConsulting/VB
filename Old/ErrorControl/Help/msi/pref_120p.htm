@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ProductVersion Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ProductVersion Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_productversion_property"></A>ProductVersion Property</H1>
+
+<P>The value of the <B>ProductVersion</B> property is the version of the product in string format. This property is REQUIRED.</P>
+
+<P>The format of the string is as follows:</P>
+
+<P>major.minor.build </P>
+
+<P>The first field is the major version and has a maximum value of 255. The second field is the minor version and has a maximum value of 255. The third field is called the build version or the update version and has a maximum value of 65,535.</P>
+
+<H4>Remarks</H4>
+
+<P>At least one of the three fields of <B>ProductVersion </B>must change for an upgrade using the <A HREF="tref_4qxx.htm">Upgrade table</A>. Any update that changes only the package code, but leaves <B>ProductVersion</B> and <B>ProductCode</B> unchanged is called a <A HREF="updat_9m0j.htm">small update</A>. The three versions fields are provided primarily for convenience. For example, if you want to change <B>ProductVersion</B>, but don't want to change either the major or minor versions, you can change the build version. </P>
+
+<P>Note that Windows Installer uses only the first three fields of the product version. If you include a fourth field in your product version, the installer ignores the fourth field. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="updat_1po3.htm">Patching and Upgrades</A>, <A HREF="updat_9m0j.htm">small update</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ProductVersion%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_120p.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ProductVersion%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_120p.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

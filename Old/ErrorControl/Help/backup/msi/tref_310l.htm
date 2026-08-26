@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DuplicateFile Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="DuplicateFile Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_duplicatefile_table"></A>DuplicateFile Table</H1>
+
+<P>The DuplicateFile table contains a list of files that are to be duplicated, either to a different directory than the original file or to the same directory but with a different name. The original file must be a file installed by the <A HREF="aref_3hym.htm">InstallFiles action</A>. </P>
+
+<P>The DuplicateFile table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Column</TH>
+<TH align=left width=38%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>FileKey</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Component_</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>File_</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>DestName</TD>
+<TD width=38%><A HREF="tref_0oit.htm">Filename</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>DestFolder</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>FileKey</DT>
+
+<DD>A primary key, a non-localized token, identifying a unique DuplicateFile record.</DD>
+
+<DT>Component_</DT>
+
+<DD>An external key to the first column of the <A HREF="tref_09np.htm">Component table</A>. If the component identified by the key is not selected for installation or removal, then no action is taken on this DuplicateFile record.</DD>
+
+<DT>File_</DT>
+
+<DD>Foreign key into the <A HREF="tref_4n6t.htm">File table</A> representing the original file that is to be duplicated.</DD>
+
+<DT>DestName</DT>
+
+<DD>Localizable name to be given to the duplicate file. If this field is blank, then the destination file is given the same name as the original file.</DD>
+
+<DT>DestFolder</DT>
+
+<DD>Name of a property that is the full path to where the duplicate file is to be copied. If this directory is the same as the directory containing the original file and the name for the proposed duplicate file is the same as the original, then no action takes place.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The table is processed by the <A HREF="aref_7yr2.htm">DuplicateFiles action</A> and the <A HREF="aref_3tpq.htm">RemoveDuplicateFiles action</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

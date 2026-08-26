@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MergeEx Function</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MergeEx function">
+<META NAME="MS-HKWD" CONTENT="Merge object, MergeEx function">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_mergeex_function"></A>MergeEx Function</H1>
+
+<P>The <B>MergeEx</B> function implements the <A HREF="merg_6mjo.htm"><B>MergeEx</B> method</A> of the of the <A HREF="merg_4th0.htm"><B>Merge</B> object</A>. This function executes a merge of the current database and current module. The merge attaches the components in the module to the feature identified by <I>Feature</I>. The root of the module's directory tree is redirected to the location given by <I>RedirectDir</I></P>
+
+<P><B>IMsmMerge2::MergeEx</B>&nbsp;&nbsp;&nbsp;&nbsp;<I>Mergemod.dll version 2.0 or later.</I></P>
+
+<PRE class=syntax><B>HRESULT MergeEx(
+  const BSTR</B> <I>Feature</I><B>,</B>
+<B>  const BSTR</B> <I>RedirectDir</I>
+  <B>IMsmConfigureModule*</B> <I>pConfiguration</I>
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>Feature</I> </DT>
+
+<DD>[in] The name of a feature in the database. A <B>LPCWSTR</B> may be used in place of a <B>BSTR</B>. </DD>
+
+<DT><I>RedirectDir </I></DT>
+
+<DD>[in] The key of an entry in the Directory table of the database. A <B>LPCWSTR</B> may be used in place of a <B>BSTR</B>. This parameter may be NULL or an empty string. </DD>
+
+<DT><I>pConfiguration</I></DT>
+
+<DD>[in] The <I>pConfiguration</I> argument is an interface implemented by the client. The argument may be NULL. The presence of this argument indicates that the client tool is capable of modifying configurable merge modules. The presence of this argument does not require the client to provide configuration data for any specific configurable item. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Value</TH>
+<TH align=left width=63%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><I>E_OUTOFMEMORY</I> </TD>
+<TD width=63%>There system ran out of memory and could not complete the operation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>E_INVALIDARG</TD>
+<TD width=63%>One of the arguments is invalid. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>E_FAIL </TD>
+<TD width=63%>The merge was stopped due to an error. Some tables may not have been merged. See the Remarks section for more information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>S_FALSE </TD>
+<TD width=63%>The function succeeded, but there were errors and the merge itself may not be valid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>S_OK</TD>
+<TD width=63%>The function succeeded. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This function executes a merge of the current database and current module. The root of the module's directory tree is redirected to the location given by <I>RedirectDir</I>. If any merge conflicts occur, including exclusions, they are placed in the error enumerator for later retrieval, but does not cause the merge to fail. Errors may be retrieved using <A HREF="merg_4dgu.htm"><B>get_Errors </B>function</A>. Errors and informational messages will be posted to the current log file. </P>
+
+<P>Once the merge is complete, components in the module are attached to the feature identified by <I>Feature</I>. This feature must already exist and is not created. The module may be attached to additional features using <A HREF="merg_86jy.htm"><B>Connect</B> function</A>.</P>
+
+<P>Changes made to the database will not be saved to disk unless <A HREF="merg_9mem.htm"><B>CloseDatabase</B> function</A> is called with <I>bCommit</I> set to TRUE. </P>
+
+<P>When the merge fails because of an incorrect module configuration the function returns E_FAIL. This includes these msmErrorType errors: <B>msmErrorBadNullSubstitution</B>, <B>msmErrorBadSubstitutionType</B>, <B>msmErrorBadNullResponse</B>, <B>msmErrorMissingConfigItem</B>, and <B>msmErrorDataRequestFailed</B>. These errors cause the merge to stop immediately when the error is encountered. The error object is still added to the enumerator when<B> MergeEx</B> returns E_FAIL. For more information about msmErrorType errors, see <A HREF="merg_9cv3.htm">get_Type Function (Error Object)</A>. All other errors cause <B>MergeEx</B> to return S_FALSE and cause the merge to continue. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_29f2.htm">Merge Module Automation</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MergeEx%20Function;%20RELEASE:%20August%202001;%20URL:%20merg_6n5a.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MergeEx%20Function;%20RELEASE:%20August%202001;%20URL:%20merg_6n5a.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I merge a multiple language module into the same package multiple times?</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_how_do_i_merge_a_multiple_language_module_into_the_same_package_multiple_times"></A>How do I merge a multiple language module into the same package multiple times?</H3>
+
+<P>When a module supports multiple languages, you can merge it into the same Windows Installer database multiple times, as long as each merge uses a different language. Before each merge, request a different language from the module. The resulting .msi database then has a record in the <A HREF="merg_4nad.htm">ModuleSignature table</A> for each merge of the module. Components that are shared between languages exist only once in the <A HREF="tref_09np.htm">Component table</A>, but are associated with each language in the <A HREF="merg_21gl.htm">ModuleComponents table</A>.</P>
+
+<P>When merging multiple languages of a module into the same package, each merge must satisfy the same restrictions on code pages as single-language modules. The modules cannot contain strings in different code pages.</P>
+
+<P>When merging a module multiple times into a single .msi file, you may need to modify the order of the files in the <A HREF="tref_4n6t.htm">File table</A> to use the existing .cab from the module directly in your installation. The order of files in the File table must match the order of files in the .cab. When merging a module multiple times into an installation database, the sequence may be modified because files shared between the languages may already exist in the module from the prior merge, and have a different relative sequence number. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20merge%20a%20multiple%20language%20module%20into%20the%20same%20package%20multiple%20times%3F;%20RELEASE:%20August%202001;%20URL:%20merg_4tv7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20merge%20a%20multiple%20language%20module%20into%20the%20same%20package%20multiple%20times%3F;%20RELEASE:%20August%202001;%20URL:%20merg_4tv7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

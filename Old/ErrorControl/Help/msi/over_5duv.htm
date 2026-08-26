@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Event Logging</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_event_logging">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_event_logging"></A>Event Logging</H2>
+
+<P>Event logging in Windows NT/Windows&nbsp;2000 provides a standard, centralized way for applications (and the operating system) to record important software and hardware events. The event-logging service stores events from various sources in a single collection called an <I>event log</I>. Windows NT/Windows 2000 also supplies Event Viewer for viewing the logs, and a programming interface for examining the logs. For more information, see <A HREF="JavaScript:hhobj_1.Click()">Event Logging</A>.</P>
+
+<P>The installer also writes entries into the Event Log. These record events such as following:
+
+<UL>
+	<LI>Success or failure of the installation, removal, or repair of a product.</LI>
+
+	<LI>Errors that occur during product configuration.</LI>
+
+	<LI>Detection of corrupted configuration data.</LI>
+</UL>
+
+<P>If a large amount of information is written the Event Log file can become full and the installer displays a message, "The Application log file is full."</P>
+
+<P>Note there is no built-in Event Log on Windows 95 or Windows 98. On these systems, the installer logs the same event information into a file in the %temp% folder called Msievent.log. For more information, see <A HREF="over_1yur.htm">Checking for the Installation of Features, Components, or Files</A>.</P>
+
+<P>The installer may write the following entries in the event log. Starting with Windows Installer version 2.0, all event log messages have a unique event ID.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>Event ID</TH>
+<TH align=left width=44%>Message</TH>
+<TH align=left width=47%>Remarks</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1001</TD>
+<TD width=44%>Detection of product '%1', feature '%2' failed during request for component '%3'</TD>
+<TD width=47%>A warning message. For details, see <A HREF="over_0r1w.htm">Searching For a Broken Feature or Component</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1002</TD>
+<TD width=44%>Unexpected or missing value (name: '%1', value: '%2') in key '%3'</TD>
+<TD width=47%>Error message that there was an unexpected or missing value. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1003</TD>
+<TD width=44%>Unexpected or missing subkey '%1' in key '%2'</TD>
+<TD width=47%>Error message that there was an unexpected or missing subkey. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1004</TD>
+<TD width=44%>Detection of product '%1', feature '%2', component '%3' failed
+<P><B>Note:</B> Beginning with Windows Installer version 2.0, this message is: Detection of product '%1', feature '%2', component '%3' failed. The resource '%4' does not exist.</P>
+</TD>
+<TD width=47%>A warning message. See also <A HREF="over_0r1w.htm">Searching For a Broken Feature or Component</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1005</TD>
+<TD width=44%>Install operation initiated a reboot</TD>
+<TD width=47%>Informational message that the installation initiated a reboot of the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1006</TD>
+<TD width=44%>Verification of the digital signature for cabinet '%1' cannot be performed.  WinVerifyTrust is not available on the machine.</TD>
+<TD width=47%>Only available on Windows Installer version 2.0 or later. Warning message. A cabinet was authored in the <A HREF="tref_7h7p.htm">MsiDigitalSignature table</A> to have a WinVerifyTrust check performed. This action could not be performed because the computer does not have the proper cryptography DLLs installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1007</TD>
+<TD width=44%>The installation of %1 is not permitted by software restriction policy. The Windows Installer only allows execution of unrestricted items. The authorization level returned by software restriction policy was %2.</TD>
+<TD width=47%>Only available on Windows Installer version 2.0 or later. An error message indicating that the administrator has configured software restriction policy to disallow this install.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1008</TD>
+<TD width=44%>The installation of %1 is not permitted due to an error in software restriction policy processing. The object cannot be trusted.</TD>
+<TD width=47%>Only available on Windows Installer version 2.0 or later. An error message indicating that there were problems attempting to verify the package according to software restriction policy.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1012</TD>
+<TD width=44%>This version of Windows does not support deploying 64-bit packages. The script '%1' is for a 64-bit package.</TD>
+<TD width=47%>Error message indicating that scripts for 64-bit packages can only be executed on a 64-bit computer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1013</TD>
+<TD width=44%>{Unhandled exception report}</TD>
+<TD width=47%>Error message for an unhandled exception, this is the report.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1014</TD>
+<TD width=44%>Windows Installer proxy information not registered correctly</TD>
+<TD width=47%>Error message that proxy information was not registered correctly.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1015</TD>
+<TD width=44%>Failed to connect to server. Error: %d</TD>
+<TD width=47%>Informational message that the installation failed to connect to server.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1016</TD>
+<TD width=44%>Detection of product '%1', feature '%2', component '%3' failed. The resource '%4' in a run-from-source component could not be located because no valid and accessible source could be found.</TD>
+<TD width=47%>Warning message. For more information, see <A HREF="over_0r1w.htm">Searching for a Broken Feature or Component</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1017</TD>
+<TD width=44%>User SID had changed from '%1' to '%2' but the managed app and the user data keys cannot be updated. Error = '%3'.</TD>
+<TD width=47%>Error message indicating that an error occurred while attempting to update the user's registration after the user's SID changed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>11707</TD>
+<TD width=44%>Product [2] – Installation operation completed successfully</TD>
+<TD width=47%>Informational message that the installation of the product was successful. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>11708</TD>
+<TD width=44%>Product [2] – Installation operation failed</TD>
+<TD width=47%>Error message that the installation of the product failed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>11728</TD>
+<TD width=44%>Product [2] -- Configuration completed successfully.</TD>
+<TD width=47%>Informational message that configuration of the product was successful.</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Event%20Logging;%20RELEASE:%20August%202001;%20URL:%20over_5duv.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Event%20Logging;%20RELEASE:%20August%202001;%20URL:%20over_5duv.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

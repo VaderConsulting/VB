@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Applying a Patch Package to a Local Installation</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_applying_a_patch_package_to_a_local_installation"></A>Applying a Patch Package to a Local Installation</H2>
+
+<P>You may apply the small update to a local installation of MNP2000 with the sample patch MNPpatch.msp created in <A HREF="samp_2751.htm">Generating a Patch Package</A>. The general procedure is discussed in the section <A HREF="updat_0q7o.htm">Small Updates by Patching the Local Installation of the Product</A>.</P>
+
+<P>Install the original MNP2000 product locally on your computer. Verify that this has the error Concert.txt that the small update is to fix. Next launch the installation by entering the following command line.</P>
+
+<PRE>msiexec /p MNP2000.msp REINSTALL=ALL REINSTALLMODE=omus</PRE>
+
+<P>Rexamine the Concert.txt belonging to MNP2000 to verify that the installer has applied the small update to fix this file.</P>
+
+<P>To apply the small update to an administrative image, see <A HREF="samp_1pri.htm">Applying a Patch Package to an Administrative Installation</A>.</P>
+
+<P><A HREF="samp_1pri.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

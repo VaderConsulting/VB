@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>System Restore Points and the Windows Installer</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_sr_system_restore_start_page">
+</OBJECT>
+<OBJECT ID="hhobj_2" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_sr_system_restore_start_page">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_system_restore_points_and_the_windows_installer"></A>System Restore Points and the Windows Installer</H1>
+
+<P>On Microsoft® Windows® Millennium Edition (Windows Me) and Microsoft® Windows XP, System Restore automatically monitors and records key system changes on a user's computer. For more information, see <A HREF="JavaScript:hhobj_1.Click()">System Restore</A>.</P>
+
+<P>System restore points are created by the system and are also created by Windows Installer when software is installed or removed. On Windows Me, the installer creates checkpoints during nearly any change. This includes first time installation, faulting in features, removal, and repair.</P>
+
+<P>On Windows XP, the installer may create checkpoints during the first installation of an application, and during its removal. The installer only creates checkpoints in these cases when the change is run with at least a <A HREF="dglo_2kc9.htm#_msi_basic_ui_gly">basic UI</A>. Installations having the <A HREF="hand_9vn7.htm">user interface level</A> set to None are usually initiated by the system or an application that should handle creating a checkpoint. For more information, see <A HREF="JavaScript:hhobj_2.Click()">System Restore</A>.</P>
+
+<P>On Windows XP computers, creating a system restore point can be slow. In corporations with many small applications, administrators may decide to disable checkpointing from within the installer to improve performance. For more information, see <A HREF="over_6lwn.htm">LimitSystemRestoreCheckpointing</A> or <A HREF="cact_5gvi.htm">Setting a Restore Point from a Custom Action</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20System%20Restore%20Points%20and%20the%20Windows%20Installer;%20RELEASE:%20August%202001;%20URL:%20over_9p2q.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20System%20Restore%20Points%20and%20the%20Windows%20Installer;%20RELEASE:%20August%202001;%20URL:%20over_9p2q.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

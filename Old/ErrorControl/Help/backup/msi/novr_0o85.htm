@@ -1,0 +1,387 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Suggested InstallExecuteSequence</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_suggested_installexecutesequence"></A>Suggested InstallExecuteSequence</H3>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Action</TH>
+<TH align=left width=34%>Condition</TH>
+<TH align=left width=35%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_6jhq.htm">LaunchConditions</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_16zy.htm">AppSearch</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_77se.htm">CCPSearch</A></TD>
+<TD width=34%>NOT <A HREF="pref_8ws9.htm">Installed</A> </TD>
+<TD width=35%>500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_5pgu.htm">RMCCPSearch</A></TD>
+<TD width=34%>NOT <A HREF="pref_8ws9.htm">Installed</A> </TD>
+<TD width=35%>600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_0cdq.htm">ValidateProductID</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_4bam.htm">CostInitialize</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_2f8u.htm">FileCost</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_22we.htm">CostFinalize</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>1000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_3xny.htm">SetODBCFolders</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>1100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_9fzi.htm">InstallValidate</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>1400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_0gby.htm">InstallInitialize</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>1500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_8sha.htm">AllocateRegistrySpace</A></TD>
+<TD width=34%>NOT <A HREF="pref_8ws9.htm">Installed</A></TD>
+<TD width=35%>1550</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_4fxq.htm">ProcessComponents</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>1600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_1ir2.htm">UnpublishComponents</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>1700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_6ywe.htm">UnpublishFeatures</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>1800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_83zi.htm">StopServices</A></TD>
+<TD width=34%><A HREF="pref_37nd.htm">VersionNT</A></TD>
+<TD width=35%>1900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_8qb2.htm">DeleteServices</A></TD>
+<TD width=34%><A HREF="pref_37nd.htm">VersionNT</A></TD>
+<TD width=35%>2000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_0soe.htm">UnregisterComPlus</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>2100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_9jce.htm">SelfUnregModules</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>2200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_8qb3.htm">UnregisterTypeLibraries</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>2300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_49ta.htm">RemoveODBC</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>2400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_6wmm.htm">UnregisterFonts</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>2500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_5mem.htm">RemoveRegistryValues</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>2600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_8wby.htm">UnregisterClassInfo</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>2700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_738u.htm">UnregisterExtensionInfo</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>2800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_1epb.htm">UnregisterProgIdInfo </A></TD>
+<TD width=34%> </TD>
+<TD width=35%>2900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_30oe.htm">UnregisterMIMEInfo</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>3000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_4tv2.htm">RemoveIniValues</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>3100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_6t66.htm">RemoveShortcuts</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>3200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_45da.htm">RemoveEnvironmentStrings</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>3300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_3tpq.htm">RemoveDuplicateFiles</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>3400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_9xny.htm">RemoveFiles</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>3500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_0pf2.htm">RemoveFolders</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>3600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_6p0u.htm">CreateFolders</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>3700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_15pq.htm">MoveFiles</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>3800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_3hym.htm">InstallFiles</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>4000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_9cby.htm">PatchFiles</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>4090</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_7yr2.htm">DuplicateFiles</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>4210</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_3ar2.htm">BindImage</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>4300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_7uzy.htm">CreateShortcuts</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>4500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_04oe.htm">RegisterClassInfo</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>4600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_1epa.htm">RegisterExtensionInfo</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>4700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_08tq.htm">RegisterProgIdInfo</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>4800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_9r8u.htm">RegisterMIMEInfo</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>4900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_1cmm.htm">WriteRegistryValues</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>5000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_8432.htm">WriteIniValues</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>5100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_5fla.htm">WriteEnvironmentStrings</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>5200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_2tv2.htm">RegisterFonts</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>5300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_1zfy.htm">InstallODBC</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>5400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_31ri.htm">RegisterTypeLibraries</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>5500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_1gku.htm">SelfRegModules</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>5600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_25gu.htm">RegisterComPlus</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>5700</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_3vhq.htm">InstallServices</A></TD>
+<TD width=34%><A HREF="pref_37nd.htm">VersionNT</A></TD>
+<TD width=35%>5800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_4x4e.htm">StartServices</A></TD>
+<TD width=34%><A HREF="pref_37nd.htm">VersionNT</A></TD>
+<TD width=35%>5900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_0g4u.htm">RegisterUser</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>6000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_529a.htm">RegisterProduct</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>6100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_2r3i.htm">PublishComponents</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>6200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_8bou.htm">PublishFeatures</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>6300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_10dq.htm">PublishProduct</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>6400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="aref_8l9q.htm">InstallFinalize</A></TD>
+<TD width=34%> </TD>
+<TD width=35%>6600</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

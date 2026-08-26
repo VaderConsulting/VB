@@ -1,0 +1,6 @@
+frmMain = 5, 5, 817, 617, , 7, 8, 444, 466, C
+modGlobal = 6, 10, 847, 628, C
+RegistryGrip = 11, 3, 613, 484, C
+modDatabase = 23, 30, 674, 510, C
+clsTCP = 6, 7, 818, 619, Z
+clsRemoteProcess = 4, 1, 834, 617, C

@@ -1,0 +1,424 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Installer Function Reference</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Windows Installer functions">
+<META NAME="MS-HKWD" CONTENT="Windows Installer, reference">
+<META NAME="MS-HKWD" CONTENT="MSI functions">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_installer_function_reference"></A>Installer Function Reference</H1>
+
+<P>To enable the Microsoft® Windows® Installer in your application, you must use the installation functions. The following is a list of these functions by category.</P>
+
+
+
+<H4><A NAME="_msi_user_interface_and_logging_functions"></A>User Interface and Logging Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function name</TH>
+<TH align=left width=73%>Brief description of function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A></TD>
+<TD width=73%>Enables the installer's internal user interface. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_5dm1.htm"><B>MsiSetExternalUI</B></A></TD>
+<TD width=73%>Enables an external user-interface handler. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_2ch3.htm"><B>MsiEnableLog</B></A></TD>
+<TD width=73%>Sets the log mode for all installations in the calling process.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<H4><A NAME="_msi_handle_management_functions"></A>Handle Management Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function name</TH>
+<TH align=left width=73%>Brief description of function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_6g6d.htm"><B>MsiCloseHandle</B></A></TD>
+<TD width=73%>Closes an open installation handle.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_6nqr.htm"><B>MsiCloseAllHandles</B></A></TD>
+<TD width=73%>Closes all open installation handles. Not to be used for cleanup.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<H4><A NAME="_msi_installation_and_configuration_functions"></A>Installation and Configuration Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function name</TH>
+<TH align=left width=73%>Brief description of function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_1h2s.htm"><B>MsiAdvertiseProduct</B></A></TD>
+<TD width=73%>Advertises a product. Available with Windows Installer version 2.0 or later.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_954o.htm"><B>MsiAdvertiseProductEx</B></A></TD>
+<TD width=73%>Advertises a product. Available with Windows Installer version 2.0 or later.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_2h2s.htm"><B>MsiAdvertiseScript</B></A></TD>
+<TD width=73%>Copies an advertise script file into the specified locations. Available with Windows Installer version 2.0 or later.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_75x0.htm"><B>MsiInstallProduct</B></A></TD>
+<TD width=73%>Installs or removes an application or application suite.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_3p9w.htm"><B>MsiConfigureProduct</B></A></TD>
+<TD width=73%>Installs or removes an application or application suite.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_3u7s.htm"><B>MsiConfigureProductEx</B></A></TD>
+<TD width=73%>Installs or removes an application or application suite. A product command line may be specified.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_9n78.htm"><B>MsiReinstallProduct</B></A></TD>
+<TD width=73%>Reinstalls or repairs an installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_8cit.htm"><B>MsiConfigureFeature</B></A></TD>
+<TD width=73%>Configures the installed state of a feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_4ag5.htm"><B>MsiReinstallFeature</B></A></TD>
+<TD width=73%>Validates or repairs features.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_4k50.htm"><B>MsiInstallMissingComponent</B></A></TD>
+<TD width=73%>Installs missing components.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_6vad.htm"><B>MsiInstallMissingFile</B></A></TD>
+<TD width=73%>Installs missing files.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_016c.htm"><B>MsiProcessAdvertiseScript</B></A></TD>
+<TD width=73%>Processes an advertise script file into the specified locations. Available with Windows Installer version 2.0 or later.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_7e05.htm"><B>MsiSourceListAddSource</B></A></TD>
+<TD width=73%>Adds a source to the list of network sources.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_9kz0.htm"><B>MsiSourceListClearAll</B></A></TD>
+<TD width=73%>Removes all network sources from the source list.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_2hf2.htm"><B>MsiSourceListForceResolution</B></A></TD>
+<TD width=73%>Forces the installer to search the source list to locate a source.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<H4><A NAME="_msi_component_specific_functions"></A>Component-Specific Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function name</TH>
+<TH align=left width=73%>Brief description of function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_2xkp.htm"><B>MsiProvideAssembly</B></A></TD>
+<TD width=73%>Installs and returns the full component path for an assembly. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_9otw.htm"><B>MsiProvideComponent</B></A></TD>
+<TD width=73%>Installs and returns full component path of a component.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_3vn8.htm"><B>MsiProvideQualifiedComponent</B></A></TD>
+<TD width=73%>Installs and returns full component path of a qualified component.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_8n94.htm"><B>MsiProvideQualifiedComponentEx</B></A></TD>
+<TD width=73%>Installs and returns full component path of a qualified component that is published by a product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_3fxk.htm"><B>MsiGetComponentPath</B></A></TD>
+<TD width=73%>Returns full path or registry key to an installed component.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_7o8k.htm"><B>MsiLocateComponent</B></A></TD>
+<TD width=73%>Returns full path to an installed component without a product code. </TD>
+</TR>
+</TABLE><BR>
+
+
+
+<H4><A NAME="_msi_application_only_functions"></A>Application-Only Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function name</TH>
+<TH align=left width=73%>Brief description of function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_9crz.htm"><B>MsiCollectUserInfo</B></A></TD>
+<TD width=73%>Stores user information from an installation wizard.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_3ckl.htm"><B>MsiUseFeature</B></A></TD>
+<TD width=73%>Increments usage count for a feature and indicates installation state.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_8j08.htm"><B>MsiUseFeatureEx</B></A></TD>
+<TD width=73%>Increments usage count for a feature and indicates installation state.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_59ph.htm"><B>MsiGetProductCode</B></A></TD>
+<TD width=73%>Returns product code using the component code.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<H4><A NAME="_msi_system_status_functions"></A>System Status Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function name</TH>
+<TH align=left width=73%>Brief description of function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_32er.htm"><B>MsiEnumProducts</B></A></TD>
+<TD width=73%>Enumerates advertised products. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_5pwz.htm"><B>MsiEnumRelatedProducts</B></A></TD>
+<TD width=73%>Enumerates currently installed products having a specified upgrade code. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_0e9f.htm"><B>MsiEnumFeatures</B></A></TD>
+<TD width=73%>Enumerates published features.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_1mk3.htm"><B>MsiEnumComponents</B></A></TD>
+<TD width=73%>Enumerates the installed components. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_467n.htm"><B>MsiEnumClients</B></A></TD>
+<TD width=73%>Enumerates the clients of an installed component. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_2veb.htm"><B>MsiEnumComponentQualifiers</B></A></TD>
+<TD width=73%>Enumerates the advertised qualifiers for a component. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_4e3p.htm"><B>MsiQueryFeatureState</B></A></TD>
+<TD width=73%>Returns the installed state of a feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_93l1.htm"><B>MsiQueryProductState</B></A></TD>
+<TD width=73%>Returns the installed state for an application or application suite.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_7gh1.htm"><B>MsiGetFeatureUsage</B></A></TD>
+<TD width=73%>Returns usage metrics for a feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_8wa7.htm"><B>MsiGetProductInfo</B></A></TD>
+<TD width=73%>Returns product information for published and installed products.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_6str.htm"><B>MsiGetUserInfo</B></A></TD>
+<TD width=73%>Returns registered user information for an installed product.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<H4><A NAME="_msi_product_query_functions"></A>Product Query Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function name</TH>
+<TH align=left width=73%>Brief description of function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_5f78.htm"><B>MsiOpenProduct</B></A></TD>
+<TD width=73%>Opens a product for use with the functions that access the database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_9n39.htm"><B>MsiOpenPackage</B></A></TD>
+<TD width=73%>Opens a package for use with the functions that access the database. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_1auw.htm"><B>MsiOpenPackageEx</B></A></TD>
+<TD width=73%>Opens a package for use with the functions that access the database. Available with Windows Installer version 2.0 or later.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_9jfo.htm"><B>MsiIsProductElevated</B></A></TD>
+<TD width=73%>Checks whether the product is installed with elevated privileges. Available with Windows Installer version 2.0 or later.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_7mno.htm"><B>MsiGetProductInfoFromScript</B></A></TD>
+<TD width=73%>Returns product information for an installer script file. available with Windows Installer version 2.0 or later.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_229l.htm"><B>MsiGetProductProperty</B></A></TD>
+<TD width=73%>Retrieves properties in the product database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_3upg.htm"><B>MsiGetShortcutTarget</B></A></TD>
+<TD width=73%>Examines a shortcut and returns its product, feature name, and component if available. Available in Windows Installer version 1.1 and later versions.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_9g4v.htm"><B>MsiGetFeatureInfo</B></A></TD>
+<TD width=73%>Returns descriptive information for a feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_1o2t.htm"><B>MsiVerifyPackage</B></A></TD>
+<TD width=73%>Verifies that the specified file is an installation package.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<H4><A NAME="_msi_patching_functions"></A>Patching Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function name</TH>
+<TH align=left width=73%>Brief description of function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_5fe0.htm"><B>MsiApplyPatch</B></A></TD>
+<TD width=73%>Invokes an installation and applies a patch package.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_36lv.htm"><B>MsiEnumPatches</B></A></TD>
+<TD width=73%>Returns the GUID for each patch that has been applied to a product and a list of transforms from each patch that apply to the product. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_85pr.htm"><B>MsiGetPatchInfo</B></A></TD>
+<TD width=73%>Returns information about a patch. </TD>
+</TR>
+</TABLE><BR>
+
+
+
+<H4><A NAME="_msi_file_query_functions"></A>File Query Functions</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Function name</TH>
+<TH align=left width=73%>Brief description of function</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_1uso.htm"><B>MsiGetFileHash</B></A></TD>
+<TD width=73%>Takes the path to a file and returns a 128-bit hash of that file. Available with Windows Installer version 2.0 and later versions.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_9gdq.htm"><B>MsiGetFileSignatureInformation</B></A></TD>
+<TD width=73%>Takes the path to a file that has been digitally signed and returns the file's signer certificate and hash. Available with Windows Installer version 2.0 and later versions.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%><A HREF="msi_9pri.htm"><B>MsiGetFileVersion</B></A></TD>
+<TD width=73%>Returns the version string and language string. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Database Functions</H4>
+
+<P>In addition to the installer functions listed above, you can manipulate information in the installation database by using the database access functions described in the <A HREF="qref_778z.htm">Database Functions</A> section. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Installer%20Function%20Reference;%20RELEASE:%20August%202001;%20URL:%20msi_8vqd.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Installer%20Function%20Reference;%20RELEASE:%20August%202001;%20URL:%20msi_8vqd.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

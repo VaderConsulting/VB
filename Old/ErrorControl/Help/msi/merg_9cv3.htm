@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>get_Type Function (Error Object)</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="get_Type function">
+<META NAME="MS-HKWD" CONTENT="Error object, get_Type function">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_get_type_function_error_object_"></A>get_Type Function (Error Object)</H1>
+
+<P>The <B>get_Type</B> function implements the <A HREF="merg_844f.htm"><B>Type</B> property</A> of the <A HREF="merg_7yr8.htm"><B>Error</B> object</A>. This function returns a msmErrorType value indicating the type of error represented by this object.</P>
+
+<P><B>IMsmError::get_Type</B> </P>
+
+<PRE class=syntax><B>HRESULT get_Type(
+  msmErrorType*</B> <I>ErrorType</I>
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>ErrorType</I> </DT>
+</DL>
+
+<P>[out, retval] A pointer to a location in memory that is filled with the type of error.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorType</B></TD>
+<TD width=14%><B>Value</B></TD>
+<TD width=55%><B>Description</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorLanguageUnsupported</B></TD>
+<TD width=14%>1</TD>
+<TD width=55%>A request was made to open a module with a language not supported by the module. No more general language is supported by the module. Adds <B>msmErrorLanguageUnsupported</B> to the <B>Type</B> property and the requested language to the <A HREF="merg_6wyn.htm">Language Property (<B>Error</B> Object)</A>. All <B>Error </B>object properties are empty. The <A HREF="merg_87xq.htm"><B>OpenModule</B> function</A> returns ERROR_INSTALL_LANGUAGE_UNSUPPORTED (as HRESULT).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorLanguageFailed</B></TD>
+<TD width=14%>2</TD>
+<TD width=55%>A request was made to open a module with a supported language but the module has an invalid language transform. Adds <B>msmErrorLanguageFailed</B> to the Type property and the applied transform's language to the <B>Language</B> Property of the <B>Error</B> object. This may not be the requested language if a more general language was used. All other properties of the <B>Error</B> object are empty. The <B>OpenModule</B> function returns ERROR_INSTALL_LANGUAGE_UNSUPPORTED (as HRESULT).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorExclusion</B></TD>
+<TD width=14%>3</TD>
+<TD width=55%>The module cannot be merged because it excludes, or is excluded by, another module in the database. Adds <B>msmErrorExclusion</B> to the <B>Type</B> property of the <B>Error</B> object. The <A HREF="merg_48zd.htm">ModuleKeys property</A> or <A HREF="merg_822h.htm">DatabaseKeys property</A> contains the primary keys of the excluded module's row in the <A HREF="merg_8c4l.htm">ModuleExclusion table</A>. If an existing module excludes the module being merged, the excluded module's ModuleSignature information is added to ModuleKeys. If the module being merged excludes an existing module, DatabaseKeys contains the excluded module's ModuleSignature information. All other properties are empty (or -1).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorTableMerge</B></TD>
+<TD width=14%>4</TD>
+<TD width=55%>Merge conflict during merge. The value of the <B>Type</B> property is set to <B>msmErrorTableMerge</B>. The <A HREF="merg_4hdl.htm">DatabaseTable property</A> and <A HREF="merg_822h.htm">DatabaseKeys property</A> contain the table name and primary keys of the conflicting row in the database. The <A HREF="merg_0ruh.htm">ModuleTable property</A> and <A HREF="merg_48zd.htm">ModuleKeys property</A> contain the table name and primary keys of the conflicting row in the module. The ModuleTable and ModuleKeys entries may be null if the row does not exist in the database. For example, if the conflict is in a generated FeatureComponents table entry. On Windows Installer version 2.0, when merging a <A HREF="merg_833n.htm">configurable merge module</A>, configuration may cause these properties to refer to rows that do not exist in the module.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorResequenceMerge</B></TD>
+<TD width=14%>5</TD>
+<TD width=55%>There was a problem resequencing a sequence table to contain the necessary merged actions. The <B>Type</B> property is set to <B>msmErrorResequenceMerge</B>. The DatabaseTable and DatabaseKeys properties contain the sequence table name and primary keys (action name) of the conflicting row. The ModuleTable and ModuleKeys properties contain the sequence table name and primary key (action name) of the conflicting row. On Windows Installer version 2.0, when merging a configurable merge module, configuration may cause these properties to refer to rows that do not exist in the module.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorFileCreate</B></TD>
+<TD width=14%>6</TD>
+<TD width=55%>Not used.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorDirCreate</B></TD>
+<TD width=14%>7</TD>
+<TD width=55%>There was a problem creating a directory to extract a file to disk. The <A HREF="merg_81o9.htm"><B>Path</B> property</A> contains the directory that could not be created. All other properties are empty or -1. Not available with Windows Installer version 1.0.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorFeatureRequired</B></TD>
+<TD width=14%>8</TD>
+<TD width=55%>A feature name is required to complete the merge, but no feature name was provided. The <B>Type</B> property is set to <B>msmErrorFeatureRequired</B>. The DatabaseTable and DatabaseKeys contain the table name and primary keys of the conflicting row. The ModuleTable and ModuleKeys properties contain the table name and primary keys of the row cannot be merged. On Windows Installer version 2.0, when merging a configurable merge module, configuration may cause these properties to refer to rows that do not exist in the module. If the failure is in a generated <A HREF="tref_52hx.htm">FeatureComponents table</A>, the DatabaseTable and DatabaseKeys properties are empty and the ModuleTable and ModuleKeys properties refer to the row in the <A HREF="tref_09np.htm">Component table</A> causing the failure.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorBadNullSubstitution</B></TD>
+<TD width=14%>9</TD>
+<TD width=55%>Available with Window Installer version 2.0. Substitution of a Null value into a non-nullable column. This enters <B>msmErrorBadNullSubstitution</B> in the <B>Type</B> property and enters "ModuleSubstitution" and the keys from the <A HREF="merg_9zvp.htm">ModuleSubstitution table</A> for this row into the <A HREF="merg_0ruh.htm"><B>ModuleTable</B> property</A> and <A HREF="merg_48zd.htm"><B>ModuleKeys</B> property</A>. All other properties of the <A HREF="merg_7yr8.htm"><B>Error</B> object</A> are set to an empty string or -1.
+<P>This error causes the immediate failure of the merge and the<B> <U>MergeEx</U></B><A HREF="merg_6n5a.htm"> function</A> to return E_FAIL.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorBadSubstitutionType</B></TD>
+<TD width=14%>10</TD>
+<TD width=55%>Available with Window Installer version 2.0. Substitution of <A HREF="merg_1lir.htm">Text Format Type</A> or <A HREF="merg_9w6r.htm">Integer Format Type</A> into a <A HREF="merg_53hh.htm">Binary Type</A> data column. This type of error returns <B>msmErrorBadSubstitutionType</B> in the <B>Type</B> property and enters "ModuleSubstitution" and the keys from the <A HREF="merg_9zvp.htm">ModuleSubstitution table</A> for this row into the <A HREF="merg_0ruh.htm"><B>ModuleTable</B> property</A>. All other properties of the <A HREF="merg_7yr8.htm"><B>Error</B> object</A> are set to an empty string or -1.
+<P>This error causes the immediate failure of the merge and the<B> <U>MergeEx</U></B><A HREF="merg_6n5a.htm"> function</A> to return E_FAIL.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorMissingConfigItem</B></TD>
+<TD width=14%>11</TD>
+<TD width=55%>Available with Window Installer Version 2.0. A row in the <A HREF="merg_9zvp.htm">ModuleSubstitution table</A> references a configuration item not defined in the <A HREF="merg_96cl.htm">ModuleConfiguration table</A>. This type of error returns msmErrorMissingConfigItem in the <B>Type</B> property and enters "ModuleSubstitution" and the keys from the <A HREF="merg_9zvp.htm">ModuleSubstitution table</A> for this row into the <A HREF="merg_0ruh.htm"><B>ModuleTable</B> property</A>. All other properties of the<B> <U>Error</U></B><A HREF="merg_7yr8.htm"> object</A> are set to an empty string or -1.
+<P>This error causes the immediate failure of the merge and the<B> <U>MergeEx</U></B><A HREF="merg_6n5a.htm"> function</A> to return E_FAIL.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorBadNullRespons</B>e</TD>
+<TD width=14%>12</TD>
+<TD width=55%>Available with Window Installer version 2.0. The authoring tool has returned a Null value for an item marked with the <B>msmConfigItemNonNullable</B> attribute. An error of this type returns <B>msmErrorBadNullResponse</B> in the <B>Type</B> property and enters "ModuleSubstitution" and the keys from the <A HREF="merg_9zvp.htm">ModuleSubstitution table</A> for for the item into the <A HREF="merg_0ruh.htm"><B>ModuleTable</B> property</A>. All other properties of the <A HREF="merg_7yr8.htm"><B>Error</B> object</A> are set to an empty string or -1.
+<P>This error causes the immediate failure of the merge and the<B> <U>MergeEx</U></B><A HREF="merg_6n5a.htm"> function</A> to return E_FAIL.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorDataRequestFailed</B></TD>
+<TD width=14%>13</TD>
+<TD width=55%>Available with Window Installer version 2.0. The authoring tool returned a failure code (not S_OK or S_FALSE) when asked for data. An error of this type will return <B>msmErrorDataRequestFailed</B> in the <B>Type</B> property and enters "ModuleSubstitution" and the keys from the <A HREF="merg_9zvp.htm">ModuleSubstitution table</A> for the item into the <A HREF="merg_0ruh.htm"><B>ModuleTable</B> property</A>. All other properties of the <A HREF="merg_7yr8.htm"><B>Error</B> object</A> are set to an empty string or -1.
+<P>This error causes the immediate failure of the merge and the<B> <U>MergeEx</U></B><A HREF="merg_6n5a.htm"> function</A> to return E_FAIL.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><B>msmErrorPlatformMismatch</B></TD>
+<TD width=14%>14</TD>
+<TD width=55%>Available with Windows Installer 2.0 and later versions. Indicates that an attempt was made to merge a 64-bit module into a package that was not a 64-bit package. An error of this type returns <B>msmErrorPlatformMismatch</B> in the <B>Type</B> property. All other properties of the error object are set to an empty string or -1. This error causes the immediate failure of the merge and causes the <A HREF="merg_7uwe.htm"><B>Merge</B> function</A> or <A HREF="merg_6n5a.htm"><B>MergeEx</B> function</A> to return E_FAIL.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>E_INVALIDARG </TD>
+<TD width=52%>ErrorType is Null.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>S_OK </TD>
+<TD width=52%>The function succeeded. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_29f2.htm">Merge Module Automation</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20get_Type%20Function%20(Error%20Object);%20RELEASE:%20August%202001;%20URL:%20merg_9cv3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20get_Type%20Function%20(Error%20Object);%20RELEASE:%20August%202001;%20URL:%20merg_9cv3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetSummaryInformation</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetSummaryInformation">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetsummaryinformation"></A>MsiGetSummaryInformation</H1>
+
+<P>The <B>MsiGetSummaryInformation</B> function obtains a handle to the _SummaryInformation stream for an installer database.</P>
+
+<PRE class=syntax><B>UINT MsiGetSummaryInformation(
+</B>  <B>MSIHANDLE</B> <I>hDatabase</I><B>,</B>       // database handle
+  <B>LPCTSTR</B> <I>szDatabasePath</I><B>,</B>    // path to database
+  <B>UINT</B> <I>uiUpdateCount</I><B>,</B>        // maximum number of updated values, 0
+                             //  to open read-only
+  <B>MSIHANDLE</B> <I>*phSummaryInfo</I>   // location to return summary information
+                             //  handle
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hDatabase</I></DT>
+
+<DD>Handle to the database.</DD>
+
+<DT><I>szDatabasePath</I></DT>
+
+<DD>Specifies the path to the database.</DD>
+
+<DT><I>uiUpdateCount</I></DT>
+
+<DD>Specifies the maximum number of updated values.</DD>
+
+<DT><I>phSummaryInfo</I></DT>
+
+<DD>Pointer to the location from which to receive the summary information handle.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INSTALL_PACKAGE_INVALID</DT>
+
+<DD>The installation package is invalid.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If the database specified by the <B>MsiGetSummaryInformation</B> function is not open, you must specify 0 for <I>hDatabase</I> and specify the path to the database in <I>szDatabasePath</I>. If the database is open, you must set <I>szDatabasePath</I> to 0. </P>
+
+<P>If a value of <I>uiCount</I> greater than 0 is used to open an existing summary information stream, <A HREF="qref_65ys.htm"><B>MsiSummaryInfoPersist</B></A> must be called before closing the <I>phSummaryInfo</I> handle. Failing to do this will lose the existing stream information.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_summary_information_property_functions">Summary Information Property Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

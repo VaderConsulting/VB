@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE19</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE19">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice19"></A>ICE19</H1>
+
+<P>ICE19 validates that advertised components reference a file in the KeyPath column of the <A HREF="tref_09np.htm">Component table</A> and that an advertised shortcut references a directory in this column. </P>
+
+<P>ICE19 validates that advertised components or shortcuts have a ComponentId. Components in the <A HREF="tref_7xt1.htm">PublishComponent table</A>, which are not advertised in another table, are only checked to see whether they have a ComponentId.</P>
+
+<H4>Result</H4>
+
+<P>ICE19 posts an error message if the KeyPath column of the Component table does not reference a file in the case of an advertised component or a directory in the case of an advertised shortcut. ICE19 posts an error message if any advertised components or shortcuts do not have a ComponentId. </P>
+
+<H4>Example</H4>
+
+<P>ICE19 posts the following error messages for the example shown:
+
+<UL>
+	<LI>Extension flp references the component Comp1 which does not have a ComponentId specified in the <A HREF="tref_09np.htm">Component table</A>.</LI>
+
+	<LI>Extension exe references the component Comp4 which references a directory as its KeyPath. The KeyPath is Null in the Component table.</LI>
+
+	<LI>Shortcut Shortcut2 references the component Comp3 which references a Registry entry as the key path. The value of the Attributes column in the Component table is 4.</LI>
+</UL>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Component</TH>
+<TH align=left width=45%>ComponentId</TH>
+<TH align=left width=22%>Attributes</TH>
+<TH align=left width=15%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Comp1</TD>
+<TD width=45%>NULL</TD>
+<TD width=22%>0</TD>
+<TD width=15%>File1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Comp2</TD>
+<TD width=45%>{00000002-0003-0000-0000-624474736554}</TD>
+<TD width=22%>0</TD>
+<TD width=15%>File2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Comp3</TD>
+<TD width=45%>{00000003-0003-0000-0000-624474736554}</TD>
+<TD width=22%>4</TD>
+<TD width=15%>Reg3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Comp4</TD>
+<TD width=45%>{00000004-0003-0000-0000-624474736554}</TD>
+<TD width=22%>0</TD>
+<TD width=15%>NULL</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_219h.htm"><B>Extension Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Extension</TH>
+<TH align=left width=82%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>flp</TD>
+<TD width=82%>Comp1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>tst</TD>
+<TD width=82%>Comp2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>exe</TD>
+<TD width=82%>Comp4</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Shortcut</TH>
+<TH align=left width=28%>Component_</TH>
+<TH align=left width=54%>Feature_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Shortcut1</TD>
+<TD width=28%>Comp4</TD>
+<TD width=54%>ProductFeature</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Shortcut2</TD>
+<TD width=28%>Comp3</TD>
+<TD width=54%>ProductFeature</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Feature</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>ProductFeature</TD>
+</TR>
+</TABLE><BR>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;If the extension flp and exe both reference the same component, the EXE or COM server that opens them must be the same. This EXE is normally the KeyPath for the Component. For OFFICE, the extensions doc and xls cannot reference the same component because the same EXE doesn't open both extensions. You need winword.exe to open doc extensions and you need excel.exe to open xls extensions.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE19;%20RELEASE:%20August%202001;%20URL:%20ices_1xtl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE19;%20RELEASE:%20August%202001;%20URL:%20ices_1xtl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

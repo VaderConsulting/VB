@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FileSFPCatalog Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FileSFPCatalog Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_filesfpcatalog_table"></A>FileSFPCatalog Table</H1>
+
+<P>The FileSFPCatalog table associates specified files with the catalog files used by Windows Millennium Edition for Windows File Protection.</P>
+
+<P>The FileSFPCatalog table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Column</TH>
+<TH align=left width=44%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=20%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>File_</TD>
+<TD width=44%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>SFPCatalog_</TD>
+<TD width=44%><A HREF="tref_0oit.htm">Filename</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>File_</DT>
+
+<DD>Foreign key to the <A HREF="tref_4n6t.htm">File table</A>.</DD>
+
+<DT>SFPCatalog_</DT>
+
+<DD>Foreign key to the <A HREF="tref_38bp.htm">SFPCatalog table</A>. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This feature is not available in Windows Installer versions 1.0 or 1.1.</P>
+
+<P>Windows File Protection for Windows Millennium Edition is provided with Windows Installer version 1.2. For more information see <A HREF="over_1h9q.htm">Windows File Protection on Windows Millennium Edition</A>.</P>
+
+<P>The <A HREF="aref_3eem.htm">InstallSFPCatalogFile action</A> queries the <A HREF="tref_09np.htm">Component table</A>, <A HREF="tref_4n6t.htm">File table</A>, FileSFPCatalog table and <A HREF="tref_38bp.htm">SFPCatalog table</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

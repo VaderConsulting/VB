@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ControlEvent Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ControlEvent Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_controlevent_table"></A>ControlEvent Table</H1>
+
+<P>The ControlEvent table allows the author to specify what happens when the user interacts with any control within a dialog box. For example, a click of a push button can be defined to trigger a transition to another dialog box, to exit a dialog box sequence, or to begin file installation. </P>
+
+<P>The ControlEvent table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Column</TH>
+<TH align=left width=44%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=20%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Dialog_</TD>
+<TD width=44%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Control_</TD>
+<TD width=44%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Event</TD>
+<TD width=44%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Argument</TD>
+<TD width=44%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Condition</TD>
+<TD width=44%><A HREF="tref_735a.htm">Condition</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Ordering</TD>
+<TD width=44%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Dialog_</DT>
+
+<DD>An external key to the first column of the <A HREF="tref_51wl.htm">Dialog table</A>. Combining this field with the Control_ field identifies a unique control.</DD>
+
+<DT>Control_</DT>
+
+<DD>An external key to the second column of the <A HREF="tref_6nad.htm">Control table</A>. Combining this field with the Dialog_ field identifies a unique control.</DD>
+
+<DT>Event</DT>
+
+<DD>An identifier that specifies the type of event that should take place when the user interacts with the control specified by Dialog_ and Control_. For a list of possible values see <A HREF="hand_5fhz.htm">ControlEvent Overview</A>. 
+
+<P>To set a property with a control, put [Property_Name] in this field and the new value in the argument field. Put { } into the argument field to enter the NULL value.
+</DD>
+
+<DT>Argument</DT>
+
+<DD>A value used as a modifier when triggering a particular event. 
+
+<P>For example, the argument of the <A HREF="href_9myc.htm">NewDialog ControlEvent</A> or the <A HREF="href_0qus.htm">SpawnDialog ControlEvent</A> is the name of the dialog box and the argument of the <A HREF="aref_986m.htm">Install action</A> is a number defining the install level.
+</DD>
+
+<DT>Condition</DT>
+
+<DD>A conditional statement that determines whether the installer activates the event in the Event column. The installer triggers the event if the conditional statement in the Condition field evaluates to True. Therefore put a 1 in this column to ensure that the installer triggers the event. The installer does not trigger the event if the Condition field contains a statement that evaluates to False. The installer does not trigger an event with a blank in the Condition field unless no other events of the control evaluate to True. If none of the Condition fields for the control named in the Control_ field evaluate to True, the installer triggers the one event having a blank Condition field, and if more than one Condition field is blank it triggers the one event of these with the largest value in the Ordering field. See <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.</DD>
+
+<DT>Ordering</DT>
+
+<DD>An integer used to order several events tied to the same control. This must be a non-negative number. This field may be left blank.
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

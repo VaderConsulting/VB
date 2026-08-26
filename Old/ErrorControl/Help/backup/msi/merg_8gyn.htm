@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Merge Method (Merge Object)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Merge Method (Merge Object)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_merge_method_merge_object_"></A>Merge Method (Merge Object)</H1>
+
+<P>The <B>Merge </B>method executes a merge of the current database and current module. The merge attaches the components in the module to the feature identified by <I>Feature</I>. The root of the module's directory tree is redirected to the location given by <I>RedirectDir</I>.</P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax>object.Merge(Feature, RedirectDir)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="merg_4th0.htm"><B>Merge</B> Object</A> </DD>
+
+<DT><I>Feature</I></DT>
+
+<DD>The name of a feature in the database.</DD>
+
+<DT><I>RedirectDir</I></DT>
+
+<DD>The key of an entry in the <A HREF="tref_6an9.htm">Directory table</A> of the database. This parameter may be NULL or an empty string. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Once the merge is complete, components in the module are attached to the feature identified by <I>Feature</I>. This feature will not be created and must be an existing feature. The module may be attached to additional features using the <A HREF="merg_28mc.htm"><B>Connect</B> method</A>.</P>
+
+<P>Changes made to the database are saved if and only if the <A HREF="merg_2750.htm"><B>CloseDatabase</B> method</A> is called with <I>bCommit</I> set to TRUE.</P>
+
+<P>If any merge conflicts occur, including exclusions, they are placed in the error enumerator for later retrieval, but will not cause the merge to fail. Errors may be retrieved through the <A HREF="merg_4tix.htm">Errors property</A>. Errors and informational messages are posted to the current log file. </P>
+
+<H4>C++</H4>
+
+<P>See <A HREF="merg_7uwe.htm"><B>Merge Function</B></A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>System Tables Group</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_system_tables_group"></A>System Tables Group</H2>
+
+<P>The tables of the system tables group track the tables and columns of the installation database.
+
+<UL>
+	<LI>The <A HREF="tref_2fl1.htm">_Tables table</A> tracks all the tables in the database. This includes tables that you may have created for your own custom actions. Query this table to find out if a table exists.</LI>
+
+	<LI>The <A HREF="tref_4rj9.htm">_Columns table</A> tracks columns in the installation database. Temporary columns are currently not tracked by this table. Query this table to find out if a given column exists. </LI>
+
+	<LI>The <A HREF="tref_9gbp.htm">_Streams table</A> lists embedded OLE data streams. </LI>
+
+	<LI>The <A HREF="tref_4did.htm">_Storages table</A> lists embedded OLE data storages. </LI>
+
+	<LI>The <A HREF="tref_8fl1.htm">_Validation table</A>. The _Validation table tracks the types and allowed ranges of every column in the database. The _Validation table is used during the database validation process to ensure that all columns are accounted for and have the correct values. This table is not shipped with the installer database.</LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Msistuff.exe</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Msistuff.exe [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_msistuff.exe"></A>Msistuff.exe</H2>
+
+<P>Msistuff.exe is a command line utility that can be used to display or configure the resources in the Setup.exe bootstrap executable.</P>
+
+<H4>Syntax</H4>
+
+<PRE>msistuff setup.exe option {value}</PRE>
+
+<P>If no data is specified following an option, that resource is removed.</P>
+
+<H4>Command Line Options</H4>
+
+<P>Msistuff.exe uses the following case-insensitive command line options. A slash delimiter may also be used in place of a dash. If an option is listed multiple times, only the last occurrence is used.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=15%>Option</TH>
+<TH align=left width=26%>Resource ID</TH>
+<TH align=left width=59%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>no options specified</TD>
+<TD width=26%>&nbsp;</TD>
+<TD width=59%>Display configurable resources in Setup.exe.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>-u</TD>
+<TD width=26%>ISETUPPROPNAME_BASEURL </TD>
+<TD width=59%>Set BaseURL, the base URL location of Setup.exe. If no value is present, the location of Setup.exe defaults to removable media. Only URL based installs are subject to a check with <B>WinVerifyTrust</B>. The trailing slash on the URL is optional. This option may be omitted.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>-d</TD>
+<TD width=26%>ISETUPPROPNAME_DATABASE </TD>
+<TD width=59%>Set Msi, the name of the .msi file. This is a relative path to the .msi file in relation to the location of the Setup.exe program. This option is required if the -m option is not specified. The -d and -m options are mutually exclusive. They cannot both be specified. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>-m </TD>
+<TD width=26%>ISETUPPROPNAME_PATCH</TD>
+<TD width=59%>Set Msp, the name of the .msp file. This is a relative path to the .msp file in relation to the location of the Setup.exe program. This option is required if the -d option is not specified. The -m and -d options are mutually exclusive. They cannot both be specified.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>-n</TD>
+<TD width=26%>ISETUPPROPNAME_PRODUCTNAME </TD>
+<TD width=59%>Set Product Name, the name of the product. This provides the name used in the banner text for the downloaded user interface. This option may be omitted. If omitted, the default is "the product".</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>-o</TD>
+<TD width=26%>ISETUPPROPNAME_OPERATION</TD>
+<TD width=59%>Specify the type of operation to perform. The valid values are INSTALL, MINPATCH, MAJPATCH and INSTALLUPD. For additional information on these options, see <A HREF="app_0kmf.htm">Internet Download Bootstrapping</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>-v</TD>
+<TD width=26%>ISETUPPROPNAME_MINIMUM_MSI </TD>
+<TD width=59%>Set Minimum Msi Version, the minimum version of Windows Installer required on the computer. If the minimum version of the Windows Installer is not present on the machine, the appropriate <A HREF="app_4w9x.htm">Instmsi.exe</A> is installed to upgrade the Windows Installer. The value of this property has the same format as the PID_PAGECOUNT value. See <A HREF="sref_8eex.htm"><B>Page Count Summary</B> Property</A>. The value must be at least 200, the value for the Windows Installer version 2.0. This option is required.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>-i</TD>
+<TD width=26%>ISETUPPROPNAME_INSTLOCATION </TD>
+<TD width=59%>Set InstMsi URL Location, the base URL location of Windows Installer upgrade executables. If this value is missing, the location of the upgrade executables defaults to the location of Setup.exe. This option may be omitted.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>-a</TD>
+<TD width=26%>ISETUPPROPNAME_INSTMSIA </TD>
+<TD width=59%>Set InstMsiA, the name of the ANSI version of Windows Installer upgrade executable. This is a relative path to the ANSI version of Instmsi.exe relative to the location specified by ISETUPPROPNAME_INSTLOCATION. This option is required.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>-w</TD>
+<TD width=26%>ISETUPPROPNAME_INSTMSIW </TD>
+<TD width=59%>Set InstMsiW, the name of the Unicode version of Windows Installer upgrade executable. This is a relative path to the Unicode version of Instmsi.exe relative to the location specified by ISETUPPROPNAME_INSTLOCATION. This option is required.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>-p</TD>
+<TD width=26%>ISETUPPROPNAME_PROPERTIES </TD>
+<TD width=59%>Set the PROPERTY=VALUE strings. These are the PROPERTY=VALUE pairs to include on the command line. This option may be omitted. This option cannot be listed multiple times, and it must be listed last on the command line. All of the command line following -p is considered as a part of the {value}. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="app_9303.htm">Windows Installer Development Tools</A>, <A HREF="app_0kmf.htm">Internet Download Bootstrapping</A>, <A HREF="samp_8wkl.htm">A URL Based Windows Installer Installation Example</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Msistuff.exe;%20RELEASE:%20August%202001;%20URL:%20app_71id.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Msistuff.exe;%20RELEASE:%20August%202001;%20URL:%20app_71id.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

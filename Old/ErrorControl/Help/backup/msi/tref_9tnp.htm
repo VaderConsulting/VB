@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Font Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Font Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_font_table"></A>Font Table</H1>
+
+<P>The Font table contains the information for registering font files with the system. </P>
+
+<P>The Font table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Column</TH>
+<TH align=left width=44%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=20%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>File_</TD>
+<TD width=44%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>FontTitle</TD>
+<TD width=44%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>File_</DT>
+
+<DD>External key into the <A HREF="tref_4n6t.htm">File table</A> entry for the font file. It is recommended that the component containing the font file have the FontsFolder specified in the Directory_ column of the <A HREF="tref_09np.htm">Component table</A>.</DD>
+
+<DT></DT>
+
+<DT>FontTitle</DT>
+
+<DD>Font name. It is recommended that you leave this column null for TrueType Fonts and TrueType Collections because the installer can register the font after reading the correct font title from the font file. If the font name is entered, it must be identical to font title from the font file. You must specify a title for fonts that do not have embedded names, such as .fon files.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is referred to when the <A HREF="aref_2tv2.htm">RegisterFonts action</A> or the <A HREF="aref_6wmm.htm">UnregisterFonts action</A> is executed.</P>
+
+<P>If the FontTitle field is left Null, the Font name is read directly from the font file specified. If the font name recorded into the FontTitle field differs from the internal font name recorded in the font file, the font is registered twice by the <A HREF="aref_2tv2.htm">RegisterFonts action</A>.</P>
+
+<P>Font files should not be authored with a language ID, as fonts do not have an embedded language ID resource.Thus the Language column of the <A HREF="tref_4n6t.htm">File table</A> should be left null for font files.</P>
+
+<P>Because the installer does not refcount font files by default, preexisting font files may be removed with their component when uninstalling an application. To ensure that a font file is not removed, authors may set the <B>msidbComponentAttributesSharedDllRefCount </B>or <B>msidbComponentAttributesPermanent</B> bit flags in the Attributes column of the Component Table_msi_Component_Table for the component containing the font file.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

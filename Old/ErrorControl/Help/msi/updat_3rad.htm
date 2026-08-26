@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Changing the Product Code</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_changing_the_product_code"></A>Changing the Product Code</H1>
+
+<P>The product code is a GUID that is the principal identification of an application or product. See <A HREF="over_7bcj.htm">Product Codes</A>.</P>
+
+<P>An update that meets the following guidelines generally does not require a change of the product code and can be handled as a <A HREF="updat_9m0j.htm">Small Update</A>, or if the version is to change, as a <A HREF="updat_50hf.htm">Minor Upgrade</A>: 
+
+<UL>
+	<LI>The update can enlarge or reduce the feature-component tree but it must not reorganize the existing hierarchy of features and components described by the <A HREF="tref_0a91.htm">Feature</A> and <A HREF="tref_52hx.htm">FeatureComponents</A> tables. It can add a new feature to the existing feature-component tree. If it removes a parent feature, it must also remove all the child features of the removed feature.</LI>
+
+	<LI>With Windows Installer versions earlier than version 2.0, the update can add a new component only if that component is associated with a new feature. Beginning with Windows Installer version 2.0, a new component can be added to an existing feature.</LI>
+
+	<LI>The update must not change the component code of any component. Consequently, a small update or Minor Upgrade must never change the name of a component's key file because this would require changing the component code.</LI>
+
+	<LI>The update must not change the name of the .msi file of the installation package. Instead, because it modifies the package, it should change the package code. Note that this means that the update can change the tables, custom actions, and dialogs in the .msi file without changing the file's name.</LI>
+
+	<LI>The update can add, remove, or modify the files, registry keys, or shortcuts of components that are not shared by one or more features. If the update modifies a versioned file, that file's version must be incremented in the <A HREF="tref_4n6t.htm">File table</A>. If the update removes resources, it should also update the <A HREF="tref_7gth.htm">RemoveFile</A> and <A HREF="tref_3wmd.htm">RemoveRegistry</A> tables to remove any unused files, registry keys, or shortcuts that have already been installed. </LI>
+
+	<LI>The update of a component that is shared by two or more features must be backward compatible with all applications and features that use the component. The update can modify the resource of a shared component, such as files, registry entries, and shortcuts, as long as the changes are backward compatible. It is not recommended that the update add or remove files, registry entries, or shortcuts from a shared component.</LI>
+
+	<LI>A small update is shipped as a Windows Installer <A HREF="updat_7dmb.htm">patch package</A>. A full product CD-ROM is usually not provided with a small update.</LI>
+</UL>
+
+<P>The product code must be changed if an any of the following are true for the update:
+
+<UL>
+	<LI>Its a requirement that it be possible to have coexisting installations of the original and updated products on the same system. </LI>
+
+	<LI>The name of the .msi file has been changed.</LI>
+
+	<LI>The component code of an existing component has changed.</LI>
+
+	<LI>A component is removed from an existing feature.</LI>
+
+	<LI>An existing feature has been made into a child of an existing feature.</LI>
+
+	<LI>An existing child feature has been removed from its parent feature.</LI>
+
+	<LI>When using a version of Windows Installer earlier than version 2.0, the product code must be changed if a component has been added to an existing feature. With Windows Installer version 2.0, and later versions, a component may be added to an existing feature without requiring a product code change.</LI>
+</UL>
+
+<P>Note that adding a new child feature, consisting entirely of new components, to an existing feature does not require changing the product code.</P>
+
+<P>To install new features with <A HREF="updat_50hf.htm">minor upgrades</A>, using a version of the Windows Installer earlier than version 2.0, you must list the new features on the command line as values of the <A HREF="pref_3dvd.htm">ADDLOCAL property</A>. You must explicitly set the <A HREF="pref_19x5.htm">REINSTALL property</A> to the list of features to be reinstalled and not simply set REINSTALL to "ALL". </P>
+
+<P>Beginning with Windows Installer version 2.0, minor upgrades are no longer required to install new child features by using the ADDLOCAL property. Instead, new child features can be authored by including <B>msidbFeatureAttributesFollowParent</B> and <B>msidbFeatureAttributesUIDisallowAbsent</B> in the Attributes field of the <A HREF="tref_0a91.htm">Feature table</A>. If the minor upgrade only adds new child features, then REINSTALL=ALL is sufficient to force the installation of the new child features. For more information, see <A HREF="over_490z.htm">Controlling Feature Selection States</A>.</P>
+
+<P>A new child feature may be hidden from the user. To synchronize the installation state of a new child feature with its parent feature, set the <B>msidbFeatureAttributesFollowParent</B> and <B>msidbFeatureAttributesUIDisallowAbsent</B> bits for the child feature. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Changing%20the%20Product%20Code;%20RELEASE:%20August%202001;%20URL:%20updat_3rad.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Changing%20the%20Product%20Code;%20RELEASE:%20August%202001;%20URL:%20updat_3rad.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

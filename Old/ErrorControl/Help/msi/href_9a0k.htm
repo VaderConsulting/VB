@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>EndDialog ControlEvent</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="EndDialog ControlEvent">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_enddialog_controlevent"></A>EndDialog ControlEvent</H1>
+
+<P>This event notifies the installer to remove a modal dialog box. In all cases the installer removes the present dialog box.The following table lists the action of the event resulting from different arguments entered into the <A HREF="tref_6k11.htm">ControlEvent table</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Argument</TH>
+<TH align=left width=83%>Action by the installer</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>Exit</TD>
+<TD width=83%>The wizard sequence is closed and the control returns to the installer with the UserExit value. This argument cannot be used in a dialog box that is a child of another dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>Retry</TD>
+<TD width=83%>The wizard sequence is closed and the control returns to the installer with the Suspend value. This argument cannot be used in a dialog box that is a child of another dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>Ignore</TD>
+<TD width=83%>The wizard sequence is closed and the control returns to the installer with the Finished value. This argument cannot be used in a dialog box that is a child of another dialog box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%> Return</TD>
+<TD width=83%>The control returns to the parent of the present dialog box, or if there is no parent, the control returns to the installer with the Success value.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Published By</H4>
+
+<P>This ControlEvent is published by the installer.</P>
+
+<H4>Argument</H4>
+
+<P>On regular dialog boxes the Argument column of the <A HREF="tref_6k11.htm">ControlEvent table</A> can be "Return", "Exit", "Retry", or "Ignore".</P>
+
+<P>On error dialog boxes the Argument column of the <A HREF="tref_6k11.htm">ControlEvent table</A> can be "ErrorOk", "ErrorCancel", "ErrorAbort", "ErrorRetry", "ErrorIgnore", "ErrorYes", or "ErrorNo".</P>
+
+<H4>Action on Subscribers</H4>
+
+<P>None.</P>
+
+<H4>Typical Use</H4>
+
+<P>A <A HREF="href_331o.htm">PushButton</A> control on a modal dialog is tied to this event in the <A HREF="tref_6k11.htm">ControlEvent</A> table to close a dialog box.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20EndDialog%20ControlEvent;%20RELEASE:%20August%202001;%20URL:%20href_9a0k.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20EndDialog%20ControlEvent;%20RELEASE:%20August%202001;%20URL:%20href_9a0k.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

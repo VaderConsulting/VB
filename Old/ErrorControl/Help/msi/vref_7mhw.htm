@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>EnableLog Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="EnableLog Method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_enablelog_method"></A><A NAME="helpid_msiinstall_enablelog"></A>EnableLog Method</H1>
+
+<P>The <B>EnableLog</B> method of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> enables logging of the selected message type for all subsequent install sessions in the current process space.</P>
+
+<PRE class=syntax><I>object</I>.EnableLog(<I>logMode, logFile</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>Installer</B> object </DD>
+
+<DT><I>logMode</I></DT>
+
+<DD>Required string containing letters representing the message types to log.</DD>
+
+<DT><I>logFile</I></DT>
+
+<DD>Required string containing the path to the log file to be created.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=43%>Log message types</TH>
+<TH align=left width=15%>Value</TH>
+<TH align=left width=42%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypeInfo</TD>
+<TD width=15%>i</TD>
+<TD width=42%>Information-only messages</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypeWarning</TD>
+<TD width=15%>w</TD>
+<TD width=42%>Warning messages; not fatal</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypeError</TD>
+<TD width=15%>e</TD>
+<TD width=42%>Error messages; may be fatal</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypeFilesInUse</TD>
+<TD width=15%>f</TD>
+<TD width=42%>List of files in use that need to be replaced</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypeActionStart</TD>
+<TD width=15%>a</TD>
+<TD width=42%>Start of action notification</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypeActionData</TD>
+<TD width=15%>r</TD>
+<TD width=42%>Action data record; contents action-specific</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypeUser</TD>
+<TD width=15%>u</TD>
+<TD width=42%>User request messages</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypeCommonData</TD>
+<TD width=15%>c</TD>
+<TD width=42%>UI initialization parameters</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypeOutOfMemory</TD>
+<TD width=15%>m</TD>
+<TD width=42%>Out-of-memory message</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypeVerbose</TD>
+<TD width=15%>v</TD>
+<TD width=42%>Sends large amounts of information to log file not generally useful to users. May be used for support. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>msiMessageTypePropertyDump</TD>
+<TD width=15%>p</TD>
+<TD width=42%>Dump property table; "property = value" at engine termination</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%><I>(Any Message Type)</I>+</TD>
+<TD width=15%><I>(values)</I>+</TD>
+<TD width=42%>Messages overwrite existing log files by default. Include a plus sign to append a message to an existing log file. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_9xbb.htm">Logging</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20EnableLog%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_7mhw.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20EnableLog%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_7mhw.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CreateFolder Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="CreateFolder Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_createfolder_table"></A>CreateFolder Table</H1>
+
+<P>The CreateFolder table contains references to folders that need to be created explicitly for a particular component. </P>
+
+<P>The CreateFolder table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Directory_</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Component_</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Directory_</DT>
+
+<DD>External key into the first column of the <A HREF="tref_6an9.htm">Directory table</A>.</DD>
+
+<DT>Component_</DT>
+
+<DD>External key into the first column of the <A HREF="tref_09np.htm">Component table</A>.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The folders in this table are created when the component is installed. An attempt is made to remove these folders only when the component is uninstalled or moved to run-from-source. No automatic removal is triggered if the folders become empty. In contrast, folders created by the installer but not listed in this table are removed when they become empty.</P>
+
+<P>Because folders created by the installer are deleted when they become empty, you must author an entry into the CreateFolder table to install a component that consists of an empty folder. </P>
+
+<P>This table is referred to when the <A HREF="aref_6p0u.htm">CreateFolders</A> action or the <A HREF="aref_0pf2.htm">RemoveFolders</A> action is called.</P>
+
+<P>For information on how to secure a folder see the <A HREF="tref_00dh.htm">LockPermissions Table</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

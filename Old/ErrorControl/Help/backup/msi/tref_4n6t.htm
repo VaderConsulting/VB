@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>File Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="File Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_file_table"></A>File Table</H1>
+
+<P>The File table contains a complete list of source files with their various attributes, ordered by a unique, non-localized, identifier. Files can be stored on the source media as individual files or compressed within a <A HREF="dglo_25q1.htm#_msi_cabinet_file_using_windows_installer_gly">cabinet file</A>. See also <A HREF="over_8kkz.htm">Cabinet Files</A>.</P>
+
+<P>The File table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=15%>Key</TH>
+<TH align=left width=21%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>File</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Component_</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>FileName</TD>
+<TD width=40%><A HREF="tref_0oit.htm">Filename</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>FileSize</TD>
+<TD width=40%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Version</TD>
+<TD width=40%><A HREF="tref_1iy6.htm">Version</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Language</TD>
+<TD width=40%><A HREF="tref_3bc5.htm">Language</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Attributes</TD>
+<TD width=40%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Sequence</TD>
+<TD width=40%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>File</DT>
+
+<DD>A non-localized token that uniquely identifies the file and is used as an external key into other tables.</DD>
+
+<DT>Component_</DT>
+
+<DD>External key into the first column of the <A HREF="tref_09np.htm">Component table</A>. This field identifies the Component that controls the file.</DD>
+
+<DT>FileName</DT>
+
+<DD>The file name used for installation. The name may be localized. For the file name syntax see the <A HREF="tref_0oit.htm">Filename</A> column data type.
+
+<P>Because some web servers can be case sensitive, FileName should match the case of the source files exactly to insure support of internet downloads.
+</DD>
+
+<DT>FileSize</DT>
+
+<DD>Size of the file in bytes. This must be a non-negative number.</DD>
+
+<DT>Version</DT>
+
+<DD>This field is the version string for a versioned file. This field is blank for non-versioned files. The file version entered into this field must be identical to the version of the file included with the installation package.
+
+<P>The Version field can also be set to contain the primary key of another record in the File table. The referenced file then determines the versioning logic for this file. See <A HREF="over_1jg3.htm">Companion Files</A>. Note that if this file is the key path for its component, it must not be specified as a companion file. 
+</DD>
+
+<DT>Language</DT>
+
+<DD>A list of decimal language IDs separated by commas.
+
+<P>Font files should not be authored with a language ID, as fonts do not have an embedded language ID resource.Thus this column should be left null for font files.
+</DD>
+
+<DT>Attributes </DT>
+
+<DD>Integer containing bit flags representing file attributes.
+
+<P>The following table shows the definition of the bit field. 
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Constant</TH>
+<TH align=left width=18%>Hexadecimal</TH>
+<TH align=left width=14%>Decimal </TH>
+<TH align=left width=47%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbFileAttributesReadOnly</B></TD>
+<TD width=18%>0x000001</TD>
+<TD width=14%>1</TD>
+<TD width=47%>Read-Only </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbFileAttributesHidden</B></TD>
+<TD width=18%>0x000002</TD>
+<TD width=14%>2</TD>
+<TD width=47%>Hidden </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbFileAttributesSystem</B></TD>
+<TD width=18%>0x000004</TD>
+<TD width=14%>4</TD>
+<TD width=47%>System </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbFileAttributesVital</B></TD>
+<TD width=18%>0x000200</TD>
+<TD width=14%>512</TD>
+<TD width=47%>The file is vital for the proper operation of the component to which it belongs</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbFileAttributesChecksum</B></TD>
+<TD width=18%>0x000400</TD>
+<TD width=14%>1024</TD>
+<TD width=47%>The file contains a valid <A HREF="dglo_25q1.htm#_msi_checksum_gly">checksum</A>. A checksum is required to repair a file that has become corrupted.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbFileAttributesPatchAdded</B></TD>
+<TD width=18%>0x001000</TD>
+<TD width=14%>4096</TD>
+<TD width=47%>This bit must only be added by a patch and if the file is being added by the patch.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbFileAttributesNoncompressed</B></TD>
+<TD width=18%>0x002000</TD>
+<TD width=14%>8192</TD>
+<TD width=47%>The file's source type is uncompressed. If set, ignore the Word Count Summary Property. If neither <B>msidbFileAttributesNoncompressed</B> or <B>msidbFileAttributesCompressed</B> are set, the compression state of the file is specified by the <A HREF="sref_8ge1.htm">Word Count Summary Property</A>. Do not set both <B>msidbFileAttributesNoncompressed</B> and <B>msidbFileAttributesCompressed</B>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%><B>msidbFileAttributesCompressed</B></TD>
+<TD width=18%>0x004000</TD>
+<TD width=14%>16384</TD>
+<TD width=47%>The file's source type is compressed. If set, ignore the Word Count Summary Property. If neither <B>msidbFileAttributesNoncompressed</B> or <B>msidbFileAttributesCompressed</B> are set, the compression state of the file is specified by the <A HREF="sref_8ge1.htm">Word Count Summary Property</A>. Do not set both <B>msidbFileAttributesNoncompressed</B> and <B>msidbFileAttributesCompressed</B>.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>If the <B>msidbFileAttributesVital</B> bit within the Attributes column is set, and if the component to which the file belongs is selected for installation, then the installer must be able to install this file for the installation to be completed successfully. If the installer is unable to install the file for some reason (for example, if the source file cannot be located within the source image), then an error dialog box will appear with the options "Retry" or "Cancel". For a file that does not have <B>msidbFileAttributesVital</B> set, the options in case of an install error will be "Abort", "Retry", and "Ignore" (that is, the user will have the option to complete the install successfully without installing that file). 
+
+
+<P>The <B>msidbFileAttributesChecksum</B> bit within the Attributes column should be set for every executable file in the installation that has a valid <A HREF="dglo_25q1.htm#_msi_checksum_gly">checksum</A> stored in the Portable Executable (PE) file header. Only those files that have this bit set will ever be verified for valid checksum during a reinstall (see the REINSTALLMODE property for more information). 
+</DD>
+
+<DT>Sequence</DT>
+
+<DD>Sequence position of this file on the media images. This order must correspond to the order of the files in the cabinet if the files are compressed. The integers in this field must be equal or greater than 1.
+
+<P>The sequence numbers in the Sequence column are used to specify both the order of installation for files and the source media upon which the file is located (in conjunction with the <A HREF="tref_4mlh.htm">Media table</A>). For example, suppose a file has a sequence number of 92. To determine the source disk this file resides on, look in the Media table for the entry with the smallest Last Sequence value that is larger than 92.
+
+
+<P>Although compressed files are assigned internal sequence numbers within cabinets, those absolute numbers do not need to match the sequence numbers within the File table. It is, however, important that the sequence of files in the File table be identical to the sequence of the files within the cabinets.
+
+
+<P>For files that aren't compressed, the sequence numbers need not be unique. For instance, if all your files are uncompressed, and all reside on one disk, you could give all the files the same sequence number.
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The table is initially generated from the file list, but if cabinet compression is used, the table is regenerated from the output of the compression engine. See also <A HREF="over_8kkz.htm">Cabinet Files</A>.</P>
+
+<P>To move an existing file on the user's computer during the installation use the <A HREF="aref_15pq.htm">MoveFiles action</A> and <A HREF="tref_5un9.htm">MoveFile table</A>. To install a file to multiple locations use the <A HREF="aref_7yr2.htm">DuplicateFiles action</A> and the <A HREF="tref_310l.htm">DuplicateFile table</A>.</P>
+
+<P>The following table summarizes the possible combinations of values in the Version column and the Language column. For more information, see <A HREF="over_1tir.htm">File Versioning Rules</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Version</TH>
+<TH align=left width=21%>Language</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>1.2.3.4</TD>
+<TD width=21%>1033</TD>
+<TD width=63%>version and language</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>1.2.3.4</TD>
+<TD width=21%>(Null)</TD>
+<TD width=63%>version but no language
+<P>(Not valid with Windows Installer version 1.0)</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>1.2.3.4</TD>
+<TD width=21%>0</TD>
+<TD width=63%>version and language are neutral</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Testdb</TD>
+<TD width=21%>(Null) </TD>
+<TD width=63%>companion file with no language associated with it</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Testdb</TD>
+<TD width=21%>1033    </TD>
+<TD width=63%>companion file and language</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>(Null)</TD>
+<TD width=21%>1033  </TD>
+<TD width=63%>no version, but has a language associated with it (that is, typelib, helpfile).</TD>
+</TR>
+</TABLE><BR>
+
+<P>For information on how to secure a file see the <A HREF="tref_00dh.htm">LockPermissions Table</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

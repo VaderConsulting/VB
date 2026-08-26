@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using 64-Bit Windows Installer Packages</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_using_64_bit_windows_installer_packages"></A>Using 64-Bit Windows Installer Packages</H1>
+
+<P>Setup developers should do the following when creating <A HREF="over_18ab.htm">64-bit Windows Installer Packages</A> or applications that call the Windows Installer to install 64-bit packages:
+
+<UL>
+	<LI>Use a Windows Installer database schema of 200 or higher. Specify that version 2.0 is the minimum version of the Windows Installer required to install the package by setting the <A HREF="sref_8eex.htm"><B>Page Count Summary</B> Property</A> to the integer 200. Earlier Windows Installer versions reject attempts to install 64-bit packages.</LI>
+
+	<LI>Indicate in the package's summary information stream that this is a 64-bit package. Enter "Intel64" into the platform field of the <A HREF="sref_80hl.htm"><B>Template Summary</B> Property</A>. A package cannot be neutral, and this summary property must never have "Intel64" entered together with "Intel" (or "Alpha" for Windows Installer version 1.0).</LI>
+
+	<LI>Identify every 64-bit component by setting the <B>msidbComponentAttributes64bit</B> in the Attributes column of the <A HREF="tref_09np.htm">Component table</A>.</LI>
+
+	<LI>Use optional conditional statements that check the version of the 64-bit operating system by referencing the <A HREF="pref_7ent.htm"><B>VersionNT64</B> property</A>. Windows Installer version 2.0 sets this property to the 64-bit Windows version and leaves <B>VersionNT64</B> undefined if the operating system is not 64-bit Windows. For details, see <A HREF="prop_4jub.htm">Using Properties in Conditional Statements</A>. </LI>
+
+	<LI>Use optional conditional statements that check the numeric processor level of the computer by referencing the <A HREF="pref_1ou2.htm"><B>Intel64</B> property</A>. Windows Installer version 2.0 sets this property to the current numeric processor level of the computer and leaves <B>Intel64</B> undefined if this is not an Itanium-based processor. For details, see <A HREF="prop_4jub.htm">Using Properties in Conditional Statements</A>. </LI>
+
+	<LI>Use the <A HREF="tref_0w9x.htm">AppSearch table</A> and <A HREF="aref_16zy.htm">AppSearch action</A> to do optional searches of the registry for existing 64-bit components. To search for existing 64-bit components, include the <B>msidbLocatorType64bit</B> bit in the Type column of the <A HREF="tref_91wl.htm">RegLocator table</A>. For details, see <A HREF="over_84oj.htm">Searching for Existing Applications, Files, Registry Entries or .ini File Entries</A></LI>
+
+	<LI>Obtain the paths to system folders by referencing the <A HREF="pref_70c9.htm"><B>System64Folder</B> property</A>, <A HREF="pref_8hrt.htm"><B>ProgramFiles64Folder</B> property</A>, and <A HREF="pref_622h.htm"><B>CommonFiles64Folder</B> property</A> for the 64-bit folders and the <A HREF="pref_4sft.htm"><B>SystemFolder</B> property</A>, <A HREF="pref_3xfd.htm"><B>ProgramFilesFolder</B> property</A>, and <A HREF="pref_4ge1.htm"><B>CommonFilesFolder</B> property</A> for the 32-bit folders. </LI>
+
+	<LI>Verify that the application uses the correct GUID when referencing a 64-bit component. If there are 32-bit and 64-bit versions of particular component, these should have different component ID GUIDs. </LI>
+
+	<LI>Determine whether any new environment variables need to be defined when installing 64-bit applications.</LI>
+
+	<LI>Verify that the application only calls 32-bit services that run as executables. Applications should not call 32-bit services that run in DLLs. </LI>
+
+	<LI>If the application installs coexisting 32-bit and 64-bit versions of a component, verify that the application share .ini file information correctly. </LI>
+
+	<LI>Verify that the application only applies 32-bit patches to 32-bit binaries and 64-bit patches to 64-bit binaries. </LI>
+
+	<LI>Application developers should consider future upgrade scenarios for both 32-bit and 64-bit versions and maintain upgrade codes. For details, see <A HREF="updat_1po3.htm">Patching and Upgrades</A>.</LI>
+</UL>
+
+<P>For more information, see <A HREF="over_7ng3.htm">64-Bit Custom Actions</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%2064-Bit%20Windows%20Installer%20Packages;%20RELEASE:%20August%202001;%20URL:%20over_59gz.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%2064-Bit%20Windows%20Installer%20Packages;%20RELEASE:%20August%202001;%20URL:%20over_59gz.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

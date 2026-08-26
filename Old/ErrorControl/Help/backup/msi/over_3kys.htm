@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Installation-On-Demand</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="installation-on-demand [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_installation_on_demand"></A>Installation-On-Demand</H2>
+
+<P>With traditional installation technology, it is necessary to exit an application and rerun setup to perform an installation task. This commonly occurred when a user wanted a feature or product not chosen during the first run of setup. This often made the process of product configuration inefficient because it required the user to anticipate the functionality required before they ever used the product.</P>
+
+<P>Installation-on-demand makes it possible to offer functionality to users and applications in the absence of the files themselves. This notion is known as advertisement. The Microsoft® Windows® Installer has the capability of advertising functionality and to make installation-on-demand of application features or entire products possible. When a user or application activates an advertised feature or product, the installer proceeds with installation of the needed components. This shortens the configuration process because additional functionality can be accessed without having to exit and rerun another setup procedure. </P>
+
+<P>When a product uses the installer, a user can choose at setup time which features or applications to install and which to advertise. Then if while running an application the user requests an advertised feature that has not yet been installed, the application calls the installer to enact a just-in-time feature level installation of the necessary files. If the user activates an advertised product that has not yet been installed, the operating system calls the installer to enact a just-in-time product level installation.</P>
+
+<P><A HREF="over_1v1w.htm">Advertisement</A> and installation-on-demand can also facilitate system management by enabling administrators to designate applications as required or optional for different groups of users. There are two types of advertising known as "assigning" and "publishing." If an administrator assigns an application to a group, then these users can install the application on-demand. If, however, the administrator publishes the application to the group, no entry points appear to these users and installation-on-demand is only activated if another application activates the published application.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetFeatureCost</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetFeatureCost">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetfeaturecost"></A>MsiGetFeatureCost</H1>
+
+<P>The <B>MsiGetFeatureCost</B> function returns the disk space required by a feature and its selected children and parent features.</P>
+
+<PRE class=syntax><B>UINT MsiGetFeatureCost(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>     // installer handle
+  <B>LPCTSTR</B> <I>szFeature</I><B>,</B>      // name of feature
+  <B>MSICOSTTREE</B> <I>iCostTree</I><B>,</B>  // portion of tree to cost
+  <B>INSTALLSTATE</B> <I>iState</I><B>,</B>    // requested state
+  <B>INT</B> <I>*piCost</I>             // returned cost
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>Handle to the installation.</DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>Specifies the name of the feature.</DD>
+
+<DT><I>iCostTree</I></DT>
+
+<DD>Specifies the value the function uses to determine disk space requirements. This parameter can be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Value</TH>
+<TH align=left width=58%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>MSICOSTTREE_CHILDREN</TD>
+<TD width=58%>The children of the indicated feature are included in the cost.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>MSICOSTTREE_PARENTS</TD>
+<TD width=58%>The parent features of the indicated feature are included in the cost.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>MSICOSTTREE_SELFONLY</TD>
+<TD width=58%>The feature only is included in the cost.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>iState</I></DT>
+
+<DD>Specifies the installation state. This parameter can be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Value</TH>
+<TH align=left width=58%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_UNKNOWN</TD>
+<TD width=58%>The product or feature is unrecognized.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_ABSENT</TD>
+<TD width=58%>The product or feature is uninstalled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_LOCAL</TD>
+<TD width=58%>The product or feature is installed on the local drive.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_SOURCE</TD>
+<TD width=58%>The product or feature is installed to run from source, CD, or network.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_DEFAULT</TD>
+<TD width=58%>The product or feature will be installed to use the default location: local or source.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>piCost</I></DT>
+
+<DD>Specifies the returned disk space requirements in units of 512 bytes.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_HANDLE_STATE</DT>
+
+<DD>An invalid handle state was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>ERROR_UNKNOWN_FEATURE</DT>
+
+<DD>An unknown feature was requested.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>See <A HREF="novr_9vw3.htm">Calling Database Functions From Programs</A>.</P>
+
+<P>With the <B>MsiGetFeatureCost</B> function, the MSICOSTTREE_SELFONLY value indicates the total amount of disk space (in units of 512 bytes) required by the specified feature only. This returned value does not include the children or the parent features of the specified feature. This total cost is made up of the disk costs attributed to every component linked to the feature.</P>
+
+<P>The MSICOSTTREE_CHILDREN value indicates the total amount of disk space (in units of 512 bytes) required by the specified feature and its children. For each feature, the total cost is made up of the disk costs attributed to every component linked to the feature.</P>
+
+<P>The MSICOSTTREE_PARENTS value indicates the total amount of disk space (in units of 512 bytes) required by the specified feature and its parent features (up to the root of the <A HREF="tref_0a91.htm">Feature table</A>). For each feature, the total cost is made up of the disk costs attributed to every component linked to the feature.</P>
+
+<P><B>MsiGetFeatureCost</B> is dependent upon several other functions to be successful. The following example demonstrates the order in which these functions must be called:</P>
+
+<PRE>MSIHANDLE   hInstall;      //product handle, must be closed
+int         iCost;         //cost returned by MsiGetFeatureCost
+
+MsiOpenPackage("Path to package…",&amp;hInstall);   //"Path to package" should be replaced with the full path to the package to be opened
+MsiDoAction(hInstall,"CostInitialize");         //
+MsiDoAction(hInstall,"FileCost");
+MsiDoAction(hInstall,"CostFinalize");
+MsiDoAction(hInstall,"InstallValidate");
+MsiGetFeatureCost(hInstall,"FeatureName",MSICOSTTREE_SELFONLY,INSTALLSTATE_ABSENT,&amp;iCost);
+MsiCloseHandle(hInstall);                        //close the open product handle</PRE>
+
+<P>The process to query the cost of features scheduled to be removed is slightly different:</P>
+
+<PRE>MSIHANDLE   hInstall;      //product handle, must be closed
+int         iCost;         //cost returned by MsiGetFeatureCost
+
+MsiOpenPackage("Path to package…",&amp;hInstall);                   //"Path to package" should be replaced with the full path to the package to be opened
+MsiDoAction(hInstall,"CostInitialize");                          //
+MsiDoAction(hInstall,"FileCost");
+MsiDoAction(hInstall,"CostFinalize");
+MsiSetFeatureState(hInstall,"FeatureName",INSTALLSTATE_ABSENT);  //set the feature's state to "not installed"
+MsiDoAction(hInstall,"InstallValidate");
+MsiGetFeatureCost(hInstall,"FeatureName",MSICOSTTREE_SELFONLY,INSTALLSTATE_ABSENT,&amp;iCost);
+MsiCloseHandle(hInstall);                                        //close the open product handle</PRE>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_selection_functions">Installer Selection Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

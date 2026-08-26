@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ODBCDataSource Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ODBCDataSource Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_odbcdatasource_table"></A>ODBCDataSource Table</H1>
+
+<P>The ODBCDataSource table lists the data sources belonging to the installation.</P>
+
+<P>The ODBCDataSource table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Column</TH>
+<TH align=left width=38%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>DataSource</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Component_</TD>
+<TD width=38%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Description</TD>
+<TD width=38%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>DriverDescription</TD>
+<TD width=38%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%>Registration</TD>
+<TD width=38%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>DataSource</DT>
+
+<DD>Internal token name for data source. A primary key for the table.</DD>
+
+<DT>Component_</DT>
+
+<DD>External key into the <A HREF="tref_09np.htm">Component table</A>.</DD>
+
+<DT>Description</DT>
+
+<DD>The description registered for this data source. This value cannot be localized.</DD>
+
+<DT>DriverDescription</DT>
+
+<DD>Associated driver which may be pre-existing. This value cannot be localized.</DD>
+
+<DT>Registration</DT>
+
+<DD>This field specifies the type of registration for the data source.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Constant</TH>
+<TH align=left width=24%>Hexadecimal</TH>
+<TH align=left width=19%>Decimal</TH>
+<TH align=left width=28%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%><B>msidbODBCDataSourceRegistrationPerMachine</B></TD>
+<TD width=24%>0x000</TD>
+<TD width=19%>0</TD>
+<TD width=28%>Data source is registered per machine.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%><B>msidbODBCDataSourceRegistrationPerUser</B></TD>
+<TD width=24%>0x001</TD>
+<TD width=19%>1</TD>
+<TD width=28%>Data source is registered per user.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

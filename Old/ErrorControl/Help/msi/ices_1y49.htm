@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE79</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE79">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice79"></A>ICE79</H1>
+
+<P>ICE79 validates the references to components and features entered in the database fields using the <A HREF="tref_735a.htm">Condition</A> data type.</P>
+
+<H4>Result</H4>
+
+<P>ICE79 posts two warnings.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>ICE79 warning</TH>
+<TH align=left width=49%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>Database is missing _Validation table. Could not completely check property names.</TD>
+<TD width=49%>Database is missing <A HREF="tref_8fl1.htm">_Validation table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>Error retrieving values from column [2] in table [1]. Skipping Column.</TD>
+<TD width=49%>Error retrieving value.</TD>
+</TR>
+</TABLE><BR>
+
+<P>ICE79 posts two errors.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=51%>ICE79 error</TH>
+<TH align=left width=49%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>Component '%ls' referenced in column '%s'.'%s' of row %s is invalid.</TD>
+<TD width=49%>An invalid component reference was found.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=51%>Feature '%ls' referenced in column '%s'.'%s' of row %s is invalid.</TD>
+<TD width=49%>An invalid feature reference was found</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Example</H4>
+
+<P>ICE79 reports the following errors for the example:</P>
+
+<PRE>Component 'NoSuchComponent' referenced in column 
+'InstallExecuteSequence'.'Condition' of row Custom2 is invalid.
+Feature 'NoSuchFeature' referenced in column 
+'InstallExecuteSequence'.'Condition' of row Custom1 is invalid.</PRE>
+
+<P>In this example, NoSuchComponent is absent from the <A HREF="tref_09np.htm">Component table</A> and NoSuchFeature is absent from the <A HREF="tref_0a91.htm">Feature table</A>.</P>
+
+<P><A HREF="tref_5pid.htm"><B>InstallExecuteSequence Table</B></A> <B>(partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Action</TH>
+<TH align=left width=67%>Condition</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Custom1</TD>
+<TD width=67%>TESTACTION=1046 AND &amp;NoSuchFeature&gt;2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Custom2</TD>
+<TD width=67%>TESTACTION=146 AND $NoSuchComponent&gt;2</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix these errors, enter valid records for NoSuchFeature and NoSuchComponent in the Feature and Component tables.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE79;%20RELEASE:%20August%202001;%20URL:%20ices_1y49.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE79;%20RELEASE:%20August%202001;%20URL:%20ices_1y49.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

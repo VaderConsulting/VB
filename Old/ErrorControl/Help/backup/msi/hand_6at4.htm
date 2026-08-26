@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring a Conditional "Please Wait . . ." Message Box</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_authoring_a_conditional_please_wait_._._._message_box"></A>Authoring a Conditional "Please Wait . . ." Message Box</H2>
+
+<P>The following example illustrates how to author a conditional message box that pops up and warns the user that a background task is still running whenever the user activates a displayed control prematurely. </P>
+
+<P>The example also illustrates how the <A HREF="href_95ro.htm">SpawnWaitDialog ControlEvent</A> can in general be used to protect a control that triggers an action dependent upon the completion of a background task. </P>
+
+<P>In this example, a <A HREF="href_9llz.htm">Selection Dialog</A> containing three push button controls labeled Install Now, Next, and Disk Cost is displayed to the user during the installation process. However, the installer also carries out a disk space costing task in the background while displaying this dialog box. The author wishes to protect these buttons from activation and wants a "Please wait" message box to pop up if the user clicks any of the buttons before the costing has completed. The author also wants this message box to contain a Cancel button and to disappear as soon as the background  task is finished.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To display a dialog box asking the user to wait while background disk costing is completed</B>
+
+<OL>
+	<LI>Use the authoring capabilities of the installer to add a new modal dialog box, named WaitForCosting, into the <A HREF="tref_51wl.htm">Dialog table</A>. The dialog box should display a text string that says "Please wait while disk space costing is completed." </LI>
+
+	<LI>Add a single push button control to this dialog, labeled Cancel, by authoring it into the <A HREF="tref_6nad.htm">Control table</A>.</LI>
+
+	<LI>Link the Cancel push button to a control event that closes the WaitForCosting dialog box by authoring an <A HREF="href_9a0k.htm">EndDialog ControlEvent</A> into the <A HREF="tref_6k11.htm">ControlEvent table</A>. Set the argument of the EndDialog Control event to be Exit.</LI>
+
+	<LI>Link a <A HREF="href_95ro.htm">SpawnWaitDialog ControlEvent</A> to the existing Install Now, Next, and Disk Cost push button controls displayed in the <A HREF="href_9llz.htm">Selection Dialog</A> box. Set the argument of this control event in the ControlEvent table to be the WaitForCosting dialog and set the expression in the Condition column of the table to be: <A HREF="pref_7kah.htm">CostingComplete</A> =1.</LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

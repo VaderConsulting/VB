@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>GetError Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="GetError Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_geterror_method"></A><A NAME="helpid_msiview_geterror"></A>GetError Method</H1>
+
+<P>The <B>GetError</B> method of the <A HREF="vref_7bxw.htm"><B>View</B> object</A> returns the Validation error and the column name for which the error occurred. In automation, the returned value is a string of the form ##ColumnName, where the ## represents a 2-digit error code. It returns the first error in the view's error array; subsequent calls return the next value in the error array. Once a value of '00' is returned, no more errors exist, and subsequent calls merely loop through the array again. </P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.GetError</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_7bxw.htm"><B>View</B> object</A>
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

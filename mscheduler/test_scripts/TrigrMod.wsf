@@ -1,0 +1,68 @@
+' begin SchTest.wsf
+<job>
+<reference object="Scheduler.SchAgent" version="1.0"/>
+<script language="VBScript">
+Option Explicit
+'
+'
+'   Script : TrigMod.wsf
+' Object : Win 95/98 Task Scheduler Wrapper  (mstask.exe)
+'  Code Base : http://home.sprintmail.com/~mpryor  *Custom Objects page*
+' Description : Change daily trigger to weekly trigger
+'   keywords : Schedule, Task, Job, mstask, Internet Explorer, Shell Extension
+'
+'On error resume next
+dim oSch, oTrig, tsk, sOut, i
+dim oNew ' as Job
+dim jbStatus
+
+'
+'  test out reference to constants -- 192
+'WScript.Echo(tfDontStartIfOnBatteries Or tfKillIfGoingOnBatteries)
+'WScript.quit
+'
+set oSch = CreateObject("Scheduler.SchAgent")
+if err then
+msgbox "Failed to create custom object -- " & err.description
+WScript.quit
+end if
+
+oSch.TargetComputer = "\\SprintMail"
+if err then WScript.echo hex(err.number- vbObjectError), err.description
+
+' build the job collection
+Call oSch.Refresh
+
+'activate job by Name
+set tsk = oSch.job("RunDUN")  
+
+' create new trigger to replace old
+set oTrig = tsk.Triggers.add  
+
+' weekly means every 7 days!	 
+with oTrig
+	.TriggerType = ttDaily   
+	.BeginDay =  #March 4, 2001#
+	.StartTime = #2:00:00 AM#
+	.DaysInterval = 7  ' every week
+	.flags	=	0
+	.Update
+end with
+
+' remove the old trigger
+tsk.triggers.remove(1)  'triggered every 1 day before
+
+' update the collection
+tsk.triggers.update
+ 
+' save the changes
+tsk.save
+'
+
+oSch.Refresh
+set oSch = nothing
+WScript.quit
+
+WScript.echo("Check your MS Scheduler Interface - Job *RunDUN* has been retooled with a new trigger.")
+</script>
+</job>

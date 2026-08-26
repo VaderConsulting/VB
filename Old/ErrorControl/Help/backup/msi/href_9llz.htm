@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Selection Dialog</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Selection Dialog">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_selection_dialog"></A>Selection Dialog</H3>
+
+<P>This modal dialog box enables users to select particular items. </P>
+
+<P>A Selection Dialog box contains a <A HREF="href_3w30.htm">SelectionTree Control</A> that publishes several control events. Commonly these control events are subscribed to by <A HREF="href_4s30.htm">Text</A>, <A HREF="href_1tt8.htm">Icon</A>, or <A HREF="href_2ey4.htm">Bitmap</A> controls that display a description, the size, the path, and the icon of the highlighted item. </P>
+
+<P>There is a <A HREF="href_331o.htm">PushButton Control</A> on the dialog box that publishes the <A HREF="href_01dg.htm">SelectionBrowse ControlEvent</A> and spawns a <A HREF="href_246f.htm">Browse Dialog</A>. The Browse control enables the user to select a directory.</P>
+
+<P>The selection tree is populated only after the <A HREF="aref_4bam.htm">CostInitialize action</A> and <A HREF="aref_22we.htm">CostFinalize action</A> are called.</P>
+
+<P>A Selection dialog box is commonly used to select features. The features are listed as items in a SelectionTree control and labeled with the short string of text appearing in the Title column of the <A HREF="tref_0a91.htm">Feature table</A>. The text string in the Description column of the Feature table is published as a <A HREF="href_2qno.htm">SelectionDescription ControlEvent</A> and displayed by a <A HREF="href_4s30.htm">Text control</A> in the Selection Dialog box. The Selection tree control also publishes the handle to the icon of the highlighted item. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Creating a Small Update Patch</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_creating_a_small_update_patch"></A>Creating a Small Update Patch</H2>
+
+<P>When creating a patch for <A HREF="updat_9m0j.htm">small updates</A>, authors should adhere to the following guidelines:
+
+<UL>
+	<LI>Small update patches must be designed for a single target-installation.</LI>
+
+	<LI>Small update patches should use the earliest version as the target-installation.</LI>
+
+	<LI>A small update patch should replace any earlier small update patches and make these obsolete.</LI>
+</UL>
+
+<P>For example, consider the following scenario.
+
+<OL>
+	<LI>Ship version 1.0 of Myproduct.msi.</LI>
+
+	<LI>Ship a QFE patch for Myproduct.msi called QFE1. This does not change the <A HREF="pref_4tfd.htm">ProductCode property</A> or the <A HREF="pref_120p.htm">ProductVersion property</A>.</LI>
+
+	<LI>Author a second QFE patch for Myproduct.msi called QFE2. This second patch must target Myproduct.msi version 1.0. This second patch must not try to target both Myproduct.msi version 1.0 and Myproduct.msi version 1.0 + QFE1. When QFE2 is applied it should remove QFE1.</LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Creating%20a%20Small%20Update%20Patch;%20RELEASE:%20August%202001;%20URL:%20updat_3hrc.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Creating%20a%20Small%20Update%20Patch;%20RELEASE:%20August%202001;%20URL:%20updat_3hrc.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

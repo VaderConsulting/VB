@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring Merge Module Directory Tables</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_merge_module_directory_tables"></A>Authoring Merge Module Directory Tables</H3>
+
+<P>A merge module can be applied to a .msi file to add directories to the installation but it cannot replace or remove any existing directories. The <A HREF="tref_6an9.htm">Directory table</A> specifies the layout of the directories the merge module provides to the target installation. A Directory table is required in every merge module. </P>
+
+<P>Use the following guidelines when authoring the Directory Table in a merge module. For more information, see <A HREF="tref_6an9.htm">Directory Table</A> and <A HREF="novr_3wth.htm">Using The Directory Table</A>. 
+
+<UL>
+	<LI>The directory structure added by the merge module must have a single root directory. The root must be named TARGETDIR. The user may change the value of TARGETDIR during the merge to specify where to attach the module's directory structure onto the target's directory tree.</LI>
+
+	<LI>Merge module tables other than the Directory table must not directly reference directory locations to TARGETDIR. The location of such a reference changes if the value of TARGETDIR is changed by the user.</LI>
+
+	<LI>The tables in the merge module must reference the location of a child directory of TARGETDIR, or another directory in the merge module's tree. Do the following to specify TARGETDIR as the parent of a directory in the merge module. Enter the directory into the Directory column and enter TARGETDIR into the Directory_Parent column. Use the "." notation in the DefaultDir column to indicate that this directory is located in TARGETDIR without a subdirectory. For more information, see <A HREF="novr_3wth.htm">Using the Directory Table</A>.</LI>
+
+	<LI>The names of directories added by the merge module must use the naming conventions described in <A HREF="merg_0ucz.htm">Naming Primary Keys in Merge Module Databases</A>. This includes directories predefined by properties such as the <A HREF="pref_4sft.htm">SystemFolder property</A> and <A HREF="pref_3xfd.htm">ProgramFilesFolder property</A>.</LI>
+
+	<LI>If any predefined directories are referenced in the merge module, a <A HREF="tref_71b9.htm">CustomAction table</A> must be included. This table can be empty, but it must be included. This table ensures that the modified predefined directories are written to the correct location.</LI>
+
+	<LI>Append a <A HREF="dglo_0j95.htm#_msi_guid_gly">GUID</A> to every entry in the Directory table. This includes Directory Table entries that specify a Windows Installer system folder properties, for example, SystemFolder.00000000_0000_0000_0000_000000000000. The library Mergemod.dll adds custom actions to set the SystemFolder property.</LI>
+</UL>
+
+<P>The following is an example of a Directory table in a merge module and the expected resolved directories.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Directory</TH>
+<TH align=left width=33%>Directory_Parent</TH>
+<TH align=left width=34%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>TARGETDIR</TD>
+<TD width=33%>&nbsp;</TD>
+<TD width=34%>SourceDir</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Dir00.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>TARGETDIR</TD>
+<TD width=34%>.:MMM_Prog</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>SystemFolder.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>TARGETDIR</TD>
+<TD width=34%>MMM_Sys</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Dir02.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>Dir00.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848_006097ABDE17</TD>
+<TD width=34%>MFC_OCX</TD>
+</TR>
+</TABLE><BR>
+
+<P>A merge module with the above Directory table is expected to result in the following directory structure.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Directory</TH>
+<TH align=left width=33%>Target</TH>
+<TH align=left width=34%>Source</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Dir00.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>[Merge Module's Install Point]\ </TD>
+<TD width=34%>[Merge Module's Source Point]\MMM_Prog</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>SystemFolder.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>[SystemFolder]\ </TD>
+<TD width=34%>[Merge Module's Source Point]\MMM_Sys</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Dir02.BC82E350_<BR>
+C7FC_11d1_<BR>
+A848-006097ABDE17</TD>
+<TD width=33%>[Merge Module's Install Point]\MFC_OCX</TD>
+<TD width=34%>[Merge Module's Source Point]\MMM_Prog\MFC_OCX</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

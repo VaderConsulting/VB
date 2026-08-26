@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>RollbackDisabled Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="RollbackDisabled Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_rollbackdisabled_property"></A>RollbackDisabled Property</H1>
+
+<P>The installer sets the RollbackDisabled property when rollback has been disabled. RollbackDisabled is used by package authors who need to ensure that the installer has not disabled rollback. The RollbackDisabled property can be used in a conditional expression that effectively refuses to continue with the installation if RollbackDisabled property is set.</P>
+
+<H4>Default Value</H4>
+
+<P>By default, rollback is enabled. </P>
+
+<H4>Remarks</H4>
+
+<P>Because <A HREF="cact_0k8j.htm">rollback</A> and <A HREF="cact_45tf.htm">commit</A> do not run while rollback is disabled, the installer cannot properly install a package that uses these types of custom actions in a transaction during the installation. In this case, the author of the package should include a condition using DisableRollback that prevents the installation from continuing if rollback is disabled. </P>
+
+<P>The DisableRollback policy value can be set by an administrator as a part of assigning system policy. Administrators are advised to not disable rollback unless necessary. For more information about DisableRollback policy value, see <A HREF="over_37ll.htm">System Policy</A>. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_0bzi.htm">Rollback Installation</A>, <A HREF="over_37ll.htm">System Policy</A>, <A HREF="cact_0k8j.htm">rollback custom actions</A>, <A HREF="cact_45tf.htm">commit custom actions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

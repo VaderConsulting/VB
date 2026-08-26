@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using 64-bit Merge Modules</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_using_64_bit_merge_modules"></A>Using 64-bit Merge Modules</H2>
+
+<P>A 64-bit merge module is a merge module that has any of the following characteristics:
+
+<UL>
+	<LI>The merge module contains at least one component that has been compiled for 64-bit operating systems.</LI>
+
+	<LI>The merge module contains no 64-bit components, but it is intended for use only with <A HREF="over_18ab.htm">64-bit Windows Installer Packages</A>.</LI>
+</UL>
+
+<P>Merge modules can be used as follows:
+
+<UL>
+	<LI>A 64-bit merge module can only be merged into 64-bit Windows Installer packages.</LI>
+
+	<LI>A 32-bit merge module can be merged into 32-bit or 64-bit Windows Installer packages.</LI>
+
+	<LI>A 64-bit merge module can be merged into a 64-bit package on a 32-bit operating system.</LI>
+</UL>
+
+<P>Adhere to the following when authoring a 64-bit Merge Module:
+
+<UL>
+	<LI>Use the same general procedure as when authoring 32-bit merge modules. For information, see <A HREF="merg_0n8z.htm">About Merge Modules</A> and <A HREF="merg_2jzn.htm">Authoring Merge Modules</A>.</LI>
+
+	<LI>You must set the <A HREF="sref_80hl.htm">Template Summary Property</A> with the Intel64 value. For information see <A HREF="merg_0c2t.htm">Merge Module Summary Information Stream Reference</A>.</LI>
+
+	<LI>When both 32-bit and 64-bit merge modules exist for the same component, it is recommended that the modules have different signatures. This will enable a package to contain both versions of the component.</LI>
+</UL>
+
+<P>For more information about using Windows Installer on 64-bit operating systems, see <A HREF="over_43eb.htm">Windows Installer on 64-bit Operating Systems</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%2064-bit%20Merge%20Modules;%20RELEASE:%20August%202001;%20URL:%20merg_2otv.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%2064-bit%20Merge%20Modules;%20RELEASE:%20August%202001;%20URL:%20merg_2otv.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

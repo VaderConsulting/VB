@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Installation Procedure Tables Group</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_installation_procedure_tables_group"></A>Installation Procedure Tables Group</H2>
+
+<P>The tables in the Installation Procedure group control tasks performed during the installation by <A HREF="acts_4lmb.htm">standard actions</A> and <A HREF="cact_5t2r.htm">custom actions</A>.</P>
+
+<P>Some of the tables in this group control a high level action by providing a sequence of actions. Each of the following sequence tables controls a portion of a high level action. 
+
+<UL>
+	<LI><A HREF="tref_1git.htm">InstallUISequence table</A> </LI>
+
+	<LI><A HREF="tref_5pid.htm">InstallExecuteSequence table</A> </LI>
+
+	<LI><A HREF="tref_5lnp.htm">AdminUISequence table</A> </LI>
+
+	<LI><A HREF="tref_70f9.htm">AdminExecuteSequence table</A> </LI>
+
+	<LI><A HREF="tref_3rvp.htm">AdvtUISequence table</A> </LI>
+
+	<LI><A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A> </LI>
+</UL>
+
+<P>There may be situations in which an installation needs to do something that is not possible using only <A HREF="acts_4lmb.htm">standard actions</A>. To provide the greatest degree of flexibility, the installer provides setup authors the ability to create their own custom actions. If you have any custom actions, you should register them with the installer by populating the CustomAction Table.</P>
+
+<P>The <A HREF="tref_71b9.htm">CustomAction table</A> provides the means of integrating custom code and data into the installation process. The code that is executed can be a stream contained within the database, a recently installed file, or an existing executable.</P>
+
+<P>The following tables extend the installer's capabilities to manipulate files and folders during the installation.
+
+<UL>
+	<LI>The <A HREF="tref_7gth.htm">RemoveFile table</A> contains a list of files that are removed during the installation. </LI>
+
+	<LI>The <A HREF="tref_9k6d.htm">RemoveIniFile table</A> contains the information an application needs to remove from .ini files.</LI>
+
+	<LI>The <A HREF="tref_3wmd.htm">RemoveRegistry table</A> contains the information which is deleted from the system registry when the corresponding component is selected to be installed.</LI>
+
+	<LI>The <A HREF="tref_152d.htm">CreateFolder table</A> lists the folders that must be created during the installation. Although the installer creates folders as they are needed, these are removed as soon as they are empty. Folders list in the CreateFolder table are not deleted until the component is uninstalled.</LI>
+
+	<LI>The <A HREF="tref_5un9.htm">MoveFile table</A> contains a list of files to be moved or copied from a specified source directory on the user's computer to a destination directory. It is not necessary to use the MoveFile table to describe the files associated with the components you are installing.</LI>
+</UL>
+
+<P>To set up necessary conditions that must be met to initiate the installation, populate the LaunchCondition table. </P>
+
+<P>The <A HREF="tref_90f9.htm">LaunchCondition table</A> contains a list of conditions, all of which must be satisfied for the action to succeed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

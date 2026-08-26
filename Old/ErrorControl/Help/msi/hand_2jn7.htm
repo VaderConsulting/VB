@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Adding Extra Text to Radio Buttons</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_adding_extra_text_to_radio_buttons"></A>Adding Extra Text to Radio Buttons</H3>
+
+<P>Screen reader programs can only read the text of a <A HREF="href_6iwc.htm">RadioButtonGroup control</A> that has been authored into the Text column of the <A HREF="tref_4t7p.htm">RadioButton table</A>. If this text is an insufficient description of the radio buttons, overlapping <A HREF="href_4s30.htm">Text controls</A> can be added to provide extra descriptive text. These Text controls should overlap each other in the dialog and have conditions set in the <A HREF="tref_4vhh.htm">ControlCondition table</A> so that only one Text control is shown at a time and the others are hidden. The Text controls must not overlap the RadioButtonGroup control or other controls in the dialog because this makes the controls invisible to screen readers. When the user hovers the cursor over the Text control, the screen reader program reads the extra text. </P>
+
+<P>In the following example the MySample dialog has a RadioButtonGroup control named Colors with two choices for the value of the TheColor property. For each choice there is a Text control with a condition to hide or show dependent on the current choice selected for TheColor . An initial TheColor value is defined in the Property table. The Text controls have the extra descriptive text authored in the Text field of the RadioButton table. When a user hovers the cursor over the Text control in the dialog, the screen reader can read the extra description of the current choice.</P>
+
+<P><A HREF="tref_51wl.htm"><B>Dialog table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=8%>Dialog</TH>
+<TH align=left width=11%>HCentering</TH>
+<TH align=left width=10%>VCentering</TH>
+<TH align=left width=7%>Width</TH>
+<TH align=left width=6%>Height</TH>
+<TH align=left width=9%>Attributes</TH>
+<TH align=left width=11%>Title</TH>
+<TH align=left width=11%>Control_First</TH>
+<TH align=left width=13%>Control_Default</TH>
+<TH align=left width=14%>Control_Cancel</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>MySample</TD>
+<TD width=11%>50</TD>
+<TD width=10%>50</TD>
+<TD width=7%>200</TD>
+<TD width=6%>180</TD>
+<TD width=9%>3</TD>
+<TD width=11%>Accessible radio buttons</TD>
+<TD width=11%>Colors</TD>
+<TD width=13%>Next</TD>
+<TD width=14%> </TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_6nad.htm"><B>Control table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=7%>Dialog_</TH>
+<TH align=left width=8%>Control</TH>
+<TH align=left width=9%>Type</TH>
+<TH align=left width=5%>X</TH>
+<TH align=left width=5%>Y</TH>
+<TH align=left width=7%>Width</TH>
+<TH align=left width=9%>Height</TH>
+<TH align=left width=8%>Attributes</TH>
+<TH align=left width=9%>Property</TH>
+<TH align=left width=11%>Text</TH>
+<TH align=left width=11%>Control_Next</TH>
+<TH align=left width=11%>Help</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=7%>MySample</TD>
+<TD width=8%>Colors</TD>
+<TD width=9%>RadioButtonGroup</TD>
+<TD width=5%>2</TD>
+<TD width=5%>20</TD>
+<TD width=7%>100</TD>
+<TD width=9%>50</TD>
+<TD width=8%>3</TD>
+<TD width=9%>TheColor</TD>
+<TD width=11%>&nbsp;</TD>
+<TD width=11%>Next</TD>
+<TD width=11%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=7%>MySample</TD>
+<TD width=8%>HowIsBlue</TD>
+<TD width=9%>Text</TD>
+<TD width=5%>20</TD>
+<TD width=5%>80</TD>
+<TD width=7%>150</TD>
+<TD width=9%>15</TD>
+<TD width=8%>2</TD>
+<TD width=9%>&nbsp;</TD>
+<TD width=11%>It is like the sky on a clear day.</TD>
+<TD width=11%>&nbsp;</TD>
+<TD width=11%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=7%>MySample</TD>
+<TD width=8%>HowIsGreen</TD>
+<TD width=9%>Text</TD>
+<TD width=5%>20</TD>
+<TD width=5%>80</TD>
+<TD width=7%>150</TD>
+<TD width=9%>15</TD>
+<TD width=8%>2</TD>
+<TD width=9%>&nbsp;</TD>
+<TD width=11%>It is like grass in the spring.</TD>
+<TD width=11%>&nbsp;</TD>
+<TD width=11%>&nbsp;</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4t7p.htm"><B>RadioButton table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=10%>Property</TH>
+<TH align=left width=12%>Order</TH>
+<TH align=left width=12%>Value</TH>
+<TH align=left width=7%>X</TH>
+<TH align=left width=8%>Y</TH>
+<TH align=left width=10%>Width</TH>
+<TH align=left width=12%>Height</TH>
+<TH align=left width=13%>Text</TH>
+<TH align=left width=16%>Help</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>TheColor</TD>
+<TD width=12%>1</TD>
+<TD width=12%>Blue</TD>
+<TD width=7%>10</TD>
+<TD width=8%>10</TD>
+<TD width=10%>80</TD>
+<TD width=12%>15</TD>
+<TD width=13%>&amp;Blue</TD>
+<TD width=16%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>TheColor</TD>
+<TD width=12%>2</TD>
+<TD width=12%>Green</TD>
+<TD width=7%>10</TD>
+<TD width=8%>30</TD>
+<TD width=10%>80</TD>
+<TD width=12%>15</TD>
+<TD width=13%>&amp;Green</TD>
+<TD width=16%>&nbsp;</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_21d1.htm"><B>Property table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=40%>Property</TH>
+<TH align=left width=60%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>TheColor</TD>
+<TD width=60%>Blue</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4vhh.htm"><B>ControlCondition table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Dialog_</TH>
+<TH align=left width=26%>Control_</TH>
+<TH align=left width=25%>Action</TH>
+<TH align=left width=33%>Condition</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>MySample</TD>
+<TD width=26%>HowIsBlue</TD>
+<TD width=25%>Hide</TD>
+<TD width=33%>TheColor &lt;&gt; "Blue"</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>MySample</TD>
+<TD width=26%>HowIsBlue</TD>
+<TD width=25%>Show</TD>
+<TD width=33%>TheColor = "Blue"</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>MySample</TD>
+<TD width=26%>HowIsGreen</TD>
+<TD width=25%>Hide</TD>
+<TD width=33%>TheColor &lt;&gt; "Green"</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>MySample</TD>
+<TD width=26%>HowIsGreen</TD>
+<TD width=25%>Show</TD>
+<TD width=33%>TheColor = "Green"</TD>
+</TR>
+</TABLE><BR>
+
+<P>For more information, see <A HREF="hand_1tvd.htm">Accessibility</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Adding%20Extra%20Text%20to%20Radio%20Buttons;%20RELEASE:%20August%202001;%20URL:%20hand_2jn7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Adding%20Extra%20Text%20to%20Radio%20Buttons;%20RELEASE:%20August%202001;%20URL:%20hand_2jn7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

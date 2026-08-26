@@ -1,0 +1,7 @@
+frmServer = 5, 0, 729, 567, C, 3, 0, 454, 367, C
+frmStart = 88, 88, 598, 528, C, 525, 1, 717, 152, C
+frmClient = 26, 49, 869, 747, C, 453, 0, 679, 272, C
+frmApplications = 0, 0, 0, 0, C, 0, 0, 382, 440, C
+frmConfigure = 0, 0, 0, 0, C, 22, 22, 532, 462, C
+frmShutdown = 0, 0, 685, 440, C, 279, 288, 554, 441, C
+modClient = 0, 0, 0, 0, C

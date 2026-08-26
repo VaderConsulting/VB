@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FeatureCost Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="FeatureCost Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_featurecost_property"></A><A NAME="helpid_msiengine_featurecost"></A>FeatureCost Property</H1>
+
+<P>The <B>FeatureCost</B> property of the <A HREF="vref_8xis.htm"><B>Session</B> object</A> returns the total amount of disk space (in units of 512 bytes) required by the specified feature and its parent features (up to the root of the Feature table). For each feature, the total cost is made up of the disk costs attributed to every component linked to the feature.</P>
+
+<PRE class=syntax><I>object</I>.FeatureCost(<I>feature, costTree, state</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>Session</B> object</DD>
+
+<DT><I>feature</I></DT>
+
+<DD>Required string name of the feature item whose cost is to be retrieved.</DD>
+
+<DT><I>costTree</I></DT>
+
+<DD>Required portion of the feature tree branch to cost, one of the following:
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Part to cost</TH>
+<TH align=left width=13%>Value</TH>
+<TH align=left width=53%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiCostTreeSelfOnly</TD>
+<TD width=13%>0</TD>
+<TD width=53%>Cost feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiCostTreeChildren</TD>
+<TD width=13%>1</TD>
+<TD width=53%>Cost children features.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiCostTreeParents</TD>
+<TD width=13%>2</TD>
+<TD width=53%>Cost parent features.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>state</I></DT>
+
+<DD>Required element that specifies the action state to use when determining the feature cost. For example, if msiInstallStateLocal is specified, <B>FeatureCost</B> returns the disk space required if the specified feature and all its parent features were to be installed locally.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Action state name</TH>
+<TH align=left width=14%>Value</TH>
+<TH align=left width=52%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiInstallStateLocal</TD>
+<TD width=14%>3</TD>
+<TD width=52%>Disk space required if the specified feature and all its parent features were to be installed locally</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiInstallStateSource</TD>
+<TD width=14%>4</TD>
+<TD width=52%>Disk space required if the specified feature and all its parent features were to be installed to run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiInstallStateDefault</TD>
+<TD width=14%>5</TD>
+<TD width=52%>If installed, the item is to be reinstalled in the same state.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FeatureCost%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_9s3d.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20FeatureCost%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_9s3d.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

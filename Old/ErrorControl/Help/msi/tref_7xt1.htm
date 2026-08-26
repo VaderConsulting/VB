@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>PublishComponent Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="PublishComponent Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_publishcomponent_table"></A>PublishComponent Table</H1>
+
+<P>The PublishComponent table associates components listed in the <A HREF="tref_09np.htm">Component table</A> with a qualifier text-string and a category ID GUID. Components with parallel functionality that have been grouped together in this way are referred to as qualified components. See <A HREF="over_0hkj.htm">Qualified Components</A>. This provides the installer with a method for single-level indirection when referring to components. See <A HREF="over_8837.htm">Using Qualified Components</A>.</P>
+
+<P>The PublishComponent table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>Column</TH>
+<TH align=left width=39%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>ComponentId</TD>
+<TD width=39%><A HREF="tref_7kf8.htm">GUID</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Qualifier</TD>
+<TD width=39%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Component_</TD>
+<TD width=39%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>AppData</TD>
+<TD width=39%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>Feature_</TD>
+<TD width=39%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>ComponentId</DT>
+
+<DD>A string <A HREF="tref_7kf8.htm">GUID</A> that represents the category of components being grouped together. Note that this column's title is misleading. This is the GUID for the category of qualified components and is not the same GUID appearing in the ComponentId column of the <A HREF="tref_09np.htm">Component table</A>. Here it refers to a server that provides the functionality of a component to external clients rather than the component itself.</DD>
+
+<DT>Qualifier</DT>
+
+<DD>A text string that qualifies the value in the ComponentId column. A qualifier is used to distinguish multiple forms of the same component, such as a component that is implemented in multiple languages. These are the qualifier text-strings returned by <A HREF="msi_2veb.htm"><B>MsiEnumComponentQualifiers</B></A>.</DD>
+
+<DT>Component_</DT>
+
+<DD>External key into column one of the <A HREF="tref_09np.htm">Component table</A>. This identifier refers to the qualified component's record in the Component table.</DD>
+
+<DT>AppData</DT>
+
+<DD>An optional localizable text describing the qualified component of this record. The string is commonly parsed by the application and can be displayed to the user. It should describe the qualified component. This can be retrieved with <A HREF="msi_2veb.htm"><B>MsiEnumComponentQualifiers</B></A>.</DD>
+
+<DT>Feature_</DT>
+
+<DD>External key into column one of the <A HREF="tref_0a91.htm">Feature table</A>. This is the feature using this qualified component.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is referred to when the <A HREF="aref_2r3i.htm">PublishComponents action</A> or the <A HREF="aref_1ir2.htm">UnpublishComponents action</A> is executed.</P>
+
+<P>Note that the name of this table is misleading. This table is not required in order to author advertisement. See the Attributes column of the <A HREF="tref_09np.htm">Component table</A> and <A HREF="tref_0a91.htm">Feature table</A> for information on how to set the installation state of components to advertise.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20PublishComponent%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_7xt1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20PublishComponent%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_7xt1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleSubstitution Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ModuleSubstitution table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_modulesubstitution_table"></A>ModuleSubstitution Table</H1>
+
+<P>The ModuleSubstitution table specifies the configurable fields of a module database and provides a template for the configuration of each field. The user or merge tool may query this table to determine what configuration operations are to take place. This table is not merged into the target database. </P>
+
+<P>The following tables cannot contain configurable fields and must not be listed in this table:</P>
+
+<P>ModuleSubstitution table</P>
+
+<P><A HREF="merg_96cl.htm">ModuleConfiguration table</A> </P>
+
+<P><A HREF="merg_8c4l.htm">ModuleExclusion table</A> </P>
+
+<P><A HREF="merg_4nad.htm">ModuleSignature table</A> </P>
+
+<P>The ModuleSubstitution table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Column</TH>
+<TH align=left width=16%>Type</TH>
+<TH align=left width=19%>Key</TH>
+<TH align=left width=47%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Table</TD>
+<TD width=16%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=19%>Y</TD>
+<TD width=47%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Row</TD>
+<TD width=16%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=19%>Y</TD>
+<TD width=47%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Column</TD>
+<TD width=16%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=19%>Y</TD>
+<TD width=47%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>Value</TD>
+<TD width=16%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=19%>N</TD>
+<TD width=47%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Table</DT>
+
+<DD>This column specifies the name of the table being modified in the module database.</DD>
+
+<DT>Row</DT>
+
+<DD>This field specifies the primary keys of the target row in the table named in the Table column. Multiple primary keys are separated by semicolons. Target rows are selected for modification before any changes are made to the target table. If one record in the ModuleSubstitution table changes the primary key field of a target row, other records in the ModuleSubstitution table are applied based on the original primary key data, not the resulting of primary key substitutions. The order of row substitution is undefined.
+
+<P>Values in this column are always in <A HREF="merg_3kxg.htm">CMSM special format</A>. A literal semicolon (';') or equal sign ('=') can be added by prefixing the character with a backslash. '\'. A NULL value for a key is signified by a NULL, a leading semicolon, two consecutive semicolons, or a trailing semicolon, depending on whether the NULL value is a sole, first, middle, or final key column value. 
+</DD>
+
+<DT>Column</DT>
+
+<DD>This field specifies the target column in the row named in the Row column. If multiple rows in the ModuleSubstitution table change different columns of the same target row, all the column substitutions are performed before the modified row is inserted into the database. The order of column substitution is undefined.</DD>
+
+<DT>Value</DT>
+
+<DD>This column contains a string that provides a formatting template for the data being substituted into the target field specified by Table, Row, and Column. When a substitution string of the form [=ItemA] is encountered, the string, including the bracket characters, is replaced by the value for the configurable "ItemA." The configurable item "ItemA" is specified in the Name column of the <A HREF="merg_96cl.htm">ModuleConfiguration table</A> and its value is provided by the merge tool. If the merge tool declines to provide a value for any item in a replacement string, the default value specified in the DefaultValue column of the ModuleConfiguration Table is substituted. If a string references an item not in the ModuleConfiguration table, the merge fails. 
+
+<UL>
+	<LI>This column uses <A HREF="merg_3kxg.htm">CMSM special format</A>. A literal semicolon (';') or equals sign ('=') can be added to the table by prefixing the character with a backslash. '\'. </LI>
+
+	<LI>The Value field may contain multiple substitution strings. For example, the configuration of items "Food1" and "Food2" in the string: "[=Food1] is good, but [=Food2] is better because [=Food2] is more nutritious."</LI>
+
+	<LI>Replacement strings must not be nested. The template "[=AB[=CDE]]" is invalid.</LI>
+
+	<LI>If the Value field evaluates to NULL, and the target field is not nullable, the merge fails and an error object of type msmErrorBadNullSubstitution is created and added to the error list. For details, see the error types described in <A HREF="merg_9cv3.htm">get_Type Function</A>.</LI>
+
+	<LI>If the Value field evaluates to the null GUID: {00000000-0000-0000-0000-000000000000}, the null GUID is replaced by the name of the feature before the row is merged into the module. For details, see <A HREF="merg_70z7.htm">Referencing Features in Merge Modules</A>. </LI>
+
+	<LI>The template in the Value field is evaluated before being inserted into the target field. Substitution into a row is done before replacing any features. </LI>
+
+	<LI>If the Value column evaluates to a string of only integer characters (with an optional + or -), the string is converted into an integer before being substituted into an target field of the <A HREF="merg_9w6r.htm">Integer Format Type</A>. If the template evaluates to a string that does not consist only of integer characters (and an optional + or -) the result cannot be substituted into an integer target field. Attempting to insert a non-integer into an integer field causes the merge to fail and adds a msmErrorBadSubstitutionType error object to the error list.</LI>
+
+	<LI>If the target column specified in the Table and Column fields is a <A HREF="merg_1lir.htm">Text Format Type</A>, and evaluation of the Value field results in an <A HREF="merg_9w6r.htm">Integer Format Type</A>, a decimal representation of the number is inserted into the target text field. </LI>
+
+	<LI>If the target field is an <A HREF="merg_9w6r.htm">Integer Format Type</A>, and the Value field consists of a non-delimited list of items in <A HREF="merg_1wdv.htm">Bitfield Format</A>, the value in the target field is combined using the bitwise <B>AND</B> operator with the inverse of the bitwise <B>OR</B> of all of the mask values from the items, then combined using the bitwise <B>OR</B> operator with each of the integer or bitfield items when masked by their corresponding mask values. Essentially, this explicitly sets the bits from the properties to the provided values but leaves all other bits in the cell alone. </LI>
+
+	<LI>If the Value field evaluates to a <A HREF="merg_5iyb.htm">Key Format Type</A>, and is a key into a table that uses multiple primary keys, the item name may be followed by a semicolon and an integer value that indicates the 1-based index into the set of values that together make a primary key. If no integer is specified, the value 1 is used. For example, the <A HREF="tref_6nad.htm">Control table</A> has two primary key columns, Dialog_ and Control. The value of an item "Item1" that is a key into the Control table will be of the form "DialogName;ControlName", where DialogName is the value in the Dialog_ table and ControlName is the value in the Control column. To substitute just ControlName, the substitution string [=Item1;2] should be used.</LI>
+</UL>
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The ModuleSubstition table is used by <A HREF="merg_833n.htm">Configurable Merge Modules</A>. Mergemod.dll version 2.0 or later is required to create a configurable merge module.</P>
+
+<P>To ensure compatibility with versions of Mergemod.dll earlier than version 2.0, the <A HREF="merg_96cl.htm">ModuleConfiguration table</A> and ModuleSubstitution tables should be included in the <A HREF="merg_5f51.htm">ModuleIgnoreTable table</A> of every module.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleSubstitution%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_9zvp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleSubstitution%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_9zvp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

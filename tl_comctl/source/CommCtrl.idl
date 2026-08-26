@@ -1,0 +1,3497 @@
+[
+    uuid(35554120-e708-11d2-8064-a512187072c2),
+    helpstring("Common Controls 5.80 - Eduardo A. Morcillo"),
+    version(5.80)
+]
+library ComCtlTLB
+{
+
+    importlib("stdole32.tlb");
+
+    typedef enum ICC_CLASSES {
+        [helpstring("listview, header")]
+        ICC_LISTVIEW_CLASSES = 0x00000001,
+        [helpstring("treeview, tooltips ")]
+        ICC_TREEVIEW_CLASSES = 0x00000002,
+        [helpstring("toolbar, statusbar, trackbar, tooltips ")]
+        ICC_BAR_CLASSES = 0x00000004,
+        [helpstring("tab, tooltips")]
+        ICC_TAB_CLASSES = 0x00000008,
+        [helpstring("updown")]
+        ICC_UPDOWN_CLASS = 0x00000010,
+        [helpstring("progress ")]
+        ICC_PROGRESS_CLASS = 0x00000020,
+        [helpstring("hotkey ")]
+        ICC_HOTKEY_CLASS = 0x00000040,
+        [helpstring("animate")]
+        ICC_ANIMATE_CLASS = 0x00000080,
+        ICC_WIN95_CLASSES = 0x000000FF,
+        [helpstring("month picker, date picker, time picker, updown")]
+        ICC_DATE_CLASSES = 0x00000100,
+        [helpstring("comboex")]
+        ICC_USEREX_CLASSES = 0x00000200,
+        [helpstring("rebar (coolbar) control")]
+        ICC_COOL_CLASSES = 0x00000400,
+        ICC_INTERNET_CLASSES = 0x00000800,
+        [helpstring("page scroller ")]
+        ICC_PAGESCROLLER_CLASS = 0x00001000,
+        [helpstring("native font control")]
+        ICC_NATIVEFNTCTL_CLASS = 0x00002000,
+    } ICC_CLASSES;
+
+    typedef struct INITCOMMONCONTROLSEXst {
+        [helpstring("Size of this structure")]
+        LONG dwSize;
+        [helpstring("Flags indicating which classes to be initialized")]
+        ICC_CLASSES dwICC;
+    } INITCOMMONCONTROLSEXst;
+
+    [
+        helpstring("Common Controls"),
+        dllname("comctl32.dll")
+    ]
+    module Common {
+        const LONG LPSTR_TEXTCALLBACK = -1;
+        const LONG INFOTIPSIZE = 1024;
+
+        [entry("InitCommonControlsEx")]
+        BOOL InitCommonControlsEx(
+            [in] INITCOMMONCONTROLSEXst * ICC);
+
+        [entry("InitCommonControls")]
+        void InitCommonControls();
+
+    }
+
+    typedef struct NMHDR {
+        LONG hWndFrom;
+        LONG idFrom;
+        LONG code;
+    } NMHDR;
+
+    typedef enum ODT {
+        ODT_HEADER = 100,
+        ODT_TAB = 101,
+        ODT_LISTVIEW = 102,
+    } ODT;
+
+ // ====== COMMON CONTROL STYLES =====================
+
+    typedef enum CommonStyles {
+        CCS_TOP = 0x00000001L,
+        CCS_NOMOVEY = 0x00000002L,
+        CCS_BOTTOM = 0x00000003L,
+        CCS_NORESIZE = 0x00000004L,
+        CCS_NOPARENTALIGN = 0x00000008L,
+        CCS_ADJUSTABLE = 0x00000020L,
+        CCS_NODIVIDER = 0x00000040L,
+        CCS_VERT = 0x00000080L,
+        CCS_LEFT = (CCS_VERT | CCS_TOP),
+        CCS_RIGHT = (CCS_VERT | CCS_BOTTOM),
+        CCS_NOMOVEX = (CCS_VERT | CCS_NOMOVEY),
+    } ComCtlStyles;
+
+    typedef enum CommonMessages {
+        CCM_FIRST = 0x2000, // Common control shared messages
+        CCM_SETBKCOLOR = 0x2001, // lParam is bkColor
+        CCM_SETCOLORSCHEME = 0x2002, // lParam is color scheme
+        CCM_GETCOLORSCHEME = (CCM_FIRST + 3), // fills in COLORSCHEME pointed to by lParam
+        CCM_GETDROPTARGET = (CCM_FIRST + 4),
+        CCM_SETUNICODEFORMAT = (CCM_FIRST + 5),
+        CCM_GETUNICODEFORMAT = (CCM_FIRST + 6),
+        CCM_SETVERSION = (CCM_FIRST + 0x7),
+        CCM_GETVERSION = (CCM_FIRST + 0x8),
+        CCM_SETNOTIFYWINDOW = (CCM_FIRST + 0x9), // wParam = hwndParent.
+    } CommonMessages;
+
+    typedef struct COLORSCHEME {
+        LONG dwSize;
+        LONG clrBtnHighlight; // highlight color
+        LONG clrBtnShadow; // shadow color
+    } COLORSCHEME;
+
+    typedef enum NotificationCodes {
+        NM_FIRST = 0, // generic to all controls
+        NM_OUTOFMEMORY = (-1),
+        NM_CLICK = (-2),
+        NM_DBLCLK = (-3),
+        NM_RETURN = (-4),
+        NM_RCLICK = (-5),
+        NM_RDBLCLK = (-6),
+        NM_SETFOCUS = (-7),
+        NM_KILLFOCUS = (-8),
+        NM_CUSTOMDRAW = (-12),
+        NM_HOVER = (-13),
+        NM_NCHITTEST = (-14), // uses NMMOUSE struct
+        NM_KEYDOWN = (-15),
+        NM_RELEASEDCAPTURE = (-16),
+        NM_SETCURSOR = (-17), // uses NMMOUSE struct
+        NM_CHAR = (NM_FIRST-18), // uses NMCHAR struct
+        NM_TOOLTIPSCREATED = (NM_FIRST-19), // notify of when the tooltips window is create
+        NM_LDOWN = (NM_FIRST-20),
+        NM_RDOWN = (NM_FIRST-21),
+        NM_LAST = (-99)
+    } NotificationCodes;
+
+//    typedef struct RECT {
+//        LONG Left;
+//        LONG Top;
+//        LONG Right;
+//        LONG Bottom;
+//    } RECT;
+
+    typedef struct NMTOOLTIPSCREATED {
+        NMHDR hdr;
+        LONG hwndToolTips;
+    } NMTOOLTIPSCREATED;
+
+    typedef struct NMMOUSE {
+        NMHDR   hdr;
+        LONG dwItemSpec;
+        LONG dwItemData;
+        POINT pt;
+        [helpstring("any specifics about where on the item or control the mouse is")]
+        LONG dwHitInfo;
+    } NMMOUSE, NMCLICK;
+
+    typedef struct NMOBJECTNOTIFY {
+        NMHDR   hdr;
+        LONG iItem;
+        LONG piid;
+        LONG pObject;
+        LONG hResult;
+        [helpstring("control specific flags (hints as to where in iItem it hit)")]
+        LONG dwFlags;
+    } NMOBJECTNOTIFY;
+
+    typedef struct NMKEY {
+        NMHDR hdr;
+        short wVKey;
+        LONG flags;
+    } NMKEY;
+
+    typedef struct NMCHAR {
+        NMHDR hdr;
+        LONG ch;
+        LONG dwItemPrev; // Item previously selected
+        LONG dwItemNext; // Item to be selected
+    } NMCHAR;
+
+    typedef enum MSGFs {
+        MSGF_COMMCTRL_BEGINDRAG = 0x4200,
+        MSGF_COMMCTRL_SIZEHEADER = 0x4201,
+        MSGF_COMMCTRL_DRAGSELECT = 0x4202,
+        MSGF_COMMCTRL_TOOLBARCUST = 0x4203,
+    } MSGFs;
+
+    typedef enum CustomDrawReturnFlags {
+        CDRF_DODEFAULT = 0x00000000,
+        CDRF_NEWFONT = 0x00000002,
+        CDRF_SKIPDEFAULT = 0x00000004,
+        CDRF_NOTIFYPOSTPAINT = 0x00000010,
+        CDRF_NOTIFYITEMDRAW = 0x00000020,
+        CDRF_NOTIFYSUBITEMDRAW = 0x00000020, // flags are the same, we can distinguish by context
+        CDRF_NOTIFYPOSTERASE = 0x00000040,
+    } CustomDrawReturnFlags;
+
+    typedef enum DrawStageFlags {
+        CDDS_PREPAINT = 0x00000001,
+        CDDS_POSTPAINT = 0x00000002,
+        CDDS_PREERASE = 0x00000003,
+        CDDS_POSTERASE = 0x00000004,
+        [helpstring("CDDS_ITEM means it's individual item specific ")]
+        CDDS_ITEM = 0x00010000,
+        CDDS_SUBITEM = 0x00020000,
+    } DrawStageFlags;
+
+    typedef enum ItemStateFlags {
+        CDIS_SELECTED = 0x0001,
+        CDIS_GRAYED = 0x0002,
+        CDIS_DISABLED = 0x0004,
+        CDIS_CHECKED = 0x0008,
+        CDIS_FOCUS = 0x0010,
+        CDIS_DEFAULT = 0x0020,
+        CDIS_HOT = 0x0040,
+        CDIS_MARKED = 0x0080,
+        CDIS_INDETERMINATE = 0x0100,
+    } ItemStateFlags;
+
+    typedef struct NMCUSTOMDRAW {
+        NMHDR hdr;
+        LONG dwDrawStage;
+        LONG hdc;
+        RECT rc;
+        [helpstring("this is control specific, but it's how to specify an item.  valid only with CDDS_ITEM bit set ")]
+        LONG dwItemSpec;
+        ItemStateFlags uItemState;
+        LONG lParam;
+    } NMCUSTOMDRAW;
+
+    typedef struct NMTTCUSTOMDRAW {
+        NMCUSTOMDRAW nmcd;
+        LONG uDrawFlags;
+    } NMTTCUSTOMDRAW;
+
+ // IMAGELIST
+
+    typedef enum ColorConstants {
+        CLR_NONE = 0xFFFFFFFFL,
+        CLR_DEFAULT = 0xFF000000L,
+    } ColorConstants;
+
+    typedef struct IMAGELISTDRAWPARAMS {
+        LONG cbSize;
+        LONG himl;
+        LONG i;
+        LONG hdcDst;
+        LONG x;
+        LONG y;
+        LONG cx;
+        LONG cy;
+        [helpstring("x offest from the upperleft of bitmap")]
+        LONG xBitmap;
+        [helpstring("y offset from the upperleft of bitmap")]
+        LONG yBitmap;
+        LONG rgbBk;
+        LONG rgbFg;
+        LONG fStyle;
+        LONG dwRop;
+    } IMAGELISTDRAWPARAMS;
+
+    typedef enum ImageList_Flags {
+        ILC_MASK = 0x0001,
+        ILC_COLOR = 0x0000,
+        ILC_COLORDDB = 0x00FE,
+        ILC_COLOR4 = 0x0004,
+        ILC_COLOR8 = 0x0008,
+        ILC_COLOR16 = 0x0010,
+        ILC_COLOR24 = 0x0018,
+        ILC_COLOR32 = 0x0020,
+        ILC_PALETTE = 0x0800,
+    } ImageList_Flags;
+
+    typedef enum ImageList_DrawFlags {
+        ILD_NORMAL = 0x0000,
+        ILD_TRANSPARENT = 0x0001,
+        ILD_MASK = 0x0010,
+        ILD_IMAGE = 0x0020,
+        ILD_ROP = 0x0040,
+        ILD_BLEND25 = 0x0002,
+        ILD_BLEND50 = 0x0004,
+        ILD_OVERLAYMASK = 0x0F00,
+    } ImageList_DrawFlags;
+
+    typedef enum ImageList_CopyFlags {
+        ILCF_MOVE = (0x00000000),
+        ILCF_SWAP = (0x00000001),
+    } ImageList_CopyFlags;
+
+    typedef struct IMAGEINFO {
+        LONG hbmImage;
+        LONG hbmMask;
+        LONG Unused1;
+        LONG Unused2;
+        RECT rcImage;
+    } IMAGEINFO;
+
+    [
+        helpstring("ImageList control"),
+        dllname("comctl32.dll")
+    ]
+    module ImageList {
+
+        [entry("ImageList_Create")]
+        LONG ImageList_Create(
+                [in] LONG cx,
+                [in] LONG cy,
+                [in] ImageList_Flags flags,
+                [in] LONG cInitial,
+                [in] LONG cGrow);
+
+        [entry("ImageList_Destroy")]
+        BOOL ImageList_Destroy(
+                [in] LONG himl);
+
+        [entry("ImageList_GetImageCount")]
+         LONG ImageList_GetImageCount(
+                [in] LONG himl);
+
+        [entry("ImageList_SetImageCount")]
+        BOOL ImageList_SetImageCount(
+                [in] LONG himl,
+                [in] LONG uNewCount);
+
+        [entry("ImageList_Add")]
+        LONG ImageList_Add(
+                [in] LONG himl,
+                [in] LONG hbmImage,
+                [in] LONG hbmMask);
+
+        [entry("ImageList_ReplaceIcon")]
+        LONG ImageList_ReplaceIcon(
+                [in] LONG himl,
+                [in] LONG i,
+                [in] LONG hicon);
+
+        [entry("ImageList_SetBkColor")]
+         LONG ImageList_SetBkColor(
+                [in] LONG himl,
+                [in] LONG clrBk);
+
+        [entry("ImageList_GetBkColor")]
+        LONG ImageList_GetBkColor(
+                [in] LONG himl);
+
+        [entry("ImageList_SetOverlayImage")]
+        BOOL ImageList_SetOverlayImage(
+                [in] LONG himl,
+                [in] LONG iImage,
+                [in] LONG iOverlay);
+
+        [entry("ImageList_Draw")]
+         BOOL ImageList_Draw(
+            [in] LONG himl,
+            [in] LONG i,
+            [in] LONG hdcDst,
+            [in] LONG x,
+            [in] LONG y,
+            [in] ImageList_DrawFlags fStyle);
+
+        [entry("ImageList_Replace")]
+        BOOL ImageList_Replace(
+            [in] LONG himl,
+            [in] LONG i,
+            [in] LONG hbmImage,
+            [in] LONG hbmMask);
+
+        [entry("ImageList_AddMasked")]
+        LONG ImageList_AddMasked(
+            [in] LONG himl,
+            [in] LONG hbmImage,
+            [in] LONG crMask);
+
+        [entry("ImageList_DrawEx")]
+        BOOL ImageList_DrawEx(
+            [in] LONG himl,
+            [in] LONG i,
+            [in] LONG hdcDst,
+            [in] LONG x,
+            [in] LONG y,
+            [in] LONG dx,
+            [in] LONG dy,
+            [in] LONG rgbBk,
+            [in] LONG rgbFg,
+            [in] ImageList_DrawFlags fStyle);
+
+        [entry("ImageList_DrawIndirect")]
+         BOOL ImageList_DrawIndirect(
+            [in] IMAGELISTDRAWPARAMS* pimldp);
+
+        [entry("ImageList_Remove")]
+        BOOL ImageList_Remove(
+            [in] LONG himl,
+            [in] LONG i);
+
+        [entry("ImageList_GetIcon")]
+        LONG ImageList_GetIcon(
+            [in] LONG himl,
+            [in] LONG i,
+            [in] LONG flags);
+
+        [entry("ImageList_LoadImageA")]
+        LONG ImageList_LoadImage(
+            [in] LONG hInst,
+            [in] void *lpBMPResource,
+            [in] LONG cx,
+            [in] LONG cGrow,
+            [in] LONG crMask,
+            [in] LONG uType,
+            [in] LONG uFlags);
+
+        [entry("ImageList_LoadImageW")]
+        LONG ImageList_LoadImageW(
+            [in] LONG hInst,
+            [in] void *lpBMPResource,
+            [in] LONG cx,
+            [in] LONG cGrow,
+            [in] LONG crMask,
+            [in] LONG uType,
+            [in] LONG uFlags);
+
+        [entry("ImageList_Copy")]
+        BOOL ImageList_Copy(
+            [in] LONG himlDst,
+            [in] LONG iDst,
+            [in] LONG himlSrc,
+            [in] LONG iSrc,
+            [in] ImageList_CopyFlags uFlags);
+
+        [entry("ImageList_BeginDrag")]
+        BOOL ImageList_BeginDrag(
+            [in] LONG himlTrack,
+            [in] LONG iTrack,
+            [in] LONG dxHotspot,
+            [in] LONG dyHotspot);
+
+        [entry("ImageList_EndDrag")]
+         void ImageList_EndDrag();
+
+        [entry("ImageList_DragEnter")]
+        BOOL ImageList_DragEnter(
+            [in] LONG hwndLock,
+            [in] LONG x,
+            [in] LONG y);
+
+        [entry("ImageList_DragLeave")]
+        BOOL ImageList_DragLeave(
+            [in] LONG hwndLock);
+
+        [entry("ImageList_DragMove")]
+        BOOL ImageList_DragMove(
+            [in] LONG x,
+            [in] LONG y);
+
+        [entry("ImageList_SetDragCursorImage")]
+        BOOL ImageList_SetDragCursorImage(
+            [in] LONG himlDrag,
+            [in] LONG iDrag,
+            [in] LONG dxHotspot,
+            [in] LONG dyHotspot);
+
+        [entry("ImageList_DragShowNolock")]
+        BOOL ImageList_DragShowNolock(
+            [in] BOOL fShow);
+
+        [entry("ImageList_GetDragImage")]
+        LONG ImageList_GetDragImage(
+            [in] POINT *ppt,
+            [in] POINT *pptHotspot);
+
+        [entry("ImageList_Remove")]
+        LONG ImageList_RemoveAll(LONG himl, [optional, defaultvalue(-1)] LONG i);
+
+        [entry("ImageList_Read")]
+        LONG ImageList_Read(
+            [in] void *pstm);
+
+        [entry("ImageList_Write")]
+        BOOL ImageList_Write(
+            [in] LONG himl,
+            [in] void *pstm);
+
+        [entry("ImageList_GetIconSize")]
+        BOOL ImageList_GetIconSize(
+            [in] LONG himl,
+            [out] LONG *cx,
+            [out] LONG *cy);
+
+        [entry("ImageList_SetIconSize")]
+        BOOL ImageList_SetIconSize(
+            [in] LONG himl,
+            [in] LONG cx,
+            [in] LONG cy);
+
+        [entry("ImageList_GetImageInfo")]
+        BOOL ImageList_GetImageInfo(
+            [in] LONG himl,
+            [in] LONG i,
+            [out] IMAGEINFO *pImageInfo);
+
+        [entry("ImageList_Merge")]
+        LONG ImageList_Merge(
+            [in] LONG himl1,
+            [in] LONG i1,
+            [in] LONG himl2,
+            [in] LONG i2,
+            [in] LONG dx,
+            [in] LONG dy);
+
+        [entry("ImageList_Duplicate")]
+        LONG ImageList_Duplicate(
+            [in] LONG himl);
+
+    }
+
+ // = ===== HEADER CONTROL = ======================
+
+    [
+        helpstring("Header Control")
+    ]
+    module Header {
+
+        const LPSTR WC_HEADER = "SysHeader32";
+
+    }
+
+    typedef enum Header_Styles {
+        HDS_HORZ = 0x0000,
+        HDS_BUTTONS = 0x0002,
+        HDS_HOTTRACK = 0x0004,
+        HDS_HIDDEN = 0x0008,
+        HDS_DRAGDROP = 0x0040,
+        HDS_FULLDRAG = 0x0080,
+        HDS_FILTERBAR = 0x0100,
+    } HeaderStyles;
+
+    typedef enum HeaderFilterFlags {
+        HDFT_ISSTRING = 0x0000, // HD_ITEM.pvFilter points to a HD_TEXTFILTER
+        HDFT_ISNUMBER = 0x0001, // HD_ITEM.pvFilter points to a INT
+        HDFT_HASNOVALUE = 0x8000, // clear the filter, by setting this bit
+    } HeaderFilterFlags;
+
+    typedef struct HD_TEXTFILTER {
+        LONG pszText; // [in] pointer to the buffer containing the filter (ANSI)
+        LONG cchTextMax; // [in] max size of buffer/edit control buffer
+    } HD_TEXTFILTER;
+
+    typedef enum Header_ItemMask {
+        HDI_WIDTH = 0x0001,
+        HDI_HEIGHT = 0x0001,
+        HDI_TEXT = 0x0002,
+        HDI_FORMAT = 0x0004,
+        HDI_LPARAM = 0x0008,
+        HDI_BITMAP = 0x0010,
+        HDI_IMAGE = 0x0020,
+        HDI_DI_SETITEM = 0x0040,
+        HDI_ORDER = 0x0080,
+        HDI_FILTER = 0x0100,
+    } HeaderItemMask;
+
+    typedef enum Header_Formats {
+        HDF_LEFT = 0,
+        HDF_RIGHT = 1,
+        HDF_CENTER = 2,
+        HDF_JUSTIFYMASK = 3,
+        HDF_RTLREADING = 4,
+        HDF_BITMAP_ON_RIGHT = 0x1000,
+        HDF_BITMAP = 0x2000,
+        HDF_STRING = 0x4000,
+        HDF_OWNERDRAW = 0x8000,
+        HDF_IMAGE = 0x0800,
+    } HeaderFormats;
+
+    typedef struct HDITEM {
+        HeaderItemMask    mask;
+        LONG cxy;
+        LONG pszText;
+        LONG hbm;
+        LONG cchTextMax;
+        LONG fmt;
+        LONG lParam;
+        LONG iImage; // index of bitmap in ImageList
+        LONG iOrder; // where to draw this item
+    } HDITEM;
+
+    typedef struct HDITEM_V5 {
+        HeaderItemMask    mask;
+        LONG cxy;
+        LONG pszText;
+        LONG hbm;
+        LONG cchTextMax;
+        LONG fmt;
+        LONG lParam;
+        LONG iImage; // index of bitmap in ImageList
+        LONG iOrder; // where to draw this item
+        LONG type;
+        LONG pvFilter;
+    } HDITEM_V5;
+
+    typedef enum Header_Messages {
+        HDM_GETITEMCOUNT = (0x1200 + 0),
+        HDM_INSERTITEMA = (0x1200 + 1),
+        HDM_DELETEITEM = (0x1200 + 2),
+        HDM_GETITEMA = (0x1200 + 3),
+        HDM_SETITEMA = (0x1200 + 4),
+        HDM_LAYOUT = (0x1200 + 5),
+        HDM_HITTEST = (0x1200 + 6),
+        HDM_GETITEMRECT = (0x1200 + 7),
+        HDM_SETIMAGELIST = (0x1200 + 8),
+        HDM_GETIMAGELIST = (0x1200 + 9),
+        HDM_INSERTITEMW = (0x1200 + 10),
+        HDM_GETITEMW = (0x1200 + 11),
+        HDM_SETITEMW = (0x1200 + 12),
+        HDM_ORDERTOINDEX = (0x1200 + 15),
+        HDM_CREATEDRAGIMAGE = (0x1200 + 16),
+        HDM_GETORDERARRAY = (0x1200 + 17),
+        HDM_SETORDERARRAY = (0x1200 + 18),
+        HDM_SETHOTDIVIDER = (0x1200 + 19),
+        HDM_SETBITMAPMARGIN = (0x1200 + 20),
+        HDM_GETBITMAPMARGIN = (0x1200 + 21),
+        HDM_SETFILTERCHANGETIMEOUT = (0x1200+22),
+        HDM_EDITFILTER = (0x1200+23),
+        HDM_CLEARFILTER = (0x1200+24),
+    } HeaderMessages;
+
+    typedef struct HDLAYOUT {
+        LONG pRECT;
+        LONG pWINDOWPOS;
+    } HDLAYOUT;
+
+    typedef enum Header_HitTestValues {
+        HHT_NOWHERE = 0x0001,
+        HHT_ONHEADER = 0x0002,
+        HHT_ONDIVIDER = 0x0004,
+        HHT_ONDIVOPEN = 0x0008,
+        HHT_ONFILTER = 0x0010,
+        HHT_ONFILTERBUTTON = 0x0020,
+        HHT_ABOVE = 0x0100,
+        HHT_BELOW = 0x0200,
+        HHT_TORIGHT = 0x0400,
+        HHT_TOLEFT = 0x0800,
+    } HeaderHitTestValues;
+
+    typedef struct HDHITTESTINFO {
+        POINT pt;
+        LONG flags;
+        LONG iItem;
+    } HDHITTESTINFO;
+
+    typedef struct NMHEADER {
+        NMHDR   hdr;
+        LONG iItem;
+        LONG iButton;
+        LONG pHDITEM;
+    }  NMHEADER;
+
+    typedef enum Header_NotifyMessages {
+        HDN_ITEMCHANGINGA = (-300),
+        HDN_ITEMCHANGINGW = (-320),
+        HDN_ITEMCHANGEDA = (-301),
+        HDN_ITEMCHANGEDW = (-321),
+        HDN_ITEMCLICKA = (-302),
+        HDN_ITEMCLICKW = (-322),
+        HDN_ITEMDBLCLICKA = (-303),
+        HDN_ITEMDBLCLICKW = (-323),
+        HDN_DIVIDERDBLCLICKA = (-305),
+        HDN_DIVIDERDBLCLICKW = (-325),
+        HDN_BEGINTRACKA = (-306),
+        HDN_BEGINTRACKW = (-326),
+        HDN_ENDTRACKA = (-307),
+        HDN_ENDTRACKW = (-327),
+        HDN_TRACKA = (-308),
+        HDN_TRACKW = (-328),
+        HDN_GETDISPINFOA = (-309),
+        HDN_GETDISPINFOW = (-329),
+        HDN_BEGINDRAG = (-310),
+        HDN_ENDDRAG = (-311),
+        HDN_FILTERCHANGE = (-312),
+        HDN_FILTERBTNCLICK = (-313),
+    } HeaderNotifyMessages;
+
+    typedef struct NMHDDISPINFO {
+        NMHDR hdr;
+        LONG iItem;
+        LONG mask;
+        LONG pszText;
+        LONG cchTextMax;
+        LONG iImage;
+        LONG lParam;
+    } NMHDDISPINFO;
+
+    typedef struct NMHDFILTERBTNCLICK {
+        NMHDR hdr;
+        LONG iItem;
+        RECT rc;
+    } NMHDFILTERBTNCLICK;
+
+ // = = ====TOOLBAR CONTROL = = ====================================================
+
+    typedef struct TBBUTTON {
+        LONG iBitmap;
+        LONG idCommand;
+        BYTE fsState;
+        BYTE fsStyle;
+        BYTE bReserved[2];
+        LONG dwData;
+        LONG iString;
+    } TBBUTTON;
+
+    typedef struct COLORMAP {
+        LONG from;
+        LONG to;
+    } COLORMAP;
+
+    typedef enum Toolbar_ButtonStates {
+        TBSTATE_CHECKED = 0x01,
+        TBSTATE_PRESSED = 0x02,
+        TBSTATE_ENABLED = 0x04,
+        TBSTATE_HIDDEN = 0x08,
+        TBSTATE_INDETERMINATE = 0x10,
+        TBSTATE_WRAP = 0x20,
+        TBSTATE_ELLIPSES = 0x40,
+        TBSTATE_MARKED = 0x80,
+    } ToolBarButtonStates;
+
+    typedef enum ToolbarStyles {
+        TBSTYLE_TOOLTIPS = 0x0100,
+        TBSTYLE_WRAPABLE = 0x0200,
+        TBSTYLE_ALTDRAG = 0x0400,
+        TBSTYLE_FLAT = 0x0800,
+        TBSTYLE_LIST = 0x1000,
+        TBSTYLE_CUSTOMERASE = 0x2000,
+        TBSTYLE_REGISTERDROP = 0x4000,
+        TBSTYLE_TRANSPARENT = 0x8000,
+        TBSTYLE_EX_DRAWDDARROWS = 0x00000001,
+        TBSTYLE_EX_MIXEDBUTTONS = 0x00000008,
+        TBSTYLE_EX_HIDECLIPPEDBUTTONS = 0x00000010, // don't show partially obscured buttons
+    } ToolbarStyles;
+
+    typedef enum ToolbarButtonStyles {
+        BTNS_BUTTON = 0x0000,
+        BTNS_SEP = 0x0001,
+        BTNS_CHECK = 0x0002,
+        BTNS_GROUP = 0x0004,
+        BTNS_CHECKGROUP = (BTNS_GROUP | BTNS_CHECK),
+        BTNS_DROPDOWN = 0x0008,
+        BTNS_AUTOSIZE = 0x0010, // automatically calculate the cx of the button
+        BTNS_NOPREFIX = 0x0020, // this button should not have accel prefix
+        BTNS_SHOWTEXT = 0x0040, // ignored unless TBSTYLE_EX_MIXEDBUTTONS is set
+        BTNS_WHOLEDROPDOWN = 0x0080, // draw drop-down arrow, but without split arrow section
+    } ToolbarButtonStyles;
+
+    typedef enum ToolbarCustomDrawReturnFlags {
+        TBCDRF_NOEDGES = 0x00010000, // Don't draw button edges
+        TBCDRF_HILITEHOTTRACK = 0x00020000, // Use color of the button bk when hottracked
+        TBCDRF_NOOFFSET = 0x00040000, // Don't offset button if pressed
+        TBCDRF_NOMARK = 0x00080000, // Don't draw default highlight of image/text for TBSTATE_MARKED
+        TBCDRF_NOETCHEDEFFECT = 0x00100000, // Don't draw etched effect for disabled items
+        TBCDRF_BLENDICON = 0x00200000, // Use ILD_BLEND50 on the icon image 
+    } ToolbarCustomDrawReturnFlags;
+
+    typedef enum CreateMappedBitmapFlags {
+        CMB_MASKED = 0x02,
+    } CreateMappedBitmapFlags;
+
+    typedef struct NMTBCUSTOMDRAW {
+        NMCUSTOMDRAW nmcd;
+        LONG hbrMonoDither;
+        [helpstring("Brush for drawing lines on buttons")]
+        LONG hbrLines;
+        [helpstring("Pen for drawing lines on buttons")]
+        LONG hpenLines;
+        LONG clrText; // Color of text
+        LONG clrMark; // Color of text bk when marked. (only if TBSTATE_MARKED)
+        LONG clrTextHighlight; // Color of text when highlighted
+        LONG clrBtnFace; // Background of the button
+        LONG clrBtnHighlight; // 3D highlight
+        LONG clrHighlightHotTrack; // In conjunction with fHighlightHotTrack
+ // will cause button to highlight like a menu
+        RECT rcText; // Rect for text
+        LONG nStringBkMode;
+        LONG nHLStringBkMode;
+    } NMTBCUSTOMDRAW;
+
+    typedef enum Toolbar_Messages {
+        TB_ENABLEBUTTON = (0x400 + 1),
+        TB_CHECKBUTTON = (0x400 + 2),
+        TB_PRESSBUTTON = (0x400 + 3),
+        TB_HIDEBUTTON = (0x400 + 4),
+        TB_INDETERMINATE = (0x400 + 5),
+        TB_MARKBUTTON = (0x400 + 6),
+        TB_ISBUTTONENABLED = (0x400 + 9),
+        TB_ISBUTTONCHECKED = (0x400 + 10),
+        TB_ISBUTTONPRESSED = (0x400 + 11),
+        TB_ISBUTTONHIDDEN = (0x400 + 12),
+        TB_ISBUTTONINDETERMINATE = (0x400 + 13),
+        TB_ISBUTTONHIGHLIGHTED = (0x400 + 14),
+        TB_SETSTATE = (0x400 + 17),
+        TB_GETSTATE = (0x400 + 18),
+        TB_ADDBITMAP = (0x400 + 19),
+        TB_ADDBUTTONS = (0x400 + 20),
+        TB_INSERTBUTTON = (0x400 + 21),
+        TB_DELETEBUTTON = (0x400 + 22),
+        TB_GETBUTTON = (0x400 + 23),
+        TB_BUTTONCOUNT = (0x400 + 24),
+        TB_COMMANDTOINDEX = (0x400 + 25),
+        TB_SAVERESTORE = (0x400 + 26),
+        TB_SAVERESTOREW = (0x400 + 76),
+        TB_CUSTOMIZE = (0x400 + 27),
+        TB_ADDSTRINGA = (0x400 + 28),
+        TB_ADDSTRINGW = (0x400 + 77),
+        TB_GETITEMRECT = (0x400 + 29),
+        TB_BUTTONSTRUCTSIZE = (0x400 + 30),
+        TB_SETBUTTONSIZE = (0x400 + 31),
+        TB_SETBITMAPSIZE = (0x400 + 32),
+        TB_AUTOSIZE = (0x400 + 33),
+        TB_GETTOOLTIPS = (0x400 + 35),
+        TB_SETTOOLTIPS = (0x400 + 36),
+        TB_SETPARENT = (0x400 + 37),
+        TB_SETROWS = (0x400 + 39),
+        TB_GETROWS = (0x400 + 40),
+        TB_SETCMDID = (0x400 + 42),
+        TB_CHANGEBITMAP = (0x400 + 43),
+        TB_GETBITMAP = (0x400 + 44),
+        TB_GETBUTTONTEXT = (0x400 + 45),
+        TB_GETBUTTONTEXTW = (0x400 + 75),
+        TB_REPLACEBITMAP = (0x400 + 46),
+        TB_SETINDENT = (0x400 + 47),
+        TB_SETIMAGELIST = (0x400 + 48),
+        TB_GETIMAGELIST = (0x400 + 49),
+        TB_LOADIMAGES = (0x400 + 50),
+        TB_GETRECT = (0x400 + 51), // wParam is the Cmd instead of index
+        TB_SETHOTIMAGELIST = (0x400 + 52),
+        TB_GETHOTIMAGELIST = (0x400 + 53),
+        TB_SETDISABLEDIMAGELIST = (0x400 + 54),
+        TB_GETDISABLEDIMAGELIST = (0x400 + 55),
+        TB_SETSTYLE = (0x400 + 56),
+        TB_GETSTYLE = (0x400 + 57),
+        TB_GETBUTTONSIZE = (0x400 + 58),
+        TB_SETBUTTONWIDTH = (0x400 + 59),
+        TB_SETMAXTEXTROWS = (0x400 + 60),
+        TB_GETTEXTROWS = (0x400 + 61),
+        TB_SETCOLORSCHEME = 0x2002, // lParam is color scheme
+        TB_GETOBJECT = (0x400 + 62), // wParam = = IID, lParam void **ppv
+        TB_GETHOTITEM = (0x400 + 71),
+        TB_SETHOTITEM = (0x400 + 72), // wParam = = iHotItem
+        TB_SETANCHORHIGHLIGHT = (0x400 + 73), // wParam = = TRUE/FALSE
+        TB_GETANCHORHIGHLIGHT = (0x400 + 74),
+        TB_MAPACCELERATOR = (0x400 + 78), // wParam = = ch, lParam LONG * pidBtn
+        TB_GETINSERTMARK = (0x400 + 79), // lParam = = LPTBINSERTMARK
+        TB_SETINSERTMARK = (0x400 + 80), // lParam = = LPTBINSERTMARK
+        TB_INSERTMARKHITTEST = (0x400 + 81), // wParam = = LPPOINT lParam = = LPTBINSERTMARK
+        TB_MOVEBUTTON = (0x400 + 82),
+        TB_GETMAXSIZE = (0x400 + 83), // lParam = = LPSIZE
+        TB_SETEXTENDEDSTYLE = (0x400 + 84), // For TBSTYLE_EX_*
+        TB_GETEXTENDEDSTYLE = (0x400 + 85), // For TBSTYLE_EX_*
+        TB_GETBITMAPFLAGS = (0x400 + 41),
+        TB_GETBUTTONINFOW = (0x400 + 63),
+        TB_SETBUTTONINFOW = (0x400 + 64),
+        TB_GETBUTTONINFO = (0x400 + 65),
+        TB_SETBUTTONINFO = (0x400 + 66),
+        TB_INSERTBUTTONW = (0x400 + 67),
+        TB_ADDBUTTONSW = (0x400 + 68),
+        TB_HITTEST = (0x400 + 69),
+        TB_SETDRAWTEXTFLAGS = (0x400 + 70), // wParam = = mask lParam = = bit values
+        TB_GETPADDING = (0x400 + 86),
+        TB_SETPADDING = (0x400 + 87),
+        TB_SETINSERTMARKCOLOR = (0x400 + 88),
+        TB_GETINSERTMARKCOLOR = (0x400 + 89),
+        TB_MAPACCELERATORW = (0x400 + 90), // wParam = = ch, lParam int * pidBtn
+    } ToolbarMessages;
+
+    typedef enum Toolbar_InsertMarkFlags {
+        TBIMHT_AFTER = 0x00000001, // TRUE = insert After iButton, otherwise before
+        TBIMHT_BACKGROUND = 0x00000002, // TRUE iff missed buttons completely
+    } ToolbarInsertMarkFlags;
+
+    typedef struct TBADDBITMAP {
+        LONG hInst;
+        LONG nID;
+    } TBADDBITMAP;
+
+    typedef enum Toolbar_AddBitmapValues {
+        HINST_COMMCTRL = (-1),
+        IDB_STD_SMALL_COLOR = 0,
+        IDB_STD_LARGE_COLOR = 1,
+        IDB_VIEW_SMALL_COLOR = 4,
+        IDB_VIEW_LARGE_COLOR = 5,
+        IDB_HIST_SMALL_COLOR = 8,
+        IDB_HIST_LARGE_COLOR = 9,
+    } ToolbarAddBitmapValues;
+
+ // icon indexes for standard bitmap
+    typedef enum Toolbar_StandardBitmaps {
+        STD_CUT = 0,
+        STD_COPY = 1,
+        STD_PASTE = 2,
+        STD_UNDO = 3,
+        STD_REDOW = 4,
+        STD_DELETE = 5,
+        STD_FILENEW = 6,
+        STD_FILEOPEN = 7,
+        STD_FILESAVE = 8,
+        STD_PRINTPRE = 9,
+        STD_PROPERTIES = 10,
+        STD_HELP = 11,
+        STD_FIND = 12,
+        STD_REPLACE = 13,
+        STD_PRINT = 14,
+        VIEW_LARGEICONS = 0,
+        VIEW_SMALLICONS = 1,
+        VIEW_LIST = 2,
+        VIEW_DETAILS = 3,
+        VIEW_SORTNAME = 4,
+        VIEW_SORTSIZE = 5,
+        VIEW_SORTDATE = 6,
+        VIEW_SORTTYPE = 7,
+        VIEW_PARENTFOLDER = 8,
+        VIEW_NETCONNECT = 9,
+        VIEW_NETDISCONNECT = 10,
+        VIEW_NEWFOLDER = 11,
+        VIEW_VIEWMENU = 12,
+        HIST_BACK = 0,
+        HIST_FORWARD = 1,
+        HIST_FAVORITES = 2,
+        HIST_ADDTOFAVORITES = 3,
+        HIST_VIEWTREE = 4,
+    } ToolbarStandardBitmaps;
+
+    typedef struct TBSAVEPARAMS {
+        LONG hkr;
+        LONG pszSubKey;
+        LONG pszValueName;
+    } TBSAVEPARAMS;
+
+    typedef struct TBINSERTMARK {
+        LONG iButton;
+        LONG dwFlags;
+    } TBINSERTMARK;
+
+    typedef struct TBREPLACEBITMAP {
+        LONG hInstOld;
+        LONG nIDOld;
+        LONG hInstNew;
+        LONG nIDNew;
+        LONG nButtons;
+    } TBREPLACEBITMAP;
+
+    typedef enum Toolbar_BitmapFlags {
+        TBBF_LARGE = 0x0001,
+    } ToolbarBitmapFlags;
+
+    typedef enum Toolbar_ButtonInfoMask {
+        TBIF_IMAGE = 0x00000001,
+        TBIF_TEXT = 0x00000002,
+        TBIF_STATE = 0x00000004,
+        TBIF_STYLE = 0x00000008,
+        TBIF_LPARAM = 0x00000010,
+        TBIF_COMMAND = 0x00000020,
+        TBIF_SIZE = 0x00000040,
+    } ToolbarButtonInfoMask;
+
+    typedef struct TBBUTTONINFO {
+        LONG cbSize;
+        LONG dwMask;
+        LONG idCommand;
+        LONG iImage;
+        BYTE fsState;
+        BYTE fsStyle;
+        short cx;
+        LONG lParam;
+        LONG pszText;
+        LONG cchText;
+    } TBBUTTONINFO;
+
+ // Hot item change flags
+    typedef enum Toolbar_HotItemFlags {
+        HICF_OTHER = 0x00000000,
+        HICF_MOUSE = 0x00000001, // Triggered by mouse
+        HICF_ARROWKEYS = 0x00000002, // Triggered by arrow keys
+        HICF_ACCELERATOR = 0x00000004, // Triggered by accelerator
+        HICF_DROPDOWN = 0x00000008, // Button dropped down
+        HICF_ENTERING = 0x00000010, // idOld is invalid
+        HICF_LEAVING = 0x00000020, // idNew is invalid
+        HICF_RESELECT = 0x00000040, // hot item reselected
+        HICF_LMOUSE = 0x00000080, // left mouse button selected
+        HICF_TOGGLEDROPDOWN = 0x00000100, // Toggle button's dropdown state
+    } ToolbarHotItemFlags;
+
+    typedef struct NMTBHOTITEM {
+        NMHDR   hdr;
+        LONG idOld;
+        LONG idNew;
+        ToolbarHotItemFlags dwFlags;
+    } NMTBHOTITEM;
+
+    typedef struct NMTBDISPINFO {
+        NMHDR  hdr;
+        LONG dwMask; // [in] Specifies the values requested .[out] Client ask the data to be set for future use
+        LONG idCommand; // [in] id of button we're requesting info for
+        LONG lParam; // [in] lParam of button
+        LONG iImage; // [out] image index
+        LONG pszText; // [out] new text for item
+        LONG cchText; // [in] size of buffer pointed to by pszText
+    } NMTBDISPINFO;
+
+    typedef enum Toolbar_NotifyCodes {
+        TBN_GETBUTTONINFO = (-700-0),
+        TBN_GETBUTTONINFOW = (-700-20),
+        TBN_BEGINDRAG = (-700-1),
+        TBN_ENDDRAG = (-700-2),
+        TBN_BEGINADJUST = (-700-3),
+        TBN_ENDADJUST = (-700-4),
+        TBN_RESET = (-700-5),
+        TBN_QUERYINSERT = (-700-6),
+        TBN_QUERYDELETE = (-700-7),
+        TBN_TOOLBARCHANGE = (-700-8),
+        TBN_CUSTHELP = (-700-9),
+        TBN_DROPDOWN = (-700 - 10),
+        TBN_GETOBJECT = (-700 - 12),
+        TBN_HOTITEMCHANGE = (-700 - 13),
+        TBN_DRAGOUT = (-700 - 14), // this is sent when the user clicks down on a button then drags off the button
+        TBN_DELETINGBUTTON = (-700 - 15), // uses TBNOTIFY
+        TBN_GETDISPINFO = (-700 - 16), // This is sent when the  toolbar needs  some display information
+        TBN_GETDISPINFOW = (-700 - 17), // This is sent when the  toolbar needs  some display information
+        TBN_GETINFOTIP = (-700 - 18),
+        TBN_GETINFOTIPW = (-700 - 19),
+        TBN_RESTORE = (-700 - 21),
+        TBN_SAVE = (-700 - 22),
+        TBN_INITCUSTOMIZE = (-700 - 23),
+    } ToolbarNotifyCodes;
+
+    typedef enum ToolbarCustomizeReturnFlags {
+        TBNRF_HIDEHELP = 0x00000001,
+        TBNRF_ENDCUSTOMIZE = 0x00000002,
+    } ToolbarCustomizeReturnFlags;
+
+    typedef enum Toolbar_NotifyFlags {
+        TBNF_IMAGE = 0x00000001,
+        TBNF_TEXT = 0x00000002,
+        TBNF_DI_SETITEM = 0x10000000,
+    } ToolbarNotifyFlags;
+
+    typedef struct NMTBSAVE {
+        NMHDR hdr;
+        LONG pData;
+        LONG pCurrent;
+        LONG cbData;
+        LONG iItem;
+        LONG cButtons;
+        TBBUTTON tbButton;
+    } NMTBSAVE;
+
+    typedef struct NMTBRESTORE {
+        NMHDR hdr;
+        LONG pData;
+        LONG pCurrent;
+        LONG cbData;
+        LONG iItem;
+        LONG cButtons;
+        LONG cbBytesPerRecord;
+        TBBUTTON tbButton;
+    } NMTBRESTORE;
+
+    typedef struct NMTBGETINFOTIP {
+        NMHDR hdr;
+        LONG pszText;
+        LONG cchTextMax;
+        LONG iItem;
+        LONG lParam;
+    } NMTBGETINFOTIP;
+
+    typedef enum ToolbarDropdownReturnValues {
+        TBDDRET_DEFAULT = 0,
+        TBDDRET_NODEFAULT = 1,
+        TBDDRET_TREATPRESSED = 2, // Treat as a standard press button
+    } ToolbarDropdownReturnValues;
+
+    typedef struct NMTOOLBAR {
+        NMHDR hdr;
+        LONG iItem;
+        TBBUTTON tbButton;
+        LONG cchText;
+        LONG pszText;
+    } NMTOOLBAR;
+
+    [
+        helpstring("Toolbar Control"),
+        dllname("comctl32.dll")
+    ]
+    module ToolBar {
+
+        const LPSTR TOOLBARCLASSNAME = "ToolbarWindow32";
+
+        [entry("CreateToolbarEx")]
+        LONG CreateToolbarEx(
+            [in] LONG hwnd,
+            [in] LONG ws,
+            [in] LONG wID,
+            [in] LONG nBitmaps,
+            [in] LONG hBMInst,
+            [in] LONG wBMID,
+            [in] TBBUTTON *lpButtonsArray,
+            [in] LONG iNumButtons,
+            [in] LONG dxButton,
+            [in] LONG dyButton,
+            [in] LONG dxBitmap,
+            [in] LONG dyBitmap,
+            [in] LONG uStructSize);
+
+        [entry("CreateMappedBitmap")]
+         LONG CreateMappedBitmap(
+            [in] LONG hInstance,
+            [in] LONG idBitmap,
+            [in] LONG wFlags,
+            [in] COLORMAP *lpColorMapArray,
+            [in] LONG iNumMaps);
+
+     } // ENDTOOLBAR
+
+ // = = ====REBAR CONTROL = = ======================================================
+
+    [
+        helpstring("ReBar Control"),
+        dllname("comctl32.dll")
+    ]
+    module ReBar {
+
+        const LPSTR REBARCLASSNAME = "ReBarWindow32";
+    }
+
+    typedef enum ReBar_IM {
+        RBIM_IMAGELIST = 0x00000001,
+    } ReBar_IM;
+
+    typedef enum ReBar_Styles {
+        RBS_TOOLTIPS = 0x0100,
+        RBS_VARHEIGHT = 0x0200,
+        RBS_BANDBORDERS = 0x0400,
+        RBS_FIXEDORDER = 0x0800,
+        RBS_REGISTERDROP = 0x1000,
+        RBS_AUTOSIZE = 0x2000,
+        RBS_VERTICALGRIPPER = 0x4000, // this always has the vertical gripper (default for horizontal mode)
+        RBS_DBLCLKTOGGLE = 0x8000,
+    } ReBar_Styles;
+
+    typedef struct REBARINFO {
+        LONG cbSize;
+        LONG fMask;
+        LONG himl;
+    } REBARINFO;
+
+    typedef enum ReBar_BandStyles {
+        RBBS_BREAK = 0x00000001, // break to new line
+        RBBS_FIXEDSIZE = 0x00000002, // band can't be sized
+        RBBS_CHILDEDGE = 0x00000004, // edge around top & bottom of child window
+        RBBS_HIDDEN = 0x00000008, // don't show
+        RBBS_NOVERT = 0x00000010, // don't show when vertical
+        RBBS_FIXEDBMP = 0x00000020, // bitmap doesn't move during band resize
+        RBBS_VARIABLEHEIGHT = 0x00000040, // allow autosizing of this child vertically
+        RBBS_GRIPPERALWAYS = 0x00000080, // always show the gripper
+        RBBS_NOGRIPPER = 0x00000100, // never show the gripper
+        RBBS_USECHEVRON = 0x00000200,
+        RBBS_HIDETITLE = 0x00000400,
+    } ReBarBandStyles;
+
+    typedef enum ReBar_BandInfoMask {
+        RBBIM_STYLE = 0x00000001,
+        RBBIM_COLORS = 0x00000002,
+        RBBIM_TEXT = 0x00000004,
+        RBBIM_IMAGE = 0x00000008,
+        RBBIM_CHILD = 0x00000010,
+        RBBIM_CHILDSIZE = 0x00000020,
+        RBBIM_SIZE = 0x00000040,
+        RBBIM_BACKGROUND = 0x00000080,
+        RBBIM_ID = 0x00000100,
+        RBBIM_IDEALSIZE = 0x00000200,
+        RBBIM_LPARAM = 0x00000400,
+        RBBIM_HEADERSIZE = 0x00000800, // control the size of the header
+    } ReBarBandInfoMask;
+
+    typedef struct REBARBANDINFO {
+        LONG cbSize;
+        ReBarBandInfoMask    fMask;
+        LONG fStyle;
+        LONG clrFore;
+        LONG clrBack;
+        LONG lpText;
+        LONG cch;
+        LONG iImage;
+        LONG hwndChild;
+        LONG cxMinChild;
+        LONG cyMinChild;
+        LONG cx;
+        LONG hbmBack;
+        LONG wID;
+        LONG cyChild;
+        LONG cyMaxChild;
+        LONG cyIntegral;
+        LONG cxIdeal;
+        LONG lParam;
+        LONG cxHeader;
+    } REBARBANDINFO;
+
+    typedef enum ReBar_Messages {
+        RB_INSERTBANDA = (0x400 +  1),
+        RB_DELETEBAND = (0x400 +  2),
+        RB_GETBARINFO = (0x400 +  3),
+        RB_SETBARINFO = (0x400 +  4),
+        RB_GETBANDINFO = (0x400 +  5),
+        RB_SETBANDINFOA = (0x400 +  6),
+        RB_SETPARENT = (0x400 +  7),
+        RB_HITTEST = (0x400 +  8),
+        RB_GETRECT = (0x400 +  9),
+        RB_INSERTBANDW = (0x400 +  10),
+        RB_SETBANDINFOW = (0x400 +  11),
+        RB_GETBANDCOUNT = (0x400 +  12),
+        RB_GETROWCOUNT = (0x400 +  13),
+        RB_GETROWHEIGHT = (0x400 +  14),
+        RB_IDTOINDEX = (0x400 +  16), // wParam = = id
+        RB_GETTOOLTIPS = (0x400 +  17),
+        RB_SETTOOLTIPS = (0x400 +  18),
+        RB_SETBKCOLOR = (0x400 +  19), // sets the default BK color
+        RB_GETBKCOLOR = (0x400 +  20), // defaults to CLR_NONE
+        RB_SETTEXTCOLOR = (0x400 +  21),
+        RB_GETTEXTCOLOR = (0x400 +  22), // defaults to 0x00000000
+        RB_SIZETORECT = (0x400 +  23), // resize the rebar/break bands and such to this rect (lparam)
+        RB_SETCOLORSCHEME = CCM_SETCOLORSCHEME , // lParama is color scheme
+        RB_BEGINDRAG = (0x400 + 24),
+        RB_ENDDRAG = (0x400 + 25),
+        RB_DRAGMOVE = (0x400 + 26),
+        RB_GETBARHEIGHT = (0x400 + 27),
+        RB_GETBANDINFOW = (0x400 + 28),
+        RB_GETBANDINFOA = (0x400 + 29),
+        RB_MINIMIZEBAND = (0x400 + 30),
+        RB_MAXIMIZEBAND = (0x400 + 31),
+        RB_GETDROPTARGET = (0x400 + 32),
+        RB_GETBANDBORDERS = (0x400 + 34), // returns in lparam = lprc the amount of edges added to band wparam
+        RB_SHOWBAND = (0x400 + 35), // show/hide band
+        RB_SETPALETTE = (0x400 + 37),
+        RB_GETPALETTE = (0x400 + 38),
+        RB_MOVEBAND = (0x400 + 39),
+        RB_PUSHCHEVRON = (0x400 + 43),
+    } ReBarMessages;
+
+
+    typedef enum ReBar_NotificationCodes {
+        RBN_HEIGHTCHANGE = (-831 - 0),
+        RBN_GETOBJECT = (-831 - 1),
+        RBN_LAYOUTCHANGED = (-831 - 2),
+        RBN_AUTOSIZE = (-831 - 3),
+        RBN_BEGINDRAG = (-831 - 4),
+        RBN_ENDDRAG = (-831 - 5),
+        RBN_DELETINGBAND = (-831 - 6), // Uses NMREBAR
+        RBN_DELETEDBAND = (-831 - 7), // Uses NMREBAR
+        RBN_CHILDSIZE = (-831 - 8),
+        RBN_CHEVRONPUSHED = (-831 - 10),
+        RBN_MINMAX = (-831 - 21),
+    } ReBar_NotificationCodes;
+
+    typedef struct NMREBARCHILDSIZE {
+        NMHDR hdr;
+        LONG uBand;
+        LONG wID;
+        RECT rcChild;
+        RECT rcBand;
+    } NMREBARCHILDSIZE;
+
+    typedef enum NMREBARMasks {
+        RBNM_ID = 0x00000001,
+        RBNM_STYLE = 0x00000002,
+        RBNM_LPARAM = 0x00000004,
+    } NMREBARMasks;
+
+    typedef struct NMREBAR {
+        NMHDR   hdr;
+        NMREBARMasks dwMask; // RBNM_*
+        LONG uBand;
+        LONG fStyle;
+        LONG wID;
+        LONG lParam;
+    } NMREBAR;
+
+    typedef struct NMRBAUTOSIZE {
+        NMHDR hdr;
+        BOOL fChanged;
+        RECT rcTarget;
+        RECT rcActual;
+    } NMRBAUTOSIZE;
+
+    typedef struct NMREBARCHEVRON {
+        NMHDR hdr;
+        LONG uBand;
+        LONG wID;
+        LONG lParam;
+        RECT rc;
+        LONG lParamNM;
+    } NMREBARCHEVRON;
+
+    typedef enum ReBar_HitTestFlags {
+        RBHT_NOWHERE = 0x0001,
+        RBHT_CAPTION = 0x0002,
+        RBHT_CLIENT = 0x0003,
+        RBHT_GRABBER = 0x0004,
+        RBHT_CHEVRON = 0x0008,
+    } ReBarHitTestFlags;
+
+    typedef struct RBHITTESTINFO {
+        POINT pt;
+            ReBarHitTestFlags flags;
+        LONG iBand;
+    } RBHITTESTINFO;
+
+ // = = ====TOOLTIPS CONTROL = = ===================================================
+
+    [
+        helpstring("Tooltips control")
+    ]
+    module Tooltips {
+
+        const LPSTR TOOLTIPS_CLASS = "tooltips_class32";
+    }
+
+    typedef struct TTTOOLINFO {
+        LONG cbSize;
+        LONG uFlags;
+        LONG hwnd;
+        LONG uId;
+        RECT rect;
+        LONG hinst;
+        LONG lpszText;
+        LONG lParam;
+    } TTTOOLINFO;
+
+    typedef enum Tooltip_Styles {
+        TTS_ALWAYSTIP = 0x01,
+        TTS_NOPREFIX = 0x02,
+        TTS_NOANIMATE = 0x10,
+        TTS_NOFADE = 0x20,
+        TTS_BALLOON = 0x40,
+    } Tooltip_Styles;
+
+
+    typedef enum Tooltip_Flags {
+        TTF_IDISHWND = 0x0001,
+
+// Use this to center around trackpoint in trackmode
+// -OR- to center around tool in normal mode.
+// Use TTF_ABSOLUTE to place the tip exactly at the track coords when
+// in tracking mode.  TTF_ABSOLUTE can be used in conjunction with TTF_CENTERTIP
+// to center the tip absolutely about the track point.
+
+        TTF_CENTERTIP = 0x0002,
+        TTF_RTLREADING = 0x0004,
+        TTF_SUBCLASS = 0x0010,
+        TTF_TRACK = 0x0020,
+        TTF_ABSOLUTE = 0x0080,
+        TTF_TRANSPARENT = 0x0100,
+        TTF_DI_SETITEM = 0x8000, // valid only on the TTN_NEEDTEXT callback
+    } Tooltip_Flags;
+
+    typedef enum Tooltip_DelayTimeFlags {
+        TTDT_AUTOMATIC = 0,
+        TTDT_RESHOW = 1,
+        TTDT_AUTOPOP = 2,
+        TTDT_INITIAL = 3,
+    } Tooltip_DelayTimeFlags;
+
+    typedef enum Tooltip_Messages {
+        TTM_ACTIVATE = (0x400 + 1),
+        TTM_SETDELAYTIME = (0x400 + 3),
+        TTM_ADDTOOL = (0x400 + 4),
+        TTM_ADDTOOLW = (0x400 + 50),
+        TTM_DELTOOL = (0x400 + 5),
+        TTM_DELTOOLW = (0x400 + 51),
+        TTM_NEWTOOLRECT = (0x400 + 6),
+        TTM_NEWTOOLRECTW = (0x400 + 52),
+        TTM_RELAYEVENT = (0x400 + 7),
+        TTM_GETTOOLINFO = (0x400 + 8),
+        TTM_GETTOOLINFOW = (0x400 + 53),
+        TTM_SETTOOLINFO = (0x400 + 9),
+        TTM_SETTOOLINFOW = (0x400 + 54),
+        TTM_HITTEST = (0x400 +10),
+        TTM_HITTESTW = (0x400 +55),
+        TTM_GETTEXT = (0x400 +11),
+        TTM_GETTEXTW = (0x400 +56),
+        TTM_UPDATETIPTEXT = (0x400 +12),
+        TTM_UPDATETIPTEXTW = (0x400 +57),
+        TTM_GETTOOLCOUNT = (0x400 +13),
+        TTM_ENUMTOOLS = (0x400 +14),
+        TTM_ENUMTOOLSW = (0x400 +58),
+        TTM_GETCURRENTTOOL = (0x400 + 15),
+        TTM_GETCURRENTTOOLW = (0x400 + 59),
+        TTM_WINDOWFROMPOINT = (0x400 + 16),
+        TTM_TRACKACTIVATE = (0x400 + 17), // wParam = TRUE/FALSE start end  lparam = LPTOOLINFO
+        TTM_TRACKPOSITION = (0x400 + 18), // lParam = dwPos
+        TTM_SETTIPBKCOLOR = (0x400 + 19),
+        TTM_SETTIPTEXTCOLOR = (0x400 + 20),
+        TTM_GETDELAYTIME = (0x400 + 21),
+        TTM_GETTIPBKCOLOR = (0x400 + 22),
+        TTM_GETTIPTEXTCOLOR = (0x400 + 23),
+        TTM_SETMAXTIPWIDTH = (0x400 + 24),
+        TTM_GETMAXTIPWIDTH = (0x400 + 25),
+        TTM_SETMARGIN = (0x400 + 26), // lParam = lprc
+        TTM_GETMARGIN = (0x400 + 27), // lParam = lprc
+        TTM_POP = (0x400 + 28),
+        TTM_UPDATE = (0x400 + 29),
+        TTM_GETBUBBLESIZE = (0x400 + 30),
+        TTM_ADJUSTRECT = (0x400 + 31),
+        TTM_SETTITLE = (0x400 + 32), // wParam = TTI_*, lParam = char* szTitle
+        TTM_SETTITLEW = (0x400 + 33), // wParam = TTI_*, lParam = wchar* szTitle
+    } Tooltip_Messages;
+
+    typedef enum Tooltip_Icon {
+        TTI_NONE = 0,
+        TTI_INFO = 1,
+        TTI_WARNING = 2,
+        TTI_ERROR = 3,
+    } Tooltip_Icon;
+
+    typedef struct TTHITTESTINFO {
+        LONG hwnd;
+        POINT pt;
+        TTTOOLINFO ti;
+    } TTHITTESTINFO;
+
+    typedef enum Tooltip_NotifycationCodes {
+        TTN_GETDISPINFO = (-520 - 0),
+        TTN_GETDISPINFOW = (-520 - 10),
+        TTN_SHOW = (-520 - 1),
+        TTN_POP = (-520 - 2),
+        TTN_NEEDTEXT = TTN_GETDISPINFO,
+        TTN_NEEDTEXTW = TTN_GETDISPINFOW,
+    } Tooltip_NotifycationCodes;
+
+    typedef struct NMTTDISPIFNO {
+        NMHDR hdr;
+        LONG lpszText;
+        BYTE szText[80];
+        LONG hinst;
+        LONG uFlags;
+        LONG lParam;
+    } NMTTDISPINFO;
+
+    typedef struct NMTTDISPINFOW {
+        NMHDR hdr;
+        LONG lpszText;
+        BYTE szText[160];
+        LONG hinst;
+        LONG uFlags;
+        LONG lParam;
+    } NMTTDISPINFOW;
+
+ // = === STATUS BAR CONTROL = =====================================
+
+    [
+        helpstring("StatusBar control"),
+        dllname("comctl32.dll")
+    ]
+    module StatusBar {
+
+        const LONG SBARS_SIZEGRIP = 0x0100;
+        const LONG SBARS_TOOLTIPS = 0x0800;
+        const LONG SB_SIMPLEID = 0x00ff;
+
+        [entry("DrawStatusTextA")]
+        void DrawStatusText(
+            [in] LONG hDC,
+            [in] RECT *lprc,
+            [in] LPSTR pszText,
+            [in] LONG uFlags);
+
+        [entry("DrawStatusTextW")]
+        void DrawStatusTextW(
+            [in] LONG hDC,
+            [in] RECT *lprc,
+            [in] LPOLESTR pszText,
+            [in] LONG uFlags);
+
+        [entry("CreateStatusWindowA ")]
+        LONG CreateStatusWindow(
+            [in] LONG style,
+            [in] LPSTR lpszText,
+            [in] LONG hwndParent,
+            [in] LONG wID);
+
+        [entry("CreateStatusWindowW")]
+        LONG CreateStatusWindowW(
+            [in] LONG style,
+            [in] LPOLESTR lpszText,
+            [in] LONG hwndParent,
+            [in] LONG wID);
+
+        const LPSTR STATUSCLASSNAMEW = "msctls_statusbar32";
+
+    }
+
+    typedef enum StatusBar_Messages {
+        SB_SETTEXT = (0x400+1),
+        SB_SETTEXTW = (0x400+11),
+        SB_GETTEXT = (0x400+2),
+        SB_GETTEXTW = (0x400+13),
+        SB_GETTEXTLENGTH = (0x400+3),
+        SB_GETTEXTLENGTHW = (0x400+12),
+        SB_SETPARTS = (0x400+4),
+        SB_GETPARTS = (0x400+6),
+        SB_GETBORDERS = (0x400+7),
+        SB_SETMINHEIGHT = (0x400+8),
+        SB_SIMPLE = (0x400+9),
+        SB_GETRECT = (0x400+10),
+        SB_ISSIMPLE = (0x400+14),
+        SB_SETICON = (0x400+15),
+        SB_SETTIPTEXT = (0x400+16),
+        SB_SETTIPTEXTW = (0x400+17),
+        SB_GETTIPTEXT = (0x400+18),
+        SB_GETTIPTEXTW = (0x400+19),
+        SB_SETBKCOLOR = CCM_SETBKCOLOR,
+    } StatusBar_Messages;
+
+    typedef enum StatusBar_Ts {
+        SBT_OWNERDRAW = 0x1000,
+        SBT_NOBORDERS = 0x0100,
+        SBT_POPOUT = 0x0200,
+        SBT_RTLREADING = 0x0400,
+        SBT_TOOLTIPS = 0x0800,
+        SBT_NOTABPARSING = 0x0800,
+    } StatusBar_Ts;
+
+
+    typedef enum StatusBar_NotificationCodes {
+        SBN_SIMPLEMODECHANGE = (-880 - 0),
+    } StatusBar_NotificationCodes;
+
+
+    [
+        dllname("comctl32.dll")
+    ]
+    module MenuHelp {
+
+        [entry("MenuHelp")]
+        void MenuHelp(
+            LONG uMsg,
+            LONG wParam,
+            LONG lParam,
+            LONG hMainMenu,
+            LONG hInst,
+            LONG hwndStatus,
+            LONG *lpwIDs);
+
+        [entry("ShowHideMenuCtl")]
+        BOOL ShowHideMenuCtl(
+            LONG hWnd,
+            LONG uFlags,
+            LONG *lpInfo);
+
+        [entry("GetEffectiveClientRect")]
+        void GetEffectiveClientRect(
+            LONG hWnd,
+            RECT *lprc,
+            LONG *lpInfo);
+
+//        const LONG MINSYSCOMMAND = SC_SIZE;
+    };
+
+
+// = ==== TRACKBAR CONTROL = ======
+
+    [
+        dllname("comctl32.dll")
+    ]
+    module TrackBar {
+
+        const LPSTR TRACKBAR_CLASS = "msctls_trackbar32";
+
+    };
+
+    typedef enum TrackBarStyles {
+        TBS_AUTOTICKS = 0x0001,
+        TBS_VERT = 0x0002,
+        TBS_HORZ = 0x0000,
+        TBS_TOP = 0x0004,
+        TBS_BOTTOM = 0x0000,
+        TBS_LEFT = 0x0004,
+        TBS_RIGHT = 0x0000,
+        TBS_BOTH = 0x0008,
+        TBS_NOTICKS = 0x0010,
+        TBS_ENABLESELRANGE = 0x0020,
+        TBS_FIXEDLENGTH = 0x0040,
+        TBS_NOTHUMB = 0x0080,
+        TBS_TOOLTIPS = 0x0100,
+        TBS_REVERSED = 0x0200,
+    } TrackBarStyles;
+
+    typedef enum TrackbarMessages {
+        TBM_GETPOS = (0x400),
+        TBM_GETRANGEMIN = (0x400+1),
+        TBM_GETRANGEMAX = (0x400+2),
+        TBM_GETTIC = (0x400+3),
+        TBM_SETTIC = (0x400+4),
+        TBM_SETPOS = (0x400+5),
+        TBM_SETRANGE = (0x400+6),
+        TBM_SETRANGEMIN = (0x400+7),
+        TBM_SETRANGEMAX = (0x400+8),
+        TBM_CLEARTICS = (0x400+9),
+        TBM_SETSEL = (0x400+10),
+        TBM_SETSELSTART = (0x400+11),
+        TBM_SETSELEND = (0x400+12),
+        TBM_GETPTICS = (0x400+14),
+        TBM_GETTICPOS = (0x400+15),
+        TBM_GETNUMTICS = (0x400+16),
+        TBM_GETSELSTART = (0x400+17),
+        TBM_GETSELEND = (0x400+18),
+        TBM_CLEARSEL = (0x400+19),
+        TBM_SETTICFREQ = (0x400+20),
+        TBM_SETPAGESIZE = (0x400+21),
+        TBM_GETPAGESIZE = (0x400+22),
+        TBM_SETLINESIZE = (0x400+23),
+        TBM_GETLINESIZE = (0x400+24),
+        TBM_GETTHUMBRECT = (0x400+25),
+        TBM_GETCHANNELRECT = (0x400+26),
+        TBM_SETTHUMBLENGTH = (0x400+27),
+        TBM_GETTHUMBLENGTH = (0x400+28),
+        TBM_SETTOOLTIPS = (0x400+29),
+        TBM_GETTOOLTIPS = (0x400+30),
+        TBM_SETTIPSIDE = (0x400+31),
+        TBM_SETBUDDY = (0x400+32), // wparam = BOOL fLeft; (or right)
+        TBM_GETBUDDY = (0x400+33), // wparam = BOOL fLeft; (or right)
+    } TrackbarMessages;
+
+    typedef enum TrackBarTipSideFlags {
+        TBTS_TOP = 0,
+        TBTS_LEFT = 1,
+        TBTS_BOTTOM = 2,
+        TBTS_RIGHT = 3,
+    } TrackBarTipSideFlags;
+
+    typedef enum TrackBarNotifications {
+        TB_LINEUP = 0,
+        TB_LINEDOWN = 1,
+        TB_PAGEUP = 2,
+        TB_PAGEDOWN = 3,
+        TB_THUMBPOSITION = 4,
+        TB_THUMBTRACK = 5,
+        TB_TOP = 6,
+        TB_BOTTOM = 7,
+        TB_ENDTRACK = 8,
+    } TrackBarNotifications;
+
+    typedef enum TrackBarItemSpecs {
+        TBCD_TICS = 0x0001,
+        TBCD_THUMB = 0x0002,
+        TBCD_CHANNEL = 0x0003,
+    } TrackBarItemSpecs;
+
+// = ===== DRAG LIST CONTROL = ==============================
+
+
+    typedef struct DRAGLISTINFO {
+        LONG uNotification;
+        LONG hWnd;
+        POINT ptCursor;
+    } DRAGLISTINFO;
+
+    typedef enum DragListMessages {
+        DL_BEGINDRAG = (0x400+133),
+        DL_DRAGGING = (0x400+134),
+        DL_DROPPED = (0x400+135),
+        DL_CANCELDRAG = (0x400+136),
+    } DragListMessages;
+
+    typedef enum DragListCursor {
+        DL_CURSORSET = 0,
+        DL_STOPCURSOR = 1,
+        DL_COPYCURSOR = 2,
+        DL_MOVECURSOR = 3,
+    } DragListCursor;
+
+    [
+        dllname("comctl32.dll")
+    ]
+    module DragListBox {
+
+        const LPSTR DRAGLISTMSGSTRING = "commctrl_DragListMsg";
+
+        [entry("MakeDragList")]
+        BOOL MakeDragList(LONG hLB);
+
+        [entry("DrawInsert")]
+        void DrawInsert(LONG handParent, LONG hLB, LONG nItem);
+
+        [entry("LBItemFromPt")]
+        LONG LBItemFromPt(LONG hLB, POINT pt, BOOL bAutoScroll);
+
+    };
+
+
+// = = ====UPDOWN CONTROL = = =====================================================
+
+    [
+        dllname("comctl32.dll")
+    ]
+    module UpDown {
+
+        const LPSTR UPDOWN_CLASS = "msctls_updown32";
+
+        const short UD_MAXVAL = 0x7fff;
+        const short UD_MINVAL = 0x8000;
+
+        [entry("CreateUpDownControl")]
+        LONG CreateUpDownControl(
+            LONG dwStyle,
+            LONG x,
+            LONG y,
+            LONG cx,
+            LONG cy,
+            LONG hParent,
+            LONG nID,
+            LONG hInst,
+            LONG hBuddy,
+            LONG nUpper,
+            LONG nLower,
+            LONG nPos);
+
+    };
+
+    typedef struct UDACCEL {
+        LONG nSec;
+        LONG nInc;
+    } UDACCEL;
+
+    typedef enum UpDownStyles {
+        UDS_WRAP = 0x0001,
+        UDS_SETBUDDYINT = 0x0002,
+        UDS_ALIGNRIGHT = 0x0004,
+        UDS_ALIGNLEFT = 0x0008,
+        UDS_AUTOBUDDY = 0x0010,
+        UDS_ARROWKEYS = 0x0020,
+        UDS_HORZ = 0x0040,
+        UDS_NOTHOUSANDS = 0x0080,
+        UDS_HOTTRACK = 0x0100,
+    } UpDownStyles;
+
+    typedef enum UpDownMessages {
+        UDM_SETRANGE = (0x400+101),
+        UDM_GETRANGE = (0x400+102),
+        UDM_SETPOS = (0x400+103),
+        UDM_GETPOS = (0x400+104),
+        UDM_SETBUDDY = (0x400+105),
+        UDM_GETBUDDY = (0x400+106),
+        UDM_SETACCEL = (0x400+107),
+        UDM_GETACCEL = (0x400+108),
+        UDM_SETBASE = (0x400+109),
+        UDM_GETBASE = (0x400+110),
+        UDM_SETRANGE32 = (0x400+111),
+        UDM_GETRANGE32 = (0x400+112), // wParam & lParam are LPINT
+        UDM_SETPOS32 = (0x400+113),
+        UDM_GETPOS32 = (0x400+114),
+    } UpDownMessages;
+
+    typedef struct NMUPDOWN {
+        NMHDR hdr;
+        LONG iPos;
+        LONG iDelta;
+    } NMUPDOWN;
+
+    typedef enum UpDownNotifications {
+        UDN_DELTAPOS = (-721 - 1)
+    } UpDownNotifications;
+
+// = == PROGRESS CONTROL = ===========================
+
+
+    [
+        dllname("comctl32.dll"),
+        helpstring("Progress Bar")
+    ]
+    module Progress {
+
+        const LPSTR PROGRESS_CLASS = "msctls_progress32";
+
+    }
+
+    typedef enum ProgressStyles {
+        PBS_SMOOTH = 0x01,
+        PBS_VERTICAL = 0x04,
+    } ProgressStyles;
+
+    typedef enum ProgressMessages {
+        PBM_SETRANGE = (0x400+1),
+        PBM_SETPOS = (0x400+2),
+        PBM_DELTAPOS = (0x400+3),
+        PBM_SETSTEP = (0x400+4),
+        PBM_STEPIT = (0x400+5),
+        PBM_SETRANGE32 = (0x400+6), // lParam = high, wParam = low
+        PBM_GETRANGE = (0x400+7), // wParam = return (TRUE ? low : high).
+        PBM_GETPOS = (0x400+8),
+    } ProgressMessages;
+
+    typedef struct PBRANGE {
+        LONG iLow;
+        LONG iHigh;
+    } PBRANGE;
+
+// = ========= HOTKEY CONTROL = =========
+
+
+    typedef enum HotKeyFlags {
+        HOTKEYF_SHIFT = 0x01,
+        HOTKEYF_CONTROL = 0x02,
+        HOTKEYF_ALT = 0x04,
+        HOTKEYF_EXT = 0x08,
+    } HotKeyFlags;
+
+    typedef enum HotKeyRulesCombinations {
+        HKCOMB_NONE = 0x0001,
+        HKCOMB_S = 0x0002,
+        HKCOMB_C = 0x0004,
+        HKCOMB_A = 0x0008,
+        HKCOMB_SC = 0x0010,
+        HKCOMB_SA = 0x0020,
+        HKCOMB_CA = 0x0040,
+        HKCOMB_SCA = 0x0080,
+    } HotKeyRulesCombinations;
+
+    typedef enum HotKeyMessages {
+        HKM_SETHOTKEY = (0x400+1),
+        HKM_GETHOTKEY = (0x400+2),
+        HKM_SETRULES = (0x400+3),
+    } HotKeyMessages;
+
+    [
+        dllname("comctl32.dll"),
+        helpstring("HotKey")
+    ]
+    module HotKey {
+
+        const LPSTR HOTKEY_CLASS = "msctls_hotkey32";
+    }
+
+// = = ====LISTVIEW CONTROL = = =====
+
+    typedef enum ListViewStyles {
+        LVS_ICON = 0x0000,
+        LVS_REPORT = 0x0001,
+        LVS_SMALLICON = 0x0002,
+        LVS_LIST = 0x0003,
+        LVS_TYPEMASK = 0x0003,
+        LVS_SINGLESEL = 0x0004,
+        LVS_SHOWSELALWAYS = 0x0008,
+        LVS_SORTASCENDING = 0x0010,
+        LVS_SORTDESCENDING = 0x0020,
+        LVS_SHAREIMAGELISTS = 0x0040,
+        LVS_NOLABELWRAP = 0x0080,
+        LVS_AUTOARRANGE = 0x0100,
+        LVS_EDITLABELS = 0x0200,
+        LVS_OWNERDATA = 0x1000,
+        LVS_NOSCROLL = 0x2000,
+        LVS_TYPESTYLEMASK = 0xfc00,
+        LVS_ALIGNTOP = 0x0000,
+        LVS_ALIGNLEFT = 0x0800,
+        LVS_ALIGNMASK = 0x0c00,
+        LVS_OWNERDRAWFIXED = 0x0400,
+        LVS_NOCOLUMNHEADER = 0x4000,
+        LVS_NOSORTHEADER = 0x8000,
+    } ListViewStyles;
+
+typedef enum ListViewImageListStyle {
+    LVSIL_NORMAL = 0,
+    LVSIL_SMALL = 1,
+    LVSIL_STATE = 2,
+} ListViewImageListStyle;
+
+typedef enum ListViewItemFlags {
+    LVIF_TEXT = 0x0001,
+    LVIF_IMAGE = 0x0002,
+    LVIF_PARAM = 0x0004,
+    LVIF_STATE = 0x0008,
+    LVIF_INDENT = 0x0010,
+    LVIF_NORECOMPUTE = 0x0800,
+    LVIF_DI_SETITEM = 0x1000,
+} ListViewItemFlag;
+
+typedef enum ListViewItemStates {
+    LVIS_FOCUSED = 0x0001,
+    LVIS_SELECTED = 0x0002,
+    LVIS_CUT = 0x0004,
+    LVIS_DROPHILITED = 0x0008,
+    LVIS_OVERLAYMASK = 0x0F00,
+    LVIS_STATEIMAGEMASK = 0xF000,
+} ListViewItemStates;
+
+typedef struct LVITEM {
+    LONG mask;
+    LONG iItem;
+    LONG iSubItem;
+    LONG state;
+    LONG stateMask;
+    LONG pszText;
+    LONG cchTextMax;
+    LONG iImage;
+    LONG lParam;
+    LONG iIndent;
+} LVITEM;
+
+typedef enum ListViewImages {
+    I_IMAGECALLBACK = (-1),
+    I_IMAGENONE = (-2) ,
+} ListViewCallbacks;
+
+typedef enum ListViewNextItemFlags {
+    LVNI_ALL = 0x0000,
+    LVNI_FOCUSED = 0x0001,
+    LVNI_SELECTED = 0x0002,
+    LVNI_CUT = 0x0004,
+    LVNI_DROPHILITED = 0x0008,
+    LVNI_ABOVE = 0x0100,
+    LVNI_BELOW = 0x0200,
+    LVNI_TOLEFT = 0x0400,
+    LVNI_TORIGHT = 0x0800,
+} ListViewNextItemFlags;
+
+typedef enum ListViewFindIndoFlags {
+    LVFI_PARAM = 0x0001,
+    LVFI_STRING = 0x0002,
+    LVFI_PARTIAL = 0x0008,
+    LVFI_WRAP = 0x0020,
+    LVFI_NEARESTXY = 0x0040,
+} ListViewFindIndoFlags;
+
+typedef struct LVFINDINFO
+{
+    ListViewFindIndoFlags flags;
+    LONG psz;
+    LONG lParam;
+    POINT pt;
+    LONG vkDirection;
+} LVFINDINFO;
+
+typedef enum ListViewItemRectFlags {
+    LVIR_BOUNDS = 0,
+    LVIR_ICON = 1,
+    LVIR_LABEL = 2,
+    LVIR_SELECTBOUNDS = 3,
+} ListViewItemRectFlags;
+
+typedef enum ListViewHitTest {
+    LVHT_NOWHERE = 0x0001,
+    LVHT_ONITEMICON = 0x0002,
+    LVHT_ONITEMLABEL = 0x0004,
+    LVHT_ONITEMSTATEICON = 0x0008,
+    LVHT_ONITEM = 0x000F,
+LVHT_ABOVE = 0x0008,
+LVHT_BELOW = 0x0010,
+LVHT_TORIGHT = 0x0020,
+LVHT_TOLEFT = 0x0040,
+} ListViewHitTest;
+
+typedef struct LVHITTESTINFO
+{
+    POINT pt;
+    LONG flags;
+    LONG iItem;
+    LONG iSubItem; // valid only for LVM_SUBITEMHITTEST
+} LVHITTESTINFO;
+
+typedef enum ListViewArrangeFlags {
+    LVA_DEFAULT = 0x0000,
+    LVA_ALIGNLEFT = 0x0001,
+    LVA_ALIGNTOP = 0x0002,
+    LVA_SNAPTOGRID = 0x0005,
+} ListViewArrangeFlags;
+
+typedef enum ListViewColumnMasks {
+    LVCF_FMT = 0x0001,
+    LVCF_WIDTH = 0x0002,
+    LVCF_TEXT = 0x0004,
+    LVCF_SUBITEM = 0x0008,
+    LVCF_IMAGE = 0x0010,
+    LVCF_ORDER = 0x0020,
+} ListViewColumnMasks;
+
+typedef enum ListViewColumnFormats {
+    LVCFMT_LEFT = 0x0000,
+    LVCFMT_RIGHT = 0x0001,
+    LVCFMT_CENTER = 0x0002,
+    LVCFMT_JUSTIFYMASK = 0x0003,
+    LVCFMT_IMAGE = 0x0800,
+    LVCFMT_BITMAP_ON_RIGHT = 0x1000,
+    LVCFMT_COL_HAS_IMAGES = 0x8000,
+} ListViewColumnFormats;
+
+typedef struct LVCOLUMN
+{
+    ListViewColumnMasks mask;
+    ListViewColumnFormats fmt;
+    LONG cx;
+    LONG pszText;
+    LONG cchTextMax;
+    LONG iSubItem;
+    LONG iImage;
+    LONG iOrder;
+} LVCOLUMN;
+
+typedef enum ListViewColumnWidth {
+    LVSCW_AUTOSIZE = -1,
+    LVSCW_AUTOSIZE_USEHEADER = -2,
+} ListViewColumnWidth;
+
+typedef enum ListViewItemCountFlags {
+    LVSICF_NOINVALIDATEALL = 0x00000001,
+    LVSICF_NOSCROLL = 0x00000002,
+} ListViewItemCountFlags;
+
+typedef enum ListViewExtendedStyles {
+    LVS_EX_GRIDLINES = 0x00000001,
+    LVS_EX_SUBITEMIMAGES = 0x00000002,
+    LVS_EX_CHECKBOXES = 0x00000004,
+    LVS_EX_TRACKSELECT = 0x00000008,
+    LVS_EX_HEADERDRAGDROP = 0x00000010,
+    LVS_EX_FULLROWSELECT = 0x00000020, // applies to report mode only
+    LVS_EX_ONECLICKACTIVATE = 0x00000040,
+    LVS_EX_TWOCLICKACTIVATE = 0x00000080,
+    LVS_EX_FLATSB = 0x00000100, // cannot be cleared
+    LVS_EX_REGIONAL = 0x00000200,
+    LVS_EX_INFOTIP = 0x00000400, // listview does InfoTips for you
+    LVS_EX_UNDERLINEHOT = 0x00000800,
+    LVS_EX_UNDERLINECOLD = 0x00001000,
+    LVS_EX_MULTIWORKAREAS = 0x00002000,
+    LVS_EX_LABELTIP = 0x00004000,
+} ListViewExtendedStyles;
+
+typedef enum ListViewBkImageFlags {
+    LVBKIF_SOURCE_NONE = 0x00000000,
+    LVBKIF_SOURCE_LONG = 0x00000001,
+    LVBKIF_SOURCE_URL = 0x00000002,
+    LVBKIF_SOURCE_MASK = 0x00000003,
+    LVBKIF_STYLE_NORMAL = 0x00000000,
+    LVBKIF_STYLE_TILE = 0x00000010,
+    LVBKIF_STYLE_MASK = 0x00000010,
+} ListViewBkImageFlags;
+
+typedef struct LVBKIMAGE {
+    ListViewBkImageFlags ulFlags; // LVBKIF_*
+    LONG hbm;
+    LONG pszImage;
+    LONG cchImageMax;
+    LONG xOffsetPercent;
+    LONG yOffsetPercent;
+} LVBKIMAGE;
+
+typedef enum ListViewMessages {
+    LVM_GETBKCOLOR = (0x1000 + 0),
+    LVM_SETBKCOLOR = (0x1000 + 1),
+    LVM_GETIMAGELIST = (0x1000 + 2),
+    LVM_SETIMAGELIST = (0x1000 + 3),
+    LVM_GETITEMCOUNT = (0x1000 + 4),
+    LVM_GETITEM = (0x1000 + 5),
+    LVM_GETITEMW = (0x1000 + 75),
+    LVM_SETITEM = (0x1000 + 6),
+    LVM_SETITEMW = (0x1000 + 76),
+    LVM_INSERTITEM = (0x1000 + 7),
+    LVM_INSERTITEMW = (0x1000 + 77),
+    LVM_DELETEITEM = (0x1000 + 8),
+    LVM_DELETEALLITEMS = (0x1000 + 9),
+    LVM_GETCALLBACKMASK = (0x1000 + 10),
+    LVM_SETCALLBACKMASK = (0x1000 + 11),
+    LVM_GETNEXTITEM = (0x1000 + 12),
+    LVM_FINDITEM = (0x1000 + 13),
+
+    LVM_FINDITEMW = (0x1000 + 83),
+    LVM_GETITEMRECT = (0x1000 + 14),
+    LVM_SETITEMPOSITION = (0x1000 + 15),
+    LVM_GETITEMPOSITION = (0x1000 + 16),
+    LVM_GETSTRINGWIDTH = (0x1000 + 17),
+    LVM_GETSTRINGWIDTHW = (0x1000 + 87),
+    LVM_HITTEST = (0x1000 + 18),
+    LVM_ENSUREVISIBLE = (0x1000 + 19),
+    LVM_SCROLL = (0x1000 + 20),
+    LVM_REDRAWITEMS = (0x1000 + 21),
+    LVM_ARRANGE = (0x1000 + 22),
+    LVM_EDITLABEL = (0x1000 + 23),
+    LVM_EDITLABELW = (0x1000 + 118),
+    LVM_GETEDITCONTROL = (0x1000 + 24),
+    LVM_GETCOLUMN = (0x1000 + 25),
+    LVM_GETCOLUMNW = (0x1000 + 95),
+    LVM_SETCOLUMN = (0x1000 + 26),
+    LVM_SETCOLUMNW = (0x1000 + 96),
+    LVM_INSERTCOLUMN = (0x1000 + 27),
+    LVM_INSERTCOLUMNW = (0x1000 + 97),
+    LVM_DELETECOLUMN = (0x1000 + 28),
+    LVM_GETCOLUMNWIDTH = (0x1000 + 29),
+    LVM_SETCOLUMNWIDTH = (0x1000 + 30),
+    LVM_GETHEADER = (0x1000 + 31),
+    LVM_CREATEDRAGIMAGE = (0x1000 + 33),
+    LVM_GETVIEWRECT = (0x1000 + 34),
+    LVM_GETTEXTCOLOR = (0x1000 + 35),
+    LVM_SETTEXTCOLOR = (0x1000 + 36),
+    LVM_GETTEXTBKCOLOR = (0x1000 + 37),
+    LVM_SETTEXTBKCOLOR = (0x1000 + 38),
+    LVM_GETTOPINDEX = (0x1000 + 39),
+    LVM_GETCOUNTPERPAGE = (0x1000 + 40),
+    LVM_GETORIGIN = (0x1000 + 41),
+    LVM_UPDATE = (0x1000 + 42),
+    LVM_SETITEMSTATE = (0x1000 + 43),
+    LVM_GETITEMSTATE = (0x1000 + 44),
+    LVM_GETITEMTEXT = (0x1000 + 45),
+    LVM_GETITEMTEXTW = (0x1000 + 115),
+    LVM_SETITEMTEXT = (0x1000 + 46),
+    LVM_SETITEMTEXTW = (0x1000 + 116),
+    LVM_SETITEMCOUNT = (0x1000 + 47),
+    LVM_SORTITEMS = (0x1000 + 48),
+    LVM_SETITEMPOSITION32 = (0x1000 + 49),
+    LVM_GETSELECTEDCOUNT = (0x1000 + 50),
+    LVM_GETITEMSPACING = (0x1000 + 51),
+    LVM_GETISEARCHSTRING = (0x1000 + 52),
+    LVM_GETISEARCHSTRINGW = (0x1000 + 117),
+    LVM_SETICONSPACING = (0x1000 + 53),
+    LVM_SETEXTENDEDLISTVIEWSTYLE = (0x1000 + 54),
+    LVM_GETEXTENDEDLISTVIEWSTYLE = (0x1000 + 55),
+    LVM_GETSUBITEMRECT = (0x1000 + 56),
+    LVM_SUBITEMHITTEST = (0x1000 + 57),
+    LVM_SETCOLUMNORDERARRAY = (0x1000 + 58),
+    LVM_GETCOLUMNORDERARRAY = (0x1000 + 59),
+    LVM_SETHOTITEM = (0x1000 + 60),
+    LVM_GETHOTITEM = (0x1000 + 61),
+    LVM_SETHOTCURSOR = (0x1000 + 62),
+    LVM_GETHOTCURSOR = (0x1000 + 63),
+    LVM_APPROXIMATEVIEWRECT = (0x1000 + 64),
+    LVM_SETWORKAREAS = (0x1000 + 65),
+    LVM_GETWORKAREAS = (0x1000 + 70),
+    LVM_GETNUMBEROFWORKAREAS = (0x1000 + 73),
+    LVM_GETSELECTIONMARK = (0x1000 + 66),
+    LVM_SETSELECTIONMARK = (0x1000 + 67),
+    LVM_SETHOVERTIME = (0x1000 + 71),
+    LVM_GETHOVERTIME = (0x1000 + 72),
+    LVM_SETBKIMAGE = (0x1000 + 68),
+    LVM_SETBKIMAGEW = (0x1000 + 138),
+    LVM_GETBKIMAGE = (0x1000 + 69),
+    LVM_GETBKIMAGEW = (0x1000 + 139),
+} ListViewMessages;
+
+typedef struct NMLISTVIEW {
+    NMHDR   hdr;
+    LONG iItem;
+    LONG iSubItem;
+    LONG uNewState;
+    LONG uOldState;
+    LONG uChanged;
+    POINT ptAction;
+    LONG lParam;
+} NMLISTVIEW;
+
+typedef enum ListViewKeyFlags {
+    LVKF_ALT = 0x0001,
+    LVKF_CONTROL = 0x0002,
+    LVKF_SHIFT = 0x0004,
+} ListViewKeyFlags;
+
+typedef struct NMITEMACTIVATE {
+    NMHDR hdr;
+    LONG iItem;
+    LONG iSubItem;
+    LONG uNewState;
+    LONG uOldState;
+    LONG uChanged;
+    POINT ptAction;
+    LONG lParam;
+    ListViewKeyFlags uKeyFlags;
+} NMITEMACTIVATE;
+
+typedef struct NMLVCUSTOMDRAW {
+    NMCUSTOMDRAW nmcd;
+    LONG clrText;
+    LONG clrTextBk;
+    LONG iSubItem;
+} NMLVCUSTOMDRAW;
+
+typedef struct NMLVCACHEHINT {
+    NMHDR   hdr;
+    LONG iFrom;
+    LONG iTo;
+} NMLVCACHEHINT;
+
+typedef struct NMLVFINDITEM {
+    NMHDR   hdr;
+    LONG iStart;
+    LVFINDINFO lvfi;
+} NMLVFINDITEM;
+
+typedef struct NMLVODSTATECHANGE {
+    NMHDR hdr;
+    LONG iFrom;
+    LONG iTo;
+    LONG uNewState;
+    LONG uOldState;
+} NMLVODSTATECHANGE;
+
+typedef enum ListViewNotificationCodes {
+    LVN_ITEMCHANGING = (-100-0),
+    LVN_ITEMCHANGED = (-100-1),
+    LVN_INSERTITEM = (-100-2),
+    LVN_DELETEITEM = (-100-3),
+    LVN_DELETEALLITEMS = (-100-4),
+    LVN_BEGINLABELEDIT = (-100-5),
+    LVN_BEGINLABELEDITW = (-100-75),
+    LVN_ENDLABELEDIT = (-100-6),
+    LVN_ENDLABELEDITW = (-100-76),
+    LVN_COLUMNCLICK = (-100-8),
+    LVN_BEGINDRAG = (-100-9),
+    LVN_BEGINRDRAG = (-100-11),
+    LVN_ODCACHEHINT = (-100-13),
+    LVN_ODFINDITEM = (-100-52),
+    LVN_ODFINDITEMW = (-100-79),
+    LVN_ITEMACTIVATE = (-100-14),
+    LVN_ODSTATECHANGED = (-100-15),
+    LVN_HOTTRACK = (-100-21),
+    LVN_GETDISPINFO = (-100-50),
+    LVN_GETDISPINFOW = (-100-77),
+    LVN_SETDISPINFO = (-100-51),
+    LVN_SETDISPINFOW = (-100-78),
+    LVN_KEYDOWN = (-100-55),
+    LVN_MARQUEEBEGIN = (-100-56),
+    LVN_GETINFOTIP = (-100-57),
+    LVN_GETINFOTIPW = (-100-58),
+} ListViewNotificationCodes;
+
+typedef struct NMLVDISPINFO {
+    NMHDR hdr;
+    LVITEM item;
+} NMLVDISPINFO;
+
+typedef struct NMLVKEYDOWN {
+    NMHDR hdr;
+    short wVKey;
+    LONG flags;
+} NMLVKEYDOWN;
+
+typedef enum ListViewGetInfoTipFlags {
+    LVGIT_UNFOLDED = 0x0001,
+} ListViewGetInfoTipFlags;
+
+typedef struct NMLVGETINFOTIP {
+    NMHDR hdr;
+    ListViewGetInfoTipFlags dwFlags;
+    LONG pszText;
+    LONG cchTextMax;
+    LONG iItem;
+    LONG iSubItem;
+    LONG lParam;
+} NMLVGETINFOTIP;
+
+    [
+        dllname("comctl32.dll"),
+        helpstring("ListView Control")
+    ]
+    module ListView {
+
+        const LPSTR WC_LISTVIEW = "SysListView32";
+        const short LV_MAX_WORKAREAS = 16;
+    }
+
+// TREEVIEW!!
+
+    [
+        dllname("comctl32.dll"),
+        helpstring("TreeView")
+    ]
+    module TreeView {
+        const LONG I_CHILDRENCALLBACK = (-1);
+        const LPSTR WC_TREEVIEW = "SysTreeView32";
+    };
+
+typedef enum TreeView_Styles {
+    TVS_HASBUTTONS = 0x0001,
+    TVS_HASLINES = 0x0002,
+    TVS_LINESATROOT = 0x0004,
+    TVS_EDITLABELS = 0x0008,
+    TVS_DISABLEDRAGDROP = 0x0010,
+    TVS_SHOWSELALWAYS = 0x0020,
+    TVS_RTLREADING = 0x0040,
+    TVS_NOTOOLTIPS = 0x0080,
+    TVS_CHECKBOXES = 0x0100,
+    TVS_TRACKSELECT = 0x0200,
+    TVS_SINGLEEXPAND = 0x0400,
+    TVS_INFOTIP = 0x0800,
+    TVS_FULLROWSELECT = 0x1000,
+    TVS_NOSCROLL = 0x2000,
+    TVS_NONEVENHEIGHT = 0x4000,
+    TVS_NOHSCROLL = 0x8000,
+} TreeView_Styles;
+
+typedef enum TreeView_ItemFlags {
+    TVIF_TEXT = 0x0001,
+    TVIF_IMAGE = 0x0002,
+    TVIF_PARAM = 0x0004,
+    TVIF_STATE = 0x0008,
+    TVIF_HANDLE = 0x0010,
+    TVIF_SELECTEDIMAGE = 0x0020,
+    TVIF_CHILDREN = 0x0040,
+    TVIF_INTEGRAL = 0x0080,
+    TVIF_DI_SETITEM = 0x1000,
+} TreeView_ItemFlags;
+
+typedef enum TreeView_ItemStates {
+    TVIS_SELECTED = 0x0002,
+    TVIS_CUT = 0x0004,
+    TVIS_DROPHILITED = 0x0008,
+    TVIS_BOLD = 0x0010,
+    TVIS_EXPANDED = 0x0020,
+    TVIS_EXPANDEDONCE = 0x0040,
+    TVIS_EXPANDPARTIAL = 0x0080,
+    TVIS_OVERLAYMASK = 0x0F00,
+    TVIS_STATEIMAGEMASK = 0xF000,
+    TVIS_USERMASK = 0xF000,
+} TreeView_ItemStates;
+
+typedef struct TVITEM {
+    LONG mask;
+    LONG hItem;
+    LONG state;
+    LONG stateMask;
+    LONG pszText;
+    LONG cchTextMax;
+    LONG iImage;
+    LONG iSelectedImage;
+    LONG cChildren;
+    LONG lParam;
+} TVITEM;
+
+typedef struct TVITEMEX {
+    LONG mask;
+    LONG hItem;
+    LONG state;
+    LONG stateMask;
+    LONG pszText;
+    LONG cchTextMax;
+    LONG iImage;
+    LONG iSelectedImage;
+    LONG cChildren;
+    LONG lParam;
+    LONG iIntegral;
+} TVITEMEX;
+
+typedef enum TreeViewSpecialItems {
+    TVI_ROOT = 0xFFFF0000,
+    TVI_FIRST = 0xFFFF0001,
+    TVI_LAST = 0xFFFF0002,
+    TVI_SORT = 0xFFFF0003,
+} TreeViewSpecialItems;
+
+typedef struct TVINSERTSTRUCT {
+    LONG hParent;
+    LONG hInsertAfter;
+    TVITEMEX itemex;
+} TVINSERTSTRUCT;
+
+typedef enum TreeViewExpandFlags {
+    TVE_COLLAPSE = 0x0001,
+    TVE_EXPAND = 0x0002,
+    TVE_TOGGLE = 0x0003,
+    TVE_EXPANDPARTIAL = 0x4000,
+    TVE_COLLAPSERESET = 0x8000,
+} TreeViewExpandFlags;
+
+typedef enum TreeViewImageLists {
+    TVSIL_NORMAL = 0,
+    TVSIL_STATE = 2,
+} TreeViewImageLists;
+
+typedef enum TreeViewGetNextFlags {
+    TVGN_ROOT = 0x0000,
+    TVGN_NEXT = 0x0001,
+    TVGN_PREVIOUS = 0x0002,
+    TVGN_PARENT = 0x0003,
+    TVGN_CHILD = 0x0004,
+    TVGN_FIRSTVISIBLE = 0x0005,
+    TVGN_NEXTVISIBLE = 0x0006,
+    TVGN_PREVIOUSVISIBLE = 0x0007,
+    TVGN_DROPHILITE = 0x0008,
+    TVGN_CARET = 0x0009,
+    TVGN_LASTVISIBLE = 0x000A,
+} TreeViewGetNextFlags;
+
+typedef struct TVHITTESTINFO {
+    LONG x;
+    LONG y;
+    LONG flags;
+    LONG hItem;
+} TVHITTESTINFO;
+
+typedef enum TreeView_HitTest {
+    TVHT_NOWHERE = 0x0001,
+    TVHT_ONITEMICON = 0x0002,
+    TVHT_ONITEMLABEL = 0x0004,
+    TVHT_ONITEM = 0x0007,
+    TVHT_ONITEMINDENT = 0x0008,
+    TVHT_ONITEMBUTTON = 0x0010,
+    TVHT_ONITEMRIGHT = 0x0020,
+    TVHT_ONITEMSTATEICON = 0x0040,
+    TVHT_ABOVE = 0x0100,
+    TVHT_BELOW = 0x0200,
+    TVHT_TORIGHT = 0x0400,
+    TVHT_TOLEFT = 0x0800,
+} TreeViewHitTest;
+
+typedef enum TreeViewSetGetBorderFlags {
+    TVSBF_XBORDER = 0x00000001,
+    TVSBF_YBORDER = 0x00000002,
+} TreeViewSetGetBorderFlags;
+
+typedef enum TreeView_Messages {
+    TVM_INSERTITEM = (0x1100 + 0),
+    TVM_INSERTITEMW = (0x1100 + 50),
+    TVM_DELETEITEM = (0x1100 + 1),
+    TVM_EXPAND = (0x1100 + 2),
+    TVM_GETITEMRECT = (0x1100 + 4),
+    TVM_GETCOUNT = (0x1100 + 5),
+    TVM_GETINDENT = (0x1100 + 6),
+    TVM_SETINDENT = (0x1100 + 7),
+    TVM_GETIMAGELIST = (0x1100 + 8),
+    TVM_SETIMAGELIST = (0x1100 + 9),
+    TVM_GETNEXTITEM = (0x1100 + 10),
+    TVM_SELECTITEM = (0x1100 + 11),
+    TVM_GETITEM = (0x1100 + 12),
+    TVM_GETITEMW = (0x1100 + 62),
+    TVM_SETITEM = (0x1100 + 13),
+    TVM_SETITEMW = (0x1100 + 63),
+    TVM_EDITLABEL = (0x1100 + 14),
+    TVM_EDITLABELW = (0x1100 + 65),
+    TVM_GETEDITCONTROL = (0x1100 + 15),
+    TVM_GETVISIBLECOUNT = (0x1100 + 16),
+    TVM_HITTEST = (0x1100 + 17),
+    TVM_CREATEDRAGIMAGE = (0x1100 + 18),
+    TVM_SORTCHILDREN = (0x1100 + 19),
+    TVM_ENSUREVISIBLE = (0x1100 + 20),
+    TVM_SORTCHILDRENCB = (0x1100 + 21),
+    TVM_ENDEDITLABELNOW = (0x1100 + 22),
+    TVM_GETISEARCHSTRING = (0x1100 + 23),
+    TVM_GETISEARCHSTRINGW = (0x1100 + 64),
+    TVM_SETTOOLTIPS = (0x1100 + 24),
+    TVM_GETTOOLTIPS = (0x1100 + 25),
+    TVM_SETINSERTMARK = (0x1100 + 26),
+    TVM_SETITEMHEIGHT = (0x1100 + 27),
+    TVM_GETITEMHEIGHT = (0x1100 + 28),
+    TVM_SETBKCOLOR = (0x1100 + 29),
+    TVM_SETTEXTCOLOR = (0x1100 + 30),
+    TVM_GETBKCOLOR = (0x1100 + 31),
+    TVM_GETTEXTCOLOR = (0x1100 + 32),
+    TVM_SETSCROLLTIME = (0x1100 + 33),
+    TVM_GETSCROLLTIME = (0x1100 + 34),
+    TVM_SETBORDER = (0x1100 + 35),
+    TVM_GETBORDER = (0x1100 + 36),
+    TVM_GETITEMSTATE = (0x1100 + 39),
+    TVM_SETLINECOLOR = (0x1100 + 40),
+    TVM_GETLINECOLOR = (0x1100 + 41),
+} TreeViewMessages;
+
+typedef struct TVSORTCB {
+    LONG hParent;
+    LONG lpfnCompare;
+    LONG lParam;
+} TVSORTCB;
+
+typedef struct NM_TREEVIEW {
+    NMHDR    hdr;
+    LONG action;
+    TVITEM itemOld;
+    TVITEM itemNew;
+    POINT ptDrag;
+} NMTREEVIEW;
+
+typedef enum TreeView_ChangedFlags {
+    TVC_UNKNOWN = 0x0000,
+    TVC_BYMOUSE = 0x0001,
+    TVC_BYKEYBOARD = 0x0002,
+} TreeViewChangedFlags;
+
+typedef struct TVDISPINFO {
+    NMHDR hdr;
+    TVITEM item;
+} TVDISPINFO;
+
+typedef enum TreeViewNotificationCodes {
+
+    TVN_SELCHANGING = (-400-1),
+    TVN_SELCHANGINGW = (-400-50),
+    TVN_SELCHANGED = (-400-2),
+    TVN_SELCHANGEDW = (-400-51),
+    TVN_GETDISPINFO = (-400-3),
+    TVN_GETDISPINFOW = (-400-52),
+    TVN_SETDISPINFO = (-400-4),
+    TVN_SETDISPINFOW = (-400-53),
+    TVN_ITEMEXPANDING = (-400-5),
+    TVN_ITEMEXPANDINGW = (-400-54),
+    TVN_ITEMEXPANDED = (-400-6),
+    TVN_ITEMEXPANDEDW = (-400-55),
+    TVN_BEGINDRAG = (-400-7),
+    TVN_BEGINDRAGW = (-400-56),
+    TVN_BEGINRDRAG = (-400-8),
+    TVN_BEGINRDRAGW = (-400-57),
+    TVN_DELETEITEM = (-400-9),
+    TVN_DELETEITEMW = (-400-58),
+    TVN_BEGINLABELEDIT = (-400-10),
+    TVN_BEGINLABELEDITW = (-400-59),
+    TVN_ENDLABELEDIT = (-400-11),
+    TVN_ENDLABELEDITW = (-400-60),
+    TVN_KEYDOWN = (-400-12),
+    TVN_GETINFOTIP = (-400-13),
+    TVN_GETINFOTIPW = (-400-14),
+    TVN_SINGLEEXPAND = (-400-15),
+} TreeViewNotificationCodes;
+
+typedef enum TreeViewNotificationReturnValues {
+    TVNRET_DEFAULT = 0,
+    TVNRET_SKIPOLD = 1,
+    TVNRET_SKIPNEW = 2,
+    TVCDRF_NOIMAGES = 0x00010000,
+ } TreeViewNotificationReturnValues;
+
+typedef struct TV_KEYDOWN {
+    NMHDR hdr;
+    short wVKey;
+    LONG flags;
+} TVKEYDOWN;
+
+typedef struct NMTVCUSTOMDRAW {
+    NMCUSTOMDRAW nmcd;
+    LONG clrText;
+    LONG clrTextBk;
+    LONG iLevel;
+} NMTVCUSTOMDRAW;
+
+typedef struct TV_GETINFOTIP {
+    NMHDR hdr;
+    LONG pszText;
+    LONG cchTextMax;
+    LONG hItem;
+    LONG lParam;
+} TVGETINFOTIP;
+
+////////////////////  ComboBoxEx ////////////////////////////////
+
+    [
+        helpstring("ComboBoxEx Control")
+    ]
+    module ComboBoxEx {
+        const LPSTR WC_COMBOBOXEX = "ComboBoxEx32";
+        const short CBEMAXSTRLEN = 260;
+    }
+
+    typedef enum ComboBoxExItemFlags {
+        CBEIF_TEXT = 0x00000001,
+        CBEIF_IMAGE = 0x00000002,
+        CBEIF_SELECTEDIMAGE = 0x00000004,
+        CBEIF_OVERLAY = 0x00000008,
+        CBEIF_INDENT = 0x00000010,
+        CBEIF_LPARAM = 0x00000020,
+        CBEIF_DI_SETITEM = 0x10000000,
+    } ComboBoxExItemFlags;
+
+    typedef struct COMBOBOXEXITEM {
+        ComboBoxExItemFlags mask;
+        LONG iItem;
+        LONG pszText;
+        LONG cchTextMax;
+        LONG iImage;
+        LONG iSelectedImage;
+        LONG iOverlay;
+        LONG iIndent;
+        LONG lParam;
+    } COMBOBOXEXITEM;
+
+    typedef enum ComboBoxExMessages {
+        CBEM_INSERTITEM = (0x400 + 1),
+        CBEM_SETIMAGELIST = (0x400 + 2),
+        CBEM_GETIMAGELIST = (0x400 + 3),
+        CBEM_GETITEM = (0x400 + 4),
+        CBEM_SETITEM = (0x400 + 5),
+        CBEM_DELETEITEM = 0x144,
+        CBEM_GETCOMBOCONTROL = (0x400 + 6),
+        CBEM_GETEDITCONTROL = (0x400 + 7),
+        CBEM_SETEXSTYLE = (0x400 + 8),
+        CBEM_SETEXTENDEDSTYLE = (0x400 + 14),
+        CBEM_GETEXTENDEDSTYLE = (0x400 + 9),
+        CBEM_HASEDITCHANGED = (0x400 + 10),
+        CBEM_INSERTITEMW = (0x400 + 11),
+        CBEM_SETITEMW = (0x400 + 12),
+        CBEM_GETITEMW = (0x400 + 13),
+    } ComboBoxExMessages;
+
+    typedef enum ComboBoxExExtendedStyles {
+        CBES_EX_NOEDITIMAGE = 0x00000001,
+        CBES_EX_NOEDITIMAGEINDENT = 0x00000002,
+        CBES_EX_PATHWORDBREAKPROC = 0x00000004,
+        CBES_EX_NOSIZELIMIT = 0x00000008,
+        CBES_EX_CASESENSITIVE = 0x00000010,
+    } ComboBoxExExtendedStyles;
+
+    typedef struct NMCOMBOBOXEX {
+        NMHDR hdr;
+        COMBOBOXEXITEM ceItem;
+    } NMCOMBOBOXEX;
+
+    typedef enum ComboBoxExNotificationCodes {
+        CBEN_GETDISPINFO = (-800 - 0),
+        CBEN_GETDISPINFOW = (-800 - 7),
+        CBEN_INSERTITEM = (-800 - 1),
+        CBEN_DELETEITEM = (-800 - 2),
+        CBEN_BEGINEDIT = (-800 - 4),
+        CBEN_ENDEDIT = (-800 - 5),
+        CBEN_ENDEDITW = (-800 - 6),
+        CBEN_DRAGBEGIN = (-800 - 8),
+        CBEN_DRAGBEGINW = (-800 - 9),
+    } ComboBoxExNotificationCodes;
+
+    typedef enum ComboBoxExEndEditFlags {
+        CBENF_KILLFOCUS = 1,
+        CBENF_RETURN = 2,
+        CBENF_ESCAPE = 3,
+        CBENF_DROPDOWN = 4,
+    } ComboBoxExEndEditFlags;
+
+ // CBEN_DRAGBEGIN sends this information ...
+
+    typedef struct NMCBEDRAGBEGINW {
+        NMHDR hdr;
+        LONG iItemid;
+        BYTE szText[260 * 2];
+    } NMCBEDRAGBEGINW;
+
+    typedef struct NMCBEDRAGBEGIN {
+        NMHDR hdr;
+        LONG iItemid;
+        BYTE szText[260];
+    } NMCBEDRAGBEGIN;
+
+    typedef struct NMCBEENDEDITW {
+        NMHDR hdr;
+        BOOL fChanged;
+        LONG iNewSelection;
+        BYTE szText[260 * 2];
+        LONG iWhy;
+    } NMCBEENDEDITW;
+
+    typedef struct NMCBEENDEDIT {
+        NMHDR hdr;
+        BOOL fChanged;
+        LONG iNewSelection;
+        BYTE szText[260];
+        LONG iWhy;
+    } NMCBEENDEDIT;
+
+// = ===== TAB CONTROL = ======
+
+    [
+        helpstring("TabControl")
+    ]
+    module TabControl {
+        const LPSTR WC_TABCONTROLA = "SysTabControl32";
+    }
+
+    typedef enum TabStyles {
+        TCS_SCROLLOPPOSITE = 0x0001, // assumes multiline tab
+        TCS_BOTTOM = 0x0002,
+        TCS_RIGHT = 0x0002,
+        TCS_MULTISELECT = 0x0004, // allow multi-select in button mode
+        TCS_FLATBUTTONS = 0x0008,
+        TCS_FORCEICONLEFT = 0x0010,
+        TCS_FORCELABELLEFT = 0x0020,
+        TCS_HOTTRACK = 0x0040,
+        TCS_VERTICAL = 0x0080,
+        TCS_TABS = 0x0000,
+        TCS_BUTTONS = 0x0100,
+        TCS_SINGLELINE = 0x0000,
+        TCS_MULTILINE = 0x0200,
+        TCS_RIGHTJUSTIFY = 0x0000,
+        TCS_FIXEDWIDTH = 0x0400,
+        TCS_RAGGEDRIGHT = 0x0800,
+        TCS_FOCUSONBUTTONDOWN = 0x1000,
+        TCS_OWNERDRAWFIXED = 0x2000,
+        TCS_TOOLTIPS = 0x4000,
+        TCS_FOCUSNEVER = 0x8000,
+    } TabStyles;
+
+    typedef enum TabExStyles {
+ // EX styles for use with TCM_SETEXTENDEDSTYLE
+        TCS_EX_FLATSEPARATORS = 0x00000001,
+        TCS_EX_REGISTERDROP = 0x00000002,
+    } TabExStyles;
+
+    typedef enum TabItemState {
+        TCIS_BUTTONPRESSED = 0x0001,
+        TCIS_HIGHLIGHTED = 0x0002,
+    } TabItemState;
+
+    typedef enum TabItemFlags {
+        TCIF_TEXT = 0x0001,
+        TCIF_IMAGE = 0x0002,
+        TCIF_RTLREADING = 0x0004,
+        TCIF_PARAM = 0x0008,
+        TCIF_STATE = 0x0010,
+    } TabItemFlags;
+
+    typedef struct TCITEMHEADER {
+        TabItemFlags mask;
+        LONG lpReserved1;
+        LONG lpReserved2;
+        LONG pszText;
+        LONG cchTextMax;
+        LONG iImage;
+    } TCITEMHEADER;
+
+    typedef struct TCITEM {
+        TabItemFlags mask;
+        TabItemState dwState;
+        TabItemState dwStateMask;
+        LONG pszText;
+        LONG cchTextMax;
+        LONG iImage;
+        LONG lParam;
+    } TCITEM;
+
+    typedef enum TabHitTestFlags {
+        TCHT_NOWHERE = 0x0001,
+        TCHT_ONITEMICON = 0x0002,
+        TCHT_ONITEMLABEL = 0x0004,
+        TCHT_ONITEM = (TCHT_ONITEMICON | TCHT_ONITEMLABEL)
+    } TabHitTestFlags;
+
+    typedef struct TCHITTESTINFO {
+        POINT pt;
+        TabHitTestFlags flags;
+    } TCHITTESTINFO;
+
+    typedef enum TabMessages {
+        [helpstring("SNDMSG(hwnd, TCM_GETIMAGELIST, 0, 0)")]
+        TCM_GETIMAGELIST = (0x1300 + 2),
+        [helpstring("SNDMSG(hwnd, TCM_SETIMAGELIST, 0, himl)")]
+        TCM_SETIMAGELIST = (0x1300 + 3),
+        [helpstring("SNDMSG(hwnd, TCM_GETITEMCOUNT, 0, 0L)")]
+        TCM_GETITEMCOUNT = (0x1300 + 4),
+        [helpstring("SNDMSG(hwnd, TCM_GETITEM, iItem, TC_ITEM *pitem)")]
+        TCM_GETITEM = (0x1300 + 5),
+        [helpstring("SNDMSG(hwnd, TCM_GETITEM, iItem, TC_ITEM *pitem)")]
+        TCM_GETITEMW = (0x1300 + 60),
+        [helpstring("SNDMSG(hwnd, TCM_SETITEM, iItem, TC_ITEM *pitem)")]
+        TCM_SETITEM = (0x1300 + 6),
+        [helpstring("SNDMSG(hwnd, TCM_SETITEM, iItem, TC_ITEM *pitem)")]
+        TCM_SETITEMW = (0x1300 + 61),
+        [helpstring("SNDMSG(hwnd, TCM_INSERTITEM, iItem, TC_ITEM *pitem)")]
+        TCM_INSERTITEM = (0x1300 + 7),
+        [helpstring("SNDMSG(hwnd, TCM_INSERTITEM, iItem, TC_ITEM *pitem)")]
+        TCM_INSERTITEMW = (0x1300 + 62),
+        [helpstring("SNDMSG((hwnd), TCM_DELETEITEM, iItem, 0)")]
+        TCM_DELETEITEM = (0x1300 + 8),
+        TCM_DELETEALLITEMS = (0x1300 + 9),
+        [helpstring("SNDMSG((hwnd), TCM_GETITEMRECT, iItem, RECT *prc)")]
+        TCM_GETITEMRECT = (0x1300 + 10),
+        TCM_GETCURSEL = (0x1300 + 11),
+        TCM_SETCURSEL = (0x1300 + 12),
+        [helpstring("SNDMSG(hwnd, TCM_HITTEST, 0, TC_HITTESTINFO *pinfo)")]
+        TCM_HITTEST = (0x1300 + 13),
+        TCM_SETITEMEXTRA = (0x1300 + 14),
+        TCM_ADJUSTRECT = (0x1300 + 40),
+        TCM_SETITEMSIZE = (0x1300 + 41),
+        TCM_REMOVEIMAGE = (0x1300 + 42),
+        TCM_SETPADDING = (0x1300 + 43),
+        TCM_GETROWCOUNT = (0x1300 + 44),
+        TCM_GETTOOLTIPS = (0x1300 + 45),
+        TCM_SETTOOLTIPS = (0x1300 + 46),
+        TCM_GETCURFOCUS = (0x1300 + 47),
+        TCM_SETCURFOCUS = (0x1300 + 48),
+        TCM_SETMINTABWIDTH = (0x1300 + 49),
+        TCM_DESELECTALL = (0x1300 + 50),
+        TCM_HIGHLIGHTITEM = (0x1300 + 51),
+        TCM_SETEXTENDEDSTYLE = (0x1300 + 52), // optional wParam = = mask
+        TCM_GETEXTENDEDSTYLE = (0x1300 + 53),
+    } TabMessages;
+
+    typedef struct NMTCKEYDOWN {
+        NMHDR hdr;
+        short wVKey;
+        LONG flags;
+    } NMTCKEYDOWN;
+
+    typedef enum TabNotifications {
+        TCN_KEYDOWN = (-550 - 0),
+        TCN_SELCHANGE = (-550 - 1),
+        TCN_SELCHANGING = (-550 - 2),
+        TCN_GETOBJECT = (-550 - 3),
+    } TabNotifications;
+
+ // = ===== ANIMATE CONTROL = =============
+
+    typedef enum AnimateStyles {
+        ACS_CENTER = 0x0001,
+        ACS_TRANSPARENT = 0x0002,
+        ACS_AUTOPLAY = 0x0004,
+        ACS_TIMER = 0x0008, // don't use threads... use timers
+    } AnimateStyles;
+
+    typedef enum AnimateMessages {
+        ACM_OPENA = (0x400+100),
+        ACM_OPENW = (0x400+103),
+        ACM_PLAY = (0x400+101),
+        ACM_STOP = (0x400+102),
+    } AnimateMessages;
+
+    typedef enum AnimateNotificationCodes {
+        ACN_START = 1,
+        ACN_STOP = 2,
+    } AnimateNotificationCodes;
+
+    [
+        helpstring("Animate Control"),
+        dllname("user32.dll")
+    ]
+    module Animate {
+        const LPSTR ANIMATE_CLASS = "SysAnimate32";
+    }
+
+
+// = ===== MONTHCAL CONTROL = =========
+
+    [
+        dllname("comctl32.dll")
+    ]
+    module MonthCal {
+
+        const LPSTR MONTHCAL_CLASS = "SysMonthCal32";
+    }
+
+    typedef enum MCSC_Flags {
+        MCSC_BACKGROUND = 0, // the background color (between months)
+        MCSC_TEXT = 1, // the dates
+        MCSC_TITLEBK = 2, // background of the title
+        MCSC_TITLETEXT = 3,
+        MCSC_MONTHBK = 4, // background within the month cal
+        MCSC_TRAILINGTEXT = 5, // the text color of header & trailing days
+    } MonthCalSetColorFlags;
+
+    typedef struct MCHITTESTINFO {
+        LONG cbSize;
+        POINT pt;
+        LONG uHit; // out param
+        SYSTEMTIME st;
+    } MCHITTESTINFO;
+
+    typedef enum MCHT_Flags {
+        MCHT_TITLE = 0x00010000,
+        MCHT_CALENDAR = 0x00020000,
+        MCHT_TODAYLINK = 0x00030000,
+
+        MCHT_NEXT = 0x01000000, // these indicate that hitting
+        MCHT_PREV = 0x02000000, // here will go to the next/prev month
+
+        MCHT_NOWHERE = 0x00000000,
+
+        MCHT_TITLEBK = (MCHT_TITLE),
+        MCHT_TITLEMONTH = (MCHT_TITLE | 0x0001),
+        MCHT_TITLEYEAR = (MCHT_TITLE | 0x0002),
+        MCHT_TITLEBTNNEXT = (MCHT_TITLE | MCHT_NEXT | 0x0003),
+        MCHT_TITLEBTNPREV = (MCHT_TITLE | MCHT_PREV | 0x0003),
+
+        MCHT_CALENDARBK = (MCHT_CALENDAR),
+        MCHT_CALENDARDATE = (MCHT_CALENDAR | 0x0001),
+        MCHT_CALENDARDATENEXT = (MCHT_CALENDARDATE | MCHT_NEXT),
+        MCHT_CALENDARDATEPREV = (MCHT_CALENDARDATE | MCHT_PREV),
+        MCHT_CALENDARDAY = (MCHT_CALENDAR | 0x0002),
+        MCHT_CALENDARWEEKNUM = (MCHT_CALENDAR | 0x0003),
+    } MonthCalHitTestFlags;
+
+    typedef enum MonthCalMessages {
+
+        MCM_FIRST = 0x1000,
+
+ // BOOL MonthCal_GetCurSel(LONG hmc, LPSYSTEMTIME pst)
+ //   returns FALSE if MCS_MULTISELECT
+ //   returns TRUE and sets *pst to the currently selected date otherwise
+
+        MCM_GETCURSEL = (MCM_FIRST + 1),
+
+ // BOOL MonthCal_SetCurSel(LONG hmc, LPSYSTEMTIME pst)
+ //   returns FALSE if MCS_MULTISELECT
+ //   returns TURE and sets the currently selected date to *pst otherwise
+
+        MCM_SETCURSEL = (MCM_FIRST + 2),
+
+ // LONG MonthCal_GetMaxSelCount(LONG hmc)
+ //   returns the maximum number of selectable days allowed
+
+        MCM_GETMAXSELCOUNT = (MCM_FIRST + 3),
+
+ // BOOL MonthCal_SetMaxSelCount(LONG hmc, LONG n)
+ //   sets the max number days that can be selected iff MCS_MULTISELECT
+
+        MCM_SETMAXSELCOUNT = (MCM_FIRST + 4),
+
+ // BOOL MonthCal_GetSelRange(LONG hmc, LPSYSTEMTIME rgst)
+ //   sets rgst[0] to the first day of the selection range
+ //   sets rgst[1] to the last day of the selection range
+
+        MCM_GETSELRANGE = (MCM_FIRST + 5),
+
+ // BOOL MonthCal_SetSelRange(LONG hmc, LPSYSTEMTIME rgst)
+ //   selects the range of days from rgst[0] to rgst[1]
+
+        MCM_SETSELRANGE = (MCM_FIRST + 6),
+
+ // LONG MonthCal_GetMonthRange(LONG hmc, LONG gmr, LPSYSTEMTIME rgst)
+ //   if rgst specified, sets rgst[0] to the starting date and
+ //      and rgst[1] to the ending date of the the selectable (non-grayed)
+ //      days if GMR_VISIBLE or all the displayed days (including grayed)
+ //      if GMR_DAYSTATE.
+ //   returns the number of months spanned by the above range.
+
+        MCM_GETMONTHRANGE = (MCM_FIRST + 7),
+
+ // BOOL MonthCal_SetDayState(LONG hmc, LONG cbds, DAYSTATE *rgds)
+ // cbds is the count of DAYSTATE items in rgds and it must be equal
+ // to the value returned from MonthCal_GetMonthRange(hmc, GMR_DAYSTATE, NULL)
+ //   This sets the DAYSTATE bits for each month (grayed and non-grayed
+ //   days) displayed in the calendar. The first bit in a month's DAYSTATE
+ //   corresponts to bolding day 1, the second bit affects day 2, etc.
+
+        MCM_SETDAYSTATE = (MCM_FIRST + 8),
+
+ // BOOL MonthCal_GetMinReqRect(LONG hmc, LPRECT prc)
+ //   sets *prc the minimal size needed to display one month
+ //   To display two months, undo the AdjustWindowRect calculation already done to
+ //   this rect, double the width, and redo the AdjustWindowRect calculation --
+ //   the monthcal control will display two calendars in this window (if you also
+ //   double the vertical size, you will get 4 calendars)
+ //   NOTE: if you want to gurantee that the "Today" string is not clipped,
+ //   get the MCM_GETMAXTODAYWIDTH and use the max of that width and this width
+
+        MCM_GETMINREQRECT = (MCM_FIRST + 9),
+
+ // set colors to draw control with -- see MCSC_ bits below
+
+        MCM_SETCOLOR = (MCM_FIRST + 10),
+
+        MCM_GETCOLOR = (MCM_FIRST + 11),
+
+ // set what day is "today"   send NULL to revert back to real date
+
+        MCM_SETTODAY = (MCM_FIRST + 12),
+
+ // get what day is "today"
+ // returns BOOL for success/failure
+
+        MCM_GETTODAY = (MCM_FIRST + 13),
+
+ // determine what pinfo->pt is over
+
+        MCM_HITTEST = (MCM_FIRST + 14),
+
+ // set first day of week to iDay:
+ // 0 for Monday, 1 for Tuesday, ..., 6 for Sunday
+ // -1 for means use locale info
+        MCM_SETFIRSTDAYOFWEEK = (MCM_FIRST + 15),
+
+ // LONG result...  low word has the day.  high word is bool if this is app set
+ // or not (FALSE = = using locale info)
+
+        MCM_GETFIRSTDAYOFWEEK = (MCM_FIRST + 16),
+
+ // LONG MonthCal_GetRange(LONG hmc, LPSYSTEMTIME rgst)
+ //   modifies rgst[0] to be the minimum ALLOWABLE systemtime (or 0 if no minimum)
+ //   modifies rgst[1] to be the maximum ALLOWABLE systemtime (or 0 if no maximum)
+ //   returns GDTR_MIN|GDTR_MAX if there is a minimum|maximum limit
+
+        MCM_GETRANGE = (MCM_FIRST + 17),
+
+ // BOOL MonthCal_SetRange(LONG hmc, LONG gdtr, LPSYSTEMTIME rgst)
+ //   if GDTR_MIN, sets the minimum ALLOWABLE systemtime to rgst[0], otherwise removes minimum
+ //   if GDTR_MAX, sets the maximum ALLOWABLE systemtime to rgst[1], otherwise removes maximum
+ //   returns TRUE on success, FALSE on error (such as invalid parameters)
+
+        MCM_SETRANGE = (MCM_FIRST + 18),
+
+ // LONG MonthCal_GetMonthDelta(LONG hmc)
+ //   returns the number of months one click on a next/prev button moves by
+
+        MCM_GETMONTHDELTA = (MCM_FIRST + 19),
+
+ // LONG MonthCal_SetMonthDelta(LONG hmc, LONG n)
+ //   sets the month delta to n. n = = 0 reverts to moving by a page of months
+ //   returns the previous value of n.
+
+        MCM_SETMONTHDELTA = (MCM_FIRST + 20),
+
+ // LONG MonthCal_GetMaxTodayWidth(LONG hmc, LPSIZE psz)
+ //   sets *psz to the maximum width/height of the "Today" string displayed
+ //   at the bottom of the calendar (as long as MCS_NOTODAY is not specified)
+
+        MCM_GETMAXTODAYWIDTH = (MCM_FIRST + 21),
+
+    } MonthCalMessages;
+
+    typedef enum MonthCallNotifications {
+
+ // MCN_SELCHANGE is sent whenever the currently displayed date changes
+ // via month change, year change, keyboard navigation, prev/next button
+ //
+
+        MCN_SELCHANGE = (-750 + 1),
+
+ // MCN_GETDAYSTATE is sent for MCS_DAYSTATE controls whenever new daystate
+ // information is needed (month or year scroll) to draw bolding information.
+ // The app must fill in cDayState months worth of information starting from
+ // stStart date. The app may fill in the array at prgDayState or change
+ // prgDayState to point to a different array out of which the information
+ // will be copied. (similar to tooltips)
+
+        MCN_GETDAYSTATE = (-750 + 3),
+
+ // MCN_SELECT is sent whenever a selection has occured (via mouse or keyboard)
+
+        MCN_SELECT = (-750 + 4),
+
+    } MonthCallNotifications;
+
+    typedef struct NMSELCHANGE {
+        NMHDR       nmhdr;
+        SYSTEMTIME      stSelStart;
+        SYSTEMTIME      stSelEnd;
+    } NMSELCHANGE;
+
+    typedef struct NMDAYSTATE {
+        NMHDR      nmhdr;
+        SYSTEMTIME stStart;
+        LONG cDayState;
+        LONG prgDayState; // points to cDayState MONTHDAYSTATEs
+    } NMDAYSTATE;
+
+
+    typedef enum MonthCalStyles {
+        MCS_DAYSTATE = 0x0001,
+        MCS_MULTISELECT = 0x0002,
+        MCS_WEEKNUMBERS = 0x0004,
+        MCS_NOTODAYCIRCLE = 0x0008,
+        MCS_NOTODAY = 0x0010,
+    } MonthCalStyles;
+
+    typedef enum MonthCalGetMonthRangeFlags {
+        GMR_VISIBLE = 0, // visible portion of display
+        GMR_DAYSTATE = 1 // above plus the grayed out parts of
+ // partially displayed months
+    } MonthCalGetMonthRangeFlags;
+
+
+// = = ====DATETIMEPICK CONTROL = = ================================================
+
+    [
+        dllname("comctl32.dll")
+    ]
+    module DateTimePick {
+
+        const LPSTR DATETIMEPICK_CLASS = "SysDateTimePick32";
+
+    }
+
+    typedef enum DateTimePickMessages {
+        DTM_FIRST = 0x1000,
+
+ // LONG DateTimePick_GetSystemtime(LONG hdp, LPSYSTEMTIME pst)
+ //   returns GDT_NONE if "none" is selected (DTS_SHOWNONE only)
+ //   returns GDT_VALID and modifies *pst to be the currently selected value
+        DTM_GETSYSTEMTIME = (DTM_FIRST + 1),
+
+ // BOOL DateTime_SetSystemtime(LONG hdp, LONG gd, LPSYSTEMTIME pst)
+ //   if gd = = GDT_NONE, sets datetimepick to None (DTS_SHOWNONE only)
+ //   if gd = = GDT_VALID, sets datetimepick to *pst
+ //   returns TRUE on success, FALSE on error (such as bad params)
+        DTM_SETSYSTEMTIME = (DTM_FIRST + 2),
+
+ // LONG DateTime_GetRange(LONG hdp, LPSYSTEMTIME rgst)
+ //   modifies rgst[0] to be the minimum ALLOWABLE systemtime (or 0 if no minimum)
+ //   modifies rgst[1] to be the maximum ALLOWABLE systemtime (or 0 if no maximum)
+ //   returns GDTR_MIN|GDTR_MAX if there is a minimum|maximum limit
+        DTM_GETRANGE = (DTM_FIRST + 3),
+
+ // BOOL DateTime_SetRange(LONG hdp, LONG gdtr, LPSYSTEMTIME rgst)
+ //   if GDTR_MIN, sets the minimum ALLOWABLE systemtime to rgst[0], otherwise removes minimum
+ //   if GDTR_MAX, sets the maximum ALLOWABLE systemtime to rgst[1], otherwise removes maximum
+ //   returns TRUE on success, FALSE on error (such as invalid parameters)
+        DTM_SETRANGE = (DTM_FIRST + 4),
+
+ // BOOL DateTime_SetFormat(LONG hdp, LPCTSTR sz)
+ //   sets the display formatting string to sz (see GetDateFormat and GetTimeFormat for valid formatting chars)
+ //   NOTE: 'X' is a valid formatting character which indicates that the application
+ //   will determine how to display information. Such apps must support DTN_WMKEYDOWN,
+ //   DTN_FORMAT, and DTN_FORMATQUERY.
+        DTM_SETFORMAT = (DTM_FIRST + 5),
+        DTM_SETFORMATW = (DTM_FIRST + 50),
+
+        DTM_SETMCCOLOR = (DTM_FIRST + 6),
+        DTM_GETMCCOLOR = (DTM_FIRST + 7),
+
+ // LONG DateTime_GetMonthCal(LONG hdp)
+ //   returns the LONG of the MonthCal popup window. Only valid
+ // between DTN_DROPDOWN and DTN_CLOSEUP notifications.
+        DTM_GETMONTHCAL = (DTM_FIRST + 8),
+
+        DTM_SETMCFONT = (DTM_FIRST + 9),
+        DTM_GETMCFONT = (DTM_FIRST + 10),
+
+    } DateTimePickMessages;
+
+    typedef enum DateTimePickStyles {
+        DTS_UPDOWN = 0x0001 , // use UPDOWN instead of MONTHCAL
+        DTS_SHOWNONE = 0x0002 , // allow a NONE selection
+        DTS_SHORTDATEFORMAT = 0x0000 , // use the short date format (app must forward WM_WININICHANGE messages)
+        DTS_LONGDATEFORMAT = 0x0004 , // use the long date format (app must forward WM_WININICHANGE messages)
+        DTS_TIMEFORMAT = 0x0009 , // use the time format (app must forward WM_WININICHANGE messages)
+        DTS_SHORTDATECENTURYFORMAT = 0x000C, // short date format with century (app must forward WM_WININICHANGE        DTS_APPCANPARSE = 0x0010 , // allow user entered strings (app MUST respond to DTN_USERSTRING)
+        DTS_RIGHTALIGN = 0x0020 , // right-align popup instead of left-align it
+    } DateTimePickStyles;
+
+    typedef enum DateTimePickNotifications {
+
+        DTN_DATETIMECHANGE = (-760 + 1), // the systemtime has changed
+        DTN_USERSTRING = (-760 + 2), // the user has entered a string
+        DTN_USERSTRINGW = (-760 + 15),
+        DTN_WMKEYDOWN = (-760 + 3), // modify keydown on app format field (X)
+        DTN_WMKEYDOWNW = (-760 + 16),
+        DTN_FORMATA = (-760 + 4), // query display for app format field (X)
+        DTN_FORMATW = (-760 + 17),
+        DTN_FORMATQUERYA = (-760 + 5), // query formatting info for app format field (X)
+        DTN_FORMATQUERYW = (-760 + 18),
+        DTN_DROPDOWN = (-760 + 6), // MonthCal has dropped down
+        DTN_CLOSEUP = (-760 + 7), // MonthCal is popping up
+    } DateTimePickNotifications;
+
+    typedef enum DateTimePickDateTimeChangeFlags {
+        GDT_ERROR = -1,
+        GDT_VALID = 0,
+        GDT_NONE = 1,
+    } DateTimePickDateTimeChangeFlags;
+
+    typedef struct NMDATETIMECHANGE {
+        NMHDR       nmhdr;
+        DateTimePickDateTimeChangeFlags dwFlags; // GDT_VALID or GDT_NONE
+        SYSTEMTIME  st; // valid iff dwFlags = = GDT_VALID
+    } NMDATETIMECHANGE;
+
+    typedef struct NMDATETIMESTRING {
+        NMHDR      nmhdr;
+        LONG pszUserString; // string user entered
+        SYSTEMTIME st; // app fills this in
+        DateTimePickDateTimeChangeFlags dwFlags; // GDT_VALID or GDT_NONE
+    } NMDATETIMESTRING;
+
+    typedef struct NMDATETIMEWMKEYDOWN {
+        NMHDR      nmhdr;
+        LONG nVirtKey; // virtual key code of WM_KEYDOWN which MODIFIES an X field
+        LONG pszFormat; // format substring
+        SYSTEMTIME st; // current systemtime, app should modify based on key
+    } NMDATETIMEWMKEYDOWN;
+
+    typedef struct NMDATETIMEFORMAT {
+        NMHDR      nmhdr;
+        LONG pszFormat; // format substring
+        SYSTEMTIME st; // current systemtime
+        LONG pszDisplay; // string to display
+        BYTE       szDisplay[64]; // buffer pszDisplay originally points at
+    } NMDATETIMEFORMAT;
+
+    typedef struct NMDATETIMEFORMATW {
+        NMHDR nmhdr;
+        LONG pszFormat; // format substring
+        SYSTEMTIME st; // current systemtime
+        LONG pszDisplay; // string to display
+        BYTE szDisplay[128]; // buffer pszDisplay originally points at
+    } NMDATETIMEFORMATW;
+
+    typedef struct NMDATETIMEFORMATQUERY {
+        NMHDR nmhdr;
+        LONG pszFormat; // format substring
+        SIZE szMax; // max bounding rectangle app will use for this format string
+    } NMDATETIMEFORMATQUERY;
+
+    typedef enum DateTimePickGetDateTimeRangeFlags {
+        GDTR_MIN = 0x0001,
+        GDTR_MAX = 0x0002,
+    } DateTimePickGetDateTimeRangeFlags;
+
+
+///    IP Address edit control
+
+    typedef enum IPAddressMessages {
+        IPM_CLEARADDRESS = (0x400+100),// no parameters
+        IPM_SETADDRESS = (0x400+101),// lparam = TCP/IP address
+        IPM_GETADDRESS = (0x400+102),// lresult = # of non black fields.
+ // lparam = LPLONG for TCP/IP address
+        IPM_SETRANGE = (0x400+103), // wparam = field, lparam = range
+        IPM_SETFOCUS = (0x400+104), // wparam = field
+        IPM_ISBLANK = (0x400+105), // no parameters
+    } IPAddressMessages;
+
+    typedef enum IPAddressNotificationCodes {
+        IPN_FIELDCHANGED = (-860 - 0),
+    } IPAddressNotificationCodes;
+
+    typedef struct NMIPADDRESS {
+        NMHDR hdr;
+        LONG iField;
+        LONG iValue;
+    } NMIPADDRESS;
+
+    [
+        helpstring("IPAddress Control"),
+        dllname("comctl32.dll")
+    ]
+    module IPAddress {
+        const LPSTR WC_IPADDRESS = "SysIPAddress32";
+    }
+
+// = ===================== Pager Control = ============================
+
+    [
+        helpstring("Pager")
+    ]
+    module Pager {
+        const LPSTR WC_PAGESCROLLER = "SysPager";
+
+    }
+
+//---------------------------------------------------------------------------------------
+// Pager Control Styles
+//---------------------------------------------------------------------------------------
+    typedef enum PagerStyles {
+        PGS_VERT = 0x0000,
+        PGS_HORZ = 0x0001,
+        PGS_AUTOSCROLL = 0x00000002,
+        PGS_DRAGNDROP = 0x00000004,
+    } PagerStyles;
+
+//---------------------------------------------------------------------------------------
+// Pager Button State
+//---------------------------------------------------------------------------------------
+//The scroll can be in one of the following control State
+    typedef enum PagerButtonStates {
+        PGF_INVISIBLE = 0, // Scroll button is not visible
+        PGF_NORMAL = 1, // Scroll button is in normal state
+        PGF_GRAYED = 2, // Scroll button is in grayed state
+        PGF_DEPRESSED = 4, // Scroll button is in depressed state
+        PGF_HOT = 8, // Scroll button is in hot state
+    } PagerButtonStates;
+
+    typedef enum PagerButton {
+        PGB_TOPORLEFT = 0,
+        PGB_BOTTOMORRIGHT = 1,
+    } PagerButton ;
+
+//---------------------------------------------------------------------------------------
+// Pager Control  Messages
+//---------------------------------------------------------------------------------------
+    typedef enum PageMessages {
+
+        PGM_SETCHILD = (0x1400 + 1), // lParam = = hwnd
+        PGM_RECALCSIZE = (0x1400 + 2),
+        PGM_FORWARDMOUSE = (0x1400 + 3),
+        PGM_SETBKCOLOR = (0x1400 + 4),
+        PGM_GETBKCOLOR = (0x1400 + 5),
+        PGM_SETBORDER = (0x1400 + 6),
+        PGM_GETBORDER = (0x1400 + 7),
+        PGM_SETPOS = (0x1400 + 8),
+        PGM_GETPOS = (0x1400 + 9),
+        PGM_SETBUTTONSIZE = (0x1400 + 10),
+        PGM_GETBUTTONSIZE = (0x1400 + 11),
+        PGM_GETBUTTONSTATE = (0x1400 + 12),
+    } PageMessages;
+
+//---------------------------------------------------------------------------------------
+//Pager Control Notification Messages
+//---------------------------------------------------------------------------------------
+
+    typedef enum PagerNotifications {
+        PGN_SCROLL = (-900-1),
+        PGN_CALCSIZE = (-900-2),
+    } PagerNotifications;
+
+    typedef enum PagerScrollFlags {
+        PGF_SCROLLUP = 1,
+        PGF_SCROLLDOWN = 2,
+        PGF_SCROLLLEFT = 4,
+        PGF_SCROLLRIGHT = 8,
+    } PagerScrollFlags;
+
+    typedef enum PagerCalcSizeFlags {
+        PGF_CALCWIDT = 1,
+        PGF_CALCHEIGHT = 2,
+    } PagerCalcSizeFlags;
+
+    typedef struct NMPGSCROLL {
+        NMHDR hdr;
+        RECT rcParent; // Contains Parent Window Rect
+        LONG iDir; // Scrolling Direction
+        LONG iXpos; // Horizontal scroll position
+        LONG iYpos; // Vertical scroll position
+        LONG iScroll; // [in/out] Amount to scroll
+    } NMPGSCROLL;
+
+    typedef struct NMPGCALCSIZE {
+        NMHDR   hdr;
+        LONG dwFlag;
+        LONG iWidth;
+        LONG iHeight;
+    } NMPGCALCSIZE;
+
+ // === Native Font Control ===
+
+    [
+        helpstring("NativeFont")
+    ]
+    module NativeFont {
+        const LPSTR WC_NATIVEFONTCTL = "NativeFontCtl";
+
+    }
+
+    typedef enum NativeFontStyles {
+        NFS_EDIT                =0x0001,
+        NFS_STATIC              =0x0002,
+        NFS_LISTCOMBO           =0x0004,
+        NFS_BUTTON              =0x0008,
+        NFS_ALL                 =0x0010,
+        NFS_USEFONTASSOC        =0x0020,
+    } NativeFontStyles;
+
+
+ // === MUI APIs ===
+
+    [
+        dllname("comctl32.dll")
+    ]
+    module MUIApis {
+
+        [entry("InitMUILanguage")]
+        void InitMUILanguage(LONG uiLang);
+
+        [entry("GetMUILanguage")]
+        LONG GetMUILanguage(void);
+    }
+
+ // ====== TrackMouseEvent =======
+
+    typedef enum TrackMouseEventMessages {
+        WM_MOUSEHOVER = 0x02A1,
+        WM_MOUSELEAVE = 0x02A3,
+    } TrackMouseEventMessages;
+
+    typedef enum TrackMouseEventFlags {
+        TME_HOVER = 0x00000001,
+        TME_LEAVE = 0x00000002,
+        TME_NONCLIENT = 0x00000010,
+        TME_QUERY = 0x40000000,
+        TME_CANCEL = 0x80000000,
+    } TrackMouseEventFlags;
+
+    typedef enum  TrackMouseHoverTime {
+        HOVER_DEFAULT = 0xFFFFFFFF,
+    } TrackMouseHoverTime;
+
+    typedef struct TRACKMOUSEEVENT {
+        LONG cbSize;
+        TrackMouseEventFlags dwFlags;
+        LONG hwndTrack;
+        LONG dwHoverTime;
+    } TRACKMOUSEEVENT;
+
+    [
+        helpstring("TrackMouseEvent"),
+        dllname("comctl32.dll")
+    ]
+    module TrackMouse {
+
+        [entry("_TrackMouseEvent")]
+        BOOL TrackMouseEvent(
+            [in] TRACKMOUSEEVENT *lpEventTrack);
+    }
+
+ // FLAT ScrollBars
+
+    typedef enum FlatScrollBarProps {
+        WSB_PROP_CYVSCROLL = 0x00000001L,
+        WSB_PROP_CXHSCROLL = 0x00000002L,
+        WSB_PROP_CYHSCROLL = 0x00000004L,
+        WSB_PROP_CXVSCROLL = 0x00000008L,
+        WSB_PROP_CXHTHUMB = 0x00000010L,
+        WSB_PROP_CYVTHUMB = 0x00000020L,
+        WSB_PROP_VBKGCOLOR = 0x00000040L,
+        WSB_PROP_HBKGCOLOR = 0x00000080L,
+        WSB_PROP_VSTYLE = 0x00000100L,
+        WSB_PROP_HSTYLE = 0x00000200L,
+        WSB_PROP_WINSTYLE = 0x00000400L,
+        WSB_PROP_PALETTE = 0x00000800L,
+        WSB_PROP_MASK = 0x00000FFFL,
+    } FlatScrollBarProps;
+
+    typedef enum FlatScrollBarModes {
+        FSB_FLAT_MODE = 2,
+        FSB_ENCARTA_MODE = 1,
+        FSB_REGULAR_MODE = 0,
+    } FlatScrollBarModes;
+
+    typedef struct SCROLLINFO {
+        LONG cbSize;
+        LONG fMask;
+        LONG nMin;
+        LONG nMax;
+        LONG nPage;
+        LONG nPos;
+        LONG nTrackPos;
+    } SCROLLINFO;
+
+    [
+        helpstring("Flat ScrollBars"),
+        dllname("comctl32.dll")
+    ]
+    module FlatScrollBars {
+        [entry("FlatSB_EnableScrollBar")]
+        BOOL FlatSB_EnableScrollBar(
+            [in] LONG hWnd,
+            [in] LONG wSBFlags,
+            [in] LONG wArrows);
+
+        [entry("FlatSB_ShowScrollBar")]
+        BOOL FlatSB_ShowScrollBar(
+            [in] LONG hWnd,
+            [in] LONG wSBFlags,
+            [in] BOOL fShow);
+
+        [entry("FlatSB_GetScrollRange")]
+        BOOL FlatSB_GetScrollRange(
+            [in] LONG hWnd,
+            [in] LONG nBar,
+            [out] LONG *lpMinPos,
+            [out] LONG *lpMaxPos);
+
+        [entry("FlatSB_GetScrollInfo")]
+        BOOL FlatSB_GetScrollInfo(
+            [in] LONG hWnd,
+            [in] LONG fnbar,
+            [out] SCROLLINFO *lpsi);
+
+        [entry("FlatSB_GetScrollPos")]
+        LONG FlatSB_GetScrollPos(
+            [in] LONG hWnd,
+            [in] LONG nBar);
+
+        [entry("FlatSB_GetScrollProp")]
+        BOOL FlatSB_GetScrollProp(
+            [in] LONG hWnd,
+            [in] FlatScrollBarProps propIndex,
+            [out] LONG *Value);
+
+        [entry("FlatSB_SetScrollPos")]
+        LONG FlatSB_SetScrollPos(
+            [in] LONG hWnd,
+            [in] LONG nBar,
+            [in] LONG pos,
+            [in] BOOL fRedraw);
+
+        [entry("FlatSB_SetScrollInfo")]
+        LONG FlatSB_SetScrollInfo(
+            [in] LONG hWnd,
+            [in] LONG nBar,
+            [in] SCROLLINFO *,
+            [in] BOOL fRedraw);
+
+        [entry("FlatSB_SetScrollRange")]
+        LONG FlatSB_SetScrollRange(
+            [in] LONG hWnd,
+            [in] LONG nBar,
+            [in] LONG min,
+            [in] LONG max,
+            [in] BOOL fRedraw);
+
+        [entry("FlatSB_SetScrollProp")]
+        BOOL FlatSB_SetScrollProp(
+            [in] LONG hWnd,
+            [in] FlatScrollBarProps index,
+            [in] LONG newValue,
+            [in] BOOL fRedraw);
+
+        [entry("InitializeFlatSB")]
+        BOOL InitializeFlatSB(
+            [in] LONG hWnd);
+
+        [entry("UninitializeFlatSB")]
+        HRESULT UninitializeFlatSB(
+            [in] LONG hWnd);
+
+    } //  END FLAT SB
+
+} // END LIBRARY

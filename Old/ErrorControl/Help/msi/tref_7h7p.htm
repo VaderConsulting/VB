@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiDigitalSignature Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiDigitalSignature table">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_crypto2_cryptoapi_blob">
+</OBJECT>
+<OBJECT ID="hhobj_2" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_winverifytrust">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msidigitalsignature_table"></A>MsiDigitalSignature Table</H1>
+
+<P>The MsiDigitalSignature table contains the signature information for every digitally signed object in the installation database. </P>
+
+<P>Windows Installer version 2.0 can only verify the digital signatures of external cabinets, and only by the use of MsiDigitalSignature and MsiDigitalCertificate tables. The MsiDigitalSignature table and <A HREF="tref_1t2d.htm">MsiDigitalCertificate table</A> are available with Windows Installer 2.0 and later versions. </P>
+
+<P>Windows Installer version 2.0 uses digital signatures as a means to detect corrupted resources. A signer certificate may be compared to the signer certificate of an external resource to be installed by the package. </P>
+
+<P>The MsiDigitalSignature table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Column</TH>
+<TH align=left width=35%>Type</TH>
+<TH align=left width=12%>Key</TH>
+<TH align=left width=18%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Table</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=12%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>SignObject</TD>
+<TD width=35%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=12%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>DigitalCertificate_</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=12%>&nbsp;</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Hash</TD>
+<TD width=35%><A HREF="tref_8ghl.htm">Binary</A></TD>
+<TD width=12%>&nbsp;</TD>
+<TD width=18%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Table</DT>
+
+<DD>With the Windows Installer version 2.0, the entry in this field must be "Media" for the <A HREF="tref_4mlh.htm">Media table</A>. The installer only verifies the digital signatures on external cabinet media entries. This column and the SignObject column together specify the resource that is digitally signed.</DD>
+
+<DT>SignObject</DT>
+
+<DD>A foreign key into the primary key of the table specified by the Table column. This column and the Table column together specify the resource that is digitally signed. </DD>
+
+<DT>DigitalCertificate_</DT>
+
+<DD>A foreign key into the <A HREF="tref_1t2d.htm">MsiDigitalCertificate table</A>. This identifies the certificate that must exist on the file for the associated action to succeed. The resource (or object) is always required to match this certificate in the MsiDigitalCertificate table.</DD>
+
+<DT>Hash</DT>
+
+<DD>In this field enter the reference hash of the resource (or object) that is to be checked against the actual hash of the resource (or object) obtained at run-time. If only the certificate needs to be verified, the Hash field may be NULL. Note that the format of the hash depends on the type of the resource (or object) being signed. 
+
+<P>The Hash column contains the binary representation of the hash. The actual content is the <B>pbData</B> member of the <A HREF="JavaScript:hhobj_1.Click()"><B>CRYPT_HASH_BLOB</B></A> structure, which is part of the <B>CRYPTOAPI_BLOB</B> structure. This may be obtained by calling <A HREF="JavaScript:hhobj_2.Click()"><B>WinVerifyTrust</B></A> or <A HREF="msi_9gdq.htm"><B>MsiGetFileSignatureInformation</B></A>.
+
+</DD>
+</DL>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_9gdq.htm"><B>MsiGetFileSignatureInformation</B></A>, <A HREF="tref_1t2d.htm">MsiDigitalCertificate table</A>, <A HREF="over_6boy.htm">Digital Signatures and Windows Installer</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiDigitalSignature%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_7h7p.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiDigitalSignature%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_7h7p.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

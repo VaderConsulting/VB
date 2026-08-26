@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetFeatureValidStates</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetFeatureValidStates">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetfeaturevalidstates"></A>MsiGetFeatureValidStates</H1>
+
+<P>The <B>MsiGetFeatureValidStates</B> function returns a valid installation state.</P>
+
+<PRE class=syntax><B>UINT MsiGetFeatureValidStates(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>            // installer handle
+  <B>LPCTSTR</B> <I>szFeature</I><B>,</B>             // feature name
+  <B>INSTALLSTATE</B> <I>*pInstallState</I>    // install state
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>Handle to the installation.</DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>Specifies the feature name.</DD>
+
+<DT><I>pInstallState</I></DT>
+
+<DD>Specifies the location to hold the valid installation states. This parameter is a combination of the following values. For each valid install state, a bit is set of value: (INSTALLSTATE).
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=54%>Value</TH>
+<TH align=left width=46%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLSTATE_ABSENT</TD>
+<TD width=46%>The feature can be uninstalled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLSTATE_ADVERTISED</TD>
+<TD width=46%>The feature can be advertised.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLSTATE_LOCAL</TD>
+<TD width=46%>The feature can be installed on the local drive.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLSTATE_SOURCE</TD>
+<TD width=46%>The feature can be configured to run from source, CD-ROM, or network.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=54%>INSTALLSTATE_DEFAULT</TD>
+<TD width=46%>The feature can be configured to use the default location: local or source.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_HANDLE_STATE</DT>
+
+<DD>An invalid handle state was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>ERROR_UNKNOWN_FEATURE</DT>
+
+<DD>An unknown feature was requested.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>See <A HREF="novr_9vw3.htm">Calling Database Functions From Programs</A>.</P>
+
+<P>The <B>MsiGetFeatureValidStates</B> function determines state validity by querying all components that are linked to the specified feature without taking into account the current installed state of any component. If any of these components have a value of IRSOPTIONAL in the RunFromSource column, or if at least one component is marked IRSTLOCALONLY and at least one other component is marked IRSSOURCEONLY, then both INSTALLSTATE_LOCAL and INSTALLSTATE_SOURCE are valid states for the feature. If all components are set to IRSLOCALONLY, INSTALLSTATE_LOCAL is the only valid state. If all components are set to IRSSOURCEONLY, INSTALLSTATE_SOURCE is the only valid state.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_selection_functions">Installer Selection Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

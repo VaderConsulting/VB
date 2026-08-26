@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Extension Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Extension Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_extension_table"></A>Extension Table</H1>
+
+<P>The Extension table contains information about file name extension servers that must be generated as a part of product advertisement. Each row generates a set of registry keys and values.</P>
+
+<P>The Extension table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Column</TH>
+<TH align=left width=34%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=18%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Extension</TD>
+<TD width=34%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Component_</TD>
+<TD width=34%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ProgId_</TD>
+<TD width=34%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>MIME_</TD>
+<TD width=34%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Feature_</TD>
+<TD width=34%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%> </TD>
+<TD width=18%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Extension</DT>
+
+<DD>The extension associated with the table row. The extension can be up to 255 characters long. Enter the extension in this field without the preceding period.</DD>
+
+<DT>Component_</DT>
+
+<DD>An external key to the first column of the <A HREF="tref_09np.htm">Component table</A>. This column references the component that controls the installation of the environment values.</DD>
+
+<DT>ProgId_</DT>
+
+<DD>The Program ID associated with this extension. This is a foreign key into the <A HREF="tref_4x5x.htm">ProgId table</A>.</DD>
+
+<DT>MIME_</DT>
+
+<DD>The Content Type that is to be written for the Extension column.
+
+<P>An external key to the first column of the <A HREF="tref_3sh1.htm">MIME table</A>.
+</DD>
+
+<DT>Feature_</DT>
+
+<DD>An external key into the first column of the <A HREF="tref_0a91.htm">Feature table</A> specifying the feature that provides the extension server.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is referred to when the <A HREF="aref_1epa.htm">RegisterExtensionInfo action</A> or the <A HREF="aref_738u.htm">UnRegisterExtensionInfo action</A> is executed.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Extension%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_219h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Extension%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_219h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

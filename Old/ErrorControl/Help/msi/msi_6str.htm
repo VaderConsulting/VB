@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetUserInfo</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiGetUserInfo">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msigetuserinfo"></A>MsiGetUserInfo</H1>
+
+<P>The <B>MsiGetUserInfo</B> function returns the registered user information for an installed product.</P>
+
+<PRE class=syntax><B>USERINFOSTATE MsiGetUserInfo(
+</B>  <B>LPCTSTR</B> <I>szProduct</I><B>,</B>      // product code
+  <B>LPTSTR</B> <I>lpUserNameBuf</I><B>,</B>   // buffer to return user name
+  <B>DWORD</B> <B>*</B><I>pcchUserNameBuf</I><B>,</B> // buffer character count 
+  <B>LPTSTR</B> <I>lpOrgNameBuf</I><B>,</B>    // buffer to return organization name
+  <B>DWORD</B> <B>*</B><I>pcchOrgNameBuf</I><B>,</B>  // buffer character count, including NULL
+  <B>LPTSTR</B> <I>lpSerialBuf</I><B>,</B>     // buffer to return product ID
+  <B>DWORD</B> <B>*</B><I>pcchSerialBuf</I>    // buffer character count, including NULL
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szProduct</I></DT>
+
+<DD>[in] Specifies the product code for the product to be queried.</DD>
+
+<DT><I>lpUserNameBuf</I></DT>
+
+<DD>[out] Pointer to a variable that receives the name of the user.</DD>
+
+<DT><I>pcchUserNameBuf</I></DT>
+
+<DD>[in, out] Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpUserNameBuf</I> parameter. This size should include the terminating null character.</DD>
+
+<DT><I>lpOrgNameBuf</I></DT>
+
+<DD>[out] Pointer to a buffer that receives the organization name.</DD>
+
+<DT><I>pcchOrgNameBuf</I></DT>
+
+<DD>[in, out] Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpOrgNameBuf</I> parameter. On input, this is the full size of the buffer, including a space for a terminating NULL. If the buffer passed in is too small, the count returned does not include the terminating NULL. </DD>
+
+<DT><I>lpSerialBuf</I></DT>
+
+<DD>[in] Pointer to a buffer that receives the product ID.</DD>
+
+<DT><I>pcchSerialBuf</I></DT>
+
+<DD>[in, out] Pointer to a variable that specifies the size, in characters, of the buffer pointed to by the <I>lpSerialBuf</I> parameter. On input, this is the full size of the buffer, including a space for a terminating NULL. If the buffer passed in is too small, the count returned does not include the terminating NULL. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>USERINFOSTATE_ABSENT</TD>
+<TD width=52%>Some or all of the user information is absent.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>USERINFOSTATE_INVALIDARG</TD>
+<TD width=52%>One of the function parameters was invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>USERINFOSTATE_MOREDATA</TD>
+<TD width=52%>A buffer is too small to hold the requested data.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>USERINFOSTATE_PRESENT</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>USERINFOSTATE_UNKNOWN</TD>
+<TD width=52%>The product code does not identify a known product.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>When the <B>MsiGetUserInfo</B> function returns, the <I>pcchNameBuf</I> parameter contains the length of the class string stored in the buffer. The count returned does not include the terminating NULL character. If the buffer is not big enough, the <B>MsiGetUserInfo</B> function returns USERINFOSTATE_MOREDATA, and <B>MsiGetUserInfo</B> contains the size of the string, in characters, without counting the NULL character.</P>
+
+<P>The user information is considered to be present even in the absence of a company name.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_system_status_functions">System Status Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetUserInfo;%20RELEASE:%20August%202001;%20URL:%20msi_6str.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetUserInfo;%20RELEASE:%20August%202001;%20URL:%20msi_6str.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

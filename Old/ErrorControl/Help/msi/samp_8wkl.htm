@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>A URL-Based Windows Installer Installation Example</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_cryptotools_cryptoapi_tools_reference">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_a_url_based_windows_installer_installation_example"></A>A URL-Based Windows Installer Installation Example</H1>
+
+<P>This example illustrates how to create a URL-based installation of a Windows Installer package. The sample requires Windows Installer version 2.0 or later.</P>
+
+<P>To reproduce this sample you need the Signcode.exe utility. For details, see the <A HREF="JavaScript:hhobj_1.Click()">CryptoAPI Tools Reference</A> in the Platform SDK. You also need <A HREF="app_71id.htm">Msistuff.exe</A> and Setup.exe utilities from the <A HREF="app_5qwj.htm">Platform SDK Components for Windows Installer Developers</A>. For more information, see <A HREF="app_0kmf.htm">Internet Download Bootstrapping</A>. </P>
+
+<P>The example has the following specifications:
+
+<UL>
+	<LI>When users visit your Web site and click on the "MySetup Installation" link, they are presented with the option to save or run from that location. If the user selects to run from that location, the Setup.exe upgrades the version of the Windows Installer on their computer, if necessary, verifies the digital signature on the Windows installer package, and installs the package on their computer.</LI>
+
+	<LI>There is a digital certificate, Mycert.cer, provided with a private key, Mycert.pvk.</LI>
+
+	<LI>The URL of the hypothetical Web site a customer would visit to install the package is http://www.example.com/Products/MySetup/mysetup.html.</LI>
+
+	<LI>The Web server layout is as follows.
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=44%>URL</TH>
+<TH align=left width=20%>File</TH>
+<TH align=left width=36%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>http://www.example.com/Products/MySetup/</TD>
+<TD width=20%>Setup.exe</TD>
+<TD width=36%>Setup.exe bootstrapper. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>http://www.example.com/Products/MySetup/</TD>
+<TD width=20%>MySetup.msi</TD>
+<TD width=36%>Installation package</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>http://www.example.com/Products/MySetup/</TD>
+<TD width=20%>Cab1.cab</TD>
+<TD width=36%>Source file cabinet #1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>http://www.example.com/Products/MySetup/</TD>
+<TD width=20%>Cab2.cab</TD>
+<TD width=36%>Source file cabinet #2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>http://www.example.com/Products/Common/InstMsi/Ansi</TD>
+<TD width=20%>Instmsi.exe</TD>
+<TD width=36%>ANSI Windows Installer 2.0 redistributable.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>http://www.example.com/Products/Common/InstMsi/Unicode</TD>
+<TD width=20%>Instmsi.exe</TD>
+<TD width=36%>Unicode Windows Installer 2.0 redistributable.</TD>
+</TR>
+</TABLE><BR>
+</LI>
+</UL>
+
+<P><A HREF="samp_12cz.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20A%20URL-Based%20Windows%20Installer%20Installation%20Example;%20RELEASE:%20August%202001;%20URL:%20samp_8wkl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20A%20URL-Based%20Windows%20Installer%20Installation%20Example;%20RELEASE:%20August%202001;%20URL:%20samp_8wkl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

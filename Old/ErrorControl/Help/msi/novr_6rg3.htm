@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Working with Records</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_working_with_records"></A>Working with Records</H2>
+
+<P>The installer supplies functions that manipulate the records in an installation database. These functions can be used in conjunction with the functions described in <A HREF="novr_9cxf.htm">Working with Queries</A> to make actual changes in a database. </P>
+
+<P>The following functions create or remove records: 
+
+<UL>
+	<LI>To create a new record for a database, call the <A HREF="qref_3v50.htm"><B>MsiCreateRecord</B></A> function.</LI>
+
+	<LI>To clear data from a record, set each field to NULL by calling the <A HREF="qref_1l9d.htm"><B>MsiRecordClearData</B></A> function.</LI>
+</UL>
+
+<P>The following functions fill specified fields of records:  
+
+<UL>
+	<LI>To set a record to an integer, call the <A HREF="qref_10vm.htm"><B>MsiRecordSetInteger</B></A> function. </LI>
+
+	<LI>To set a record to a string, call the <A HREF="qref_5a07.htm"><B>MsiRecordSetString</B></A> function.</LI>
+
+	<LI>To insert an entire file into a stream field, call the <A HREF="qref_4wq5.htm"><B>MsiRecordSetStream</B></A> function.</LI>
+</UL>
+
+<P>The following functions read values from specified fields of records:  
+
+<UL>
+	<LI>To read an integer value from a field, call the <A HREF="qref_1dma.htm"><B>MsiRecordGetInteger</B></A> function.</LI>
+
+	<LI>To retrieve a string value, call the <A HREF="qref_202v.htm"><B>MsiRecordGetString</B></A> function.</LI>
+
+	<LI>To obtain a stream, call the <B>MsiRecordReadStream</B> function.</LI>
+
+	<LI>To determine if a particular field of a record is NULL, call the <A HREF="qref_1v58.htm"><B>MsiRecordIsNull</B></A> function.</LI>
+</UL>
+
+<P>The following functions are informational record functions:  
+
+<UL>
+	<LI>To get the number of fields a record contains, call the <A HREF="qref_8ulw.htm"><B>MsiRecordGetFieldCount</B></A> function.</LI>
+
+	<LI>To get the size of a field, call the <A HREF="qref_6bj9.htm"><B>MsiRecordDataSize</B></A> function. The return value of <B>MsiRecordDataSize</B> is sensitive to the field type.</LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Working%20with%20Records;%20RELEASE:%20August%202001;%20URL:%20novr_6rg3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Working%20with%20Records;%20RELEASE:%20August%202001;%20URL:%20novr_6rg3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

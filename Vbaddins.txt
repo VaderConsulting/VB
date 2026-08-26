@@ -1,0 +1,60 @@
+'**************************************
+' Name: Add Commands to Menus in VB (Add
+'     In Creator)
+' Description:Hey, you always have seen 
+'     some people adding some cool addin to VB
+'     which esase their programming right? now
+'     you can do it too...You can add commands
+'     , command buttons, to menus with any com
+'     mand you like...
+' By: vbnick
+'
+'
+' Inputs:none
+'
+' Returns:none
+'
+'Assumes:none
+'
+'Side Effects:none
+'This code is copyrighted and has limited warranties.
+'Please see http://www.1VbStreet.com/xq/ASP/txtCodeId.11796/lngWId.1/qx/vb/scripts/ShowCode.htm for details.
+'**************************************
+
+' by Kayhan TanrisevenThe Benchmarker®
+' 
+' Example code of to add menu items to V
+'     B's popup Menus
+'
+' If needed, I will post a sample zipped
+'     project also..
+' for this reason, please feedback..
+' create all the user interface items
+On Error GoTo CreateMenuItems_Error
+' create the menu items in the code wind
+'     ow and code break window
+
+
+With VBInstance.CommandBars("Code Window").Controls
+    	Set MenuItem1 = .Add(msoControlButton)
+    	MenuItem1.Caption = "&Append To Clipboard"
+    	MenuItem1.BeginGroup = True
+    	Set MenuHandler1 = 	VBInstance.Events.CommandBarEvents(MenuItem1)
+    	Set MenuItem2 = .Add(msoControlButton)
+    	MenuItem2.Caption = "Clipboard &History"
+    	Set MenuHandler2 = 	VBInstance.Events.CommandBarEvents(MenuItem2)
+End With 
+
+
+With VBInstance.CommandBars("Code Window (Break)").Controls
+    	Set MenuItem3 = .Add(msoControlButton)
+    	MenuItem1.Caption = "&Append To Clipboard"
+    	MenuItem1.BeginGroup = True
+    	Set MenuHandler3 = 	VBInstance.Events.CommandBarEvents(MenuItem3)
+    	Set MenuItem4 = .Add(msoControlButton)
+    	MenuItem4.Caption = "Clipboard &History"
+    	Set MenuHandler4 = 	VBInstance.Events.CommandBarEvents(MenuItem4)
+End With
+Exit Sub 
+CreateMenuItems_Error:
+MsgBox "Unable To create necessary menu items", vbCritical

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>InstallExecute Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="InstallExecute Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_installexecute_action"></A>InstallExecute Action</H1>
+
+<P>The InstallExecute action runs a script containing all operations spooled since either the start of the installation or the last InstallExecute action or <A HREF="aref_8ib2.htm">InstallExecuteAgain action</A>. The InstallExecute action updates the system without ending the transaction. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The InstallExecute action comes between the <A HREF="aref_0gby.htm">InstallInitialize action</A> and the <A HREF="aref_8l9q.htm">InstallFinalize action</A>.</P>
+
+<H4>ActionData Messages</H4>
+
+<P>None.</P>
+
+<H4>Remarks</H4>
+
+<P>The <A HREF="aref_8ib2.htm">InstallExecuteAgain action</A> does the same thing as the InstallExecute action. Because the sequence tables have only one primary key, the Action column, the same action cannot be repeated in a particular sequence table. Two actions exist that do the same thing, InstallExecute and InstallExecuteAgain, for cases where the functionality of InstallExecute is needed twice in the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>. For more information, see <A HREF="novr_3mqt.htm">Using a Sequence Table</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

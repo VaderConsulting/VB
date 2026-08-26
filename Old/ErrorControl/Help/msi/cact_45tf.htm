@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Commit Custom Actions</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_commit_custom_actions"></A>Commit Custom Actions</H2>
+
+<P>Commit Custom actions are executed upon successful completion of the installation script. If the <A HREF="aref_8l9q.htm">InstallFinalize action</A> is successful, the installer will then run any existing Commit Custom actions. The only mode parameter the installer sets in this case is MSIRUNMODE_COMMIT. See <A HREF="qref_8u05.htm"><B>MsiGetMode</B></A> for a description of the run mode parameters. </P>
+
+<P>A commit custom action does not execute during the rollback of the installation. A commit custom action is the complement to a <A HREF="cact_0k8j.htm">rollback custom action</A> and can be used with rollback custom actions to reverse custom actions that make changes directly to the system.</P>
+
+<P>A commit custom action can be specified by adding an option flag to the Type field of the <A HREF="tref_71b9.htm">CustomAction table</A>. See <A HREF="cact_2ws3.htm">Custom Action In-Script Execution Options</A> for the option flag designating a commit custom action. </P>
+
+<P>Rollback and commit custom actions do not run when rollback is disabled. If a package author requires these types of custom actions for proper installation, they should use the <A HREF="pref_9ojd.htm"><B>RollbackDisabled</B> Property</A> in a condition that prevents the installation from continuing when rollback is disabled. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Commit%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_45tf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Commit%20Custom%20Actions;%20RELEASE:%20August%202001;%20URL:%20cact_45tf.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

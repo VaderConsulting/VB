@@ -1,0 +1,293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>INSTALLUI_HANDLER</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="INSTALLUI_HANDLER">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_installui_handler"></A>INSTALLUI_HANDLER</H1>
+
+<P>The <B>INSTALLUI_HANDLER</B> function prototype defines a callback function that the installer calls for progress notification and error messages. For more information on the usage of this function prototype, a sample code snippet is available in <A HREF="hand_0gmh.htm"><B>Handling Progress Messages Using MsiSetExternalUI</B></A>. </P>
+
+<PRE class=syntax><B>INT(WINAPI</B>*<B>INSTALLUI_HANDLER)(</B>
+  <B>LPVOID</B> <I>pvContext</I><B>,</B>   // application context
+  <B>UINT</B> <I>iMessageType</I><B>,</B>  // message type
+  <B>LPCTSTR</B> <I>szMessage</I>   // message
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>pvContext</I></DT>
+
+<DD>Pointer to an application context passed to the <A HREF="msi_5dm1.htm"><B>MsiSetExternalUI</B></A> function.  This parameter can be used for error checking.</DD>
+
+<DT><I>iMessageType</I></DT>
+
+<DD>Specifies a combination of one message box style, one message box icon type, one default button, and one installation message type. This parameter must be one of the following.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Message box StylesFlag</TH>
+<TH align=left width=55%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_ABORTRETRYIGNORE</TD>
+<TD width=55%>The message box contains the <B>Abort</B>, <B>Retry</B>, and <B>Ignore</B> buttons.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_OK</TD>
+<TD width=55%>The message box contains the <B>OK</B> button. This is the default.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_OKCANCEL</TD>
+<TD width=55%>The message box contains the <B>OK</B> and <B>Cancel</B> buttons.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_RETRYCANCEL</TD>
+<TD width=55%>The message box contains the <B>Retry</B> and <B>Cancel</B> buttons.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_YESNO</TD>
+<TD width=55%>The message box contains the <B>Yes</B> and <B>No</B> buttons.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_YESNOCANCEL</TD>
+<TD width=55%>The message box contains the <B>Yes</B>, <B>No</B>, and <B>Cancel</B> buttons.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Message box IconTypesFlag</TH>
+<TH align=left width=55%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_ICONEXCLAMATION, <BR>
+MB_ICONWARNING</TD>
+<TD width=55%>An exclamation point appears in the message box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_ICONINFORMATION, <BR>
+MB_ICONASTERISK</TD>
+<TD width=55%>The information sign appears in the message box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_ICONQUESTION</TD>
+<TD width=55%>A question mark appears in the message box.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_ICONSTOP, <BR>
+MB_ICONERROR, <BR>
+MB_ICONHAND</TD>
+<TD width=55%>A stop sign appears in the message box.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Default ButtonsFlag</TH>
+<TH align=left width=55%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_DEFBUTTON1</TD>
+<TD width=55%>The first button is the default button.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_DEFBUTTON2</TD>
+<TD width=55%>The second button is the default button.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_DEFBUTTON3</TD>
+<TD width=55%>The third button is the default button.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MB_DEFBUTTON4</TD>
+<TD width=55%>The fourth button is the default button.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Install message TypesFlag</TH>
+<TH align=left width=55%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_FATALEXIT</TD>
+<TD width=55%>Premature termination</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_ERROR</TD>
+<TD width=55%>Formatted error message</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_WARNING</TD>
+<TD width=55%>Formatted warning message</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_USER</TD>
+<TD width=55%>User request message.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_INFO</TD>
+<TD width=55%>Informative message for log</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_FILESINUSE</TD>
+<TD width=55%>List of files currently in use that must be closed before being replaced</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_RESOLVESOURCE</TD>
+<TD width=55%>Request to determine a valid source location</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_OUTOFDISKSPACE</TD>
+<TD width=55%>Insufficient disk space message</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_ACTIONSTART</TD>
+<TD width=55%>Start of action message. This message includes the action name and description.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_ACTIONDATA</TD>
+<TD width=55%>Formatted data associated with the individual action item.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_PROGRESS</TD>
+<TD width=55%>Progress gauge information. This message includes information on units so far and total number of units.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_COMMONDATA</TD>
+<TD width=55%>Formatted dialog information for user interface.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_INITIALIZE</TD>
+<TD width=55%>Sent prior to UI initialization, no string data</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_TERMINATE</TD>
+<TD width=55%>Sent after UI termination, no string data</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>INSTALLMESSAGE_SHOWDIALOG</TD>
+<TD width=55%>Sent prior to display of authored dialog or wizard</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>The following defaults should be used if any of the preceding messages are missing: MB_OK, no icon, and MB_DEFBUTTON1. There is no default installation message type; a message type is always specified.
+</DD>
+
+<DT><I>szMessage</I></DT>
+
+<DD>Specifies the message text.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>-1</DT>
+
+<DD>An error was found in the message handler.</DD>
+
+<DT>0</DT>
+
+<DD>No action was taken.
+</DD>
+</DL>
+
+<P>The following return values map to the buttons specified by the message box style:</P>
+
+<P>IDOK<BR>
+IDCANCEL<BR>
+IDABORT<BR>
+IDRETRY<BR>
+IDIGNORE<BR>
+IDYES<BR>
+IDNO</P>
+
+<H4>Remarks</H4>
+
+<P>For more information on returning values from an external user interface handler, see the <A HREF="hand_9tbm.htm"><B>Returning Values from an External User Interface Handler</B></A> topic.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_5dm1.htm"><B>MsiSetExternalUI</B></A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20INSTALLUI_HANDLER;%20RELEASE:%20August%202001;%20URL:%20msi_2g4y.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20INSTALLUI_HANDLER;%20RELEASE:%20August%202001;%20URL:%20msi_2g4y.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

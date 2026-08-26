@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Small Updates by Patching an Administrative Image</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_small_updates_by_patching_an_administrative_image"></A>Small Updates by Patching an Administrative Image</H2>
+
+<P>An <A HREF="over_6jzi.htm">administrative installation</A> creates a source image of an application or product on a network. Users in a workgroup who have access to this administrative image can then install the product from this source. Updating the application for this workgroup is done in two steps. First, the small update patch can be applied to the administrative image. Second, the changes in the small update need to be propagated to the users.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To apply a Small Update patch to an administrative image</B>
+
+<OL>
+	<LI>Obtain the small update in the form of a <A HREF="updat_7dmb.htm">patch package</A>. For example, the small update named patch.msp.</LI>
+
+	<LI>Obtain the path to the administrative image.</LI>
+
+	<LI>From the command line use: msiexec /a [<I>path to administrative image .msi file</I>] /p patch.msp . This updates the application files and the .msi file of the administrative image. See <A HREF="app_73eb.htm">Command Line Options</A> for a list of the options that can be used with Msiexec.exe. If during the original administrative installation <A HREF="pref_3d6h.htm">SHORTFILENAMES</A> was set to 1, you must also pass this property when applying the small update patch.</LI>
+
+	<LI>The resulting administrative image is the same as that produced by an administrative installation using a full product CD-ROM that includes the update. When new users install the application from this source they receive the updated application. </LI>
+</OL>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To propagate the Small Update to the workgroup</B>
+
+<OL>
+	<LI>Members of the workgroup obtain the changes by reinstalling the application from the administrative image using the procedure described in <A HREF="updat_50ac.htm">Small Updates by Reinstalling the Product</A>.</LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

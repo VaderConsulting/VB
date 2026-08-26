@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE21</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE21 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice21"></A>ICE21</H1>
+
+<P>ICE21 validates that every component in the <A HREF="tref_09np.htm">Component table</A> belongs to a feature. It uses the <A HREF="tref_52hx.htm">FeatureComponents table</A> to check for this mapping. </P>
+
+<H4>Result</H4>
+
+<P>ICE21 posts an error message if the installation package contains a component that does not belong to a feature.</P>
+
+<H4>Example</H4>
+
+<P>For the following example, ICE21 posts an error message stating that the component Comp1 does not map to any feature.</P>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>Component</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>Comp1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>Comp2</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_52hx.htm"><B>FeatureComponents Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Feature</TH>
+<TH align=left width=66%>Component</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Feature1</TD>
+<TD width=66%>Comp2</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

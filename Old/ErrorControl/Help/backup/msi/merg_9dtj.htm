@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICEM07</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICEM07 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_icem07"></A>ICEM07</H1>
+
+<P>ICEM07 verifies that the order of files in the sequence table matches the order of files in <A HREF="merg_1838.htm">MergeModule.CABinet</A>. </P>
+
+<P>Merge module ICEs are stored in a merge module .cub file called Mergemod.cub and not in the .cub file containing the ICEs used for package validation. </P>
+
+<H4>Result</H4>
+
+<P>ICEM07 posts an error if the order of files in the File table does not match the order in the cabinet file.</P>
+
+<H4>Example</H4>
+
+<P>IC0M07 would post the following error message for the example shown.</P>
+
+<PRE>The file 'FileB.<I>GUID1</I>' appears to be out of sequence. It has position 3 
+in the CAB, but not when the file table is ordered by sequence number.</PRE>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>File</TH>
+<TH align=left width=50%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>FileA.<I>GUID1</I></TD>
+<TD width=50%>1 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>FileB.<I>GUID1</I></TD>
+<TD width=50%>8 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>FileC.<I>GUID1</I></TD>
+<TD width=50%>52 </TD>
+</TR>
+</TABLE><BR>
+
+<P><B>Embedded <A HREF="merg_1838.htm">MergeModule.CABinet</A></B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>File</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>FileA.<I>GUID1</I></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>FileC.<I>GUID1</I></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>FileD.<I>GUID1</I></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>FileB.<I>GUID1</I></TD>
+</TR>
+</TABLE><BR>
+
+<P>Although the file sequence numbers in the file table do not have to be consecutive, and extra files can exist in the cabinet file, the relative sequence of all files in the File table must match the order in <A HREF="merg_1838.htm">MergeModule.CABinet</A>. To fix this error, change the sequence number of FileB to come after FileC to match the file order in the CAB, or rebuild the CAB with the files in the correct order. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_54md.htm">Merge Module ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ExternalFiles Table (PATCHWIZ.DLL)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ExternalFiles Table (PATCHWIZ.DLL)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_externalfiles_table_patchwiz.dll_"></A>ExternalFiles Table (PATCHWIZ.DLL)</H1>
+
+<P>The ExternalFiles table contains information about specific files that are not part of a regular target image. These files may exist in products that have been updated by another product, upgrade, or patch. This table is optional in the patch creation database (.pcp file) and is used by <A HREF="updat_6yu7.htm"><B>UiCreatePatchPackage</B></A>.</P>
+
+<P>The ExternalFiles table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Family</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>FTK</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>FilePath</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>SymbolPaths</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Order</TD>
+<TD width=40%>integer</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>IgnoreOffsets</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>IgnoreLengths</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>RetainOffsets</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Family</DT>
+
+<DD>Foreign key to the Family column of the <A HREF="updat_11pb.htm">ImageFamilies Table (PATCHWIZ.DLL)</A>.</DD>
+
+<DT>FTK</DT>
+
+<DD>Foreign key into <A HREF="tref_4n6t.htm">File table</A> of the .msi file of the upgraded image.</DD>
+
+<DT>FilePath</DT>
+
+<DD>Full path of the external file including the filename. FilePath field is used to locate the file specified in the FTK column. </DD>
+
+<DT>SymbolPaths</DT>
+
+<DD>Full path searched for symbol files of the file specified in the FTK column. </DD>
+
+<DT>Order</DT>
+
+<DD>If two or more versions are specified for the same external file, the table may contain multiple records with matching values in the FTK and Family fields. In this case, the Order field may specify the order of external files to use when creating the patch. The order is from the oldest to the most recent version. </DD>
+
+<DT>IgnoreOffsets</DT>
+
+<DD>The value in this field is a comma delimited list of range offset numbers for the ranges to be ignored in the external file. The order and number of the ranges in the list must match the items in the IgnoreLengths column. This column is optional.</DD>
+
+<DT>IgnoreLengths</DT>
+
+<DD>The value in this field is a comma delimited list of range lengths for the ranges to be ignored in the External file. The order and number of the ranges in the list must match the items in the IgnoreOffsets column. This column is optional.</DD>
+
+<DT>RetainOffsets</DT>
+
+<DD>The value in this field is a comma delimited list of range offset numbers for the ranges to be retained in the External file. The order and number of the ranges in the list must match the items in the RetainOffsets column of the corresponding record in the <A HREF="updat_4ajj.htm">FamilyFileRanges Table (PATCHWIZ.DLL)</A>.  
+
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

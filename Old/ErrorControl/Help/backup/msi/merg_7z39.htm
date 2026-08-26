@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleDependency Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ModuleDependency Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_moduledependency_table"></A>ModuleDependency Table</H3>
+
+<P>The ModuleDependency table keeps a list of other merge modules that are required for this merge module to operate properly. This table enables a merge or verification tool to ensure that the necessary merge modules are in fact included in the user's installer database. The tool checks by cross referencing this table with the ModuleSignature table in the installer database.</P>
+
+<P>The ModuleDependency table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Column</TH>
+<TH align=left width=31%>Type</TH>
+<TH align=left width=15%>Key</TH>
+<TH align=left width=21%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ModuleID</TD>
+<TD width=31%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ModuleLanguage</TD>
+<TD width=31%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>RequiredID</TD>
+<TD width=31%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>RequiredLanguage</TD>
+<TD width=31%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>RequiredVersion</TD>
+<TD width=31%><A HREF="tref_1iy6.htm">Version</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>ModuleID</DT>
+
+<DD>Identifier of the merge module. This is a foreign key into the <A HREF="merg_4nad.htm">ModuleSignature table</A>.</DD>
+
+<DT>ModuleLanguage</DT>
+
+<DD>Decimal language ID of the merge module in ModuleID. This is a foreign key into the <A HREF="merg_4nad.htm">ModuleSignature table</A>.</DD>
+
+<DT>RequiredID</DT>
+
+<DD>Identifier of the merge module required by the merge module in ModuleID.</DD>
+
+<DT>RequiredLanguage</DT>
+
+<DD>Numeric language ID of the merge module in RequiredID. The RequiredLanguage column can specify the language ID for a single language, such as 1033 for U.S. English, or specify the language ID for a language group, such as 9 for any English. If the field contains a group language ID, any merge module with having a language code in that group satisfies the dependency. If the RequiredLanguage is set to 0, any merge module filling the other requirements satisfies the dependency.</DD>
+
+<DT>RequiredVersion</DT>
+
+<DD>Version of the merge module in RequiredID. If this field is Null, any version fills the dependency.
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

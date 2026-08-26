@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiViewExecute</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiViewExecute">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiviewexecute"></A>MsiViewExecute</H1>
+
+<P>The <B>MsiViewExecute</B> function executes a SQL view query and supplies any required parameters. The query uses the question mark token to represent parameters as described in <A HREF="qref_5j20.htm">SQL Syntax</A>. The values of these parameters are passed in as the corresponding fields of a parameter record.</P>
+
+<PRE class=syntax><B>UINT MsiViewExecute(
+</B>  <B>MSIHANDLE</B> <I>hView</I><B>,</B>    // view handle
+  <B>MSIHANDLE</B> <I>hRecord</I>   // parameter record
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hView</I></DT>
+
+<DD>Handle to the view upon which to execute the query.</DD>
+
+<DT><I>hRecord</I></DT>
+
+<DD>Handle to a record that supplies the parameters. This parameter contains values to replace the parameter tokens in the SQL query. It is optional, so <I>hRecord</I> can be zero. For a reference on syntax, see <A HREF="qref_5j20.htm">SQL Syntax</A>.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>A view could not be executed.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiViewExecute</B> function must be called before any calls to <A HREF="qref_9b54.htm"><B>MsiViewFetch</B></A>.</P>
+
+<P>If the SQL query specifies values with parameter markers (?), a record must be supplied containing all of the replacement values in the exact order and of compatible data types. When used with INSERT and UPDATE queries all the parameterized values must precede all non-parameterized values. </P>
+
+<P>For example, these queries are valid.</P>
+
+<P>UPDATE {table-list} SET {column}= ? , {column}= {constant}</P>
+
+<P>INSERT INTO {table} ({column-list}) VALUES (?, {constant-list}) </P>
+
+<P>However these queries are invalid.</P>
+
+<P>UPDATE {table-list} SET {column}= {constant}, {column}=?</P>
+
+<P>INSERT INTO {table} ({column-list}) VALUES ({constant-list}, ? ) </P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_general_database_access_functions">General Database Access Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

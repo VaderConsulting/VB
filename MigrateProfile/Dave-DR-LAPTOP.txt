@@ -1,0 +1,14 @@
+Username      : Dave
+Computername  : DR-LAPTOP
+Domainname    : HOME
+Network Drives: 0
+Printers      : 7
+Printer       : \\cscsrvper3.aunz.csc.com\SUBI2C1
+Printer       : \\cscsrvper3.aunz.csc.com\SUBI2N1
+Printer       : \\server\OKIPAGE 6ex
+Printer       : \\tuskprint\HP DeskJet 1120C
+Printer       : \\tuskprint\HP LaserJet 6P
+Printer       : \\tuskprint\Kyocera FS-1200 (KPDL-2)
+Printer        : \\tuskprint\Phaser 8200 192.168.0.12
+Home page     : http://www.google.com.au/
+Profile Dir   : C:\Documents and Settings\dave

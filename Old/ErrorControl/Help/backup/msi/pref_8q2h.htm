@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>TRANSFORMS Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="TRANSFORMS Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_transforms_property"></A>TRANSFORMS Property</H1>
+
+<P>The TRANSFORMS property is a list of the <A HREF="updat_5wab.htm">transforms</A> that the installer applies when installing the package. The installer applies the transforms in the same order as they are listed in the property. Transforms can be specified by their filename or full path. To specify multiple transforms, separate each file name or full path with a semicolon (;). For example, to apply three transforms to a package, set TRANSFORMS to a list of file names or to a list of full paths.</P>
+
+<PRE>TRANSFORMS=transform1.mst;transform2.mst;transform3.mst
+TRANSFORMS=\\server\share\path\transform1.mst;\\server2\share2\path2\transform2.mst;\\server3\share3\path3\transform3.mst</PRE>
+
+<P>You can indicate that a transform file is embedded in a storage of the .msi file, rather than as a stand-alone file, by prefixing the filename with a colon (:). For example, the following example indicates that transform1.mst and transform2.mst are embedded inside the .msi file and that transform3.mst is a stand-alone file.</P>
+
+<PRE>TRANSFORMS=:transform1.mst;:transform2.mst;transform3.mst</PRE>
+
+<P>The installer requires the transforms listed in TRANSFORMS at every installation, advertisement, installation-on-demand, or maintenance installation of the package. The <A HREF="over_9u91.htm">TransformsSecure</A> policy, the <A HREF="#_msi_transforms_property">TRANSFORMS property</A>, and the first character of the TRANSFORMS string informs the installer how to handle the source resiliency of stand-alone transform files. Windows Installer version 1.1 treats setting <A HREF="over_0gth.htm">TransformsAtSource</A> or <A HREF="pref_4xh5.htm">TRANSFORMSATSOURCE</A> the same as TransformsSecure and TRANSFORMSSECURE. Note that transforms embedded in the .msi file are not cached and are always obtained from the package. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=29%>TRANSFORMS Property</TH>
+<TH align=left width=29%>Transforms Secure</TH>
+<TH align=left width=42%>Caching and Resiliency</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>@<I>[list of filenames]</I>
+<P></P>
+
+<P>Example:</P>
+
+<P>@transform1.mst;transform2.mst; transform3.mst</P>
+</TD>
+<TD width=29%>No effect.</TD>
+<TD width=42%><A HREF="updat_3rxv.htm">Secure-At-Source transforms</A>. The source of the transforms must be at the root of the source for the package. When the package is installed or advertised, the installer saves the transforms on the user's computer in a cache where the user does not have write access. If the local copy of the transform becomes unavailable, the installer searches for a source to restore the cache. The method is the same as searching the source list for an .msi file. See <A HREF="over_1lq1.htm">Source Resiliency</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>|[list of paths]
+<P></P>
+
+<P>Example:</P>
+
+<PRE>|\\server\share\path\transform1.mst;\\server2\share2\path2\transform2.mst</PRE>
+</TD>
+<TD width=29%>No effect.</TD>
+<TD width=42%><A HREF="updat_7mb7.htm">Secure-Full-Path transforms</A>. The source of each transform must be at the full path passed to TRANSFORMS. The transform source does not have to be located at the source of the package. When the package is installed or advertised, the installer saves the transforms on the user's computer in a cache where the user does not have write access. If the local copy of the transform becomes unavailable the installer can only restore the cache from the source at the specified path. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%><I>[list of filenames]</I>
+<P>The first character is not @ or |.</P>
+
+<P>Example:</P>
+
+<P>transform1.mst;transform2.mst; transform3.mst</P>
+</TD>
+<TD width=29%>TransformsSecure or TRANSFORMSSECURE set to 1
+<P>OR</P>
+
+<P>TransformsAtSource or TRANSFORMSATSOURCE set to 1.</P>
+</TD>
+<TD width=42%>If TRANSFORMS is a list of filenames, the installer treats them as <A HREF="updat_3rxv.htm">Secure-At-Source transforms</A>.
+<P>If TRANSFORMS is a list of full paths, the installer treats them as <A HREF="updat_7mb7.htm">Secure-Full-Path transforms</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%><I>[list of filenames]</I>
+<P>The first character is not @ or |.</P>
+
+<P>Example:</P>
+
+<P>transform1.mst;transform2.mst; transform3.mst</P>
+</TD>
+<TD width=29%>TransformsSecure and TRANSFORMSSECURE are not set
+<P>AND</P>
+
+<P>TransformsAtSource and TRANSFORMSATSOURCE are not set.</P>
+</TD>
+<TD width=42%>The source of the transforms must be at the root of the source for the package. When the package is installed or advertised, the installer saves the transforms in the user's profile. This enables a user to roam between computers while maintaining their customizations. If the local copy of the transform becomes unavailable the installer searches for a source to restore the cache. The method is the same as searching the source list for an .msi file. See <A HREF="over_1lq1.htm">Source Resiliency</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=29%>[list of paths]
+<P>The first character is not @ or |.</P>
+
+<P>Example:</P>
+
+<PRE>\\server\share\path\transform1.mst;\\server2\share2\path2\transform2.mst.</PRE>
+</TD>
+<TD width=29%>TransformsSecure and TRANSFORMSSECURE are not set
+<P>AND</P>
+
+<P>TransformsAtSource and TRANSFORMSATSOURCE are not set..</P>
+</TD>
+<TD width=42%><A HREF="updat_9qur.htm">Unsecured transforms</A>. When the package is installed or advertised, the installer saves the transforms in an unsecured location where the user has write access. If the local copy of the transform becomes unavailable the installer may only restore the transform from the source at the path passed to TRANSFORMS.</TD>
+</TR>
+</TABLE><BR>
+
+<P>You cannot use filenames and paths together in the same TRANSFORMS list. You cannot specify secure and profile transforms together in the same list. You may include transforms embedded in the package in a list with other transforms. </P>
+
+<PRE>@transform1.mst;:transform2.mst 
+|\\server\share\path\transform1.mst;:transform2.mst </PRE>
+
+<P>Note that because the list delimiter for transforms is the semicolon character, semicolons must not be used in a transform filename or path. </P>
+
+<H4>Remarks</H4>
+
+<P>In cases where the <A HREF="over_9u91.htm">TransformsSecure</A> policy or the <A HREF="pref_0uwp.htm">TRANSFORMSSECURE property</A> has been set with Windows Installer version 1.1, it is not necessary to pass the @ or | symbol when setting TRANSFORMS using the command line. The installer assumes Secure-At-Source or Secure-Full-Path if the list consists entirely of file names located at the source or consists entirely of full paths. You still cannot mix the two types of transform sources.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="updat_5wab.htm">Transforms</A>, <A HREF="over_1lq1.htm">Source Resiliency</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetFeatureUsage</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetFeatureUsage">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetfeatureusage"></A>MsiGetFeatureUsage</H1>
+
+<P>The <B>MsiGetFeatureUsage</B> returns the usage metrics for a product feature.</P>
+
+<PRE class=syntax><B>UINT MsiGetFeatureUsage(
+</B>  <B>LPCTSTR</B> <I>szProduct</I><B>,</B>    // product code
+  <B>LPCTSTR</B> <I>szFeature</I><B>,</B>    // feature ID
+  <B>DWORD *</B><I>pdwUseCount</I><B>,</B>   // returned use count
+  <B>WORD *</B><I>pwDateUsed</I>      // last date used
+<B>)</B>;</PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szProduct</I></DT>
+
+<DD>Specifies the product code for the product containing the feature.</DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>Specifies the feature code for the feature for which metrics are to be returned.</DD>
+
+<DT><I>pdwUseCount</I></DT>
+
+<DD>Indicates the number of times the feature has been used.</DD>
+
+<DT><I>pwDateUsed</I></DT>
+
+<DD>Specifies the date that the feature was last used. The date is in the MS-DOS® date format, as shown in the following table.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=11%>Bits</TH>
+<TH align=left width=89%>Contents</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>0 – 4</TD>
+<TD width=89%>Day of the month (1-31)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>5 – 8</TD>
+<TD width=89%>Month (1 = January, 2 = February, and so on)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=11%>9 – 15</TD>
+<TD width=89%>Year offset from 1980 (add 1980 to get actual year)</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Valkue</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_CONFIGURATION</TD>
+<TD width=52%>The configuration data is corrupt.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INSTALL_FAILURE</TD>
+<TD width=52%>No usage information is available or the product or feature is invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function completed successfully.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_system_status_functions">System Status Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

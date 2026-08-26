@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Merges and Transforms</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="merges [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="transforms [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="transforms [Windows Installer], and merges described">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_merges_and_transforms"></A>Merges and Transforms</H1>
+
+<P>The Microsoft® Windows® Installer keeps all information about the installation in a relational database. You can modify this database, and therefore the installation, by using transforms and merges.</P>
+
+<H4>Transforms</H4>
+
+<P>A <A HREF="updat_5wab.htm">transform</A> adds or replaces elements in the original database. For example, a transform can change all the text in an application's user interface from French to English.</P>
+
+<P>Primary uses for transforms include:
+
+<UL>
+	<LI>Customization of base installation packages for particular groups of users.
+<P>Transforms can be used to encapsulate the various customizations of a single base package that are required by different groups of users. For example, this is useful in organizations where the finance and staff support departments require different installations of a particular product. A product's base package can be available to everyone at one administrative installation point with the appropriate customizations distributed to each group of users separately. 
+</LI>
+
+	<LI>Synchronization of applications across languages.
+<P>Transforms are useful for keeping packages authored at widely separated locations synchronized during authoring. For example, if an upgrade is first developed for an English version of an application that exists in English and French, a transform can be applied to the upgraded English version that converts it into an upgraded French version.
+
+<P>Multiple transforms can be applied to a base package and then applied on-the-fly during installation. This extends the capabilities of the installer to create custom packages and provides a mechanism for efficiently assigning the most appropriate installations to different groups of users.
+</LI>
+
+	<LI>Patching applications.
+<P>Transforms can be used to apply a minor fix to an application that does not warrant a major upgrade. For more information about patches, see <A HREF="updat_7dmb.htm">Patch Packages</A>. 
+</LI>
+</UL>
+
+<H4>Merges</H4>
+
+<P>A merge combines two databases into one database, and adds, rather than replaces, information. If the same information exists in both databases, a merge conflict occurs. Merges are useful to development teams because they allow a large application to be divided into parts that can be recombined later. For example, the database elements for the installation of a new component can be developed separately and later merged into the main installation database. For more information, see <A HREF="merg_9x9v.htm">Merge Modules</A>.</P>
+
+<P>A development team might apply a merge operation in the following way:
+
+<OL>
+	<LI>Separate into groups and work simultaneously on different components of a large application. </LI>
+
+	<LI>Each development group the populates a database with the installation information for its own component, without being concerned with the other components of the application. </LI>
+
+	<LI>After the development of a component is complete, that component's database can be merged into the main installation database for the entire application.</LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Merges%20and%20Transforms;%20RELEASE:%20August%202001;%20URL:%20over_2ysz.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Merges%20and%20Transforms;%20RELEASE:%20August%202001;%20URL:%20over_2ysz.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

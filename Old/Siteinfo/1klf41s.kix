@@ -1,0 +1,13 @@
+; DO NOT MODIFY THE NEXT 2 LINES DIRECTLY
+$SITENAME = "CRCA"
+$SERIALNUMBER = "1KLF41S"
+;----------------------------------------------
+; Start work
+;
+$COMPUTERNAME = $SITENAME + "-" + $SERIALNUMBER
+
+SetM "SITE=" + $SITENAME + "NW"
+SetM "COMPUTERNAME=" + $COMPUTERNAME
+
+$Result = WriteValue ("HKLM\System\CurrentControlSet\Control\ComputerName\ActiveComputerName", "ComputerName", $COMPUTERNAME, "REG_SZ")
+$Result = WriteValue ("HKLM\System\CurrentControlSet\Control\ComputerName\ComputerName", "ComputerName", $COMPUTERNAME, "REG_SZ")

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AllowLockdownBrowse</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="AllowLockdownBrowse [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_allowlockdownbrowse"></A>AllowLockdownBrowse</H3>
+
+<P>If this per-machine <A HREF="over_37ll.htm">system policy</A> is set to "1", non-admin users can browse for new sources while running an installation at elevated privileges. The default is that only administrators can browse for sources during an elevated installation. Setting this policy also enables non-admin users to run programs at LocalSystem privileges during an elevated installation. </P>
+
+<P>This policy not available with Windows Installer version 1.0.</P>
+
+<H4>Registry Key</H4>
+
+<P><B>HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer</B></P>
+
+<H4>Remarks</H4>
+
+<P>Any user can browse for new sources during a non-elevated installation. Setting the value of this <A HREF="over_37ll.htm">system policy</A> to "1" gives non-admin users the additional flexibility of browsing for new sources during an elevated installation. If this policy is not set, non-admin users cannot browse for new sources for assigned or published applications. </P>
+
+<P>Setting this policy also enables non-admin users to run arbitrary programs at LocalSystem privileges if they have a Windows Installer installation package that installs or launches those programs.</P>
+
+<P>Note this policy is not available with Windows Installer version 1.0. Systems using version 1.0 of the installer should therefore be secured by setting the <A HREF="over_5rmt.htm">DisableBrowse</A> policy. On Windows NT version 4.0 using Windows Installer version 1.0, the possible security threat only applies to products that have been installed for all users of the computer.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>UpgradedFiles_OptionalData Table (Patchwiz.dll)</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="UpgradedFiles_OptionalData table (Patchwiz.dll) [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_upgradedfiles_optionaldata_table_patchwiz.dll_"></A>UpgradedFiles_OptionalData Table (Patchwiz.dll)</H1>
+
+<P>The UpgradedFile_OptionalData table contains information about specific files in an upgraded image. This table is optional in the patch creation database (.pcp file) and is used by <A HREF="app_6yu7.htm"><B>UiCreatePatchPackage (Patchwiz.dll)</B></A>.</P>
+
+<P>The UpgradedFiles_OptionalData table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Upgraded</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>FTK</TD>
+<TD width=40%>text</TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>SymbolPaths</TD>
+<TD width=40%>text</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>AllowIgnoreOnPatchError</TD>
+<TD width=40%>integer</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>IncludeWholeFile</TD>
+<TD width=40%>integer</TD>
+<TD width=14%>&nbsp;</TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Upgraded</DT>
+
+<DD>Foreign key to the Upgraded column of the <A HREF="app_18tb.htm">UpgradedImages Table (Patchwiz.dll)</A>.</DD>
+
+<DT>FTK</DT>
+
+<DD>File table key. Foreign key into <A HREF="tref_4n6t.htm">File table</A> of the .msi file of the upgraded image. If two or more upgraded images within a family have the same FTK value, the value must refer to the same file. Files shared by multiple upgrade images should have the same FTK to minimize cabinet file size.  </DD>
+
+<DT>SymbolPaths</DT>
+
+<DD>The value in this field is added to the semicolon delimited list of folders in the SymbolPaths column of the <A HREF="app_18tb.htm">UpgradedImages Table (Patchwiz.dll)</A> when the patch is generated, and can be used to add symbol files for a specific file.</DD>
+
+<DT>AllowIgnoreOnPatchError</DT>
+
+<DD>Set to 1 to indicate that the patch is non-vital. Set to 0 to indicate that the patch is vital. If the Windows Installer encounters a problem when applying this patch to the file specified in the FTK column, the value in this field determines whether the error message box includes an 'Ignore' button to enable the user to continue the patching process. </DD>
+
+<DT>IncludeWholeFile</DT>
+
+<DD>Set to a non-zero value if the entire file specified in the FTK column should be installed rather than creating a binary patch. 
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20UpgradedFiles_OptionalData%20Table%20(Patchwiz.dll);%20RELEASE:%20August%202001;%20URL:%20app_98pr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20UpgradedFiles_OptionalData%20Table%20(Patchwiz.dll);%20RELEASE:%20August%202001;%20URL:%20app_98pr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

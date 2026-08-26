@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AdvtExecuteSequence Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="AdvtExecuteSequence Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_advtexecutesequence_table"></A>AdvtExecuteSequence Table</H1>
+
+<P>The AdvtExecuteSequence table lists actions the installer calls when the top-level <A HREF="aref_2o8e.htm">ADVERTISE action</A> is executed.</P>
+
+<P>Advertise actions in the sequence up to the <A HREF="aref_9fzi.htm">InstallValidate action</A> and any exit dialog boxes, are located in the <A HREF="tref_3rvp.htm">AdvtUISequence table</A>. All actions from the InstallValidate action through the end of the install sequence are in the AdvExecuteSequence table.</P>
+
+<P>Only the following actions can be used in the AdvtExecuteSequence table. Custom actions cannot be used in this table.</P>
+
+<P class=indent1><A HREF="aref_22we.htm">CostFinalize</A> </P>
+
+<P class=indent1><A HREF="aref_4bam.htm">CostInitialize</A> </P>
+
+<P class=indent1><A HREF="aref_7uzy.htm">CreateShortcuts</A> </P>
+
+<P class=indent1><A HREF="aref_8l9q.htm">InstallFinalize</A> </P>
+
+<P class=indent1><A HREF="aref_0gby.htm">InstallInitialize</A> </P>
+
+<P class=indent1><A HREF="aref_9fzi.htm">InstallValidate</A> </P>
+
+<P class=indent1><A HREF="aref_2r3i.htm">PublishComponents</A> </P>
+
+<P class=indent1><A HREF="aref_8bou.htm">PublishFeatures</A> </P>
+
+<P class=indent1><A HREF="aref_10dq.htm">PublishProduct</A> </P>
+
+<P class=indent1><A HREF="aref_04oe.htm">RegisterClassInfo</A> </P>
+
+<P class=indent1><A HREF="aref_1epa.htm">RegisterExtensionInfo</A> </P>
+
+<P class=indent1><A HREF="aref_9r8u.htm">RegisterMIMEInfo</A> </P>
+
+<P class=indent1><A HREF="aref_08tq.htm">RegisterProgIdInfo</A> </P>
+
+<P>The columns are identical to those of the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>. The AdvtExecuteSequence table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Column</TH>
+<TH align=left width=35%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Action</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Condition</TD>
+<TD width=35%><A HREF="tref_735a.htm">Condition</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Sequence</TD>
+<TD width=35%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Action</DT>
+
+<DD>Name of the <A HREF="acts_4lmb.htm">standard action</A> the installer is to execute. This is the primary key of the table.</DD>
+
+<DT>Condition</DT>
+
+<DD>Logical expression. If the expression evaluates to false, the action is skipped. If the expression syntax is invalid, the sequence terminates, returning iesBadActionData. For information on the syntax of conditional statements, see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.</DD>
+
+<DT>Sequence</DT>
+
+<DD>A positive value indicates the sequence position of the action. The following negative values indicate that the action is called if the installer returns the termination flag shown in parentheses.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Termination flag</TH>
+<TH align=left width=12%>Value</TH>
+<TH align=left width=46%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusSuccess</TD>
+<TD width=12%>-1</TD>
+<TD width=46%>Successful completion.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusUserExit</TD>
+<TD width=12%>-2</TD>
+<TD width=46%>User terminates install.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusFailure</TD>
+<TD width=12%>-3</TD>
+<TD width=46%>Fatal exit terminates.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusSuspend</TD>
+<TD width=12%>-4</TD>
+<TD width=46%>Install is suspended.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Zero, all other negative numbers, or a NULL value indicate that the action is never called.
+
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

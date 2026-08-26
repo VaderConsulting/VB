@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiEvaluateCondition</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiEvaluateCondition">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msievaluatecondition"></A>MsiEvaluateCondition</H1>
+
+<P>The <B>MsiEvaluateCondition</B> function evaluates a conditional expression containing property names and values.</P>
+
+<PRE class=syntax><B>MSICONDITION MsiEvaluateCondition(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>    // installer handle
+  <B>LPCTSTR</B> <I>szCondition</I>    // conditional expression
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>[in] Handle to the installation.</DD>
+
+<DT><I>szCondition</I></DT>
+
+<DD>[in] Specifies the conditional expression. For the syntax of conditional expressions see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>MSICONDITION_ERROR</DT>
+
+<DD>An invalid handle was passed to the function, or the conditional expression has a syntax error.</DD>
+
+<DT>MSICONDITION_FALSE</DT>
+
+<DD>An expression that evaluates to FALSE was passed to the function.</DD>
+
+<DT>MSICONDITION_NONE</DT>
+
+<DD>No expression was passed to the function.</DD>
+
+<DT>MSICONDITION_TRUE</DT>
+
+<DD>An expression that evaluates to TRUE was passed to the function.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The following table shows the feature and component state values used by the <B>MsiEvaluateCondition</B> function. These states are not set until <A HREF="qref_7yr0.htm"><B>MsiSetInstallLevel</B></A> is called, either directly or by the <A HREF="aref_22we.htm">CostFinalize action</A>. Therefore, state checking is generally only useful for conditional expressions in an action sequence table.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Value</TH>
+<TH align=left width=58%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_ABSENT - </TD>
+<TD width=58%>Feature or component not present.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_LOCAL - </TD>
+<TD width=58%>Feature or component on local computer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_SOURCE - </TD>
+<TD width=58%>Feature or component run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>(NULL value) - </TD>
+<TD width=58%>No action to be taken on feature or component.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_action_functions">Installer Action Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiEvaluateCondition;%20RELEASE:%20August%202001;%20URL:%20qref_6je6.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiEvaluateCondition;%20RELEASE:%20August%202001;%20URL:%20qref_6je6.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,5 @@
+winmgmt1 = "winmgmts:{impersonationLevel=impersonate}!//"& ComputerName &""\
+Set SNSet = GetObject( winmgmt1 ).InstancesOf ("Win32_BIOS")
+for each SN in SNSet
+	MsgBox "The serial number for the specified computer is: " & SN.SerialNumber
+Next

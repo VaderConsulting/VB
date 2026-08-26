@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AdvtExecuteSequence Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="AdvtExecuteSequence Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_advtexecutesequence_table"></A>AdvtExecuteSequence Table</H1>
+
+<P>The AdvtExecuteSequence table lists actions the installer calls when the top-level <A HREF="aref_2o8e.htm">ADVERTISE action</A> is executed.</P>
+
+<P>Only the following actions can be used in the AdvtExecuteSequence table. Custom actions cannot be used in this table.</P>
+
+<P class=indent1><A HREF="aref_22we.htm">CostFinalize</A> </P>
+
+<P class=indent1><A HREF="aref_4bam.htm">CostInitialize</A> </P>
+
+<P class=indent1><A HREF="aref_7uzy.htm">CreateShortcuts</A> </P>
+
+<P class=indent1><A HREF="aref_8l9q.htm">InstallFinalize</A> </P>
+
+<P class=indent1><A HREF="aref_0gby.htm">InstallInitialize</A> </P>
+
+<P class=indent1><A HREF="aref_9fzi.htm">InstallValidate</A> </P>
+
+<P class=indent1><A HREF="aref_9bn2.htm">MsiPublishAssemblies</A> </P>
+
+<P class=indent1><A HREF="aref_2r3i.htm">PublishComponents</A> </P>
+
+<P class=indent1><A HREF="aref_8bou.htm">PublishFeatures</A> </P>
+
+<P class=indent1><A HREF="aref_10dq.htm">PublishProduct</A> </P>
+
+<P class=indent1><A HREF="aref_04oe.htm">RegisterClassInfo</A> </P>
+
+<P class=indent1><A HREF="aref_1epa.htm">RegisterExtensionInfo</A> </P>
+
+<P class=indent1><A HREF="aref_9r8u.htm">RegisterMIMEInfo</A> </P>
+
+<P class=indent1><A HREF="aref_08tq.htm">RegisterProgIdInfo</A> </P>
+
+<P>The columns are identical to those of the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>. The AdvtExecuteSequence table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Column</TH>
+<TH align=left width=35%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Action</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=13%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Condition</TD>
+<TD width=35%><A HREF="tref_735a.htm">Condition</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Sequence</TD>
+<TD width=35%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Action</DT>
+
+<DD>Name of the <A HREF="acts_4lmb.htm">standard action</A> the installer is to execute. This is the primary key of the table.</DD>
+
+<DT>Condition</DT>
+
+<DD>Logical expression. If the expression evaluates to false, the action is skipped. If the expression syntax is invalid, the sequence terminates, returning iesBadActionData. For information on the syntax of conditional statements, see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.</DD>
+
+<DT>Sequence</DT>
+
+<DD>A positive value indicates the sequence position of the action. The following negative values indicate that the action is called if the installer returns the termination flag. No more than one action may have a negative value entered in the Sequence field.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Termination flag</TH>
+<TH align=left width=12%>Value</TH>
+<TH align=left width=46%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusSuccess</TD>
+<TD width=12%>-1</TD>
+<TD width=46%>Successful completion.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusUserExit</TD>
+<TD width=12%>-2</TD>
+<TD width=46%>User terminates install.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusFailure</TD>
+<TD width=12%>-3</TD>
+<TD width=46%>Fatal exit terminates.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>msiDoActionStatusSuspend</TD>
+<TD width=12%>-4</TD>
+<TD width=46%>Install is suspended.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Zero, all other negative numbers, or a NULL value indicate that the action is never called.
+
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20AdvtExecuteSequence%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_5mn9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20AdvtExecuteSequence%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_5mn9.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

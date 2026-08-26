@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE02</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE02 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice02"></A>ICE02</H1>
+
+<P>ICE02 validates that certain references between the <A HREF="tref_09np.htm">Component</A>, <A HREF="tref_4n6t.htm">File</A>, and <A HREF="tref_3obp.htm">Registry</A> tables are reciprocal. These references must to be reciprocal for the installer to correctly determine the installation state of components.</P>
+
+<P>The installer uses the KeyPath column of the Component table to detect the presence of the component listed in the Component column. The KeyPath column contains a key into the Registry or File tables. Both of these tables have a Component_ column that contains a key back into the Component table pointing to the component that controls the registry entry or file. These references must be reciprocal.</P>
+
+<H4>Result</H4>
+
+<P>ICE02 posts an error message if it finds a reference that should be reciprocal and is not.</P>
+
+<H4>Example</H4>
+
+<P>ICE02 would post the following error message for a .msi file containing the database entries shown.</P>
+
+<PRE>File: 'Red_File' cannot be the key file for Component: 'Blue'. The file belongs to Component: 'Red' </PRE>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Component</TH>
+<TH align=left width=50%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Red</TD>
+<TD width=50%>Red_File</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Blue</TD>
+<TD width=50%>Red_File</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>File Column</TH>
+<TH align=left width=50%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Red_File</TD>
+<TD width=50%>Red</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Blue_File</TD>
+<TD width=50%>Blue</TD>
+</TR>
+</TABLE><BR>
+
+<P>Component Blue references Red_File, but Red_File is not controlled by Component Blue and therefore cannot be the KeyPath file. If the installer were called to get the installation state of Blue it would incorrectly check whether Red_File was installed. Changing the KeyPath field for Blue in the Component Table to Blue_File fixes the error.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

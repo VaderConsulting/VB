@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>_Storages Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="_Storages Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi__storages_table"></A>_Storages Table</H1>
+
+<P>The _Storages table lists embedded OLE data storages. This is a temporary table, created only when referenced by a SQL statement.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Column</TH>
+<TH align=left width=26%>Type</TH>
+<TH align=left width=26%>Key</TH>
+<TH align=left width=26%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Name</TD>
+<TD width=26%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=26%>Y</TD>
+<TD width=26%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Data</TD>
+<TD width=26%><A HREF="tref_8ghl.htm">Binary</A></TD>
+<TD width=26%> </TD>
+<TD width=26%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Name</DT>
+
+<DD>A unique key that identifies the storage. The maximum length of Name is 31 characters. </DD>
+
+<DT>Data</DT>
+
+<DD>The unformatted binary data.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To add an OLE storage to a database, create a new record in the _Storages table and enter the name of the storage into the Name column. Use <A HREF="qref_4wq5.htm"><B>MsiRecordSetStream</B></A> to copy data into the Data column of this record. Finally, use <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A> to insert the record into the _Storages table.</P>
+
+<P>Data cannot be read from the _Storages table. However, the _Storages table can be queried to check for the existence of a specific storage. This means that it is not possible to move an OLE storage from one database to another. You must instead import the original storage file into the new database.To delete an OLE storage, fetch the record containing the binary data, set the Data column in the _Storages table to NULL, and then update the record. An alternative method is to simply delete the record using either <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A> or a plain SQL query.</P>
+
+<P>To rename an OLE storage, update the Name column of the record.</P>
+
+<P>If a hold is placed on this table using SQL (ALTER TABLE &lt;table&gt; HOLD) or a column is added with HOLD, the table must be released using FREE. Storages are not written until the table has been released or committed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

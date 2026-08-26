@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleExclusion Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ModuleExclusion table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_moduleexclusion_table"></A>ModuleExclusion Table</H1>
+
+<P>The ModuleExclusion table keeps a list of other merge modules that are incompatible in the same installer database. This table enables a merge or verification tool to check that conflicting merge modules are not merged in the user's installer database. The tool checks by cross-referencing this table with the ModuleSignature table in the installer database.</P>
+
+<P>The ModuleExclusion table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Column</TH>
+<TH align=left width=31%>Type</TH>
+<TH align=left width=15%>Key</TH>
+<TH align=left width=21%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ModuleID</TD>
+<TD width=31%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ModuleLanguage</TD>
+<TD width=31%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ExcludedID</TD>
+<TD width=31%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ExcludedLanguage</TD>
+<TD width=31%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=15%>Y</TD>
+<TD width=21%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ExcludedMinVersion</TD>
+<TD width=31%><A HREF="tref_1iy6.htm">Version</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>ExcludedMaxVersion</TD>
+<TD width=31%><A HREF="tref_1iy6.htm">Version</A></TD>
+<TD width=15%> </TD>
+<TD width=21%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>ModuleID</DT>
+
+<DD>Identifier of the merge module. This is a foreign key into the <A HREF="merg_4nad.htm">ModuleSignature table</A>.</DD>
+
+<DT>ModuleLanguage</DT>
+
+<DD>Decimal language ID of the merge module in ModuleID. This is a foreign key into the <A HREF="merg_4nad.htm">ModuleSignature table</A>.</DD>
+
+<DT>ExcludedID</DT>
+
+<DD>Identifier of an excluded merge module.</DD>
+
+<DT>ExcludedLanguage</DT>
+
+<DD>Numeric language ID of the merge module in ExcludedID. The ExcludedLanguage column can specify the language ID for a single language, such as 1033 for U.S. English, or specify the language ID for a language group, such as 9 for any English. The ExcludedLanguage column can accept negative language IDs. The meaning of the value in the ExcludedLanguage column is as follows.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>ExcludedLanguage </TH>
+<TH align=left width=66%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>&gt; 0</TD>
+<TD width=66%>Exclude the language IDs specified by ExcludedLanguage.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>= 0</TD>
+<TD width=66%>Exclude no language IDs.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>&lt; 0</TD>
+<TD width=66%>Exclude all language IDs except those specified by ExcludedLanguage.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>ExcludedMinVersion</DT>
+
+<DD>Minimum version excluded from a range. If the ExcludedMinVersion field is Null, all versions before ExcludedMaxVersion are excluded. If both ExcludedMinVersion and ExcludedMaxVersion are Null there is no exclusion based on version. </DD>
+
+<DT>ExcludedMaxVersion</DT>
+
+<DD>Maximum version excluded from a range. If the ExcludedMaxVersion field is Null, all versions after ExcludedMinVersion are excluded. If both ExcludedMinVersion and ExcludedMaxVersion are Null there is no exclusion based on version.
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleExclusion%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_8c4l.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleExclusion%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_8c4l.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

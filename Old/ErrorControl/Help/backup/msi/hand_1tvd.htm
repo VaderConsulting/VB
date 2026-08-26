@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Accessibility</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_accessibility"></A>Accessibility</H2>
+
+<P>Authors should be aware of the tables and fields in the following list when designing their user interface to be in compliance with Active Accessibility® guidelines. The user interface of an installer package should facilitate accessibility of the application or product to all users.  
+
+<UL>
+	<LI>Tooltip text is contained in the Help column of the <A HREF="tref_6nad.htm">Control table</A>. This text is shown by screen readers for controls containing a picture.</LI>
+
+	<LI>The Text field of the <A HREF="tref_6nad.htm">Control table</A> for the <A HREF="href_7ing.htm">VolumeCostList</A>, <A HREF="href_6omk.htm">ListView</A>, <A HREF="href_09f0.htm">DirectoryList</A> and <A HREF="href_3w30.htm">SelectionTree</A> controls is never displayed. Instead it can be read by screen review utilities as the description of the control. People who cannot use the visual information on the screen can interpret the information with the aid of a screen review utility. Screen review utilities (also referred to as a screen reader programs or speech access utilities) take the displayed information on the screen and direct it through alternative media, such as synthesized speech or a refreshable Braille display.</LI>
+
+	<LI>The Text field in Control table for certain controls, such as the <A HREF="href_7ing.htm">VolumeCostList</A>, <A HREF="href_6omk.htm">ListView</A>, <A HREF="href_09f0.htm">DirectoryList</A> and <A HREF="href_3w30.htm">SelectionTree control</A> is never displayed but is read by the screen readers as the description of the control.</LI>
+
+	<LI>Controls in dialog boxes should be linked using the Control_Next field of the <A HREF="tref_6nad.htm">Control table</A>. The controls need to be authored such that they can all be reached by using the TAB key.</LI>
+
+	<LI>Shortcut keys should be provided for gaining access to controls directly.</LI>
+
+	<LI>Text color displayed in the user interface is set in the <A HREF="tref_30px.htm">TextStyle table</A>. If the chosen text color is too close to the background's then the text's color choice is ignored.</LI>
+
+	<LI>Text size and font is set in the <A HREF="tref_30px.htm">TextStyle table</A>. Larger font sizes should be used for packages intended for the Asian market. For example, a font size of 10 points that is legible for English text may not necessarily true for Chinese.</LI>
+
+	<LI>For <A HREF="href_9yjw.htm">Edit</A>, <A HREF="href_4pik.htm">PathEdit</A>, <A HREF="href_6omk.htm">ListView</A>, <A HREF="href_4yp8.htm">ComboBox</A> or <A HREF="href_3uek.htm">VolumeSelectCombo controls</A>, screen readers take accName and accKeyboardShortcut from a <A HREF="href_4s30.htm">Text Control</A> that must precede the control in the Control_Next sequence of the dialog box. The screen reader takes accName from the Text field of the Text control and accKeyboardShortcut from the keyboard shortcut in the Text field, if a shortcut exists. </LI>
+
+	<LI>Because static text cannot take the focus, a <A HREF="href_4s30.htm">Text control</A> that describes an <A HREF="href_9yjw.htm">Edit</A>, <A HREF="href_4pik.htm">PathEdit</A>, <A HREF="href_6omk.htm">ListView</A>, <A HREF="href_4yp8.htm">ComboBox</A> or <A HREF="href_3uek.htm">VolumeSelectCombo control</A> must be made the first control in the dialog box to ensure compatibility with screen readers.</LI>
+
+	<LI>For a <A HREF="href_331o.htm">PushButton Control</A> that displays an icon or bitmap image, accName and accKeyboardShortcut are specified in the Help field of the <A HREF="tref_6nad.htm">Control table</A> record, to the left of the | separator.</LI>
+
+	<LI>Do not put a black text control on a background that is an all white bitmap image. This text is not visible to a user who changes the Windows display to High Contrast Black.</LI>
+
+	<LI>Do not put a white text control on a background that is an all black bitmap image. This text is not visible to a user who changes the Windows display to High Contrast White. </LI>
+
+	<LI>Note that the focus on a dialog box does not tab to a <A HREF="href_6iwc.htm">RadioButtonGroup Control</A> until one of the buttons in the group has been selected. To make the focus tab to this button group, specify one of the buttons as a default setting for the control. </LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

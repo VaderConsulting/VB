@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Monitoring an Installation Using MsiSetExternalUI</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="using MsiSetExternalUI [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="using MsiSetExternalUI [Windows Installer],monitoring installation">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_monitoring_an_installation_using_msisetexternalui"></A>Monitoring an Installation Using MsiSetExternalUI</H2>
+
+<P>Package authors can monitor internal Windows Installer messages through the creation of an executable application that contains both a callback handler to receive the messages and functionality to initiate an installation.</P>
+
+<P>The callback handler conforms to the INSTALLUI_HANDLER prototype, and a pointer to this callback handler is passed to <A HREF="msi_5dm1.htm"><B>MsiSetExternalUI</B></A>. Once the installation has been initiated by a call to <A HREF="msi_75x0.htm"><B>MsiInstallProduct</B></A>, installation messages are trapped by the callback handler and the package author can selectively display or ignore any or all of these messages.</P>
+
+<P>For more information, see <A HREF="hand_0gmh.htm">Handling Progress Messages Using MsiSetExternalUI</A>, <A HREF="hand_9tbm.htm">Returning Values from an External User Interface Handler</A>, and <A HREF="hand_16ib.htm">Parsing Windows Installer Messages</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

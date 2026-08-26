@@ -1,0 +1,262 @@
+Option Explicit
+Option Compare Text
+
+'
+'Global Constants
+'
+Global Const gstrNULL$ = ""                             'Empty string
+Global Const gstrSEP_DIR$ = "\"                         'Directory separator character
+Global Const gstrSEP_DIRALT$ = "/"                      'Alternate directory separator character
+Global Const gstrSEP_EXT$ = "."                         'Filename extension separator character
+Global Const gstrCOLON$ = ":"
+Global Const gstrSwitchPrefix1 = "-"
+Global Const gstrSwitchPrefix2 = "/"
+Global Const gstrCOMMA$ = ","
+Global Const gstrDECIMAL$ = "."
+Global Const gstrINI_PROTOCOL = "Protocol"
+
+Global Const gintMAX_SIZE% = 255                        'Maximum buffer size
+Global Const gintMIN_BUTTONWIDTH% = 1200
+Global Const gsngBUTTON_BORDER! = 1.4
+
+Global Const intDRIVE_REMOVABLE% = 2                    'Constants for GetDriveType
+Global Const intDRIVE_FIXED% = 3
+Global Const intDRIVE_REMOTE% = 4
+
+Global Const gintNOVERINFO% = 32767                     'flag indicating no version info
+
+'File names
+Global Const gstrFILE_SETUP$ = "SETUP.LST"              'Name of setup information file
+
+'Share type macros for files
+Global Const mstrPRIVATEFILE = ""
+Global Const mstrSHAREDFILE = "$(Shared)"
+
+'INI File keys
+#If Win16 Then
+Global Const gstrINI_BTRIEVE$ = "Btrieve"
+#End If
+Global Const gstrINI_SETUP$ = "Setup"
+Global Const gstrINI_APPNAME$ = "Title"
+Global Const gstrINI_APPDIR$ = "DefaultDir"
+Global Const gstrINI_APPEXE$ = "AppExe"
+Global Const gstrINI_APPPATH$ = "AppPath"
+Global Const gstrINI_FORCEUSEDEFDEST = "ForceUseDefDir"
+
+'Setup information file macros
+Global Const gstrAPPDEST$ = "$(AppPath)"
+Global Const gstrWINDEST$ = "$(WinPath)"
+Global Const gstrWINSYSDEST$ = "$(WinSysPath)"
+Global Const gstrWINSYSDESTSYSFILE$ = "$(WinSysPathSysFile)"
+Global Const gstrPROGRAMFILES$ = "$(ProgramFiles)"
+Global Const gstrCOMMONFILES$ = "$(CommonFiles)"
+Global Const gstrCOMMONFILESSYS$ = "$(CommonFilesSys)"
+Global Const gstrDAODEST$ = "$(MSDAOPath)"
+
+'Mouse Pointer Constants
+Global Const gintMOUSE_DEFAULT% = 0
+Global Const gintMOUSE_HOURGLASS% = 11
+
+'MsgError() Constants
+Global Const MSGERR_ERROR = 1
+Global Const MSGERR_WARNING = 2
+
+'MsgBox Constants
+Global Const MB_OK = 0                                  'OK button only
+Global Const MB_OKCANCEL = 1                            'OK and Cancel buttons
+Global Const MB_ABORTRETRYIGNORE = 2                    'Abort, Retry, Ignore buttons
+Global Const MB_YESNO = 4                               'Yes and No buttons
+Global Const MB_RETRYCANCEL = 5                         'Retry and Cancel buttons
+Global Const MB_ICONSTOP = 16                           'Critical message
+Global Const MB_ICONQUESTION = 32                       'Warning query
+Global Const MB_ICONEXCLAMATION = 48                    'Warning message
+Global Const MB_ICONINFORMATION = 64                    'Information message
+Global Const MB_DEFBUTTON1 = 0                          'First button is default
+Global Const MB_DEFBUTTON2 = 256                        'Second button is default
+Global Const MB_DEFBUTTON3 = 512                        'Third button is default
+
+'MsgBox return values
+Global Const IDOK = 1                                   'OK button pressed
+Global Const IDCANCEL = 2                               'Cancel button pressed
+Global Const IDABORT = 3                                'Abort button pressed
+Global Const IDRETRY = 4                                'Retry button pressed
+Global Const IDIGNORE = 5                               'Ignore button pressed
+Global Const IDYES = 6                                  'Yes button pressed
+Global Const IDNO = 7                                   'No button pressed
+
+'
+'Type Definitions
+'
+Type OFSTRUCT
+    cBytes As Byte
+    fFixedDisk As Byte
+    nErrCode As Integer
+    nReserved1 As Integer
+    nReserved2 As Integer
+    szPathName As String * 256
+End Type
+
+Type VERINFO                                            'Version FIXEDFILEINFO
+    strPad1 As Long                                     'Pad out struct version
+    strPad2 As Long                                     'Pad out struct signature
+    nMSLo As Integer                                    'Low word of ver # MS DWord
+    nMSHi As Integer                                    'High word of ver # MS DWord
+    nLSLo As Integer                                    'Low word of ver # LS DWord
+    nLSHi As Integer                                    'High word of ver # LS DWord
+    strPad3(1 To 36) As Byte                            'Pad out rest of VERINFO struct (36 bytes)
+End Type
+
+Type PROTOCOL
+    strName As String
+    strFriendlyName As String
+End Type
+
+Global Const OF_EXIST& = &H4000&
+Global Const OF_SEARCH& = &H400&
+Global Const HFILE_ERROR% = -1
+
+'
+'Global Variables
+'
+Global LF$                                              'single line break
+Global LS$                                              'double line break
+
+'List of available protocols
+Global gProtocol() As PROTOCOL
+Global gcProtocols As Integer
+
+
+#If Win16 Then
+'
+'API/DLL Declarations for 16 bit SetupToolkit
+'
+Declare Function DiskSpaceFree Lib "STKIT416.DLL" () As Long
+Declare Function SetTime Lib "STKIT416.DLL" (ByVal strFileGetTime As String, ByVal strFileSetTime As String) As Integer
+Declare Function AllocUnit Lib "STKIT416.DLL" () As Long
+Declare Function GetWinPlatform Lib "STKIT416.DLL" () As Long
+Declare Function DLLSelfRegister Lib "STKIT416.DLL" (ByVal lpDllName As String) As Integer
+Declare Sub lmemcpy Lib "STKIT416.DLL" (strDest As Any, ByVal strSrc As Any, ByVal intBytes As Integer)
+
+Declare Function OpenFile Lib "Kernel" (ByVal lpFileName As String, lpReOpenBuff As OFSTRUCT, ByVal wStyle As Integer) As Integer
+Declare Function GetPrivateProfileString Lib "Kernel" (ByVal lpApplicationName As String, ByVal lpKeyName As Any, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Integer, ByVal lpFileName As String) As Integer
+Declare Function WritePrivateProfileString Lib "Kernel" (ByVal lpApplicationName As Any, ByVal lpKeyName As Any, ByVal lpString As Any, ByVal lplFileName As String) As Integer
+Declare Function GetWindowsDirectory Lib "Kernel" (ByVal lpBuffer As String, ByVal nSize As Integer) As Integer
+Declare Function GetSystemDirectory Lib "Kernel" (ByVal lpBuffer As String, ByVal nSize As Integer) As Integer
+Declare Function GetDriveType16 Lib "Kernel" Alias "GetDriveType" (ByVal intDriveNum As Integer) As Integer
+Declare Function GetTempFileName16 Lib "Kernel" Alias "GetTempFileName" (ByVal cDriveLetter As Integer, ByVal lpPrefixString As String, ByVal wUnique As Integer, ByVal lpTempFileName As String) As Integer
+
+Declare Function VerInstallFile Lib "VER.DLL" (ByVal Flags%, ByVal SrcName$, ByVal DestName$, ByVal SrcDir$, ByVal DestDir$, ByVal CurrDir As Any, ByVal TmpName$, lpTmpFileLen&) As Long
+Declare Function GetFileVersionInfoSize Lib "VER.DLL" (ByVal strFileName As String, lVerHandle As Long) As Long
+Declare Function GetFileVersionInfo Lib "VER.DLL" (ByVal strFileName As String, ByVal lVerHandle As Long, ByVal lcbSize As Long, lpvData As Byte) As Integer
+Declare Function VerQueryValue Lib "VER.DLL" (lpvVerData As Byte, ByVal lpszSubBlock As String, lplpBuf As Long, lpcb As Long) As Integer
+
+Declare Function GetModuleUsage Lib "Kernel" (ByVal hModule As Integer) As Integer
+
+
+
+Function GetWindowsDir() As String
+'-----------------------------------------------------------
+' FUNCTION: GetWindowsDir
+'
+' Calls the windows API to get the windows directory and
+' ensures that a trailing dir separator is present
+'
+' Returns: The windows directory
+'-----------------------------------------------------------
+'
+
+    Dim strBuf As String
+
+    strBuf = Space$(gintMAX_SIZE)
+
+    '
+    'Get the windows directory and then trim the buffer to the exact length
+    'returned and add a dir sep (backslash) if the API didn't return one
+    '
+    If GetWindowsDirectory(strBuf, gintMAX_SIZE) > 0 Then
+        strBuf = StripTerminator$(strBuf)
+        AddDirSep strBuf
+
+        GetWindowsDir = UCase16(strBuf)
+    Else
+        GetWindowsDir = gstrNULL
+    End If
+End Function
+
+
+
+Function StripTerminator(ByVal strString As String) As String
+'-----------------------------------------------------------
+' FUNCTION: StripTerminator
+'
+' Returns a string without any zero terminator.  Typically,
+' this was a string returned by a Windows API call.
+'
+' IN: [strString] - String to remove terminator from
+'
+' Returns: The value of the string passed in minus any
+'          terminating zero.
+'-----------------------------------------------------------
+'
+
+    Dim intZeroPos As Integer
+
+    intZeroPos = InStr(strString, Chr$(0))
+    If intZeroPos > 0 Then
+        StripTerminator = Left$(strString, intZeroPos - 1)
+    Else
+        StripTerminator = strString
+    End If
+End Function
+
+
+
+Sub AddDirSep(strPathName As String)
+'-----------------------------------------------------------
+' SUB: AddDirSep
+' Add a trailing directory path separator (back slash) to the
+' end of a pathname unless one already exists
+'
+' IN/OUT: [strPathName] - path to add separator to
+'-----------------------------------------------------------
+'
+
+    If Right$(RTrim$(strPathName), Len(gstrSEP_DIR)) <> gstrSEP_DIR Then
+        strPathName = RTrim$(strPathName) & gstrSEP_DIR
+    End If
+End Sub
+
+
+
+
+Function ReadIniFile(ByVal strIniFile As String, ByVal strSECTION As String, ByVal strKey As String) As String
+'-----------------------------------------------------------
+' FUNCTION: ReadIniFile
+'
+' Reads a value from the specified section/key of the
+' specified .INI file
+'
+' IN: [strIniFile] - name of .INI file to read
+'     [strSection] - section where key is found
+'     [strKey] - name of key to get the value of
+'
+' Returns: non-zero terminated value of .INI file key
+'-----------------------------------------------------------
+'
+
+    Dim strBuffer As String
+    Dim intPos As Integer
+
+    '
+    'If successful read of .INI file, strip any trailing zero returned by the Windows API GetPrivateProfileString
+    '
+    strBuffer = Space$(gintMAX_SIZE)
+    
+    If GetPrivateProfileString(strSECTION, strKey, gstrNULL, strBuffer, gintMAX_SIZE, strIniFile) > 0 Then
+        ReadIniFile = RTrim$(StripTerminator(strBuffer))
+    Else
+        ReadIniFile = gstrNULL
+    End If
+End Function
+
+

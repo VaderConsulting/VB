@@ -1,0 +1,235 @@
+20010618 10:23:17 Application started
+20010618 10:23:17 Transfer started
+20010618 10:23:17 Opening ADO Connection
+20010618 10:23:17 Deleting Admin Users from HRMF_Admin_User
+20010618 10:23:17 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:23:33 Updating HRMF_Admin_User with Admin users
+20010618 10:23:35 Retrieving modified users from HRMF_D
+20010618 10:23:36 Nothing to do
+20010618 10:23:36 Application ended cleanly.
+20010618 10:25:23 Application started
+20010618 10:25:23 Transfer started
+20010618 10:25:23 Opening ADO Connection
+20010618 10:25:23 Deleting Admin Users from HRMF_Admin_User
+20010618 10:25:23 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:25:23 Updating HRMF_Admin_User with Admin users
+20010618 10:25:24 Retrieving modified users from HRMF_D
+20010618 10:25:25 Modifying mailboxes on SVNTDEV-54
+20010618 10:25:25 Error modifying 'FLETCHM1' (Automation error)
+20010618 10:25:25 Application ended cleanly.
+20010618 10:27:44 Application started
+20010618 10:27:44 Transfer started
+20010618 10:27:44 Opening ADO Connection
+20010618 10:27:44 Deleting Admin Users from HRMF_Admin_User
+20010618 10:27:45 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:27:45 Updating HRMF_Admin_User with Admin users
+20010618 10:27:46 Retrieving modified users from HRMF_D
+20010618 10:27:46 Modifying mailboxes on SVNTDEV-54
+20010618 10:27:46 Application ended cleanly.
+20010618 10:28:46 Application started
+20010618 10:28:46 Transfer started
+20010618 10:28:46 Opening ADO Connection
+20010618 10:28:46 Deleting Admin Users from HRMF_Admin_User
+20010618 10:28:46 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:29:01 Updating HRMF_Admin_User with Admin users
+20010618 10:29:02 Retrieving modified users from HRMF_D
+20010618 10:29:02 Modifying mailboxes on SVNTDEV-54
+20010618 10:29:03 Application ended cleanly.
+20010618 10:32:06 Application started
+20010618 10:32:06 Transfer started
+20010618 10:32:06 Opening ADO Connection
+20010618 10:32:06 Deleting Admin Users from HRMF_Admin_User
+20010618 10:32:06 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:32:06 Updating HRMF_Admin_User with Admin users
+20010618 10:32:07 Retrieving modified users from HRMF_D
+20010618 10:32:08 Modifying mailboxes on SVNTDEV-54
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:08 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:09 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:32:10 Error modifying 'BAILEYN0' (Automation error)
+20010618 10:32:11 Error modifying 'CUSTERB0' (Automation error)
+20010618 10:32:11 Error modifying 'DELFSL0' (Automation error)
+20010618 10:32:13 Error modifying 'GOULDK0' (Automation error)
+20010618 10:32:15 Error modifying 'JORDANJ0' (Automation error)
+20010618 10:32:15 Error modifying 'LEWISG0' (Automation error)
+20010618 10:32:16 Error modifying 'MIRAGLS0' (Automation error)
+20010618 10:32:17 Error modifying 'MUSHAML0' (Automation error)
+20010618 10:32:17 Error modifying 'NEESHAM0' (Automation error)
+20010618 10:32:18 Error modifying 'ONEILS0' (Automation error)
+20010618 10:32:18 Error modifying 'PASSMOJ0' (Automation error)
+20010618 10:32:18 Error modifying 'PERRYS0' (Automation error)
+20010618 10:32:19 Error modifying 'SALMOND0' (Automation error)
+20010618 10:32:21 Error modifying 'STODDAA0' (Automation error)
+20010618 10:32:22 Error modifying 'TRINDER0' (Automation error)
+20010618 10:32:23 Error modifying 'YOUNGD0' (Automation error)
+20010618 10:32:23 Application ended cleanly.
+20010618 10:34:43 Application started
+20010618 10:34:43 Transfer started
+20010618 10:34:43 Opening ADO Connection
+20010618 10:34:43 Deleting Admin Users from HRMF_Admin_User
+20010618 10:34:43 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:34:58 Updating HRMF_Admin_User with Admin users
+20010618 10:34:59 Retrieving modified users from HRMF_D
+20010618 10:34:59 Modifying mailboxes on SVNTDEV-54
+20010618 10:34:59 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:00 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:01 <NULL> found for NT Logon ID and Personnel ID - unable to reference mailbox
+20010618 10:35:11 Application ended cleanly.
+20010618 10:35:54 Application started
+20010618 10:35:54 Transfer started
+20010618 10:35:54 Opening ADO Connection
+20010618 10:35:54 Deleting Admin Users from HRMF_Admin_User
+20010618 10:35:54 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:35:54 Updating HRMF_Admin_User with Admin users
+20010618 10:35:55 Retrieving modified users from HRMF_D
+20010618 10:35:55 Modifying mailboxes on SVNTDEV-54
+20010618 10:44:32 Application started
+20010618 10:44:32 Transfer started
+20010618 10:44:32 Opening ADO Connection
+20010618 10:44:32 Deleting Admin Users from HRMF_Admin_User
+20010618 10:44:32 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:44:47 Updating HRMF_Admin_User with Admin users
+20010618 10:44:48 Retrieving modified users from HRMF_D
+20010618 10:44:48 Modifying mailboxes on SVNTDEV-54
+20010618 10:44:48 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in extract process
+20010618 10:44:48 Application ended cleanly.
+20010618 10:48:54 Application started
+20010618 10:48:54 Transfer started
+20010618 10:48:54 Opening ADO Connection
+20010618 10:48:54 Deleting Admin Users from HRMF_Admin_User
+20010618 10:48:55 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:48:55 Updating HRMF_Admin_User with Admin users
+20010618 10:48:56 Retrieving modified users from HRMF_D
+20010618 10:48:56 Modifying mailboxes on SVNTDEV-54
+20010618 10:48:56 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in extract process
+20010618 10:48:56 Application ended cleanly.
+20010618 10:49:02 Application started
+20010618 10:49:02 Transfer started
+20010618 10:49:02 Opening ADO Connection
+20010618 10:49:02 Deleting Admin Users from HRMF_Admin_User
+20010618 10:49:02 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:49:02 Updating HRMF_Admin_User with Admin users
+20010618 10:49:04 Retrieving modified users from HRMF_D
+20010618 10:49:04 Modifying mailboxes on SVNTDEV-54
+20010618 10:49:04 Item cannot be found in the collection corresponding to the requested name or ordinal. (Error 3265) whilst in extract process
+20010618 10:49:04 Application ended cleanly.
+20010618 10:50:20 Application started
+20010618 10:50:20 Transfer started
+20010618 10:50:20 Opening ADO Connection
+20010618 10:50:20 Deleting Admin Users from HRMF_Admin_User
+20010618 10:50:20 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:50:35 Updating HRMF_Admin_User with Admin users
+20010618 10:50:36 Retrieving modified users from HRMF_D
+20010618 10:50:36 Modifying mailboxes on SVNTDEV-54
+20010618 10:50:37 Error modifying 'BENSONT0' (Automation error)
+20010618 10:50:38 Error modifying 'EARLYD0' (Automation error)
+20010618 10:50:38 Error modifying 'NICHOLR0' (Automation error)
+20010618 10:50:38 Error modifying 'PORTERE0' (Automation error)
+20010618 10:50:38 Error modifying 'TOOHEYB0' (Automation error)
+20010618 10:50:38 Application ended cleanly.
+20010618 10:51:32 Application started
+20010618 10:51:32 Transfer started
+20010618 10:51:32 Opening ADO Connection
+20010618 10:51:32 Deleting Admin Users from HRMF_Admin_User
+20010618 10:51:32 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 10:51:32 Updating HRMF_Admin_User with Admin users
+20010618 10:51:33 Retrieving modified users from HRMF_D
+20010618 10:51:33 Modifying mailboxes on SVNTDEV-54
+20010618 10:51:34 Application ended cleanly.
+20010618 10:59:05 Application started
+20010618 10:59:49 Transfer started
+20010618 10:59:50 Opening ADO Connection
+20010618 10:59:50 Deleting Admin Users from HRMF_Admin_User
+20010618 10:59:50 Retrieving members of pb_Helpdesk in Domain A000677
+20010618 11:00:05 Updating HRMF_Admin_User with Admin users
+20010618 11:00:06 Retrieving modified users from HRMF_D
+20010618 11:00:07 Modifying mailboxes on SVNTDEV-54
+20010618 11:00:08 Application ended cleanly.
+20010618 11:42:44 Application started
+20010618 11:42:44 Transfer started
+20010618 11:42:45 Opening ADO Connection
+20010618 11:42:46 Deleting Admin Users from HRMF_Admin_User
+20010618 11:42:46 Retrieving members of pb_Helpdesk in Domain wadev
+20010618 11:43:06 Automation error
+The network path was not found.  (Error -2147024843) whilst retrieving members of pb_Helpdesk.
+20010618 11:43:06 GetUsers(pb_Helpdesk,wadev) returned an error!
+20010618 11:43:06 Step 1 error
+20010618 11:43:06 Application ended cleanly.
+20010618 11:45:09 Application started
+20010618 11:45:09 Transfer started
+20010618 11:45:09 Opening ADO Connection
+20010618 11:45:10 Deleting Admin Users from HRMF_Admin_User
+20010618 11:45:10 Retrieving members of pb_Helpdesk in Domain wadev
+20010618 11:45:30 Automation error
+The network path was not found.  (Error -2147024843) whilst retrieving members of pb_Helpdesk.
+20010618 11:45:30 GetUsers(pb_Helpdesk,wadev) returned an error!
+20010618 11:45:30 Step 1 error
+20010618 11:45:34 Retrieving modified users from HRMF_D
+20010618 11:45:34 Modifying mailboxes on SVNTDEV-54
+20010618 11:45:36 Error modifying 'DURHAMT0' (Automation error)
+20010618 11:45:37 Error modifying 'GOOLDY0' (Automation error)
+20010618 11:45:37 Error modifying 'HAWLEYD0' (Automation error)
+20010618 11:45:37 Error modifying 'HAWLEYD0' (Automation error)
+20010618 11:45:38 Error modifying 'MEARNSJ0' (Automation error)
+20010618 11:45:38 Error modifying 'MORRISC1' (Automation error)
+20010618 11:45:38 Error modifying 'MORRISC1' (Automation error)
+20010618 11:45:38 Error modifying 'PORTERE0' (Automation error)
+20010618 11:45:39 Application ended cleanly.

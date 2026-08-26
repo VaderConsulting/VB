@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>OpenModule Function</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="OpenModule function">
+<META NAME="MS-HKWD" CONTENT="Merge object, OpenModule function">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_openmodule_function"></A>OpenModule Function</H1>
+
+<P>The <B>OpenModule</B> function implements the <A HREF="merg_2rs4.htm"><B>OpenModule</B> method</A> of the <B>Merge</B> object. This function opens a Windows Installer merge module in read-only mode. A module must be opened before it can be merged with an installation database. </P>
+
+<P><B>IMsmMerge::OpenModule</B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>All Mergemod.dll versions.</I></P>
+
+<P><B>IMsmMerge2::OpenModule</B>&nbsp;&nbsp;&nbsp;&nbsp;<I>Mergemod.dll version 2.0 and later</I>.</P>
+
+<PRE class=syntax><B>HRESULT OpenModule(
+  BSTR</B> <I>FileName</I><B>,</B>
+<B>  short</B> <I>Language</I>
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>FileName</I> </DT>
+
+<DD>[in] Fully qualified filename pointing to a merge module. A <B>LPCWSTR</B> may be used in place of a <B>BSTR</B>. </DD>
+
+<DT><I>Language </I></DT>
+
+<DD>[in] A language identifier (<B>LANGID</B>). 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value </TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_TOO_MANY_OPEN_FILES <I>as HRESULT</I> </TD>
+<TD width=52%>There is already a module open. Closes the current module first.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>E_ABORT </TD>
+<TD width=52%>The file specified is an Windows Installer database, but is not a Merge Module (missing <A HREF="merg_4nad.htm">ModuleSignature table</A>) </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_OPEN_FAILED <I>as HRESULT</I> </TD>
+<TD width=52%>The file could not be opened as an Windows Installer database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INSTALL_TRANSFORM_FAILURE <I>as HRESULT</I></TD>
+<TD width=52%>The language is supported by the module, but there was an error applying the transform.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INSTALL_LANGUAGE_UNSUPPORTED <I>as HRESULT</I> </TD>
+<TD width=52%>The language is not supported by the module. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>S_OK</TD>
+<TD width=52%>The function succeeded  </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This function opens the merge module in read-only mode (MSIDBOPEN_READONLY), and excludes other programs from writing to the merge module until the <B>CloseModule</B> function is called. A merge module must be opened before it can be merged.</P>
+
+<P>The installer attempts to open the module in the language specified by <I>Language</I> or in any more general language. For example, if 1033 is specified by the <I>Language</I> value, a module with a default language of 1033, 9, or 0 will be opened in its default language. A <I>Language</I> value of 9 will open modules with a default language of 9 or 0. If the default language of the module does not meet the specified requirements, an attempt is made to transform the module into the requested language. If that fails, the installer attempts to transform the module into increasingly general languages, all the way to language neutral. If none of the transforms succeed, the module fails to open. In this case, an error is added to the error list of type msmErrorLanguageUnsupported and the function returns ERROR_INSTALL_LANGUAGE_UNSUPPORTED as HRESULT.</P>
+
+<P>If there is an error transforming the module to the desired language, an error is created of type msmErrorLanguageFailed and the function returns ERROR_INSTALL_TRANSFORM_FAILURE as HRESULT.</P>
+
+<P>For more information, see the <A HREF="merg_844f.htm"><B>Type</B> property</A> of the <A HREF="merg_7yr8.htm"><B>Error</B> object</A>.</P>
+
+<P>Opening a merge module clears any errors that have not already been retrieved. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_29f2.htm">Merge Module Automation</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20OpenModule%20Function;%20RELEASE:%20August%202001;%20URL:%20merg_87xq.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20OpenModule%20Function;%20RELEASE:%20August%202001;%20URL:%20merg_87xq.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

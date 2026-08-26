@@ -1,0 +1,334 @@
+<html>
+	<head>
+		<title>Scheduled Task component VB Code</title>
+		<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+	</head>
+	<body>
+		<p><font face="Verdana"><small><small>/*<br>
+						&nbsp;&nbsp;&nbsp; VB examples<br>
+						*/<br>
+						&nbsp;&nbsp;&nbsp; ' Scheduled Task component usage VB samples<br>
+						&nbsp;&nbsp;&nbsp; ' check "SchedTask 1.0 Type Library" in Tools|References<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; ' #1<br>
+						&nbsp;&nbsp;&nbsp; ' example creates new scheduled task called "myTask"
+						<br>
+						&nbsp;&nbsp;&nbsp; ' task should start notepad on May 5, 2001 10:20AM once<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; Dim obj<br>
+						&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.Program = "notepad.exe"<br>
+						&nbsp;&nbsp;&nbsp; obj.Parameters = "myinputfile.txt"<br>
+						&nbsp;&nbsp;&nbsp; obj.StartingDir = <a href="file:///C:/Winnt/system32">"C:\Winnt\system32"</a><br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.TriggerType = 0 ' once<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.StartYear = 2001<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMonth = 5<br>
+						&nbsp;&nbsp;&nbsp; obj.StartDay = 5<br>
+						&nbsp;&nbsp;&nbsp; obj.StartHour = 10<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMinute = 20<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.DontStartIfOnBatteries = False&nbsp;&nbsp; ' default is 
+						True<br>
+						&nbsp;&nbsp;&nbsp; obj.KillIfOnBatteries = False 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' default is 
+						True</small></small><br>
+				<small><small>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.Username = "TaskRun"<br>
+						&nbsp;&nbsp;&nbsp; obj.Password = "taskrun"&nbsp;&nbsp;&nbsp; ' password is 
+						case sensitive<br>
+						&nbsp;&nbsp;&nbsp; obj.Creator = "Me" 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' default 
+						user if omited</small></small></font></p>
+		<p><font face="Verdana"><small><small>&nbsp;&nbsp;&nbsp; obj.CreateTask "myTask", True ' calls 
+						AddTrigger inside</small></small><br>
+				<small><small>&nbsp;&nbsp;&nbsp; obj.EditTask "myTask" 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+						' give user dialog to edit<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; ; #2<br>
+						&nbsp;&nbsp;&nbsp; ; example creates new scheduled task called "myTask2"<br>
+						&nbsp;&nbsp;&nbsp; ; task should start notepad.exe every 15 minutes during 2 
+						hours (120min.)<br>
+						&nbsp;&nbsp;&nbsp; ; starting May 5, 2001 10:20AM daily<br>
+						&nbsp;&nbsp;&nbsp;
+						<br>
+						&nbsp;&nbsp;&nbsp; Dim obj<br>
+						&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.Program = "notepad.exe"<br>
+						&nbsp;&nbsp;&nbsp; obj.StartingDir = "C:\Winnt\system32"<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.TriggerType = 
+						1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' daily<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.StartYear = 2001<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMonth = 5<br>
+						&nbsp;&nbsp;&nbsp; obj.StartDay = 5<br>
+						&nbsp;&nbsp;&nbsp; obj.StartHour = 10<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMinute = 20<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.MinutesInterval = 15<br>
+						&nbsp;&nbsp;&nbsp; obj.MinutesDuration = 120<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.CreateTask "myTask2", TRUE&nbsp;&nbsp;&nbsp; ' calls 
+						AddTrigger inside<br>
+						<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; ' #3<br>
+						&nbsp;&nbsp;&nbsp; ' example creates new scheduled task called "myTask3"<br>
+						&nbsp;&nbsp;&nbsp; ' task should start notepad.exe at logon<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; Dim obj<br>
+						&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.Program = "notepad.exe"<br>
+						&nbsp;&nbsp;&nbsp; obj.StartingDir = "C:\Winnt\system32"<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.TriggerType = 
+						7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' at logon<br>
+						&nbsp;&nbsp;&nbsp;
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.CreateTask("myTask3", TRUE) 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' calls AddTrigger inside<br>
+						<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; ' #4<br>
+						&nbsp;&nbsp;&nbsp; ' example creates new scheduled task called "myTask4"<br>
+						&nbsp;&nbsp;&nbsp; ' task should start notepad.exe every sunday of every week
+						<br>
+						&nbsp;&nbsp;&nbsp; ' starting May 5, 2001 10:20AM<br>
+						&nbsp;&nbsp;&nbsp; ' If task named "myTask4" already exists it will be 
+						overwritten<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; Dim obj<br>
+						&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.Program = "notepad.exe"<br>
+						&nbsp;&nbsp;&nbsp; obj.StartingDir = "C:\Winnt\system32"<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.TriggerType = 
+						2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' weekly<br>
+						&nbsp;&nbsp;&nbsp; obj.DayOfTheWeek = 1&nbsp;&nbsp;&nbsp; ' every sunday<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.StartYear = 2001<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMonth = 5<br>
+						&nbsp;&nbsp;&nbsp; obj.StartDay = 5<br>
+						&nbsp;&nbsp;&nbsp; obj.StartHour = 10<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMinute = 20<br>
+						&nbsp;&nbsp;&nbsp;
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.CreateTask "myTask4", FALSE 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' calls AddTrigger inside<br>
+						<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; ' #5<br>
+						&nbsp;&nbsp;&nbsp; ' example creates new scheduled task called "myTask5"<br>
+						&nbsp;&nbsp;&nbsp; ' task should start al 10:40AM on day 2 of every month,
+						<br>
+						&nbsp;&nbsp;&nbsp; ' starting 05/04/2000 and ending 05/10/2001<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; Dim obj<br>
+						&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.Program = "notepad.exe"<br>
+						&nbsp;&nbsp;&nbsp; obj.StartingDir = "C:\Winnt\system32"<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.TriggerType = 
+						3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' monthly<br>
+						&nbsp;&nbsp;&nbsp; obj.DayOfTheWeek = 2&nbsp;&nbsp;&nbsp; ' every second day of 
+						the month<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.StartYear = 2001<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMonth = 5<br>
+						&nbsp;&nbsp;&nbsp; obj.StartDay = 4<br>
+						&nbsp;&nbsp;&nbsp; obj.StartHour = 10<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMinute = 20<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; pSTask-&gt;EndYear = 2001<br>
+						&nbsp;&nbsp;&nbsp; pSTask-&gt;EndMonth = 5<br>
+						&nbsp;&nbsp;&nbsp; pSTask-&gt;EndDay = 10<br>
+						&nbsp;&nbsp;&nbsp;
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.CreateTask "myTask5", FALSE 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' calls AddTrigger inside<br>
+						<br>
+						<BR>
+						// #6<br>
+						// example enumerates all existing tasks<br>
+						// each task has extension ".job" . If you want to compare task you have<br>
+						// created with existing task - drop/trim the extension
+						<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; Dim obj<br>
+						&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.Enum&nbsp;&nbsp;&nbsp;
+						<br>
+						&nbsp;&nbsp;&nbsp; i = 1<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; while (i &lt; obj.TaskCount)&nbsp;&nbsp; ' loop thru all 
+						tasks<br>
+						&nbsp;&nbsp;&nbsp;
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; obj.TaskItem = i 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' setup task 
+						index<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Str = obj.TaskName 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' get task name<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MsgBox Str<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i = i + 1<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; wend </small></small></font>
+		</p>
+		<font face="Verdana"><small><small>
+					<P><br>
+						// #7<br>
+						//&nbsp;&nbsp;&nbsp; Run on specific months only<br>
+						//<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; Dim obj<br>
+						&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.Program = "notepad.exe"<br>
+						&nbsp;&nbsp;&nbsp; obj.StartingDir = <a href="file:///C:/Winnt/system32">"C:\Winnt\system32"</a><br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.TriggerType = 3 ' monthly<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.StartYear = 2000<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMonth = 7<br>
+						&nbsp;&nbsp;&nbsp; obj.StartDay = 28<br>
+						&nbsp;&nbsp;&nbsp; obj.StartHour = 18<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMinute = 53<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.AddMonth 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' 
+						run January and February<br>
+						&nbsp;&nbsp;&nbsp; obj.AddMonth 2<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.DayoftheMonth = 15<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.DontStartIfOnBatteries = False&nbsp;&nbsp;&nbsp; ' 
+						default is True<br>
+						&nbsp;&nbsp;&nbsp; obj.KillIfOnBatteries = False 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' default is True<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.CreateTask "myTask1", False ' calls AddTrigger inside<br>
+						<br>
+						<BR>
+						// #8<br>
+						//&nbsp;&nbsp;&nbsp; run first Saturday of May and November<br>
+						//<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; Dim obj<br>
+						&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.Program = "notepad.exe"<br>
+						&nbsp;&nbsp;&nbsp; obj.StartingDir = <a href="file:///C:/Winnt/system32">"C:\Winnt\system32"</a><br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.TriggerType = 4 ' monthly on week basis<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.StartYear = 2000<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMonth = 7<br>
+						&nbsp;&nbsp;&nbsp; obj.StartDay = 28<br>
+						&nbsp;&nbsp;&nbsp; obj.StartHour = 18<br>
+						&nbsp;&nbsp;&nbsp; obj.StartMinute = 53<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.WhichWeek = 1<br>
+						&nbsp;&nbsp;&nbsp; obj.DayoftheWeek = 7<br>
+						&nbsp;&nbsp;&nbsp; obj.AddMonth 5<br>
+						&nbsp;&nbsp;&nbsp; obj.AddMonth 11<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.DontStartIfOnBatteries = False&nbsp;&nbsp;&nbsp; ' 
+						default is True<br>
+						&nbsp;&nbsp;&nbsp; obj.KillIfOnBatteries = False 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' default is True<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.CreateTask "myTask1", False ' calls AddTrigger inside<br>
+						<br>
+						<BR>
+						// #9<br>
+						// display tasks application names in ListBox<br>
+						//<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; Dim obj<br>
+						&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.ActivateTask "myWeekTask1"<br>
+						&nbsp;&nbsp;&nbsp; List1.AddItem (obj.Program)<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; obj.ActivateTask "myWeekTask2"<br>
+						&nbsp;&nbsp;&nbsp; List1.AddItem (obj.Program)<br>
+				</small></small></font><font face="Verdana" size="1">
+			<br>
+			<BR>
+			// #10<br>
+			// get start day from trigger<br>
+			//<br>
+			<br>
+			&nbsp;&nbsp;&nbsp; Dim obj<br>
+			&nbsp;&nbsp;&nbsp; Dim bresult&nbsp;<br>
+			&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+			&nbsp;&nbsp;&nbsp; obj.ActivateTask "mytask2"<br>
+			&nbsp;&nbsp;&nbsp; obj.GetTrigger 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' 
+			to get second trigger call obj.GetTrigger 1<br>
+			<br>
+			&nbsp;&nbsp;&nbsp; MsgBox obj.StartDay<br>
+		</font><FONT face="Verdana" size="1">
+			<BR>
+			<BR>
+			// #11
+			<BR>
+			// get enabled/disabled flag for task
+			<BR>
+			//
+			<BR>
+			&nbsp;&nbsp; Dim obj, s
+			<BR>
+			&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+			<BR>
+			&nbsp;&nbsp; obj.ActivateTask "Task2"&nbsp;<BR>
+			&nbsp;&nbsp;&nbsp;If (obj.Disabled = 1)&nbsp;Then
+			<BR>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MsgBox "disabled"&nbsp;<BR>
+			&nbsp;&nbsp;&nbsp;End If
+			<BR>
+			<BR>
+			<BR>
+			// #12
+			<BR>
+			// get trigger string (textual trigger description)
+			<BR>
+			//
+			<BR>
+			&nbsp;&nbsp; Dim obj, s
+			<BR>
+			&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")
+			<BR>
+			&nbsp;&nbsp; obj.ActivateTask "Task2"
+			<BR>
+			&nbsp;&nbsp; obj.GetTrigger 0
+			<BR>
+			&nbsp;&nbsp; s = obj.TriggerString
+			<BR>
+			&nbsp;&nbsp; MsgBox s<BR>
+			<BR>
+			<br>
+			// #13<br>
+			// run task<br>
+			//<br>
+			<br>
+			&nbsp;&nbsp;&nbsp; Dim obj<br>
+			&nbsp;&nbsp;&nbsp; Dim bresult&nbsp;<br>
+			&nbsp;&nbsp;&nbsp; Set obj = CreateObject("SCHEDTASK.etScheduledTask")<br>
+			&nbsp;&nbsp;&nbsp; obj.ActivateTask "mytask2"<br>
+			&nbsp;&nbsp;&nbsp; obj.Run<br>
+			&nbsp;&nbsp;&nbsp; ' do something<br>
+			&nbsp;&nbsp;&nbsp; obj.Terminate<br>
+			</P></FONT>
+		<P><FONT face="Verdana" size="1">&nbsp;</P>
+		</FONT>
+	</body>
+</html>

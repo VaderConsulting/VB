@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Manage Summary Information</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_manage_summary_information"></A>Manage Summary Information</H2>
+
+<P>The VBScript file WiSumInf.vbs is provided in the <A HREF="app_5qwj.htm">Platform SDK Components for Windows Installer Developers</A>. This sample script can be used to manage the <A HREF="sovr_99yl.htm">summary information stream</A> of a Windows Installer package. </P>
+
+<P>The sample demonstrates the use of:
+
+<UL>
+	<LI><A HREF="vref_7lcv.htm"><B>SummaryInformation</B> property (Installer Object)</A> </LI>
+
+	<LI><A HREF="vref_6884.htm"><B>LastErrorRecord</B> method</A> of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </LI>
+</UL>
+
+<P>Using this sample requires the CScript.exe or WScript.exe version of Windows Script Host. To use CScript.exe to run this sample, type a command at the command prompt using the following syntax. Help is displayed if the first argument is /? or if too few arguments are specified. To redirect the output to a file, end the command line with VBS &gt; [<I>path to file</I>]. The sample returns a value of 0 for success, 1 if help is invoked, and 2 if the script fails.</P>
+
+<PRE>cscript WiSumInf.vbs [<I>path to database</I>][<I>Property=value</I>]</PRE>
+
+<P>Specify the path to the Windows Installer database. If no other arguments are specified, the script lists all the summary properties for the package. Specify a list of summary properties and values to be updated using the format Property=value. You may specify the property by either the name or PID value shown below. Date and time fields use current locale format, or "Now" or "Date". For more information, see <A HREF="sovr_43w4.htm">Summary Information Stream Property Set</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>PID</TH>
+<TH align=left width=16%>Name</TH>
+<TH align=left width=75%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>1</TD>
+<TD width=16%>Codepage</TD>
+<TD width=75%>ANSI codepage of text strings in summary information. For more information, see <A HREF="sref_4r5l.htm">Codepage Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>2</TD>
+<TD width=16%>Title</TD>
+<TD width=75%>Type of Windows Installer package. For more information, see <A HREF="sref_82rd.htm">Title Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>3</TD>
+<TD width=16%>Subject</TD>
+<TD width=75%>Full Product name . For more information, see <A HREF="sref_0b5l.htm">Subject Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>4</TD>
+<TD width=16%>Author</TD>
+<TD width=75%>Creator, typically vendor name. For more information, see <A HREF="sref_76k9.htm">Author Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>5</TD>
+<TD width=16%>Keywords</TD>
+<TD width=75%>List of keywords for use by file browser. For more information, see <A HREF="sref_7xfd.htm">Keywords Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>6</TD>
+<TD width=16%>Comments</TD>
+<TD width=75%>Description of purpose or use of package. For more information, see <A HREF="sref_4lfd.htm">Comments Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>7</TD>
+<TD width=16%>Template</TD>
+<TD width=75%>Supported platforms and languages. For more information, see <A HREF="sref_80hl.htm">Template Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>8</TD>
+<TD width=16%>LastAuthor</TD>
+<TD width=75%>Set only by the installer. For more information, see <A HREF="sref_7dyx.htm">Last Saved By Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>9</TD>
+<TD width=16%>Revision</TD>
+<TD width=75%>Package code GUID. For more information, see <A HREF="sref_1am1.htm">Revision Number Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>11</TD>
+<TD width=16%>Printed</TD>
+<TD width=75%>Date and time of installation image. For more information, see <A HREF="sref_1cs9.htm">Last Printed Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>12</TD>
+<TD width=16%>Created</TD>
+<TD width=75%>Date and time of package creation. For more information, see <A HREF="sref_2ut5.htm">Create Time/Date Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>13</TD>
+<TD width=16%>Saved</TD>
+<TD width=75%>Date and time of last package modification. For more information, see <A HREF="sref_0hkp.htm">Last Saved Time/Date Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>14</TD>
+<TD width=16%>Pages</TD>
+<TD width=75%>Minimum version of Windows Installer required for this package. For more information, see <A HREF="sref_8eex.htm">Page Count Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>15</TD>
+<TD width=16%>Words</TD>
+<TD width=75%>Type of source file image. For more information, see <A HREF="sref_8ge1.htm">Word Count Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>16</TD>
+<TD width=16%>Characters</TD>
+<TD width=75%>Used for transforms only. <A HREF="sref_6r5l.htm">Character Count</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>18</TD>
+<TD width=16%>Application</TD>
+<TD width=75%>Application associated with this file, i.e. "Windows Installer". For more information, see <A HREF="sref_4qrd.htm">Creating Application Summary Property</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>19</TD>
+<TD width=16%>Security</TD>
+<TD width=75%>Security setting.  For more information, see <A HREF="sref_2mbd.htm">Security Summary Property</A>.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For additional scripting examples, see <A HREF="samp_2dv7.htm">Windows Installer Scripting Examples</A>. For sample utilities that do not require Windows Script Host, see <A HREF="app_9303.htm">Windows Installer Development Tools</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Manage%20Summary%20Information;%20RELEASE:%20August%202001;%20URL:%20samp_9dim.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Manage%20Summary%20Information;%20RELEASE:%20August%202001;%20URL:%20samp_9dim.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

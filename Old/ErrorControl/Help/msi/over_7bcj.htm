@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Product Codes</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="product codes [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_product_codes"></A>Product Codes</H1>
+
+<P>The product code is a GUID that is the principal identification of an application or product. For more information, see the <A HREF="pref_4tfd.htm"><B>ProductCode</B> property</A>. If significant changes are made to a product then the product code should also be changed to reflect this. It is not however a requirement that the product code be changed if the changes to the product are relatively minor. </P>
+
+<P>The 32-bit and 64-bit versions of an application's package must have different product codes. If any 32-bit component of an application is recompiled into a 64-bit component, a new product code must be assigned.</P>
+
+<P>If a server exposed in the <A HREF="tref_7xt1.htm">PublishComponent Table</A> is recompiled from 32-bits to 64-bits, the GUID in this table may also need to be changed so that 32-bit and 64-bit clients can identify the appropriate qualified component category. In this case, the product code must also be changed.</P>
+
+<P>Note that letters in product code GUIDs must be uppercase. Utilities such as GUIDGEN generate GUIDs containing lowercase letters. The lowercase letters in these GUIDs must be changed to uppercase to be used as a product code or package code For more information, see <A HREF="updat_3rad.htm">Changing the Product Code</A>.</P>
+
+<P>The package code is a GUID identifying a particular Microsoft® Windows® Installer <A HREF="dglo_6vp5.htm#_msi_package_using_windows_installer_gly">package</A>. The package code associates an .msi file with an application or product and can also be used for the verification of sources. The product and package codes are not interchangeable. No two non-identical .msi files should ever have the same package code. Although it is common to ship an application that has the same package code and product code, the two values can diverge as the application is updated. For more information, see <A HREF="over_7zub.htm">Package Codes</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Product%20Codes;%20RELEASE:%20August%202001;%20URL:%20over_7bcj.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Product%20Codes;%20RELEASE:%20August%202001;%20URL:%20over_7bcj.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

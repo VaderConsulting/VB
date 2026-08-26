@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Custom Action Type 39</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_custom_action_type_39"></A>Custom Action Type 39</H2>
+
+<P>Type 39 custom action installs an application that is advertised or already installed. This custom action type may used to reinstall or remove a product that has been installed as a nested installation by the current product's installation package. The Type 39 custom action cannot be used to reinstall, or remove any product that previously was installed by any other means. For example, if the secondary product is installed using a Type 39, Type 23, or Type 7 custom action during the installation of the primary product, a Type 39 custom action may be used to remove the secondary product when the primary product is uninstalled.</P>
+
+<P>See also <A HREF="cact_260j.htm">Nested Installation Actions</A>.</P>
+
+<H4>Source</H4>
+
+<P>The Source field of the <A HREF="tref_71b9.htm">CustomAction table</A> contains the product code for the application.</P>
+
+<H4>Numeric Type</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=66%>Type name</TH>
+<TH align=left width=34%>Value </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=66%><B>msidbCustomActionTypeInstall + msidbCustomActionTypeDirectory</B></TD>
+<TD width=34%>39</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Target</H4>
+
+<P>The Target field of the <A HREF="tref_71b9.htm">CustomAction table</A> contains properties settings that are to be passed to the nested installation. These property settings can specify features.</P>
+
+<H4>Return Processing Options</H4>
+
+<P>The custom action type 39 fails if the application is not advertised or installed. To avoid this failure, you must set the <B>msidbCustomActionTypeContinue<CODE> </CODE></B>flag.</P>
+
+<P>A nested install cannot run asynchronously.</P>
+
+<P>See <A HREF="cact_8lf7.htm">Custom Action Return Processing Options</A>.</P>
+
+<H4>Execution Scheduling Options</H4>
+
+<P>Options flags are available to control the potential multiple execution of custom actions. See <A HREF="cact_0dpv.htm">Custom Action Execution Scheduling Options</A>.</P>
+
+<H4>In-Script Execution Options</H4>
+
+<P>Not used.</P>
+
+<H4>Return Values</H4>
+
+<P>The return values from a nested installation are the same as other custom actions. See <A HREF="cact_8h0z.htm">Custom Action Return Values</A>.</P>
+
+<H4>Remarks</H4>
+
+<P>A conditional expression is required to enable the nested install at either install or removable of the associated component or feature.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_6a05.htm">Custom Action Reference</A>, <A HREF="cact_1zhv.htm">About Custom Actions</A>, <A HREF="cact_93lf.htm">Using Custom Actions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

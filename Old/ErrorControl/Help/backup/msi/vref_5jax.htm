@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FeatureUsageDate Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FeatureUsageDate Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_featureusagedate_property"></A>FeatureUsageDate Property</H1>
+
+<P>The FeatureUsageDate property is a read-only property that returns the date the specified feature was last used.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.FeatureUsageDate(<I>Product, Feature</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </DD>
+
+<DT><I>Product</I></DT>
+
+<DD>Specifies the product code of the product.</DD>
+
+<DT><I>Feature</I></DT>
+
+<DD>Identifies the feature of interest.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Use of the <A HREF="vref_0d5w.htm">UseFeature</A>, <A HREF="vref_8xpg.htm">ProvideComponent</A> or <A HREF="vref_9pus.htm">ProvideQualifiedComponent</A> methods or their API equivalents on the specified feature sets this property.</P>
+
+<P>The date is in the MS-DOS date format<B> </B>as shown in the following table.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=10%>Bits</TH>
+<TH align=left width=90%>Contents</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>0-4</TD>
+<TD width=90%>Day of the month (1-31)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>5-8</TD>
+<TD width=90%>Month (1 = January, 2 = February, and so on)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=10%>9-15</TD>
+<TD width=90%>Year offset from 1980 (add 1980 to get actual year)</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_7gh1.htm"><B>MsiGetFeatureUsage</B></A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

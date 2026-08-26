@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Dialog Style Bits</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_dialog_style_bits"></A>Dialog Style Bits</H2>
+
+<P>The style of a dialog box is specified in the Attributes column of the <A HREF="tref_51wl.htm">Dialog table</A> by a 32-bit word composed of style bit flags.</P>
+
+<P>The following list provides links to descriptions of reserved dialog box style bits.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Name</TH>
+<TH align=left width=18%>Decimal</TH>
+<TH align=left width=26%>Hexadecimal</TH>
+<TH align=left width=26%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_141g.htm">Visible</A></TD>
+<TD width=18%>1</TD>
+<TD width=26%>0x00000001</TD>
+<TD width=26%><B>msidbDialogAttributesVisible</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_7j5g.htm">Modal</A></TD>
+<TD width=18%>2</TD>
+<TD width=26%>0x00000002</TD>
+<TD width=26%><B>msidbDialogAttributesModal</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_1jjo.htm">Minimize</A></TD>
+<TD width=18%>4</TD>
+<TD width=26%>0x00000004</TD>
+<TD width=26%><B>msidbDialogAttributesMinimize</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_4chg.htm">SysModal</A></TD>
+<TD width=18%>8</TD>
+<TD width=26%>0x00000008</TD>
+<TD width=26%><B>msidbDialogAttributesSysModal</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_2apg.htm">KeepModeless</A></TD>
+<TD width=18%>16</TD>
+<TD width=26%>0x00000010</TD>
+<TD width=26%><B>msidbDialogAttributesKeepModeless</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_4oqc.htm">TrackDiskSpace</A></TD>
+<TD width=18%>32</TD>
+<TD width=26%>0x00000020</TD>
+<TD width=26%><B>msidbDialogAttributesTrackDiskSpace</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_0p10.htm">UseCustomPalette</A></TD>
+<TD width=18%>64</TD>
+<TD width=26%>0x00000040</TD>
+<TD width=26%><B>msidbDialogAttributesUseCustomPalette</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_5s50.htm">RTLRO</A> </TD>
+<TD width=18%>128</TD>
+<TD width=26%>0x00000080</TD>
+<TD width=26%><B>msidbDialogAttributesRTLRO</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_7nas.htm">RightAligned</A></TD>
+<TD width=18%>256</TD>
+<TD width=26%>0x00000100</TD>
+<TD width=26%><B>msidbDialogAttributesRightAligned</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_19ro.htm">LeftScroll</A></TD>
+<TD width=18%>512</TD>
+<TD width=26%>0x00000200</TD>
+<TD width=26%><B>msidbDialogAttributesLeftScroll</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_99dg.htm">BiDi</A></TD>
+<TD width=18%>896</TD>
+<TD width=26%>0x00000380</TD>
+<TD width=26%><B>msidbDialogAttributesBiDi = msidbDialogAttributesRTLRO | msidbDialogAttributesRightAligned | msidbDialogAttributesLeftScroll</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%> <A HREF="href_3z90.htm">Error</A></TD>
+<TD width=18%>65536</TD>
+<TD width=26%>0x00010000</TD>
+<TD width=26%><B>msidbDialogAttributesError</B></TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Dialog%20Style%20Bits;%20RELEASE:%20August%202001;%20URL:%20href_8b5f.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Dialog%20Style%20Bits;%20RELEASE:%20August%202001;%20URL:%20href_8b5f.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

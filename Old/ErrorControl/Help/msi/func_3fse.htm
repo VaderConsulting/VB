@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Reinstalling a Feature or Application</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_reinstalling_a_feature_or_application"></A>Reinstalling a Feature or Application</H2>
+
+<P>Windows Installer can repair, replace, and verify files contained in an application. A partial or complete application reinstallation might be required if any files or registry entries associated with any feature have become corrupted or are missing. </P>
+
+<P>When a feature or application is reinstalled, all the services, environment variables, and custom actions belonging to the feature or application are reinstalled as well. Note that this means that any changes made to environment variables between the original installation and the reinstallation are lost.</P>
+
+<P>The following list contains methods of reinstalling a feature or product. The first two methods have been automated by the installer:
+
+<UL>
+	<LI>Repair, replace, or verify files by calling the <A HREF="msi_4ag5.htm"><B>MsiReinstallFeature</B></A> function. </LI>
+
+	<LI>Reinstall the entire product by calling the <A HREF="msi_9n78.htm"><B>MsiReinstallProduct</B></A> function.</LI>
+
+	<LI>Reinstall, replace, or verify files with an Installer UI control button via the <A HREF="href_8gdw.htm"><B>Reinstall ControlEvent</B></A>.</LI>
+
+	<LI>Reinstall, replace, or verify files from a command line by setting the <A HREF="pref_19x5.htm"><B>REINSTALL</B> property</A> and the <A HREF="pref_7bll.htm"><B>REINSTALLMODE</B> property</A>.</LI>
+</UL>
+
+<P>For more information on reinstalling a feature or application, see <A HREF="over_5id5.htm">Resiliency</A>. </P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To reinstall a product using the installer</B></P>
+
+<P>Call <A HREF="msi_9n78.htm">MsiReinstallProduct</A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To reinstall a feature using the installer</B></P>
+
+<P>Call <A HREF="msi_4ag5.htm">MsiReinstallFeature</A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To reinstall a product or feature with an installer user interface</B>
+
+<OL>
+	<LI>Add a button to the specified dialog box by adding an entry to the <A HREF="tref_6nad.htm">Control table</A>.</LI>
+
+	<LI>Add a <A HREF="href_0x6c.htm">ReinstallMode ControlEvent</A> to the ControlEvent table, with the Dialog_ and Control_ fields referencing the button control you created in step 1. In the Argument field, enter a string containing the letters corresponding to the reinstall modes you want (the acceptable values for this field are identical to those accepted for the <B>REINSTALLMODE</B> property). The value in the Ordering column for this event should be 1.</LI>
+
+	<LI>Add a <A HREF="href_8gdw.htm">Reinstall ControlEvent</A> event to the <A HREF="tref_6k11.htm">ControlEvent table</A>, again referencing the same button control. The Argument field for this event will normally be ALL, to force reinstallation of all features, but you can place the name of a specific feature here. The value in the Ordering column for this event should be 2.</LI>
+
+	<LI>Add one more event tied to the same button control, to actually initiate the reinstallation. This can be an EndDialog event (with an argument of Return). More typically, however, a NewDialog event would be used here to jump to an Are you sure you want to reinstall? confirmation dialog box. The value in the Ordering column for this event should be 3.
+<P>If desired, several Reinstall buttons can be created for a single dialog box, allowing the user to select the type of reinstallation performed. In this case, each button is authored as outlined in the preceding procedure, with a different <A HREF="href_0x6c.htm">ReinstallMode ControlEvent</A> parameter for each button.
+</LI>
+</OL>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To reinstall a product or feature from a command line</B></P>
+
+<P>Once a particular product has been installed (with some or all of the product's features), a reinstallation can be performed at the command line. 
+
+<OL>
+	<LI>From the command prompt, specify the <A HREF="pref_19x5.htm"><B>REINSTALL</B> property</A>.</LI>
+
+	<LI>From the command prompt, specify the <A HREF="pref_7bll.htm"><B>REINSTALLMODE </B>property</A>. 
+<P>Specifying these properties allows the user to reinstall any or all of the product's features. The type of reinstallation can also be specified. For example, you can specify that only those files that are completely missing should be reinstalled, or that only corrupt files (for example, any executable file whose checksum doesn't match the actual file contents) be replaced. 
+</LI>
+</OL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Reinstalling%20a%20Feature%20or%20Application;%20RELEASE:%20August%202001;%20URL:%20func_3fse.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Reinstalling%20a%20Feature%20or%20Application;%20RELEASE:%20August%202001;%20URL:%20func_3fse.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

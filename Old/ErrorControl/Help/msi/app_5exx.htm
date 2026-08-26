@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Msitran.exe</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Msitran.exe [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_msitran.exe"></A>Msitran.exe</H2>
+
+<P>Msitran.exe uses <A HREF="qref_29rh.htm"><B>MsiDatabaseGenerateTransform</B></A>, <A HREF="qref_5zlb.htm"><B>MsiCreateTransformSummaryInfo</B></A>, and <A HREF="qref_5tyl.htm"><B>MsiDatabaseApplyTransform</B></A> to generate or apply a transform file.</P>
+
+<H4>Syntax</H4>
+
+<P>Use the following syntax to generate a transform. </P>
+
+<PRE>msitran -g {base db} {ref db} {transform file name} [{error conditions / validation conditions}] </PRE>
+
+<P>Use the following syntax to apply a transform </P>
+
+<PRE>msitran -a {transform} {database} [{error conditions}]</PRE>
+
+<H4>Command Line Options</H4>
+
+<P>Msitran.exe uses the following case-insensitive command line options. A slash delimiter may also be used in place of a dash. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Option</TH>
+<TH align=left width=83%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>-g</TD>
+<TD width=83%>Transform generation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>-a</TD>
+<TD width=83%>Transform application.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The following errors may be suppressed when applying a transform. To suppress an error, include the appropriate character in the {error conditions} argument. Conditions specified with -g are placed in the summary information of the transform, but are not used when applying a transform with -a. For information, see <A HREF="qref_5tyl.htm"><B>MsiDatabaseApplyTransform</B></A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Option</TH>
+<TH align=left width=83%>Suppressed Error</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>a</TD>
+<TD width=83%>Add existing row.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>b</TD>
+<TD width=83%>Delete non-existing row.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>c</TD>
+<TD width=83%>Add existing table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>d</TD>
+<TD width=83%>Delete non-existing table.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>e</TD>
+<TD width=83%>Modify existing row.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>f</TD>
+<TD width=83%>Change codepage.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The following validation conditions may be used to indicate when a transform may be applied to a package. These conditions may be specified with -g, but not -a.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Option</TH>
+<TH align=left width=83%>Validation Condition</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>g</TD>
+<TD width=83%>Check upgrade code.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>l</TD>
+<TD width=83%>Check language.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>p</TD>
+<TD width=83%>Check platform.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>r</TD>
+<TD width=83%>Check product.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>s</TD>
+<TD width=83%>Check major version only.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>t</TD>
+<TD width=83%>Check major and minor versions only.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>u</TD>
+<TD width=83%>Check major, minor, and upgrade versions.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>v</TD>
+<TD width=83%>Applied database version &lt; Base database version.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>w</TD>
+<TD width=83%>Applied database version &lt;= Base database version.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>x</TD>
+<TD width=83%>Applied database version = Base database version.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>y</TD>
+<TD width=83%>Applied database version &gt;= Base database version.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>z</TD>
+<TD width=83%>Applied database version &gt; Base database version.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="app_9303.htm">Windows Installer Development Tools</A>, <A HREF="updat_5wab.htm">Transforms</A>, <A HREF="samp_8mat.htm">A Customization Transform Example</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Msitran.exe;%20RELEASE:%20August%202001;%20URL:%20app_5exx.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Msitran.exe;%20RELEASE:%20August%202001;%20URL:%20app_5exx.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

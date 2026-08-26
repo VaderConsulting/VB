@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>UiCreatePatchPackage (Patchwiz.dll)</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="UiCreatePatchPackage [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_uicreatepatchpackage_patchwiz.dll_"></A>UiCreatePatchPackage (Patchwiz.dll)</H1>
+
+<P>The <B>UiCreatePatchPackage</B> function is the one API of PatchWiz.dll. It takes a package creation file (.pcp file) and generates a Windows Installer patch package (.msp package). Calling <A HREF="app_33ad.htm">Msimsp.exe</A> is the recommended method for using <A HREF="app_8f70.htm">PatchWiz.dll</A>.</P>
+
+<PRE class=syntax><B>UINT UiCreatePatchPackage(
+</B>  <B>LPCTSTR</B> <I>szPcpPath</I><B>,</B>              // path to .pcp file
+  <B>LPCTSTR</B> <I>szPatchPath</I><B>,</B>            // path to .msp file or NULL
+  <B>LPCTSTR</B> <I>szLogPath</I><B>,</B>              // path to log file or NULL
+  <B>HWND</B> <I>hwndStatus</I><B>,</B>                // handle to window or NULL 
+  <B>LPCTSTR</B> <I>szTempFolder</I><B>,</B>           // temp file location or NULL
+  <B>Bool</B> <I>fRemoveTempFolderContents</I>  // remove temp folder
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szPcpPath</I></DT>
+
+<DD>Full path to the patch creation properties file (.pcp file) for this patch.</DD>
+
+<DT><I>szPatchPath</I></DT>
+
+<DD>Full path to the Windows Installer patch package (.msp file) that is to be created. This parameter may be NULL or an empty string but may not be omitted. If it is NULL or an empty string, the function uses the value of PatchOutputPath in the<A HREF="app_8me7.htm"><I> </I>Properties Table (Patchwiz.dll)</A>.</DD>
+
+<DT><I>szLogPath</I></DT>
+
+<DD>Full path to a text log file that will be appended. This parameter may be NULL or an empty string but may not be omitted. </DD>
+
+<DT><I>hwndStatus</I></DT>
+
+<DD>Handle to a window that displays the status text. This parameter may be NULL or an empty string but may not be omitted. </DD>
+
+<DT><I>szTempFolder</I></DT>
+
+<DD>Location for temporary files. This parameter may be NULL or an empty string but may not be omitted. The default location is %TEMP%\~pcw_tmp.tmp\.</DD>
+
+<DT><I>fRemoveTempFolderContents</I></DT>
+
+<DD>If TRUE, remove the temporary folder and all of its contents if present. If FALSE, and folder is present, the function fails.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<P>See the table in <A HREF="app_8fxh.htm">Return Values for UiCreatePatchPackage</A>.</P>
+
+<H4>Remarks</H4>
+
+<P>For an example of authoring a .pcp file and using <B>UiCreatePatchPackage</B> to generate a Windows Installer patch package, see the section <A HREF="samp_6rxh.htm">A Small Update Patching Example</A>.</P>
+
+<P>Creating a patch requires an uncompressed setup image, such as an administrative image or an uncompressed setup image from a CD-ROM. <B>UiCreatePatchPackage</B> does not generate binary patches for files in cabinets. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20UiCreatePatchPackage%20(Patchwiz.dll);%20RELEASE:%20August%202001;%20URL:%20app_6yu7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20UiCreatePatchPackage%20(Patchwiz.dll);%20RELEASE:%20August%202001;%20URL:%20app_6yu7.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

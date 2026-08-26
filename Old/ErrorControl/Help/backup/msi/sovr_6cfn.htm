@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Summary Property Descriptions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_summary_property_descriptions"></A>Summary Property Descriptions</H2>
+
+<P>Summary properties for installation databases and transforms are described in the following table.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Summary property</TH>
+<TH align=left width=29%><A HREF="novr_5s4l.htm">Installation database</A></TH>
+<TH align=left width=26%><A HREF="over_2ysz.htm">Transform</A></TH>
+<TH align=left width=29%><A HREF="updat_7dmb.htm">Patch package</A></TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_82rd.htm">Title</A></TD>
+<TD width=29%>"Installation Database"</TD>
+<TD width=26%>"Transform"</TD>
+<TD width=29%>"Patch" </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_0b5l.htm">Subject</A></TD>
+<TD width=29%><A HREF="pref_52m1.htm">ProductName Property</A></TD>
+<TD width=26%>Short description of the transform that commonly contains the product's name.</TD>
+<TD width=29%>Short description of the patch that commonly contains the product's name.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_76k9.htm">Author</A></TD>
+<TD width=29%><A HREF="pref_9z09.htm">Manufacturer Property</A></TD>
+<TD width=26%><A HREF="pref_9z09.htm">Manufacturer Property</A></TD>
+<TD width=29%><A HREF="pref_9z09.htm">Manufacturer Property</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_7xfd.htm">Keywords</A></TD>
+<TD width=29%>Used by file browsers to do keyword searches for a file. Keyword set typically includes "Installer" as well as product-specific keywords.</TD>
+<TD width=26%>Used by file browsers to do keyword searches for a file. Keyword set typically includes "Transform" as well as product-specific keywords.</TD>
+<TD width=29%>Semicolon delimited list of sources of the patch.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_4lfd.htm">Comments</A></TD>
+<TD width=29%>"This installer database contains the logic and data required to install &lt;product name&gt;."</TD>
+<TD width=26%>"This transform contains the logic and data required to modify &lt;product name&gt;."</TD>
+<TD width=29%>"This patch contains the logic and data required to modify &lt;product name&gt;."</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_80hl.htm">Template</A>  (REQUIRED)</TD>
+<TD width=29%>Platform and language versions supported by database. Specifying more than one language results in a multi-language install. See <A HREF="sref_80hl.htm">Template</A> for syntax.</TD>
+<TD width=26%>Database platform and language versions compatible with the transform. May be left blank if there are no restrictions. Only one language can be specified. See <A HREF="sref_80hl.htm">Template</A> for syntax.</TD>
+<TD width=29%>Semicolon delimited list of the product codes that can accept the patch.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_7dyx.htm">Last Saved By</A></TD>
+<TD width=29%>Set during an <A HREF="over_6jzi.htm">administrative installation</A> to identify the last person to modify the database.</TD>
+<TD width=26%>Specifies the platform and language of the transformed database using the same syntax as the <A HREF="sref_80hl.htm">Template Summary property</A>.</TD>
+<TD width=29%>Semicolon delimited list of transform sub-storage names in the order they are applied. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_1am1.htm">Revision Number</A>  (REQUIRED)</TD>
+<TD width=29%><A HREF="dglo_6vp5.htm#_msi_package_code_gly">Package code</A> for the installer package.</TD>
+<TD width=26%>Lists the product code GUIDs and version of the new and original products and the upgrade code GUID. The list is separated by semicolons as follows.
+<P><I>Original-Product-Code Original-Product-Version</I>;<I>New-Product Code New-Product-Version</I>; <I>Upgrade-Code</I></P>
+</TD>
+<TD width=29%>Specifies the GUID patch code for the patch. This is followed by a list of patch code GUIDs for patches that are removed when this patch is applied. The patch codes are concatenated with no delimiters separating GUIDs in the list.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_1cs9.htm">Last Printed</A></TD>
+<TD width=29%>May be set to the date and time during an <A HREF="over_6jzi.htm">administrative installation</A> to record when the administrative image was created.</TD>
+<TD width=26%>NULL</TD>
+<TD width=29%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_2ut5.htm">Create Time/Date</A></TD>
+<TD width=29%>Time and date when the installer database was created.</TD>
+<TD width=26%>Time and date when the transform was created.</TD>
+<TD width=29%>Time and date when patch file was created.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_0hkp.htm">Last Saved Time/Date</A></TD>
+<TD width=29%>Initially NULL. Each time a user changes an installation database the value is updated to the current system time/date at the time the installer database was saved.</TD>
+<TD width=26%>Initially NULL. Each time a user changes a transform the value is updated to the current system time/date at the time the transform database was saved.</TD>
+<TD width=29%>Initially NULL. Each time a user changes a patch file the value is updated to the current system time/date at the time the patch file was saved.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_8eex.htm">Page Count</A>  (REQUIRED)</TD>
+<TD width=29%>Minimum required installer version.  For the 1.0 version of the installer, this property should be set to an integer of 100. </TD>
+<TD width=26%>Minimum installer version required to process the transform. Set to the greater of the two Page Count property values belonging to the databases used to generate the transform.</TD>
+<TD width=29%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_8ge1.htm">Word Count</A>  (REQUIRED)</TD>
+<TD width=29%>Type of source file image. Stored in place of standard Count property. 
+<P>This property is a bit field. See the <A HREF="sref_8ge1.htm">Word Count</A> topic for the values.</P>
+</TD>
+<TD width=26%>NULL</TD>
+<TD width=29%>For a patch package, the Word Count Summary Property specifies the patch engine that was used to create the patch files. The default value is 1 and indicates that MSPATCH was used to create the patch. A value of "2" means that the patch is using smaller, optimized, files available only with Windows Installer version 1.2 or later. A patch with a Word Count of "2" fails immediately if used with a Windows Installer version less than 1.2. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_6r5l.htm">Character Count</A></TD>
+<TD width=29%>NULL</TD>
+<TD width=26%>Upper word contains transform validation flags. Lower word contains error condition flags.</TD>
+<TD width=29%>NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_4qrd.htm">Creating Application</A></TD>
+<TD width=29%>Application used to create the installer database. In general the value is the name of the software used to author this database.</TD>
+<TD width=26%>The software used to create the transform.</TD>
+<TD width=29%>The software used to create the patch.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_2mbd.htm">Security</A></TD>
+<TD width=29%>2 - Recommended read-only.</TD>
+<TD width=26%>4 - Enforced read-only.</TD>
+<TD width=29%>4 - Enforced read-only.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><A HREF="sref_4r5l.htm">Codepage</A></TD>
+<TD width=29%>Identifies the code page used to display the Summary Information.</TD>
+<TD width=26%>Identifies the code page used to display the Summary Information.</TD>
+<TD width=29%>Identifies the code page used to display the Summary Information.</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

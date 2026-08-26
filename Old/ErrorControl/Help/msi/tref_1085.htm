@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>_TransformView Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="_TransformView Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi__transformview_table"></A>_TransformView Table</H1>
+
+<P>This is a read-only temporary table used to view transforms with the transform view mode. This table is never persisted by the installer.</P>
+
+<P>To invoke the transform view mode, obtain a handle and open the reference database. See <A HREF="novr_0hgl.htm">Obtaining a Database Handle</A>. Call <A HREF="qref_5tyl.htm"><B>MsiDatabaseApplyTransform</B></A> with MSITRANSFORM_ERROR_VIEWTRANSFORM. This stops the transform from being applied to the database and dumps the transform contents into the _TransformView table. The data in the table can be accessed using SQL queries. See <A HREF="novr_9cxf.htm">Working with Queries</A>.</P>
+
+<P>The _TransformView table is not cleared when another transform is applied. The table reflects the cumulative effect of successive applications. To view the transforms separately you must release the table. </P>
+
+<P>The _TransformView Table has the following column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Column</TH>
+<TH align=left width=29%>Type</TH>
+<TH align=left width=20%>Key</TH>
+<TH align=left width=29%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Table</TD>
+<TD width=29%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=20%>Y</TD>
+<TD width=29%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Column</TD>
+<TD width=29%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=20%>Y</TD>
+<TD width=29%>&nbsp;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Row</TD>
+<TD width=29%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=20%>Y</TD>
+<TD width=29%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Data</TD>
+<TD width=29%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=20%> </TD>
+<TD width=29%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Current</TD>
+<TD width=29%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=20%> </TD>
+<TD width=29%> </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Column</H4>
+
+<DL>
+<DT>Table</DT>
+
+<DD>Name of an altered database table.</DD>
+
+<DT>Column</DT>
+
+<DD>Name of an altered table column or INSERT, DELETE, CREATE, or DROP.</DD>
+
+<DT>Row</DT>
+
+<DD>A list of the primary key values separated by tabs. Null primary key values are represented by a single space character. Enter Null in this field if this is a schema change.</DD>
+
+<DT>Data</DT>
+
+<DD>Data, name of a data stream, or a column definition.</DD>
+
+<DT>Current</DT>
+
+<DD>Current value from reference database, or column a number.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The _TransformView is held in memory by a lock count, that can be released with the following SQL command.</P>
+
+<P>"ALTER TABLE _TransformView FREE".</P>
+
+<P>The data in the table can be accessed using SQL queries. The SQL language has two main divisions: Data Definition Language (DDL) that is used to define all the objects in an SQL database, and Data Manipulation Language (DML) that is used to select, insert, update, and delete data in the objects defined using DDL. </P>
+
+<P>The Data Manipulation Language (DML) transform operations are indicated as follows. Data Manipulation Language (DML) are those statements in SQL that manipulate, as opposed to define, data.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Transform operation</TH>
+<TH align=left width=69%>SQL result</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Modify data</TD>
+<TD width=69%>{table} {column} {row} {data} {current value}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Insert row</TD>
+<TD width=69%>{table} "INSERT" {row} NULL   NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Delete row</TD>
+<TD width=69%>{table} "DELETE" {row} NULL   NULL</TD>
+</TR>
+</TABLE><BR>
+
+<P>The Data Definition Language (DDL) transform operations are indicated as follows. Data Definition Language (DDL) are those statements in SQL that define, as opposed to manipulate, data.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Transform operation</TH>
+<TH align=left width=66%>SQL result</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Add column</TD>
+<TD width=66%>{table} {column} NULL  {defn} {column number}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Add table</TD>
+<TD width=66%>{table} "CREATE" NULL  NULL   NULL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Drop table</TD>
+<TD width=66%>{table} "DROP"   NULL  NULL   NULL</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20_TransformView%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_1085.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20_TransformView%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_1085.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

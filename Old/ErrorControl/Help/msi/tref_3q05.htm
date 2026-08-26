@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiPatchHeaders Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiPatchHeaders Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msipatchheaders_table"></A>MsiPatchHeaders Table</H1>
+
+<P>The MsiPatchHeaders table holds the binary patch header streams used for patch validation. A patch containing a populated MsiPatchHeaders table can only be applied using Windows Installer version 2.0 or later.</P>
+
+<P>The MsiPatchHeaders table is used when long <A HREF="tref_4n6t.htm">File table</A> keys result in a failure to generate the patch header stream in the <A HREF="tref_0h5x.htm">Patch table</A>. This can be due to the stream name limitation described in <A HREF="app_3q9f.htm">OLE Limitations on Streams</A>. In this case, the Patch table can reference the MsiPatchHeaders table to create the patch header stream.</P>
+
+<P>The MsiPatchHeaders table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>StreamRef</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Header</TD>
+<TD width=40%><A HREF="tref_8ghl.htm">Binary</A></TD>
+<TD width=14%>N</TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>StreamRef</DT>
+
+<DD>The primary key for the table that uniquely identifies a particular patch header.</DD>
+
+<DT>Header</DT>
+
+<DD>This column is the binary stream patch header used for patch validation.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is processed by the <A HREF="aref_9cby.htm">PatchFiles action</A>. This table is usually added to the install package by a transform from a patch package. It is usually not authored directly into an installation package. This table can only be processed by Windows Installer version 2.0 or later</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiPatchHeaders%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_3q05.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiPatchHeaders%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_3q05.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

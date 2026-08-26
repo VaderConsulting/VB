@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using Properties in Conditional Statements</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_using_properties_in_conditional_statements"></A>Using Properties in Conditional Statements</H2>
+
+<P>The logical value of a property that has been set is True. To determine whether a property is set without actually getting its value, test the logical expression "MyProperty" or "Not MyProperty". When the property MyProperty is set, the former evaluates as True and the latter as False.</P>
+
+<P>One or more properties can be combined with operators to form logical expressions used in a conditional statements. For more information about the operators that can be used in conditional statements, see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>. </P>
+
+<P>A conditional statement using properties can be entered into the Condition column of the <A HREF="tref_83qd.htm">Condition table</A> to modify the selection state of any entry in the <A HREF="tref_0a91.htm">Feature table</A>.</P>
+
+<P>Conditional statements with one or more properties are commonly used in the Condition column of database tables.</P>
+
+<P>The following tables each have a column for conditional expressions:</P>
+
+<P><A HREF="tref_83qd.htm">Condition table</A> <BR>
+<A HREF="tref_6k11.htm">ControlEvent table</A> <BR>
+<A HREF="tref_90f9.htm">LaunchCondition table</A> <BR>
+<A HREF="tref_1git.htm">InstallUISequence table</A> <BR>
+<A HREF="tref_5pid.htm">InstallExecuteSequence table</A> <BR>
+<A HREF="tref_4vhh.htm">ControlCondition table</A> <BR>
+<A HREF="tref_70f9.htm">AdminExecuteSequence table</A> <BR>
+<A HREF="tref_70f9.htm">AdminExecuteSequence table</A> <BR>
+<A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A> <BR>
+<A HREF="tref_5lnp.htm">AdminUISequence table</A> </P>
+
+<P>Note that the six action sequence tables have fields for a condition. If the conditional expression in this field evaluates to False, the installer skips that action. </P>
+
+<P>For more information, see <A HREF="novr_3mqt.htm">Using a Sequence Table</A> or <A HREF="prop_29tf.htm">Using Properties</A>. </P>
+
+<P></P>
+
+<P></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

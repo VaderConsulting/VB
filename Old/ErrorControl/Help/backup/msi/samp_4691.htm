@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Importing the InstallUISequence</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_importing_the_installuisequence"></A>Importing the InstallUISequence</H2>
+
+<P>The <A HREF="tref_1git.htm">InstallUISequence table</A> lists actions that are executed when the top-level <A HREF="aref_986m.htm">INSTALL action</A> is executed and the internal user interface level is set to full UI or reduced UI. The installer skips the actions in this table if the user interface level is set to basic UI or to no UI. See <A HREF="hand_0alh.htm">User Interface</A> and <A HREF="hand_9vn7.htm">User Interface Levels</A>. See <A HREF="novr_6zao.htm">Installation Procedure Tables Group</A>, <A HREF="novr_3mqt.htm">Using a Sequence Table</A>, and the <A HREF="novr_9nqd.htm">Sequence Table Detailed Example</A>. </P>
+
+<P>If in the section <A HREF="samp_4885.htm">Importing a Blank Database</A> you used uisample.msi from the Windows Installer SDK, the sequence tables in your copy of MNP2000.msi already contains the suggested action sequences described in <A HREF="novr_3mqt.htm">Using a Sequence Table</A>. No changes to these sequences should be necessary to author the Notepad installation package.</P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the InstallUISequence table.</P>
+
+<P><A HREF="tref_1git.htm"><B>InstallUISequence Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Action</TH>
+<TH align=left width=44%>Condition</TH>
+<TH align=left width=22%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>AppSearch</TD>
+<TD width=44%>&nbsp;</TD>
+<TD width=22%>400</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>CCPSearch</TD>
+<TD width=44%>NOT Installed </TD>
+<TD width=22%>500</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>CostFinalize</TD>
+<TD width=44%> </TD>
+<TD width=22%>1000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>CostInitialize</TD>
+<TD width=44%> </TD>
+<TD width=22%>800</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>ExecuteAction</TD>
+<TD width=44%> </TD>
+<TD width=22%>1300</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>ExitDlg</TD>
+<TD width=44%> </TD>
+<TD width=22%>-1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>FatalErrorDlg</TD>
+<TD width=44%> </TD>
+<TD width=22%>-3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>FileCost</TD>
+<TD width=44%> </TD>
+<TD width=22%>900</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>LaunchConditions</TD>
+<TD width=44%> </TD>
+<TD width=22%>100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>MaintenanceWelcomeDlg</TD>
+<TD width=44%>Installed AND NOT RESUME AND NOT Preselected</TD>
+<TD width=22%>1250</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>PrepareDlg</TD>
+<TD width=44%> </TD>
+<TD width=22%>140</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>ProgressDlg</TD>
+<TD width=44%> </TD>
+<TD width=22%>1280</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>ResumeDlg</TD>
+<TD width=44%>Installed AND (RESUME OR Preselected)</TD>
+<TD width=22%>1240</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>RMCCPSearch</TD>
+<TD width=44%>NOT Installed</TD>
+<TD width=22%>600</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>UserExitDlg</TD>
+<TD width=44%> </TD>
+<TD width=22%>-2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>WelcomeDlg</TD>
+<TD width=44%>NOT Installed</TD>
+<TD width=22%>1230</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>MigrateFeatureStates</TD>
+<TD width=44%> </TD>
+<TD width=22%>1200</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>FindRelatedProducts</TD>
+<TD width=44%> </TD>
+<TD width=22%>200</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_6m5h.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

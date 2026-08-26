@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Products Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Products Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_products_property"></A>Products Property</H1>
+
+<P>The Products property is a read-only property that returns a <A HREF="vref_1wac.htm"><B>StringList</B> object</A> enumerating the set of all products installed or advertised for the current user and machine.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.Products</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To enumerate the products, an application iterates through the <B>StringList</B> object using a For Each construct. Because products are not ordered, any new product has an arbitrary index. This means that the function can return products in any order. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_32er.htm"><B>MsiEnumProducts</B></A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

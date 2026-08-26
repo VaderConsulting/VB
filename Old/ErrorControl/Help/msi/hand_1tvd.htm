@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Accessibility</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_high_contrast_parameter">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_accessibility"></A>Accessibility</H2>
+
+<P>Authors should be aware of the tables and fields in the following list when designing their user interface to be in compliance with Active Accessibility® guidelines. The user interface of an installer package should facilitate accessibility of the application or product to all users.  
+
+<UL>
+	<LI>Tooltip text is contained in the Help column of the <A HREF="tref_6nad.htm">Control table</A>. This text is shown by screen readers for controls containing a picture.</LI>
+
+	<LI>The Text field of the <A HREF="tref_6nad.htm">Control table</A> for the <A HREF="href_7ing.htm">VolumeCostList</A>, <A HREF="href_6omk.htm">ListView</A>, <A HREF="href_09f0.htm">DirectoryList</A> and <A HREF="href_3w30.htm">SelectionTree</A> controls is never displayed. Instead it can be read by screen review utilities as the description of the control. People who cannot use the visual information on the screen can interpret the information with the aid of a screen review utility. Screen review utilities (also referred to as a screen reader programs or speech access utilities) take the displayed information on the screen and direct it through alternative media, such as synthesized speech or a refreshable Braille display.</LI>
+
+	<LI>Controls in dialog boxes should be linked using the Control_Next field of the <A HREF="tref_6nad.htm">Control table</A>. The controls need to be authored such that they can all be reached by using the TAB key.</LI>
+
+	<LI>Shortcut keys should be provided for gaining access to controls directly.</LI>
+
+	<LI>Text color displayed in the user interface is set in the <A HREF="tref_30px.htm">TextStyle table</A>. If the chosen text color is too close to the background's then the text's color choice is ignored.</LI>
+
+	<LI>Text size and font is set in the <A HREF="tref_30px.htm">TextStyle table</A>. Larger font sizes should be used for packages intended for the Asian market. For example, a font size of 10 points that is legible for English text may not necessarily true for Chinese.</LI>
+
+	<LI>For <A HREF="href_9yjw.htm">Edit</A>, <A HREF="href_4pik.htm">PathEdit</A>, <A HREF="href_6omk.htm">ListView</A>, <A HREF="href_4yp8.htm">ComboBox</A> or <A HREF="href_3uek.htm">VolumeSelectCombo controls</A>, screen readers take accName and accKeyboardShortcut from a <A HREF="href_4s30.htm">Text Control</A> that must precede the control in the Control_Next sequence of the dialog box. The screen reader takes accName from the Text field of the Text control and accKeyboardShortcut from the keyboard shortcut in the Text field, if a shortcut exists. </LI>
+
+	<LI>Because static text cannot take the focus, a <A HREF="href_4s30.htm">Text control</A> that describes an <A HREF="href_9yjw.htm">Edit</A>, <A HREF="href_4pik.htm">PathEdit</A>, <A HREF="href_6omk.htm">ListView</A>, <A HREF="href_4yp8.htm">ComboBox</A> or <A HREF="href_3uek.htm">VolumeSelectCombo control</A> must be made the first control in the dialog box to ensure compatibility with screen readers.</LI>
+
+	<LI>For a <A HREF="href_331o.htm">PushButton Control</A> that displays an icon or bitmap image, accName and accKeyboardShortcut are specified in the Help field of the <A HREF="tref_6nad.htm">Control table</A> record, to the left of the | separator.</LI>
+
+	<LI>Do not put a black text control on a background that is an all white bitmap image. This text is not visible to a user who changes the Windows display to High Contrast Black.</LI>
+
+	<LI>Do not put a white text control on a background that is an all black bitmap image. This text is not visible to a user who changes the Windows display to High Contrast White. </LI>
+
+	<LI>Note that the focus on a dialog box does not tab to a <A HREF="href_6iwc.htm">RadioButtonGroup Control</A> until one of the buttons in the group has been selected. To make the focus tab to this button group, specify one of the buttons as a default setting for the control. </LI>
+
+	<LI>Note that the focus on a dialog box does not tab to a <A HREF="href_6iwc.htm">RadioButtonGroup Control</A> until one of the buttons in the group has been selected. To make the focus tab to this button group, specify one of the buttons as a default setting for the control. </LI>
+
+	<LI>To provide screen reader programs with extra descriptive text about a <A HREF="href_6iwc.htm">RadioButtonGroup control</A>. Follow the example provided in <A HREF="hand_2jn7.htm">Adding Extra Text to Radio Buttons</A>.</LI>
+
+	<LI>Do not place transparent <A HREF="href_4s30.htm">Text controls</A> on top of colored bitmaps. The text may not be visible if the user changes the display color scheme. For example, text may become invisible if the user sets the <A HREF="JavaScript:hhobj_1.Click()">High Contrast Parameter</A> for accessibility. </LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Accessibility;%20RELEASE:%20August%202001;%20URL:%20hand_1tvd.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Accessibility;%20RELEASE:%20August%202001;%20URL:%20hand_1tvd.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

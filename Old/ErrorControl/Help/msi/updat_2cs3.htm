@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Preparing an Application for Future Major Upgrades</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_preparing_an_application_for_future_major_upgrades"></A>Preparing an Application for Future Major Upgrades</H1>
+
+<P>Although the Microsoft® Windows®  Installer version 1.0 does not support <A HREF="updat_8do3.htm">major upgrades</A> that change the product code, authors of installation packages should begin now to include upgrading information in their .msi files. This enables your application to take advantage of the full upgrading functionality available with future installer versions. Follow the procedure below to ensure that an installation done with version 1.0 of the installer is able to use the upgrade capabilities in future installer versions.</P>
+
+<P>Every application, or suite of applications, should be assigned an <A HREF="pref_7mux.htm"><B>UpgradeCode</B> Property</A>, <A HREF="pref_120p.htm"><B>ProductVersion</B> Property</A>, and <A HREF="pref_7aex.htm"><B>ProductLanguage</B> Property</A>. The <B>UpgradeCode</B> property indicates a family of related applications consisting of different versions and different language versions of the same product.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>Preparing an application for future major upgrades</B>
+
+<OL>
+	<LI>Determine a new <A HREF="pref_4tfd.htm"><B>ProductCode</B> property</A> for the application. See <A HREF="updat_3rad.htm">Changing the Product Code</A> for more information. Enter <B>ProductCode</B> and its value into the <A HREF="tref_21d1.htm">Property table</A>.</LI>
+
+	<LI>Determine the application's version and the <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>. The <B>ProductVersion</B> should increase with each new version of the application. Note that Windows Installer uses only the first three fields of the product version. If you include a fourth field in your product version, the installer ignores the fourth field. Enter <B>ProductVersion</B> and its value into the Property table.</LI>
+
+	<LI>Determine the language of the package and the <A HREF="pref_7aex.htm"><B>ProductLanguage</B> property</A>. The value of this property must be a numeric language identifier (LANGID). Enter <B>ProductLanguage</B> and its value into the <A HREF="tref_21d1.htm">Property table</A>. Note that the <A HREF="aref_4rse.htm">FindRelatedProducts action</A> uses the language returned by <A HREF="msi_8wa7.htm"><B>MsiGetProductInfo</B></A>. For FindRelatedProducts to work correctly, the package author must be sure that the <A HREF="pref_7aex.htm"><B>ProductLanguage </B>property</A> is set in the Property table to a language that is also listed in the <A HREF="sref_80hl.htm"><B>Template Summary</B> Property</A>.</LI>
+
+	<LI>If you are authoring an installation package for the first version of your product, use a new <B>UpgradeCode</B>. If your package is intended for a newer version of an existing product, or is the same version as an existing product in a different language, use the same <B>UpgradeCode</B> as the existing product. No two products with the same <B>ProductVersion</B> and the same <B>ProductLanguage</B> can have the same <B>UpgradeCode</B>, unless one is a <A HREF="updat_9m0j.htm">small update</A> of the other.</LI>
+
+	<LI>The <B>UpgradeCode</B> has the format of a <A HREF="tref_7kf8.htm">GUID</A>. Enter the <B>UpgradeCode</B> GUID into the Property table.</LI>
+</OL>
+
+<P>For more information, see <A HREF="updat_80xa.htm">How do I prevent an old package from installing over a newer version?</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Preparing%20an%20Application%20for%20Future%20Major%20Upgrades;%20RELEASE:%20August%202001;%20URL:%20updat_2cs3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Preparing%20an%20Application%20for%20Future%20Major%20Upgrades;%20RELEASE:%20August%202001;%20URL:%20updat_2cs3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

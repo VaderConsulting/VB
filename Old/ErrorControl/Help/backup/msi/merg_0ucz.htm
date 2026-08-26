@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Naming Primary Keys in Merge Module Databases</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_naming_primary_keys_in_merge_module_databases"></A>Naming Primary Keys in Merge Module Databases</H3>
+
+<P>The names of primary keys a merge module database must adhere to a standard naming convention. The purpose of this naming convention is to reduce the possibility of creating a name conflict between the table columns in the merge module and the target installation package. </P>
+
+<P>The name of a primary key in a merge module must consist of a readable name appended with a string made from the merge module's GUID. Every merge module must have its own <A HREF="dglo_0j95.htm#_msi_guid_gly">GUID</A>. The merge module's GUID should also be authored into the <A HREF="sref_1am1.htm">Revision Number summary property</A> of the merge module. Developers can create GUIDs using a utility such as GUIDGEN. </P>
+
+<P>The following procedure describes how to generate a primary database key that adheres to the standard naming convention.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To name a primary key of a table record in a merge module</B>
+
+<OL>
+	<LI>Author the readable part of the name for the primary key. Pick a readable name that identifies this record, for example, MyRowEntry. </LI>
+
+	<LI>Generate or obtain the GUID of the merge module. The following is an example of a GUID: <I>{880DE2F0-CDD8-11D1-A849-006097ABDE17</I>}. In the following steps you modify this into a character string that must be appended to every primary key name in the merge module.</LI>
+
+	<LI>Remove the curly braces from the beginning and end of the GUID.</LI>
+
+	<LI>Change all the dashes to underscores.</LI>
+
+	<LI>Append the result to the end of the readable part of the primary key name. Separate the readable name from the modified GUID by a period. The primary key name for the example GUID given above becomes MyRowEntry<I>.880DE2F0_CDD8_11D1_A849_006097ABDE17.</I></LI>
+
+	<LI>Repeat to name all the primary keys of all tables in the merge module.</LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE38</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE38">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice38"></A>ICE38</H1>
+
+<P>ICE38 validates that every component being installed under the current user's profile also specifies a registry key under the <B>HKEY_CURRENT_USER </B>root in the KeyPath column of the <A HREF="tref_09np.htm">Component table</A>. </P>
+
+<H4>Result</H4>
+
+<P>ICE38 posts an error if a component installed under the user's profile does not specify a HKCU registry key.</P>
+
+<H4>Example</H4>
+
+<P>ICE38 reports the following errors for the sample shown.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE38 error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Component Component1 installs to user profile. It must use a registry key under HKCU as its KeyPath, not a file</CODE>.</TD>
+<TD width=63%>The value of the attributes column of Component1 is 0, meaning that the component must use a file as its KeyPath. This causes difficulties when multiple users install the component on the same computer.
+<P>To fix this error on Component1, set the RegistryKeyPath bit in the Attributes column of the <A HREF="tref_09np.htm">Component table</A> and change the entry in the KeyPath column to a value listed in the Registry column of the <A HREF="tref_3obp.htm">Registry table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Component Component2 installs to user profile. It must use a registry key under HKCU as its KeyPath. The KeyPath is currently NULL.</CODE></TD>
+<TD width=63%>Component2 has the RegistryKeyPath bit set in the Attributes column of the <A HREF="tref_09np.htm">Component table</A>. The KeyPath field must therefore contain a key to the Registry column of the <A HREF="tref_3obp.htm">Registry Table</A> but the KeyPath column is Null. 
+<P>To fix this error, change the KeyPath value to a valid entry into the Registry table.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Component Component3 installs to user profile. It's KeyPath registry key must fall under HKCU.</CODE></TD>
+<TD width=63%>Component3 has the RegistryKeyPath bit set in the Attributes column of the <A HREF="tref_09np.htm">Component table</A> but the root of the registry entry specified in the Root column of the Registry table specifies <B>HKEY_LOCAL_MACHINE</B> rather than <B>HKEY_CURRENT_USER</B>.
+<P>To fix this error, use a valid registry entry under <B>HKEY_LOCAL_MACHINE</B> as the KeyPath for this component or change the value in the Root column of the <A HREF="tref_3obp.htm">Registry table</A> to -1 or 1. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>The KeyPath registry entry for component Component4 does not exist.</CODE></TD>
+<TD width=63%>Component4 has the RegistryKeyPath bit set in the Attributes column of the <A HREF="tref_09np.htm">Component table</A> but the entry in the KeyPath column does not exist in the <A HREF="tref_3obp.htm">Registry Table</A>.
+<P>To fix this error, add an entry for Reg4 to the Registry table that is a under <B>HKEY_CURRENT_USER</B>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>The Registry Entry Reg5 is set as the KeyPath for component Component5, but that registry entry doesn't belong to Component5.</CODE></TD>
+<TD width=63%>The Registry entry referenced in the KeyPath column of the component was found and lies under the HKCU tree, but the registry entry's Component_ column does not refer back to the same component that listed it as the KeyPath. This means that the registry entry used as the KeyPath of the component would only be created when some other component was installed. 
+<P>To fix this error change the KeyPath value to refer to a registry entry that belongs to the component, or change the registry entry to belong to the component using it as a KeyPath.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_6an9.htm"><B>Directory Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=20%>Directory</TH>
+<TH align=left width=27%>Directory_Parent</TH>
+<TH align=left width=53%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Dir1</TD>
+<TD width=27%> </TD>
+<TD width=53%>StartMenuFolder</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Dir2</TD>
+<TD width=27%> </TD>
+<TD width=53%>DesktopFolder</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Dir3</TD>
+<TD width=27%>Dir3</TD>
+<TD width=53%>AppData</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Dir4</TD>
+<TD width=27%>Dir3</TD>
+<TD width=53%>SubDir</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=20%>Component</TH>
+<TH align=left width=27%>Directory_</TH>
+<TH align=left width=19%>Attributes</TH>
+<TH align=left width=34%>KeyPath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Component1</TD>
+<TD width=27%>Dir1</TD>
+<TD width=19%>0</TD>
+<TD width=34%>File1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Component2</TD>
+<TD width=27%>Dir2</TD>
+<TD width=19%>4</TD>
+<TD width=34%> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Component3</TD>
+<TD width=27%>Dir3</TD>
+<TD width=19%>4</TD>
+<TD width=34%>Reg3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Component4</TD>
+<TD width=27%>Dir4</TD>
+<TD width=19%>4</TD>
+<TD width=34%>Reg4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>Component5</TD>
+<TD width=27%>Dir5</TD>
+<TD width=19%>4</TD>
+<TD width=34%>Reg5</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_3obp.htm"><B>Registry Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Registry</TH>
+<TH align=left width=11%>Root</TH>
+<TH align=left width=16%>Value</TH>
+<TH align=left width=54%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>Reg3</TD>
+<TD width=11%>2</TD>
+<TD width=16%> </TD>
+<TD width=54%>Component3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%>Reg5</TD>
+<TD width=11%>0</TD>
+<TD width=16%> </TD>
+<TD width=54%>Component4</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE38;%20RELEASE:%20August%202001;%20URL:%20ices_1xx4.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE38;%20RELEASE:%20August%202001;%20URL:%20ices_1xx4.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Downloading and Installing a Patch From the Internet</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_downloading_and_installing_a_patch_from_the_internet"></A>Downloading and Installing a Patch From the Internet</H2>
+
+<P>Microsoft® Windows® Installer accepts a Uniform Resource Locator (URL) as a valid source for a <A HREF="updat_7dmb.htm">patch</A>. To install a patch located on a Web server at <I>http://MyWeb/MyPatch.msp</I>, use the following command line:</P>
+
+<P>msiexec /p http://MyWeb/MyPatch.msp</P>
+
+<P>Do not launch a patch by clicking on the link on the Web page showing the patch file's URL. Doing so can produce unexpected results.</P>
+
+<P>You can also install a patch by using a script like the following:</P>
+
+<PRE>&lt;SCRIPT LANGUAGE="VBScript"&gt; 
+&lt;!-- 
+Dim Installer
+On Error Resume Next
+set Installer=CreateObject("WindowsInstaller.Installer")
+Installer.ApplyPatch "http://server/share/patch.msi", "OriginalPackage.msi",0, "PROPERTY=VALUE "
+set Installer=Nothing
+--&gt;
+&lt;/SCRIPT&gt;</PRE>
+
+<H4>See Also</H4>
+
+<P><A HREF="updat_7dmb.htm">Patch Packages</A>, <A HREF="updat_24yt.htm">Creating a Patch Package</A>, <A HREF="updat_171v.htm">Patching Customized Applications</A>, <A HREF="over_71kk.htm">Downloading an Installation From the Internet</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

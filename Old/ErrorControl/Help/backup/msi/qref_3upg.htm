@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetShortcutTarget</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetShortcutTarget">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetshortcuttarget"></A>MsiGetShortcutTarget</H1>
+
+<P>The <B>MsiGetShortcutTarget </B>function examines a shortcut and returns its product, feature name, and component if available.</P>
+
+<PRE class=syntax><B>UINT MsiGetShortcutTarget(
+</B>  <B>LPCDSTR</B> <I>szShortcutTarget</I><B>,</B>     // path to shortcut link file
+  <B>LPDSTR</B> <I>szProductCode</I><B>,</B>        // fixed length buffer for product code
+  <B>LPDSTR</B> <I>szFeatureId</I><B>,</B>          // fixed length buffer for feature id
+  <B>LPDSTR</B> <I>szComponentCode</I><B>,</B>      // fixed length buffer for component code
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szShortcutTarget</I></DT>
+
+<DD>The full path to a shortcut.</DD>
+
+<DT><I>szProductCode</I></DT>
+
+<DD>A GUID for the product code of the shortcut, if available. Can be NULL. 
+
+<P>Size: cchProductCode + 1.
+</DD>
+
+<DT><I>szFeatureId</I></DT>
+
+<DD>The feature name of the shortcut, if available. Can be NULL. 
+
+<P>Size: cchMaxFeatureName + 1.
+</DD>
+
+<DT><I>szComponentCode</I></DT>
+
+<DD>A GUID of the component code, if available. Can be NULL. 
+
+<P>Size: cchComponentId + 1.
+
+</DD>
+</DL>
+
+<P>If return buffers are provided, they must be large enough for the return values and a terminating NULL, as defined in msi.h.</P>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_SUCCESS </DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If the function fails, and the shortcut exists, the regular contents of the shortcut may be accessed through the <B>IShellLink</B> interface.</P>
+
+<P>Otherwise, the state of the target may be determined by using the <A HREF="qref_778z.htm#_msi_installer_selection_functions">Installer Selection Functions</A>. </P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_selection_functions">Installer Selection Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

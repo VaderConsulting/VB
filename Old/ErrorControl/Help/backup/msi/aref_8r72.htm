@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>RemoveExistingProducts Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="RemoveExistingProducts Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_removeexistingproducts_action"></A>RemoveExistingProducts Action</H1>
+
+<P>The RemoveExistingProducts runs through the product codes listed in the ActionProperty column of the <A HREF="tref_4qxx.htm">Upgrade table</A> and removes the products in sequence by invoking nested installations. At each nested installation the installer sets the <A HREF="pref_4tfd.htm">ProductCode property</A> to the product code and the <A HREF="pref_8ho9.htm">REMOVE property</A> to the value in the Remove field of the Upgrade table. If the Remove field is blank, its value defaults to ALL and the installer removes the entire product.</P>
+
+<P>The installer only runs RemoveExistingProducts during the initial installation and not during <A HREF="over_7mzy.htm">maintenance installations</A>.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The RemoveExistingProducts action must be scheduled in the action sequence in one of the following locations. 
+
+<OL>
+	<LI>Between the <A HREF="aref_9fzi.htm">InstallValidate action</A> the <A HREF="aref_0gby.htm">InstallInitialize action</A>. In this case, the installer removes the old applications entirely before installing the new applications. This is an inefficient placement for the action because all reused files have to be recopied.</LI>
+
+	<LI>After the <A HREF="aref_0gby.htm">InstallInitialize action</A> and before any actions that generate execution script. </LI>
+
+	<LI>Between the <A HREF="aref_2sku.htm">InstallExecute action</A>, or the <A HREF="aref_8ib2.htm">InstallExecuteAgain action</A>, and the <A HREF="aref_8l9q.htm">InstallFinalize action</A>. Generally the last three actions are scheduled right after one another: InstallExecute, RemoveExistingProducts, and InstallFinalize. In this case the updated files are installed first and then the old files are removed. However, if the removal of the old application fails, then the installer rolls back both the removal of the old application and the install of the new application. </LI>
+
+	<LI>After the <A HREF="aref_8l9q.htm">InstallFinalize action</A>. This is the most efficient placement for the action. In this case, the installer updates files before removing the old applications. Only the files being updated get installed during the installation. If the removal of the old application fails, then the installer only rolls back the uninstallation of the old application.</LI>
+</OL>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Removed product </TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

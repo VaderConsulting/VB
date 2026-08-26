@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>TrackDiskSpace Dialog Style Bit</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="TrackDiskSpace Dialog Style Bit">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_trackdiskspace_dialog_style_bit"></A>TrackDiskSpace Dialog Style Bit</H1>
+
+<P>If this bit is set, the dialog periodically calls the installer. If the property changes, it notifies the controls on the dialog. This style can be used if there is a control on the dialog indicating whether you are out of disk space. If the user switches to another application and adds or removes files or otherwise modifies the available disk space, you can quickly catch the change using this style.</P>
+
+<P>Any dialog relying on the <A HREF="pref_5m2h.htm">OutOfDiskSpace property</A> to determine whether to bring up a dialog must set the TrackDiskSpace Dialog Style Bit for the dialog to dynamically update space on the target volumes.</P>
+
+<H4>Value</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Decimal</TH>
+<TH align=left width=25%>Hexadecimal</TH>
+<TH align=left width=57%>Constant</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>32</TD>
+<TD width=25%>0x00000020</TD>
+<TD width=57%><B>msidbDialogAttributesTrackDiskSpace</B></TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

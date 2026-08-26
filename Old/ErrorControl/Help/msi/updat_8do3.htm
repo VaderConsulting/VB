@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Major Upgrades</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_major_upgrades"></A>Major Upgrades</H1>
+
+<P>A major upgrade is a comprehensive update of the product that warrants a change in the <A HREF="pref_4tfd.htm"><B>ProductCode</B> property</A>. A major upgrade can be shipped as a <A HREF="updat_7dmb.htm">patch package</A> or as a full product installation package. Major upgrades are available in Microsoft® Windows® Installer version 1.1 and later versions. Installer version 1.0 does not support updates that change the product code. </P>
+
+<P>During a major upgrade using Windows Installer version 1.1 or later, the installer searches the user's computer for applications that are related to the pending upgrade, and upon detecting one, retrieves the version of the installed application from the system registry. The installer then uses information in the upgrade's database to determine whether to upgrade the installed application. </P>
+
+<P>To fully enable the installer's upgrade capabilities, every package should have an <A HREF="pref_7mux.htm"><B>UpgradeCode</B> property</A> and an <A HREF="tref_4qxx.htm">Upgrade table</A>. Each record in the Upgrade table gives a combination of upgrade code, product version, and language information used to identify a set of products affected by the upgrade. When the <A HREF="aref_4rse.htm">FindRelatedProducts action</A> detects that an affected product is installed on the system, it appends the product code to a property in the ActionProperty column of the Upgrade table. The <A HREF="aref_8r72.htm">RemoveExistingProducts action</A> and the <A HREF="aref_61wu.htm">MigrateFeatureStates action</A> remove or migrate the products listed in the ActionProperty list.</P>
+
+<P>Note that Windows Installer uses only the first three fields of the product version. See <A HREF="pref_120p.htm"><B>ProductVersion</B> property</A>. If you include a fourth field in your product version, the installer ignores the fourth field. </P>
+
+<P>Because Windows Installer version 1.1 supports upgrades that change the product code, package authors using earlier installer versions should follow the procedure described in <A HREF="updat_2cs3.htm">Preparing an application for future major upgrades</A>. This procedure ensures that an installation performed with Windows Installer version 1.0 is capable of using the upgrade capabilities of later installer versions.</P>
+
+<P>For information on how to apply a major upgrade patch package to a Windows Installer package, see <A HREF="updat_84z8.htm">Major Upgrades by Patching the Local Installation of the Product</A>, <A HREF="updat_8u5w.htm">Major Upgrades by Reinstalling the Product</A>, and <A HREF="updat_61et.htm">Major Upgrades by Patching an Administrative Image</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Major%20Upgrades;%20RELEASE:%20August%202001;%20URL:%20updat_8do3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Major%20Upgrades;%20RELEASE:%20August%202001;%20URL:%20updat_8do3.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

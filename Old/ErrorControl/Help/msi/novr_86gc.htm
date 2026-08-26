@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Conditioning Actions to Run During Removal</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_conditioning_actions_to_run_during_removal"></A>Conditioning Actions to Run During Removal</H2>
+
+<P>There are two ways to author the installation database such that an action is only called when the package is uninstalled: 
+
+<UL>
+	<LI>If the action is sequenced after the <A HREF="aref_9fzi.htm">InstallValidate action</A> in the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>, the package author may specify a condition of REMOVE="ALL" for the action in the Condition column. Note that the <A HREF="pref_8ho9.htm"><B>REMOVE</B> property</A> is not guaranteed to be set to ALL during an uninstall before the installer executes the InstallValidate action. Note that the quote marks around the value ALL are required in this case.</LI>
+
+	<LI>If the action is sequenced after the <A HREF="aref_22we.htm">CostFinalize action</A> and any actions that could change the feature state, such as <A HREF="aref_61wu.htm">MigrateFeatureStates action</A>, the action can be conditioned on the state of a particular feature or component. See <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>. Use this option to call an action during the removal of a particular feature or component, which may occur outside of the complete removal of the application.</LI>
+</UL>
+
+<P>Note that the <A HREF="pref_8ws9.htm"><B>Installed</B> property</A> can be used in conditional expressions to determine whether a product is installed per-computer or for the current user. To determine whether the product is installed for a different user, check the <A HREF="pref_5qpl.htm"><B>ProductState</B> property</A>. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Conditioning%20Actions%20to%20Run%20During%20Removal;%20RELEASE:%20August%202001;%20URL:%20novr_86gc.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Conditioning%20Actions%20to%20Run%20During%20Removal;%20RELEASE:%20August%202001;%20URL:%20novr_86gc.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Dialog Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Dialog Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_dialog_table"></A>Dialog Table</H1>
+
+<P>The Dialog table contains all the dialogs that appear in the user interface in both the full and reduced modes.</P>
+
+<P>The Dialog table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=18%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Dialog</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>HCentering</TD>
+<TD width=40%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>VCentering</TD>
+<TD width=40%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Width</TD>
+<TD width=40%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Height</TD>
+<TD width=40%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Attributes</TD>
+<TD width=40%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Title</TD>
+<TD width=40%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Control_First</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Control_Default</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Control_Cancel</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=18%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Dialog</DT>
+
+<DD>Primary key and name of the dialog box.</DD>
+
+<DT>HCentering</DT>
+
+<DD>Horizontal position of the dialog box. The range is 0 to 100, with 0 at the left edge of the screen and 100 at the right edge.</DD>
+
+<DT>VCentering</DT>
+
+<DD>Vertical position of the dialog box. The range is 0 to 100, with 0 at the top edge of the screen and 100 at the bottom edge.</DD>
+
+<DT>Width</DT>
+
+<DD>Width of the rectangular boundary of the dialog box. This number must be non-negative.</DD>
+
+<DT>Height</DT>
+
+<DD>Height of the rectangular boundary of the dialog box. This number must be non-negative.</DD>
+
+<DT>Attributes</DT>
+
+<DD>A 32-bit word that specifies the attribute flags to be applied to this dialog box. This number must be non-negative. See the <A HREF="href_8b5f.htm">Dialog Style Bits</A> list for a list of options.</DD>
+
+<DT>Title</DT>
+
+<DD>A localizable text string specifying the title to be displayed in the title bar of the dialog box. </DD>
+
+<DT>Control_First</DT>
+
+<DD>An external key to the second column of the <A HREF="tref_6nad.htm">Control table</A>. Combining this field with the Dialog field identifies a unique control in the <A HREF="tref_6nad.htm">Control table</A>. This defines the control that takes the focus when the dialog box is created. This column is ignored in an Error dialog box.
+
+<P>Because static text cannot take the focus, a <A HREF="href_4s30.htm">Text control</A> that describes an <A HREF="href_9yjw.htm">Edit</A>, <A HREF="href_4pik.htm">PathEdit</A>, <A HREF="href_6omk.htm">ListView</A>, <A HREF="href_4yp8.htm">ComboBox</A> or <A HREF="href_3uek.htm">VolumeSelectCombo control</A> must be made the first control in the dialog box to ensure compatibility with screen readers.
+</DD>
+
+<DT>Control_Default</DT>
+
+<DD>This column is an external key to the second column of the Control table. Combining this field with the Dialog field results in a primary key into the Control table that defines the default control. Hitting the Return key is equivalent to clicking on the default control. If this column is left blank, then there is no default control. This column is ignored in the Error dialog box.</DD>
+
+<DT>Control_Cancel</DT>
+
+<DD>An external key to the second column of the Control table. Combining this field with the Dialog field results in a primary key of the Control table that defines the cancel control. Hitting the ESC key or clicking the Close button in the dialog box is equivalent to clicking on the cancel control. This column is ignored in an Error dialog box. 
+
+<P>The cancel control is hidden during rollback or the removal of backed up files. The internal UI handler hides the control upon receiving a INSTALLMESSAGE_COMMONDATA message.
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The integer values for width and height are in the <A HREF="href_9pir.htm">installer units</A>, not dialog units. </P>
+
+<P>The two centering values are ignored for subsequent dialog boxes in a wizard sequence. Dialog box positions are set by the user or as for the previous dialog box. These dialog box sequences are created by a <A HREF="href_9myc.htm">NewDialog ControlEvent</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Dialog%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_51wl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Dialog%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_51wl.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

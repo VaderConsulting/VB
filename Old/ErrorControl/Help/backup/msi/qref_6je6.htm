@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiEvaluateCondition</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiEvaluateCondition">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msievaluatecondition"></A>MsiEvaluateCondition</H1>
+
+<P>The <B>MsiEvaluateCondition</B> function evaluates a conditional expression containing property names and values.</P>
+
+<PRE class=syntax><B>MSICONDITION MsiEvaluateCondition(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>    // installer handle
+  <B>LPCTSTR</B> <I>szCondition</I>    // conditional expression
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>Handle to the installation.</DD>
+
+<DT><I>szCondition</I></DT>
+
+<DD>Specifies the conditional expression. For the syntax of conditional expressions see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>MSICONDITION_ERROR</DT>
+
+<DD>An invalid handle was passed to the function, or the conditional expression has a syntax error.</DD>
+
+<DT>MSICONDITION_FALSE</DT>
+
+<DD>An expression that evaluates to FALSE was passed to the function.</DD>
+
+<DT>MSICONDITION_NONE</DT>
+
+<DD>No expression was passed to the function.</DD>
+
+<DT>MSICONDITION_TRUE</DT>
+
+<DD>An expression that evaluates to TRUE was passed to the function.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The following table shows the feature and component state values used by the <B>MsiEvaluateCondition</B> function. These states are not set until <A HREF="qref_7yr0.htm"><B>MsiSetInstallLevel</B></A> is called, either directly or by the <A HREF="aref_22we.htm">CostFinalize action</A>. Therefore, state checking is generally only useful for conditional expressions in an action sequence table.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=42%>Value</TH>
+<TH align=left width=58%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_ABSENT - </TD>
+<TD width=58%>Feature or component not present.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_LOCAL - </TD>
+<TD width=58%>Feature or component on local computer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>INSTALLSTATE_SOURCE - </TD>
+<TD width=58%>Feature or component run from source.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=42%>(NULL value) - </TD>
+<TD width=58%>No action to be taken on feature or component.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_action_functions">Installer Action Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

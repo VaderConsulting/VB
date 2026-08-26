@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetComponentState</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiGetComponentState">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msigetcomponentstate"></A>MsiGetComponentState</H1>
+
+<P>The <B>MsiGetComponentState</B> function obtains the state of a component.</P>
+
+<PRE class=syntax><B>UINT MsiGetComponentState(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>         // installer handle
+  <B>LPCTSTR</B> <I>szComponent</I><B>,</B>        // component name within product
+  <B>INSTALLSTATE</B> <B>*</B><I>piInstalled</I><B>,</B>  // returned current install state
+  <B>INSTALLSTATE</B> <B>*</B><I>piAction</I>      // action taken during install session
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>[in] Handle to the installation.</DD>
+
+<DT><I>szComponent</I></DT>
+
+<DD>[in] Specifies the component name within the product.</DD>
+
+<DT><I>piInstalled</I></DT>
+
+<DD>[out] Receives the current installed state. This parameter can be one of the following values. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=52%>Value</TH>
+<TH align=left width=48%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_NOTUSED</TD>
+<TD width=48%>The component is disabled.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_BADCONFIG</TD>
+<TD width=48%>The configuration data is corrupt.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_INCOMPLETE</TD>
+<TD width=48%>The installation is suspended or in progress.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_SOURCEABSENT</TD>
+<TD width=48%>The component cannot run from the source because the source is unavailable.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_MOREDATA</TD>
+<TD width=48%>The buffer overflow is returned.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_INVALIDARG</TD>
+<TD width=48%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_UNKNOWN</TD>
+<TD width=48%>An unrecognized product or feature name was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_BROKEN</TD>
+<TD width=48%>The component is broken.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_REMOVED</TD>
+<TD width=48%>The component is being removed. In action state and not settable.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_ABSENT</TD>
+<TD width=48%>The component is not installed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_LOCAL</TD>
+<TD width=48%>The component is installed on the local drive.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_SOURCE</TD>
+<TD width=48%>The component will run from the source, CD-ROM, or network.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=52%>INSTALLSTATE_DEFAULT</TD>
+<TD width=48%>The component will be installed in the default location: local or source.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>piAction</I></DT>
+
+<DD>[out] Receives the action taken during the installation. For return values, see <I>piInstalled</I>.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_SUCCESS </DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>ERROR_UNKNOWN_COMPONENT</DT>
+
+<DD>An unknown component was requested.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>For more information, see <A HREF="novr_9vw3.htm">Calling Database Functions From Programs</A>.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_selection_functions">Installer Selection Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetComponentState;%20RELEASE:%20August%202001;%20URL:%20qref_47l1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetComponentState;%20RELEASE:%20August%202001;%20URL:%20qref_47l1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

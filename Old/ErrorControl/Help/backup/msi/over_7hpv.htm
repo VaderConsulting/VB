@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Defining Installer Components</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_defining_installer_components"></A>Defining Installer Components</H2>
+
+<P>The following outlines how to organize your application into Windows Installer components.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To organize an application into components</B>
+
+<OL>
+	<LI>Begin by obtaining a directory and file tree for all the files and other resources used in your application.</LI>
+
+	<LI>Identify any files, registry keys, shortcuts, or other resources that are shared across applications and which can be provided by existing components available as <A HREF="merg_9x9v.htm">merge modules</A>. You must not include any of these resources in the components you author. Instead obtain these components by merging the merge modules into your installation package. The following steps describe how to organize the remaining resources of the application into components. </LI>
+
+	<LI>Define a new component for every .exe, .dll, and .ocx file. Designate these files as the key path files of their components. Assign each component a component code GUID.</LI>
+
+	<LI>Define a new component for every .hlp or .chm help file. Designate these files as the key path files of their components. Add the .cnt or .chi files to the components holding their associated .hlp and .chm files. Assign each component a component code GUID.</LI>
+
+	<LI>Define a new component for every file that serves as a target of a shortcut. Designate these files as the key path files of their components. Assign each component a component code GUID.</LI>
+
+	<LI>Group all the remaining resources into folders. All resources in each folder must ship together. If there is a possibility that a pair of resources may ship separately in the future, put these in separate folders. Define a new component for every folder. Try to keep the total number of components low to improve performance. Divide the application into many components when it is necessary to have the installer check the validity of the installation thoroughly. Designate any file in the component as the key path file. Assign each component a component code GUID.</LI>
+
+	<LI>Add registry keys to the components. Any registry key that points to a file should be included in that file's component. Other registry keys should be logically grouped with the files that require them.</LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

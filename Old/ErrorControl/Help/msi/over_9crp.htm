@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Changing the Component Code</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_changing_the_component_code"></A>Changing the Component Code</H3>
+
+<P>When specifying the <A HREF="over_28oj.htm">components</A> for an installation, package authors should follow the general rules for component organization described in <A HREF="over_286r.htm">Organizing Applications into Components</A>. Authors may need to introduce new components or modify existing components. If the addition, removal, or modification of resources effectively creates a new component, then the component code must also be changed.</P>
+
+<P><B>Creating a New Component</B></P>
+
+<P>Introduce a new component and assign it a unique component code when making any of the following changes:
+
+<UL>
+	<LI>Any change that has not been shown by testing to be compatible with previous versions of the component. In this case, you must also change the name or target location of every resource in the component.</LI>
+
+	<LI>A change in the name or target location of any file, registry key, shortcut, or other resource in the component. In this case, you must also change the name or target location of every resource in the component.</LI>
+
+	<LI>Addition or removal of any file, registry key, shortcut, or other resource from the component. In this case, you must also change the name or target location every resource in the component.</LI>
+
+	<LI>Recompiling a 32-bit component into a 64-bit component.</LI>
+</UL>
+
+<P>When introducing a new component, authors need to do one of the following to ensure that the component does not conflict with any existing components:
+
+<UL>
+	<LI>Change the name or target location of any resource that may be installed under the same name and target location by another component. </LI>
+
+	<LI>Otherwise guarantee that the new component is never installed into the same folder as another component which has a resource under a common name and location. This includes localized versions of files with the same file name. For more information, see <A HREF="over_0xim.htm">What happens if the component rules are broken?</A>.</LI>
+
+	<LI>When changing the component code of an existing component, also change the name or target location of every file, registry key, shortcut, and other resource in the component. </LI>
+</UL>
+
+<P><B>Creating a New Version of a Component</B></P>
+
+<P>A new version of a component is assigned the same component code as another existing component. Modifying a component without changing the component code is only optional in the following cases:
+
+<UL>
+	<LI>The changes to the component been proven by testing to be backward compatible with all previous versions of the component.</LI>
+
+	<LI>The author can guarantee that the new version of the component will never be installed on a system where it would conflict with previous versions of the component or applications requiring a previous version. For more information, see <A HREF="over_0xim.htm">What happens if the component rules are broken?</A>.</LI>
+</UL>
+
+<P>The component code of a new version of a component must not be changed when it would result in two components sharing resources, such as registry values, files, or shortcuts. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Changing%20the%20Component%20Code;%20RELEASE:%20August%202001;%20URL:%20over_9crp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Changing%20the%20Component%20Code;%20RELEASE:%20August%202001;%20URL:%20over_9crp.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

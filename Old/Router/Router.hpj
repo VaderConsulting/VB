@@ -1,0 +1,11 @@
+[OPTIONS]
+LCID=0x409 0x0 0x0 ; English (United States)
+REPORT=Yes
+HLP=Router.hlp
+
+[FILES]
+Welcome.rtf
+
+[WINDOWS]
+Window1="",(653,102,360,600),20736,(r14876671),(r12632256),f3
+Type1="Router help",(38,40,725,838),61700,(r14876671),(r12632256),f3

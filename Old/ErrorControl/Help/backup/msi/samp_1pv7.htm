@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Specifying Properties</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_specifying_properties"></A>Specifying Properties</H2>
+
+<P>Windows Installer properties are global variables the installer uses during an installation. See the sections under <A HREF="prop_1xyr.htm">Properties</A>. If in the section <A HREF="samp_4885.htm">Importing a Blank Database</A> you used uisample.msi from the Windows Installer SDK, the <A HREF="tref_21d1.htm">Property Table</A> in your copy of MNP2000.msi already contains many properties that are used by the user interface. In this section you add additional information to the Property table specific to the installation of the Notepad sample. See also the <A HREF="novr_90z4.htm">Program Information Tables Group</A>. </P>
+
+<P>There are five properties that are required in every installation package, and these must be updated for the Notepad sample in the <A HREF="tref_21d1.htm">Property table</A> of MNP2000.msi:
+
+<UL>
+	<LI><A HREF="pref_4tfd.htm">ProductCode</A></LI>
+
+	<LI><A HREF="pref_7aex.htm">ProductLanguage</A></LI>
+
+	<LI><A HREF="pref_9z09.htm">Manufacturer</A></LI>
+
+	<LI><A HREF="pref_120p.htm">ProductVersion</A></LI>
+
+	<LI><A HREF="pref_52m1.htm">ProductName</A></LI>
+</UL>
+
+<P>Although not required by all installation packages, applications that may in the future receive an upgrade should also have an <A HREF="pref_7mux.htm">UpgradeCode property</A>. See <A HREF="updat_2cs3.htm">Preparing an Application for Future Major Upgrades</A>. </P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the Property Table. The list provides links to the reference topics for built-in installer properties. The property names that are not links are author-defined properties. Many of the properties imported from uisample.msi are for the sample user interface. The later section User Interface for the Installation Sample discusses the user interface.</P>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Property</TH>
+<TH align=left width=65%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_067t.htm">ARPHELPLINK</A></TD>
+<TD width=65%>http://www.microsoft.com/management</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>BannerBitmap</TD>
+<TD width=65%>bannrbmp</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Back</TD>
+<TD width=65%>&lt; &amp;Back</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Browse</TD>
+<TD width=65%>Br&amp;owse</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Cancel</TD>
+<TD width=65%>Cancel</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Exit</TD>
+<TD width=65%>&amp;Exit</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Finish</TD>
+<TD width=65%>&amp;Finish</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Ignore</TD>
+<TD width=65%>&amp;Ignore</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Install</TD>
+<TD width=65%>&amp;Install</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Next</TD>
+<TD width=65%>&amp;Next &gt;</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_No</TD>
+<TD width=65%>&amp;No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_OK</TD>
+<TD width=65%>OK</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Remove</TD>
+<TD width=65%>&amp;Remove</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Reset</TD>
+<TD width=65%>&amp;Reset</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Resume</TD>
+<TD width=65%>&amp;Resume</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Retry</TD>
+<TD width=65%>&amp;Retry</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Return</TD>
+<TD width=65%>&amp;Return</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ButtonText_Yes</TD>
+<TD width=65%>&amp;Yes</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>CompleteSetupIcon</TD>
+<TD width=65%>completi </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ComponentDownload</TD>
+<TD width=65%>ftp://anonymous@microsoft.com/components/</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>CustomSetupIcon</TD>
+<TD width=65%>custicon</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_4ku1.htm">DefaultUIFont</A></TD>
+<TD width=65%>DlgFont8</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>DialogBitmap</TD>
+<TD width=65%>dlgbmp</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>DlgTitleFont</TD>
+<TD width=65%>{&amp;DlgFontBold8}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ErrorDialog</TD>
+<TD width=65%>ErrorDlg</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>ExclamationIcon</TD>
+<TD width=65%>exclamic</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>False</TD>
+<TD width=65%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Iagree</TD>
+<TD width=65%>No</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>InfoIcon</TD>
+<TD width=65%>info</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>InstallerIcon</TD>
+<TD width=65%>insticon</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_9bzt.htm">INSTALLLEVEL</A></TD>
+<TD width=65%>3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>InstallMode</TD>
+<TD width=65%>Typical</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_9z09.htm">Manufacturer</A></TD>
+<TD width=65%>Microsoft</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_0z21.htm">PIDTemplate</A></TD>
+<TD width=65%>12345&lt;###-%%%%%%%&gt;@@@@@</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_4tfd.htm">ProductCode</A></TD>
+<TD width=65%>{18A9233C-0B34-4127-A966-C257386270BC}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_6et5.htm">ProductID</A></TD>
+<TD width=65%>none</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_7aex.htm">ProductLanguage</A></TD>
+<TD width=65%>1033</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_52m1.htm">ProductName</A></TD>
+<TD width=65%>MNP2000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_120p.htm">ProductVersion</A></TD>
+<TD width=65%>01.40.0000</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Progress1</TD>
+<TD width=65%>Installing</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Progress2</TD>
+<TD width=65%>installs</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_8wop.htm">PROMPTROLLBACKCOST</A></TD>
+<TD width=65%>P</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>RemoveIcon</TD>
+<TD width=65%>removico</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>RepairIcon</TD>
+<TD width=65%>repairic</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Setup</TD>
+<TD width=65%>Setup</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>True</TD>
+<TD width=65%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%><A HREF="pref_7mux.htm">UpgradeCode</A></TD>
+<TD width=65%>{908E378A-9551-4772-BF1D-5CFAF6FD9CB4}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Wizard</TD>
+<TD width=65%>Setup Wizard</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_1d0l.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

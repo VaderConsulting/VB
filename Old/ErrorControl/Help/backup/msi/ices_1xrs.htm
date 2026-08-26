@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE08</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE08 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice08"></A>ICE08</H1>
+
+<P>ICE08 validates that the <A HREF="tref_09np.htm">Component table</A> contains no duplicate <A HREF="tref_7kf8.htm">GUIDs</A>. Every component must have a unique GUID. No validation is done if the Component table does not exist.</P>
+
+<H4>Result</H4>
+
+<P>ICE08 posts an error message if two or more entries in the ComponentId column of the Component table contain the same GUID.</P>
+
+<H4>Example</H4>
+
+<P>For the following example, ICE08 would post a message stating that components Red and Green have duplicate GUIDs.</P>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Component</TH>
+<TH align=left width=76%>ComponentId</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Red</TD>
+<TD width=76%>{0000000A-0003-0000-0000-624474736554}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Blue</TD>
+<TD width=76%>{0000000A-0003-0000-0000-624474736354}</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Green</TD>
+<TD width=76%>{0000000A-0003-0000-0000-624474736554}</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix this error, change either of the duplicate GUIDs. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

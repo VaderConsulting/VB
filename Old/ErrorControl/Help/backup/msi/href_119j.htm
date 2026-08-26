@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Error Dialog</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Error Dialog">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_error_dialog"></A>Error Dialog</H3>
+
+<P>An Error dialog box is a modal dialog box that displays an error message. More than one error dialog box can exist in each installation. </P>
+
+<P>An ErrorDialog property needs to be set that specifies which dialog box is to be used as an error dialog box. If this property is not set or does not point to a valid error dialog box, then the error messages will not displayed. In this case the error is only logged with a warning about the missing error dialog box.</P>
+
+<P>An error dialog box must have the <A HREF="href_3z90.htm">Error Dialog style bit</A> set. The dialog box must have a <A HREF="href_4s30.htm">Text control</A> named ErrorText. The record for the error dialog box in the <A HREF="tref_51wl.htm">Dialog table</A> must have the ErrorTest control entered into the Control_First field.</P>
+
+<P>The dialog box must contain seven <A HREF="href_331o.htm">PushButtons</A>. All of these buttons specify the <A HREF="href_9a0k.htm">EndDialog</A> control event in the <A HREF="tref_6k11.htm">ControlEvent Table</A>. Each button specifies one of the following attributes: ErrorAbort, ErrorCancel, ErrorIgnore, ErrorNo, ErrorOk, ErrorRetry, ErrorYes.</P>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;The focus of these controls should not be linked through the use of the Control_Next column in the <A HREF="tref_6nad.htm">Control table</A>.</P>
+
+<P>These buttons should be placed in approximately the same position in the dialog box because when the dialog box is created only a subset of these seven buttons is created, depending on the message. The X coordinate of the buttons is modified so the buttons that are displayed are evenly spaced. The Y coordinate, height, and width of the buttons are unchanged. Because the buttons are arranged horizontally, no other control can be placed in the same horizontal region of the dialog box.</P>
+
+<P>The error message consists of three parts. The first part is required and is the text of the error message.</P>
+
+<P>The second part is a list of letters, enclosed in curly braces, that specify which buttons to create. The letters are the first letters of the words abort, cancel, ignore, no, OK, retry, and yes. All the letters must be lowercase except the one that designates the default button. If this list of codes is missing or empty, it is assumed to be {O} and the <B>OK</B> button becomes the default. Note that it is not possible for the package author to specify which buttons are created and displayed on the ErrorDialog box in response to specific error conditions. Windows Installer determines which buttons are displayed based on the error condition encountered. The error text contained in the <A HREF="tref_5dk5.htm">Error table</A> should make reference to the buttons Windows Installer displays.</P>
+
+<P>The third part of the error message is optional. If present, this string is used as the title for the dialog box and replaces the title entered in the <A HREF="tref_51wl.htm">Dialog Table</A>. If this string is present the second part must also be present.</P>
+
+<P>For an error dialog box, the Control_Default and Control_Cancel fields in the Dialog Table are ignored. The Control_First field for an error dialog box must specify the ErrorText control.</P>
+
+<P>If an <A HREF="href_1tt8.htm">Icon Control</A> named ErrorIcon is included on this dialog, the following standard Windows icons are displayed:
+
+<UL>
+	<LI>IDI_ERROR in response to imtFatalExit messages.</LI>
+
+	<LI>IDI_WARNING in response to imtError and imtWarning messages.</LI>
+
+	<LI>IDI_INFORMATION in response to imtOutOfDiskSpace messages.</LI>
+</UL>
+
+<P>The ErrorIcon control should be created with the <A HREF="href_6qn9.htm">FixedSize control attribute</A> set to avoid improper sizing of the standard Windows icons.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

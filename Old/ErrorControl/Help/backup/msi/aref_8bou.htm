@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>PublishFeatures Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="PublishFeatures Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_publishfeatures_action"></A>PublishFeatures Action</H1>
+
+<P>The PublishFeatures action writes each feature's state into the system registry. The feature state may be either absent, advertised, or installed. The PublishFeatures action also writes the feature-component mapping into the system registry for each installed feature.</P>
+
+<P>The PublishFeatures action queries the <A HREF="tref_52hx.htm">FeatureComponents table</A>, <A HREF="tref_0a91.htm">Feature table</A>, and <A HREF="tref_09np.htm">Component table</A>.</P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>The PublishFeatures action must come before <A HREF="aref_10dq.htm">PublishProduct</A>.</P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Field</TH>
+<TH align=left width=84%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>[1]</TD>
+<TD width=84%>Identifier of advertised feature</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The PublishFeatures action publishes the composition of all features that are selected to be advertised or installed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

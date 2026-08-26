@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Merge Module Database Tables</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_merge_module_database_tables"></A>Merge Module Database Tables</H2>
+
+<P>The following tables are required in a standard merge module.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Table name</TH>
+<TH align=left width=63%>Comment</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="tref_09np.htm">Component</A></TD>
+<TD width=63%>(REQUIRED)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="tref_6an9.htm">Directory</A></TD>
+<TD width=63%>(REQUIRED)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="tref_52hx.htm">FeatureComponents</A></TD>
+<TD width=63%>(REQUIRED)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="tref_4n6t.htm">File</A></TD>
+<TD width=63%>(REQUIRED)</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_4nad.htm">ModuleSignature</A></TD>
+<TD width=63%>(REQUIRED) Merged into the installer database. Lists the information identifying a merge module. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_21gl.htm">ModuleComponents</A></TD>
+<TD width=63%>(REQUIRED) Merged into the installer database. Lists all the components in the merge module. </TD>
+</TR>
+</TABLE><BR>
+
+<P>The following tables only occur in merge modules or other installer databases that have already been combined with a merge module.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Table name</TH>
+<TH align=left width=63%>Comment</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_7z39.htm">ModuleDependency</A></TD>
+<TD width=63%>Merged into the installer database. Lists other merge modules required by this merge module. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_8c4l.htm">ModuleExclusion</A></TD>
+<TD width=63%>Merged into the installer database. Lists other merge modules that are incompatible with this merge module. </TD>
+</TR>
+</TABLE><BR>
+
+<P>The following ModuleSequence tables only occur in merge modules.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Table name</TH>
+<TH align=left width=63%>Comment</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_5fc5.htm">ModuleAdminUISequence</A></TD>
+<TD width=63%>Merges actions into the <A HREF="tref_5lnp.htm">AdminUISequence table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_6mzp.htm">ModuleAdminExecuteSequence</A></TD>
+<TD width=63%>Merges actions into the <A HREF="tref_70f9.htm">AdminExecuteSequence table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_3rs5.htm">ModuleAdvtUISequence</A></TD>
+<TD width=63%>Merges actions into the <A HREF="tref_3rvp.htm">AdvtUISequence table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_1vfp.htm">ModuleAdvtExecuteSequence</A></TD>
+<TD width=63%>Merges actions into the <A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_5f51.htm">ModuleIgnoreTable</A></TD>
+<TD width=63%>Lists tables in the module that are not merged into the .msi file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_29r9.htm">ModuleInstallUISequence</A></TD>
+<TD width=63%>Merges actions into the <A HREF="tref_1git.htm">InstallUISequence table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><A HREF="merg_7fmt.htm">ModuleInstallExecuteSequence</A></TD>
+<TD width=63%>Merges actions into the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>. </TD>
+</TR>
+</TABLE><BR>
+
+<P>The following installer tables cannot occur in a standard merge module.</P>
+
+<P><A HREF="tref_78it.htm">BBControl</A> <BR>
+<A HREF="tref_0c4l.htm">Billboard</A> <BR>
+<A HREF="tref_8nad.htm">CCPSearch</A> <BR>
+<A HREF="tref_5dk5.htm">Error</A> <BR>
+<A HREF="tref_0a91.htm">Feature</A> <BR>
+<A HREF="tref_90f9.htm">LaunchCondition table</A> <BR>
+<A HREF="tref_4mlh.htm">Media</A> <BR>
+<A HREF="tref_0h5x.htm">Patch</A> <BR>
+<A HREF="tref_4qxx.htm">Upgrade</A> </P>
+
+<P>The following installer tables are optional in merge modules.</P>
+
+<P><A HREF="tref_7het.htm">ActionText</A> <BR>
+<A HREF="tref_70f9.htm">AdminExecuteSequence</A> <BR>
+<A HREF="tref_5lnp.htm">AdminUISequence</A> <BR>
+<A HREF="tref_5mn9.htm">AdvtExecuteSequence</A> <BR>
+<A HREF="tref_3rvp.htm">AdvtUISequence</A> <BR>
+<A HREF="tref_6p2d.htm">AppId</A> <BR>
+<A HREF="tref_0w9x.htm">AppSearch</A> <BR>
+<A HREF="tref_47l1.htm">BindImage</A> <BR>
+<A HREF="tref_3fmt.htm">CheckBox</A> <BR>
+<A HREF="tref_5n8l.htm">Class</A> <BR>
+<A HREF="tref_9wit.htm">ComboBox</A> <BR>
+<A HREF="tref_771h.htm">CompLocator</A> <BR>
+<A HREF="tref_6nad.htm">Control</A> <BR>
+<A HREF="tref_4vhh.htm">ControlCondition</A> <BR>
+<A HREF="tref_152d.htm">CreateFolder</A> <BR>
+<A HREF="tref_71b9.htm">CustomAction</A> <BR>
+<A HREF="tref_51wl.htm">Dialog</A> <BR>
+<A HREF="tref_3azp.htm">DrLocator</A> <BR>
+<A HREF="tref_310l.htm">DuplicateFile</A> <BR>
+<A HREF="tref_025h.htm">Environment</A> <BR>
+<A HREF="tref_6m3p.htm">EventMapping</A> <BR>
+<A HREF="tref_219h.htm">Extension</A> <BR>
+<A HREF="tref_9tnp.htm">Font</A> <BR>
+<A HREF="tref_7vmt.htm">Icon</A> <BR>
+<A HREF="tref_56jp.htm">IniFile</A> <BR>
+<A HREF="tref_00o5.htm">IniLocator</A> <BR>
+<A HREF="tref_5pid.htm">InstallExecuteSequence</A> <BR>
+<A HREF="tref_1git.htm">InstallUISequence</A> <BR>
+<A HREF="tref_5f1h.htm">ListBox</A> <BR>
+<A HREF="tref_0vs5.htm">ListView</A> <BR>
+<A HREF="tref_3sh1.htm">MIME</A> <BR>
+<A HREF="tref_5un9.htm">MoveFile</A> <BR>
+<A HREF="tref_0mat.htm">ODBCAttribute</A> <BR>
+<A HREF="tref_359h.htm">ODBCDataSource</A> <BR>
+<A HREF="tref_457p.htm">ODBCDriver</A> <BR>
+<A HREF="tref_3yat.htm">ODBCSourceAttribute</A> <BR>
+<A HREF="tref_6msl.htm">ODBCTranslator</A> <BR>
+<A HREF="tref_4x5x.htm">ProgID Table</A> <BR>
+<A HREF="tref_21d1.htm">Property</A> <BR>
+<A HREF="tref_7xt1.htm">PublishComponent</A> <BR>
+<A HREF="tref_4t7p.htm">RadioButton</A> <BR>
+<A HREF="tref_3obp.htm">Registry Table</A> <BR>
+<A HREF="tref_91wl.htm">RegLocator</A> <BR>
+<A HREF="tref_7gth.htm">RemoveFile</A> <BR>
+<A HREF="tref_9k6d.htm">RemoveIniFile</A> <BR>
+<A HREF="tref_3wmd.htm">RemoveRegistry</A> <BR>
+<A HREF="tref_9u5h.htm">ReserveCost</A> <BR>
+<A HREF="tref_0llx.htm">SelfReg</A> <BR>
+<A HREF="tref_1691.htm">ServiceControl</A> <BR>
+<A HREF="tref_81r9.htm">ServiceInstall</A> <BR>
+<A HREF="tref_2i91.htm">Shortcut</A> <BR>
+<A HREF="tref_149x.htm">Signature</A> <BR>
+<A HREF="tref_30px.htm">TextStyle</A> <BR>
+<A HREF="tref_3085.htm">TypeLib</A> <BR>
+<A HREF="tref_0vz9.htm">UIText</A> <BR>
+<A HREF="tref_3kdh.htm">Verb</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiDatabaseGenerateTransform</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiDatabaseGenerateTransform">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msidatabasegeneratetransform"></A>MsiDatabaseGenerateTransform</H1>
+
+<P>The <B>MsiDatabaseGenerateTransform</B> function generates a transform file of differences between two databases. A transform is a way of recording changes to a database without altering the original database.</P>
+
+<PRE class=syntax><B>UINT MsiDatabaseGenerateTransform(
+</B>  <B>MSIHANDLE</B> <I>hDatabase</I><B>,</B>          // database handle
+  <B>MSIHANDLE</B> <I>hDatabaseReference</I><B>,</B> // base database to reference changes
+  <B>LPCTSTR</B> <I>szTransformFile</I><B>,</B>      // name of generated transform file
+  <B>int</B> <I>iReserved1</I><B>,</B><I>      </I>         // this must be set to 0
+  <B>int</B> <I>iReserved2 </I>               // this must be set to 0
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hDatabase</I></DT>
+
+<DD>Handle to the database that includes the changes.</DD>
+
+<DT><I>hDatabaseReference</I></DT>
+
+<DD>Handle to the database that does not include the changes.</DD>
+
+<DT><I>szTransformFile</I></DT>
+
+<DD>The name of the generated transform file. This is optional.</DD>
+
+<DT><I>iReserved1</I></DT>
+
+<DD>This is a reserved argument and must be set to 0.</DD>
+
+<DT><I>iReserved2</I></DT>
+
+<DD>This is a reserved argument and must be set to 0.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_NO_DATA</DT>
+
+<DD>The two databases are identical and no transform file was generated.</DD>
+
+<DT>ERROR_CREATE_FAILED</DT>
+
+<DD>The storage for the transform file could not be created.</DD>
+
+<DT>ERROR_INSTALL_TRANSFORM_FAILURE</DT>
+
+<DD>The transform could not be generated.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>NOERROR</DT>
+
+<DD>If <I>szTransformFile</I> is NULL, then this is returned if differences are found.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To generate a difference file between two databases, use the <B>MsiDatabaseGenerateTransform</B> function. A transform contains information regarding insertion and deletion of columns and rows. The validation flags are stored in the summary information stream of the transform file.</P>
+
+<P>For tables that exist in both databases, the only difference between the two schemas that is allowed is the addition of columns to the end of the reference table. You cannot add primary key columns to a table or change the order or names or column definitions of the existing columns as defined in the base table. In other words, if neither table contains data and columns are removed from the reference table, the resulting table is identical to the base table.</P>
+
+<P>Because the list delimiter for transforms, sources and patches is a semicolon, this character should not be used for filenames or paths.</P>
+
+<P>This function does not generate a Summary Information stream. Use <A HREF="qref_5zlb.htm">MsiCreateTransformSummaryInfo</A> to create the stream for an existing transform.</P>
+
+<P>If <I>szTransformFile </I>is NULL, you can test whether two databases are identical without creating a transform. If the databases are identical, ERROR_NO_DATA is returned, NOERROR is returned if differences are found.</P>
+
+<P>This function cannot be called from custom actions. A call to this function from a custom action causes the function to fail. </P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_database_management_functions">Database Management Functions</A>, <A HREF="updat_5wab.htm">Transforms</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

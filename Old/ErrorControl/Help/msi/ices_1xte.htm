@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE12</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE12">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice12"></A>ICE12</H1>
+
+<P>ICE12 queries the <A HREF="tref_71b9.htm">CustomAction</A>, <A HREF="tref_6an9.htm">Directory</A>, <A HREF="tref_70f9.htm">AdminExecuteSequence</A>, <A HREF="tref_5lnp.htm">AdminUISequence</A>, <A HREF="tref_5mn9.htm">AdvtExecuteSequence</A>, <A HREF="tref_5pid.htm">InstallExecuteSequence</A>, and <A HREF="tref_1git.htm">InstallUISequence</A> tables to validate the following:
+
+<UL>
+	<LI>That the <A HREF="aref_22we.htm">CostFinalize action</A> occurs in any sequence table containing actions of the type <A HREF="cact_07lh.htm">Custom Action Type 35</A> or <A HREF="cact_07ox.htm">Custom Action Type 51</A>.</LI>
+
+	<LI>That every <A HREF="cact_07lh.htm">Custom Action Type 35</A> comes after the <A HREF="aref_22we.htm">CostFinalize action</A>. in the sequence tables.</LI>
+
+	<LI>That every <A HREF="cact_07ox.htm">Custom Action Type 51</A> that has a foreign key to the Directory table in the Source column of the CustomAction table comes before the <A HREF="aref_22we.htm">CostFinalize action</A> in the sequence tables.</LI>
+</UL>
+
+<P>Note that ICE12 does not validate the formatted text in the Target column of the CustomAction table.</P>
+
+<H4>Result</H4>
+
+<P>ICE12 posts an error message if validation of the custom actions that set a directory property fails.</P>
+
+<H4>Example</H4>
+
+<P>ICE12 would post three errors for the example shown.
+
+<UL>
+	<LI>For CA1, Folder 'MyFolder' not found in Directory table </LI>
+
+	<LI>For CA2, Sequence '80' comes before CostFinalize in the InstallExecuteSequence table. It must come after (CF@100) </LI>
+
+	<LI>For CA3, Sequence '125' comes after CostFinalize in the InstallExecuteSequence table. It must come before (CF@100) </LI>
+</UL>
+
+<P><A HREF="tref_71b9.htm"><B>CustomAction Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Action</TH>
+<TH align=left width=28%>Type</TH>
+<TH align=left width=46%>Source</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>CA1</TD>
+<TD width=28%>35</TD>
+<TD width=46%>MyFolder</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>CA2</TD>
+<TD width=28%>35</TD>
+<TD width=46%>WindowsFolder</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>CA3</TD>
+<TD width=28%>51</TD>
+<TD width=46%>WindowsFolder</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_6an9.htm"><B>Directory Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Directory</TH>
+<TH align=left width=29%>Directory_Parent</TH>
+<TH align=left width=45%>DefaultDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>TARGETDIR</TD>
+<TD width=29%>&nbsp;</TD>
+<TD width=45%>SourceDir</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>WindowsFolder</TD>
+<TD width=29%>TARGETDIR</TD>
+<TD width=45%>WindowsFolder</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_5pid.htm"><B>InstallExecuteSequence Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Action</TH>
+<TH align=left width=75%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>CostFinalize</TD>
+<TD width=75%>100</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>CA2</TD>
+<TD width=75%>80</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>CA3</TD>
+<TD width=75%>125</TD>
+</TR>
+</TABLE><BR>
+
+<P>To fix the error for CA1 change its entry in its Source column in the CustomAction table to an existing entry in the Directory table or add MyFolder to the Directory table.</P>
+
+<P>To fix the error for CA2, change its sequence in the InstallExecuteSequence table such that it comes after the CostFinalize action.</P>
+
+<P>To fix the error for CA3, change its sequence in the InstallExecuteSequence table such that it comes before the CostFinalize action.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE12;%20RELEASE:%20August%202001;%20URL:%20ices_1xte.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE12;%20RELEASE:%20August%202001;%20URL:%20ices_1xte.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

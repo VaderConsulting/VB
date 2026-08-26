@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CreateRecord Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="CreateRecord Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_createrecord_method"></A><A NAME="helpid_msiinstall_createrecord"></A>CreateRecord Method</H1>
+
+<P>The <B>CreateRecord </B>method of the <A HREF="vref_6fxw.htm"><B>Installer </B>object</A> returns a new <A HREF="vref_6kac.htm"><B>Record</B> object</A> with the requested number of fields.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.CreateRecord(<I>count</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A>.</DD>
+
+<DT><I>count</I></DT>
+
+<DD>Required number of fields, which may be 0. The maximum number of fields in a record is limited to 65535.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Field 0, not one of the fields in <I>count</I>, is normally used for record-oriented items such as format strings or execution op-codes.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

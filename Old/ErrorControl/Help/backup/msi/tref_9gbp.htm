@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>_Streams Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="_Streams Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi__streams_table"></A>_Streams Table</H1>
+
+<P>The _Streams table lists embedded OLE data streams. This is a temporary table, created only when referenced by a SQL statement.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Column</TH>
+<TH align=left width=26%>Type</TH>
+<TH align=left width=26%>Key</TH>
+<TH align=left width=26%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Name</TD>
+<TD width=26%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=26%>Y</TD>
+<TD width=26%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Data</TD>
+<TD width=26%><A HREF="tref_8ghl.htm">Binary</A></TD>
+<TD width=26%> </TD>
+<TD width=26%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Name</DT>
+
+<DD>A unique key that identifies the stream. The maximum length of Name is 62 characters. </DD>
+
+<DT>Data</DT>
+
+<DD>The unformatted binary data.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To copy an OLE data stream (for example, an object of the <A HREF="tref_8ghl.htm">Binary</A> data type) from a file into a database, create a record in the _Streams table and enter the name of the data stream into the Name column of this record and copy the data from the file into the Data column using <A HREF="qref_4wq5.htm"><B>MsiRecordSetStream</B></A>. Use <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A> to insert the new record into the table.</P>
+
+<P>To read a binary data stream embedded in a database, use a SQL query to find and to fetch the record containing the binary data. Use <A HREF="qref_1vsd.htm"><B>MsiRecordReadStream</B></A> to read the binary data into a buffer.</P>
+
+<P>To move a binary data stream from one database to another, first export the data to a file. Use a SQL query to find the data stream in the file and use <A HREF="qref_4wq5.htm"><B>MsiRecordSetStream</B></A> to copy the data from the file into Data column of _Streams table of the second database. This ensures that each database has its own copy of the binary data. You cannot move binary data  from one database to another simply by fetching a record with the data from the first database and inserting it into the second database.</P>
+
+<P>To delete a data stream, fetch the record and set the Data column to NULL before updating the record. Another method is to remove the record from the table, deleting it using either <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A> or a plain SQL query. A stream should not be fetched into a record if the stream is deleted from the table.</P>
+
+<P>To rename an OLE data stream, update the 'Name' column of the record.</P>
+
+<P>If a hold is placed on this table using SQL (ALTER TABLE &lt;table&gt; HOLD) or a column is added with HOLD, the table must be released using FREE. Streams are not written until the table has been released or committed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

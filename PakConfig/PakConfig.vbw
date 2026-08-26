@@ -1,0 +1,14 @@
+frmMain = 278, 8, 1254, 640, C, 23, 23, 659, 566, C
+clsResize = 55, 193, 1029, 830, C
+clsXP = 0, 0, 1040, 626, C
+frmBrowse = 198, 261, 1238, 887, C, 224, 83, 682, 473, C
+xpcmdbutton = 0, 0, 0, 0, C, 220, 290, 1260, 916, C
+xpgroupbox = 0, 0, 0, 0, C, 0, 0, 1040, 626, C
+xptextbox = 22, 29, 1062, 655, C
+xptopbuttons = 0, 0, 0, 0, C, 22, 29, 1062, 655, C
+xp_canvas = 176, 232, 1216, 858, C, 44, 58, 1084, 684, C
+mod_gradient = 0, 0, 0, 0, C
+trans_colour = 0, 0, 0, 0, C
+xpradiobutton = 0, 0, 0, 0, C, 176, 232, 1216, 858, C
+xphelp = 0, 0, 0, 0, C, 198, 261, 1238, 887, C
+xpcheckbox = 0, 0, 0, 0, C, 220, 290, 1260, 916, C

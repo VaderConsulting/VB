@@ -1,0 +1,5 @@
+0
+d:\program files\office\winword\winword.exe
+d:\program files\office\winword
+c:\program files\visual basic\graphics\icons\computer\cdrom01.ico
+Microsoft Word

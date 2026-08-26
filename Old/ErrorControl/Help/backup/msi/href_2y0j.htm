@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Dialog Boxes</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_dialog_boxes"></A>Dialog Boxes</H2>
+
+<P>Dialog boxes are specified in the Dialog column of the <A HREF="tref_51wl.htm">Dialog table</A>. For more information on adding a dialog box or billboard to a user interface, see <A HREF="hand_1nvp.htm">Using the User Interface</A>.</P>
+
+<H4>Reserved Dialog Box Names</H4>
+
+<P>The following dialog box names are reserved by Windows Installer and should not be used for any user-authored custom dialog boxes. The installer requires that these dialog boxes be listed in the <A HREF="tref_51wl.htm">Dialog table</A> using the following reserved names. Each dialog box and name can only be listed once. Developers must author these dialog boxes into the user interface. For information about how to preview dialog boxes, see <A HREF="samp_18h1.htm">Importing the User Interface</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Dialog box name</TH>
+<TH align=left width=70%>Brief description of dialog box</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_73mv.htm">FilesInUse Dialog</A></TD>
+<TD width=70%>Alerts user to processes overwriting or deleting files.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_6g87.htm">FirstRun Dialog</A></TD>
+<TD width=70%>Collects user name, company name, and product ID. </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Required Dialog Boxes</H4>
+
+<P>During the installation, certain events cause Windows Installer to check the <A HREF="novr_3mqt.htm">user interface sequence tables</A> in the package and display the specified dialog box. For example, in the case of a fatal error, Windows Installer displays the dialog box that is listed with a sequence number of -3 in the user interface sequence table regardless of what that dialog box is named in the <A HREF="tref_51wl.htm">dialog table</A>. The following table lists the specific events and their corresponding sequence number in the user interface sequence table:</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Type of Event</TH>
+<TH align=left width=34%>User interface sequence table sequence number</TH>
+<TH align=left width=35%>Description of dialog box</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="href_4u1z.htm">Fatal error</A></TD>
+<TD width=34%>-3</TD>
+<TD width=35%>The installation was terminated by a fatal error.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="href_2013.htm">User exit</A></TD>
+<TD width=34%>-2</TD>
+<TD width=35%>The installation was terminated at the user's request.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%><A HREF="href_8euf.htm">Exit</A></TD>
+<TD width=34%>-1</TD>
+<TD width=35%>The installation completed successfully.</TD>
+</TR>
+</TABLE><BR>
+
+<P>In addition, the package author must create a generic dialog box to display Windows Installer <A HREF="href_119j.htm">error</A> messages. This dialog box can be named anything, but this name must be specified in the ErrorDialog property. </P>
+
+<H4>Typical Dialog Boxes</H4>
+
+<P>The following dialog boxes are optional and are commonly included in the authored user interface of an installation package. These dialogs are typical of most <A HREF="hand_17w2.htm">user interface wizards</A> for installing files. These dialog boxes can have any name in the dialog table. The names shown are only recommended for clarity and can be modified as necessary. For example, two different custom LicenseAgreement dialogs can be used in the package and distinguished in the Dialog table by the names ProfessionalLicenseAgreement and LimitedLicenseAgreement.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=30%>Dialog box type</TH>
+<TH align=left width=70%>Brief description of dialog box</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_0x7r.htm">DiskCost dialog box</A></TD>
+<TD width=70%>Indicates insufficient disk space for the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_246f.htm">Browse dialog box</A></TD>
+<TD width=70%>Enables user to select a directory.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_4fc7.htm">Cancel dialog box</A></TD>
+<TD width=70%>Confirms a request to terminate the installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_06qv.htm">License agreement dialog box</A></TD>
+<TD width=70%>Modal box displaying the license agreement. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=30%><A HREF="href_9llz.htm">Selection dialog box</A></TD>
+<TD width=70%>Modal box enabling the user to select items. </TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

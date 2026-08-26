@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSetMode</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiSetMode">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msisetmode"></A>MsiSetMode</H1>
+
+<P>The <B>MsiSetMode</B> function sets an internal engine Boolean state.</P>
+
+<PRE class=syntax><B>UINT MsiSetMode(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>     // installer handle
+  <B>unsigned int</B> <I>iRunMode</I><B>,</B>  // run mode
+  <B>BOOL</B> <I>fState</I>             // state to set
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>Handle to the installer.</DD>
+
+<DT><I>iRunMode</I></DT>
+
+<DD>Specifies the run mode. This parameter must be one of the following values. While there are many values for this parameter, as described in <A HREF="qref_8u05.htm"><B>MsiGetMode</B></A>, only one of the following values can be set.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=49%>Value</TH>
+<TH align=left width=51%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>MSIRUNMODE_REBOOTATEND</TD>
+<TD width=51%>A reboot is necessary after a successful installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=49%>MSIRUNMODE_REBOOTNOW</TD>
+<TD width=51%>A reboot is necessary to continue installation.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>fState</I></DT>
+
+<DD>Specifies the state to set to TRUE or FALSE.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_ACCESS_DENIED</DT>
+
+<DD>Access was denied.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_state_access_functions">Installer State Access Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Committing Databases</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_committing_databases"></A>Committing Databases</H2>
+
+<P>Changes made to the installation database are not written to the database until you call <A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To ensure changes made in a database are finalized</B>
+
+<OL>
+	<LI>Check to see whether a table will be written when you call <B>MsiDatabaseCommit</B> by calling <A HREF="qref_5244.htm"><B>MsiDatabaseIsTablePersistent</B></A>. </LI>
+
+	<LI>Call the <A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A> function to finalize changes to the database. </LI>
+</OL>
+
+<P>Changes made in a database are accumulated and are not reflected in the actual database until you call <B>MsiDatabaseCommit</B>. Temporary columns or rows are not committed to the database. When a database is closed, all changes made since the last <B>MsiDatabaseCommit</B> are automatically rolled back.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

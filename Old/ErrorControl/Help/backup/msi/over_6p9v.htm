@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Reinstallation of Isolated Components</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_reinstallation_of_isolated_components"></A>Reinstallation of Isolated Components</H2>
+
+<P>Windows Installer version 1.1 does the following during reinstallation of an application when the package contains isolated components. Commonly, Component_Shared is a DLL that is shared by Component_Application and other client executables.</P>
+
+<P><B>Reinstallation</B>
+
+<UL>
+	<LI>Reinstall the files of Component_Shared into the same folder as Component_Application only if Component_Application is also being reinstalled. </LI>
+
+	<LI>Do not increment the client list of Component_Shared and do not increment the SharedDLL count.</LI>
+
+	<LI>Recreate the zero-byte file with the short filename of the key file of Component_Application. This file must be located in the same folder as Component_Application and have the extension .LOCAL.</LI>
+
+	<LI>Reinstall all the resources of Component_Application as usual.</LI>
+</UL>
+
+<P>If the SharedDLL refcount for Component_Shared is less than 1, or if other products remain on the client list of Component_Shared:
+
+<UL>
+	<LI>Reinstall no files to the shared location of Component_Shared.</LI>
+</UL>
+
+<P>If the SharedDLL refcount for Component_Shared equals 1, or if there are no other remaining clients of Component_Shared:
+
+<UL>
+	<LI>Reinstall the files of Component_Shared into the shared location using the <A HREF="over_1tir.htm">File Versioning Rules</A>.</LI>
+
+	<LI>Process all reinstall actions for Component_Shared.</LI>
+
+	<LI>If Component_Shared is a COM component, register the full COM path such that the installer syntaxes [$Component] and [#FileKey] point to the shared location of Component_Shared.</LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

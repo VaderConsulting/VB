@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICEM06</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICEM06 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_icem06"></A>ICEM06</H1>
+
+<P>ICEM06 checks for invalid direct references to features by the module.</P>
+
+<P>Merge module ICEs are stored in a merge module .cub file called Mergemod.cub and not in the .cub file containing the ICEs used for package validation. </P>
+
+<H4>Result</H4>
+
+<P>ICEM06 posts an error when the module database contains direct references to a feature. Feature information must be provided by the user of the module. </P>
+
+<H4>Example</H4>
+
+<P>ICEM06 posts the following error messages for a module containing the database entries shown below.</P>
+
+<PRE>The target of shortcut Shortcut1.<I>GUID1</I> is not a property and not a null GUID. 
+Modules may not directly reference features.
+The row <I>GUID2</I>.LocalServer32.Component2 in the Class table has a feature reference 
+that is not a null GUID. Modules may not directly reference features.</PRE>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Shortcut</TH>
+<TH align=left width=66%>Target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Shortcut1.<I>GUID1</I></TD>
+<TD width=66%>cmd.exe </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Shortcut2.<I>GUID1</I></TD>
+<TD width=66%>[MyProp] </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>Shortcut3.<I>GUID1</I></TD>
+<TD width=66%>{00000000-0000-0000-0000-000000000000} </TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_5n8l.htm"><B>Class Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=15%>CLSID</TH>
+<TH align=left width=20%>Context</TH>
+<TH align=left width=19%>Component_</TH>
+<TH align=left width=46%>Feature_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%><I>GUID1</I></TD>
+<TD width=20%>LocalServer32</TD>
+<TD width=19%>Component1 </TD>
+<TD width=46%>{00000000-0000-0000-0000-000000000000} </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%><I>GUID2</I></TD>
+<TD width=20%>LocalServer32 </TD>
+<TD width=19%>Component2 </TD>
+<TD width=46%>MyFeature </TD>
+</TR>
+</TABLE><BR>
+
+<P>ICEM06 reports the first error because the first record in the Shortcut table has an entry in the Target field that is not a property or a null GUID. A module cannot reference a feature directly. Feature information must be provided by the user of the module. To fix this error, references to a feature should be replaced by a null GUID. </P>
+
+<P>ICEM06 reports the second error because the second record in the Class table has an entry in the Feature field that is not a null GUID. A module cannot reference a feature directly. Feature information must be provided by the user of the module. To fix this error, references to a feature should be replaced by a null GUID. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_54md.htm">Merge Module ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

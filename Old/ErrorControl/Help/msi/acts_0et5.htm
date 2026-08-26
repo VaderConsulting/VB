@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Modifying the Registry</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_modifying_the_registry"></A>Modifying the Registry</H2>
+
+<P>Registry keys can be written to the system registry once all selected components and their related files have been installed. The standard actions related to modifying the registry must be sequenced after the file installation standard actions because registry keys cannot be written unless the corresponding component and file have been successfully installed.</P>
+
+<P>The <A HREF="aref_04oe.htm">RegisterClassInfo action</A> accesses the <A HREF="tref_5n8l.htm">Class table</A> to register the COM class information of the installed components.</P>
+
+<P>The <A HREF="aref_1epa.htm">RegisterExtensionInfo action</A> queries the <A HREF="tref_219h.htm">Extension table</A> and <A HREF="tref_3kdh.htm">Verb table</A> and registers the corresponding extensions and command-verb information with the operating system.</P>
+
+<P>The <A HREF="aref_08tq.htm">RegisterProgIdInfo action</A> manages the registration of OLE ProgId information with the operating system.</P>
+
+<P>The <A HREF="aref_9r8u.htm">RegisterMIMEInfo action</A> processes the <A HREF="tref_3sh1.htm">MIME table</A> to register the association between a MIME context type, the file extension, and the CLSID.</P>
+
+<P>The <A HREF="aref_1cmm.htm">WriteRegistryValues action</A> processes the <A HREF="tref_3obp.htm">Registry table</A> and writes the keys for all components that have been either installed locally or to run from source. The Registry table allows keys to be written to the HKEY_CLASSES_ROOT, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, and HKEY_USERS registry hives.</P>
+
+<P>The <A HREF="aref_5mem.htm">RemoveRegistryValues action</A> removes the keys that have been marked to be deleted in the Name column of the <A HREF="tref_3obp.htm">Registry table</A> or the<A HREF="tref_3wmd.htm"> RemoveRegistry Table</A>.</P>
+
+<P>The <A HREF="aref_31ri.htm">RegisterTypeLibraries action</A> processes the <A HREF="tref_3085.htm">TypeLib table</A> and registers the installed type libraries with the system.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Modifying%20the%20Registry;%20RELEASE:%20August%202001;%20URL:%20acts_0et5.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Modifying%20the%20Registry;%20RELEASE:%20August%202001;%20URL:%20acts_0et5.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

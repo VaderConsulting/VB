@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE18</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE18 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice18"></A>ICE18</H1>
+
+<P>ICE18 validates that any empty directories used as a key path for a component are listed in the <A HREF="tref_152d.htm">CreateFolder table</A>. </P>
+
+<P>If the KeyPath column of the <A HREF="tref_09np.htm">Component table</A> is Null, this means that directory listed in the Directory_ column is the key path for that component. Because folders created by the installer are deleted when they become empty, this folder must be listed in the <A HREF="tref_152d.htm">CreateFolder table</A> to prevent the installer from attempting to install every time.</P>
+
+<P>Do not make the SystemFolder directory the key path of a component. Because this folder is present on every operating system, the installer always detects the key path whether or not the component is present. In this case, the key path should be a file, registry entry, or ODBC data source.</P>
+
+<P>When performing a validation ICE18 first checks whether the following are all true: 
+
+<UL>
+	<LI>The KeyPath column of the <A HREF="tref_09np.htm">Component table</A> contains a Null value.</LI>
+
+	<LI>That there are no files listed for the component in the <A HREF="tref_4n6t.htm">File table</A>. </LI>
+
+	<LI>That there are no files for the component listed in the <A HREF="tref_7gth.htm">RemoveFile table</A> and that the value in the DirProperty is the same as the Directory_ column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+
+	<LI>That there are no files for the component listed in the <A HREF="tref_310l.htm">DuplicateFile table</A> and that the value in the DestFolder is the same as the Directory_ column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+
+	<LI>That there are no files for the component listed in the <A HREF="tref_5un9.htm">MoveFile table</A> and that the value in the DestFolder is the same as the Directory_ column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+</UL>
+
+<P>If these are all true then ICE18 validates the following:
+
+<UL>
+	<LI>That the Component_ column of the <A HREF="tref_152d.htm">CreateFolder table</A> has the same value as the Component column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+
+	<LI>That the Directory_ column of the CreateFolder table has the same value as the Directory_ column of the <A HREF="tref_09np.htm">Component table</A>. </LI>
+</UL>
+
+<H4>Result</H4>
+
+<P>ICE18 posts an error message if the installation package specifies a directory as the key path for component that is not listed in the <A HREF="tref_152d.htm">CreateFolder table</A>. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

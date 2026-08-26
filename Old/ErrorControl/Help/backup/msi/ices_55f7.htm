@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Internal Consistency Evaluators - ICEs</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Internal Consistency Evaluators - ICEs [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="ICEs [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_internal_consistency_evaluators_ices"></A>Internal Consistency Evaluators - ICEs</H1>
+
+<P>Internal consistency evaluators, also called ICEs, are custom actions written in VBScript, JScript, or as a DLL or EXE. When these custom actions are executed, they scan the database for entries in database records that are valid when examined individually but that may cause incorrect behavior in the context of the whole database. Note that this is different than the validation done on individual records using <A HREF="qref_0gzd.htm"><B>MsiViewModify</B></A>. </P>
+
+<P>For example, the <A HREF="tref_09np.htm">Component table</A> may list several components that are all valid when tested individually with <B>MsiViewModify</B>. However, <B>MsiViewModify</B> would not catch the error when two components use the same <A HREF="tref_7kf8.htm">GUID</A> as their component code. The custom action <A HREF="ices_1xrs.htm">ICE08</A> is designed to validate that the Component table does not contain duplicate component code GUIDs.</P>
+
+<P>ICE custom actions return four kinds of messages:
+
+<UL>
+	<LI><B>Errors</B>  Error messages report database authoring that cause incorrect behavior. For example, duplicate component GUIDs cause the installer to incorrectly register components. </LI>
+
+	<LI><B>Warnings</B>  Warning messages report database authoring that causes incorrect behavior in certain cases. Warnings can also report unexpected side-effects of database authoring. For example, entering the same property name in two conditions that differ only by the case of letters in the name. Because the installer is case-sensitive, the installer treats these as different properties.</LI>
+
+	<LI><B>Failures</B>  Failure messages report the failure of the ICE custom action. Failure is commonly caused by a database with such severe problems that the ICE cannot even run.</LI>
+
+	<LI><B>Informational</B>  Informational messages provide information from the ICE and do not indicate a problem with the database. Often they are information about the ICE itself, such as a brief description. They can also provide progress information as the ICE runs.</LI>
+</UL>
+
+<P>For more information, see <A HREF="ices_0zub.htm">Using Internal Consistency Evaluators</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,1680 @@
+Computername: LAPTOP
+Destination reachable: Yes (computer has one or more active LAN cards)
+IP address: 129.223.80.160
+MAC address: 00-20-E0-69-D3-0B
+Domain: LAPTOP
+OS: Windows NT
+Version: 5.1
+Processor: x86 Family 6 Model 8 Stepping 10
+ProcessorCount: Uniprocessor Free
+Service Pack 2
+Hotfixes:
+Hotfix: KB834707
+Comments: Windows XP Hotfix - KB834707
+Fix Description: Windows XP Hotfix - KB834707
+
+Hotfix: KB867282
+Comments: Windows XP Hotfix - KB867282
+Fix Description: Windows XP Hotfix - KB867282
+
+Hotfix: KB873333
+Comments: Windows XP Hotfix - KB873333
+Fix Description: Windows XP Hotfix - KB873333
+
+Hotfix: KB873339
+Comments: Windows XP Hotfix - KB873339
+Fix Description: Windows XP Hotfix - KB873339
+
+Hotfix: KB885250
+Comments: Windows XP Hotfix - KB885250
+Fix Description: Windows XP Hotfix - KB885250
+
+Hotfix: KB885835
+Comments: Windows XP Hotfix - KB885835
+Fix Description: Windows XP Hotfix - KB885835
+
+Hotfix: KB885836
+Comments: Windows XP Hotfix - KB885836
+Fix Description: Windows XP Hotfix - KB885836
+
+Hotfix: KB885884
+Comments: Windows XP Hotfix - KB885884
+Fix Description: Windows XP Hotfix - KB885884
+
+Hotfix: KB886185
+Comments: Windows XP Hotfix - KB886185
+Fix Description: Windows XP Hotfix - KB886185
+
+Hotfix: KB887472
+Comments: Windows XP Hotfix - KB887472
+Fix Description: Windows XP Hotfix - KB887472
+
+Hotfix: KB887797
+Comments: Windows XP Hotfix - KB887797
+Fix Description: Windows XP Hotfix - KB887797
+
+Hotfix: KB888113
+Comments: Windows XP Hotfix - KB888113
+Fix Description: Windows XP Hotfix - KB888113
+
+Hotfix: KB888302
+Comments: Windows XP Hotfix - KB888302
+Fix Description: Windows XP Hotfix - KB888302
+
+Hotfix: KB890047
+Comments: Windows XP Hotfix - KB890047
+Fix Description: Windows XP Hotfix - KB890047
+
+Hotfix: KB890175
+Comments: Windows XP Hotfix - KB890175
+Fix Description: Windows XP Hotfix - KB890175
+
+Hotfix: KB891781
+Comments: Windows XP Hotfix - KB891781
+Fix Description: Windows XP Hotfix - KB891781
+
+Hotfix: Q147222
+Comments: 
+Fix Description: 
+
+Hotfix: ServicePackUninstall
+Comments: 
+Fix Description: 
+
+----------------------------------------
+Application List:
+Application: AC3Filter
+Display Name: AC3Filter (remove only)
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: AddressBook
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Adobe Atmosphere Player
+Display Name: Adobe Atmosphere Player for Acrobat and Adobe Reader
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: ArcSoft Camera Suite
+Display Name: ArcSoft Camera Suite
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: AvantGo Client
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: AveDesk_is1
+Display Name: AveDesk 1.1
+Display Version: 
+Publisher: AndreasV
+Help URL: http://www.avedesk.com
+
+Application: BF Mines
+Display Name: BF Mines (remove only)
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: BIPAC-711 CE 2.04E
+Display Name: BIPAC-711 CE 2.04E
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: BitScope
+Display Name: BitScope DSO
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Branding
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Connection Manager
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Cool's_Codec_pack_4.12
+Display Name: Codec Pack - All In 1 6.0.2.1
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: DC++
+Display Name: DC++ 0.667
+Display Version: 0.667
+Publisher: Jacek Sieka
+Help URL: http://dcplusplus.sourceforge.net/forum/
+
+Application: DirectAnimation
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: DirectDrawEx
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: DivX Codec
+Display Name: DivX Codec
+Display Version: 5.1.1
+Publisher: DivXNetworks, Inc.
+Help URL: 
+
+Application: DriverLINX Port I/O Driver
+Display Name: DriverLINX Port I/O Driver
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: DXM_Runtime
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Fontcore
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: FTDICOMM
+Display Name: FTDI USB Serial Converter Drivers
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Google Desktop
+Display Name: Google Desktop Search
+Display Version: -
+Publisher: Google
+Help URL: http://desktop.google.com/help.html
+
+Application: Graphics Converter Pro v5.8
+Display Name: Graphics Converter Pro v5.8
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: ICW
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: IE40
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: IE4Data
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: IE5BAKEX
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: IEData
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: InCtrl5
+Display Name: InCtrl5
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Indy10VS2003_is1
+Display Name: Indy 10 for Visual Studio .NET 2003
+Display Version: 
+Publisher: AtoZed Software
+Help URL: http://www.atozed.com
+
+Application: InstallShield Uninstall Information
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: InstallShield_{291A772C-FFB9-4681-B720-AB2A0A620896}
+Display Name: Adobe Reader for Pocket PC 2.0
+Display Version: 2.0
+Publisher: Adobe Systems
+Help URL: 
+
+Application: InstallShield_{33292664-0DE3-48B1-B251-D2FD57F87EDC}
+Display Name: Terminal Services Client for Pocket PC 2002
+Display Version: 1.00.0000
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: InstallShield_{64DB6124-C6FE-11D6-88BF-009027BD5EBD}
+Display Name: Concord EyeQ Duo 2000 Digital Camera
+Display Version: 1.00.0000
+Publisher: Concord
+Help URL: 
+
+Application: InstallShield_{C1BBDCDD-8F08-4DE6-BA11-E7B14F7E129B}
+Display Name: Nokia PC Suite 6.1
+Display Version: 6.1.008
+Publisher: Nokia
+Help URL: 
+
+Application: InstallShield_{CF56B6FC-F26B-4493-802B-2E5EA74DC775}
+Display Name: PPC 2002 - MSN (R) Messenger Update
+Display Version: 1.00.0000
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: KB834707
+Display Name: Windows XP Hotfix - KB834707
+Display Version: 20040929.110854
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=834707
+
+Application: KB867282
+Display Name: Windows XP Hotfix - KB867282
+Display Version: 20050127.090417
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=867282
+
+Application: KB873333
+Display Name: Windows XP Hotfix - KB873333
+Display Version: 20050114.005213
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=873333
+
+Application: KB873339
+Display Name: Windows XP Hotfix - KB873339
+Display Version: 20041117.092459
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=873339
+
+Application: KB885250
+Display Name: Windows XP Hotfix - KB885250
+Display Version: 20050118.202711
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=885250
+
+Application: KB885835
+Display Name: Windows XP Hotfix - KB885835
+Display Version: 20041027.181713
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=885835
+
+Application: KB885836
+Display Name: Windows XP Hotfix - KB885836
+Display Version: 20041028.173203
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=885836
+
+Application: KB885884
+Display Name: Windows XP Hotfix - KB885884
+Display Version: 20040924.025457
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=885884
+
+Application: KB886185
+Display Name: Windows XP Hotfix - KB886185
+Display Version: 20041021.090540
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=886185
+
+Application: KB887472
+Display Name: Windows XP Hotfix - KB887472
+Display Version: 20041014.162858
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=887472
+
+Application: KB887797
+Display Name: Windows XP Hotfix - KB887797
+Display Version: 20041018.133824
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=887797
+
+Application: KB888113
+Display Name: Windows XP Hotfix - KB888113
+Display Version: 20041116.131036
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=888113
+
+Application: KB888302
+Display Name: Windows XP Hotfix - KB888302
+Display Version: 20041207.111426
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=888302
+
+Application: KB890047
+Display Name: Windows XP Hotfix - KB890047
+Display Version: 20041221.124506
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=890047
+
+Application: KB890175
+Display Name: Windows XP Hotfix - KB890175
+Display Version: 20041201.233338
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=890175
+
+Application: KB891781
+Display Name: Windows XP Hotfix - KB891781
+Display Version: 20050110.165439
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=891781
+
+Application: LiveUpdate
+Display Name: LiveUpdate 2.0 (Symantec Corporation)
+Display Version: 2.0.39.0
+Publisher: Symantec Corporation
+Help URL: 
+
+Application: M886903
+Display Name: Microsoft .NET Framework 1.1 Hotfix (KB886903)
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: MDaemon GroupWare Plug-in
+Display Name: MDaemon GroupWare Plug-in
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: MessengerPlus3
+Display Name: Messenger Plus! 3
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Microsoft .NET Framework 1.1  (1033)
+Display Name: Microsoft .NET Framework 1.1
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Microsoft NetShow Player 2.0
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Microsoft SQL Server 2000
+Display Name: Microsoft SQL Server 2000
+Display Version: 8.00.194
+Publisher: Microsoft
+Help URL: 
+
+Application: Mobile Application Link
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: MobileOptionPack
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: MPlayer2
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: MsJavaVM
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: NetMeeting
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: nplayer
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: NVIDIA
+Display Name: NVIDIA Windows 2000/XP Display Drivers
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: OutlookExpress
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: PCHealth
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: RealJukebox 1.0
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: RealPlayer 6.0
+Display Name: RealPlayer
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: SchedulingAgent
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Sevinst
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: ShockwaveFlash
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: SkinStudio Free
+Display Name: SkinStudio Free
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Starsiege TRIBES
+Display Name: Starsiege TRIBES 1.8
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: StyleXP
+Display Name: StyleXP (remove only)
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: SynTPDeinstKey
+Display Name: Synaptics Pointing Device Driver
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: TopStyle Lite (Version 3.0)
+Display Name: TopStyle Lite (Version 3.0)
+Display Version: 3.1.0
+Publisher: Bradbury Software, LLC
+Help URL: 
+
+Application: TranscriberCE
+Display Name: Transcriber CE Uninstall
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Visual Studio .NET Enterprise Architect 2003 - English
+Display Name: Microsoft Visual Studio .NET Enterprise Architect 2003 - English
+Display Version: 
+Publisher: Microsoft
+Help URL: http://support.microsoft.com/default.aspx?scid=FH;EN-US;vsnet&SD=GN&FR=0&LN=EN-US
+
+Application: Visual Studio 6.0 Enterprise Edition
+Display Name: Microsoft Visual Studio 6.0 Enterprise Edition
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: WebPost
+Display Name: Microsoft Web Publishing Wizard 1.53
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Winamp
+Display Name: Winamp (remove only)
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Windows CE Services
+Display Name: Microsoft ActiveSync 3.7
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Windows Media Connect
+Display Name: Windows Media Connect
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Windows Media Encoder 9
+Display Name: Windows Media Encoder 9 Series
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Windows Media Format Runtime
+Display Name: Windows Media Format Runtime
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Windows Media Player
+Display Name: Windows Media Player 10
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Windows XP Service Pack
+Display Name: Windows XP Service Pack 2
+Display Version: 20040803.231319
+Publisher: Microsoft Corporation
+Help URL: http://support.microsoft.com?kbid=811113
+
+Application: WinRAR archiver
+Display Name: WinRAR archiver
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Zend Studio 3.5.1 (Client)
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Zend Studio 3.5.2 (Client)
+Display Name: Zend Studio 3.5.2 (Client)
+Display Version: 3.5.1.0
+Publisher: Zend Technologies
+Help URL: 
+
+Application: Zend Studio Server
+Display Name: 
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: Zoran COACH Memory Browser TWAIN Driver
+Display Name: Concord EyeQ Duo 2000 Memory Browser TWAIN Driver V1.00
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: {0A307F41-C1FE-4BD0-AFD7-F8B46FBF889D}
+Display Name: MSDN Library - October 2004
+Display Version: 7.58.4230
+Publisher: Microsoft
+Help URL: 
+
+Application: {16836E20-1972-4469-A053-D941A4C73A41}_is1
+Display Name: Pocket Multi Partnership Synchronize v1.2
+Display Version: 
+Publisher: ThaiPocketPC.NET
+Help URL: http://www.thaipocketpc.net
+
+Application: {17B66E83-1BC9-11D5-A54A-0090278A1BB8}
+Display Name: Microsoft FrontPage Client - English
+Display Version: 7.00.9209
+Publisher: Microsoft
+Help URL: 
+
+Application: {1A655D51-1423-48A3-B748-8F5A0BE294C8}
+Display Name: Microsoft Visual J# .NET Redistributable Package 1.1
+Display Version: 1.1.4322
+Publisher: Microsoft
+Help URL: 
+
+Application: {1D9F550A-3531-454C-94FD-E9E9E67A2809}
+Display Name: Microsoft .NET Compact Framework 1.0 SP2
+Display Version: 1.0.3316
+Publisher: Microsoft
+Help URL: 
+
+Application: {20510409-6000-11D3-AD6E-70FFDDE3421D}
+Display Name: Microsoft Office Visio 2003 SDK
+Display Version: 11.0.3730.5614
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {2318C2B1-4965-11d4-9B18-009027A5CD4F}
+Display Name: Google Toolbar for Internet Explorer
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: {29042B1C-0713-4575-B7CA-5C8E7B0899D4}
+Display Name: MyODBC
+Display Version: 3.51.9
+Publisher: MySQL
+Help URL: 
+
+Application: {291A772C-FFB9-4681-B720-AB2A0A620896}
+Display Name: Adobe Reader for Pocket PC 2.0
+Display Version: 2.0
+Publisher: Adobe Systems
+Help URL: 
+
+Application: {33292664-0DE3-48B1-B251-D2FD57F87EDC}
+Display Name: Terminal Services Client for Pocket PC 2002
+Display Version: 1.00.0000
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {34F12AE7-3B48-473F-8B1D-D60B26416D0B}
+Display Name: Windows XP Peer-to-Peer SDK
+Display Version: 1.0.1500
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {350C97B0-3D7C-4EE8-BAA9-00BCB3D54227}
+Display Name: WebFldrs XP
+Display Version: 9.50.5318
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {3DB5FD00-BB93-4AF3-B925-77DAA0E4E2F4}
+Display Name: ToolbarSetup
+Display Version: 2.00.0000
+Publisher: 
+Help URL: 
+
+Application: {43DCF766-6838-4F9A-8C91-D92DA586DFA7}
+Display Name: Microsoft Windows Journal Viewer
+Display Version: 1.5.2315.3
+Publisher: Microsoft
+Help URL: 
+
+Application: {47836B39-2465-4F39-9D7E-52F70A1C3D72}
+Display Name: Axis & Allies
+Display Version: 1.00.000
+Publisher: 
+Help URL: 
+
+Application: {4F07C0CE-CCFE-41CF-A36C-9998E1D37B13}
+Display Name: pinvoke.net Visual Studio Add-In
+Display Version: 1.0.0
+Publisher: pinvoke.net
+Help URL: 
+
+Application: {536F7C74-844B-4683-B0C5-EA39E19A6FE3}
+Display Name: Microsoft AntiSpyware
+Display Version: 1.0
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {54DBF6F6-4ECF-4A14-B58E-A28F229DBA7C}
+Display Name: 
+Display Version: 
+Publisher: Ulead Systems
+Help URL: 
+
+Application: {56CA5D3B-3002-4E7B-90FE-071D8FDF3814}
+Display Name:             
+Display Version: 3.46.0
+Publisher: DAEMON'S HOME
+Help URL: 
+
+Application: {5E076CF2-EFED-43A2-A623-13E0D62EC7E0}
+Display Name: Windows Server 2003 Administration Tools Pack
+Display Version: 5.2.3790
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {64DB6124-C6FE-11D6-88BF-009027BD5EBD}
+Display Name: Concord EyeQ Duo 2000 Digital Camera
+Display Version: 1.00.0000
+Publisher: Concord
+Help URL: 
+
+Application: {6ACA2FD2-4C4A-42F3-AFB5-7B433BBDF6DB}
+Display Name: InterVideo WinDVD 6
+Display Version: 6.0-B6.56
+Publisher: 
+Help URL: http://www.intervideo.com/jsp/Support.jsp
+
+Application: {6B629F70-BE1D-456E-AA97-73619020E7A1}
+Display Name: Sony Sound Forge 7.0b
+Display Version: 7.0.301
+Publisher: Sony
+Help URL: 
+
+Application: {74307C3F-EBD4-11D4-A4D9-0010A4C3AFF0}
+Display Name: Macromedia HomeSite 5
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: {7795FDC5-EF2F-4D8E-8EC2-B0B373AF0EC7}
+Display Name: Programming Editor
+Display Version: 4.10.05
+Publisher: Revolution Education Ltd
+Help URL: 
+
+Application: {7BD9D04F-6C73-48F1-A770-9943CD43BC4F}
+Display Name: Microsoft Visual Studio Tools for the Microsoft Office System
+Display Version: 7.1.3231
+Publisher: Microsoft
+Help URL: 
+
+Application: {848AC794-8B81-440A-81AE-6474337DB527}
+Display Name: Symantec AntiVirus
+Display Version: 9.0.0.338
+Publisher: Symantec Corporation
+Help URL: 
+
+Application: {90110409-6000-11D3-8CFE-0150048383C9}
+Display Name: Microsoft Office Professional Edition 2003
+Display Version: 11.0.6361.0
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {90170409-6000-11D3-8CFE-0150048383C9}
+Display Name: Microsoft Office FrontPage 2003
+Display Version: 11.0.6361.0
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {90510409-6000-11D3-8CFE-0150048383C9}
+Display Name: Microsoft Office Visio Professional 2003
+Display Version: 11.0.4301.6360
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {9175A15E-E740-4A24-BCEF-4DFB6D4CFAE7}
+Display Name: Zend Studio Server
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: {A23866A0-738B-4091-9924-0B0DE3988A15}
+Display Name: VP6 VFW Codec
+Display Version: 
+Publisher: 
+Help URL: 
+
+Application: {ABEB838C-A1A7-4C5D-B7E1-8B4314600425}
+Display Name: MSN Messenger 7.0
+Display Version: 7.0.0425
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {AC76BA86-1033-0000-7760-000000000001}
+Display Name: Adobe Acrobat 6.0 Professional
+Display Version: 006.000.000
+Publisher: Adobe Systems
+Help URL: 
+
+Application: {AD8E6D29-95EC-494E-8AF5-566E784819A6}
+Display Name: Ulead Data-Add 2.0
+Display Version: 2.0
+Publisher: 
+Help URL: 
+
+Application: {C1BBDCDD-8F08-4DE6-BA11-E7B14F7E129B}
+Display Name: Nokia PC Suite 6.1
+Display Version: 6.1.008
+Publisher: Nokia
+Help URL: 
+
+Application: {C7D89BBE-D4B3-49E8-B185-7966B5345866}
+Display Name: Ulead DVD MovieFactory 3.5 Suite
+Display Version: 3.5
+Publisher: Ulead Systems, Inc.
+Help URL: 
+
+Application: {CB2F7EDD-9D1F-43C1-90FC-4F52EAE172A1}
+Display Name: Microsoft .NET Framework 1.1
+Display Version: 1.1.4322
+Publisher: Microsoft
+Help URL: 
+
+Application: {CF56B6FC-F26B-4493-802B-2E5EA74DC775}
+Display Name: PPC 2002 - MSN (R) Messenger Update
+Display Version: 1.00.0000
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {D4D24FE5-FAB3-4FE2-AFFC-623955F4DF3A}
+Display Name: Visual Studio.NET Baseline - English
+Display Version: 7.1.3088
+Publisher: Microsoft
+Help URL: 
+
+Application: {D6DE02C7-1F47-11D4-9515-00105AE4B89A}
+Display Name: Paint Shop Pro 7
+Display Version: 7.0.2.0000
+Publisher: Jasc Software Inc
+Help URL: 
+
+Application: {DBDFA37B-CFC7-4C37-98F8-04CF326CD327}_is1
+Display Name: FlashFXP v3
+Display Version: v3.0 build 1015
+Publisher: IniCom Networks, Inc.
+Help URL: http://www.flashfxp.com/support.php
+
+Application: {DF15059E-A356-47B2-B14B-6380ED32AB68}
+Display Name: Microsoft Baseline Security Analyzer 1.2.1
+Display Version: 1.2.4013.0
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {E05F0409-0E9A-48A1-AC04-E35E3033604A}
+Display Name: Visual Studio .NET Enterprise Architect 2003 - English
+Display Version: 7.1.3088
+Publisher: Microsoft
+Help URL: 
+
+Application: {E065DA2A-E1DE-41CF-A8F5-ECF40D9810B5}
+Display Name: Microsoft Visual Studio Emulator for Devices - ENU
+Display Version: 1.0.40607.16
+Publisher: Microsoft
+Help URL: 
+
+Application: {E09B48B5-E141-427A-AB0C-D3605127224A}
+Display Name: Microsoft SQL Server Desktop Engine
+Display Version: 8.00.761
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {E38C00D0-A68B-4318-A8A6-F7D4B5B1DF0E}
+Display Name: Windows Media Encoder 9 Series
+Display Version: 9.00.2980
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {F6869CD2-3DB4-476D-A4C7-B3AE7C3ACF7B}
+Display Name: Windows Media Connect
+Display Version: 1.0.0.0
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {FCE65C4E-B0E8-4FBD-AD16-EDCBE6CD591F}
+Display Name: HighMAT Extension to Microsoft Windows XP CD Writing Wizard
+Display Version: 1.1.1905.1
+Publisher: Microsoft Corporation
+Help URL: 
+
+Application: {FD56FDA2-5597-411B-99E2-CC8D15F9A6B6}
+Display Name: VBDocAddin
+Display Version: 1.0.0
+Publisher: VB.DOCAddin
+Help URL: 
+
+----------------------------------------
+Local Accounts:
+Name: ACTUser
+Fullname: Application Center Test Account
+Description: Account used to launch the Application Center Test Broker and Controller services
+AccountDisabled: False
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: Administrator
+Fullname: 
+Description: Built-in account for administering the computer/domain
+AccountDisabled: False
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: ASPNET
+Fullname: ASP.NET Machine Account
+Description: Account used for running the ASP.NET worker process (aspnet_wp.exe)
+AccountDisabled: False
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: Dave
+Fullname: 
+Description: 
+AccountDisabled: False
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: Guest
+Fullname: 
+Description: Built-in account for guest access to the computer/domain
+AccountDisabled: False
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: HelpAssistant
+Fullname: Remote Desktop Help Assistant Account
+Description: Account for Providing Remote Assistance
+AccountDisabled: True
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: IUSR_LAPTOP
+Fullname: Internet Guest Account
+Description: Built-in account for anonymous access to Internet Information Services
+AccountDisabled: False
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: IWAM_LAPTOP
+Fullname: Launch IIS Process Account
+Description: Built-in account for Internet Information Services to start out of process applications
+AccountDisabled: False
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: Rob
+Fullname: 
+Description: 
+AccountDisabled: False
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: SQLDebugger
+Fullname: SQLDebugger
+Description: This user account is used by the Visual Studio .NET Debugger
+AccountDisabled: False
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: SUPPORT_388945a0
+Fullname: CN=Microsoft Corporation,L=Redmond,S=Washington,C=US
+Description: This is a vendor's account for the Help and Support Service
+AccountDisabled: True
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+Name: VUSR_LAPTOP
+Fullname: VSA Server Account
+Description: Account for the Visual Studio Analyzer server components
+AccountDisabled: False
+IsAccountLocked: False
+Profile: 
+LoginScript: 
+HomeDirectory: 
+
+----------------------------------------
+Services: 
+Display name: Alerter
+Service name: Alerter
+State: Stopped
+Account: NT AUTHORITY\LocalService
+Startup: Disabled
+
+Display name: Application Layer Gateway Service
+Service name: ALG
+State: Running
+Account: NT AUTHORITY\LocalService
+Startup: Manual
+
+Display name: Application Management
+Service name: AppMgmt
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: ASP.NET Admin Service
+Service name: aspnet_admin
+State: Stopped
+Account: LocalSystem
+Startup: Auto
+
+Display name: ASP.NET State Service
+Service name: aspnet_state
+State: Stopped
+Account: NT AUTHORITY\NetworkService
+Startup: Manual
+
+Display name: Windows Audio
+Service name: AudioSrv
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Background Intelligent Transfer Service
+Service name: BITS
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Computer Browser
+Service name: Browser
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Symantec Event Manager
+Service name: ccEvtMgr
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Symantec Password Validation
+Service name: ccPwdSvc
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Symantec Settings Manager
+Service name: ccSetMgr
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Indexing Service
+Service name: cisvc
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: ClipBook
+Service name: ClipSrv
+State: Stopped
+Account: LocalSystem
+Startup: Disabled
+
+Display name: COM+ System Application
+Service name: COMSysApp
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Cryptographic Services
+Service name: CryptSvc
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: DCOM Server Process Launcher
+Service name: DcomLaunch
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Symantec AntiVirus Definition Watcher
+Service name: DefWatch
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: DHCP Client
+Service name: Dhcp
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Logical Disk Manager Administrative Service
+Service name: dmadmin
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Logical Disk Manager
+Service name: dmserver
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: DNS Client
+Service name: Dnscache
+State: Running
+Account: NT AUTHORITY\NetworkService
+Startup: Auto
+
+Display name: Error Reporting Service
+Service name: ERSvc
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Event Log
+Service name: Eventlog
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: COM+ Event System
+Service name: EventSystem
+State: Running
+Account: LocalSystem
+Startup: Manual
+
+Display name: Fast User Switching Compatibility
+Service name: FastUserSwitchingCompatibility
+State: Running
+Account: LocalSystem
+Startup: Manual
+
+Display name: Help and Support
+Service name: helpsvc
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Human Interface Device Access
+Service name: HidServ
+State: Stopped
+Account: LocalSystem
+Startup: Disabled
+
+Display name: HTTP SSL
+Service name: HTTPFilter
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: IIS Admin
+Service name: IISADMIN
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: IMAPI CD-Burning COM Service
+Service name: ImapiService
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Infrared Monitor
+Service name: Irmon
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Server
+Service name: lanmanserver
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Workstation
+Service name: lanmanworkstation
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: TCP/IP NetBIOS Helper
+Service name: LmHosts
+State: Running
+Account: NT AUTHORITY\LocalService
+Startup: Auto
+
+Display name: Machine Debug Manager
+Service name: MDM
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Messenger
+Service name: Messenger
+State: Stopped
+Account: LocalSystem
+Startup: Disabled
+
+Display name: NetMeeting Remote Desktop Sharing
+Service name: mnmsrvc
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Distributed Transaction Coordinator
+Service name: MSDTC
+State: Stopped
+Account: NT AUTHORITY\NetworkService
+Startup: Manual
+
+Display name: Windows Installer
+Service name: MSIServer
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: MSSQLSERVER
+Service name: MSSQLSERVER
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: MSSQLServerADHelper
+Service name: MSSQLServerADHelper
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Network DDE
+Service name: NetDDE
+State: Stopped
+Account: LocalSystem
+Startup: Disabled
+
+Display name: Network DDE DSDM
+Service name: NetDDEdsdm
+State: Stopped
+Account: LocalSystem
+Startup: Disabled
+
+Display name: Net Logon
+Service name: Netlogon
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Network Connections
+Service name: Netman
+State: Running
+Account: LocalSystem
+Startup: Manual
+
+Display name: Network Location Awareness (NLA)
+Service name: Nla
+State: Running
+Account: LocalSystem
+Startup: Manual
+
+Display name: NT LM Security Support Provider
+Service name: NtLmSsp
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Removable Storage
+Service name: NtmsSvc
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: NVIDIA Driver Helper Service
+Service name: NVSvc
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Office Source Engine
+Service name: ose
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Plug and Play
+Service name: PlugPlay
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: IPSEC Services
+Service name: PolicyAgent
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Protected Storage
+Service name: ProtectedStorage
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Remote Access Auto Connection Manager
+Service name: RasAuto
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Remote Access Connection Manager
+Service name: RasMan
+State: Running
+Account: LocalSystem
+Startup: Manual
+
+Display name: Remote Desktop Help Session Manager
+Service name: RDSessMgr
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Routing and Remote Access
+Service name: RemoteAccess
+State: Stopped
+Account: LocalSystem
+Startup: Disabled
+
+Display name: Remote Registry
+Service name: RemoteRegistry
+State: Running
+Account: NT AUTHORITY\LocalService
+Startup: Auto
+
+Display name: Remote Procedure Call (RPC) Locator
+Service name: RpcLocator
+State: Stopped
+Account: NT AUTHORITY\NetworkService
+Startup: Manual
+
+Display name: Remote Procedure Call (RPC)
+Service name: RpcSs
+State: Running
+Account: NT Authority\NetworkService
+Startup: Auto
+
+Display name: QoS RSVP
+Service name: RSVP
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Security Accounts Manager
+Service name: SamSs
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: SavRoam
+Service name: SavRoam
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Smart Card
+Service name: SCardSvr
+State: Stopped
+Account: NT AUTHORITY\LocalService
+Startup: Manual
+
+Display name: Task Scheduler
+Service name: Schedule
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Secondary Logon
+Service name: seclogon
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: System Event Notification
+Service name: SENS
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Windows Firewall/Internet Connection Sharing (ICS)
+Service name: SharedAccess
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Shell Hardware Detection
+Service name: ShellHWDetection
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Simple Mail Transfer Protocol (SMTP)
+Service name: SMTPSVC
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Symantec Network Drivers Service
+Service name: SNDSrvc
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Print Spooler
+Service name: Spooler
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: SQLSERVERAGENT
+Service name: SQLSERVERAGENT
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: System Restore Service
+Service name: srservice
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: SSDP Discovery Service
+Service name: SSDPSRV
+State: Running
+Account: NT AUTHORITY\LocalService
+Startup: Manual
+
+Display name: Windows Image Acquisition (WIA)
+Service name: stisvc
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: StyleXPService
+Service name: StyleXPService
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: MS Software Shadow Copy Provider
+Service name: SwPrv
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Symantec AntiVirus
+Service name: Symantec AntiVirus
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Performance Logs and Alerts
+Service name: SysmonLog
+State: Stopped
+Account: NT Authority\NetworkService
+Startup: Manual
+
+Display name: Telephony
+Service name: TapiSrv
+State: Running
+Account: LocalSystem
+Startup: Manual
+
+Display name: Terminal Services
+Service name: TermService
+State: Running
+Account: LocalSystem
+Startup: Manual
+
+Display name: Themes
+Service name: Themes
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Telnet
+Service name: TlntSvr
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Distributed Link Tracking Client
+Service name: TrkWks
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Ulead Burning Helper
+Service name: UleadBurningHelper
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Windows User Mode Driver Framework
+Service name: UMWdf
+State: Running
+Account: NT AUTHORITY\LocalService
+Startup: Auto
+
+Display name: Universal Plug and Play Device Host
+Service name: upnphost
+State: Stopped
+Account: NT AUTHORITY\LocalService
+Startup: Manual
+
+Display name: Uninterruptible Power Supply
+Service name: UPS
+State: Stopped
+Account: NT AUTHORITY\LocalService
+Startup: Manual
+
+Display name: Visual Studio Analyzer RPC bridge
+Service name: Visual Studio Analyzer RPC bridge
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Volume Shadow Copy
+Service name: VSS
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Windows Time
+Service name: W32Time
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: World Wide Web Publishing
+Service name: W3SVC
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: WebClient
+Service name: WebClient
+State: Running
+Account: NT AUTHORITY\LocalService
+Startup: Auto
+
+Display name: Windows Management Instrumentation
+Service name: winmgmt
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Windows Media Connect (WMC)
+Service name: WmcCds
+State: Stopped
+Account: NT AUTHORITY\NetworkService
+Startup: Manual
+
+Display name: Windows Media Connect (WMC) Helper
+Service name: WmcCdsLs
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Portable Media Serial Number Service
+Service name: WmdmPmSN
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Windows Management Instrumentation Driver Extensions
+Service name: Wmi
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: WMI Performance Adapter
+Service name: WmiApSrv
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+Display name: Security Center
+Service name: wscsvc
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Automatic Updates
+Service name: wuauserv
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Wireless Zero Configuration
+Service name: WZCSVC
+State: Running
+Account: LocalSystem
+Startup: Auto
+
+Display name: Network Provisioning Service
+Service name: xmlprov
+State: Stopped
+Account: LocalSystem
+Startup: Manual
+
+----------------------------------------

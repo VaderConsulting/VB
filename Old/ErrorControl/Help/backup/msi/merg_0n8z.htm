@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>About Merge Modules</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_about_merge_modules"></A>About Merge Modules</H1>
+
+<P>Merge modules are essentially simplified .msi files, which is the file name extension for a Microsoft® Windows® Installer installation package. A standard merge module has an .msm file name extension. </P>
+
+<P>A merge module cannot be installed alone because its lacks some vital database tables that are present in an installation database. Merge modules also contain additional tables that are unique to themselves. To install the information delivered by a merge module with an application, the module must first be merged into the application's .msi file. </P>
+
+<P>A merge module consists of the following parts:
+
+<UL>
+	<LI>A <A HREF="merg_9rqd.htm">Merge Module Database</A> containing the installation properties and setup logic being delivered by the merge module.</LI>
+
+	<LI>A <A HREF="merg_57zh.htm">Merge Module Summary Information Stream</A> describing the module.</LI>
+
+	<LI>A <A HREF="merg_1838.htm">MergeModule.CABinet</A> cabinet file stored as a stream inside the merge module. This cabinet contains all the files required by the components delivered by the merge module.</LI>
+</UL>
+
+<P><A HREF="merg_7f77.htm">Multiple language merge modules</A> can deliver components to an installation package in multiple languages. In a multiple language merge module the database contains the installation properties and logic for more than one language and the MergeModule.CABinet cabinet includes all the files necessary to install components with all the languages supported by the module. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>StringData Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="StringData Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_stringdata_property"></A><A NAME="helpid_msirecord_stringdata"></A>StringData Property</H1>
+
+<P>The StringData property of the <A HREF="vref_6kac.htm"><B>Record</B> object</A> is a read-write property that transfers string data in to or out of a specified field within the record. If an integer or object has been stored, its string value is returned.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.StringData(<I>field</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6kac.htm"><B>Record</B> object</A></DD>
+
+<DT><I>field</I></DT>
+
+<DD>Required field number of the value within the record, 1-based.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The returned value of a non-existent field is an empty string. To set a record string field to NULL, use either an Empty variant or an empty string. Attempting to store a value in a non-existent field causes an error.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

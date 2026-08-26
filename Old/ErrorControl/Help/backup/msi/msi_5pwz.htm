@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiEnumRelatedProducts</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiEnumRelatedProducts">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msienumrelatedproducts"></A>MsiEnumRelatedProducts</H1>
+
+<P>The <B>MsiEnumProducts</B> function enumerates products with a specified upgrade code. This function lists the currently installed and advertised products that have the specified <A HREF="pref_7mux.htm">UpgradeCode property</A> in their <A HREF="tref_21d1.htm">Property table</A>.</P>
+
+<PRE class=syntax><B>UINT MsiEnumRelatedProducts(
+</B>  <B>LPCTSTR</B> <I>lpUpgradeCode</I>  // upgrade code of products to enumerate
+  <B>DWORD</B> <I>dwReserved</I><B>,</B>      // reserved, must be 0
+  <B>DWORD</B> <I>iProductIndex</I><B>,</B>   // 0-based index into registered products
+  <B>LPTSTR</B> <I>lpProductBuf</I>    // buffer of character count 39 to receive GUID
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>lpUpgradeCode</I></DT>
+
+<DD>The upgrade code of related products that the installer is to enumerate.</DD>
+
+<DT><I>dwReserved</I></DT>
+
+<DD>This parameter is reserved and must be 0.</DD>
+
+<DT><I>iProductIndex</I></DT>
+
+<DD>The 0-based index into the registered products.</DD>
+
+<DT><I>lpProductBuf</I></DT>
+
+<DD>A buffer of character count 39 to receive the product code GUID.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_BAD_CONFIGURATION</TD>
+<TD width=52%>The configuration data is corrupt.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>An invalid parameter was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_NO_MORE_ITEMS </TD>
+<TD width=52%>There are no products to return.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS </TD>
+<TD width=52%>A value was enumerated.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>See <A HREF="pref_7mux.htm">UpgradeCode property</A>.</P>
+
+<P>To enumerate currently installed and advertised products that have a specific upgrade code, an application should initially call the <B>MsiEnumRelatedProducts</B> function with the <I>iProductIndex</I> parameter set to zero. The application should then increment the <I>iProductIndex</I> parameter and call <B>MsiEnumRelatedProducts</B> until the function returns ERROR_NO_MORE_ITEMS, which means there are no more products with the specified upgrade code.</P>
+
+<P>This function is not available with Windows Installer version 1.0.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

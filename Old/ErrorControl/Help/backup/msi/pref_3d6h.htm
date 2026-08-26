@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>SHORTFILENAMES Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="SHORTFILENAMES Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_shortfilenames_property"></A>SHORTFILENAMES Property</H1>
+
+<P>Setting the SHORTFILENAMES property causes short file names to be used for the names of target files, rather than long file names. It does not affect the file names the installer looks for at the source. This property may need to be used for some <A HREF="over_6jzi.htm">administrative installations</A>. When installing an administrative image from a source media that only supports short file names, you must set the SHORTFILENAMES property.</P>
+
+<H4>Default Value</H4>
+
+<P>Long names will be used by the installer if the SHORTFILENAMES property is not set and the target volume supports long names. Short names will be used by the installer if the target volume does not support long names.</P>
+
+<H4>Remarks</H4>
+
+<P>When the SHORTFILENAMES property is set, the installer will create folders and install files using short file names from any short|long pairs listed in the <A HREF="tref_4n6t.htm">File table</A> or <A HREF="tref_6an9.htm">Directory table</A>.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="over_1lq1.htm">Source Resiliency</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

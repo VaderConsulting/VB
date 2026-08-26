@@ -1,0 +1,224 @@
+<html>
+	<head>
+		<title>Scheduled Task Properties and Methods</title>
+		<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+	</head>
+	<body>
+		<p><font face="Verdana"><br>
+				<small><small>Scheduled Task component properties and methods</small></small><br>
+				<small><small>
+						<BR>
+						<br>
+						<strong>Program (in/out)</strong><br>
+						&nbsp;&nbsp;&nbsp; name of application to be scheduled to run or
+						<br>
+						&nbsp;&nbsp;&nbsp; any item that the Task Scheduler can execute.
+						<br>
+						&nbsp;&nbsp;&nbsp; These items may include any of the following (as supported 
+						by the operating system
+						<br>
+						&nbsp;&nbsp;&nbsp; on which the task will execute): Win32® applications, Win16 
+						applications,
+						<br>
+						&nbsp;&nbsp;&nbsp; OS/2 applications, MS-DOS® applications, batch files 
+						(*.bat), command files (*.cmd),
+						<br>
+						&nbsp;&nbsp;&nbsp; or any properly registered file type<br>
+						<br>
+						<strong>StartingDir (in/out)</strong><br>
+						&nbsp;&nbsp;&nbsp; applications start in directory<br>
+						<br>
+						<strong>Parameters (in/out)</strong><br>
+						&nbsp;&nbsp;&nbsp; application startup parameters<br>
+						<br>
+						<strong>Comment (in/out)</strong><br>
+						&nbsp;&nbsp;&nbsp; comment<br>
+						<br>
+						<strong>TargetComputer</strong><br>
+						&nbsp;&nbsp;&nbsp; selects the computer that component operates on, allowing 
+						remote task management</small></small></font></p>
+		<p><font face="Verdana"><strong><small><small>Username </small></small></strong><small><small><strong>
+							(in/out)</strong><br>
+						&nbsp;&nbsp;&nbsp; string that contains the name of the user account in which 
+						the item will run.
+						<br>
+						&nbsp;&nbsp;&nbsp; The empty string may be used to specify current logged user<br>
+						<br>
+						<strong>Password</strong><br>
+						&nbsp;&nbsp;&nbsp; string that contains the name of the user password in which 
+						the item will run.
+						<br>
+						<br>
+						<strong>Creator (in/out)</strong><br>
+						&nbsp;&nbsp;&nbsp; string that contains the name of task creator<br>
+						<br>
+						<strong>StartYear, StartMonth, StartDay, StartHour, StartMinute</strong><br>
+						&nbsp;&nbsp;&nbsp; date time when task will be triggered<br>
+						<br>
+						<strong>EndYear, EndMonth, EndDay</strong><br>
+						&nbsp;&nbsp;&nbsp; date when task trigger will be deactivated<br>
+						<br>
+						<strong>MinutesInterval</strong><br>
+						&nbsp;&nbsp;&nbsp; interval in minutes task will be triggered repeatedly<br>
+						<br>
+						<strong>MinutesDuration</strong><br>
+						&nbsp;&nbsp;&nbsp; interval in minutes task can be triggered repeatedly<br>
+						<br>
+						<strong>DayOfTheWeek</strong><br>
+						&nbsp;&nbsp;&nbsp; day of the week used in weekly trigger</small></small><br>
+				<small><small>&nbsp;&nbsp; It is a bitmask<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; 0000 0001&nbsp;&nbsp;&nbsp; 1 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sunday
+						<br>
+						&nbsp;&nbsp;&nbsp; 0000 0010&nbsp;&nbsp;&nbsp; 2 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Monday<br>
+						&nbsp;&nbsp;&nbsp; 0000 0100&nbsp;&nbsp;&nbsp; 4 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tuesday<br>
+						&nbsp;&nbsp;&nbsp; 0000 1000&nbsp;&nbsp;&nbsp; 8 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wednesday<br>
+						&nbsp;&nbsp;&nbsp; 0001 0000&nbsp;&nbsp;&nbsp; 16 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thursday<br>
+						&nbsp;&nbsp;&nbsp; 0010 0000&nbsp;&nbsp;&nbsp; 32 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Friday<br>
+						&nbsp;&nbsp;&nbsp; 0100 0000&nbsp;&nbsp;&nbsp; 64 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Saturday<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; If you want it to run only on weekdays :<br>
+						&nbsp;&nbsp;&nbsp; Monday + Tuesday + Wednesday + Thursday + Friday<br>
+						&nbsp;&nbsp;&nbsp; 2 + 4 + 8 + 16 + 32 = 62<br>
+						<br>
+						<strong>DayOfTheMonth</strong><br>
+						&nbsp;&nbsp;&nbsp; day of the month used in monthly trigger</small></small><br>
+				<br>
+				<small><small><strong>DontStartIfOnBatteries</strong> (default is True)<br>
+						&nbsp;&nbsp;&nbsp; don't start task if runs on batteries<br>
+						<br>
+						<strong>KillIfOnBatteries</strong> (default is True)<br>
+						&nbsp;&nbsp;&nbsp; kill task if runs on batteries<br>
+						<br>
+						<strong>TriggerType</strong><br>
+						&nbsp;&nbsp;&nbsp; possible values are:<br>
+						&nbsp;&nbsp;&nbsp; TRIGGER_ONCE = 0,<br>
+						&nbsp;&nbsp;&nbsp; TRIGGER_DAILY = 1,<br>
+						&nbsp;&nbsp;&nbsp; TRIGGER_WEEKLY = 2,<br>
+						&nbsp;&nbsp;&nbsp; TRIGGER_MONTHLYDATE = 3,<br>
+						&nbsp;&nbsp;&nbsp; TRIGGER_MONTHLYDOW = 4,&nbsp;&nbsp;&nbsp;&nbsp; // not 
+						supported<br>
+						&nbsp;&nbsp;&nbsp; TRIGGER_ON_IDLE = 5,<br>
+						&nbsp;&nbsp;&nbsp; TRIGGER_AT_SYSTEMSTART = 6,<br>
+						&nbsp;&nbsp;&nbsp; TRIGGER_AT_LOGON = 7</small></small><br>
+				<br>
+				<small><small><strong>TaskItem</strong><br>
+						&nbsp;&nbsp;&nbsp; index of task to retrieve<br>
+						<br>
+						<strong>TaskName (out)</strong><br>
+						&nbsp;&nbsp;&nbsp; task name retrieved with Enum method</small></small></font></p>
+		<p><small><small><font face="Verdana"><strong>WhichWeek</strong></font></small></small><br>
+			&nbsp;&nbsp; <font face="Verdana"><small><small>specify week for a trigger
+						<br>
+						&nbsp;&nbsp;&nbsp; possible values are :<br>
+						&nbsp;&nbsp;&nbsp; first week = 1<br>
+						&nbsp;&nbsp;&nbsp; second week = 2<br>
+						&nbsp;&nbsp;&nbsp; third week = 3<br>
+						&nbsp;&nbsp;&nbsp; fourth week = 4<br>
+						&nbsp;&nbsp;&nbsp; last week = 5 </small></small></font>
+		</p>
+		<p><small><font face="Verdana"><small><b>DeleteWhenDone</b><br>
+						delete then task finishes execution<br>
+						<br>
+						<b>RunOnlyIfLogged</b><br>
+						run only if user logged in interactive<br>
+						<br>
+						<b>StartOnlyIfIdle</b><br>
+						start task only if idle (Windows 95 only)<br>
+						<br>
+						<b>RunIfConnectedInternet</b><br>
+						implemented but not all Windows configrations support that<br>
+						<BR>
+						<STRONG>RestartOnIdleResume</STRONG>
+						<BR>
+						resume task execution on idle<BR>
+						<BR>
+						<STRONG>DaysInterval<BR>
+						</STRONG>to set daily trigger, for example every 3 days<BR>
+						<BR>
+						<STRONG>WeeksInterval<BR>
+						</STRONG>to set weekly trigger<BR>
+						<BR>
+						<STRONG>LastTimeRun</STRONG><BR>
+						Last time scheduled task run<BR>
+						<BR>
+						<STRONG>NextTimeRun</STRONG><BR>
+						Next time scheduled task run<BR>
+						<BR>
+						<STRONG>TriggerString</STRONG><BR>
+						Text description of trigger displayed in Windows dialog box<BR>
+						<BR>
+						<STRONG>Disabled</STRONG>
+						<BR>
+						get/set disabled task flag
+						<br>
+						<br>
+						// </small>Methods</font></small></p>
+		<p><font face="Verdana"><b><small><small>ActivateTask(taskname)<br>
+							&nbsp;&nbsp;&nbsp; </small></small></b><small><small>prepare to read 
+						(in/out) properties for task<br>
+						<br>
+						<br>
+						<strong>CreateTask(taskname, failifexists)</strong><br>
+						&nbsp;&nbsp;&nbsp; create task. Calls AddTrigger inside<br>
+						<br>
+						&nbsp;&nbsp;&nbsp; - taskname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is a 
+						name of new task<br>
+						&nbsp;&nbsp;&nbsp; - failifexists&nbsp;&nbsp;&nbsp; if TRUE fails if task 
+						exists, if FALSE - overwrites existing task</small></small></font></p>
+		<p><font face="Verdana"><small><small><strong>EditTask(taskname)</strong><br>
+						&nbsp;&nbsp;&nbsp; show dialogs to edit task<br>
+						<br>
+						<strong>RemoveTask</strong><br>
+						&nbsp;&nbsp;&nbsp; remove task from scheduled tasks<br>
+						&nbsp;&nbsp;&nbsp;
+						<br>
+						<strong>AddTrigger</strong><br>
+						&nbsp;&nbsp;&nbsp; add additional trigger.
+						<br>
+						&nbsp;&nbsp;&nbsp; Call this method if you want to add more triggers to already 
+						created task<br>
+						&nbsp;&nbsp;&nbsp; CreateTask call must be made before
+						<br>
+						<br>
+						<strong>Reset</strong><br>
+						&nbsp;&nbsp;&nbsp; cleans and releases all used objects<br>
+						&nbsp;&nbsp;&nbsp; Component does automatic cleanup and user do not need to 
+						call this function<br>
+						&nbsp;&nbsp;&nbsp; unless there is special need to reinitialize component</small></small><br>
+				<br>
+				<small><small><strong>Enum</strong><br>
+						&nbsp;&nbsp;&nbsp; enumerate/retrieve all tasks</small></small></font></p>
+		<p><font face="Verdana"><small><small><strong>AddMonth</strong><br>
+						&nbsp;&nbsp;&nbsp; add month to monthly trigger<br>
+						<br>
+						<b>GetTrigger(trigger_index)<br>
+							&nbsp;&nbsp;&nbsp; </b>get trigger related data from task . ActivateTask 
+						should be called before this call<BR>
+						<BR>
+						<STRONG>RemoveTrigger(trigger_index)</STRONG><BR>
+						&nbsp;&nbsp; remove existing trigger. ActiveTask should be called before this 
+						call<br>
+						<br>
+						<b>Run<br>
+							&nbsp;&nbsp;&nbsp; </b>run task . Should be used with ActivateTask<br>
+						<br>
+						<b>Terminate<br>
+							&nbsp;&nbsp;&nbsp; </b>terminate task . Should be used with ActivateTask<br>
+						<br>
+						<b>GetStatus(status)<br>
+							&nbsp;&nbsp;&nbsp; </b>get status of running task<br>
+						&nbsp;&nbsp;&nbsp; </small></small><small><small>SCHED_S_TASK_READY = 0</small></small><small><small><br>
+						&nbsp;&nbsp;&nbsp; SCHED_S_TASK_RUNNING = 1<br>
+						&nbsp;&nbsp;&nbsp; SCHED_S_TASK_NOT_SCHEDULED</small></small><small><small> = 2<b><br>
+							&nbsp;&nbsp;&nbsp; </b></small></small></font>
+		</p>
+	</body>
+</html>

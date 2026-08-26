@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>_Columns Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="_Columns Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi__columns_table"></A>_Columns Table</H1>
+
+<P>The _Columns table is a read-only system table that contains the column catalog. It lists the columns for all the tables. You can query this table to find out if a given column exists.</P>
+
+<P>The _Columns table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Column</TH>
+<TH align=left width=44%>Type</TH>
+<TH align=left width=13%>Key</TH>
+<TH align=left width=20%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Table</TD>
+<TD width=44%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Number</TD>
+<TD width=44%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=13%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>Name</TD>
+<TD width=44%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=13%> </TD>
+<TD width=20%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Table</DT>
+
+<DD>The name of the table that contains the column.</DD>
+
+<DT>Number</DT>
+
+<DD>The order of the column within the table.</DD>
+
+<DT>Name</DT>
+
+<DD>The name of the column.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Because the _Columns table is a system table that cannot be modified through SQL queries, you cannot obtain the primary keys with the <A HREF="qref_0w8j.htm"><B>MsiDatabaseGetPrimaryKeys</B></A> function or the <A HREF="vref_1lvd.htm"><B>PrimaryKeys</B> property</A>.</P>
+
+<P>Only persistent columns are stored in the _Columns table. To determine if a temporary column exists one would need to create a view using a SELECT * statement against the table, then loop through all fields in a record returned by the <A HREF="qref_8vlb.htm"><B>MsiViewGetColumnInfo</B></A> function with the MSICOLINFO_NAMES option.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

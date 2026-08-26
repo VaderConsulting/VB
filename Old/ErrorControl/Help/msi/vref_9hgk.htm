@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ApplyPatch Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ApplyPatch Method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_applypatch_method"></A>ApplyPatch Method</H1>
+
+<P>For each product listed by the patch package as eligible to receive the patch, the <B>ApplyPatch</B> method of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> invokes an installation and sets the <A HREF="pref_3wc9.htm"><B>PATCH</B> property</A> to the path of the patch package.</P>
+
+<PRE class=syntax><I>object</I>.ApplyPatch(<I>PatchPackage, InstallPackage, InstallType, CommandLine</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>Installer</B> object </DD>
+
+<DT><I>PatchPackage</I></DT>
+
+<DD>Specifies a path to the patch package.</DD>
+
+<DT><I>InstallPackage</I></DT>
+
+<DD>If <I>InstallType</I> is set to msiInstallTypeNetworkImage, <I>InstallPackage</I> specifies the path to the product that is to be patched. If <I>InstallType</I> is set to msiInstallTypeDefault and <I>InstallPackage</I> is set to 0, the installer applies the patch to every eligible product listed in the patch package. </DD>
+
+<DT><I>InstallType</I></DT>
+
+<DD>This parameter specifies the type of installation to patch. The <I>InstallType</I> parameter is ignored if <I>InstallPackage</I> is omitted. 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Value</TH>
+<TH align=left width=55%>Type of installation</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>msiInstallTypeNetworkImage</TD>
+<TD width=55%>Indicates a administrative installation. In this case, <I>InstallPackage</I> must be set to a package path. A value of 1 for msiInstallTypeNetworkImage specifies a administrative installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>msiInstallTypeDefault</TD>
+<TD width=55%>Searches system for products to patch. In this case, <I>InstallPackage</I> must be an empty string.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>CommandLine</I></DT>
+
+<DD>Specifies property settings being set on the command line.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Because the list delimiter for transforms, sources, and patches is a semicolon, this character should not be used for file names or paths.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_5fe0.htm"><B>MsiApplyPatch</B></A>, <A HREF="prop_0ylv.htm">About Properties</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ApplyPatch%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_9hgk.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ApplyPatch%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_9hgk.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

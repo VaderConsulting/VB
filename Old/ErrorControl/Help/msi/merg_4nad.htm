@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ModuleSignature Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ModuleSignature table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_modulesignature_table"></A>ModuleSignature Table</H1>
+
+<P>The ModuleSignature Table is a required table. It contains all the information necessary to identify a merge module. The merge tool adds this table to the .msi file if one does not already exist. The ModuleSignature table in a merge module has only one row containing the ModuleID, Language, and Version. However, the ModuleSignature table in an .msi file has a row containing this information for each .msm file that has been merged into it.</P>
+
+<P>Merge and verification tools check the ModuleSignature table in .msi files to determine if it has all of the dependent merge modules required by the current merge module (see <A HREF="merg_7z39.htm">ModuleDependency Table</A>) and whether the installation package was previously merged with any conflicting merge modules (see <A HREF="merg_8c4l.htm">ModuleExclusion Table</A>).</P>
+
+<P>The ModuleSignature table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Column</TH>
+<TH align=left width=32%>Type</TH>
+<TH align=left width=19%>Key</TH>
+<TH align=left width=28%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>ModuleID</TD>
+<TD width=32%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=19%>Y</TD>
+<TD width=28%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Language</TD>
+<TD width=32%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=19%>Y</TD>
+<TD width=28%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>Version</TD>
+<TD width=32%><A HREF="tref_1iy6.htm">Version</A></TD>
+<TD width=19%> </TD>
+<TD width=28%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>ModuleID</DT>
+
+<DD>An identifier that uniquely identifies the merge module. Two merge modules cannot have the same ModuleID unless the merge module is entirely backward compatible with its predecessor. You can create a GUID for this field using a utility such as GUIDGEN. The ModuleID column is a primary key for the table and therefore it must follow the naming convention in <A HREF="merg_0ucz.htm">Naming Primary Keys in Merge Module Databases</A>. For example, if the readable name of the merge module is MyLibrary and the GUID is {880DE2F0-CDD8-11D1-A849-006097ABDE17}<I>, </I>the entry in the ModuleID column becomes MyLibrary.880DE2F0_CDD8_11D1_A849_006097ABDE17.<I> </I></DD>
+
+<DT>Language</DT>
+
+<DD>The Language identifier specifies the default language for the merge module. The language identifier is in decimal format, for example, U.S. English is 1033. The language used by the merge module can be changed by applying a transform to the merge module before merging.</DD>
+
+<DT>Version</DT>
+
+<DD>The Version field contains a string that describes the major and minor versions of the merge module. 
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleSignature%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_4nad.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ModuleSignature%20Table;%20RELEASE:%20August%202001;%20URL:%20merg_4nad.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

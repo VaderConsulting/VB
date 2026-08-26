@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiCreateRecord</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiCreateRecord">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msicreaterecord"></A>MsiCreateRecord</H1>
+
+<P>The <B>MsiCreateRecord</B> function creates a new record object with the specified number of fields.</P>
+
+<PRE class=syntax><B>MSIHANDLE MsiCreateRecord(
+</B>  <B>unsigned int</B> <I>cParams</I>  // the number of data fields
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>cParams</I></DT>
+
+<DD>Specifies the number of fields the record will have. The maximum number of fields in a record is limited to 65535.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<P>If the function succeeds, the return value is handle to a new record object.</P>
+
+<P>If the function fails, the return value is NULL.</P>
+
+<H4>Remarks</H4>
+
+<P>Field 0 of the record object created by the <B>MsiCreateRecord</B> function is used for format strings and operation codes and is not included in the count specified by <I>cParams</I>. All fields are initialized to NULL.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm">Database Functions</A>, <A HREF="qref_778z.htm#_msi_record_processing_functions">Record Processing Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

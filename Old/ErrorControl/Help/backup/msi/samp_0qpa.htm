@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Adding Registry Information</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_adding_registry_information"></A>Adding Registry Information</H2>
+
+<P>The <A HREF="tref_3obp.htm">Registry table</A>, and related tables, of the installation database holds the registry information the application needs written in the system registry. See the <A HREF="novr_4300.htm">Registry Tables Group</A>. In this section you add the information that is to be registered on the user's computer by the Notepad sample.</P>
+
+<P>Use your database editor to open MNP2000.msi and enter the following data into the empty Registry Table.</P>
+
+<P><A HREF="tref_3obp.htm"><B>Registry Table</B></A></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=15%>Registry</TH>
+<TH align=left width=8%>Root</TH>
+<TH align=left width=35%>Key</TH>
+<TH align=left width=18%>Name</TH>
+<TH align=left width=10%>Value</TH>
+<TH align=left width=14%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>CharSet</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>lfCharSet</TD>
+<TD width=10%>#0</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>ClipPrecision</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>lfClipPrecision</TD>
+<TD width=10%>#2</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>Escapement</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>lfFaceName</TD>
+<TD width=10%>FixedSys</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>Italic</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>lfItalic</TD>
+<TD width=10%>#0</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>Orientation</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>lfOrientation</TD>
+<TD width=10%>#0</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>OutPrecision</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>lfOutPrecision</TD>
+<TD width=10%>#1</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>PageSettings</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad\Sample</TD>
+<TD width=18%>fSavePageSetting</TD>
+<TD width=10%>#0</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>PitchAndFamily</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>lfPitchAndFamily</TD>
+<TD width=10%>#49</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>PointSize</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>iPointSize</TD>
+<TD width=10%>#120</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>Quality</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>lfQuality</TD>
+<TD width=10%>#2</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>StrikeOut</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>lfStrikeOut</TD>
+<TD width=10%>#0</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>Weight</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>lfWeight</TD>
+<TD width=10%>#400</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=15%>Wrap</TD>
+<TD width=8%>2</TD>
+<TD width=35%>SOFTWARE\Microsoft\Notepad Sample</TD>
+<TD width=18%>fWrap</TD>
+<TD width=10%>#0</TD>
+<TD width=14%>Notepad</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_00s3.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

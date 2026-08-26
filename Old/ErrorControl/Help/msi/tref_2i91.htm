@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Shortcut Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Shortcut Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_shortcut_table"></A>Shortcut Table</H1>
+
+<P>The Shortcut table holds the information the application needs to create shortcuts on the user's computer. </P>
+
+<P>The Shortcut table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Column</TH>
+<TH align=left width=41%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Shortcut</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Directory_</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Name</TD>
+<TD width=41%><A HREF="tref_0oit.htm">Filename</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Component_</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Target</TD>
+<TD width=41%><A HREF="tref_6w1g.htm">Shortcut</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Arguments</TD>
+<TD width=41%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Description</TD>
+<TD width=41%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Hotkey</TD>
+<TD width=41%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Icon_</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>IconIndex</TD>
+<TD width=41%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>ShowCmd</TD>
+<TD width=41%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>WkDir</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Shortcut</DT>
+
+<DD>The key value for this table.</DD>
+
+<DT>Directory_</DT>
+
+<DD>External key into the first column of the <A HREF="tref_6an9.htm">Directory table</A>. This column specifies the directory in which the Shortcut file is created.</DD>
+
+<DT>Name</DT>
+
+<DD>The localizable name of the shortcut to be created.</DD>
+
+<DT>Component_</DT>
+
+<DD>External key into the first column of the <A HREF="tref_09np.htm">Component table</A>. The installer uses the installation state of the component specified in this column to determine whether the shortcut is created or deleted. This component must have a valid key path for the shortcut to be installed. If the Target column contains the name of a feature, the file launched by the shortcut is the key file of the component listed in this column.</DD>
+
+<DT>Target</DT>
+
+<DD>The shortcut target. 
+
+<P>For an advertised shortcut, this column must be an external key into the first column of the <A HREF="tref_0a91.htm">Feature table</A>. The installer evaluates the entry in the Target field as an <A HREF="tref_5elu.htm">Identifier</A> and the entry must be a valid foreign key into the <A HREF="tref_0a91.htm">Feature Table</A>. The file launched by the shortcut in this case is the key file of the component listed in the Component_ column. When the shortcut is activated, the installer verifies that all the components in the feature are installed before launching this file.
+
+
+<P>For a non-advertised shortcut, the installer evaluates this field as a <A HREF="tref_0qp0.htm">Formatted</A> string. The field should contains a property identifier enclosed by square brackets (<CODE>[ ]</CODE>), that is expanded into the file or a folder pointed to by the shortcut. For more information, see the <A HREF="aref_7uzy.htm">CreateShortcuts action</A>.
+</DD>
+
+<DT>Arguments</DT>
+
+<DD>The command-line arguments for the shortcut.
+
+<P>Note that the resolution of properties in the Arguments field is limited. A property formatted as [<I>Property</I>] in this field can only be resolved if the property already has the intended value when the component owning the shortcut is installed. For example, for the argument "[#MyDoc.doc]" to resolve to the correct value, the same process must be installing the file MyDoc.doc and the component that owns the shortcut. 
+</DD>
+
+<DT>Description</DT>
+
+<DD>The localizable description of the shortcut.</DD>
+
+<DT>Hotkey</DT>
+
+<DD>The hotkey for the shortcut. The low-order byte contains the virtual-key code for the key, and the high-order byte contains modifier flags. This must be a non-negative number. Authors of installation packages are generally recommend not to set this option, because this can add duplicate hotkeys to a users desktop. In addition, the practice of assigning hotkeys to shortcuts can be problematic for users using hotkeys for <A HREF="hand_1tvd.htm">accessibility</A>.</DD>
+
+<DT>Icon_</DT>
+
+<DD>External key to column one of the <A HREF="tref_7vmt.htm">Icon table</A>.</DD>
+
+<DT>IconIndex</DT>
+
+<DD>The icon index for the shortcut. This must be a non-negative number. </DD>
+
+<DT>ShowCmd</DT>
+
+<DD>The Show command for the application window.
+
+<P>The following values may be used. The values are as defined for the Windows API function ShowWindow.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Value</TH>
+<TH align=left width=76%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>1</TD>
+<TD width=76%>SW_SHOWNORMAL</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>3</TD>
+<TD width=76%>SW_SHOWMAXIMIZED</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>7</TD>
+<TD width=76%>SW_SHOWMINNOACTIVE</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>WkDir</DT>
+
+<DD>The name of the property that has the path of the working directory for the shortcut.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Enabling a feature creates an advertised shortcut only if the system's IShellLink interface supports installer descriptor resolution. This is supported by Microsoft® Windows&nbsp;2000, Microsoft® Windows®&nbsp;98, and systems running Microsoft® Internet Explorer 4.01. If unsupported, the installer creates a non-advertised shortcut upon installation of the feature's component, either locally or run from source.</P>
+
+<P>Note that advertised shortcuts always point at a particular application, identified by a <A HREF="pref_4tfd.htm">ProductCode</A>, and should not be shared between applications. Advertised shortcuts only work for the most recently installed application, and are removed when that application is removed.</P>
+
+<P>This table is referred to when the <A HREF="aref_7uzy.htm">CreateShortcuts action</A> and the <A HREF="aref_6t66.htm">RemoveShortcuts action</A> is executed.</P>
+
+<P>See also <A HREF="pref_2c55.htm"><B>DISABLEADVTSHORTCUTS</B> Property</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Shortcut%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_2i91.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Shortcut%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_2i91.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

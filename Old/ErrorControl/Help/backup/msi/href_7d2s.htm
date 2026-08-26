@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Reset ControlEvent</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Reset ControlEvent">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_reset_controlevent"></A>Reset ControlEvent</H1>
+
+<P>The dialog is reset. In other words, all the controls on the dialog are called to undo the property changes they have performed. This event resets all the property values to what they were when the dialog was created. </P>
+
+<P>There is a case, which should occur rarely in practice, that is not handled properly by this ControlEvent. If there are two or more controls on the same dialog linked indirectly to the same property and at least one of them started having some other property, then this property value will sometimes be reset to its second value. </P>
+
+<H4>Published By</H4>
+
+<P>This ControlEvent is published by the installer.</P>
+
+<H4>Argument</H4>
+
+<P>None.</P>
+
+<H4>Action on Subscribers</H4>
+
+<P>None.</P>
+
+<H4>Typical Use</H4>
+
+<P>A <A HREF="href_331o.htm">PushButton</A> control on a modal dialog is used to reset all the values on the dialog box and to cancel all the changes on the page.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

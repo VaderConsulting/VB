@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>RegistryValue Method</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="RegistryValue Method">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_registryvalue_method"></A><A NAME="helpid_msiinstall_registryvalue"></A>RegistryValue Method</H1>
+
+<P>The <B>RegistryValue</B> method of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> reads information about a specified registry key of value. If the key or value specified does not exist, the method returns an error of 9, "Subscript out of Range." </P>
+
+<PRE class=syntax><I>object</I>.RegistryValue(<I>root, key, value</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>Installer</B> object </DD>
+
+<DT><I>root</I></DT>
+
+<DD>In Microsoft® Windows NT® Version 4.0, the registry root is either a numeric root key or a machine name as a string. Machine names are always strings. In On Windows 95/98 or Windows Millennium (Windows Me), the registry root is a numeric root key only. You can only access HKLM on a remote machine.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=60%>Root</TH>
+<TH align=left width=40%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=60%><B>HKEY_CLASSES_ROOT</B></TD>
+<TD width=40%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=60%><B>HKEY_CURRENT_USER</B></TD>
+<TD width=40%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=60%><B>HKEY_LOCAL_MACHINE</B></TD>
+<TD width=40%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=60%><B>HKEY_USERS</B></TD>
+<TD width=40%>3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=60%><B>HKEY_PERFORMANCE_DATA</B></TD>
+<TD width=40%>4</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=60%><B>HKEY_CURRENT_CONFIG</B></TD>
+<TD width=40%>5</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=60%><B>HKEY_DYN_DATA</B></TD>
+<TD width=40%>6</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>key</I></DT>
+
+<DD>A string containing the complete key path from the root. On Windows 95/98 or Windows Millennium (Windows Me), registry key class names are not supported and cannot be used.</DD>
+
+<DT><I>value</I></DT>
+
+<DD>This optional parameter designates which associated value to return for the specified key. The value is one of the following:
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=25%>Value</TH>
+<TH align=left width=75%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Missing or blank</TD>
+<TD width=75%>Returns a Boolean designating whether the key exists.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>String</TD>
+<TD width=75%>Returns the data associated with the named value, fails if the value name is non-existent.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Positive integer</TD>
+<TD width=75%>Returns the 1-based enumerated value name, it is empty if non-existent.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Negative integer</TD>
+<TD width=75%>Returns the 1-based enumerated subkey name, this is empty if non-existent.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Zero integer</TD>
+<TD width=75%>Returns the string class name for the designated key.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=25%>Empty string " "</TD>
+<TD width=75%>Returns the default value of registry key.</TD>
+</TR>
+</TABLE><BR>
+
+
+</DD>
+</DL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20RegistryValue%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_5p2c.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20RegistryValue%20Method;%20RELEASE:%20August%202001;%20URL:%20vref_5p2c.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

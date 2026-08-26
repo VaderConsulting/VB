@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>About Transforms</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_about_transforms"></A>About Transforms</H1>
+
+<P>A transform is a collection of changes applied to an installation. By applying a transform to a base installation package, the installer can add or replace data in the installation database. The installer can only apply transforms during an installation. </P>
+
+<P>The installer registers a list of transforms required by the product during the installation. The installer must apply these transforms to the product's installation package when configuring or installing the product. If a listed transform is unavailable, and if the transform source resiliency cannot restore it, the installation fails.</P>
+
+<P>A transform can modify information that is in any persistent table in the <A HREF="novr_5h5x.htm">Installer Database</A>. A transform can also add or remove persistent tables in the Installer Database. Transforms cannot modify any part of an installation package that is not in a database table, such as information in the <A HREF="sovr_99yl.htm">Summary Information Stream</A>, information in substorages, information in nested installations, or files in embedded cabinets.</P>
+
+<P>There are three types of Windows Installer transforms:</P>
+
+<P><A HREF="updat_3ub7.htm">Embedded Transforms</A> <BR>
+<A HREF="updat_4oj7.htm">Secured Transforms</A> <BR>
+<A HREF="updat_9qur.htm">Unsecured Transforms</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Generating a Patch Package</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_generating_a_patch_package"></A>Generating a Patch Package</H2>
+
+<P>The recommended method for generating a patch package is to use a patch creation tool such as <A HREF="updat_33ad.htm">MsiMsp.exe</A> to call <A HREF="updat_6yu7.htm"><B>UiCreatePatchPackage</B></A> in <A HREF="updat_8f70.htm">Patchwiz.DLL</A>. MsiMsp.exe and PatchWix.dll are provided in the Windows Installer SDK. The source code for Patchwiz.dll is also provided as an example so that you can customize and enhance the patch creation process.</P>
+
+<P>The following example command line uses MsiMsp.exe and the .pcp file created in <A HREF="samp_0351.htm">Creating a Patch Creation Properties File</A> to generate the sample patch package MNP2000.msp.</P>
+
+<PRE>MsiMsp.exe -s C:\Note_Installer\Patch\MNP2000.pcp -p C:\Note_Installer\Patch\MNP2000.msp</PRE>
+
+<P>An authored patch creation tool may generate the patch package by calling <A HREF="updat_6yu7.htm"><B>UiCreatePatchPackage</B></A> as follows.</P>
+
+<P>UiCreatePatchPackage (C:\Note_Installer\Patch\MNP2000.pcp, C:\Note_Installer\Patch\MNP2000.msp, NULL, NULL, %TEMP%\~pcw_tmp.tmp\, TRUE)</P>
+
+<P>Note that Windows Installer version 1.2 cannot create a patch between two identical .msi files because creating the transform fails, which causes the patch creation process to fail. The information in the two databases must be different, not merely the summary information stream. See <A HREF="samp_9r54.htm">Planning a Small Update Patch</A>.</P>
+
+<P><A HREF="samp_8n8u.htm">Continue</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

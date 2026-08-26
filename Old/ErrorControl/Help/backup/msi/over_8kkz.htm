@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Cabinet Files</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_cabinet_files"></A>Cabinet Files</H2>
+
+<P>A cabinet is a single file, usually with a .cab extension, that stores compressed files in a file library. The cabinet format is an efficient way to package multiple files because compression is performed across file boundaries, which significantly improves the compression ratio. </P>
+
+<P>Developers can use a cabinet file creation tool such as Makecab.exe to make cabinet files for use with installer packages. </P>
+
+<P>Developers can also use a cabinet file creation tool such as Cabarc.exe to make cabinet files for use with installer packages. This tool writes to the Diamond cabinet structure.</P>
+
+<P>The file keys of the files stored inside of a cabinet file must match the entries in the File column of the <A HREF="tref_4n6t.htm">File table</A> and the sequence of files in the cabinet must match the file sequence specified in the Sequence column. For more information, see <A HREF="over_3nla.htm">Including a Cabinet File in an Installation</A>.</P>
+
+<P>Large files can be split between two or more cabinet files. There can be no more than 15 files in any one cabinet file that spans to the next cabinet file. For example, if you have three cabinet files the first cabinet can have 15 files that span to the second cabinet file and the second cabinet file can have 15 files that span to the third cabinet file.</P>
+
+<P>A cabinet file can be located inside or outside of the .msi file. To conserve disk space, the installer always removes any cabinets that are embedded in the .msi file before caching the installation package on the user's computer. </P>
+
+<P>The installer extracts files from a cabinet as the they are needed by the installation and installs them in the same order they are stored in the cabinet file. The space requirements for installing a file stored in a cabinet are no different than for installing an uncompressed file. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

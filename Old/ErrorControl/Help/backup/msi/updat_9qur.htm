@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Unsecured Transforms</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_unsecured_transforms"></A>Unsecured Transforms</H2>
+
+<P>Transforms that have not been secured as described in <A HREF="updat_4oj7.htm">Secured Transforms</A> are unsecured transforms by default.</P>
+
+<P>When a package is installed or advertised as a per-user installation, and has unsecured transforms, the installer saves the unsecured transforms in the Application Data folder in the user' profile. This enables a user to maintain their customization of a product while moving between computers.</P>
+
+<P>When the package is installed or advertised as a per-machine installation, and uses unsecured transforms, the installer saves the unsecured transforms in the %windir%\Installer folder. This enables a user to maintain their customizations of a product while moving between computers.</P>
+
+<P>If the cached copy of the transform becomes unavailable, the installer can restore the transform cache using a source listed in the <A HREF="pref_9d2x.htm">SOURCELIST property</A>. The method the installer uses to search for a transform source is the same as used to search for a .msi file. See <A HREF="over_1lq1.htm">Source Resiliency</A>.</P>
+
+<P>To apply unsecured transforms when installing a package, pass the transform filenames in the <A HREF="pref_8q2h.htm">TRANSFORMS property</A> or command line string and do not begin the string with the @ or | characters. Do not set the <A HREF="over_9u91.htm">TransformsSecure</A> policy or the <A HREF="pref_0uwp.htm">TRANSFORMSSECURE property</A>. Note that you cannot combine unsecured transforms and <A HREF="updat_4oj7.htm">secured transforms</A> in the same TRANSFORMS list. </P>
+
+<P>For more information, see <A HREF="updat_22ib.htm">Applying Transforms</A>. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

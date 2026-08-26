@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE28</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE28 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice28"></A>ICE28</H1>
+
+<P>ICE28 is commonly used to validate that the ForceReboot action is placed before or after, and never within, a specific group of actions in the action sequence tables. See the <A HREF="aref_69bi.htm">ForceReboot action</A> topic to determine the actions that comprise this group.</P>
+
+<P>ICE28 validates actions in the following sequence tables.</P>
+
+<P><A HREF="tref_5lnp.htm">AdminUISequence table</A> </P>
+
+<P><A HREF="tref_70f9.htm">AdminExecuteSequence table</A> </P>
+
+<P><A HREF="tref_3rvp.htm">AdvtUISequence table</A> </P>
+
+<P><A HREF="tref_1git.htm">InstallUISequence table</A> </P>
+
+<P><A HREF="tref_5pid.htm">InstallExecuteSequence table</A> </P>
+
+<H4>Result</H4>
+
+<P>ICE28 posts an error message if ForceReboot is sequenced within the specified action group. </P>
+
+<H4>Example</H4>
+
+<P>For the example shown, ICE28 posts the following error message. </P>
+
+<PRE>Action: 'ForceReboot' of table InstallExecuteSequence is not permitted in the range 5 to 15 because it cannot separate a set of actions contained in this range.</PRE>
+
+<P><A HREF="tref_5pid.htm"><B>InstallExecuteSequence Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=44%>Action</TH>
+<TH align=left width=56%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>ForceReboot</TD>
+<TD width=56%>10</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>RegisterMIMEInfo</TD>
+<TD width=56%>&nbsp; 5</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>RegisterProgIdInfo</TD>
+<TD width=56%>15</TD>
+</TR>
+</TABLE><BR>
+
+<P>The sequence number of 10 given to ForceReboot breaks generates the error, because it comes between the sequence numbers of RegisterMIMEInfo and RegisterProgIdInfo.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

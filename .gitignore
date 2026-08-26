@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+*.suo
+*.user
+AdminSetPassword/userlist.txt
+AdminSetPassword/setup.ini
+AccessPwdBreak/Dummy.mdb

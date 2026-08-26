@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I search for a file in a specific location?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_how_do_i_search_for_a_file_in_a_specific_location"></A>How do I search for a file in a specific location?</H2>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To search for a file in a specific location on the user's system</B>
+
+<OL>
+	<LI>List the file's signature and name in the Signature table. The remaining fields in this record can be null to search for any version of MyApp.exe. 
+<P><A HREF="tref_149x.htm"><B>Signature Table</B></A> 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Signature</TH>
+<TH align=left width=82%>Filename</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>AppFile</TD>
+<TD width=82%>MyApp.exe</TD>
+</TR>
+</TABLE><BR>
+</LI>
+
+	<LI>Enter the property that the installer is to set if MyApp.exe is installed.
+<P><A HREF="tref_0w9x.htm"><B>AppSearch Table</B></A><B> (partial)</B> 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=18%>Property</TH>
+<TH align=left width=82%>Signature</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=18%>MYAPP</TD>
+<TD width=82%>AppFile</TD>
+</TR>
+</TABLE><BR>
+</LI>
+
+	<LI>Use the DrLocator table. Enter the full path to the file on the user's system in the Path field. Enter a value of 0 into the Depth column to search the bin folder.
+<P><A HREF="tref_3azp.htm"><B>DrLocator Table</B></A> 
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Signature</TH>
+<TH align=left width=20%>Parent</TH>
+<TH align=left width=45%>Path</TH>
+<TH align=left width=13%>Depth</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>AppFile</TD>
+<TD width=20%> </TD>
+<TD width=45%>c:\Program Files\MyProducts\Projects\bin</TD>
+<TD width=13%>0</TD>
+</TR>
+</TABLE><BR>
+</LI>
+
+	<LI>Include the AppSearch action in the action sequence. If MyApp.exe is installed in c:\Program Files\MyProducts\Projects\bin, the installer sets the property MYAPP to the location of file.</LI>
+</OL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

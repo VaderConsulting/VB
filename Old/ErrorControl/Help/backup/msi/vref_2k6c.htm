@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Execute Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Execute Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_execute_method"></A><A NAME="helpid_msiview_execute"></A>Execute Method</H1>
+
+<P>The <B>Execute</B> method of the <A HREF="vref_7bxw.htm"><B>View</B> object</A> uses the question mark token to represent parameters in a SQL. For more information, see <A HREF="qref_5j20.htm">SQL Syntax</A>. The values of these parameters are passed in as the corresponding fields of a parameter record.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.Execute <I>record</I></P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_7bxw.htm"><B>View</B> object</A></DD>
+
+<DT><I>record</I></DT>
+
+<DD>Optional <A HREF="vref_6kac.htm"><B>Record</B> objects</A> containing the values that replace the parameter tokens (?) in the SQL query.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This method must be called before any calls to the <A HREF="vref_2204.htm"><B>Fetch</B> method</A>. </P>
+
+<P>If the SQL query specifies values with parameter markers (?), a record must be supplied containing all of the replacement values, which must be in the same order and of the same data type as the parameter markers. When this method is used with INSERT and UPDATE queries, the question mark tokens must precede all the non-parameterized values. </P>
+
+<P>For example, these queries are valid.</P>
+
+<P>UPDATE {table-list} SET {column}= ? , {column}= {constant}</P>
+
+<P>INSERT INTO {table} ({column-list}) VALUES (?, {constant-list}) </P>
+
+<P>However these queries are invalid.</P>
+
+<P>UPDATE {table-list} SET {column}= {constant}, {column}=?</P>
+
+<P>INSERT INTO {table} ({column-list}) VALUES ({constant-list}, ? ) </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

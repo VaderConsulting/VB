@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiCreateTransformSummaryInfo</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiCreateTransformSummaryInfo">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msicreatetransformsummaryinfo"></A>MsiCreateTransformSummaryInfo</H1>
+
+<P>The <B>MsiCreateTransformSummaryInfo</B> function creates summary information of an existing transform to include validation and error conditions. Execution of this function sets the error record, accessible via <A HREF="qref_7jhg.htm"><B>MsiGetLastErrorRecord</B></A></P>
+
+<PRE class=syntax><B>UINT MsiCreateTransformSummaryInfo(
+</B>  <B>MSIHANDLE</B> <I>hDatabase</I><B>,</B><I>         </I> // database handle
+  <B>MSIHANDLE</B> <I>hDatabaseReference</I><B>,</B> // reference database without changes
+  <B>LPCTSTR</B> <I>szTransformFile</I><B>,      </B>// name of generated transform file
+  <B>int</B> <I>iErrorConditions</I><B>,</B>         // conditions treated as errors when 
+                                //  transform applied
+  <B>int</B> <I>iValidation               </I>//<I> </I>properties to be validated when
+                                //  transform applied
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hDatabase</I></DT>
+
+<DD>[in] Handle to the database that contains the new database Summary Information.</DD>
+
+<DT><I>hDatabaseReference</I></DT>
+
+<DD>[in] Handle to the database that contains the original Summary Information.</DD>
+
+<DT><I>szTransformFile</I></DT>
+
+<DD>[in] The name of the transform to which the Summary Information is added.</DD>
+
+<DT><I>iErrorConditions</I></DT>
+
+<DD>[in] The error conditions that should be suppressed when the transform is applied. Choose one or more of the following values:
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Error condition</TH>
+<TH align=left width=21%>Value</TH>
+<TH align=left width=34%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>none</TD>
+<TD width=21%>0x00000000</TD>
+<TD width=34%>None of the following conditions.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MSITRANSFORM_ERROR_ADDEXISTINGROW</TD>
+<TD width=21%>0x00000001</TD>
+<TD width=34%>Adding a row that already exists.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MSITRANSFORM_ERROR_DELMISSINGROW</TD>
+<TD width=21%>0x00000002</TD>
+<TD width=34%>Deleting a row that doesn't exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MSITRANSFORM_ERROR_ADDEXISTINGTABLE</TD>
+<TD width=21%>0x00000004</TD>
+<TD width=34%>Adding a table that already exists.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MSITRANSFORM_ERROR_DELMISSINGTABLE</TD>
+<TD width=21%>0x00000008</TD>
+<TD width=34%>Deleting a table that doesn't exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MSITRANSFORM_ERROR_UPDATEMISSINGROW</TD>
+<TD width=21%>0x00000010</TD>
+<TD width=34%>Updating a row that doesn't exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MSITRANSFORM_ERROR_CHANGECODEPAGE</TD>
+<TD width=21%>0x00000020</TD>
+<TD width=34%>Transform and database code pages do not match and neither code page is neutral.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>iValidation</I></DT>
+
+<DD>[in] Specifies those properties to be validated to verify the transform can be applied to the database. This parameter can be one or more of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Validation flag</TH>
+<TH align=left width=21%>Value</TH>
+<TH align=left width=34%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>none</TD>
+<TD width=21%>0x00000000</TD>
+<TD width=34%>Validate no properties.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MSITRANSFORM_VALIDATE_LANGUAGE</TD>
+<TD width=21%>0x00000001</TD>
+<TD width=34%>Default language must match base database.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>MSITRANSFORM_VALIDATE_PRODUCT</TD>
+<TD width=21%>0x00000002</TD>
+<TD width=34%>Product must match base database.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Validate product version flags.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Validation flag</TH>
+<TH align=left width=18%>Value</TH>
+<TH align=left width=34%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSITRANSFORM_VALIDATE_MAJORVERSION</TD>
+<TD width=18%>0x00000008</TD>
+<TD width=34%>Check major version only.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSITRANSFORM_VALIDATE_MINORVERSION</TD>
+<TD width=18%>0x00000010</TD>
+<TD width=34%>Check major and minor versions only.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSITRANSFORM_VALIDATE_UPDATEVERSION</TD>
+<TD width=18%>0x00000020</TD>
+<TD width=34%>Check major, minor, and update versions.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Product version relationship flags. In the following table the "Installed Version" is the version of the package being transformed and the "Base Version" is the version of the package used to create the transform.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Validation flag</TH>
+<TH align=left width=18%>Value</TH>
+<TH align=left width=34%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSITRANSFORM_VALIDATE_NEWLESSBASEVERSION</TD>
+<TD width=18%>0x00000040</TD>
+<TD width=34%>Installed version &lt; base version.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSITRANSFORM_VALIDATE_NEWLESSEQUALBASEVERSION</TD>
+<TD width=18%>0x00000080</TD>
+<TD width=34%>Installed version &lt;= base version.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSITRANSFORM_VALIDATE_NEWEQUALBASEVERSION</TD>
+<TD width=18%>0x00000100</TD>
+<TD width=34%>Installed version =  base version.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSITRANSFORM_VALIDATE_NEWGREATEREQUALBASEVERSION</TD>
+<TD width=18%>0x00000200</TD>
+<TD width=34%>Installed version &gt;= base version.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSITRANSFORM_VALIDATE_NEWGREATERBASEVERSION</TD>
+<TD width=18%>0x00000400</TD>
+<TD width=34%>Installed version &gt;  base version.</TD>
+</TR>
+</TABLE><BR>
+
+
+
+<P>Upgrade code validation flags.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Validation flag</TH>
+<TH align=left width=18%>Value</TH>
+<TH align=left width=34%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>MSITRANSFORM_VALIDATE_UPGRADECODE</TD>
+<TD width=18%>0x00000800</TD>
+<TD width=34%>UpgradeCode must match base database.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_OPEN_FAILED</DT>
+
+<DD>The transform storage file could not be opened.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.</DD>
+
+<DT>ERROR_INSTALL_PACKAGE_INVALID</DT>
+
+<DD>Reference to an invalid Windows Installer package.
+</DD>
+</DL>
+
+<P><A HREF="pref_4tfd.htm"><B>ProductCode</B></A> and <A HREF="pref_120p.htm"><B>ProductVersion</B></A> properties must be defined in the <A HREF="tref_21d1.htm">Property</A> tables of both the base and reference databases. If MSITRANSFORM_VALIDATE_UPGRADECODE is used, the <A HREF="pref_7mux.htm"><B>UpgradeCode</B> property</A> must also be defined in both databases. If these conditions are not met <B>MsiCreateTransformSummaryInfo</B> returns ERROR_INSTALL_PACKAGE_INVALID.</P>
+
+<P>Because the list delimiter for transforms, sources and patches is a semicolon, this character should not be used for filenames or paths.</P>
+
+<P>This function cannot be called from custom actions. A call to this function from a custom action causes the function to fail. </P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="updat_5wab.htm">Transforms</A>, <A HREF="sovr_43w4.htm">Summary Information Stream Property Set</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiCreateTransformSummaryInfo;%20RELEASE:%20August%202001;%20URL:%20qref_5zlb.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiCreateTransformSummaryInfo;%20RELEASE:%20August%202001;%20URL:%20qref_5zlb.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

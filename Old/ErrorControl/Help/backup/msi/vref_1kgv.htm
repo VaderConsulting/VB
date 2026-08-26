@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>SummaryInformation Property (Database Object)</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="SummaryInformation Property (Database Object)">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_summaryinformation_property_database_object_"></A>SummaryInformation Property (Database Object)</H1>
+
+<P>The SummaryInformation property of the <A HREF="vref_64dw.htm"><B>Database</B> object</A> returns a <A HREF="vref_7sxg.htm"><B>SummaryInfo</B> object</A> that can be used to examine, update, and add properties to the <A HREF="sovr_99yl.htm">summary information stream</A>.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.SummaryInformation(<I>maxProperties</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_64dw.htm"><B>Database</B> object</A></DD>
+
+<DT><I>maxProperties</I></DT>
+
+<DD>The maximum number of properties to be added or modified. This parameter is required and used to allocate sufficient working memory during the stream generation. It is not required to store this number of properties. A value of zero must be used if the database is opened read-only to prevent the stream from being updated.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If a value of <I>maxProperties</I> greater than 0 is used to open an existing summary information stream, the <A HREF="vref_31r8.htm"><B>Persist</B> method</A> must be called before closing the object. Failing to do this will lose the existing stream information.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>PRIMARYFOLDER Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="PRIMARYFOLDER Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_primaryfolder_property"></A>PRIMARYFOLDER Property</H1>
+
+<P>The PRIMARYFOLDER is a global property that allows the author to designate a primary folder for the installation. The value for this property must be the key name of a directory that exists in the <A HREF="tref_6an9.htm">Directory table</A>.</P>
+
+<P>The installer uses the resolved path of the primary folder to determine which volume to use when setting the values of the <A HREF="pref_12t5.htm">PrimaryVolumePath property</A>, <A HREF="pref_6r5l.htm">PrimaryVolumeSpaceAvailable property</A>, <A HREF="pref_1kvt.htm">PrimaryVolumeSpaceRequired property</A>, and <A HREF="pref_30u1.htm">PrimaryVolumeSpaceRemaining property</A>. The installer may provide the values of these latter properties to users in the user interface to help them manage disk space. Commonly package authors can select the largest folder as the primary folder.</P>
+
+<P>The value for this property must be the key name of a directory record found in the <A HREF="tref_6an9.htm">Directory table</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

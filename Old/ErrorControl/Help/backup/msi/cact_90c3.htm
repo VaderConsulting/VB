@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Return Values of JScript and VBScript Custom Actions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_return_values_of_jscript_and_vbscript_custom_actions"></A>Return Values of JScript and VBScript Custom Actions</H2>
+
+<P>Custom actions written in JScript or VBScript can call an optional function. These functions must return one of the following values.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=39%>Return value</TH>
+<TH align=left width=24%>Value</TH>
+<TH align=left width=37%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiDoActionStatusNoAction</TD>
+<TD width=24%>0</TD>
+<TD width=37%>Action not executed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiDoActionStatusSuccess </TD>
+<TD width=24%>IDOK = 1</TD>
+<TD width=37%>Action completed successfully.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiDoActionStatusUserExit </TD>
+<TD width=24%>IDCANCEL = 2</TD>
+<TD width=37%>Premature termination by user.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiDoActionStatusFailure</TD>
+<TD width=24%>IDABORT = 3</TD>
+<TD width=37%>Unrecoverable error. Returned if there is an error during parsing or execution of the Jscript or VBScript.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiDoActionStatusSuspend</TD>
+<TD width=24%>IDRETRY = 4</TD>
+<TD width=37%>Suspended sequence to be resumed later.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiDoActionStatusFinished</TD>
+<TD width=24%>IDIGNORE = 5</TD>
+<TD width=37%>Skip remaining actions. Not an error.</TD>
+</TR>
+</TABLE><BR>
+
+<P></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

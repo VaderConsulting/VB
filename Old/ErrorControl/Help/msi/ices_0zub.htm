@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using Internal Consistency Evaluators</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICEs [Windows Installer], using">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_using_internal_consistency_evaluators"></A>Using Internal Consistency Evaluators</H2>
+
+<P>To validate a database, use a special validation tool to merge a .cub file containing the <A HREF="ices_55f7.htm">Internal Consistency Evaluators</A> (ICEs) into your database, execute the ICEs, and report the results. Several such tools are provided in the Platform SDK. Authoring environments from third-party vendors also may incorporate the ICE validation system into their authoring environment. It is also possible to write your own tool to perform ICE validation. Most ICE validation tools merge the .cub file and your database into a third, temporary database. Microsoft® Windows® Installer displays warnings, errors, debugging information, and API errors as it executes each ICE in the .cub file. When the installer finishes executing the ICEs it closes the .msi file, .cub file, and temporary database without saving any changes. The .msi file and .cub file remain unchanged by the validation test.</P>
+
+<P>ICE custom actions communicate to the user by calling <A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A> and posting an INSTALLMESSAGE_USER message. An ICE message commonly returns information such as the following:
+
+<UL>
+	<LI>Name of the ICE that has found an error </LI>
+
+	<LI>Date the ICE was created </LI>
+
+	<LI>Author of the ICE </LI>
+
+	<LI>Date the ICE was last modified.</LI>
+
+	<LI>Description of the API error causing the ICE to fail </LI>
+
+	<LI>Description of the error </LI>
+
+	<LI>A warning to the user </LI>
+
+	<LI>Name of the database table containing the error or warning </LI>
+
+	<LI>Name of the table column containing the error or warning </LI>
+
+	<LI>Primary keys of the table containing the error or warning </LI>
+
+	<LI>A URL to a HTML file giving debugging suggestions </LI>
+
+	<LI>A string that can contain other information </LI>
+</UL>
+
+<P>Authors of installation packages can write ICE custom actions or use the standard set of ICEs included in the .cub files provided with the SDK. For more information on how to write an ICE, see <A HREF="ices_1y1x.htm">Building an ICE</A>. </P>
+
+<P>After writing the appropriate ICEs for validation, a developer must collect the custom actions together into an .msi database, called a .cub file, that contains only the ICEs and their required tables. A .cub file cannot be installed and is used only to store and provide access to ICE custom actions. For more information on making .cub files, see <A HREF="ices_5hyd.htm">Building an ICE Database</A>. Alternatively, developers can validate their installation package using the existing ICEs described in <A HREF="ices_40th.htm">ICE Reference</A>. These ICEs can be obtained from standard .cub files provided with the SDK. </P>
+
+<P>Starting with Windows Installer version 1.1 SDK, the installation of the database table editor Orca<B> </B>or the validation tool msival2 provides the Logo.cub, Darice.cub, and Mergemod.cub files. The set of ICEs in the Logo.cub file is a subset of those in the Darice.cub file. If your package passes validation using Darice.cub, it will pass with Logo.cub. Mergemod.cub contains a set of ICEs used to validate merge modules. For more information, see <A HREF="merg_54md.htm">Merge Module ICE Reference</A>.</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To validate an installation package</B>
+
+<OL>
+	<LI>Obtain or author the appropriate ICE custom actions. You may be able to use one or more of the existing ICEs described in the <A HREF="ices_40th.htm">ICE Reference</A>. If your validation requires an ICE not yet in this list, you can create a new ICE as described in <A HREF="ices_1y1x.htm">Building an ICE</A>.</LI>
+
+	<LI>Prepare an ICE Database containing all the ICE custom actions. See the section <A HREF="ices_5hyd.htm">Building An ICE Database</A> for information about preparing a .cub file. </LI>
+
+	<LI>Merge the .cub file containing your ICE database into the .msi file, then execute the ICE custom actions using a validation tool.</LI>
+</OL>
+
+<P>Note that merge modules should be validated as described in <A HREF="merg_941f.htm">Validating Merge Modules</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%20Internal%20Consistency%20Evaluators;%20RELEASE:%20August%202001;%20URL:%20ices_0zub.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%20Internal%20Consistency%20Evaluators;%20RELEASE:%20August%202001;%20URL:%20ices_0zub.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>RegLocator Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="RegLocator Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_reglocator_table"></A>RegLocator Table</H1>
+
+<P>The RegLocator table holds the information needed to search for a file or directory using the registry, or to search for a particular registry entry itself. </P>
+
+<P>The RegLocator table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=26%>Column</TH>
+<TH align=left width=41%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Signature_</TD>
+<TD width=41%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Root</TD>
+<TD width=41%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Key</TD>
+<TD width=41%><A HREF="tref_0xgo.htm">RegPath</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Name</TD>
+<TD width=41%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=26%>Type</TD>
+<TD width=41%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Signature_</DT>
+
+<DD>The value in the Signature_ field represents a unique signature that is an external key into column one of the Signature table. If this signature is present in the Signature table, the search is for a file. If this signature is absent from the Signature table, and the value of the Type column is <B>msidbLocatorTypeRawValue</B>, the search is for the registry key name pointed to by the RegLocator table. Otherwise the search is for a directory pointed to by the RegLocator table.</DD>
+
+<DT>Root</DT>
+
+<DD>The predefined root key for the registry value.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>Constant</TH>
+<TH align=left width=17%>Hexadecimal</TH>
+<TH align=left width=13%>Decimal</TH>
+<TH align=left width=33%>Root key</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbRegistryRootClassesRoot</B></TD>
+<TD width=17%>0x000</TD>
+<TD width=13%>0</TD>
+<TD width=33%>HKEY_CLASSES_ROOT</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbRegistryRootCurrentUser</B></TD>
+<TD width=17%>0x001</TD>
+<TD width=13%>1</TD>
+<TD width=33%>HKEY_CURRENT_USER</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbRegistryRootLocalMachine</B></TD>
+<TD width=17%>0x002</TD>
+<TD width=13%>2</TD>
+<TD width=33%>HKEY_LOCAL_MACHINE</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>msidbRegistryRootUsers</B></TD>
+<TD width=17%>0x003</TD>
+<TD width=13%>3</TD>
+<TD width=33%>HKEY_USERS</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT>Key</DT>
+
+<DD>The key for the registry value.</DD>
+
+<DT>Name</DT>
+
+<DD>The registry value name.</DD>
+
+<DT>Type</DT>
+
+<DD>A value that determines if the registry value is a file name, a directory location, or raw registry value.
+
+<P>The following table lists valid values. If absent, Type is set to be 1.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Constant</TH>
+<TH align=left width=19%>Hexadecimal</TH>
+<TH align=left width=13%>Decimal</TH>
+<TH align=left width=34%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><B>msidbLocatorTypeDirectory</B></TD>
+<TD width=19%>0x000</TD>
+<TD width=13%>0</TD>
+<TD width=34%>Key path is a directory.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><B>msidbLocatorTypeFileName</B></TD>
+<TD width=19%>0x001</TD>
+<TD width=13%>1</TD>
+<TD width=34%>Key path is a file name.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%><B>msidbLocatorTypeRawValue</B></TD>
+<TD width=19%>0x002</TD>
+<TD width=13%>2</TD>
+<TD width=34%>Key path is a registry value.</TD>
+</TR>
+</TABLE><BR>
+
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This table is used with the <A HREF="tref_0w9x.htm">AppSearch Table</A>.</P>
+
+<P>This table's columns are generally not localized. If an author decides to search for products in multiple languages, then there must be a separate entry included in the table for each language.</P>
+
+<P>See <A HREF="over_84oj.htm">Searching for Existing Applications, Files, Registry Entries or .ini File Entries</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I use a custom action to launch an installed file at the end of the installation?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_how_do_i_use_a_custom_action_to_launch_an_installed_file_at_the_end_of_the_installation"></A>How do I use a custom action to launch an installed file at the end of the installation?</H2>
+
+<P>The following example illustrates how to launch an HTML file at the end of an installation. The installer installs the component containing the file and then publishes a control event at the end of the installation to run a custom action that opens the file. This approach may be used to launch a help tutorial at the end of the first installation of an application. </P>
+
+<P>The sample must meet the following specifications.
+
+<UL>
+	<LI>The installer executes the custom action only if the <A HREF="dglo_0xvd.htm#_msi_full_ui_gly">full UI</A> level is used to install the application.</LI>
+
+	<LI>The installer executes the custom action only if the component containing the HTML file is installed to run locally on the computer.</LI>
+
+	<LI>The custom action only runs at first installation of the application</LI>
+
+	<LI>The installation does not fail if the custom action fails.</LI>
+</UL>
+
+<P>The sample includes a hypothetical component named Tutorial that controls at least one resource, a file named tutorial.htm. The identifier for this file in the File column of the File Table is Tutorial. The following discussion assumes that you have already created the resources required by Tutorial and have made all the necessary entries in the <A HREF="tref_0a91.htm">Feature</A>, <A HREF="tref_09np.htm">Component</A>, <A HREF="tref_4n6t.htm">File</A>, <A HREF="tref_6an9.htm">Directory</A>, and <A HREF="tref_52hx.htm">FeatureComponents</A> tables to install this component. For an example of how to author the database to install components see <A HREF="samp_2k11.htm">An Installation Example</A>.</P>
+
+<P>The following sections demonstrate how to create the required custom action and add them to the installation package.
+
+<UL>
+	<LI><A HREF="cact_0t66.htm">Authoring the Launch Custom Action</A> </LI>
+
+	<LI><A HREF="cact_929f.htm">Adding Launch to the CustomAction and Binary Tables</A> </LI>
+
+	<LI><A HREF="cact_55wo.htm">Adding a Control Event at the End of the Installation to Run Launch</A> </LI>
+</UL>
+
+<P>Continue to <A HREF="cact_0t66.htm">Authoring the Launch Custom Action</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

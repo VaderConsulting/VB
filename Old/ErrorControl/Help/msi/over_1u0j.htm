@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Code Page Handling of Imported and Exported Tables</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_code_page_handling_of_imported_and_exported_tables"></A>Code Page Handling of Imported and Exported Tables</H3>
+
+<P>Authors may add localization information to an installation database by importing and exporting ASCII text archive files using <A HREF="qref_4qyc.htm"><B>MsiDatabaseExport</B></A> and <A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A>. Because the database string pool uses an ANSI code page, both the database and exported text archive files have code pages. When a text archive file is exported from a database, the code page of the archive file is the same as the parent database. See <A HREF="over_9h6b.htm">Localizing the Error and ActionText Tables</A> for a list of numeric code pages.</P>
+
+<P>The ASCII text archive files exported by <B>MsiDatabaseExport</B> have the following format. Note that exporting a table to a text archive file translates the control characters to avoid conflicts with file delimiters. The names of the table columns are written on the first line. The column formats are written on the second line. If the table contains only ASCII data, the third line of the text file is the table's name followed by a list of the primary keys. If the table contains non-ASCII data and the database is stamped with a numeric code page, the code page number appears at the beginning of the third line. If the database contains non-ASCII data but the database is not stamped with the numeric code page, the current system's code page number is written at the beginning of the third line. The remaining lines of the text file are the data in the specified code page. If a table contains streams, <B>MsiDatabaseExport</B> exports each stream in the table to a separate file.</P>
+
+<P>Localization is greatly facilitated by starting with a database having a neutral code page. A blank database has a neutral code page. A database containing no extended characters that require a code page to be represented in ASCII has a neutral code page. See <A HREF="over_9zxh.htm">Creating a database with a neutral code page</A>. If a text archive file with a non-neutral code page is imported into a database that has a different non-neutral code page, the installer returns an error when calling <B>MsiDatabaseImport</B>. A text archive file that has a neutral code page can be imported into a database having any code page. A text archive file having any code page can be imported into a database having a neutral code page. Importing a text archive file into a database with a neutral code page sets the code page of the database to the archive file's code page. All archive files subsequently imported into the database must then have the same code page as the first file. See <A HREF="over_2j6t.htm">Determining an installation database's code page</A> and <A HREF="over_5tb9.htm">Setting the code page of a database</A>. </P>
+
+<P>The text archive files exported by <B>MsiDatabaseExport</B> are intended for use with version control systems, use the <A HREF="qref_778z.htm">Database Functions</A> or a database table editor for editing the database. </P>
+
+<P>Authors may also add localization information to an installation database using a database table editor or the Windows Installer API. See <A HREF="over_6p0z.htm">Code Page Handling of Parameter Strings</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Code%20Page%20Handling%20of%20Imported%20and%20Exported%20Tables;%20RELEASE:%20August%202001;%20URL:%20over_1u0j.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Code%20Page%20Handling%20of%20Imported%20and%20Exported%20Tables;%20RELEASE:%20August%202001;%20URL:%20over_1u0j.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

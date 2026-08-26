@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CheckBox Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="CheckBox Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_checkbox_table"></A>CheckBox Table</H1>
+
+<P>The CheckBox table lists the values for the check boxes. </P>
+
+<P>The CheckBox table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Column</TH>
+<TH align=left width=39%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Property</TD>
+<TD width=39%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Value</TD>
+<TD width=39%><A HREF="tref_0qp0.htm">Formatted</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Property</DT>
+
+<DD>A named property to be tied to this item.</DD>
+
+<DT>Value</DT>
+
+<DD>The value string associated with this item. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If the check box is selected, then the corresponding property is set to the specified value. If there is no value specified or this table does not exist, then the property is set to its original value when the check box is selected. If the original value is NULL, the property is set to "1".</P>
+
+<P>The contents of the Value column are formatted by the <A HREF="qref_3t2c.htm"><B>MsiFormatRecord</B></A> function when the control is created. Therefore, it can contain any expression that the <B>MsiFormatRecord</B> function can interpret. The Value column is formatted only when the control is created, and it is not updated if a property involved in an expression is modified during the life of the control. </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

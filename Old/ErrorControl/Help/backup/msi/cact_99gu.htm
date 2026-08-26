@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I access the current installer session from inside a custom action?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_how_do_i_access_the_current_installer_session_from_inside_a_custom_action"></A>How do I access the current installer session from inside a custom action?</H2>
+
+<P>Non-deferred custom actions that call <A HREF="cact_15mb.htm">dynamic-link libraries</A> or <A HREF="cact_7asz.htm">scripts</A>may access a running installation to query or modify the attributes of the current installation session. Only one session object can exist for each process and custom action scripts must not attempt to create another session.</P>
+
+<P>Note that custom action can only add, modify, or remove temporary rows, columns, or tables from a database. Custom actions cannot modify persistent data in a database, such as data that is a part of the database stored on disk. </P>
+
+<P><A HREF="cact_15mb.htm"><B>Dynamic-Link Libraries</B></A> </P>
+
+<P>To access a running installation, custom actions calling dynamic-link libraries (DLLs) are passed a handle of the type MSIHANDLE for the current session as the only argument to the DLL entry point named in the Target column of the <A HREF="tref_71b9.htm">CustomAction table</A>. Because the installer provides this handle, the custom action should not close it. For example, to receive the handle <I>hInstall</I> from the installer, the custom action function would be declared as follows.</P>
+
+<PRE>__stdcall CustomAction(MSIHANDLE hInstall)</PRE>
+
+<P>For read-only access to the current database obtain the database handle by calling <A HREF="qref_4e1x.htm"><B>MsiGetActiveDatabase</B></A>. For more information, see <A HREF="novr_0hgl.htm">Obtaining a Database Handle</A>. </P>
+
+<P><A HREF="cact_7asz.htm"><B>Scripts</B></A> </P>
+
+<P>Custom actions written in VBScript or JScript can access the current installation session using the <A HREF="vref_8xis.htm">Session Object</A>. The installer creates a Session Object named "Session" that references the current installation. For read-only access to the current database use the <A HREF="vref_22d5.htm">Database property</A> of the Session object.</P>
+
+<P>Because a script is run from the context of the Session object, it is not always necessary to fully qualify properties and methods. Note that when using VBScript, the Me reference can replace the Session object. For example, the following three line are equivalent.</P>
+
+<PRE>Session.SetInstallLevel 1
+Me.SetInstallLevel 1
+SetInstallLevel 1</PRE>
+
+<P><A HREF="cact_0b77.htm"><B>Executable Files</B></A> </P>
+
+<P>You cannot access the current installer session from custom actions that call executable files launched with a command line, for example <A HREF="cact_7nqq.htm">Custom Action Type 2</A> and <A HREF="cact_07i0.htm">Custom Action Type 18</A>.</P>
+
+<P><A HREF="cact_10fn.htm"><B>Deferred Execution Custom Actions</B></A> </P>
+
+<P>You cannot access the current the installation session or all property data from a deferred execution custom action. For more information, see <A HREF="cact_5fg3.htm">Obtaining Context Information for Deferred Execution Custom Actions</A>.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="cact_33u6.htm">How do I access another database or session from inside a custom action?</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

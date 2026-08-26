@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ProvideQualifiedComponent Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ProvideQualifiedComponent Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_providequalifiedcomponent_method"></A>ProvideQualifiedComponent Method</H1>
+
+<P>The <B>ProvideQualifiedComponent</B> method returns the full component path and performs any necessary installation. If necessary, this method prompts for the source and increments the usage count for the feature.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.ProvideQualifiedComponent(<I>Category, Qualifier, InstallMode</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </DD>
+
+<DT><I>Category</I></DT>
+
+<DD>Specifies the component ID that for the requested component. This may not be the GUID for the component itself but rather a server that provides the correct functionality, as in the ComponentId column of the <A HREF="tref_7xt1.htm">PublishComponent table</A>.</DD>
+
+<DT><I>Qualifier</I></DT>
+
+<DD>Specifies a qualifier into a list of advertising components (from <A HREF="tref_7xt1.htm">PublishComponent table</A>).</DD>
+
+<DT><I>InstallMode</I></DT>
+
+<DD>Defines the installation mode. This parameter can be one of the following values.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=39%>InstallMode</TH>
+<TH align=left width=13%>Value</TH>
+<TH align=left width=48%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallModeDefault</TD>
+<TD width=13%>0</TD>
+<TD width=48%>Provide the component, performing any necessary installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallModeExisting</TD>
+<TD width=13%>-1</TD>
+<TD width=48%>Provide the component only if the feature exists. Otherwise return an empty string. This mode verifies the existence of the component's key file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallModeNoDetection</TD>
+<TD width=13%>-2</TD>
+<TD width=48%>Provide the component only if the feature exists. Otherwise return an empty string. This mode only checks that the component is registered and does not verify the existence of the component's key file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>msiInstallModeNoSourceResolution</TD>
+<TD width=13%>-3</TD>
+<TD width=48%>Provide the component path only if the feature exists with an InstallState parameter of msiInstallStateLocal. This checks the component's registration and does not verify the existence of the component's key file.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=39%>combination of the msiReinstallMode flags</TD>
+<TD width=13%>&nbsp;</TD>
+<TD width=48%>Call <A HREF="vref_1p9g.htm">ReinstallFeature</A> to reinstall the feature using this parameter for the <I>ReinstallMode</I> parameter, and then provide the component.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_3vn8.htm"><B>MsiProvideQualifiedComponent</B></A></P>
+
+<P></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

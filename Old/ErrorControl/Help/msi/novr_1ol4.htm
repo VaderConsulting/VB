@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Conditional Statement Syntax</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="conditional statement syntax [Windows Installer]">
+<META NAME="MS-HKWD" CONTENT="conditional expressions [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_conditional_statement_syntax"></A>Conditional Statement Syntax</H2>
+
+<P>This section describes the syntax of conditional statements used by the <A HREF="qref_6je6.htm"><B>MsiEvaluateCondition</B></A> function and the action <A HREF="novr_3mqt.htm">sequence tables</A>. For more information, see, <A HREF="novr_3hrs.htm">Examples of Conditional Statement Syntax</A>.</P>
+
+<P><B>Summary of Conditional Statement Syntax</B></P>
+
+<P>This table and bullets summarizes the syntax to use in conditional expressions. More information is given in following sections.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=24%>Item</TH>
+<TH align=left width=76%>Syntax</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>value</TD>
+<TD width=76%>symbol | literal | integer</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>comparison-operator </TD>
+<TD width=76%><B>&lt;</B> | <B>&gt;</B> | <B>&lt;=</B> | <B>&gt;=</B> | <B>=</B> | <B>&lt;&gt;</B></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>term</TD>
+<TD width=76%>value | value comparison-operator value | <B>(</B> expression <B>)</B>|</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Boolean-factor </TD>
+<TD width=76%>term | <B>NOT</B> term</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>Boolean-term </TD>
+<TD width=76%>Boolean-factor | Boolean-factor <B>AND</B> term</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>expression</TD>
+<TD width=76%>Boolean-term | Boolean-term <B>OR</B> expression</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=24%>symbol</TD>
+<TD width=76%>property | %environment-variable | $component-action | ?component-state | &amp;feature-action | !feature-state</TD>
+</TR>
+</TABLE><BR>
+
+<UL>
+	<LI>Symbol names and values are case-sensitive.</LI>
+
+	<LI>Environment variable names are not case-sensitive.</LI>
+
+	<LI>Literal text must be enclosed between quotation marks ("<I>text</I>").</LI>
+
+	<LI>Non-existent property values are treated as empty strings.</LI>
+
+	<LI>Floating point numeric values are not supported.</LI>
+
+	<LI>Operators and precedence are the same as in the BASIC and SQL languages.</LI>
+
+	<LI>Arithmetic operators are not supported.</LI>
+
+	<LI>Parentheses can be used to override operator precedence.</LI>
+
+	<LI>Operators are not case-sensitive.</LI>
+
+	<LI>For string comparisons, a tilde "<B><CODE>~</CODE></B>" prefixed to the operator performs a comparison that is not case-sensitive.</LI>
+
+	<LI>Comparison of an integer with a string or property value that cannot be converted to an integer is always msiEvaluateConditionFalse, except for the comparison operator "&lt;&gt;", which returns msiEvaluateConditionTrue.</LI>
+</UL>
+
+<P><B>Access Prefixes</B></P>
+
+<P>The following table shows the prefixes to use to access various system and installer information for use in conditional expressions.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Symbol type</TH>
+<TH align=left width=16%>Prefix</TH>
+<TH align=left width=53%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Installer property</TD>
+<TD width=16%>(none)</TD>
+<TD width=53%>Value of property (<A HREF="tref_21d1.htm">Property table</A>).</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Environment variable</TD>
+<TD width=16%>%</TD>
+<TD width=53%>Value of environment variable.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Component table key</TD>
+<TD width=16%>$</TD>
+<TD width=53%>Action state of the component.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Component table key</TD>
+<TD width=16%>?</TD>
+<TD width=53%>Installed state of the component.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Feature table key</TD>
+<TD width=16%>&amp;</TD>
+<TD width=53%>Action state of the feature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>Feature table key</TD>
+<TD width=16%>!</TD>
+<TD width=53%>Installed state of the feature.</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>Logical Operators</B></P>
+
+<P>The following table shows the logical operators in conditional expressions, in high to low precedence order.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Operator</TH>
+<TH align=left width=84%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Not</TD>
+<TD width=84%>Prefix unary operator; inverts state of following term.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>And </TD>
+<TD width=84%>TRUE if both terms are TRUE.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Or </TD>
+<TD width=84%>TRUE if either or both terms are TRUE.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Xor </TD>
+<TD width=84%>TRUE if either but not both terms are TRUE.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Eqv </TD>
+<TD width=84%>TRUE if both terms are TRUE or both terms are FALSE.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%>Imp </TD>
+<TD width=84%>TRUE if left term is FALSE or right term is TRUE.</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>Comparative Operators</B></P>
+
+<P>The following table shows the comparison operators used in conditional expressions. These comparison operators can only occur between two values.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Operator</TH>
+<TH align=left width=84%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>=</B> </TD>
+<TD width=84%>TRUE if left value is equal to right value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&lt;&gt;</B> </TD>
+<TD width=84%>TRUE if left value is not equal to right value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&gt;</B> </TD>
+<TD width=84%>TRUE if left value is greater than right value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&gt;=</B> </TD>
+<TD width=84%>TRUE if left value is greater than or equal to right value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&lt;</B> </TD>
+<TD width=84%>TRUE if left value is less than right value.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&lt;=</B> </TD>
+<TD width=84%>TRUE if left value is less than or equal to right value.</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>Substring Operators</B></P>
+
+<P>The following table shows the substring operators used in conditional expressions. Substring operators can occur between two string values.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Operator</TH>
+<TH align=left width=84%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&gt;&lt;</B> </TD>
+<TD width=84%>TRUE if left string contains the right string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&lt;&lt;</B> </TD>
+<TD width=84%>TRUE if left string starts with the right string.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&gt;&gt;</B> </TD>
+<TD width=84%>TRUE if left string ends with the right string.</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>Bitwise Numeric Operators</B></P>
+
+<P>The following table shows the bitwise numeric operators in conditional expressions. These operators can occur between two integer values.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=16%>Operator</TH>
+<TH align=left width=84%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&gt;&lt;</B> </TD>
+<TD width=84%>Bitwise AND, TRUE if the left and right integers have any bits in common.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&lt;&lt;</B> </TD>
+<TD width=84%>True if the high 16-bits of the left integer are equal to the right integer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=16%><B>&gt;&gt;</B> </TD>
+<TD width=84%>True if the low 16-bits of the left integer are equal to the right integer.</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>Feature and Component State Values</B></P>
+
+<P>The following table shows where it is valid to use the feature and component operator symbols.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=31%>Operator <I>&lt;state&gt;</I></TH>
+<TH align=left width=69%>Where this syntax is valid.</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>$<I>component-action</I> </TD>
+<TD width=69%>Only in the <A HREF="dglo_5nuh.htm#_msi_sequence_tables_gly">sequence tables</A> after the <A HREF="aref_22we.htm">CostFinalize action</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>&amp;<I>feature-action</I> </TD>
+<TD width=69%>Only in the sequence tables after the CostFinalize action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>!<I>feature-state</I></TD>
+<TD width=69%>Only in the sequence tables after the CostFinalize action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=31%>?<I>component-state</I> </TD>
+<TD width=69%>In the <A HREF="tref_83qd.htm">Condition table</A>, in the Condition column of the <A HREF="tref_09np.htm">Component table</A>, and in the sequence tables, after the CostFinalize action.</TD>
+</TR>
+</TABLE><BR>
+
+<P>The following table shows the feature and component state values used in conditional expressions. These states are not set until <A HREF="qref_7yr0.htm"><B>MsiSetInstallLevel</B></A> is called, either directly or by the <A HREF="aref_22we.htm">CostFinalize action</A>.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>State</TH>
+<TH align=left width=11%>Value</TH>
+<TH align=left width=54%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>INSTALLSTATE_UNKNOWN</TD>
+<TD width=11%>-1</TD>
+<TD width=54%>No action to be taken on feature or component.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>INSTALLSTATE_ADVERTISED</TD>
+<TD width=11%>1</TD>
+<TD width=54%>Advertised feature. This state is not available for components.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>INSTALLSTATE_ABSENT </TD>
+<TD width=11%>2</TD>
+<TD width=54%>Feature or component not present.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>INSTALLSTATE_LOCAL </TD>
+<TD width=11%>3</TD>
+<TD width=54%>Feature or component on local computer.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>INSTALLSTATE_SOURCE </TD>
+<TD width=11%>4</TD>
+<TD width=54%>Feature or component run from source.</TD>
+</TR>
+</TABLE><BR>
+
+<P>For example, the conditional expression "&amp;MyFeature=3" evaluates to true only if MyFeature is changing from its current state to the state of being installed on the local computer, INSTALLSTATE_LOCAL.</P>
+
+<P>Note that you should not depend upon the condition $Component1=3 to check whether Component1 is locally installed on the computer. This can fail if Component1 is installed by more than one product. After Component1 has been installed locally by product1, the installer evaluates the condition $Component1=3 as False during the installation of product2. This is because the installer determines the version of the component using the component's key path and marks the component for installation if its version is greater than or equal to the installed component.</P>
+
+<H4>See also</H4>
+
+<P><A HREF="prop_4jub.htm">Using Properties in Conditional Statements</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Conditional%20Statement%20Syntax;%20RELEASE:%20August%202001;%20URL:%20novr_1ol4.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Conditional%20Statement%20Syntax;%20RELEASE:%20August%202001;%20URL:%20novr_1ol4.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

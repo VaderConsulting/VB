@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FASTOEM Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FASTOEM Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_fastoem_property"></A>FASTOEM Property</H1>
+
+<P>The FASTOEM property is designed to enable OEMs to reduce the time it takes to install Windows Installer applications for a specific scenario. Do not author the FASTOEM property into the <A HREF="tref_21d1.htm">Property Table</A>. The FASTOEM property is only applicable if all of these conditions are true:
+
+<UL>
+	<LI>The application is being installed on the same volume as the folder containing the source files.</LI>
+
+	<LI>The source files are deleted after the installation.</LI>
+
+	<LI>No user interface is displayed during the installation. The <A HREF="hand_9vn7.htm">user interface level</A> is none.</LI>
+
+	<LI>This is a <A HREF="over_1tdf.htm">per-machine installation</A>.</LI>
+
+	<LI>There is enough space on the computer for a successful installation.</LI>
+
+	<LI>This is first time installation. The installation is not advertising, reinstalling, removing, or doing an administrative installation. </LI>
+
+	<LI>No features are installed to run from source. </LI>
+
+	<LI>The installation package contains no <A HREF="over_2inn.htm">isolated components</A>. Because isolated components require source files to remain located at the source, the FASTOEM property cannot currently be used with isolated components.</LI>
+</UL>
+
+<P>If all of the above conditions are true, setting the FASTOEM property enables Windows Installer to improve performance by doing the following.
+
+<UL>
+	<LI>Move rather than copy files on the same volume. This does not guarantee that all files are moved rather than copied.</LI>
+
+	<LI>Omit this source from the application's source list so that subsequent reinstallation or maintenance installations default to the CD-ROM sources specified in the <A HREF="tref_4mlh.htm">Media Table</A>.</LI>
+
+	<LI>Streamline <A HREF="acts_07s7.htm">file costing</A>.</LI>
+
+	<LI>Suppress progress messages sent from Windows Installer to the client.</LI>
+</UL>
+
+<P>The FASTOEM property is not available with Windows Installer version 1.0 or version 1.1.</P>
+
+<H4>Remarks</H4>
+
+<P>Because no progress messages are sent when FASTOEM is set, it is recommended that authors manually write a value of 1800 for Timeout into the key HKLM\SoftWare\Policies\Microsoft\Windows\Installer\Timeout. Timeout is a REG_DWORD type.</P>
+
+<P>To display the size of the application in Add/Remove Programs of Windows 2000, you must manually write the value of EstimatedSize into the key HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\&lt;Product Code&gt;. This is a REG_DWORD type and equals to the size of the application in Kbytes. Windows Installer does not automatically write this value.</P>
+
+<H4>Examples</H4>
+
+<P>Use the following example command line if the CD-ROM shipped to end users stores the application's installation package at the root of the CD-ROM. Note that the volume label in the <A HREF="tref_4mlh.htm">Media Table</A> of the .msi file must match the volume label of the CD-ROM.</P>
+
+<PRE>Msiexec /I package.msi /qn /le logfile.txt ALLUSERS=1 FASTOEM=1 DISABLEROLLBACK=1</PRE>
+
+<P>Use the following example command line if the installation package is not located at the root of the CD-ROM shipped to end users. You must set the <A HREF="pref_403d.htm">MEDIAPACKAGEPATH property</A> in this case to the path to the installation package. The volume label in the <A HREF="tref_4mlh.htm">Media Table</A> of the .msi file must match the volume label of the CD-ROM. In this case follow this example.</P>
+
+<PRE>Msiexec /I package.msi /qn /le logfile.txt ALLUSERS=1 FASTOEM=1 DISABLEROLLBACK=1 MEDIAPACKAGEPATH=folder\package.msi</PRE>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ComponentPath Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ComponentPath Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_componentpath_property"></A>ComponentPath Property</H1>
+
+<P>The <B>ComponentPath</B> property is a read-only property that returns the full path to an installed component. If the key path for the component is a registry key then the registry key is returned.</P>
+
+<PRE class=syntax><I>object</I>.ComponentPath (<I>Product, Component</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> </DD>
+
+<DT><I>Product</I></DT>
+
+<DD>Specifies the product code of the client product. </DD>
+
+<DT><I>Component</I></DT>
+
+<DD>Specifies the component ID of the component to be located. 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If the component is a registry key, the registry roots are represented numerically. For example, a registry path of "HKEY_CURRENT_USER\SOFTWARE\Microsoft" would be returned as "01:\SOFTWARE\Microsoft". The registry roots returned are defined as follows: </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>Root</TH>
+<TH align=left width=50%>Returned value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>HKEY_CLASSES_ROOT </TD>
+<TD width=50%>00 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>HKEY_CURRENT_USER </TD>
+<TD width=50%>01 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>HKEY_LOCAL_MACHINE </TD>
+<TD width=50%>02 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>HKEY_USERS </TD>
+<TD width=50%>03 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>HKEY_PERFORMANCE_DATA </TD>
+<TD width=50%>04 </TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_3fxk.htm"><B>MsiGetComponentPath</B></A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ComponentPath%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_9o8p.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ComponentPath%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_9o8p.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

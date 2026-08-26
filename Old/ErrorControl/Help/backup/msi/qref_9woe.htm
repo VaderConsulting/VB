@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiDoAction</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiDoAction">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msidoaction"></A>MsiDoAction</H1>
+
+<P>The <B>MsiDoAction</B> function executes a built-in action, custom action, or user-interface wizard action.</P>
+
+<PRE class=syntax><B>UINT MsiDoAction(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>    // installer handle
+  <B>LPCTSTR</B> <I>szAction</I>       // action
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>Handle to the installation.</DD>
+
+<DT><I>szAction</I></DT>
+
+<DD>Specifies the action to execute.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.</DD>
+
+<DT>ERROR_FUNCTION_NOT_CALLED</DT>
+
+<DD>The action was not found.</DD>
+
+<DT>ERROR_INSTALL_FAILURE</DT>
+
+<DD>The action failed.</DD>
+
+<DT>ERROR_INSTALL_SUSPEND</DT>
+
+<DD>The user suspended the installation.</DD>
+
+<DT>ERROR_INSTALL_USEREXIT</DT>
+
+<DD>The user canceled the action.</DD>
+
+<DT>ERROR_INVALID_DATA</DT>
+
+<DD>A failure occurred while calling the custom action.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_HANDLE_STATE</DT>
+
+<DD>The handle state was invalid.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_MORE_DATA</DT>
+
+<DD>The action indicates that the remaining actions should be skipped.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiDoAction</B> function executes the action that corresponds to the name supplied. If the name is not recognized by the installer as a built-in action or as a custom action in the <A HREF="tref_71b9.htm">CustomAction table</A>, the name is passed to the user-interface handler object, which can invoke a function or a dialog box. If a NULL action name is supplied, the installer uses the upper-case value of the ACTION property as the action to perform. If no property value is defined, the default action is performed, defined as "INSTALL".</P>
+
+<P>Actions that update the system, such as the <A HREF="aref_3hym.htm">InstallFiles</A> and <A HREF="aref_1cmm.htm">WriteRegistryValues</A> actions, cannot be run by calling <B>MsiDoAction</B>. The exception to this rule is if <B>MsiDoAction</B> is called from a custom action that is scheduled in the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> between the <A HREF="aref_0gby.htm">InstallInitialize</A> and <A HREF="aref_8l9q.htm">InstallFinalize actions</A>. Actions that do not update the system, such as <A HREF="aref_16zy.htm">AppSearch</A> or <A HREF="aref_4bam.htm">CostInitialize</A>, can be called.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_installer_action_functions">Installer Action Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

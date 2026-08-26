@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Multiple Language Merge Modules</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_multiple_language_merge_modules"></A>Multiple Language Merge Modules</H2>
+
+<P>Multiple language modules can deliver components with several different languages as a single compound file. The design and functionality of multiple language merge modules is similar to single language modules. A multiple language merge module has more than one language listed in the <A HREF="sref_80hl.htm"><B>Template Summary</B> Property</A>. The database of a multiple language merge module contains all the setup information for multiple languages. The MergeModule.CABinet cabinet inside a multiple language merge module contains all the files for all the supported languages.</P>
+
+<P>When applying a multiple language .msm file to a .msi file, you must indicate the final language of the installation package after the merge. In the case of a single language merge module, the merge module's <A HREF="tref_4n6t.htm">File table</A> lists every file present in the MergeModule.CABinet cabinet. In the case of a multiple language merge module, MergeModule.CABinet contains all the files for every language supported by the module, but only the subset of files for the final language goes into the module's File table. The merge tool must ensure that the module provides the subset of information and files required for the requested final language. </P>
+
+<P>Every merge module has a default language specified in the Language column of the <A HREF="merg_4nad.htm">ModuleSignature table</A>. The default language of a merge module is also shown as the first, or only, language in the <A HREF="sref_80hl.htm"><B>Template Summary</B> Property</A>. Depending on the requested final language and the module's default language, the merge tool may apply language transforms to a multiple language merge module so that it can be opened in the requested language, or an approximation of the requested language. The language transforms are embedded inside the merge module. Merge tools must apply language transforms in adherence to the following general rules:
+
+<UL>
+	<LI>If the default and final languages are the same, the module can be merged without using language transforms.</LI>
+
+	<LI>If the default language is 0 (a language neutral module), the module can be merged without using language transforms.</LI>
+
+	<LI>If the final language is not the default language, the merge tool must apply one of the language transforms embedded in the module to change the module to the final language, or to an approximation of the final language.</LI>
+</UL>
+
+<P>For example, no language transforms are required if the final language is 1033 (US English) and the default language of the module is 1033 (US English), 0 (language neutral), or 9 (generic English).</P>
+
+<P>Language transforms are required if the final language is 1033 (US English) and the default language is 1031 (German). In this case, the merge tool may first search the multiple language module for an embedded language transform to 1033 (US English). If that fails it may then search for a transform to a language with a matching primary LANGID, even if the secondary LANGID does not match. For example, if the tool cannot find a transform to 1033 (US English), it searches for a transform to 9 (Generic English). If this fails the merge tool searches for a transform to 0 (language neutral). If all these searches for a suitable transform fail, the module fails to open.</P>
+
+<P>For more information, see <A HREF="merg_5lwz.htm">Authoring Multiple Language Merge Modules</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Multiple%20Language%20Merge%20Modules;%20RELEASE:%20August%202001;%20URL:%20merg_7f77.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Multiple%20Language%20Merge%20Modules;%20RELEASE:%20August%202001;%20URL:%20merg_7f77.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

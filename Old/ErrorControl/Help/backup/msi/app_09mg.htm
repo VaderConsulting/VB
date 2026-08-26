@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>_MSIExecute Mutex</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi__msiexecute_mutex"></A>_MSIExecute Mutex</H1>
+
+<P>The _MSIExecute mutex is set only while processing the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A>, <A HREF="tref_70f9.htm">AdminExecuteSequence table</A> or <A HREF="tref_5mn9.htm">AdvtExecuteSequence table</A>. </P>
+
+<P>Because two installations cannot be run in the same process, an attempt to call the installer's application programming interface (API) returns ERROR_INSTALL_ALREADY_RUNNING in two cases:
+
+<UL>
+	<LI>While the _MSIExecute mutex is set. </LI>
+
+	<LI>While the current process is processing the <A HREF="tref_1git.htm">InstallUISequence table</A>, <A HREF="tref_5lnp.htm">AdminUISequence table</A> or <A HREF="tref_3rvp.htm">AdvtUISequence table</A>.</LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

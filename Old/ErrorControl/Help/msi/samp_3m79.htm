@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Customizing an Original Database</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_customizing_an_original_database"></A>Customizing an Original Database</H2>
+
+<P>Make a copy of the sample Windows Installer installation package MNP2000.msi and rename this copy MNP2000t.msi. In the following steps you will customize this file using a database table editor such as Orca, which is provided with the SDK, or another database editor. </P>
+
+<P>Include the new resource file for the phone list, Phone.txt, in the Notepad folder with the other source files.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=20%>File</TH>
+<TH align=left width=23%>Description</TH>
+<TH align=left width=28%>Path to source</TH>
+<TH align=left width=29%>Path to target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=20%>phone.txt</TD>
+<TD width=23%>A resource for the Phone_List feature.</TD>
+<TD width=28%>C:\Sample\Notepad\phone.txt</TD>
+<TD width=29%>[ProgramFilesFolder]\Red_Park\phone.txt</TD>
+</TR>
+</TABLE><BR>
+
+<P>Use your database editor to add a record to the <A HREF="tref_4n6t.htm">File Table</A> of MNP2000t.msi for the new file. </P>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>File</TH>
+<TH align=left width=15%>Component_</TH>
+<TH align=left width=14%>FileName</TH>
+<TH align=left width=10%>FileSize</TH>
+<TH align=left width=11%>Version</TH>
+<TH align=left width=10%>Language</TH>
+<TH align=left width=10%>Attributes</TH>
+<TH align=left width=16%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Phone.txt</TD>
+<TD width=15%>Phone</TD>
+<TD width=14%>Phone.txt</TD>
+<TD width=10%>1000</TD>
+<TD width=11%> </TD>
+<TD width=10%> </TD>
+<TD width=10%>0</TD>
+<TD width=16%>1</TD>
+</TR>
+</TABLE><BR>
+
+<P>As explained in the section: <A HREF="updat_4qlv.htm">Using Transforms to Add Resources</A>, the transform should add one or more new components to the installation database to contain the new phone list feature. Use your database editor to add the following record the <A HREF="tref_09np.htm">Component Table</A> of MNP2000t.msi. </P>
+
+<P>The Phone component should be identified with a unique component ID <A HREF="tref_7kf8.htm">GUID</A>. If you are reproducing the sample, do not reuse the same component ID GUID as in the following table. Instead use a utility such as Guidgen.exe to generate a new GUID. Be sure that you use a GUID string consistent with the Windows Installer <A HREF="tref_7kf8.htm">GUID</A> data type. </P>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=14%>Component</TH>
+<TH align=left width=28%>ComponentId</TH>
+<TH align=left width=13%>Directory_</TH>
+<TH align=left width=14%>Attributes</TH>
+<TH align=left width=14%>Condition</TH>
+<TH align=left width=17%>Keypath</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=14%>Phone</TD>
+<TD width=28%>{D152A1EC-9F7A-4E45-B0DC-ED6EE5D829F8}</TD>
+<TD width=13%>NOTEPADDIR</TD>
+<TD width=14%>2</TD>
+<TD width=14%> </TD>
+<TD width=17%>Phone.txt</TD>
+</TR>
+</TABLE><BR>
+
+<P>Use your database editor to modify the data in the <A HREF="tref_0a91.htm">Feature Table</A> of MNP2000t.msi. Enter 0 into the Level column of the Gate feature record. This disables the Gate feature and its child features and hides these features from the UI. Note that because the <A HREF="pref_9bzt.htm"><B>INSTALLLEVEL</B> Property</A> is set to 3 in the <A HREF="tref_21d1.htm">Property Table</A>, the installer does not install features with a Level of 0. Add a record for the new Phone_List feature.</P>
+
+<P><A HREF="tref_0a91.htm"><B>Feature Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=9%>Feature</TH>
+<TH align=left width=12%>Feature_Parent</TH>
+<TH align=left width=11%>Title</TH>
+<TH align=left width=19%>Description</TH>
+<TH align=left width=8%>Display</TH>
+<TH align=left width=6%>Level</TH>
+<TH align=left width=12%>Directory_</TH>
+<TH align=left width=23%>Attributes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Arts</TD>
+<TD width=12%> </TD>
+<TD width=11%>Arts</TD>
+<TD width=19%>Arts events at Red Park.</TD>
+<TD width=8%>20</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Baseball</TD>
+<TD width=12%>Sport</TD>
+<TD width=11%>Baseball </TD>
+<TD width=19%>Baseball Games</TD>
+<TD width=8%>17</TD>
+<TD width=6%>3</TD>
+<TD width=12%>SPORTDIR</TD>
+<TD width=23%>32</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Concert</TD>
+<TD width=12%>Arts</TD>
+<TD width=11%>Concert</TD>
+<TD width=19%>Concert events at Red Park</TD>
+<TD width=8%>21</TD>
+<TD width=6%>3</TD>
+<TD width=12%>ARTSDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Dance</TD>
+<TD width=12%>Arts</TD>
+<TD width=11%>Dance</TD>
+<TD width=19%>Dance events at Red Park</TD>
+<TD width=8%>23</TD>
+<TD width=6%>3</TD>
+<TD width=12%>ARTSDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Football</TD>
+<TD width=12%>Sport</TD>
+<TD width=11%>Football</TD>
+<TD width=19%>Football Games</TD>
+<TD width=8%>19</TD>
+<TD width=6%>3</TD>
+<TD width=12%>SPORTDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Gate</TD>
+<TD width=12%> </TD>
+<TD width=11%>Gate</TD>
+<TD width=19%>Red Park's Admissions</TD>
+<TD width=8%>6</TD>
+<TD width=6%>0</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Help</TD>
+<TD width=12%>Notepad</TD>
+<TD width=11%>Help</TD>
+<TD width=19%>Help file.</TD>
+<TD width=8%>5</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>January</TD>
+<TD width=12%>Gate</TD>
+<TD width=11%>January</TD>
+<TD width=19%>January Admissions</TD>
+<TD width=8%>10</TD>
+<TD width=6%>3</TD>
+<TD width=12%>MONDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>NewYears</TD>
+<TD width=12%>January</TD>
+<TD width=11%>New Years Day</TD>
+<TD width=19%>New Years Day Admissions</TD>
+<TD width=8%>11</TD>
+<TD width=6%>3</TD>
+<TD width=12%>HOLDIR</TD>
+<TD width=23%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Notepad</TD>
+<TD width=12%> </TD>
+<TD width=11%>Notepad</TD>
+<TD width=19%>Notepad Editor</TD>
+<TD width=8%>1</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Readme</TD>
+<TD width=12%>Notepad</TD>
+<TD width=11%>Readme</TD>
+<TD width=19%>Readme File</TD>
+<TD width=8%>3</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Sport</TD>
+<TD width=12%> </TD>
+<TD width=11%>Sport Events</TD>
+<TD width=19%>Sport Events at Red Park</TD>
+<TD width=8%>14</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=9%>Phone_List</TD>
+<TD width=12%> </TD>
+<TD width=11%>Phone List</TD>
+<TD width=19%>Phone List</TD>
+<TD width=8%>24</TD>
+<TD width=6%>3</TD>
+<TD width=12%>NOTEPADDIR</TD>
+<TD width=23%>0</TD>
+</TR>
+</TABLE><BR>
+
+<P>Add the following record to the <A HREF="tref_52hx.htm">FeatureComponents Table</A> of MNP2000t.msi. </P>
+
+<P><A HREF="tref_52hx.htm"><B>FeatureComponents Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=57%>Feature_</TH>
+<TH align=left width=43%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=57%>Phone_List</TD>
+<TD width=43%>Phone</TD>
+</TR>
+</TABLE><BR>
+
+<P>Add a new record in the <A HREF="tref_2i91.htm">Shortcut Table</A> to create a shortcut to the Phone_List feature. </P>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=8%>Shortcut</TH>
+<TH align=left width=7%>Directory_</TH>
+<TH align=left width=10%>Name</TH>
+<TH align=left width=9%>Component_</TH>
+<TH align=left width=10%>Target</TH>
+<TH align=left width=8%>Arguments</TH>
+<TH align=left width=9%>Description</TH>
+<TH align=left width=6%>Hotkey</TH>
+<TH align=left width=9%>Icon_</TH>
+<TH align=left width=8%>IconIndex</TH>
+<TH align=left width=9%>ShowCmd</TH>
+<TH align=left width=7%>WkDir</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=8%>sPhone</TD>
+<TD width=7%>MENUDIR</TD>
+<TD width=10%>Phone.txt</TD>
+<TD width=9%>Phone</TD>
+<TD width=10%>[#Phone.txt]</TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=6%> </TD>
+<TD width=9%> </TD>
+<TD width=8%> </TD>
+<TD width=9%> </TD>
+<TD width=7%> </TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="samp_42nh.htm">Continue</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Customizing%20an%20Original%20Database;%20RELEASE:%20August%202001;%20URL:%20samp_3m79.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Customizing%20an%20Original%20Database;%20RELEASE:%20August%202001;%20URL:%20samp_3m79.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

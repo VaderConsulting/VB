@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ROOTDRIVE Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ROOTDRIVE Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_rootdrive_property"></A>ROOTDRIVE Property</H1>
+
+<P>The ROOTDRIVE property specifies the default drive for the destination directory of the installation. If the Directory column of the <A HREF="tref_6an9.htm">Directory table</A> indicates the root destination directory by a property name that is undefined, the installer uses the value of the ROOTDRIVE property to resolve the path to the destination directory. </P>
+
+<P>If ROOTDRIVE is not set at a command line or authored into the <A HREF="tref_21d1.htm">Property table</A>, the installer sets this property. During an <A HREF="over_6jzi.htm">administrative installation</A> the installer sets ROOTDRIVE to the first connected network drive it finds that can be written to. If it is not an administrative installation, or if the installer can find no network drives, the installer sets ROOTDRIVE to the local drive that can be written to having the most free space.</P>
+
+<P>The value for this property must end with '\'.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

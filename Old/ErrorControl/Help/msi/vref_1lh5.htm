@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ColumnInfo Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ColumnInfo Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_columninfo_property"></A><A NAME="helpid_msiview_columninfo"></A>ColumnInfo Property</H1>
+
+<P>The <B>ColumnInfo</B> property of the <A HREF="vref_7bxw.htm"><B>View</B> object</A> returns an <A HREF="vref_6kac.htm"><B>Record</B> object</A> containing the requested information about each column in the result set. Either the column names or the column definitions may be requested. Constants supplied in the Select list do not have names.</P>
+
+<PRE class=syntax><I>object</I>.ColumnInfo(<I>info</I>)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><B>View</B> object </DD>
+
+<DT><I>info</I></DT>
+
+<DD>Required information needed for each column:
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=34%>Parameter name</TH>
+<TH align=left width=12%>Value</TH>
+<TH align=left width=54%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiColumnInfoNames</TD>
+<TD width=12%>0</TD>
+<TD width=54%>Return names of all non-constant columns in result set.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=34%>msiColumnInfoTypes</TD>
+<TD width=12%>1</TD>
+<TD width=54%>Return types of all non-constant columns in result set.</TD>
+</TR>
+</TABLE><BR>
+
+
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The column descriptions returned by the <B>ColumnInfo</B> property are in the format described in <A HREF="novr_2dv8.htm">Column Definition Format</A>. Each column is described by a string in the corresponding record field. The definition string consists of a single letter representing the data type followed by the width of the column (in characters when applicable, or else bytes). A width of zero designates an unbounded width (long text fields and streams). An uppercase letter indicates that Null values are allowed in the column.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ColumnInfo%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_1lh5.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ColumnInfo%20Property;%20RELEASE:%20August%202001;%20URL:%20vref_1lh5.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

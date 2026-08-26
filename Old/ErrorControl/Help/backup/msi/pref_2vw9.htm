@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>EXECUTEMODE Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="EXECUTEMODE Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_executemode_property"></A>EXECUTEMODE Property</H1>
+
+<P>The EXECUTEMODE property specifies how the installer executes system updates. This property may be useful when it is necessary to run an installation without actually changing the system. The property can be set to None to disable updating operations such as the installation of files and registry values. </P>
+
+<P>This property can have one of the following two values. The installer only examines the first letter of the value and is case insensitive.
+
+<DL>
+<DT>None</DT>
+
+<DD>No changes are made to the system. The installer runs the user interface and then queries the database.</DD>
+
+<DT>Script</DT>
+
+<DD>All changes to the system are made through script execution. This is the default mode.
+</DD>
+</DL>
+
+<H4>Default Value</H4>
+
+<P>If this property is not defined, the execution mode defaults to Script.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

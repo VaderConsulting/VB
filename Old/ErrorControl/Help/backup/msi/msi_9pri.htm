@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetFileVersion</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiGetFileVersion">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msigetfileversion"></A>MsiGetFileVersion</H1>
+
+<P>The <B>MsiGetFileVersion</B> returns the version string and language string in the format that the installer expects to find them in the database. If you just want version information, set <I>lpLangBuf </I>and <I>pcchLangBuf </I>to zero. If you just want language information, set <I>lpVersionBuf</I> and <I>pcchVersionBuf </I>to zero.</P>
+
+<PRE class=syntax><B>UINT MsiGetFileVersion(
+</B>  <B>LPCTSTR</B> <I>szFilePath</I><B>,</B>      // path to the file
+  <B>LPCTSTR</B> <I>lpVersionBuf</I><B>,</B>    // returned version string
+  <B>DWORD </B><I>*pcchVersionBuf</I><B>,</B>   // buffer byte count
+  <B>LPCTSTR</B><I> lpLangBuf</I><B>,</B>       // returned language string
+  <B>DWORD</B><I> *pcchLangBuf</I>       // buffer byte count
+<B>)</B>;</PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szFilePath</I></DT>
+
+<DD>Specifies the path to the file.</DD>
+
+<DT><I>lpVersionBuf</I></DT>
+
+<DD>Returns the file version. Set to 0 for language information only.</DD>
+
+<DT><I>pcchVersionBuf</I></DT>
+
+<DD>[in/out] In and out buffer byte count. Set to 0 for language information only. The count does not include the terminating null. </DD>
+
+<DT><I>lpLangBuf</I></DT>
+
+<DD>Returns the file language. Set to 0 for version information only.</DD>
+
+<DT><I>pcchLangBuf</I></DT>
+
+<DD>[in/out] In and out buffer byte count. Set to 0 for version information only.  The count does not include the terminating null. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>Successful completion.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_FILE_NOT_FOUND</TD>
+<TD width=52%>File does not exist.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_ACCESS_DENIED</TD>
+<TD width=52%>File could not be opened to get version information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_FILE_INVALID</TD>
+<TD width=52%>File does not contain version information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_DATA</TD>
+<TD width=52%>The version information is invalid.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>E_FAIL</TD>
+<TD width=52%>Unexpected error.</TD>
+</TR>
+</TABLE><BR>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_system_status_functions">System Status Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

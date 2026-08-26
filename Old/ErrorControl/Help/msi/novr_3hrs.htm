@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Examples of Conditional Statement Syntax</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_examples_of_conditional_statement_syntax"></A>Examples of Conditional Statement Syntax</H3>
+
+<P>The following provides some common instances of conditional statements. For more information, see <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>.</P>
+
+<H4>Run action on removal.</H4>
+
+<P>For information, see <A HREF="novr_86gc.htm">Conditioning Actions to Run During Removal</A>.</P>
+
+<H4>Run action only if the product has not been installed.</H4>
+
+<PRE>NOT Installed</PRE>
+
+<H4>Run action only if the product will be installed local. Don't run action on a reinstallation.</H4>
+
+<PRE>(&amp;FeatureName=3) AND NOT(!FeatureName=3)</PRE>
+
+<P>The term "&amp;FeatureName=3" means the action is to install the feature local. The term "NOT(!FeatureName=3)" means the feature is not installed local.</P>
+
+<H4>Run action only if the feature will be uninstalled.</H4>
+
+<PRE>(&amp;FeatureName=2) AND (!FeatureName=3)</PRE>
+
+<P>This condition only checks for a transition of the feature from an installed state of local to the absent state.</P>
+
+<H4>Run action only if the component was installed local, but is transitioning out of state.</H4>
+
+<PRE>(?ComponentName=3) AND ($ComponentName=2 OR $ComponentName=4)</PRE>
+
+<P>The term "?ComponetName=3" means the component is installed local. The term "$ComponentName=2" means that the action state on the component is Absent. The term "$ComponentName=4" means that the action state on the component is run from source. Note that an action state of advertise is not valid for a component.</P>
+
+<H4>Run action only on the reinstallation of a component.</H4>
+
+<PRE>?ComponentName=$ComponentName</PRE>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Examples%20of%20Conditional%20Statement%20Syntax;%20RELEASE:%20August%202001;%20URL:%20novr_3hrs.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Examples%20of%20Conditional%20Statement%20Syntax;%20RELEASE:%20August%202001;%20URL:%20novr_3hrs.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

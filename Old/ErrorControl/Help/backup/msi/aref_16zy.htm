@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AppSearch Action</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="AppSearch Action">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_appsearch_action"></A>AppSearch Action</H1>
+
+<P>The AppSearch action uses file signatures to search for existing versions of products. The AppSearch action may use this information to determine where upgrades are to be installed. The AppSearch action can also be used to set a property to the existing value of an registry or .ini file entry. </P>
+
+<H4>Sequence Restrictions</H4>
+
+<P>None.</P>
+
+<H4>ActionData Messages</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Field</TH>
+<TH align=left width=83%>Description of action data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>[1]</TD>
+<TD width=83%>Property holding file location</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>[2]</TD>
+<TD width=83%>File signature </TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>The AppSearch action searches for file signatures using the CompLocator table first, the RegLocator table next, then the IniLocator table, and finally the DrLocator table.</P>
+
+<P>File signatures are listed in the <A HREF="tref_149x.htm">Signature</A> table. A signature that is not in the Signature table denotes a directory and the action sets the property to the directory path for that signature. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="tref_0w9x.htm">AppSearch</A>, <A HREF="tref_771h.htm">CompLocator</A>, <A HREF="tref_00o5.htm">IniLocator</A>, <A HREF="tref_91wl.htm">RegLocator</A>, <A HREF="tref_3azp.htm">DrLocator</A> tables </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

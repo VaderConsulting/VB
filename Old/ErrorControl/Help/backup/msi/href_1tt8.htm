@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Icon Control</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Icon Control">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_icon_control"></A>Icon Control</H1>
+
+<P>This control displays a static picture of an icon. The background of the image is transparent.</P>
+
+<H4>Control Attributes</H4>
+
+<P>You can use the following attributes with this control. To change the value of an attribute using an event, subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A> and list the attribute's identifier in the Attribute column. Enter the Identifier of the ControlEvent in the Event column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Attribute identifier</TH>
+<TH align=left width=17%>Hexadecimal bit</TH>
+<TH align=left width=64%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2w6d.htm">Position</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Position of control in the dialog box.
+<P>Enter the control's width, height, and coordinates of the control's left corner into the Width, Height, X, and Y columns of the <A HREF="tref_6nad.htm">Control table</A>. Use pixels for units of length and distance.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2kmd.htm">Text</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Contains the name of an icon stored in the <A HREF="tref_04px.htm">Binary table</A> or the handle to a icon loaded into memory at run-time.  
+<P>To display an icon that is stored in the Binary table, do not set the ImageHandle attribute and enter the name of the image's record appearing in the Binary table into the Text column of the <A HREF="tref_6nad.htm">Control table</A> record for this control.</P>
+
+<P>To set the icon image at run-time, set the ImageHandle control attribute in the Attributes of the Control table. At run-time, the Text control attribute is the handle to an icon loaded into memory. The control must subscribe to a control event listed in the <A HREF="tref_6m3p.htm">EventMapping table</A> with the Text control attribute specified in the Attribute column.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8bqd.htm">Visible</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000001</P>
+</TD>
+<TD width=64%>Hidden control.
+<P>Visible control.</P>
+
+<P>Include this bit in the bit word of the Attributes column in the <A HREF="tref_6nad.htm">Control table</A> to make the control visible or hidden upon its creation. </P>
+
+<P>You can also hide or show a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0vad.htm">Sunken</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000004</P>
+</TD>
+<TD width=64%>Display the default visual style.
+<P>Display the control with a sunken, 3-D look.</P>
+
+<P>Include these bits in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_3tut.htm">ImageHandle</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00010000</P>
+</TD>
+<TD width=64%>See the description of the Text control attribute for this control. If the ImageHandle attribute is included in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>, the Text control attribute contains a handle to an icon that is loaded into memory at run-time. If the ImageHandle attribute is not included in Attributes, the Text Control attribute is the name of the icon and must be authored into the Text column of the Control table. This name is a key into the record of the <A HREF="tref_04px.htm">Binary table</A> containing the icon image.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_6qn9.htm">FixedSize</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00100000</P>
+</TD>
+<TD width=64%>Stretch the icon image to fit the control.
+<P>Crop or center the icon image in the control. </P>
+
+<P>Include this bit in the bit word of the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0oo5.htm">IconSize</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00200000</P>
+
+<P>0x00400000</P>
+
+<P>0x00600000</P>
+</TD>
+<TD width=64%>Load the first image.
+<P>Load the first 16x16 image.</P>
+
+<P>Load the first 32x32 image.</P>
+
+<P>Load the first 48x48 image.</P>
+
+<P>An icon file can contain different size images of the same icon. Include the value of the appropriate bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A> </P>
+
+<P>If these bits are not set, the installer ignores the FixedSize attribute and the image is stretched to fit the control rectangle. If both the IconSize bits and the FixedSize bits are set, an image smaller than the control is centered and an image is larger than the control it is shrunk to fit.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This control is created as a "STATIC" with the SS_ICON, SS_CENTERIMAGE, WS_CHILD, and WS_GROUP styles.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

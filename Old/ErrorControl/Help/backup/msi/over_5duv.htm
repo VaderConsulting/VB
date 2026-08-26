@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Event Logging</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H2><A NAME="_msi_event_logging"></A>Event Logging</H2>
+
+<P>Event logging in Windows NT/Windows&nbsp;2000 provides a standard, centralized way for applications (and the operating system) to record important software and hardware events. The event-logging service stores events from various sources in a single collection called an <I>event log</I>. Windows NT/Windows 2000 also supplies Event Viewer for viewing the logs, and a programming interface for examining the logs. For more information, see Event Logging.</P>
+
+<P>The installer also writes entries into the Event Log. These record events such as following:
+
+<UL>
+	<LI>Success or failure of the installation, removal, or repair of a product.</LI>
+
+	<LI>Errors that occur during product configuration.</LI>
+
+	<LI>Detection of corrupted configuration data.</LI>
+</UL>
+
+<P>If a large amount of information is written the Event Log file can become full and the installer displays a message, "The Application log file is full."</P>
+
+<P>Note there is no built-in Event Log on Windows 95 or Windows 98. On these systems, the installer logs the same event information into a file in the %temp% folder called Msievent.log. For more information, see <A HREF="over_1yur.htm">Checking for the Installation of Features, Components, or Files</A>.</P>
+
+<P>The installer may write the following entries in the event log.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=45%>Message</TH>
+<TH align=left width=55%>Remarks</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Product [2] – Installation operation completed successfully</TD>
+<TD width=55%>Informational message that the installation of the product was successful. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Product [2] – Installation operation failed</TD>
+<TD width=55%>Error message that the installation of the product failed.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Windows Installer proxy information not registered correctly</TD>
+<TD width=55%>Error message that proxy information was not registered correctly.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Failed to connect to server. Error: %d</TD>
+<TD width=55%>Informational message that the installation failed to connect to server.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>{Unhandled exception report}</TD>
+<TD width=55%>Error message for an unhandled exception, this is the report.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Detection of product '%1', feature '%2' failed during request for component '%3'</TD>
+<TD width=55%>A warning message. For details, see <A HREF="over_0r1w.htm">Searching For a Broken Feature or Component</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Unexpected or missing value (name: '%1', value: '%2') in key '%3'</TD>
+<TD width=55%>Error message that there was an unexpected or missing value. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Unexpected or missing subkey '%1' in key '%2'</TD>
+<TD width=55%>Error message that there was an unexpected or missing subkey. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Detection of product '%1', feature '%2', component '%3' failed</TD>
+<TD width=55%>A warning message. See also <A HREF="over_0r1w.htm">Searching For a Broken Feature or Component</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=45%>Install operation initiated a reboot</TD>
+<TD width=55%>Informational message that the installation initiated a reboot of the system.</TD>
+</TR>
+</TABLE><BR>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

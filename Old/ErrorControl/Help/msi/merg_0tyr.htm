@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Generating MergeModule.CABinet Cabinet Files</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_generating_mergemodule.cabinet_cabinet_files"></A>Generating MergeModule.CABinet Cabinet Files</H3>
+
+<P>Every file that is delivered to the target installation package by the merge module must be stored inside of a cabinet file embedded as a stream inside the .msm file. The name of this cabinet is always MergeModule.CABinet.</P>
+
+<P>The names of files in MergeModule.CABinet must match the primary keys used in the merge module's <A HREF="tref_4n6t.htm">File table</A> and must adhere to the convention described in <A HREF="merg_0ucz.htm">Naming Primary Keys in Merge Module Databases</A>.</P>
+
+<P>The installer skips extra files included in MergeModule.CABinet that are not listed in the merge module's <A HREF="tref_4n6t.htm">File table</A>. The sequence numbers of files specified in the File table do not need to be consecutive, but they must follow the same sequence as the files stored inside MergeModule.CABinet. For more information, see <A HREF="merg_01tf.htm">Authoring Merge Module File Tables</A>. </P>
+
+<P>This means that a single cabinet file can contain all the files needed for a merge module to support multiple languages. All the language files can be given unique sequence numbers in the cabinet and then a language transform can be used to add or remove files from the File table to obtain a merge module for a particular language. For details, see <A HREF="merg_5lwz.htm">Authoring Multiple Language Merge Modules</A>.</P>
+
+<P>MergeModule.CABinet can be added to the merge module by opening a temporary <A HREF="tref_9gbp.htm">_Streams Table</A>. For example, the tool Msidb.exe provided with the Windows Installer SDK can be used to add the MergeModule.CABinet to the merge module. For more information, see <A HREF="over_3nla.htm">Including a Cabinet File in an Installation</A>. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Generating%20MergeModule.CABinet%20Cabinet%20Files;%20RELEASE:%20August%202001;%20URL:%20merg_0tyr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Generating%20MergeModule.CABinet%20Cabinet%20Files;%20RELEASE:%20August%202001;%20URL:%20merg_0tyr.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

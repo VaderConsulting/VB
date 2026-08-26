@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE40</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE40">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice40"></A>ICE40</H1>
+
+<P>ICE40 does miscellaneous validation.</P>
+
+<H4>Result</H4>
+
+<P>ICE40 posts warnings on the following: 
+
+<UL>
+	<LI>The .msi file is missing the <A HREF="tref_5dk5.htm">Error table</A> and the <A HREF="sref_8eex.htm">Page Count Summary Property</A> is less than or equal to 100. This means that the installer is only capable of displaying numeric error codes to the user at run time. The Error table is only required in packages having a schema that is less than or equal to 100. Windows Installer versions 1.1 and later do not require the package to have an Error table because the error messages can also be retrieved using Msimsg.dll. Packages with a schema greater than 100 cannot be installed by Windows Installer version 1.0.</LI>
+
+	<LI>The <A HREF="pref_7bll.htm"><B>REINSTALLMODE</B> property</A> has been overridden. </LI>
+
+	<LI>The <A HREF="tref_9k6d.htm">RemoveIniFile table</A> has a Delete Tag entry with no value.</LI>
+</UL>
+
+<H4>Example</H4>
+
+<P><A HREF="tref_21d1.htm"><B>Property Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Property</TH>
+<TH align=left width=72%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%><B>REINSTALLMODE</B></TD>
+<TD width=72%>A</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_9k6d.htm"><B>RemoveIniFile Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>RemoveIniFile</TH>
+<TH align=left width=22%>Action</TH>
+<TH align=left width=50%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>REINSTALLMODE</TD>
+<TD width=22%>4 </TD>
+<TD width=50%>&nbsp;</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Results</H4>
+
+<P>ICE40 would report the following errors.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE40 error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><B>REINSTALLMODE</B> is defined in the Property table. This may cause difficulties. </TD>
+<TD width=63%>Defining the <B>REINSTALLMODE</B> property in .msi file can lead to unexpected behavior.
+<P>To fix this error, don't define this property.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>RemoveIniFile entry Remove1 must have a value, because the Action is "Delete Tag" (4). </TD>
+<TD width=63%>There is a Delete Tag action in the in the RemoveIniFile column of the <A HREF="tref_9k6d.htm">RemoveIniFile table</A> without specifying a tag to delete in the Value column.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>Error Table is missing. Only numerical error messages will be generated. </TD>
+<TD width=63%>The .msi file is missing the <A HREF="tref_5dk5.htm">Error table</A> and the <A HREF="sref_8eex.htm">Page Count Summary Property</A> is less than or equal to 100. This means that the installer is only capable of displaying numeric error codes to the user at run time.
+<P>To fix this error, add an Error table to the installation package and author formatting templates in the Message column for error messages.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE40;%20RELEASE:%20August%202001;%20URL:%20ices_1xyo.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE40;%20RELEASE:%20August%202001;%20URL:%20ices_1xyo.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

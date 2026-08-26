@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE71</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE71 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice71"></A>ICE71</H1>
+
+<P>ICE71 verifies that the <A HREF="tref_4mlh.htm"><B>Media table</B></A> contains an entry with DiskId equal to 1. (Windows Installer assumes that the .msi package is on disk 1.) </P>
+
+<H4>Result</H4>
+
+<P>ICE71 returns an error if the Media table does not contain an entry with DiskId equal to 1.</P>
+
+<H4>Example</H4>
+
+<P>ICE71 reports the following error for the example shown.</P>
+
+<PRE>The Media table requires an entry with DiskId=1. First DiskId is '2'.</PRE>
+
+<P>T0 fix this error, change the DiskId of the entry where the package is stored to 1.</P>
+
+<P><A HREF="tref_4mlh.htm"><B>Media Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>DiskId</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>2</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

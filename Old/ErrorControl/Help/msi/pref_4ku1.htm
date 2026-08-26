@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DefaultUIFont Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="DefaultUIFont Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_defaultuifont_property"></A>DefaultUIFont Property</H1>
+
+<P>The <B>DefaultUIFont</B> property sets the default font style used for controls. To specify the default, set <B>DefaultUIFont</B> to one of the predefined styles in the <A HREF="tref_30px.htm">TextStyle table</A> in the <A HREF="tref_21d1.htm">Property table</A>. </P>
+
+<H4>Remarks</H4>
+
+<P>The <A HREF="#_msi_defaultuifont_property"><B>DefaultUIFont</B> property</A> of every installation package with a UI should be set in the <A HREF="tref_21d1.htm">Property table</A> to one of the predefined styles listed in the <A HREF="tref_30px.htm">TextStyle table</A>. If this property is not specified, the installer uses the System font. This can cause the installer to improperly display text strings when the package's code page is different from the user's default UI code page.</P>
+
+<P>The text and font style of a control can be set as described in <A HREF="hand_7bec.htm">Adding Controls and Text</A>. If the character string listed in the Text column of the <A HREF="tref_6nad.htm">Control table</A> or <A HREF="tref_78it.htm">BBControl table</A> does not specify the font style, the control uses the value of the <B>DefaultUIFont</B> property as the font style.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20DefaultUIFont%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_4ku1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20DefaultUIFont%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_4ku1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

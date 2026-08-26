@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>VolumeCostList Control</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="VolumeCostList Control">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_volumecostlist_control"></A>VolumeCostList Control</H1>
+
+<P>This control presents information about the cost associated with the selection on the different volumes. The control shows all the volumes involved in the current installation plus all volumes that are of the types specified in the attribute bits. If the required disk space exceeds the amount available on some drive, the volume is highlighted in the table. Clicking on a column header sorts the volumes according to the chosen column.</P>
+
+<P>The following strings are used for the column headings in the control and must be specified in the <A HREF="tref_0vz9.htm">UIText table</A>.</P>
+
+<P><B>VolumeCostAvailable</B><BR>
+<B>VolumeCostDifference</B><BR>
+<B>VolumeCostRequired</B><BR>
+<B>VolumeCostSize</B><BR>
+<B>VolumeCostVolume</B></P>
+
+<P>The following four localized strings are used in formatting the size of a file.</P>
+
+<P><B>Bytes</B><BR>
+<B>KB</B><BR>
+<B>MB</B><BR>
+<B>GB</B></P>
+
+<P>Authors can set the column widths in the VolumeCostList by control by appending column widths after any font specifications. Column widths are entered as a series of positive integers enclosed in curly braces. Empty curly braces or {0} hides the column. A negative number or a string that cannot be converted into a positive integer is an invalid column width. When an invalid column width is encountered in the series, the remaining columns are hidden. A maximum of 5 column widths can be specified.</P>
+
+<P>The contents of the Text field of the <A HREF="tref_6nad.htm">Control table</A> is never displayed by the VolumeCostList control. Instead this field specifes the style of text to be displayed by the control and contains a description of the control used by screen review utilities. To set the font and font style of the text displayed by the control, begin the Text column of the Control table with {\style}, where style is an identifier listed in the TextStyle column of the <A HREF="tref_30px.htm">TextStyle table</A>. Use {&amp;style} to apply the base font and font style. The information following this is read by screen review utilities as the description of the control. See <A HREF="hand_1tvd.htm">Accessibility</A>.</P>
+
+<H4>Control Attributes</H4>
+
+<P>You can use the following attributes with this control. To change the value of an attribute using an event, subscribe the control to a ControlEvent in the <A HREF="tref_6m3p.htm">EventMapping table</A> and list the attribute's identifier in the Attribute column. Enter the Identifier of the ControlEvent in the Event column.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=19%>Attribute identifier</TH>
+<TH align=left width=17%>Hexadecimal bit</TH>
+<TH align=left width=64%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2w6d.htm">Position</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>Position of control in the dialog box.
+<P>Enter the control's width, height, and coordinates of the control's left corner into the Width, Height, X, and Y columns of the <A HREF="tref_6nad.htm">Control table</A>. Use pixels for units of length and distance.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2kmd.htm">Text</A></TD>
+<TD width=17%> </TD>
+<TD width=64%>To display text in screen readers, enter the text into the Text column of the <A HREF="tref_6nad.htm">Control table</A>. See <A HREF="hand_1tvd.htm">Accessibility</A>.
+<P>To set the column widths in the VolumeCostList control, append the column widths after to any font specifications. Column widths are entered as a series of positive integers enclosed in curly braces. Empty curly braces or {0} hides the column. A negative number or a string that cannot be converted into a positive integer is an invalid column width. When an invalid column width is encountered in the series, the remaining columns are hidden. A maximum of five column widths can be specified.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8bqd.htm">Visible</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000001</P>
+</TD>
+<TD width=64%>Hidden control.
+<P>Visible control.</P>
+
+<P>Include this bit in the bit word of the Attributes column in the <A HREF="tref_6nad.htm">Control table</A> to make the control visible or hidden upon its creation. </P>
+
+<P>You can also hide or show a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2ig5.htm">Enabled</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000002</P>
+</TD>
+<TD width=64%>Control in a disabled state.
+<P>Control in an enabled state. </P>
+
+<P>Include this bit in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control</A> to enable the control on creation.</P>
+
+<P>You can also enable or disable a control by using the <A HREF="tref_4vhh.htm">ControlCondition table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_0vad.htm">Sunken</A> </TD>
+<TD width=17%>0x00000000
+<P>0x00000004</P>
+</TD>
+<TD width=64%>Display the default visual style.
+<P>Display the control with a sunken, 3D, look.</P>
+
+<P>Include these bits in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_761x.htm">RTLRO</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000020</P>
+</TD>
+<TD width=64%>Text in the control is displayed in a Left-To-Right-Reading-Order.
+<P>Text in the control is displayed in a Right-To-Left-Reading-Order.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_6kbp.htm">RightAligned</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000040</P>
+</TD>
+<TD width=64%>Text in the control is aligned on the left.
+<P>Text in the control is aligned on the right.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_8icl.htm">LeftScroll</A></TD>
+<TD width=17%>0x00000000
+<P>0x00000080</P>
+</TD>
+<TD width=64%>The scroll bar is located on the right side of the control. 
+<P>The scroll bar is located on the left side of the control. </P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_9t2d.htm">BiDi</A></TD>
+<TD width=17%>0x000000E0</TD>
+<TD width=64%>Set this value for a combination of the <A HREF="href_761x.htm">RTLRO</A>, <A HREF="href_6kbp.htm">RightAligned</A>, and <A HREF="href_8icl.htm">LeftScroll</A> attributes.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_7j6t.htm">RemovableVolume</A> </TD>
+<TD width=17%>0x00010000</TD>
+<TD width=64%>Control lists removable drives.
+<P>Include in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2qg5.htm">FixedVolume</A></TD>
+<TD width=17%>0x00020000</TD>
+<TD width=64%>Control lists fixed internal hard drives.
+<P>Include in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_5x0l.htm">RemoteVolume</A> </TD>
+<TD width=17%>0x00040000</TD>
+<TD width=64%>Control lists remote volumes.
+<P>Include in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_7m91.htm">CDROMVolume</A> </TD>
+<TD width=17%>0x00080000</TD>
+<TD width=64%>Control lists CD-ROM volumes.
+<P>Include in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_3wth.htm">RAMDiskVolume</A> </TD>
+<TD width=17%>0x00100000</TD>
+<TD width=64%>Control lists RAM disks.
+<P>Include in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>..</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_3sdh.htm">FloppyVolume</A></TD>
+<TD width=17%>0x00200000</TD>
+<TD width=64%>Control lists floppy drives.
+<P>Include in the bit word in the Attributes column of the <A HREF="tref_6nad.htm">Control table</A>.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=19%><A HREF="href_2kf9.htm">ControlShowRollbackCost</A></TD>
+<TD width=17%>0x00000000
+<P>0x00400000</P>
+</TD>
+<TD width=64%>If <A HREF="pref_8wop.htm">PROMPTROLLBACKCOST</A> = P, and this attribute is not set, the rollback backup files are not included in the cost displayed by the VolumeCostList Control.
+<P>If PROMPTROLLBACKCOST = P, and this attribute is set, the rollback backup files are included in the cost displayed by the VolumeCostList Control.</P>
+
+<P>This control attribute is ignored if PROMPTROLLBACKCOST = D or F. If PROMPTROLLBACKCOST = F, the cost of rollback the backup files is included. If PROMPTROLLBACKCOST = D, or <A HREF="pref_26pl.htm">DISABLEROLLBACK</A> =1, the cost of the rollback backup files is not included.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P>This control is created with the WC_LISTVIEW class and the LVS_REPORT, WS_VSCROLL, WS_HSCROLL, LVS_SHAREIMAGELISTS, LVS_AUTOARRANGE, LVS_SINGLESEL, WS_BORDER, WS_CHILD, WS_TABSTOP, WS_GROUP styles.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

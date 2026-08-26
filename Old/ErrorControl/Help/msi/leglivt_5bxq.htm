@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Roadmap to Windows Installer Documentation</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Windows Installer">
+<META NAME="MS-HKWD" CONTENT="Windows Installer, roadmap to documentation">
+<META NAME="MS-HKWD" CONTENT="roadmap [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_roadmap_to_windows_installer_documentation"></A>Roadmap to Windows Installer Documentation</H1>
+
+<P>This documentation is intended for software developers who want to make applications that use the Microsoft® Windows® installer. As the primary source of reference material for the installer, it provides general background information about installation packages and the installer service. It contains complete descriptions of the application programming interface (API) and the elements of the installer database. This documentation also contains supplemental information of interest to developers who want to use a table editor or a package creation tool to make or maintain an installation. These supplemental sections discuss an example installation package and user interface, merge modules, updating, and validation.</P>
+
+<P>The following list describes each section of the installer documentation. Most of these sections are divided into About, Using, and Reference subsections.
+
+<UL>
+	<LI><A HREF="over_2fjm.htm"><B>About Windows Installer</B></A> gives an overview of installer capabilities and benefits, such as advertisement, installation-on-demand, resiliency, customization, and component management. This section introduces the concepts of installer components and features, which are essential to understanding how the installer organizes an installation. It also discusses several high-level subjects about installations, such as System Policy, File Versioning Rules, and Rollback Installation.</LI>
+
+	<LI><A HREF="over_6qb6.htm"><B>Using Windows Installer</B></A><B> </B>currently discusses three subjects on using the installer. Organizing Applications into Components discusses a standard method for organizing an application into components that the installer can install or remove from a user's machine. Downloading an Installation From the Internet describes how to download an installation package located at a URL. Using Cabinets and Compressed Sources discusses using compressed source images.</LI>
+
+	<LI><A HREF="over_43eb.htm"><B>Windows Installer on 64-bit Operating Systems</B></A> describes how to use Windows Installer version 2.0 to install and manage installer components designed to run on 64-bit operating systems.</LI>
+
+	<LI><A HREF="assm_0kkz.htm"><B>Assemblies</B></A> describes how to use Windows Installer version 2.0 to install and manage common language runtime and Win32® assemblies. </LI>
+
+	<LI><A HREF="func_26sz.htm"><B>Installer Functions</B></A> describes function calls to the installer service API. These are the functions that other applications call to access the installer services to install, maintain, or remove applications. The Using sections includes discussions of how to request features, initiate installations, and reinstall missing components programmatically. The Reference section is the primary reference material for the installer service functions. </LI>
+
+	<LI><A HREF="novr_5h5x.htm"><B>Installer Database</B></A> describes the installation database. The installer keeps all of the logic and data necessary for an installation in a relational database located in an .msi file. The About section provides an overview with schema diagrams for the major functional groups of tables of the database. The Using section discusses working with the most important of these tables. These sections contain information that is essential to developers who are authoring installation packages or writing package creation tools. The Reference section contains complete reference material for each database table. This section also contains the primary reference for each of the database functions. The database functions are used internally by the installer to access the database and are primarily of interest to developers of installer package creation tools. </LI>
+
+	<LI><A HREF="hand_0alh.htm"><B>User Interface</B></A> gives information about the installer's user interface capabilities. Although the installer does not provide a user interface, a package author can keep all the data and logic required to run a fully interactive internal or external user interface in the installation database. The Reference section describes elements of the user interface that are specifiable in the database tables, including dialog boxes, controls, and control events.</LI>
+
+	<LI><A HREF="acts_4lmb.htm"><B>Standard Actions</B></A> gives information about the standard actions used by the installer in the sequence tables to perform an installation. This information is intended primarily for package developers.</LI>
+
+	<LI><A HREF="cact_5t2r.htm"><B>Custom Actions</B></A> gives information about creating additional functionality in the installer. Custom actions enable an author of an installation package to extend the capabilities of standard actions by including executables, dynamic-link libraries, and script. This information is intended for package developers who need to perform installation functions not found elsewhere in the installer.</LI>
+
+	<LI><A HREF="prop_1xyr.htm"><B>Properties</B></A> gives information about the properties the installer uses during an installation. The About and Using sections gives an overview of these global variables and each property is described in the Reference section.</LI>
+
+	<LI><A HREF="sovr_99yl.htm"><B>Summary Information Stream</B></A> documents the summary information properties used by the installer. This information is of interest to all developers.</LI>
+
+	<LI><A HREF="auto_8uqt.htm"><B>Automation Interface</B></A> provides information to developers who want to use the automation interface of the Windows Installer.</LI>
+
+	<LI><A HREF="updat_1po3.htm"><B>Patching and Upgrades</B></A> discusses using the installer to perform File Updates, QFEs, Minor Updates, Product Upgrades, and Patching.</LI>
+
+	<LI><A HREF="updat_5wab.htm"><B>Transforms</B></A> discusses how to alter or customize an installation database using a database transform and how to generate, secure, and apply transforms.</LI>
+
+	<LI><A HREF="ices_16su.htm"><B>Package Validation</B></A> discusses using Internal Consistency Evaluators (ICEs) to test the internal consistency of installation packages that are under development.</LI>
+
+	<LI><A HREF="merg_9x9v.htm"><B>Merge Modules</B></A> presents a standard for the design of merge modules. This standard should be followed by developers who are creating their own merge modules as well as by developers who plan to use the installer to deliver shared code to their applications. </LI>
+
+	<LI><A HREF="samp_3mlv.htm"><B>Windows Installer Examples</B></A> includes a step-by-step example of creating an installation package with an internal user interface in <A HREF="samp_2k11.htm">An Installation Example</A>. For an example of authoring a major upgrade for an existing package, see <A HREF="samp_3js5.htm">An Upgrade Example</A>. To learn how a customization transform disables features and adds new resources, see <A HREF="samp_8mat.htm">A Customization Transform Example</A>. For an example of creating a patch package that applies a small update to an existing installation package, see <A HREF="samp_6rxh.htm">A Small Update Patching Example</A>. To learn how to localize an existing installer package, see <A HREF="samp_2nhh.htm">A Localization Example</A>.</LI>
+
+	<LI><A HREF="dglo_5yih.htm"><B>Glossary</B></A> </LI>
+
+	<LI><A HREF="app_47g8.htm"><B>Appendix</B></A> contains a list of command line options and other miscellaneous information.</LI>
+</UL>
+
+<P></P>
+
+<P></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Roadmap%20to%20Windows%20Installer%20Documentation;%20RELEASE:%20August%202001;%20URL:%20leglivt_5bxq.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Roadmap%20to%20Windows%20Installer%20Documentation;%20RELEASE:%20August%202001;%20URL:%20leglivt_5bxq.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

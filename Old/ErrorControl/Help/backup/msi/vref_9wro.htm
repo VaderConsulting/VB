@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Sequence Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Sequence Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_sequence_method"></A><A NAME="helpid_msiengine_sequence"></A>Sequence Method</H1>
+
+<P>The <B>Sequence</B> method of the <A HREF="vref_8xis.htm"><B>Session</B> object</A> opens a query on the specified table, ordering the actions by the numbers in the Sequence column. For each row fetched, the <A HREF="vref_0sdg.htm"><B>DoAction</B> method</A> is called, provided that any supplied condition expression does not evaluate to False. Returns an enumeration msiDoActionStatusEnum, as described in the <A HREF="vref_0sdg.htm"><B>DoAction</B> method</A>.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.Sequence(<I>table</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_8xis.htm"><B>Session</B> object</A></DD>
+
+<DT><I>table</I></DT>
+
+<DD>Required string name of the table to use for sequencing.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This method is normally called internally by top-level actions.</P>
+
+<P>An action sequence containing actions that update the system, such as the <A HREF="aref_3hym.htm">InstallFiles</A> and <A HREF="aref_1cmm.htm">WriteRegistryValues</A> actions, cannot be run by calling the <B>Sequence</B> method. The exception to this rule is if the <B>Sequence</B> method is called from a custom action that is scheduled in the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> between the <A HREF="aref_0gby.htm">InstallInitialize</A> and <A HREF="aref_8l9q.htm">InstallFinalize actions</A>. Actions that do not update the system, such as <A HREF="aref_16zy.htm">AppSearch</A> or <A HREF="aref_4bam.htm">CostInitialize</A>, can be called.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

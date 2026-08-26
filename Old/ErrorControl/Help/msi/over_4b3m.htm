@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Using Custom Actions on a Terminal Server</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_using_custom_actions_on_a_terminal_server"></A>Using Custom Actions on a Terminal Server</H2>
+
+<P>This section describes DLL, EXE, and Script <A HREF="cact_5t2r.htm">custom actions</A> only when all of the following conditions are true:
+
+<UL>
+	<LI>The Windows Installer package is being installed on Windows 2000 or later.</LI>
+
+	<LI>The package is installed on a system hosting Terminal Services. In this case, the installer sets the <A HREF="pref_3855.htm">TerminalServer property</A>.</LI>
+
+	<LI>The package is installed as a <A HREF="over_1tdf.htm">per-machine installation</A>.</LI>
+</UL>
+
+<P>If all of the preceding conditions apply, custom actions run in an environment similar to that which exists when an application is installed with no user logged-in. In this case, the following are true:
+
+<UL>
+	<LI>Deferred custom actions always run in the local system context. This is true even if the custom action would impersonate the user on a non-terminal server system.</LI>
+
+	<LI>Any registry operations in a deferred custom action that read from the <B>HKCU</B> registry hive sees the system's default registry hive and not the current user's registry hive. </LI>
+
+	<LI>Any registry operations in a deferred custom action that write to <B>HKCU\Software</B> are detected by the installer and copied to every user of the computer at the next logon of the user.</LI>
+
+	<LI>Any registry operations in a deferred custom action that write to <B>HKCU</B>, but that are not under the <B>HKCU\Software </B>registry key, are not detected by the installer or copied. </LI>
+</UL>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%20Custom%20Actions%20on%20a%20Terminal%20Server;%20RELEASE:%20August%202001;%20URL:%20over_4b3m.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Using%20Custom%20Actions%20on%20a%20Terminal%20Server;%20RELEASE:%20August%202001;%20URL:%20over_4b3m.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

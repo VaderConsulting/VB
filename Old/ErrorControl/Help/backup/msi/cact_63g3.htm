@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring the Custom Actions</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_authoring_the_custom_actions"></A>Authoring the Custom Actions</H3>
+
+<P>The table below lists the five custom actions used to meet the sample specifications: ProcessAccounts, UninstallAccounts, CreateAccounts, RemoveAccounts, and RollbackAccounts. All of these custom actions are in <A HREF="cact_15mb.htm">dynamic-link libraries</A> stored in the <A HREF="tref_04px.htm">Binary Table</A>. The C++ source code for the dynamic-link libraries containing the sample custom actions are provided in the  Windows Installer SDK. ProcessAccounts and UninstallAccounts are in the file process.cpp. CreateAccount is in the file create.cpp. RemoveAccount and RollbackAccount are in the file remove.cpp. These source files can be used to create the files process.dll, create.dll, and remove.dll.</P>
+
+<P>Because the creation or removal of a user account requires elevated privileges, <A HREF="cact_10fn.htm">deferred execution custom actions</A> that run in the context of the system must be used to create, remove, or rollback user accounts. The immediate execution custom actions, ProcessAccounts and UninstallAccounts, generate the deferred custom actions that create, remove, or rollback user accounts: CreateAccount, RemoveAccount, and RollbackAccount.</P>
+
+<P>Because deferred custom actions cannot read information in database tables, ProcessAccounts and UninstallUserAccouts must set a CustomActionData property to pass the information in the UserAccounts table to the deferred custom actions as described in <A HREF="cact_5fg3.htm">Obtaining Context Information for Deferred Execution Custom Actions</A>. When the installer runs the execution script, the deferred custom actions handles user accounts according to the information in the CustomActionData property.</P>
+
+<P>Because all the custom actions are in dynamic-link libraries stored in the Binary table, they all include the constants msidbCustomActionTypeDll and msidbCustomActionTypeBinaryData in their base numeric type. ProcessAccounts and UninstallAccounts are examples of pure <A HREF="cact_7nqp.htm">Custom Action Type 1</A>. For information on other custom action types see the <A HREF="cact_09pv.htm">Summary List of All Custom Action Types</A>.</P>
+
+<P>CreateAccount and RemoveAccount are <A HREF="cact_10fn.htm">deferred execution custom actions</A> that do not allow services to impersonate particular users. These custom actions include the constants msidbCustomActionTypeInScript and msidbCustomActionTypeNoImpersonate to specify these <A HREF="cact_2ws3.htm">custom action in-script execution options</A>. </P>
+
+<P>RollbackAccount is a <A HREF="cact_0k8j.htm">rollback custom action</A> that only removes user accounts during a <A HREF="over_0bzi.htm">rollback installation</A>. RollbackAccount includes the constants msidbCustomActionTypeInScript and msidbCustomActionTypeRollback to specify these <A HREF="cact_2ws3.htm">custom action in-script execution options</A>. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>Custom action</TH>
+<TH align=left width=28%>DLL entry point</TH>
+<TH align=left width=49%>Custom action type</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>ProcessAccounts</TD>
+<TD width=28%>ProcessUserAccounts in Process.dll.</TD>
+<TD width=49%>msidbCustomActionTypeDll + msidbCustomActionTypeBinaryData = 1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>UninstallAccounts</TD>
+<TD width=28%>UninstallUserAccounts in Process.dll.</TD>
+<TD width=49%>msidbCustomActionTypeDll + msidbCustomActionTypeBinaryData = 1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>CreateAccount</TD>
+<TD width=28%>CreateUserAccount in Create.dll.</TD>
+<TD width=49%>msidbCustomActionTypeDll + msidbCustomActionTypeBinaryData + msidbCustomActionTypeInScript + msidbCustomActionTypeNoImpersonate = 3073</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>RemoveAccount</TD>
+<TD width=28%>RemoveUserAccount in Remove.dll.</TD>
+<TD width=49%>msidbCustomActionTypeDll + msidbCustomActionTypeBinaryData + msidbCustomActionTypeInScript + msidbCustomActionTypeNoImpersonate = 3073</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>RollbackAccount</TD>
+<TD width=28%>RemoveUserAccount in Remove.dll.</TD>
+<TD width=49%>msidbCustomActionTypeDll + msidbCustomActionTypeBinaryData + msidbCustomActionTypeInScript + msidbCustomActionTypeRollback = 1281</TD>
+</TR>
+</TABLE><BR>
+
+<P>Continue to <A HREF="cact_9x0l.htm">Authoring the CustomAction Table</A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

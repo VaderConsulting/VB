@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE26</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE26 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice26"></A>ICE26</H1>
+
+<P>ICE26 validates that each of the following <A HREF="dglo_5nuh.htm#_msi_sequence_tables_gly">sequence tables</A> contains the actions that are required by the table and does not contain any actions disallowed in the table: 
+
+<UL>
+	<LI><A HREF="tref_5lnp.htm">AdminUISequence table</A> </LI>
+
+	<LI><A HREF="tref_70f9.htm">AdminExecuteSequence table</A> </LI>
+
+	<LI><A HREF="tref_1git.htm">InstallUISequence table</A> </LI>
+
+	<LI><A HREF="tref_5pid.htm">InstallExecuteSequence table</A> </LI>
+</UL>
+
+<H4>Result</H4>
+
+<P>ICE26 posts an error message if the installation package has a sequence table that lacks a required action or that contains an action that is disallowed for the table.</P>
+
+<H4>Example</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ICE26 error</TH>
+<TH align=left width=63%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Action: 'Action1' is required in the InstallExecuteSequence Sequence table.</CODE></TD>
+<TD width=63%>A required action is missing from the indicated sequence table. See the template.msi or the suggested sequence tables in <A HREF="novr_3mqt.htm">Using a Sequence Table</A>. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%><CODE>Action: 'Action2' is prohibited in the InstallExecuteSequence Sequence table.</CODE> </TD>
+<TD width=63%>This action cannot be in the indicated sequence table. Remove this action from the sequence table.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

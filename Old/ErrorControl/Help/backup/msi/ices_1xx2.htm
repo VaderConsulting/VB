@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE36</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE36 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice36"></A>ICE36</H1>
+
+<P>ICE36 validates that every icon in the Icon table is listed at least once in the <A HREF="tref_5n8l.htm">Class</A>, <A HREF="tref_4x5x.htm">ProgId</A>, or <A HREF="tref_2i91.htm">Shortcut</A> tables. </P>
+
+<P>During advertisement, the installer installs all the icons listed in the Icon table on the user's machine. Having unused icons in the icon table does not prevent the installation from running, however it does unnecessarily increase the size of the .msi file and the time and space required to advertise a feature. </P>
+
+<P>If an icon is not referenced in a table and there is no UI provided to create a reference at runtime, you should remove the Icon to achieve better performance.</P>
+
+<H4>Result</H4>
+
+<P>ICE36 posts a message if there is a icon in the Icon table that is not referenced in the Class, ProgId, or Shortcut tables and if there is no UI provided to create such a reference at runtime. </P>
+
+<H4>Example</H4>
+
+<P>ICE36 reports the following error for the example shown.</P>
+
+<PRE>Icon Bloat. Icon Icon4 is not used in the Class, Shortcut, or ProgID table. This adversely affects performance.</PRE>
+
+<P><A HREF="tref_7vmt.htm"><B>Icon Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=47%>Name</TH>
+<TH align=left width=53%>Data</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>Icon1</TD>
+<TD width=53%>Control1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>Icon2</TD>
+<TD width=53%>Control2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>Icon3</TD>
+<TD width=53%>Control3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>Icon4</TD>
+<TD width=53%>Control4</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4x5x.htm"><B>ProgID Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>ProgID</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>Property1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_5n8l.htm"><B>Class Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>CLSID</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>{3E469ABA-3644-11d2-8892-00A0C981B015}</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=47%>Shortcut</TH>
+<TH align=left width=53%>Icon_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>Shortcut1</TD>
+<TD width=53%>Icon2</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

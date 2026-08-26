@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Authoring Merge Module Sequence Tables</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_authoring_merge_module_sequence_tables"></A>Authoring Merge Module Sequence Tables</H3>
+
+<P>Include the MergeModuleSequence tables in the .msm file if the merge module must modify the action <A HREF="dglo_5nuh.htm#_msi_sequence_tables_gly">sequence tables</A> of the target .msi file. Merging does not add these tables to the .msi file. These tables only occur in merge modules.</P>
+
+<P>If any of the ModuleSequence tables are present in an .msm file, an empty copy of the corresponding installer sequence table must also be authored into the merge module. For example, if a merge module contains a ModuleAdminExecuteSequence table, the merge module must also include an empty AdminExecuteSequence table. During a merge, these empty tables provide the merge tool with necessary schema guidelines.</P>
+
+<P>When using <A HREF="acts_4lmb.htm">standard actions</A> in merge module sequence tables, the value in the Sequence column should be the recommended action sequence number for the standard action. See the suggested action sequences given below for the recommended sequence numbers in each sequence table. If the sequence number in the merge module sequence table differs from the sequence number for the same action in the .msi file, the merge tool uses the sequence number in the .msi file during the merge. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=47%>MergeModuleSequence table</TH>
+<TH align=left width=53%>Recommended action sequences</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%><A HREF="merg_5fc5.htm">ModuleAdminUISequence</A></TD>
+<TD width=53%><A HREF="novr_7p9h.htm">Suggested AdminUISequence</A> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%><A HREF="merg_6mzp.htm">ModuleAdminExecuteSequence</A></TD>
+<TD width=53%><A HREF="novr_1cx1.htm">Suggested AdminExecuteSequence</A> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%><A HREF="merg_3rs5.htm">ModuleAdvtUISequence</A></TD>
+<TD width=53%><A HREF="novr_7r1h.htm">Suggested AdvtUISequence</A> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%><A HREF="merg_1vfp.htm">ModuleAdvtExecuteSequence</A></TD>
+<TD width=53%><A HREF="novr_8yp1.htm">Suggested AdvtExecuteSequence</A></TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%><A HREF="merg_29r9.htm">ModuleInstallUISequence</A></TD>
+<TD width=53%><A HREF="novr_9qcl.htm">Suggested InstallUISequence</A> </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%><A HREF="merg_7fmt.htm">ModuleInstallExecuteSequence table</A></TD>
+<TD width=53%><A HREF="novr_0o85.htm">Suggested InstallExecuteSequence</A> </TD>
+</TR>
+</TABLE><BR>
+
+<P>If a <A HREF="acts_4lmb.htm">standard action</A> is used in the Action column of a merge module sequence table, the BaseAction and After columns of that record must be Null. If a custom action or dialog is entered into the Action column, the Sequence column must be Null.</P>
+
+<P>The BaseAction column can contain a standard action, a custom action specified in the merge module's custom action table, or a dialog specified in the module's dialog table. The BaseAction column is a key into the Action column of this table. It cannot be a foreign key into another merge table or table in the .msi file. This means that every standard action, custom action, or dialog listed in the BaseAction column must also be listed in the Action column of another record in this table.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Authoring%20Merge%20Module%20Sequence%20Tables;%20RELEASE:%20August%202001;%20URL:%20merg_929f.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Authoring%20Merge%20Module%20Sequence%20Tables;%20RELEASE:%20August%202001;%20URL:%20merg_929f.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

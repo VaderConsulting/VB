@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE66</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE66 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice66"></A>ICE66</H1>
+
+<P>ICE66 uses the tables in the database to determine which schema your database should use. </P>
+
+<P>Some functionality may only be available if the package is installed on a system with Windows Installer version 1.1 or later.</P>
+
+<H4>Result</H4>
+
+<P>ICE66 posts a warning if your database is using the wrong schema.</P>
+
+<H4>Example</H4>
+
+<P>ICE66 reports the following warning for the example shown.</P>
+
+<PRE>WARNING: Complete functionality of the IsolatedComponents table is only available with Windows Installer versions 1.1 or greater. Your schema is 100.</PRE>
+
+<P>The <A HREF="tref_6jc5.htm">IsolatedComponent Table</A> was added in version 1.1 of the installer. In order for you to have the additional functionality resulting from use of the IsolatedComponent table, the package must be installed on a system with Windows Installer version 1.1 or greater.</P>
+
+<P>This warning can be ignored if you want your package to work on Windows Installer version 1.0 and have the additional functionality of the IsolatedComponents table if your package is installed on Windows Installer version 1.1 or greater. If you are not using the IsolatedComponents table, drop it from your database. If you want your package to be installable only on version 1.1 or later, change your package schema (PID_PAGECOUNT) to 110.</P>
+
+<P><A HREF="tref_6jc5.htm"><B>IsolatedComponent Table</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=44%>Component_Shared</TH>
+<TH align=left width=56%>Component_Application</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>Component1</TD>
+<TD width=56%>Component2</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="sovr_99yl.htm"><B>Summary Information Stream</B></A> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=44%>PIDt</TH>
+<TH align=left width=56%>Value</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=44%>PID_PAGECOUNT</TD>
+<TD width=56%>100</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Table used during execution:</H4>
+
+<P><A HREF="tref_4rj9.htm">_<B>Columns</B> table</A> </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE03</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="ICE03">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_language_identifiers">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_ice03"></A>ICE03</H1>
+
+<P>ICE03 validates the data types and foreign keys based on the <A HREF="tref_8fl1.htm">_Validation table</A> and the database tables in the .msi file. </P>
+
+<H4>Result</H4>
+
+<P>ICE03 posts the following messages for the validation errors.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>ICE03 error message</TH>
+<TH align=left width=67%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Duplicate Primary Key</TD>
+<TD width=67%>The primary keys of a new row duplicates the primary keys of an existing row. The Nullable column of the <A HREF="tref_8fl1.htm">_Validation table</A> shows the primary keys in the database. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Not A Nullable Column</TD>
+<TD width=67%>A table column that is not specified as nullable in the Nullable column of the <A HREF="tref_8fl1.htm">_Validation table</A> contains an entry that is Null.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Not A Valid Foreign Key</TD>
+<TD width=67%>A column that is a foreign key into a second table contains an entry that does not exist in the primary key of the second table. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Value exceeds MaxValue</TD>
+<TD width=67%>The numeric value of an entry in a database table exceeds the maximum limit specified for this field in the MaxValue column of the <A HREF="tref_8fl1.htm">_Validation table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Value below MinValue</TD>
+<TD width=67%>The numeric value of an entry in a database table is less than the minimum limit specified for this field in the MinValue column of the <A HREF="tref_8fl1.htm">_Validation table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Value not a member of the set</TD>
+<TD width=67%>The value of an entry in a database table is not a member of the acceptable set of values specified for this field in the Set column of the<A HREF="tref_8fl1.htm"> _Validation table</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid version string</TD>
+<TD width=67%>See the <A HREF="tref_1iy6.htm">Version</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>All UPPER case required</TD>
+<TD width=67%>See the <A HREF="tref_036t.htm">UpperCase</A> data type. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid GUID string</TD>
+<TD width=67%>See the <A HREF="tref_7kf8.htm">GUID</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid file name/usage of wildcards</TD>
+<TD width=67%>The database contains an invalid file name or an incorrect wildcard. See the <A HREF="tref_86jp.htm">WildCardFilename</A> data type. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid identifier</TD>
+<TD width=67%>See the <A HREF="tref_5elu.htm">Identifier</A> data type. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid Language Id</TD>
+<TD width=67%>The database contains an invalid numeric Language Identifier (LANGID). See the <A HREF="tref_3bc5.htm">Language</A> data type. 
+<P>See the platform SDK for a current list of <A HREF="JavaScript:hhobj_1.Click()">Language Identifiers</A> used by Windows. For example, 1033 for the U.S. and 0 for language neutral.</P>
+</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid Filename</TD>
+<TD width=67%>See the <A HREF="tref_0oit.htm">Filename</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid full path</TD>
+<TD width=67%>See the <A HREF="tref_6e7c.htm">Path</A>, <A HREF="tref_2tig.htm">AnyPath</A>, and <A HREF="tref_994j.htm">Paths</A> data types.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Bad conditional string</TD>
+<TD width=67%>The database contains an invalid conditional string. This is a text string that must evaluate to TRUE or FALSE according to the <A HREF="novr_1ol4.htm">Conditional Statement Syntax</A>. See the <A HREF="tref_735a.htm">Condition</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid format string</TD>
+<TD width=67%>See the <A HREF="tref_0qp0.htm">Formatted</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid template string</TD>
+<TD width=67%>See the <A HREF="tref_43mt.htm">Template</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid DefaultDir string</TD>
+<TD width=67%>See the <A HREF="tref_8gfm.htm">DefaultDir</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid registry path</TD>
+<TD width=67%>See the <A HREF="tref_0xgo.htm">RegPath</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Bad CustomSource data</TD>
+<TD width=67%>See the <A HREF="tref_3uzp.htm">CustomSource</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Invalid property string</TD>
+<TD width=67%>See the <A HREF="tref_2ygp.htm">Property</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Missing data in _Validation table or old Database</TD>
+<TD width=67%>There are columns in the database that are not listed in the Column column of the <A HREF="tref_8fl1.htm">_Validation table</A>. The database and _Validation table do not match</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Bad cabinet syntax/name</TD>
+<TD width=67%>See the <A HREF="tref_5iyc.htm">Cabinet</A> data type. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>_Validation table: Invalid category string</TD>
+<TD width=67%>This is an error in authoring the _Validation table. Validation does not recognize the category string used for this particular column in the _Validation table. See <A HREF="tref_6b77.htm">Column Data Types</A> and specify a valid category. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>_Validation table: Data in KeyTable column is incorrect</TD>
+<TD width=67%>The KeyTable column in the _Validation table references a table that does not exist in the database. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>_Validation table: Value in MaxValue column &lt; that in MinValue column</TD>
+<TD width=67%>This is an error in authoring the <A HREF="tref_8fl1.htm">_Validation table</A>. Min must always be less than or equal to Max. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Bad shortcut target</TD>
+<TD width=67%>See the <A HREF="tref_6w1g.htm">Shortcut</A> data type.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>String overflow (greater than length permitted in column)</TD>
+<TD width=67%>The string's length is greater than the column width specified by the column definition. Note that the installer does not internally limit the column width to the specified value. See <A HREF="novr_2dv8.htm">Column Definition Format</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Undefined error</TD>
+<TD width=67%>Unknown error. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>Column cannot be localized</TD>
+<TD width=67%>Primary key columns cannot be localized.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A></P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE03;%20RELEASE:%20August%202001;%20URL:%20ices_1xrn.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20ICE03;%20RELEASE:%20August%202001;%20URL:%20ices_1xrn.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I author a language transform for a multiple-language merge module?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H3><A NAME="_msi_how_do_i_author_a_language_transform_for_a_multiple_language_merge_module"></A>How do I author a language transform for a multiple-language merge module?</H3>
+
+<P>When a module is merged into an database that has a different default language, the merge tool may need to apply a language transform to the module to provide the final language. For more information, see <A HREF="merg_7f77.htm">Multiple Language Merge Modules</A>.</P>
+
+<P>The language transforms are stored in the module's .msm file and must have the name and format: MergeModule.Lang####. The #### represents the up-to four digit <A HREF="over_9h6b.htm">LANGID</A> of the final language. For example, MergeModule.Lang1033, MergeModule.Lang9, and MergeModule.Lang0 for transforms to US English, world English, and language neutral. </P>
+
+<P>The language transform should do the following:
+
+<UL>
+	<LI>Change the default language in the Language column of the <A HREF="merg_4nad.htm">ModuleSignature table</A> to the new language of the module.</LI>
+
+	<LI>Change the default language in the Language column of the <A HREF="merg_21gl.htm">ModuleComponents table</A> to the new language of the module. The transform may add or remove rows from this table.</LI>
+
+	<LI>If necessary, change the language in the RequiredLanguage column, or add or delete rows, to the <A HREF="merg_7z39.htm">ModuleDependency table</A>. </LI>
+
+	<LI>If necessary, change the language in the ExcludedLanguage column, or add or delete rows, to the <A HREF="merg_8c4l.htm">ModuleExclusion table</A>. </LI>
+
+	<LI>The transform may perform any valid transform operations on the module, including adding or removing components, files, registry entries, or actions.</LI>
+</UL>
+
+<P>Note that applying a language transform when opening the module doesn't change the default language or the languages supported by the module, it just changes the language that is being requested. Therefore the Template property does not change, it should already list all of the languages supported by the module with the default language listed first. </P>
+
+<P>All files needed by all possible language transforms are commonly stored in a single cabinet file included with the module. Because it is not practical to have the language transform modify this cabinet file, it is best to use a global file sequence in the cabinet file, <A HREF="tref_4n6t.htm">File table</A>, and language transform. For details, see <A HREF="merg_0yxx.htm">How do I order the file sequence in the CAB of a multiple language merge module?</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE67</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE67 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice67"></A>ICE67</H1>
+
+<P>ICE67 checks that the target of a non-advertised shortcut belongs to the same component as the shortcut itself, or that the attributes of the target component ensure that it does not change installation locations. </P>
+
+<P>Failure to fix a warning or error reported by ICE67 can cause the shortcut to be invalid if the target component changes state and the source component does not. For example, when the target file's component is set to run from source, a reinstallation that changes the component to local results in the component containing the shortcut not being reinstalled. Thus the shortcut points to an invalid location.</P>
+
+<P>Note that in some cases, using a different component for the shortcut is unavoidable. For example, if the shortcut is created in the user profile and the file is installed to a non-profile directory, you may not be able to use the same component for both pieces of data. (This results in failures in multi-user scenarios – such as those described in <A HREF="ices_1y0n.htm">ICE57</A>). In this case, you may be able to use advertised shortcuts to achieve the behavior you want, or you can simply ensure that the target component cannot change from run-from-source to local.</P>
+
+<H4>Result</H4>
+
+<P>ICE67 returns an error or a warning if the target of a non-advertised shortcut does not belong to the same component as the shortcut itself, or if the attributes of the target component do not ensure that the installation locations will not change.</P>
+
+<H4>Example</H4>
+
+<P>ICE67 reports the following warning and errors for the example shown.</P>
+
+<PRE>The shortcut 'Shortcut1' is a non-advertised shortcut with a file target. The shortcut and target are installed by different components, and the target component can run locally or from source.</PRE>
+
+<P>Shortcut1 is installed by Component2, but its target file, File1, is installed by component1. The target component is marked optional (meaning that it can be local or run-from-source). One possible situation that would cause a problem is if Component1 changes from run-from-source to local. This would cause Shortcut1 to point to an invalid location.</P>
+
+<P>To fix this warning, Install the shortcut as part of Component1, or mark Component1 as LocalOnly or SourceOnly.</P>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A> <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>File</TH>
+<TH align=left width=72%>Component_</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>File1</TD>
+<TD width=72%>Component1</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_2i91.htm"><B>Shortcut Table</B></A>  <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Shortcut</TH>
+<TH align=left width=36%>Component_</TH>
+<TH align=left width=36%>Target</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Shortcut1</TD>
+<TD width=36%>Component2</TD>
+<TD width=36%>[#File1]</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_09np.htm"><B>Component Table</B></A>  <B>(partial)</B> </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>Component</TH>
+<TH align=left width=72%>Attributes</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>Component1</TD>
+<TD width=72%>2</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

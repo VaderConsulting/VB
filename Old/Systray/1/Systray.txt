@@ -1,0 +1,32 @@
+Project:             Sample Code Library
+Date:                May 2nd, 1999 8:30AM EST
+Programmer:          Robert J. Reich  (cypher@tir.com)
+Company:             CypherSolutions
+
+
+Name:                System Tray Application
+
+
+Description:         Demonstrates how to use the WIN32 API to create a
+                     form that will reside in the System Tray.  Also
+                     covers topics on how to make the icon "flash", and
+                     changing the ToolTip text.   I've tried to make this
+                     as simple and straight forward as possible by
+                     implimenting the features in an overtly simple manner
+                     to give you "the idea".  This way you can expound on any
+                     subject with minimal research.  In a nutshell I've tried
+                     as hard as possible to be intuitive and completely self
+                     documenting as can be.
+
+
+Version :            Created under Visual Basic 6.0 the code is compatiable
+                     with all 32bit versions of Visual Basic.  However, to
+                     view the actual form in Visual Basic 5.0 you have to...
+
+                           Open the Project *.vbp file in Notepad
+                           Search for a Key called "Retained = "
+                           Delete that key and save the changes..
+
+
+               As with all public domain sample code, this comes with no 
+              implied or written warranties.  Use this code at your own risk.

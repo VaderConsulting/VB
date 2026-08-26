@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Template Summary Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Template Summary Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_template_summary_property"></A>Template Summary Property</H1>
+
+<P>The Template summary indicates the platform and language versions supported by the database.</P>
+
+<P>The syntax of the Template summary info property is:</P>
+
+<P>[platform property][,platform property][,...];[language id][,language id][,...].</P>
+
+<P>For example, the following are all valid values for the Template Summary property:
+
+<UL>
+	<LI>Alpha,Intel;1033</LI>
+
+	<LI>Intel,Alpha;1033</LI>
+
+	<LI>Alpha;1033</LI>
+
+	<LI>Intel;1033</LI>
+
+	<LI>;1033</LI>
+
+	<LI>;</LI>
+
+	<LI>Alpha;1033,2046</LI>
+
+	<LI>Intel ;1033,2046</LI>
+
+	<LI>Intel;0</LI>
+</UL>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;The Alpha platform is not supported by Windows Installer version 1.1.</P>
+
+<P>If the current platform does not match one of the platforms specified then the installer will not process the package. Not specifying a platform implies that the package is platform-independent.</P>
+
+<P>Entering 0 in the language ID field of the Template Summary Property, or leaving this field empty, indicates that the package is language neutral.</P>
+
+<P>There are variations of this property depending on whether it is in a source installer database or a transform.
+
+<DL>
+<DT><B>Source Installer Database</B></DT>
+
+<DD>In a source installer database any number of languages may be specified. If more than one language is specified then a multi-language install is performed. Listing only one language specifies a single-language install.</DD>
+
+<DT><B>Transform</B></DT>
+
+<DD>In a transform file only one language may be specified. The specified platform and language determine whether a transform can be applied to a particular database. The platform property and the language property can be left blank if no transform restriction relies on them to validate the transform.
+</DD>
+</DL>
+
+<P>This summary property is REQUIRED.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

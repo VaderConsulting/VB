@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiRecordReadStream</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiRecordReadStream">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msirecordreadstream"></A>MsiRecordReadStream</H1>
+
+<P>The <B>MsiRecordReadStream</B> function reads bytes from a record stream field into a buffer.</P>
+
+<PRE class=syntax><B>UINT MsiRecordReadStream(
+</B>  <B>MSIHANDLE</B> <I>hRecord</I><B>,</B>      // record handle
+  <B>UINT</B> <I>iField</I><B>,</B>            // field of record
+  <B>char</B> <I>*szDataBuf</I><B>,</B>        // buffer to receive bytes from stream
+  <B>DWORD</B> <I>*pcbDataBuf</I>       // in/out buffer count
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hRecord</I></DT>
+
+<DD>Handle to the record.</DD>
+
+<DT><I>iField</I></DT>
+
+<DD>Specifies the field of the record.</DD>
+
+<DT><I>szDataBuf</I></DT>
+
+<DD>Specifies the data buffer.</DD>
+
+<DT><I>pcbDataBuf</I></DT>
+
+<DD>Specifies the in and out buffer count. The count does not include the terminating null. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_DATATYPE</DT>
+
+<DD>The field is not a stream column.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To read a stream, set <I>pcbDataBuf</I> to the number of bytes that are to be transferred from stream to buffer each time the function is called. On return, the <B>MsiRecordReadStream</B> resets <I>pcbDataBuf</I> to the number of bytes that were actually transferred.<I> </I>If the buffer is smaller than the stream, the stream is repositioned when the buffer becomes full such that the next data in the stream is transferred by the next call to the function. When no more bytes are available, <B>MsiRecordReadStream</B> returns ERROR_SUCCESS. </P>
+
+<P>If you pass 0 for <I>szDataBuf</I> then <I>pcbDataBuf</I> is reset to the number of bytes in the stream remaining to be read.</P>
+
+<P>The following code sample reads from a stream that is in field 1 of a record specified by hRecord and reads the entire stream 8 bytes at a time.</P>
+
+<PRE>char szBuffer[8];
+DWORD cbBuf = 8;
+do 
+    {
+    if (MsiRecordReadStream(hRecord, 1, szBuffer,
+        &amp;cbBuf) !=ERROR_SUCCESS)
+        break; /* error */
+    }
+while (cbBuf == 8);</PRE>
+
+<P>See also <A HREF="app_3q9f.htm">OLE Limitations on Streams</A>.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_record_processing_functions">Record Processing Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiAssembly Table</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiAssembly Table">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_win32_about_isolated_applications_and_side_by_side_assemblies">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msiassembly_table"></A>MsiAssembly Table</H1>
+
+<P>The MsiAssembly table specifies Windows Installer settings for .NET Framework assemblies and Win32® assemblies. For information, see, <A HREF="assm_4m05.htm">Installation of Assemblies to the Global Assembly Cache</A> and <A HREF="assm_6lv7.htm">Installation of Win32 Assemblies</A>.</P>
+
+<P>On Windows XP and later systems, Windows Installer version 2.0 and later can install Win32 assemblies as <A HREF="assm_5i5v.htm">side-by-side assemblies</A>. For more information, see <A HREF="JavaScript:hhobj_1.Click()">About Isolated Applications and Side-by-side Assemblies</A>.</P>
+
+<P>The MsiAssembly table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=35%>Column</TH>
+<TH align=left width=35%>Type</TH>
+<TH align=left width=12%>Key</TH>
+<TH align=left width=18%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Component_</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=12%>Y</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Feature_</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=12%>&nbsp;</TD>
+<TD width=18%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>File_Manifest</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=12%>&nbsp;</TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>File_Application</TD>
+<TD width=35%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=12%>&nbsp;</TD>
+<TD width=18%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>Attributes</TD>
+<TD width=35%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=12%>&nbsp;</TD>
+<TD width=18%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Component_</DT>
+
+<DD>Key into the <A HREF="tref_09np.htm">Component table</A> specifying the Windows Installer component that contains this assembly. This component's KeyPath must not be the manifest file specified in File_Manifest.</DD>
+
+<DT>Feature_</DT>
+
+<DD>Key into the <A HREF="tref_0a91.htm">Feature table</A>. When the assembly has to be installed by a feature installation, Windows Installer installs the feature pointed to by this field. </DD>
+
+<DT>File_Manifest</DT>
+
+<DD>An external key into the <A HREF="tref_4n6t.htm">File table</A> specifying the file that contains the manifest for a .NET Framework assembly. Do not specify this file as the component's key path file in the KeyPath field of the Component table.</DD>
+
+<DT>File_Application</DT>
+
+<DD>Enter a value in this field to install a .NET Framework or Win32 assembly for the private use of a particular application. The value in this field is an external key into the <A HREF="tref_4n6t.htm">File table</A>. The installer uses the directory structure specified in the <A HREF="tref_6an9.htm">Directory table</A> to install the assembly into the same directory as the component containing this file. This field must be Null if the assembly is to be installed into the global assembly cache. </DD>
+
+<DT>Attributes</DT>
+
+<DD>Enter a value of 1 for a Win32 assembly and a value of 0 for a .NET Framework assembly.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If there is at least one entry in the MsiAssembly table, the <A HREF="tref_5pid.htm">InstallExecuteSequence table</A> must contain the <A HREF="aref_9bn2.htm">MsiPublishAssemblies action</A> and <A HREF="aref_3een.htm">MsiUnpublishAssemblies action</A>.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiAssembly%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_4u05.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiAssembly%20Table;%20RELEASE:%20August%202001;%20URL:%20tref_4u05.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

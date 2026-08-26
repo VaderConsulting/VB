@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiFormatRecord</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiFormatRecord">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiformatrecord"></A>MsiFormatRecord</H1>
+
+<P>The <B>MsiFormatRecord</B> function formats record field data and properties using a format string.</P>
+
+<PRE class=syntax><B>UINT MsiFormatRecord(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>    // installer handle
+<B>  MSIHANDLE</B> <I>hRecord</I><B>,</B><I>     </I>// record to execute
+<B>  LPTSTR </B><I>szResultBuf</I><B>,</B>    // buffer to return formatted string
+<B>  DWORD </B><I>*pcchResultBuf   </I>// in/out buffer character count
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>Handle to the installation. This may be omitted, in which case only the record field parameters are processed and properties are not available for substitution.</DD>
+
+<DT><I>hRecord</I></DT>
+
+<DD>Handle to the record to format. The template string must be stored in record field 0 followed by referenced data parameters.</DD>
+
+<DT><I>szResultBuf</I></DT>
+
+<DD>Specifies the buffer to return the formatted string to.</DD>
+
+<DT><I>pcchResultBuf</I></DT>
+
+<DD>Specifies the in/out character count. The count does not include the terminating null. 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_MORE_DATA</DT>
+
+<DD>A buffer was too small to hold the entire value.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The <B>MsiFormatRecord</B> function uses the following format process.</P>
+
+<P>Parameters that are to be <A HREF="tref_0qp0.htm">formatted</A> are enclosed in square brackets [...]. The square brackets can be iterated because the substitutions are resolved from the inside out.</P>
+
+<P>If a part of the string is enclosed in curly braces { } and contains no square brackets, it is left unchanged, including the curly braces.</P>
+
+<P>If a part of the string is enclosed in curly braces { } and contains one or more property names, and if all the properties are found, the text (with the resolved substitutions) is displayed without the curly braces. If any of the properties is not found, all the text in the braces and the braces themselves are removed.</P>
+
+<P>The following steps describe how to format strings using the <B>MsiFormatRecord</B> function:</P>
+
+<P class=proch><B><IMG SRC="../images/wedge.gif" ALT="" BORDER=0>To format strings using the MsiFormatRecord function</B>
+
+<OL>
+	<LI>The numeric parameters are substituted by replacing the marker with the value of the corresponding record field, with missing or null values producing no text.</LI>
+
+	<LI>The resultant string is processed by replacing the non-record parameters with the corresponding values, described next.
+<UL>
+	<LI>If a substring of the form [propertyname] is encountered, it is replaced by the value of the property.</LI>
+
+	<LI>If a substring of the form [%environmentvariable] is found, the value of the environment variable is substituted. </LI>
+
+	<LI>If a substring of the form [#filekey] is found, it is replaced by the full path of the file, with the value <I>filekey</I> used as a key into the <A HREF="tref_4n6t.htm">File table</A>. </LI>
+
+	<LI>If a substring of the form [$componentkey] is found, it is replaced by the installation directory of the component, with the value <I>componentkey</I> used as a key into the <A HREF="tref_09np.htm">Component table</A>, taking into account the Component.Action column state. If the component is selected to be installed locally, it is replaced by the target directory. If the component is selected to run from source, it is replaced by the source directory. If the component is not selected or if the component is missing, it is replaced by a null string.</LI>
+
+	<LI>If a substring of the form [\c] is found, it is replaced by the character without any further processing. Only the first character after the backslash is kept; everything else is removed. </LI>
+</UL>
+</LI>
+</OL>
+
+<P>If ERROR_MORE_DATA is returned, the parameter which is a pointer gives the size of the buffer required to hold the string. If ERROR_SUCCESS is returned, it gives the number of characters written to the string buffer. Therefore you can get the size of the buffer by passing in an empty string (for example "") for the parameter that specifies the buffer. Do not attempt to determine the size of the buffer by passing in a Null (value=0).</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

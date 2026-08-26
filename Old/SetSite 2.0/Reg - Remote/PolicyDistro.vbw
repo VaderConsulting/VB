@@ -1,0 +1,6 @@
+frmMain = 4, 3, 833, 619, C, 10, 4, 525, 629, C
+GetConnected = 66, 66, 806, 512, C
+GetErrMessage = 66, 66, 739, 495, C
+RegistryGrip = 10, 10, 863, 752, C
+frmLogin = 0, 0, 0, 0, C, 44, 44, 673, 566, C
+Module1 = 220, 220, 767, 668, C

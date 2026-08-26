@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>COMPADDSOURCE Property</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="COMPADDSOURCE Property">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_compaddsource_property"></A>COMPADDSOURCE Property</H1>
+
+<P>The value of the <B>COMPADDSOURCE</B> property is a list of component GUIDs from the ComponentId column of the <A HREF="tref_09np.htm">Component table</A>, delimited by commas, that are to be installed to run from the source media. The installer uses this value to determine which features are set to be installed to run from source, based on the specified components. For each listed component ID, the installer examines all features linked (via the <A HREF="tref_52hx.htm">FeatureComponents</A> table) to that component, and installs the feature that requires the least amount of disk space to install. The components listed must be present in the Component column of the <A HREF="tref_09np.htm">Component</A> table.</P>
+
+<H4>Remarks</H4>
+
+<P>Note that the component names are case-sensitive. Also note that if the LocalOnly bit flag is set in the Attributes column of the <A HREF="tref_09np.htm">Component</A> table for a component, then the component is installed to run locally.</P>
+
+<P>The installer always evaluates the following properties in the following order:
+
+<OL>
+	<LI><A HREF="pref_3dvd.htm"><B>ADDLOCAL</B></A> </LI>
+
+	<LI><A HREF="pref_8ho9.htm"><B>REMOVE</B></A> </LI>
+
+	<LI><A HREF="pref_7g1l.htm"><B>ADDSOURCE</B></A> </LI>
+
+	<LI><A HREF="pref_7yex.htm"><B>ADDDEFAULT</B></A> </LI>
+
+	<LI><A HREF="pref_19x5.htm"><B>REINSTALL</B></A> </LI>
+
+	<LI><A HREF="pref_6k8p.htm"><B>ADVERTISE</B></A> </LI>
+
+	<LI><A HREF="pref_3htl.htm"><B>COMPADDLOCAL</B></A> </LI>
+
+	<LI><A HREF="#_msi_compaddsource_property"><B>COMPADDSOURCE</B></A> </LI>
+
+	<LI><A HREF="pref_89yx.htm"><B>FILEADDLOCAL</B></A> </LI>
+
+	<LI><A HREF="pref_0id5.htm"><B>FILEADDSOURCE</B></A> </LI>
+
+	<LI><A HREF="pref_42yh.htm"><B>FILEADDDEFAULT</B></A> </LI>
+</OL>
+
+<P>For example, if the command line specifies: ADDLOCAL=ALL, ADDSOURCE = MyFeature, all the features are first set to run-local and then MyFeature is set to run-from-source. If the command line is: ADDSOURCE=ALL, ADDLOCAL=MyFeature, first MyFeature is set to run-local, and then when ADDSOURCE=ALL is evaluated, all features (including MyFeature) are reset to run-from-source.</P>
+
+<P>The installer sets the <A HREF="pref_84u1.htm"><B>Preselected</B> property</A> to a value of "1" during the resumption of a suspended install or when any of the above properties are specified on the command line.</P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20COMPADDSOURCE%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_4gvt.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20COMPADDSOURCE%20Property;%20RELEASE:%20August%202001;%20URL:%20pref_4gvt.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

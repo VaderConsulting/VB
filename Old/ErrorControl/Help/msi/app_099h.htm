@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Msizap.exe</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="Msizap.exe [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_msizap.exe"></A>Msizap.exe</H2>
+
+<P>Msizap.exe is a command line utility that removes all Windows Installer information for a product or all products installed on a computer. Products installed by the installer may fail to function after using MsiZap.</P>
+
+<P>MsiZap.exe does not require any special privileges to run on Windows 95/98/Me platforms. On Windows NT, Windows 2000, and Windows XP, administrative privileges are required to use MsiZap.exe.</P>
+
+<H4>Syntax</H4>
+
+<PRE>msizap T[WA!] {product code}
+msizap T[WA!] &lt;msi package&gt;
+msizap *[WA!] ALLPRODUCTS
+msizap PWSA?! </PRE>
+
+<H4>Command Line Options</H4>
+
+<P>Msizap.exe uses the following case-insensitive command line options. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=17%>Option</TH>
+<TH align=left width=83%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>*</TD>
+<TD width=83%>Remove all Windows Installer folders and registry keys, adjust shared DLL counts, and stop Windows Installer service. Also removes the In-Progress key and rollback information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>a</TD>
+<TD width=83%>Only change ACLs to Admin Full Control for any specified removal. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>p</TD>
+<TD width=83%>Remove the In-Progress key. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>s</TD>
+<TD width=83%>Remove Rollback Information.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>t</TD>
+<TD width=83%>Remove all information for the specified product code. When using this option, enclose the Product Code in curly braces. This option may be used with either the full path to the .msi file or with the product code.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>w</TD>
+<TD width=83%>Remove Windows Installer information for all users. When this option is not set, only the information for the current user is removed. Use of this option requires that the user's profile be loaded so that the user's per-user registry hive be available.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>?</TD>
+<TD width=83%>Verbose help. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=17%>!</TD>
+<TD width=83%>Force a 'yes' response to any prompt.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="app_9303.htm">Windows Installer Development Tools</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Msizap.exe;%20RELEASE:%20August%202001;%20URL:%20app_099h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Msizap.exe;%20RELEASE:%20August%202001;%20URL:%20app_099h.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSetFeatureAttributes</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiSetFeatureAttributes">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msisetfeatureattributes"></A>MsiSetFeatureAttributes</H1>
+
+<P>The <B>MsiSetFeatureAttributes</B> function can modify the default attributes of a feature at runtime. Note that the default attributes of features are authored in the Attributes column of the <A HREF="tref_0a91.htm">Feature table</A>.</P>
+
+<PRE class=syntax><B>UINT MsiSetFeatureAttributes(
+</B>  <B>MSIHANDLE</B> <I>hInstall</I><B>,</B>  //Handle to the product that owns the feature. 
+  <B>LPCTSTR</B> <I>szFeature</I><B>,</B>   //Specifies the feature name within the product.
+  <B>DWORD</B> <I>dwAttributes</I>   //Attributes defied as set of bit flags
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hInstall</I></DT>
+
+<DD>Handle to the product that owns the feature. This handle can be obtained by calling <A HREF="msi_9n39.htm"><B>MsiOpenPackage</B></A>.</DD>
+
+<DT><I>szFeature</I></DT>
+
+<DD>Specifies the feature name within the product.</DD>
+
+<DT><I>dwAttributes</I></DT>
+
+<DD>Feature attributes specified at run time as a set of bit flags:
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=33%>Constant</TH>
+<TH align=left width=10%>Value</TH>
+<TH align=left width=57%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>INSTALLFEATUREATTRIBUTE_FAVORLOCAL</TD>
+<TD width=10%>1</TD>
+<TD width=57%>Modifies default feature attributes to msidbFeatureAttributesFavorLocal at run time. See Attributes column of the <A HREF="tref_0a91.htm">Feature table</A> for a description.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>INSTALLFEATUREATTRIBUTE_FAVORSOURCE</TD>
+<TD width=10%>2</TD>
+<TD width=57%>Modifies default feature attributes to msidbFeatureAttributesFavorSource at run time. See Attributes column of the <A HREF="tref_0a91.htm">Feature table</A> for a description.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>INSTALLFEATUREATTRIBUTE_FOLLOWPARENT</TD>
+<TD width=10%>4</TD>
+<TD width=57%>Modifies default feature attributes to msidbFeatureAttributesFollowParent at run time. Note that this is not a valid attribute to be set for top-level features. See Attributes column of the <A HREF="tref_0a91.htm">Feature table</A> for a description.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>INSTALLFEATUREATTRIBUTE_FAVORADVERTISE</TD>
+<TD width=10%>8</TD>
+<TD width=57%>Modifies default feature attributes to msidbFeatureAttributesFavorAdvertise at run time. See Attributes column of the <A HREF="tref_0a91.htm">Feature table</A> for a description.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>INSTALLFEATUREATTRIBUTE_DISALLOWADVERTISE</TD>
+<TD width=10%>16</TD>
+<TD width=57%>Modifies default feature attributes to msidbFeatureAttributesDisallowAdvertise at run time. See Attributes column of the <A HREF="tref_0a91.htm">Feature table</A> for a description.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=33%>INSTALLFEATUREATTRIBUTE_NOUNSUPPORTEDADVERTISE</TD>
+<TD width=10%>32</TD>
+<TD width=57%>Modifies default feature attributes to msidbFeatureAttributesNoUnsupportedAdvertise at run time. See Attributes column of the <A HREF="tref_0a91.htm">Feature table</A> for a description.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_SUCCESS </DT>
+
+<DD>The function returned successfully. </DD>
+
+<DT>ERROR_INVALID_HANDLE </DT>
+
+<DD>The product handle is invalid. </DD>
+
+<DT>ERROR_UNKNOWN_FEATURE </DT>
+
+<DD>The feature is not known. </DD>
+
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function was called at an invalid time during the install, before the <A HREF="aref_4bam.htm">CostInitialize action</A> or after the <A HREF="aref_22we.htm">CostFinalize action</A>.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P><B>MsiSetFeatureAttributes</B> must be called after <A HREF="aref_4bam.htm">CostInitialize action</A> and before <A HREF="aref_22we.htm">CostFinalize action</A>. The function returns ERROR_FUNCTION_FAILED if called at any other time. </P>
+
+<P>The INSTALLFEATUREATTRIBUTE_FAVORLOCAL, INSTALLFEATUREATTRIBUTE_FAVORSOURCE, and INSTALLFEATUREATTRIBUTE_FOLLOWPARENT flags are mutually exclusive. Only one of these bits can be set for any feature. If more than one of these flags is set, the behavior of that feature is undefined.</P>
+
+<P>See <A HREF="novr_9vw3.htm">Calling Database Functions From Programs</A>.</P>
+
+<P>This function is not available with Windows Installer version 1.0.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

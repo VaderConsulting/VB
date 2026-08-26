@@ -1,0 +1,11 @@
+Sub EnumCustomer(num)
+   Output.PrintLine("ID: " & Customers(num).CustomerId) 
+   Output.PrintLine("CompanyName: " & Customers(num).CompanyName)
+   Output.PrintLine("ContactName: " & Customers(num).ContactName)
+   Output.PrintLine("Address: " & Customers(num).Address)
+   Output.PrintLine("City: " & Customers(num).City) 
+   Output.PrintLine("PostalCode: " & Customers(num).PostalCode)
+   Output.PrintLine("Country: " & Customers(num).Country)
+   Output.PrintLine("Phone: " & Customers(num).Phone)
+   Output.PrintLine("Fax: " & Customers(num).Fax)
+End Sub

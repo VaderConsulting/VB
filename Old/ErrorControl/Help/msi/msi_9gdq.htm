@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiGetFileSignatureInformation</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiGetFileSignatureInformation">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_com_hresult_from_win32">
+</OBJECT>
+<OBJECT ID="hhobj_2" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msigetfilesignatureinformation"></A>MsiGetFileSignatureInformation</H1>
+
+<P>The <B>MsiGetFileSignatureInformation</B> function takes the path to a file that has been digitally signed and returns the file's signer certificate and hash. <B>MsiGetFileSignatureInformation</B> may be called to obtain the signer certificate and hash needed to populate the <A HREF="tref_1t2d.htm">MsiDigitalCertificate table</A> and <A HREF="tref_7h7p.htm">MsiDigitalSignature table</A>.</P>
+
+<P><B>MsiGetFileSignatureInformation</B> is available with Windows Installer version 2.0 and later. Windows Installer version 2.0 only verifies the digital signatures of external cabinets, and only by the use of the MsiDigitalSignature and MsiDigitalCertificate tables.</P>
+
+<P>Windows Installer version 2.0 uses digital signatures as a means to detect corrupted resources. A signer certificate may be compared to the signer certificate of an external resource to be installed by the package. </P>
+
+<PRE class=syntax><B>HRESULT MsiGetFileSignatureInformation(
+</B>  <B>LPCTSTR</B> <I>szSignedObjectPath</I><B>,</B>     // path to signed object
+  <B>DWORD</B> <I>dwFlags</I><B>,</B>                  // extra error case flags
+  <B>PCCERT_CONTEXT</B> <B>*</B><I>ppcCertContext</I><B>,</B> // returned signer certificate context
+  <B>BYTE</B> <B>*</B><I>pbHashData</I><B>,</B>               // returned hash buffer, NULL if not desired
+  <B>DWORD</B> <B>*</B><I>pcbHashData</I>              // in/out buffer byte count
+);</PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szSignedObjectPath</I></DT>
+
+<DD>[in] Path to the file that contains the digital signature.</DD>
+
+<DT><I>dwFlags</I></DT>
+
+<DD>[in] Special error case flags.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=38%>Flag</TH>
+<TH align=left width=12%>Value</TH>
+<TH align=left width=50%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=38%>MSI_INVALID_HASH_IS_FATAL</TD>
+<TD width=12%>0x1</TD>
+<TD width=50%>Without this flag set, and when requesting only the certificate context, an invalid hash in the digital signature does not cause <B>MsiGetFileSignatureInformation</B> to return a fatal error.
+<P>To return a fatal error for an invalid hash, set the MSI_INVALID_HASH_IS_FATAL flag.</P>
+</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>ppcCertContext</I></DT>
+
+<DD>[out] Returned signer certificate context</DD>
+
+<DT><I>pbHashData</I></DT>
+
+<DD>[out] Returned hash buffer. Do not attempt to determine the size of the buffer by passing in Null (value=0) for this parameter.</DD>
+
+<DT><I>pcbHashData</I></DT>
+
+<DD>[in, out] Pointer to a variable that specifies the size, in bytes, of the buffer pointed to by the <I>pbHashData</I> parameter. If ERROR_MORE_DATA is returned, <I>pcbHashData</I> gives the size of the buffer required to hold the hash data. If ERROR_SUCCESS is returned, it gives the number of bytes written to the hash buffer. You can determine the buffer size by passing  <I>*pcbHashData</I> == 0. In this case, the pointer to the hash buffer, <I>*pbHashData</I>, must be non-null 
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value</TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS/S_OK</TD>
+<TD width=52%>Successful completion.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_PARAMETER</TD>
+<TD width=52%>Invalid parameter was specified.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_FUNCTION_FAILED</TD>
+<TD width=52%><B>WinVerifyTrust</B> is not available on the system. <B>MsiGetFileSignatureInformation</B> requires the presence of the Wintrust.dll file on the system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_MORE_DATA</TD>
+<TD width=52%>A buffer is too small to hold the requested data. If ERROR_MORE_DATA is returned, <I>pcbHashData</I> gives the size of the buffer required to hold the hash data.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>TRUST_E_NOSIGNATURE</TD>
+<TD width=52%>File is not signed</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>TRUST_E_BAD_DIGEST</TD>
+<TD width=52%>The file's current hash is invalid according to the hash stored in the file's digital signature.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>CERT_E_REVOKED</TD>
+<TD width=52%>The file's signer certificate has been revoked. The file's digital signature is compromised.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>TRUST_E_SUBJECT_NOT_TRUSTED</TD>
+<TD width=52%>The subject failed the specified verification action. Most trust providers return a more detailed error code that describes the reason for the failure.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>TRUST_E_PROVIDER_UNKNOWN</TD>
+<TD width=52%>The trust provider is not recognized on this system.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>TRUST_E_ACTION_UNKNOWN</TD>
+<TD width=52%>The trust provider does not support the specified action.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>TRUST_E_SUBJECT_FORM_UNKNOWN</TD>
+<TD width=52%>The trust provider does not support the form specified for the subject.</TD>
+</TR>
+</TABLE><BR>
+
+<P><B>MsiGetFileSignatureInformation</B> also returns all the Win32 error values mapped to their equivalent <B>HRESULT</B> data type by <A HREF="JavaScript:hhobj_1.Click()"><B>HRESULT_FROM_WIN32</B></A>. </P>
+
+<H4>Remarks</H4>
+
+<P>When requesting only the certificate context, an invalid hash in the digital signature does not cause <B>MsiGetFileSignatureInformation</B> to return a fatal error. To return a fatal error for an invalid hash, set the MSI_INVALID_HASH_IS_FATAL flag in the <I>dwFlags</I> parameter.</P>
+
+<P>The certificate context and hash information is extracted from the file by a call to <B>WinVerifyTrust</B>. The <I>ppcCertContext</I> parameter is a duplicate of the signer certificate context from the signature. It is the responsibility of the caller to call <B>CertFreeCertificateContext</B> to free the certificate context when finished.</P>
+
+<P>Note that <B>MsiGetFileSignatureInformation</B> requires the presence of the Wintrust.dll file on the system.</P>
+
+<H4><A HREF="JavaScript:hhobj_2.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows XP and Windows .NET Server.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 2.0 on Windows NT 4.0 SP6; Windows 2000; and Windows Me.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="tref_1t2d.htm">MsiDigitalCertificate table</A>, <A HREF="tref_7h7p.htm">MsiDigitalSignature table</A>, <A HREF="over_6boy.htm">Digital Signatures and Windows Installer</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetFileSignatureInformation;%20RELEASE:%20August%202001;%20URL:%20msi_9gdq.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiGetFileSignatureInformation;%20RELEASE:%20August%202001;%20URL:%20msi_9gdq.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

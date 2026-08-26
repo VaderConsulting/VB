@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Components Property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Components Property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_components_property"></A>Components Property</H1>
+
+<P>The read-only Components property returns a <A HREF="vref_1wac.htm"><B>StringList</B> object</A> enumerating the set of installed components for all products.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.Components</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object </I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A> 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To enumerate the components, an application can iterate through the <B>StringList</B> object using a For Each construct. Because components are not ordered, any new components has an arbitrary index. This means that the function can return components in any order. </P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_1mk3.htm"><B>MsiEnumComponents</B></A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

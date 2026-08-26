@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Session Object</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Session Object">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_session_object"></A>Session Object</H1>
+
+<P>The <B>Session</B> object controls the installation process. It opens the install database, which contains the installation tables and data. This object is associated with a standard set of action functions, each performing particular operations on data from one or more tables. Additional custom actions may be added for particular product installations. The basic engine function is a sequencer that fetches sequential records from a designated sequence table, evaluates any specified condition expression, and executes the designated action. Actions not recognized by the engine are deferred to the UI handler object for processing, usually dialog box sequences.</P>
+
+<P>Note that only one Session object can be opened by a single process. </P>
+
+<H4>Properties</H4>
+
+<P><A HREF="vref_0b5l.htm">ComponentCurrentState</A></P>
+
+<P><A HREF="vref_8kc9.htm">ComponentRequestState</A></P>
+
+<P><A HREF="vref_22d5.htm">Database</A></P>
+
+<P><A HREF="vref_9s3d.htm">FeatureCost</A></P>
+
+<P><A HREF="vref_9vqx.htm">FeatureCurrentState</A></P>
+
+<P><A HREF="vref_84xl.htm">FeatureRequestState</A></P>
+
+<P><A HREF="vref_7b7d.htm">FeatureValidStates</A></P>
+
+<P><A HREF="vref_6tx5.htm">Installer</A></P>
+
+<P><A HREF="vref_4w67.htm">Language Property (<B>Session</B> Object)</A></P>
+
+<P><A HREF="vref_53i1.htm">Mode</A></P>
+
+<P><A HREF="vref_2oah.htm">ProductProperty</A></P>
+
+<P><A HREF="vref_3hlr.htm">Property Property (<B>Session</B> Object)</A></P>
+
+<P><A HREF="vref_95oa.htm">SourcePath</A></P>
+
+<P><A HREF="vref_42yh.htm">TargetPath</A></P>
+
+<P><A HREF="vref_8ozd.htm">VerifyDiskSpace</A></P>
+
+<H4>Methods</H4>
+
+<P><A HREF="vref_0sdg.htm"><B>DoAction</B></A></P>
+
+<P><A HREF="vref_44v8.htm"><B>EvaluateCondition</B></A></P>
+
+<P><A HREF="vref_02as.htm"><B>FeatureInfo</B></A></P>
+
+<P><A HREF="vref_3tlw.htm"><B>FormatRecord</B></A></P>
+
+<P><A HREF="vref_3mlg.htm"><B>Message</B></A></P>
+
+<P><A HREF="vref_9wro.htm"><B>Sequence</B></A></P>
+
+<P><A HREF="vref_7esk.htm"><B>SetInstallLevel</B></A></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

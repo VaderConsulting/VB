@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Property Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="Property Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_property_table"></A>Property Table</H1>
+
+<P>The Property table contains the property names and values for all defined properties in the installation. Properties with Null values are not present in the table.</P>
+
+<P>The Property table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=27%>Column</TH>
+<TH align=left width=40%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=19%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Property</TD>
+<TD width=40%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=19%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=27%>Value</TD>
+<TD width=40%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%> </TD>
+<TD width=19%>N</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>Property</DT>
+
+<DD>The name of a property. See <A HREF="prop_1xyr.htm">Properties</A>.</DD>
+
+<DT>Value</DT>
+
+<DD>A localizable string value for the property. This may never be Null or an empty string.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Note that you cannot use the Property table to set a property to the value of another property. The installer does nothing to the text string entered in the Value column before setting the property in the Property column. If FirstProperty is entered into the Property column and [SecondProperty] in the Value column, the value of FirstProperty is set to the text string "[SecondProperty]" and not to the value of the SecondProperty property. This is necessary to prevent creating circular references in the Property table. Instead, you can set one property to another by using a <A HREF="cact_07ox.htm">Custom Action Type 51</A>.</P>
+
+<P>Note that the <A HREF="pref_3o55.htm">AdminProperties property</A> can be used to override the values in the Property table during an <A HREF="over_6jzi.htm">Administrative Installation</A>. </P>
+
+<P>Do not use properties for passwords or other information that must remain secure. The installer may write the value of a property authored into the Property table, or created at runtime, into a log or the system registry.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

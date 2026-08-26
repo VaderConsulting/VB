@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>FeatureValidStates property</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="FeatureValidStates property">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_featurevalidstates_property"></A><A NAME="helpid_msiengine_featurevalidstates"></A>FeatureValidStates Property</H1>
+
+<P>The FeatureValidStates property of the <A HREF="vref_8xis.htm"><B>Session</B> object</A> returns an integer representing bit flags with each relevant bit representing a valid installation state for the specified feature.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.FeatureValidStates(<I>feature</I>)</P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_8xis.htm"><B>Session</B> object</A></DD>
+
+<DT><I>feature</I></DT>
+
+<DD>Required string name of the feature item whose valid installation states are to be retrieved.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>The return value is composed of bit flags as follows. Bit 0: if set, Local is a valid state. Bit 1: if set, Source is a valid state.</P>
+
+<P>The FeatureValidStates property only succeeds after the installer has called the <A HREF="aref_4bam.htm">CostInitialize</A> and <A HREF="aref_22we.htm">CostFinalize</A> actions.</P>
+
+<P>The <B>GetFeatureValidStates</B> method determines state validity by querying all the components that are linked to the specified feature (without taking into account the current installed state of any component). If any of these components has a value of irsOptional in the RunFromSource column, or if at least one component is marked irstLocalOnly and at least one other component is marked irsSourceOnly, then both msiInstallStateLocal and msiInstallStateSource are valid states for the feature. If all components are set to irsLocalOnly, then msiInstallStateLocal is the only valid state. If all components are set to irsSourceOnly, then msiInstallStateSource is the only valid state.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

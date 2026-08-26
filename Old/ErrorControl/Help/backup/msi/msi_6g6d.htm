@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiCloseHandle</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiCloseHandle">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiclosehandle"></A>MsiCloseHandle</H1>
+
+<P>The <B>MsiCloseHandle</B> function closes an open installation handle.</P>
+
+<PRE class=syntax><B>UINT MsiCloseHandle(
+</B>  <B>MSIHANDLE</B> <I>hAny</I>    // Installer handle
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hAny</I></DT>
+
+<DD>Specifies any open installation handle.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=48%>Value </TH>
+<TH align=left width=52%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_INVALID_HANDLE</TD>
+<TD width=52%>An invalid handle was passed to the function.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=48%>ERROR_SUCCESS</TD>
+<TD width=52%>The function succeeded.</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Remarks</H4>
+
+<P><B>MsiCloseHandle</B> must be called from the same thread that requested the creation of the handle.</P>
+
+<P>The following functions supply handles that should be closed after use by calling <B>MsiCloseHandle</B>: </P>
+
+<P class=indent1><A HREF="qref_3v50.htm"><B>MsiCreateRecord</B></A> <BR>
+<A HREF="qref_4e1x.htm"><B>MsiGetActiveDatabase</B></A> <BR>
+<A HREF="qref_7jhg.htm"><B>MsiGetLastErrorRecord</B></A> <BR>
+<A HREF="msi_9n39.htm"><B>MsiOpenPackage</B></A> <BR>
+<A HREF="msi_5f78.htm"><B>MsiOpenProduct</B></A> <BR>
+<A HREF="qref_27tx.htm"><B>MsiOpenDatabase</B></A> <BR>
+<A HREF="qref_5h9z.htm"><B>MsiDatabaseOpenView</B></A> <BR>
+<A HREF="qref_9b54.htm"><B>MsiViewFetch</B></A> <BR>
+<A HREF="qref_8vlb.htm"><B>MsiViewGetColumnInfo</B></A> <BR>
+<A HREF="qref_0w8j.htm"><B>MsiDatabaseGetPrimaryKeys</B></A> <BR>
+<A HREF="qref_5dpq.htm"><B>MsiGetSummaryInformation</B></A> <BR>
+<A HREF="qref_4ek7.htm"><B>MsiEnableUIPreview</B></A></P>
+
+<P>Note that when writing custom actions, it is recommended to use variables of type PMSIHANDLE because the installer closes PMSIHANDLE objects as they go out of scope, whereas you must close MSIHANDLE objects by calling <B>MsiCloseHandle</B>. </P>
+
+<P>For example, if you use code like this:</P>
+
+<P>MSIHANDLE hRec = MsiCreateRecord(3);</P>
+
+<P>Change it to:</P>
+
+<P>PMSIHANDLE hRec = MsiCreateRecord(3);</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_handle_management_functions">Handle Management Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

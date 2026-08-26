@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>OpenModule Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="OpenModule Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_openmodule_method"></A>OpenModule Method</H1>
+
+<P>The OpenModule Method opens a Windows Installer merge module in read-only mode. A module must be opened before it can be merged with an installation database. </P>
+
+<H4>Syntax</H4>
+
+<PRE class=syntax>object.OpenModule(FileName, Language)</PRE>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="merg_4th0.htm"><B>Merge</B> Object</A> </DD>
+
+<DT><I>FileName</I></DT>
+
+<DD>Fully qualified filename pointing to a merge module. </DD>
+
+<DT><I>Language</I></DT>
+
+<DD>A valid language identifier (LANGID). 
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>This function opens the merge module in read-only mode and excludes other programs from writing to the merge module until the <A HREF="merg_0m1w.htm"><B>CloseModule</B> method</A> is called. </P>
+
+<P>The installer attempts to open the module in the language specified by <I>Language</I>, or a more general language. For example, if <I>Language</I> is specified as 1033, a module with a default language of 1033, 9, or 0 can be opened in its default language. A <I>Language</I> value of 9 will open modules with a default language of 9 or 0. If the default language of the module does not meet the specified requirements, an attempt is made to transform the module to the requested language. If that fails, the module is transformed to increasingly general languages, all the way to language neutral. If none of the transforms succeed, the module fails to open. In this case, an error is added to the error list of type msmErrorLanguageUnsupported. If there is an error transforming the module to the desired language, an error is added to the error list of type msmErrorLanguageFailed. See the <A HREF="merg_8vll.htm">Type property</A> of the <A HREF="merg_7yr8.htm"><B>Error</B> Object</A>. Opening a merge module clears any errors that have not already been retrieved. </P>
+
+<H4>C++</H4>
+
+<P>See <A HREF="merg_87xq.htm"><B>OpenModule Function</B></A>.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

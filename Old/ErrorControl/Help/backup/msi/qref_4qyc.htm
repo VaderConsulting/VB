@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiDatabaseExport</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiDatabaseExport">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msidatabaseexport"></A>MsiDatabaseExport</H1>
+
+<P>The <B>MsiDatabaseExport</B> function exports an installer table from an open database to a text archive file.</P>
+
+<PRE class=syntax><B>UINT MsiDatabaseExport(
+</B>  <B>MSIHANDLE</B> <I>hDatabase</I><B>,</B>    // database handle
+  <B>LPCTSTR</B> <I>szTableName</I><B>,</B>    // name of table to export
+  <B>LPCTSTR</B> <I>szFolderPath</I><B>,</B>   // folder containing archive files
+  <B>LPCTSTR</B> <I>szFileName</I>      // name of exported table archive file
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>hDatabase</I></DT>
+
+<DD>Handle to the database.</DD>
+
+<DT><I>szTableName</I></DT>
+
+<DD>Specifies the name of the table to export.</DD>
+
+<DT><I>szFolderPath</I></DT>
+
+<DD>Specifies the name of the folder that contains archive files.</DD>
+
+<DT><I>szFileName</I></DT>
+
+<DD>Specifies the name of the exported table archive file.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_BAD_PATHNAME</DT>
+
+<DD>An invalid path was passed to the function.</DD>
+
+<DT>ERROR_FUNCTION_FAILED</DT>
+
+<DD>The function failed.</DD>
+
+<DT>ERROR_INVALID_HANDLE</DT>
+
+<DD>An invalid or inactive handle was supplied.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>An invalid parameter was passed to the function.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>If a table contains streams, <B>MsiDatabaseExport</B> exports each stream to a separate file.</P>
+
+<P>See <A HREF="qref_59pw.htm"><B>MsiDatabaseImport</B></A>.</P>
+
+<P>This function cannot be called from custom actions. A call to this function from a custom action causes the function to fail.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_database_management_functions">Database Management Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

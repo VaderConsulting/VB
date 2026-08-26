@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>OpenProduct Method</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="OpenProduct Method">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_openproduct_method"></A><A NAME="helpid_msiinstall_openproduct"></A>OpenProduct Method</H1>
+
+<P>The <B>OpenProduct</B> method of the <A HREF="vref_6fxw.htm"><B>Installer</B> object</A> opens an installer package for an installed product using the product code and returns an <A HREF="vref_8xis.htm"><B>Session</B> object</A>.</P>
+
+<H4>Syntax</H4>
+
+<P><I>object</I>.OpenProduct <I>productCode</I></P>
+
+<H4>Parts</H4>
+
+<DL>
+<DT><I>object</I></DT>
+
+<DD><A HREF="vref_6fxw.htm"><B>Installer</B> object</A></DD>
+
+<DT><I>productCode</I></DT>
+
+<DD>Required string containing the unique product code (a <A HREF="tref_7kf8.htm">GUID</A>) or an activation descriptor written by the installer.</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>Note that only one Session object can be opened by a single process. OpenProduct cannot be used in a custom action because the active installation is the only session allowed.</P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

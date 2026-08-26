@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICE31</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICE31 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_ice31"></A>ICE31</H1>
+
+<P>ICE31 validates any predefined font styles used in <A HREF="href_710z.htm">controls</A> that display text. It also validates that the <A HREF="pref_4ku1.htm">DefaultUIFont property</A> refers to a valid font style.</P>
+
+<P>Controls can have a predefined font style as described in <A HREF="hand_7bec.htm">Adding Controls and Text</A>. You can set the font style by putting the name of a style in the form {\<I>style</I>} at the start of the text string which is to appear in the control. Where <I>style</I> is a style name listed in the TextStyle field of the <A HREF="tref_30px.htm">TextStyle table</A>. A base text style can be assigned to any control by supplying {&amp;<I>style</I>} at the start of the text string. This style is used if no other style is set by the text string. A text string may contain both style and base style specifications.</P>
+
+<P>ICE31 checks the Text column for each control in the <A HREF="tref_6nad.htm">Control Table</A> to verifies that a valid entry exist in the TextStyle table.</P>
+
+<P>ICE31 ignores the <A HREF="href_3i5o.htm">ScrollableText Control</A>.</P>
+
+<H4>Results</H4>
+
+<P>ICE31 posts an error message for undefined styles, style names that are too long, a missing TextStyle table, and style tags with no closing brace. </P>
+
+<P>ICE31 posts a warning if the style tag is not at the beginning of the line, or if a control has multiple style tags. </P>
+
+<H4>Example</H4>
+
+<P>ICE31 posts the following errors for the example shown
+
+<UL>
+	<LI>Control DialogB.Control1 uses undefined TextStyle BadStyle. </LI>
+
+	<LI>Control DialogB.Control2 uses undefined TextStyle BadStyle. </LI>
+
+	<LI>Control DialogB.Control6 is missing closing brace in text style. </LI>
+
+	<LI>Control DialogB.Control3 specifies a text style that is too long to be valid. </LI>
+</UL>
+
+<P>ICE31 posts the following warning for the example shown. 
+
+<UL>
+	<LI>Text Style tag in DialogB.Control4 has no effect. Do you really want it to appear as text? </LI>
+</UL>
+
+<P><A HREF="tref_6nad.htm"><B>Control Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=21%>Dialog</TH>
+<TH align=left width=24%>Control</TH>
+<TH align=left width=55%>Text</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>DialogA</TD>
+<TD width=24%>Control0</TD>
+<TD width=55%>{\OKStyle}This is the text to display.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>DialogA</TD>
+<TD width=24%>Control1</TD>
+<TD width=55%>{&amp;OKStyle}This is the text to display.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>DialogB</TD>
+<TD width=24%>Control1</TD>
+<TD width=55%>{&amp;BadStyle}This is the text to display.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>DialogB</TD>
+<TD width=24%>Control2</TD>
+<TD width=55%>{\BadStyle}This is the text to display.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>DialogB</TD>
+<TD width=24%>Control3</TD>
+<TD width=55%>{&amp;Style that is over 72 chars and therefore cannot possibly be a style even if somehow you did manage to get it in the TextStyle table}This is the text to display.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>DialogB</TD>
+<TD width=24%>Control4</TD>
+<TD width=55%>Warning {\OKStyle}This is the text to display.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>DialogB</TD>
+<TD width=24%>Control5</TD>
+<TD width=55%>{\OKStyle}{&amp;OKStyle}This is the text to display.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=21%>DialogB</TD>
+<TD width=24%>Control6</TD>
+<TD width=55%>{\OKStyle This is the text to display.</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_30px.htm"><B>TextStyle table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=100%>TextStyle</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=100%>OkStyle</TD>
+</TR>
+</TABLE><BR>
+
+<H4>See Also</H4>
+
+<P><A HREF="ices_40th.htm">ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

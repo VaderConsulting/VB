@@ -1,0 +1,233 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Scheduled Task component Cpp Code</title>
+</head>
+
+<body>
+
+<p><font face="Verdana"><small><small><br>
+/*<br>
+&nbsp;&nbsp;&nbsp; C++/VC++ examples<br>
+*/<br>
+<br>
+// Scheduled Task component usage C++/VC++ samples<br>
+// #1<br>
+// example creates new scheduled task called &quot;myTask&quot; <br>
+// task should start notepad on May 5, 2001 10:20AM once</small></small><br>
+<br>
+<small><small>// use something like this </small></small><br>
+<small><small>#import <a href="file:///D://Path_to_my_SchedTask//SchedTask.tlb">&quot;D:\\Path_to_my_SchedTask\\SchedTask.tlb&quot;</a></small></small>
+&nbsp; <small><small>// in all these examples below<br>
+<br>
+CoInitialize(NULL);<br>
+<br>
+try<br>
+{<br>
+&nbsp;&nbsp;&nbsp; SCHEDTASKLib::IetScheduledTaskPtr
+pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;Program = &quot;notepad.exe&quot;;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartingDir = &quot;C:\\Winnt\\system32&quot;;<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;TriggerType = 0;&nbsp;&nbsp;&nbsp; // once<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartYear = 2001;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartMonth = 5;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartDay = 5;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartHour = 10;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartMinute = 20;<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;DontStartIfOnBatteries = FALSE<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;KillIfOnBatteries = FALSE</small></small><br>
+<br>
+<small><small>&nbsp;&nbsp;&nbsp; pSTask-&gt;Username = &quot;TaskRun&quot;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;Password = &quot;taskrun&quot;&nbsp;&nbsp;&nbsp; // password
+is case sensitive<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;Creator = &quot;ME&quot;<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;CreateTask(&quot;myTask&quot;, TRUE);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // calls AddTrigger inside<br>
+&nbsp;&nbsp;&nbsp; <br>
+}<br>
+catch(const _com_error &amp;err)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; // retrieve rich error information here<br>
+}<br>
+<br>
+CoUninitialize();<br>
+<br>
+<br>
+// #2<br>
+// example creates new scheduled task called &quot;myTask2&quot;<br>
+// task should start notepad.exe every 15 minutes during 2 hours (120min.)<br>
+// starting May 5, 2001 10:20AM daily<br>
+<br>
+CoInitialize(NULL);<br>
+<br>
+try<br>
+{<br>
+&nbsp;&nbsp;&nbsp; SCHEDTASKLib::IetScheduledTaskPtr
+pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;Program = &quot;notepad.exe&quot;;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartingDir = &quot;C:\\Winnt\\system32&quot;;<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;TriggerType = 1;&nbsp;&nbsp;&nbsp; // daily<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartYear = 2001;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartMonth = 5;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartDay = 5;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartHour = 10;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartMinute = 20;<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;MinutesInterval = 15;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;MinutesDuration = 120;<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;CreateTask(&quot;myTask2&quot;, TRUE);<br>
+&nbsp;&nbsp;&nbsp; <br>
+<br>
+}<br>
+catch(const _com_error &amp;err)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; // retrieve rich error information here<br>
+}<br>
+<br>
+CoUninitialize();<br>
+<br>
+<br>
+// #3<br>
+// example creates new scheduled task called &quot;myTask3&quot;<br>
+// task should start notepad.exe at logon<br>
+<br>
+CoInitialize(NULL);<br>
+<br>
+try<br>
+{<br>
+&nbsp;&nbsp;&nbsp; SCHEDTASKLib::IetScheduledTaskPtr
+pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;Program = &quot;notepad.exe&quot;;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartingDir = &quot;C:\\Winnt\\system32&quot;;<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;TriggerType = 7;&nbsp;&nbsp;&nbsp; // at logon<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;CreateTask(&quot;myTask3&quot;, TRUE);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+<br>
+}<br>
+catch(const _com_error &amp;err)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; // retrieve rich error information here<br>
+}<br>
+<br>
+CoUninitialize();<br>
+<br>
+<br>
+// #4<br>
+// example creates new scheduled task called &quot;myTask4&quot;<br>
+// task should start notepad.exe every sunday of every week <br>
+// starting May 5, 2001 10:20AM<br>
+// If task named &quot;myTask4&quot; already exists it will be overwritten<br>
+<br>
+CoInitialize(NULL);<br>
+<br>
+try<br>
+{<br>
+&nbsp;&nbsp;&nbsp; SCHEDTASKLib::IetScheduledTaskPtr
+pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;Program = &quot;notepad.exe&quot;;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartingDir = &quot;C:\\Winnt\\system32&quot;;<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;TriggerType = 2;&nbsp;&nbsp;&nbsp; // weekly<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;DayOfTheWeek = 1;&nbsp;&nbsp;&nbsp; // every sunday<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartYear = 2001;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartMonth = 5;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartDay = 4;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartHour = 10;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartMinute = 40;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;CreateTask(&quot;myTask4&quot;, FALSE);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+<br>
+}<br>
+catch(const _com_error &amp;err)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; // retrieve rich error information here&nbsp;&nbsp;&nbsp; <br>
+}<br>
+<br>
+CoUninitialize();<br>
+<br>
+<br>
+// #5<br>
+// example creates new scheduled task called &quot;myTask4&quot;<br>
+// task should start at 10:40AM on day 2 of every month, <br>
+// starting 05/04/2000 and ending 05/10/2001&nbsp;&nbsp;&nbsp; <br>
+<br>
+CoInitialize(NULL);<br>
+<br>
+try<br>
+{<br>
+&nbsp;&nbsp;&nbsp; SCHEDTASKLib::IetScheduledTaskPtr
+pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;Program = &quot;notepad.exe&quot;;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartingDir = &quot;C:\\Winnt\\system32&quot;;<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;TriggerType = 3;&nbsp;&nbsp;&nbsp; // monthly<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;DayOfTheMonth = 2;&nbsp;&nbsp;&nbsp; // every second day of
+the month<br>
+<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartYear = 2001;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartMonth = 5;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartDay = 4;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartHour = 10;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;StartMinute = 40;<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;EndYear = 2001;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;EndMonth = 5;<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;EndDay = 10;<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;CreateTask(&quot;myTask5&quot;, FALSE);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+<br>
+}<br>
+catch(const _com_error &amp;err)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; // retrieve rich error information here<br>
+}<br>
+<br>
+CoUninitialize();<br>
+<br>
+// #6<br>
+// example enumerates all existing tasks<br>
+// each task has extension &quot;.job&quot; . If you want to compare task you have<br>
+// created with existing task - drop/trim the extension .<br>
+</small></small><br>
+<small><small>#include &quot;atlconv.h&quot;</small></small> <small><small>// cause we use
+some ATL macros for conversion </small></small><br>
+<small><small><br>
+USES_CONVERSION;<br>
+CoInitialize(NULL);<br>
+<br>
+try<br>
+{<br>
+&nbsp;&nbsp;&nbsp; SCHEDTASKLib::IetScheduledTaskPtr
+pSTask(__uuidof(SCHEDTASKLib::etScheduledTask));<br>
+<br>
+&nbsp;&nbsp;&nbsp; char szTask[120];<br>
+&nbsp;&nbsp;&nbsp; pSTask-&gt;Enum();<br>
+<br>
+&nbsp;&nbsp;&nbsp; for (int i=1; i &lt; pSTask-&gt;TaskCount; i++)<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pSTask-&gt;TaskItem = i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strncpy(szTask, OLE2T(pSTask-&gt;TaskName),
+120);<br>
+&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; <br>
+<br>
+}<br>
+catch(const _com_error &amp;err)<br>
+{<br>
+&nbsp;&nbsp;&nbsp; // retrieve rich error information here<br>
+&nbsp;&nbsp;&nbsp; _ASSERT(0);<br>
+}<br>
+<br>
+CoUninitialize();</small></small></font></p>
+</body>
+</html>

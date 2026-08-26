@@ -1,0 +1,138 @@
+<job id="LDOM">
+<comment>
+'
+' Author:      mpryor@sprintmail.com
+' script:	LDOM.wsf 
+' Description: Launch a script on the last day of every month
+' keywords: last task schagent launch
+' Date:      08/23/02
+' 
+</comment>
+<reference object="Scheduler.SchAgent" />
+
+<script language="VBScript">
+
+Option Explicit
+
+dim day30, day31, day2928
+dim oSch, oNew, lpdays
+
+' test the constant via reference
+'WScript.echo tfRunOnlyIfLoggedOn
+day30 = tmJanuary OR tmApril OR tmJune OR tmAugust OR tmSeptember OR tmNovember
+day31 = tmMarch OR tmMay OR tmJuly OR tmOctober OR tmDecember  
+day2928 = tmFebruary
+
+' for date formats
+setLocale "en-us"
+
+''''''''''''''''
+'   main object
+'''''''''''''''''
+set oSch = createobject("Scheduler.SchAgent")
+
+' constructor, nothing there till we do this
+oSch.refresh
+'WScript.echo TypeName( oSch )
+
+on error resume next
+
+''''''''''''''''''''
+' create new job, delete old version first if necessary
+''''''''''''''''''''''''''''''''''''''''''
+err.clear
+dim MyJob
+MyJob = "LDOM"
+set oNew = NewJob(MyJob)
+
+' stop on any error
+on error goto 0
+
+oNew.ApplicationName = "c:\windows\command\Cscript.exe"
+oNew.CommandLine = "LDOM.vbs null" '  can be self aware
+oNew.Comment = "Remind me to send alimony."
+oNew.WorkingDirectory = ScriptFolder()  ' func call--see below
+oNew.Creator = "Joe Hacker"  ' ala B. McKinney
+oNew.Flags = tfDontStartIfOnBatteries Or tfKillIfGoingOnBatteries
+
+' check for leap year in next year
+if IsLeap( Year(date) + 1) then
+    lpdays = 29
+else
+    lpdays = 28
+end if
+
+''''''''''''''''''''''''''''''
+' add three triggers to oNew
+'''''''''''''''''''''''''''''''
+WScript.echo NewTrig( day30, 30)
+WScript.echo NewTrig( day31, 31)
+
+WScript.echo NewTrig( day2928, lpdays )
+''''''''''''''''''''''''''''''''
+ 
+' refresh all collections
+oNew.Triggers.Update
+oNew.Save
+oSch.Refresh
+
+' end main   
+
+function NewTrig(  MonTyp, MonDays) ' as string
+dim oTrig
+    Set oTrig = oNew.Triggers.Add
+    With oTrig
+        ' strange but this has to be set to use an EndDay
+        .flags = tfHasEndDate
+
+        .TriggerType = ttMonthlyDate
+        .BeginDay = #08/24/2002# 
+    
+        .EndDay = #08/23/2003# 
+        .StartTime = #12:30:00 AM# 
+        ' more than one month is OK
+        .Months = MonTyp        
+        .Day = MonDays
+
+' try three times, in a 15 minute period
+        .Interval = 5
+        .Duration = 15
+        .Update
+        NewTrig=  .Text
+    End with
+end function
+
+Function IsLeap(YearIn ) 'As Boolean
+    IsLeap =  IsDate("2/29/" & YearIn)
+End Function
+
+function NewJob( MyJob ) ' as JOB
+' trick to check for existance of MyJob
+on error resume next
+err.clear
+if IsObject (oSch.Job(MyJob)) then
+    if err.number <> 0 then
+    WScript.echo "OK, All clear to create job"
+    'do nothing
+    err.clear
+    else
+        oSch.Delete(MyJob)
+        WScript.sleep 200
+        WScript.echo "deleting existing job"
+    end if
+end if
+Set NewJob = oSch.CreateTask(MyJob)  ' return Job Object
+end function
+
+function ScriptFolder()  ' as string
+   with WScript
+      ScriptFolder = Mid(.ScriptFullName,1, _
+         instrrev(.ScriptFullName,"\"))
+   end with
+end function
+
+</script>
+
+</job>
+
+

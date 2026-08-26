@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiSetExternalUI</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"><META NAME="MS-HKWD" CONTENT="MsiSetExternalUI">
+</HEAD>
+<BODY TOPMARGIN="0">
+<DIV STYLE="display:none;">
+<OBJECT ID="hhobj_1" TYPE="application/x-oleobject" CLASSID="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+	<PARAM NAME="Command" VALUE="ALink,MENU">
+	<PARAM NAME="DefaultTopic" VALUE="../notopic_0pk4.htm">
+	<PARAM NAME="Item1" VALUE="">
+	<PARAM NAME="Item2" VALUE="_psdk_requirements">
+</OBJECT>
+</DIV>
+
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H1><A NAME="_msi_msisetexternalui"></A>MsiSetExternalUI</H1>
+
+<P>The <B>MsiSetExternalUI</B> function enables an external user-interface handler. This external UI handler is called before the normal internal user-interface handler. The external UI handler has the option to suppress the internal UI by returning a non-zero value to indicate that it has handled the messages. For more information, see <A HREF="hand_6iw5.htm">About the User Interface</A>.</P>
+
+<PRE class=syntax><B>INSTALLUI_HANDLER MsiSetExternalUI(
+</B>  <B>INSTALLUI_HANDLER</B> <I>puiHandler</I><B>,</B> // UI handler
+  <B>DWORD</B> <I>dwMessageFilter</I><B>,</B>        // bit flags designating which messages to handle
+  <B>LPVOID</B> <I>pvContext</I>              // application context
+<B>);</B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>puiHandler</I></DT>
+
+<DD>[in] Specifies a callback function that conforms to the <A HREF="msi_2g4y.htm"><B>INSTALLUI_HANDLER</B></A> specification.</DD>
+
+<DT><I>dwMessageFilter</I></DT>
+
+<DD>[in] Specifies which messages to handle using the external message handler. If the external handler returns a non-zero result, then that message will not be sent to the UI, instead the message will be logged if logging has been enabled. See <A HREF="msi_2ch3.htm"><B>MsiEnableLog</B></A>.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=43%>Value</TH>
+<TH align=left width=57%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_FATALEXIT</TD>
+<TD width=57%>Premature termination of installation.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_ERROR</TD>
+<TD width=57%>The error messages are logged.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_WARNING</TD>
+<TD width=57%>The warning messages are logged.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_USER</TD>
+<TD width=57%>The user requests are logged.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_INFO</TD>
+<TD width=57%>The status messages that are not displayed are logged.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_RESOLVESOURCE</TD>
+<TD width=57%>Request to determine a valid source location.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_OUTOFDISKSPACE</TD>
+<TD width=57%>The was insufficient disk space.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_ACTIONSTART</TD>
+<TD width=57%>The start of new installation actions are logged.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_ACTIONDATA</TD>
+<TD width=57%>The data record with the installation action is logged.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_COMMONDATA</TD>
+<TD width=57%>The parameters for user-interface initialization are logged.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_PROGRESS</TD>
+<TD width=57%><A HREF="dglo_6vp5.htm#_msi_progress_bar_gly">Progress bar</A> information. This message includes information on units so far and total number of units. See <A HREF="qref_163p.htm"><B>MsiProcessMessage</B></A> for an explanation of the message format. This message is only sent to an external user interface and is not logged. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_INITIALIZE</TD>
+<TD width=57%>If this is not a quiet installation, then the <A HREF="dglo_2kc9.htm#_msi_basic_ui_gly">basic UI</A> has been initialized. If this is a full UI installation, the <A HREF="dglo_0xvd.htm#_msi_full_ui_gly">Full UI</A> is not yet initialized. This message is only sent to an external user interface and is not logged. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_TERMINATE</TD>
+<TD width=57%>If a full UI is being used, the full UI has ended. If this is not a quiet installation, the basic UI has not yet ended. This message is only sent to an external user interface and is not logged. </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=43%>INSTALLLOGMODE_SHOWDIALOG</TD>
+<TD width=57%>Sent prior to display of the Full UI dialog.  This message is only sent to an external user interface and is not logged.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>pvContext</I></DT>
+
+<DD>[out] Pointer to an application context that is passed to the callback function. This parameter can be used for error checking.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<P>The return value is the previously set external handler, or 0 if there was no previously set handler. </P>
+
+<H4>Remarks</H4>
+
+<P>To restore the previous UI handler, second call is made to  <B>MsiSetExternalUI</B> using the <A HREF="msi_2g4y.htm">INSTALLUI_HANDLER</A> returned by the first call to <B>MsiSetExternalUI</B> and specifying 0 for dwMessageFilter.</P>
+
+<P>The external user interface handler pointed to by the <I>puiHandler</I> parameter does not have full control over the external user interface unless <A HREF="msi_2j3d.htm"><B>MsiSetInternalUI</B></A> is called with the <I>dwUILevel</I> parameter set to INSTALLUILEVEL_NONE. If <B>MsiSetInternalUI</B> is not called, the internal user interface level defaults to INSTALLUILEVEL_BASIC. As a result, any message not handled by the external user interface handler is handled by Windows Installer. The initial "Preparing to install. . ." dialog always appears even if the external user interface handler handles all messages.</P>
+
+<P>Although it is possible to call <B>MsiSetExternalUI</B> from within a custom action, this is not recommended. The recommended practice is to call <B>MsiSetExternalUI</B> from a <A HREF="app_4puv.htm">bootstrapping</A> application.</P>
+
+<H4><A HREF="JavaScript:hhobj_1.Click()">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000/XP: </B>Included in Windows 2000 and later.<BR>
+<B>&nbsp;&nbsp;Windows 95/98/Me: </B>Included in Windows Me.<BR>
+<B>&nbsp;&nbsp;Redistributable: </B>Requires Windows Installer 1.0 or later on Windows NT 4.0 SP3 and Windows 95/98.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msi.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="msi_8vqd.htm#_msi_user_interface_and_logging_functions">Interface and Logging Functions</A> </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiSetExternalUI;%20RELEASE:%20August%202001;%20URL:%20msi_5dm1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20MsiSetExternalUI;%20RELEASE:%20August%202001;%20URL:%20msi_5dm1.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

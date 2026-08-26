@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I change the target location for a directory?</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_how_do_i_change_the_target_location_for_a_directory"></A>How do I change the target location for a directory?</H1>
+
+<P>If it is possible to do so, the best way to specify the target location for a directory is by authoring the <A HREF="tref_6an9.htm">Directory Table</A> in your installation package to provide the correct location. See <A HREF="novr_3wth.htm">Using the Directory Table</A>.</P>
+
+<P>If it is necessary to change the directory location at the time of the installation you have the following options:
+
+<UL>
+	<LI>Specify the location of a directory by setting the value of a <A HREF="prop_0gfn.htm">public property</A> on the command line. During the <A HREF="aref_22we.htm">CostFinalize action</A> the internal directory paths used by the installer are updated to the value of properties listed as keys in the <A HREF="tref_6an9.htm">Directory table</A>. See <A HREF="prop_29tf.htm">Using Properties</A> and <A HREF="prop_7mxx.htm">Setting Public Property Values on the Command Line</A>. </LI>
+
+	<LI>Specify the location of a directory using a custom action. If the custom action is to run before the <A HREF="aref_22we.htm">CostFinalize action</A>, you can use a <A HREF="cact_07ox.htm">Custom Action Type 51</A> to set the value of a property from a formatted text string. If the custom action runs after CostFinalize, you can use a <A HREF="cact_07lh.htm">Custom Action Type 35</A> to set the value of the directory path from a formatted text string. </LI>
+
+	<LI>If the installation is running a full UI, you may use the <A HREF="href_7khg.htm">SetTargetPath ControlEvent</A> to set the directory path. </LI>
+</UL>
+
+<P></P>
+
+<P></P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

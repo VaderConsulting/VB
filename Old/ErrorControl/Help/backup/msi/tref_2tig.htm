@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>AnyPath</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="AnyPath [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_anypath"></A>AnyPath</H1>
+
+<P>The AnyPath data type is a text string containing either a full path or a relative path. When specifying a relative path, you can include a long file name with the short file name by separating the short and long names with a vertical bar (|). Note that you cannot specify multiple levels of a directory or fully qualified paths in this way. The path may contain properties enclosed within square brackets (<CODE>[ ]</CODE>).</P>
+
+<P>Examples of valid AnyPath data:
+
+<UL>
+	<LI>\\server\share\temp</LI>
+
+	<LI>c:\temp</LI>
+
+	<LI>\temp</LI>
+
+	<LI>projec~1|Project Status </LI>
+</UL>
+
+<P>Examples of invalid AnyPath data:
+
+<UL>
+	<LI>c:\temp\projec~1|c:\temp one\Project Status</LI>
+
+	<LI>\temp\projec~1|\temp one\Project Status</LI>
+</UL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>TextStyle Table</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="TextStyle Table">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_textstyle_table"></A>TextStyle Table</H1>
+
+<P>The TextStyle table lists different font styles used in controls having text.</P>
+
+<P>The TextStyle table has the following columns.</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=22%>Column</TH>
+<TH align=left width=44%>Type</TH>
+<TH align=left width=14%>Key</TH>
+<TH align=left width=20%>Nullable</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>TextStyle</TD>
+<TD width=44%><A HREF="tref_5elu.htm">Identifier</A></TD>
+<TD width=14%>Y</TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>FaceName</TD>
+<TD width=44%><A HREF="tref_9850.htm">Text</A></TD>
+<TD width=14%> </TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Size</TD>
+<TD width=44%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=20%>N</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>Color</TD>
+<TD width=44%><A HREF="tref_001e.htm">DoubleInteger</A></TD>
+<TD width=14%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=22%>StyleBits</TD>
+<TD width=44%><A HREF="tref_8koi.htm">Integer</A></TD>
+<TD width=14%> </TD>
+<TD width=20%>Y</TD>
+</TR>
+</TABLE><BR>
+
+<H4>Columns</H4>
+
+<DL>
+<DT>TextStyle</DT>
+
+<DD>This column is the name of the font style. This name can be embedded in the text string to indicate a style change. Note that the font style name used in this field must not end with the characters: _UL. See <A HREF="hand_7bec.htm">Adding Controls and Text</A>.</DD>
+
+<DT>FaceName</DT>
+
+<DD>A string indicating the name of the font. The string must be no more than 31 characters long.</DD>
+
+<DT>Size</DT>
+
+<DD>The font size in installer units. An installer unit is equal to one-twelfth the height of the 10-point MS Sans Serif font size. This must be a non-negative number.</DD>
+
+<DT>Color</DT>
+
+<DD>This column specifies the text color displayed by a <A HREF="href_4s30.htm">Text Control</A>. All other types of controls always use the default text color. The value put in this column should be computed using the following formula: 65536 * blue + 256 * green + red, where red, green, and blue are each in the range of 0-255. The value must not exceed 16777215, which is the value for white. The value is 0 for black, 255 for red, 65280 for green, 16711680 for blue and 8421504 for grey. Leaving the field empty specifies the default color.</DD>
+
+<DT>StyleBits</DT>
+
+<DD>A combination of bits indicating the formatting for the text.
+
+<P>The individual style bits have the following values.
+
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=46%>Constant</TH>
+<TH align=left width=21%>Hexadecimal</TH>
+<TH align=left width=16%>Decimal</TH>
+<TH align=left width=17%>Style</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%><B>msidbTextStyleStyleBitsBold</B></TD>
+<TD width=21%>0x001</TD>
+<TD width=16%>1</TD>
+<TD width=17%>Bold</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%><B>msidbTextStyleStyleBitsItalic</B></TD>
+<TD width=21%>0x002</TD>
+<TD width=16%>2</TD>
+<TD width=17%>Italic</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%><B>msidbTextStyleStyleBitsUnderline</B></TD>
+<TD width=21%>0x002</TD>
+<TD width=16%>4</TD>
+<TD width=17%>Underline</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=46%><B>msidbTextStyleStyleBitsStrike</B></TD>
+<TD width=21%>0x008</TD>
+<TD width=16%>8</TD>
+<TD width=17%>Strike out</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+</DL>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

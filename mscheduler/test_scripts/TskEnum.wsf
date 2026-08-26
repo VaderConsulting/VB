@@ -1,0 +1,78 @@
+<job id="TaskView">
+<reference object="Scheduler.SchAgent" />
+<script language="vbscript">
+'
+' Title="TskEnum.vbs"
+' Author="Mark Pryor"
+' Date="1-26-2001"
+' Contact="mpryor@sprintmail.com"
+' Description="Enum tasks and output to Notepad"
+' Dependence="WSH2 Hosted VBScript.dll, Version 5+ engine 
+' Note= make sure to have Temp folder in Windows root"
+'
+
+Option Explicit
+On error resume next
+
+' helper objects and vars
+dim WSHShell, objFS, TempName, objTempFile, MyBase
+Set WSHShell = WScript.CreateObject("WScript.Shell")
+Set objFS = WScript.CreateObject("Scripting.FileSystemObject")
+
+' setup the temp file sent to Notepad later
+TempName = WshShell.Environment("PROCESS").Item("TEMP")
+MyBase = objFS.GetTempName
+MyBase = objFS.GetBaseName(MyBase)
+TempName = TempName & "\~" & MyBase & ".txt"
+set objTempFile = objFS.CreateTextFile( TempName,  false,false)
+
+'Tsk Objects and vars
+dim oSch, tsk
+set oSch = WScript.CreateObject("Scheduler.SchAgent")
+
+'	main
+if NOT err.number then
+                                                
+	' local vars
+dim oTrig, sOut, i
+
+' build the Job collection
+Call oSch.Refresh
+sOut = ""
+For Each tsk In oSch
+    sOut = sOut & "JOB: " & tsk.Name & ": App=" & tsk.ApplicationName & vbCrLf & vbTab & " CmdLine= (" & tsk.CommandLine & " )" & vbCrLf
+    sOut = sOut & vbTab & "...with " & tsk.Triggers.Count & " Triggers." & " RunNext=" & tsk.NextRunTime & vbCrLf
+    i = 1
+    For Each oTrig In tsk.Triggers
+        sOut = sOut & vbTab & " Trigger #" & i _
+        & " (Typ " & oTrig.TriggerType _
+        & ") " & oTrig.Text 
+        i = i + 1
+    Next
+	sOut = sOut & vbCrLf
+        'WScript.echo sOut
+Next
+		objTempFile.WriteLine sOut
+		objTempFile.Close
+		WSHShell.Run "notepad " & TempName, 1, True
+		objFS.DeleteFile TempName, True 
+	
+else
+' somethings wrong lets bail
+WScript.echo "Script Failed with creation error"
+end if
+call cleanup
+WScript.quit
+' =========== end main =====================
+
+sub cleanup
+if IsObject(WSHShell ) then set WSHShell = nothing
+if IsObject(objFS) then set objFS = nothing
+if IsObject(oSch) then set oSch = nothing
+end sub
+
+Function lRandom( iLo ,  iHi) 
+    lRandom = Int(iLo + (Rnd * (iHi - iLo + 1)))
+End Function
+</script>
+</job>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ICEM02</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="ICEM02 [Windows Installer]">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_icem02"></A>ICEM02</H1>
+
+<P>ICEM02 verifies that all the module dependencies and exclusions are related to the current module.</P>
+
+<P>Merge module ICEs are stored in a merge module .cub file called Mergemod.cub and not in the .cub file containing the ICEs used for package validation. </P>
+
+<H4>Result</H4>
+
+<P>ICEM02 posts error messages if the module database attempts to specify dependencies or exclusions that do not relate to the current module. ICEM02 posts an error message if the module database attempts to specify the current module as dependent or as excluded by itself.</P>
+
+<H4>Example</H4>
+
+<P>ICEM02 would post the following error messages for a module containing the database entries shown below.</P>
+
+<PRE>The dependency OtherModule.<I>GUID2</I>.1033.OtherModule.<I>GUID3</I>.0 in the 
+ModuleDependency table creates a dependency for an unrelated module. A 
+module can only define dependencies for itself
+ 
+This module is listed as depending on itself!
+ 
+The exclusion OtherModule.GUID2.1033.OtherModule.GUID3.0 in the 
+ModuleExclusion table creates an excluded module for an unrelated 
+module. A module can only define exclusions for itself.
+ 
+This module excludes itself from the target database!</PRE>
+
+<P><A HREF="merg_4nad.htm"><B>ModuleSignature Table</B></A><B> </B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=37%>ModuleID</TH>
+<TH align=left width=31%>Language</TH>
+<TH align=left width=32%>Version</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=37%>MyModule.<I>GUID1</I></TD>
+<TD width=31%>1033</TD>
+<TD width=32%>1.0</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="merg_7z39.htm"><B>ModuleDependency Table</B></A><B> </B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=23%>ModuleID</TH>
+<TH align=left width=19%>ModuleLanguage</TH>
+<TH align=left width=19%>RequiredID</TH>
+<TH align=left width=19%>RequiredLanguage</TH>
+<TH align=left width=20%>RequiredVersion</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>OtherModule.<I>GUID2</I></TD>
+<TD width=19%>1033 </TD>
+<TD width=19%>OtherModule.<I>GUID3</I> </TD>
+<TD width=19%>0 </TD>
+<TD width=20%>1.0 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=23%>MyModule.<I>GUID1</I></TD>
+<TD width=19%>1033 </TD>
+<TD width=19%>MyModule.<I>GUID1</I></TD>
+<TD width=19%>1033 </TD>
+<TD width=20%>1.2 </TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="merg_8c4l.htm"><B>ModuleExclusion Table</B></A><B> (partial)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=28%>ModuleID</TH>
+<TH align=left width=24%>ModuleLanguage</TH>
+<TH align=left width=24%>ExcludedID</TH>
+<TH align=left width=24%>ExcludedLanguage</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>OtherModule.<I>GUID2</I></TD>
+<TD width=24%>1033 </TD>
+<TD width=24%>OtherModule.<I>GUID3</I> </TD>
+<TD width=24%>0 </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=28%>MyModule.<I>GUID1</I></TD>
+<TD width=24%>1033 </TD>
+<TD width=24%>MyModule.<I>GUID1</I></TD>
+<TD width=24%>1033 </TD>
+</TR>
+</TABLE><BR>
+
+<P>The merge module ICE posts the first error because the of the first row in the ModuleDependency table, which does not specify a required dependency for the current module specified in the ModuleSignature table. The dependencies of a module can only be specified in its own ModuleDependency table. If OtherModule.<I>GUID3</I> is required by the current module, replace the first two columns of the row with the data from the ModuleSignature table. If OtherModule.<I>GUID3</I> is not required by this module, delete this row. </P>
+
+<P>The merge module ICE posts the second error because a module cannot specify a dependency upon itself.</P>
+
+<P>The merge module ICE posts the third error because of the first row in the ModuleExclusion table, which does not specify a required exclusion for the current module specified in the ModuleSignature table. The exclusions of a module can only be specified in its own ModuleExclusion table. If the current module excludes OtherModule.<I>GUID3</I>, replace the first two columns of the row with the data from the ModuleSignature table. If the current module does not exclude OtherModule.<I>GUID3</I>, delete this row. </P>
+
+<P>The merge module ICE posts the fourth error because a module cannot specify that it exclude itself.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="merg_54md.htm">Merge Module ICE Reference</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

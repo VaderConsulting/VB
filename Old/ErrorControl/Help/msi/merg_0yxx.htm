@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How do I order the file sequence in the CAB of a multiple language merge module?</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H3><A NAME="_msi_how_do_i_order_the_file_sequence_in_the_cab_of_a_multiple_language_merge_module"></A>How do I order the file sequence in the CAB of a multiple language merge module?</H3>
+
+<P>Multiple-language merge modules, language transforms, and cabinet files must be authored such that the order of the files in the .cab matches the installation order of files specified in the <A HREF="tref_4n6t.htm">File table</A>, even after the application of the language transform. If the order in the module and in the .cab do not match, the merge module cannot be used.</P>
+
+<P>Assign to each file in the module a unique sequence number that is independent of its language and then always use this sequence number for the file. Use this same sequence when building the cabinet file and when authoring a language transform. </P>
+
+<P>Because the installer only installs the files listed in the <A HREF="tref_4n6t.htm">File table</A>, the use of a global file sequence in the cabinet, File table, and language transform enables the merge tool to skip any extra files stored in the cabinet that are not listed in the File table. Other files may exist in the cabinet as long as they are not listed in the File table.</P>
+
+<P>For example, a module installing Code.dll, English.dat, German.dat, and French.dat can use the following global file sequence order</P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=47%>File</TH>
+<TH align=left width=53%>Sequence </TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>Code.Dll</TD>
+<TD width=53%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>English.Dat</TD>
+<TD width=53%>2</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>German.Dat</TD>
+<TD width=53%>3</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>French.Dat</TD>
+<TD width=53%>4</TD>
+</TR>
+</TABLE><BR>
+
+<P>Language transforms can then be authored to modify the File table of the module for English, German, or French.</P>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial for English)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>File</TH>
+<TH align=left width=50%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Code.Dll </TD>
+<TD width=50%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>English.Dat </TD>
+<TD width=50%>2</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial for German)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>File</TH>
+<TH align=left width=50%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Code.Dll </TD>
+<TD width=50%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>German.Dat </TD>
+<TD width=50%>3</TD>
+</TR>
+</TABLE><BR>
+
+<P><A HREF="tref_4n6t.htm"><B>File Table</B></A><B> (partial for French)</B></P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=50%>File</TH>
+<TH align=left width=50%>Sequence</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>Code.Dll </TD>
+<TD width=50%>1</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=50%>French.Dat </TD>
+<TD width=50%>4</TD>
+</TR>
+</TABLE><BR>
+
+<P>For more information, see <A HREF="merg_01tf.htm">Authoring Merge Module File Tables</A> or <A HREF="merg_7mn9.htm">How do I author a language transform for a multiple-language merge module?</A>. </P>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20order%20the%20file%20sequence%20in%20the%20CAB%20of%20a%20multiple%20language%20merge%20module%3F;%20RELEASE:%20August%202001;%20URL:%20merg_0yxx.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20How%20do%20I%20order%20the%20file%20sequence%20in%20the%20CAB%20of%20a%20multiple%20language%20merge%20module%3F;%20RELEASE:%20August%202001;%20URL:%20merg_0yxx.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

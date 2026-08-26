@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR=LTR>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>MsiOpenDatabase</TITLE>
+<SCRIPT SRC="../scripts/linkcss.js"></SCRIPT>
+<SCRIPT SRC="../scripts/langref.js"></SCRIPT>
+<META NAME="MS-HKWD" CONTENT="MsiOpenDatabase">
+</HEAD>
+<BODY TOPMARGIN="0"><TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0>
+<TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Microsoft Windows Installer</TD></TR>
+</TABLE>
+
+<H1><A NAME="_msi_msiopendatabase"></A>MsiOpenDatabase</H1>
+
+<P>The <B>MsiOpenDatabase</B> function opens a database file for data access.</P>
+
+<PRE class=syntax><B>UINT MsiOpenDatabase(
+</B>  <B>LPCTSTR</B> <I>szDatabasePath</I><B>,</B>  // path to database
+  <B>LPCTSTR</B> <I>szPersist</I><B>,</B>       // output database or predefined
+                           //  persist mode
+  <B>MSIHANDLE</B> <I>*phDatabase</I>    // location to return database handle
+<B>); </B></PRE>
+
+<H4>Parameters</H4>
+
+<DL>
+<DT><I>szDatabasePath</I></DT>
+
+<DD>Specifies the full path or relative path to the database file.</DD>
+
+<DT><I>szPersist</I></DT>
+
+<DD>Specifies the full path to the file or the persistence mode. You can use the <I>szPersist</I> parameter to direct the persistent output to a new file or to specify one of the following predefined persistence modes.
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=40%>Value</TH>
+<TH align=left width=60%>Meaning</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>MSIDBOPEN_CREATEDIRECT</TD>
+<TD width=60%>Create a new database, direct mode read/write.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>MSIDBOPEN_CREATE</TD>
+<TD width=60%>Create a new database, transact mode read/write.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>MSIDBOPEN_DIRECT</TD>
+<TD width=60%>Open a database direct read/write without transaction.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>MSIDBOPEN_READONLY</TD>
+<TD width=60%>Open a database read-only, no persistent changes.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>MSIDBOPEN_TRANSACT</TD>
+<TD width=60%>Open a database read/write in transaction mode.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=40%>MSIDBOPEN_PATCHFILE</TD>
+<TD width=60%>Add this flag to indicate a patch file.</TD>
+</TR>
+</TABLE><BR>
+
+</DD>
+
+<DT><I>phDatabase</I></DT>
+
+<DD>Pointer to the location of the returned database handle.
+</DD>
+</DL>
+
+<H4>Return Values</H4>
+
+<DL>
+<DT>ERROR_CREATE_FAILED</DT>
+
+<DD>The database could not be created.</DD>
+
+<DT>ERROR_INVALID_PARAMETER</DT>
+
+<DD>One of the parameters was invalid.</DD>
+
+<DT>ERROR_OPEN_FAILED</DT>
+
+<DD>The database could not be opened as requested.</DD>
+
+<DT>ERROR_SUCCESS</DT>
+
+<DD>The function succeeded.
+</DD>
+</DL>
+
+<H4>Remarks</H4>
+
+<P>To make and save changes to a database first open the database in transaction (MSIDBOPEN_TRANSACT), create (MSIDBOPEN_CREATE or MSIDBOPEN_CREATEDIRECT), or direct (MSIDBOPEN_DIRECT) mode. After making the changes, always call <A HREF="qref_3bxw.htm"><B>MsiDatabaseCommit</B></A> before closing the database handle. <B>MsiDatabaseCommit</B> flushes all buffers. </P>
+
+<P>Always call <B>MsiDatabaseCommit </B>on a database that has been opened in direct mode (MSIDBOPEN_DIRECT or MSIDBOPEN_CREATEDIRECT) before closing the database's handle. Failure to do this may corrupt the database.</P>
+
+<P>Because <B>MsiOpenDatabase</B> initiates database access it cannot be used with a running installation</P>
+
+<P class=note><B>Note</B>&nbsp;&nbsp;When a database is opened as the output of another database, the summary information stream of the output database is actually a read-only mirror of the original database, and, thus, cannot be changed. Additionally, it is not persisted with the database. To create or modify the summary information for the output database, it must be closed and reopened.</P>
+
+<H4><A HREF="../requirements_927n.htm">Requirements</A> </H4>
+
+<P><B>&nbsp;&nbsp;Windows NT/2000: </B>Requires Windows NT 4.0 SP3 or later. Available as a redistributable.<BR>
+<B>&nbsp;&nbsp;Windows 95/98: </B>Requires Windows 95 or later. Available as a redistributable for Windows 95.<BR>
+<B>&nbsp;&nbsp;Header: </B>Declared in Msiquery.h.<BR>
+<B>&nbsp;&nbsp;Library: </B>Use Msi.lib.<BR>
+<B>&nbsp;&nbsp;Unicode: </B>Implemented as Unicode and ANSI versions on all platforms.</P>
+
+<H4>See Also</H4>
+
+<P><A HREF="qref_778z.htm#_msi_general_database_access_functions">General Database Access Functions</A> </P>
+<DIV CLASS="footer">Built on Friday, June 23, 2000</DIV>
+
+</BODY>
+</HTML>

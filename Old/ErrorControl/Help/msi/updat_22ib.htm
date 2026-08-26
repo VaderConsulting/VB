@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML DIR="LTR"><HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Applying Transforms</TITLE>
+<!-- Built on Friday, August 10, 2001 -->
+<SCRIPT SRC="../langref.js"></SCRIPT>
+<LINK REL="STYLESHEET" HREF="../backsdk4.css"></HEAD>
+<BODY TOPMARGIN="0">
+
+<TABLE CLASS="buttonbarshade" CELLSPACING=0><TR><TD>&nbsp;</TD></TR></TABLE>
+<TABLE CLASS="buttonbartable" CELLSPACING=0><TR ID="hdr"><TD CLASS="runninghead" NOWRAP>Platform&nbsp;SDK:&nbsp;Windows&nbsp;Installer</TD></TR></TABLE>
+
+<H2><A NAME="_msi_applying_transforms"></A>Applying Transforms</H2>
+
+<P>The <A HREF="pref_8q2h.htm"><B>TRANSFORMS</B> property</A> contains the list of transforms for an installation package. The installer applies all the transforms in the transforms list at every installation, advertisement, installation-on-demand, or maintenance installation of the package. </P>
+
+<P>The <B>TRANSFORMS</B> property is set by specifying the list of transforms on the command line; however, when using either the /jm or /ju <A HREF="app_73eb.htm">command line option</A>, the transforms list must be specified using the /t option.</P>
+
+<P>Note that the transforms list cannot be modified once installed and can only be removed by uninstalling the application.</P>
+
+<P>The following table provides examples of various transforms strings that could be added to the transforms list. </P>
+
+<TABLE>
+
+<TR VALIGN="top">
+<TH align=left width=56%>Transforms string</TH>
+<TH align=left width=44%>Description</TH>
+</TR>
+
+<TR VALIGN="top">
+<TD width=56%><CODE>transform1.mst;:transform2.mst;:transform3.mst</CODE></TD>
+<TD width=44%>transform2.mst and transform3.mst are <A HREF="updat_3ub7.htm">embedded transforms</A>. transform1.mst is a <A HREF="updat_3rxv.htm">secure-at-source transform</A> only if the <A HREF="pref_0uwp.htm"><B>TRANSFORMSSECURE</B> property</A> or <A HREF="over_9u91.htm">TransformsSecure</A> policy is set, otherwise transform1 is an <A HREF="updat_9qur.htm">unsecured transform</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=56%><CODE>\\server\share\path\transform1.mst;:transform2.mst </CODE></TD>
+<TD width=44%>transform2.mst is an <A HREF="updat_3ub7.htm">embedded transform</A>. transform1.mst is a <A HREF="updat_7mb7.htm">secure-full-path transform</A> only if the <A HREF="pref_0uwp.htm"><B>TRANSFORMSSECURE</B> property</A> or <A HREF="over_9u91.htm">TransformsSecure</A> policy is set, otherwise transform1 is an <A HREF="updat_9qur.htm">unsecured transform</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=56%><CODE>@:transform2.mst;transform1.mst</CODE>
+<P><CODE>@transform1.mst;:transform2.mst </CODE></P>
+</TD>
+<TD width=44%>transform2.mst is an embedded transform. transform1.mst is a stand-alone <A HREF="updat_3rxv.htm">secure-at-source transforms</A>.</TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=56%><CODE>|\\server\share\path\transform1.mst;:transform2.mst </CODE>
+<P><CODE>|:transform2.mst;\\server\share\path\transform1.mst</CODE></P>
+</TD>
+<TD width=44%>transform2.mst is an embedded transform. transform1.mst is a stand-alone <A HREF="updat_7mb7.htm">secure-full-path transforms</A>.</TD>
+</TR>
+</TABLE><BR>
+<!-- Info Task Footer -->
+<DIV CLASS="itfBorder"><IMG SRC="../tiny.gif" WIDTH="1" HEIGHT="1"></DIV>
+<DIV CLASS="itf"><B>Platform SDK Release: <FONT COLOR="#ddaa00">August 2001</FONT></B>
+<TABLE CELLPADDING="0" CELLSPACING="0"><TR VALIGN="top">
+<TD WIDTH="13" CLASS="itficon"><A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Applying%20Transforms;%20RELEASE:%20August%202001;%20URL:%20updat_22ib.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com"><IMG SRC="../sendfdbk.gif" BORDER="0" WIDTH="13" HEIGHT="15"/></A></TD>
+<TD WIDTH="47%" CLASS="itf">What did you think of this topic?<BR>
+<A HREF="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Applying%20Transforms;%20RELEASE:%20August%202001;%20URL:%20updat_22ib.htm" Title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com">Let us know</A>.</TD>
+<TD WIDTH="16" CLASS="itficon"><IMG SRC="../download.gif" BORDER="0" WIDTH="16" HEIGHT="16"/></TD>
+<TD CLASS="itf">Order a Platform SDK CD Online<BR>
+(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_NA&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">U.S/Canada</A>)&nbsp;&nbsp;&nbsp;(<A HREF="http://developerstore.com/devstore/product.asp?productID=7639&Store=TOOLBOX_INTL&DisplayCode" TARGET="_blank" TITLE="Order a CD online.">International</A>)</TD></TR></TABLE></DIV>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>
