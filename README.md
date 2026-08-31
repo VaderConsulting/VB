@@ -13,7 +13,7 @@ There is no single `.sln` for the folder. Notable projects on disk:
 | `AccessPwdBreak` | VB6 | WinForms exe (`Breaker.exe`) | Third-party "KNR's Access 97 Password Breaker" (`VersionCompanyName` smart software). Sample `Dummy.mdb` is gitignored. Author email redacted. |
 | `ACL` / `ACL2` / `ACL3` | VB6 | WinForms exe | ADSI / file ACL experiments (`ADS_RIGHTS_ENUM`, `IADsSecurityDescriptor`). ACL2 writes a test ACE; ACL3 uses Win32 memory APIs for DACL work. |
 | `ADMExport` | VB6 | WinForms exe (`prjADMExport.exe`) | Exports ADM (Group Policy administrative template) files. |
-| `AdminSetPassword` | VB6 | WinForms exe | Domain admin password-set utility (Tusk/Freelance). Reads `setup.ini` and `userlist.txt` — originals gitignored; use the `.example` files. |
+| `AdminSetPassword` | VB6 | WinForms exe | Domain admin password-set utility (Tusk/Freelance). Reads `setup.ini` and `userlist.txt` - originals gitignored; use the `.example` files. |
 | `Audit` | VB6 | WinForms exe (`Audit.exe`) | PC Audit: computer name, IP/MAC, OS, hotfixes, installed apps, local accounts, services. Includes a sample `LAPTOP.txt` run. |
 | `Bandwidth` | VB6 | WinForms exe (`CS Bandwidth Monitor.exe`) | Systray/desktop bandwidth monitor (IP Helper / netstat). |
 | `Barcodes` | VB6 | WinForms exe (`Barcode.exe`) | Code 39 barcode generator (Allen Allegretto). |
