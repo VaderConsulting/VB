@@ -52,6 +52,10 @@ VB.NET (Visual Studio .NET 2002, solution format 7.00):
 - `Old/DOT NET/WindowsService1/WindowsService1.sln`
 - `Old/DOT NET/Samples/Vb.net/WinForms-Calc/Calc/Calc.sln`
 
+## Requirements
+
+- Visual Basic 6.0 IDE
+
 ## Attribution and provenance
 
 Working copy from Dave Robinson's OneDrive Historical Dev folder `VB`. Company names in `.vbp` files include Freelance, Dave Robinson, Empired Limited, Realtag, Rio Tinto, Computer Sciences Corporation and Tusk Technologies, plus third-party vendors listed in `THIRD_PARTY_NOTICES.md`. OneDrive skipped `VB/Old` as a folder item and `VB/Old/NWN Resource Viewer`; other `Old/` projects did extract.
