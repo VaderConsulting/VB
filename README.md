@@ -4,6 +4,12 @@ This umbrella previously held Dave Robinson's Visual Basic working folder from O
 
 **Counts:** 90 top-level child repos - 184 `Old/` child repos - 274 total
 
+## How to open
+
+1. Pick a child repo from the tables below (or from [INDEX.md](INDEX.md)).
+2. Clone that repository — not this umbrella.
+3. Follow **How to open** and **Requirements** in the child README (VB6 IDE / Visual Studio / dependencies vary by project).
+
 ## Requirements
 
 Tooling requirements (Visual Basic 6.0 IDE, Visual Studio for VB.NET samples, OCX/DLL dependencies, etc.) are documented in each **child** repository README under **Requirements**. This umbrella no longer carries buildable project trees for day-to-day use.
