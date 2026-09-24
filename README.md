@@ -1,6 +1,6 @@
 # VB
 
-This umbrella previously held Dave Robinson's Visual Basic working folder from OneDrive Historical Dev as one large bag of projects. Those projects now live as **separate VaderConsulting repositories**. Use the tables below as the catalog; clone the child repo you need rather than this umbrella.
+This umbrella previously held my Visual Basic working folder from Historical Dev as one large bag of projects. Those projects now live as **separate VaderConsulting repositories**. Use the tables below as the catalog; clone the child repo you need rather than this umbrella.
 
 **Counts:** 90 top-level child repos - 184 `Old/` child repos - 274 total
 
@@ -304,7 +304,7 @@ Projects that lived under `VB/Old/` (including the former `DOT NET` split).
 
 ## Provenance
 
-Working copies originated from Dave Robinson's OneDrive Historical Dev `VB` folder. Child repos use catalogue READMEs with **Source last updated** dates; see each child for attribution, third-party notices, and license. This umbrella remains for history and as an index only.
+Working copies originated from my Historical Dev `VB` folder. Child repos use catalogue READMEs with **Source last updated** dates; see each child for attribution, third-party notices, and license. This umbrella remains for history and as an index only.
 
 ## License
 
